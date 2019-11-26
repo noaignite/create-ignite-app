@@ -31,8 +31,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "recompose": "^0.30.0",
-    "swiper": "^5.2.1",
-    "warning": "^4.0.3"
+    "swiper": "^5.2.1"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^5.2.6",
