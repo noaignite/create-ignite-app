@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
+import classnames from 'clsx'
 
 const SlideshowSlide = React.forwardRef(function SlideshowSlide(props, ref) {
   const { children, className, component: Component = 'div', ...other } = props
