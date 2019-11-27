@@ -3,20 +3,23 @@ import Router from 'next/router'
 import { CLOSE_MENUS_ON_RESIZE } from 'src/site.config'
 
 export const defaultState = {
+  isCartMenuOpen: false,
   isLoading: false,
-  isMenuOpen: false,
   isMounted: false,
+  isNavMenuOpen: false,
 }
 
 export default (initialState = defaultState) => {
+  const [isCartMenuOpen, setIsCartMenuOpen] = React.useState(initialState.isCartMenuOpen)
   const [isLoading, setIsLoading] = React.useState(initialState.isLoading)
-  const [isMenuOpen, setIsMenuOpen] = React.useState(initialState.isMenuOpen)
   const [isMounted, setIsMounted] = React.useState(initialState.isMounted)
+  const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(initialState.isNavMenuOpen)
 
   // Helpers
 
-  const closeAppMenus = () => {
-    setIsMenuOpen(false)
+  const closeAllMenus = () => {
+    setIsCartMenuOpen(false)
+    setIsNavMenuOpen(false)
   }
 
   // Private handlers
@@ -27,13 +30,13 @@ export default (initialState = defaultState) => {
 
   const handleResize = React.useCallback(() => {
     if (CLOSE_MENUS_ON_RESIZE) {
-      closeAppMenus()
+      closeAllMenus()
     }
   }, [])
 
   const handleRouteChangeStart = React.useCallback(() => {
     setIsLoading(true)
-    closeAppMenus()
+    closeAllMenus()
   }, [])
 
   const handleRouteChangeComplete = React.useCallback(() => {
@@ -58,25 +61,48 @@ export default (initialState = defaultState) => {
 
   // Public handlers
 
-  const onMenuButtonClick = () => {
-    setIsMenuOpen(prev => !prev)
+  const onAppBarBurgerClick = () => {
+    setIsCartMenuOpen(false)
+    setIsNavMenuOpen(prev => !prev)
   }
 
-  const onMenuClose = () => {
-    setIsMenuOpen(false)
+  const onAppBarCartClick = () => {
+    setIsCartMenuOpen(prev => !prev)
+    setIsNavMenuOpen(false)
   }
 
-  const onMenuExited = () => {}
+  const onCartMenuClose = () => {
+    setIsCartMenuOpen(false)
+  }
+
+  const onCartMenuExited = () => {
+    // This callback is run only once the component has unmounted.
+    // A good place to reset it's component state.
+  }
+
+  const onNavMenuClose = () => {
+    setIsNavMenuOpen(false)
+  }
+
+  const onNavMenuExited = () => {
+    // This callback is run only once the component has unmounted.
+    // A good place to reset it's component state.
+  }
 
   return {
     // Computed properties
     isBackdropOpen: isLoading,
+    isMenusOpen: isCartMenuOpen || isNavMenuOpen,
     // Normal properties
+    isCartMenuOpen,
     isLoading,
-    isMenuOpen,
     isMounted,
-    onMenuButtonClick,
-    onMenuClose,
-    onMenuExited,
+    isNavMenuOpen,
+    onAppBarBurgerClick,
+    onAppBarCartClick,
+    onCartMenuClose,
+    onCartMenuExited,
+    onNavMenuClose,
+    onNavMenuExited,
   }
 }

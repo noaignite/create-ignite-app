@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Drawer from '@material-ui/core/Drawer'
+import { SITE_HEADER_ID } from 'src/site.config'
 import { linkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import Link from 'components/Link'
@@ -30,20 +31,20 @@ export const styles = theme => ({
   navlistItemText: {},
 })
 
-const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
+const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
   const { classes, className, menu = [], ...other } = props
 
-  const { isMenuOpen, onMenuClose, onMenuExited } = useAppContext()
+  const { isNavMenuOpen, onNavMenuClose, onNavMenuExited } = useAppContext()
 
   return (
     <Drawer
       classes={{
         root: classnames(classes.root, className),
-        paper: classes.paper,
+        paper: classnames(classes.paper, SITE_HEADER_ID),
       }}
-      SlideProps={{ onExited: onMenuExited }}
-      open={isMenuOpen}
-      onClose={onMenuClose}
+      SlideProps={{ onExited: onNavMenuExited }}
+      open={isNavMenuOpen}
+      onClose={onNavMenuClose}
       anchor="right"
       ref={ref}
       {...other}
@@ -69,12 +70,12 @@ const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
   )
 })
 
-AppDrawer.propTypes = {
+AppNavMenu.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   menu: PropTypes.arrayOf(linkType),
 }
 
-AppDrawer.uiName = 'AppDrawer'
+AppNavMenu.uiName = 'AppNavMenu'
 
-export default withStyles(styles)(AppDrawer)
+export default withStyles(styles)(AppNavMenu)
