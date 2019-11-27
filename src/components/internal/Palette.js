@@ -38,7 +38,7 @@ const Palette = React.forwardRef(function Palette(props, ref) {
 Palette.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  color: PropTypes.string.isRequired,
+  color: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   label: PropTypes.string.isRequired,
 }
 
