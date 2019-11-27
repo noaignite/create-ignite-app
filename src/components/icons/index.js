@@ -1,5 +1,6 @@
 export { default as Brand } from './Brand'
 export { default as Burger } from './Burger'
+export { default as Cart } from './Cart'
 export { default as CheckboxChecked } from './CheckboxChecked'
 export { default as CheckboxUnchecked } from './CheckboxUnchecked'
 export { default as Cross } from './Cross'
