@@ -2,6 +2,7 @@ import createMuiPalette from '@material-ui/core/styles/createPalette'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import deepmerge from '@oakwood/oui-utils/deepmerge'
 import blue from '../colors/blue'
+import blueGrey from '../colors/blueGrey'
 import common from '../colors/common'
 import grey from '../colors/grey'
 import red from '../colors/red'
@@ -69,14 +70,19 @@ export const dark = {
 export default function createPalette(palette) {
   const {
     primary = {
-      light: red[300],
-      main: red[500],
-      dark: red[700],
+      light: blueGrey[300],
+      main: blueGrey[500],
+      dark: blueGrey[700],
     },
     secondary = {
       light: blue[300],
       main: blue[500],
       dark: blue[700],
+    },
+    error = {
+      light: red[300],
+      main: red[500],
+      dark: red[700],
     },
     type = 'light',
     contrastThreshold = 3,
@@ -96,6 +102,8 @@ export default function createPalette(palette) {
       primary,
       // The colors used to represent secondary interface elements for a user.
       secondary,
+      // The colors used to represent interface elements that the user should be made aware of.
+      error,
       // The grey colors.
       grey,
       // Used by `getContrastText()` to maximize the contrast between the background and

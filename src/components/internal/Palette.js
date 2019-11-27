@@ -23,6 +23,9 @@ export const styles = theme => ({
   },
 })
 
+/**
+ * @ignore - internal component.
+ */
 const Palette = React.forwardRef(function Palette(props, ref) {
   const { classes, className, color, label, ...other } = props
 
