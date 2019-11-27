@@ -1,13 +1,14 @@
 import createMuiTypography from '@material-ui/core/styles/createTypography'
 import deepmerge from '@oakwood/oui-utils/deepmerge'
 
-const caseNoCaps = {
-  textTransform: 'none',
+const caseAllCaps = {
+  textTransform: 'uppercase',
 }
 
 export default function createTypography(palette, typography) {
   const {
-    fontFamily = '"Helvetica", "Arial", sans-serif',
+    fontFamilyPrimary = '"Helvetica", "Arial", sans-serif',
+    fontFamilySecondary = fontFamilyPrimary,
     // The default font size of the Material Specification.
     fontSize = 14, // px
     fontWeightLight = 300,
@@ -25,44 +26,47 @@ export default function createTypography(palette, typography) {
 
   const coef = fontSize / 14
   const pxToRem = size => `${(size / htmlFontSize) * coef}rem`
-  const buildVariant = (fontWeight, size, lineHeight, letterSpacing, extra) => ({
-    fontFamily,
+  const buildVariant = (typeFace, fontWeight, size, lineHeight, letterSpacing, casing) => ({
+    fontFamily: typeFace,
     fontWeight,
     fontSize: pxToRem(size),
     // Unitless following http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/
     lineHeight,
     letterSpacing: `${letterSpacing}em`,
-    ...extra,
+    ...casing,
     ...allVariants,
   })
 
   const variants = {
-    h1: buildVariant(fontWeightSemibold, 72, 1.05, -0.015),
-    h2: buildVariant(fontWeightSemibold, 58, 1.1, -0.015),
-    h3: buildVariant(fontWeightRegular, 48, 1.25, -0.01),
-    h4: buildVariant(fontWeightSemibold, 38, 1.2, -0.015),
-    h5: buildVariant(fontWeightRegular, 24, 1.3, 0),
-    h6: buildVariant(fontWeightSemibold, 20, 1.5, 0.015),
-    subtitle1: buildVariant(fontWeightMedium, 18, 1.65, 0.025),
-    subtitle2: buildVariant(fontWeightMedium, 16, 1.65, 0.025),
-    body1: buildVariant(fontWeightRegular, 18, 1.6, 0.01),
-    body2: buildVariant(fontWeightRegular, 16, 1.6, 0.01),
-    button: buildVariant(fontWeightSemibold, 16, 1.25, 0.07, caseNoCaps),
-    caption: buildVariant(fontWeightSemibold, 12, 1.35, 0.12),
-    overline: buildVariant(fontWeightSemibold, 10, 1.35, 0.15),
+    h1: buildVariant(fontFamilySecondary, fontWeightRegular, 72, 1, -0.01),
+    h2: buildVariant(fontFamilySecondary, fontWeightRegular, 58, 1, 0.01),
+    h3: buildVariant(fontFamilySecondary, fontWeightRegular, 40, 1.05, 0.01),
+    h4: buildVariant(fontFamilySecondary, fontWeightRegular, 22, 1.2, 0.03),
+    h5: buildVariant(fontFamilySecondary, fontWeightRegular, 16, 1.3, 0.03),
+    h6: buildVariant(fontFamilySecondary, fontWeightRegular, 12, 1.5, 0.04),
+    subtitle1: buildVariant(fontFamilyPrimary, fontWeightRegular, 18, 1.5, 0),
+    subtitle2: buildVariant(fontFamilyPrimary, fontWeightMedium, 12, 1.7, 0.02),
+    body1: buildVariant(fontFamilyPrimary, fontWeightRegular, 16, 1.7, 0),
+    body2: buildVariant(fontFamilyPrimary, fontWeightRegular, 14, 1.7, 0),
+    button: buildVariant(fontFamilySecondary, fontWeightMedium, 12, 1.3, 0.04, caseAllCaps),
+    caption: buildVariant(fontFamilyPrimary, fontWeightSemibold, 14, 1.3, 0.02),
+    overline: buildVariant(fontFamilySecondary, fontWeightRegular, 8, 1.7, 0.12, caseAllCaps),
   }
 
   const typographyOutput = deepmerge(
     {
       htmlFontSize,
       pxToRem,
-      fontFamily,
+      fontFamilyPrimary,
+      fontFamilySecondary,
       fontSize,
       fontWeightLight,
       fontWeightRegular,
       fontWeightMedium,
       fontWeightSemibold,
       fontWeightBold,
+      // Mui uses standalone `fontFamily` internally.
+      fontFamily: fontFamilyPrimary,
       ...variants,
     },
     other,
