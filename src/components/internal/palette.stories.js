@@ -32,6 +32,9 @@ const Default = () => {
       <Typography variant="h4">Action</Typography>
       {renderPaletteGroup(palette.action, 'action')}
 
+      <Typography variant="h4">Error</Typography>
+      {renderPaletteGroup(palette.error, 'error')}
+
       <Typography variant="h4">Grey</Typography>
       {renderPaletteGroup(palette.grey, 'grey')}
 
