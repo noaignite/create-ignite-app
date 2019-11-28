@@ -5,8 +5,16 @@ import { Default as WysiwygStory } from 'blocks/Wysiwyg/stories'
 
 const stories = storiesOf('Pages', module)
 
-stories.add('Home', () => (
-  <AppStory>
+function addPageStory(name, Page) {
+  return stories.add(name, () => (
+    <AppStory>
+      <Page />
+    </AppStory>
+  ))
+}
+
+addPageStory('Home', () => (
+  <>
     <WysiwygStory />
-  </AppStory>
+  </>
 ))
