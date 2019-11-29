@@ -20,7 +20,7 @@
     "lint": "eslint . --cache --report-unused-disable-directives && echo \"eslint: no lint errors\"",
     "now-build": "build-storybook -c .storybook -o public",
     "start": "next start -p $PORT",
-    "storybook": "start-storybook -p 3001 --ci"
+    "storybook": "start-storybook -s ./public -p 3001 --ci"
   },
   "dependencies": {
     "@material-ui/core": "^4.6.1",
