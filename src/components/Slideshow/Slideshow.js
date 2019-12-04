@@ -71,7 +71,7 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
 
     let scrollbar = scrollbarRef.current || scrollbarProp.el
     if (scrollbar != null && typeof scrollbar === 'function') {
-      scrollbar = pagination()
+      scrollbar = scrollbar()
     }
 
     if (navigationPrev && navigationNext) {
