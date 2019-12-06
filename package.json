@@ -18,7 +18,7 @@
     "dev": "next",
     "lint:fix": "eslint . --cache --fix && echo \"eslint: no lint errors\"",
     "lint": "eslint . --cache --report-unused-disable-directives && echo \"eslint: no lint errors\"",
-    "now-build": "build-storybook -c .storybook -o public",
+    "now-build": "build-storybook -c .storybook -s ./public -o .styleguide",
     "start": "next start -p $PORT",
     "storybook": "start-storybook -s ./public -p 3001 --ci"
   },
