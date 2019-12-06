@@ -13,7 +13,7 @@
     "url": "https://github.com/oakwood/create-oakwood-app/issues"
   },
   "scripts": {
-    "build:storybook": "build-storybook -o .styleguide",
+    "build:storybook": "build-storybook -c .storybook -s ./public -o .styleguide",
     "build": "next build",
     "dev": "next",
     "lint:fix": "eslint . --cache --fix && echo \"eslint: no lint errors\"",
