@@ -1083,6 +1083,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.7.4":
+  version "7.7.6"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.6.tgz#d18c511121aff1b4f2cd1d452f1bac9601dd830f"
+  integrity sha512-BWAJxpNVa0QlE5gZdWjSxXtemZyZ9RmrmVozxt3NUXeZhVIJ5ANyqmMc0JDrivBZyxUuQvFxlvH4OWWOogGfUw==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@^7.6.0", "@babel/template@^7.7.4":
   version "7.7.4"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.7.4.tgz#428a7d9eecffe27deac0a98e23bf8e3675d2a77b"
@@ -1308,23 +1315,25 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@oakwood/oui-utils@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@oakwood/oui-utils/-/oui-utils-0.5.2.tgz#520bcfcdaf8eadbe2e4aec33c15f06684151833b"
-  integrity sha512-XwlBq20fnIHaer3XAWTFxYcPncpTPu+y5VAbPEJpY7DHyfMCFgb0OPIdFcOHk9Ti5z3YvAe21ECYTrPgNwkeDA==
+"@oakwood/oui-utils@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@oakwood/oui-utils/-/oui-utils-0.6.0.tgz#04163cb30c4318c8ed41ca65fd53d42ad369bb0d"
+  integrity sha512-cc7ITJUVCsnw1STKjXrwTLfZqv8FogVHs2G+YGLaGxtH1g0FP4MJQItSqwpxCqZLh8UCwAZOliGd+XL8JBl0yw==
   dependencies:
+    "@babel/runtime" "^7.7.4"
     prop-types "^15.7.2"
 
-"@oakwood/oui@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@oakwood/oui/-/oui-0.5.2.tgz#361119e61723031964981346546a34190d690161"
-  integrity sha512-mAahmYrDEDc/5+R5QT/AWw3TcipRZUWEC7S548KR/ekJDXyybKHRUWVXI6UBxXqQj5n83iw8LQGe/gY78LPIbA==
+"@oakwood/oui@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@oakwood/oui/-/oui-0.6.0.tgz#c732cc90925d013566e751241a249c9a3c604c6b"
+  integrity sha512-0bhhhnjmkUCSmjOzAlaqvI4OB2l4Hu7LhYMK8M8LOCp0YQ5FlBRoF2F5FGuc+jv/uhWFqXBbb9o0oA3ERAiOMg==
   dependencies:
-    "@babel/runtime" "^7.4.4"
-    "@oakwood/oui-utils" "^0.5.2"
+    "@babel/runtime" "^7.7.4"
+    "@oakwood/oui-utils" "^0.6.0"
+    clsx "^1.0.2"
     imagesloaded "^4.1.4"
     prop-types "^15.7.2"
-    react-intersection-observer "^8.25.1"
+    react-intersection-observer "^8.25.2"
 
 "@reach/router@^1.2.1":
   version "1.2.1"
@@ -8214,10 +8223,10 @@ react-inspector@^3.0.2:
     is-dom "^1.0.9"
     prop-types "^15.6.1"
 
-react-intersection-observer@^8.25.1:
-  version "8.25.1"
-  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.25.1.tgz#26049fbbd9fbed10121552d220c5b433b041fd60"
-  integrity sha512-JKCQ1R4Ch/dnuwkOwKpfgz5oDy4jLdJBC2Vp2dbqm/PIhKV8aKfgvrCT3fL9CvKzo2pXWh2R/oA1yspIYN9kcg==
+react-intersection-observer@^8.25.2:
+  version "8.25.2"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.25.2.tgz#be165f4827dc8f1927ab68ecb837efe913d94909"
+  integrity sha512-KymKTOQK0TxQFW/Km80oS8VVOZAX8nt74fsYEGw6pqBLSJlqBXEhdFpyPcBa08GiGnup8lrFRkSY4JioP+pqww==
   dependencies:
     tiny-invariant "^1.0.6"
 
