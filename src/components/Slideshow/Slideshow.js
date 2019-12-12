@@ -25,7 +25,7 @@ export const defaultSwiperProps = {
 const Slideshow = React.forwardRef(function Slideshow(props, ref) {
   const {
     activeIndex = 0,
-    children,
+    children: childrenProp,
     className,
     onSlideChange,
     onSlideChangeTransitionEnd,
@@ -133,7 +133,7 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
   let pagination = null
   let scrollbar = null
 
-  const slides = React.Children.map(children, child => {
+  const children = React.Children.map(childrenProp, child => {
     if (!React.isValidElement(child)) {
       return null
     }
@@ -160,7 +160,7 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
 
   return (
     <div className={classnames('swiper-container', className)} ref={handleRef} style={style}>
-      <div className="swiper-wrapper">{slides}</div>
+      {children}
 
       {navigationPrev && React.cloneElement(navigationPrev, { ref: navigationPrevRef })}
       {navigationNext && React.cloneElement(navigationNext, { ref: navigationNextRef })}
