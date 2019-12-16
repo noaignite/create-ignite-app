@@ -3,33 +3,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { debounce, useForkRef } from '@oakwood/oui-utils'
-import { constants } from 'components/styles/extras'
 import AppBar from 'components/AppBar'
+
+const useEnhancedEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect
 
 const AppAppBar = React.forwardRef(function AppAppBar(props, ref) {
   const { children, id = 'site-header', ...other } = props
 
   const rootRef = React.useRef(null)
-  const [height, setHeight] = React.useState(constants.TOOLBAR_MIN_HEIGHT)
+  const handleRef = useForkRef(rootRef, ref)
 
-  const updateHeight = React.useCallback(() => {
+  const [height, setHeight] = React.useState(0)
+
+  const syncHeight = React.useCallback(() => {
     const clientHeight = rootRef.current ? rootRef.current.clientHeight : 0
     document.documentElement.style.setProperty(`--${id}-height`, `${clientHeight}px`)
     setHeight(clientHeight)
   }, [id])
 
   React.useEffect(() => {
-    const handleResize = debounce(updateHeight, 200)
-    updateHeight()
+    const handleResize = debounce(() => {
+      syncHeight()
+    })
 
     window.addEventListener('resize', handleResize)
-
     return () => {
+      handleResize.clear()
       window.removeEventListener('resize', handleResize)
     }
-  }, [children, updateHeight])
+  }, [children, syncHeight])
 
-  const handleRef = useForkRef(rootRef, ref)
+  useEnhancedEffect(() => {
+    syncHeight()
+  })
 
   return (
     <AppBar ref={handleRef} id={id} {...other}>
