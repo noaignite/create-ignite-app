@@ -22,10 +22,18 @@ export const styles = {
     maxWidth: '100%',
     height: `calc(100% - ${headerHeight})`,
   },
+  paperAnchorRight: {
+    // Prevent `Drawer` position jumps due to scrollbar being shown/hidden.
+    boxSizing: 'content-box',
+    '& > *': {
+      boxSizing: 'border-box',
+    },
+  },
 }
 
 const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
   const {
+    anchor,
     BackdropProps: { className: BackdropClassName, ...BackdropProps } = {},
     children,
     classes,
@@ -37,13 +45,21 @@ const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
     <Drawer
       classes={{
         root: classes.root,
-        paper: classnames(classes.paper, PaperClassName),
+        paper: classnames(
+          classes.paper,
+          {
+            [classes.paperAnchorRight]: anchor === 'right',
+            'mui-fixed': anchor === 'right',
+          },
+          PaperClassName,
+        ),
       }}
       BackdropProps={{
         className: classnames(classes.backdrop, BackdropClassName),
         ...BackdropProps,
       }}
       PaperProps={PaperProps}
+      anchor={anchor}
       ref={ref}
       {...other}
     >
@@ -53,6 +69,7 @@ const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
 })
 
 AppDrawer.propTypes = {
+  anchor: PropTypes.oneOf(['left', 'top', 'right', 'bottom']),
   BackdropProps: PropTypes.object,
   children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
