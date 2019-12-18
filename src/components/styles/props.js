@@ -15,6 +15,7 @@ const props = {
     disableTouchRipple: true,
   },
   MuiButton: {
+    disableElevation: true,
     variant: 'outlined',
   },
   MuiCheckbox: {
