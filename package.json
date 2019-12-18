@@ -23,7 +23,7 @@
     "storybook": "start-storybook -s ./public -p 3001 --ci"
   },
   "dependencies": {
-    "@material-ui/core": "^4.7.2",
+    "@material-ui/core": "^4.8.0",
     "@oakwood/oui": "^0.6.0",
     "@oakwood/oui-utils": "^0.6.0",
     "clsx": "^1.0.2",
