@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { compose, nest, withProps } from 'recompose'
+import { compose, nest, toRenderProps, withProps } from 'recompose'
 import useContext from './useContext'
 
 export const AppContext = React.createContext({})
@@ -21,5 +21,7 @@ export const withAppProvider = initialState => Component =>
 export const useAppContext = () => React.useContext(AppContext)
 
 export const withAppContext = () => compose(withProps(useAppContext))
+
+export const WithAppContext = toRenderProps(withProps(useAppContext))
 
 export default AppContext
