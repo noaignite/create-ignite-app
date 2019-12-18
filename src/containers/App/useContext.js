@@ -1,5 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
+import { debounce } from '@oakwood/oui-utils'
 import { CLOSE_MENUS_ON_RESIZE } from 'src/site.config'
 
 export const defaultState = {
@@ -28,12 +29,6 @@ export default (initialState = defaultState) => {
     setIsMounted(true)
   }, [])
 
-  const handleResize = React.useCallback(() => {
-    if (CLOSE_MENUS_ON_RESIZE) {
-      closeAllMenus()
-    }
-  }, [])
-
   const handleRouteChangeStart = React.useCallback(() => {
     setIsLoading(true)
     closeAllMenus()
@@ -46,6 +41,12 @@ export default (initialState = defaultState) => {
   // Mount hook
 
   React.useEffect(() => {
+    const handleResize = debounce(() => {
+      if (CLOSE_MENUS_ON_RESIZE) {
+        closeAllMenus()
+      }
+    })
+
     handleMount()
 
     window.addEventListener('resize', handleResize)
@@ -53,11 +54,12 @@ export default (initialState = defaultState) => {
     Router.events.on('routeChangeComplete', handleRouteChangeComplete)
 
     return () => {
+      handleResize.clear()
       window.removeEventListener('resize', handleResize)
       Router.events.off('routeChangeStart', handleRouteChangeStart)
       Router.events.off('routeChangeComplete', handleRouteChangeComplete)
     }
-  }, [handleMount, handleResize, handleRouteChangeStart, handleRouteChangeComplete])
+  }, [handleMount, handleRouteChangeStart, handleRouteChangeComplete])
 
   // Public handlers
 
