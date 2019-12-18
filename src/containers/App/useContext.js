@@ -10,7 +10,9 @@ export const defaultState = {
   isNavMenuOpen: false,
 }
 
-export default (initialState = defaultState) => {
+export default props => {
+  const { initialState = defaultState } = props
+
   const [isCartMenuOpen, setIsCartMenuOpen] = React.useState(initialState.isCartMenuOpen)
   const [isLoading, setIsLoading] = React.useState(initialState.isLoading)
   const [isMounted, setIsMounted] = React.useState(initialState.isMounted)

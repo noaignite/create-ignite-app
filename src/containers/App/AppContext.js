@@ -5,14 +5,13 @@ import useContext from './useContext'
 
 export const AppContext = React.createContext({})
 
-export const AppProvider = ({ initialState, ...other }) => {
-  const context = useContext(initialState, other)
-  return <AppContext.Provider value={context}>{other.children}</AppContext.Provider>
+export const AppProvider = props => {
+  const context = useContext(props)
+  return <AppContext.Provider value={context}>{props.children}</AppContext.Provider>
 }
 
 AppProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  initialState: PropTypes.object,
 }
 
 export const withAppProvider = initialState => Component =>
