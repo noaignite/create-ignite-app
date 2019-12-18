@@ -1,25 +1,16 @@
-// @inheritedComponent Drawer
+// @inheritedComponent AppDrawer
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
-import Drawer from '@material-ui/core/Drawer'
-import { SITE_HEADER_ID } from 'src/site.config'
 import { linkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import Link from 'components/Link'
 import { useAppContext } from '../AppContext'
+import AppDrawer from './AppDrawer'
 
 export const styles = theme => ({
-  root: {
-    // Override inline `zIndex` set by Mui.
-    zIndex: `${theme.zIndex.appBar - 1} !important`,
-  },
   paper: {
-    zIndex: theme.zIndex.appBar - 1,
-    width: 414, // iPhone 6/7/8 Plus
-    maxWidth: '100%',
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.getContrastText(theme.palette.text.primary),
   },
@@ -32,16 +23,13 @@ export const styles = theme => ({
 })
 
 const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
-  const { classes, className, menu = [], ...other } = props
+  const { classes, menu = [], ...other } = props
 
   const { isNavMenuOpen, onNavMenuClose, onNavMenuExited } = useAppContext()
 
   return (
-    <Drawer
-      classes={{
-        root: classnames(classes.root, className),
-        paper: classnames(classes.paper, SITE_HEADER_ID),
-      }}
+    <AppDrawer
+      classes={{ paper: classes.paper }}
       SlideProps={{ onExited: onNavMenuExited }}
       open={isNavMenuOpen}
       onClose={onNavMenuClose}
@@ -66,13 +54,12 @@ const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
           ))}
         </ul>
       </nav>
-    </Drawer>
+    </AppDrawer>
   )
 })
 
 AppNavMenu.propTypes = {
   classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
   menu: PropTypes.arrayOf(linkType),
 }
 
