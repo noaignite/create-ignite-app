@@ -1,3 +1,2 @@
-/* eslint-disable import/prefer-default-export */
-
+export { default as MuiButtonBase } from './MuiButtonBase'
 export { default as MuiCssBaseline } from './MuiCssBaseline'
