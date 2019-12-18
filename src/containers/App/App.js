@@ -82,7 +82,7 @@ const App = props => {
       size="small"
       aria-haspopup="true"
       aria-expanded={isCartMenuOpen}
-      aria-label="Toggle navigation"
+      aria-label="Toggle cart menu"
     >
       {isCartMenuOpen ? <CrossIcon /> : <CartIcon />}
     </IconButton>
@@ -96,7 +96,7 @@ const App = props => {
       edge="end"
       aria-haspopup="true"
       aria-expanded={isNavMenuOpen}
-      aria-label="Toggle navigation"
+      aria-label="Toggle main menu"
     >
       {isNavMenuOpen ? <CrossIcon /> : <BurgerIcon />}
     </IconButton>
