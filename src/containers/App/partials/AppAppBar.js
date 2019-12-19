@@ -17,9 +17,8 @@ const AppAppBar = React.forwardRef(function AppAppBar(props, ref) {
 
   const syncHeight = React.useCallback(() => {
     const clientHeight = rootRef.current ? rootRef.current.clientHeight : 0
-    document.documentElement.style.setProperty(`--${id}-height`, `${clientHeight}px`)
     setHeight(clientHeight)
-  }, [id])
+  }, [])
 
   React.useEffect(() => {
     const handleResize = debounce(() => {
@@ -41,7 +40,12 @@ const AppAppBar = React.forwardRef(function AppAppBar(props, ref) {
     <AppBar ref={handleRef} id={id} {...other}>
       <style
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: `.${id} { padding-top: ${height}px; }` }}
+        dangerouslySetInnerHTML={{
+          __html: `
+          :root { --${id}-height: ${height}px }
+          .${id} { padding-top: ${height}px }
+        `,
+        }}
       />
       {children}
     </AppBar>
