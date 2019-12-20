@@ -8,6 +8,13 @@ import theme from 'src/theme.default'
 import AppBase from 'containers/App'
 
 export default class MyApp extends App {
+  componentDidMount() {
+    const jssStyles = document.querySelector('#jss-server-side')
+    if (jssStyles) {
+      jssStyles.parentNode.removeChild(jssStyles)
+    }
+  }
+
   render() {
     const { Component, pageProps } = this.props
 
