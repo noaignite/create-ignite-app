@@ -16,27 +16,14 @@ import { isUiElement } from '../utils'
 
 Swiper.use([A11y, Keyboard, Navigation, Pagination])
 
-export const defaultSwiperProps = {
-  centerInsufficientSlides: true,
-  slidesPerView: 'auto',
-  watchOverflow: true,
-}
-
 const Slideshow = React.forwardRef(function Slideshow(props, ref) {
-  const {
-    activeIndex = 0,
-    children: childrenProp,
-    className,
-    onSlideChange,
-    onSlideChangeTransitionEnd,
-    style,
-    ...other
-  } = props
+  const { activeIndex = 0, children: childrenProp, className, style, ...other } = props
 
   const {
     navigation: navigationProp = {},
     pagination: paginationProp = {},
     scrollbar: scrollbarProp = {},
+    on = {},
     ...more
   } = other
 
@@ -50,7 +37,7 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
   React.useEffect(() => {
     const swiperProps = {
       initialSlide: activeIndex,
-      ...defaultSwiperProps,
+      init: false,
       ...more,
     }
 
@@ -102,13 +89,11 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
 
     const swiper = new Swiper(rootRef.current, swiperProps)
 
-    // Patch Swiper events with associated arguments as it doesn't provide them by default.
-    if (onSlideChange) {
-      swiper.on('slideChange', () => onSlideChange(swiper.activeIndex))
-    }
-    if (onSlideChangeTransitionEnd) {
-      swiper.on('slideChangeTransitionEnd', () => onSlideChangeTransitionEnd(swiper.activeIndex))
-    }
+    // Patch Swiper events with no arguments with Swiper instance.
+    Object.entries(on).forEach(([eventName, callback]) => {
+      swiper.on(eventName, (...args) => (args.length ? callback(...args) : callback(swiper)))
+    })
+    swiper.init()
 
     // Store Swiper instance to allow for a controlled component via the `activeIndex` property.
     swiperRef.current = swiper
@@ -120,7 +105,7 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
 
     // See Option 3. https://github.com/facebook/react/issues/14476#issuecomment-471199055
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onSlideChange, onSlideChangeTransitionEnd, JSON.stringify(other)])
+  }, [JSON.stringify(other)])
 
   React.useEffect(() => {
     if (swiperRef.current) {
@@ -174,8 +159,6 @@ Slideshow.propTypes = {
   activeIndex: PropTypes.number,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  onSlideChange: PropTypes.func,
-  onSlideChangeTransitionEnd: PropTypes.func,
   style: PropTypes.object,
 }
 
