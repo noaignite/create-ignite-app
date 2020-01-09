@@ -10,9 +10,10 @@ const actionWithPromise = () => {
 }
 
 export const mockedRouter = {
+  pageLoader: { prefetched: {} },
+  prefetch: () => {},
   push: actionWithPromise,
   replace: actionWithPromise,
-  prefetch: () => {},
 }
 
 Router.router = mockedRouter
