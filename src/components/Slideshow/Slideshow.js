@@ -17,7 +17,7 @@ import { isUiElement } from '../utils'
 Swiper.use([A11y, Keyboard, Navigation, Pagination])
 
 const Slideshow = React.forwardRef(function Slideshow(props, ref) {
-  const { activeIndex = 0, children: childrenProp, className, style, ...other } = props
+  const { activeIndex = 0, children: childrenProp, className, init = true, style, ...other } = props
 
   const {
     navigation: navigationProp = {},
@@ -88,19 +88,18 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
     }
 
     const swiper = new Swiper(rootRef.current, swiperProps)
+    swiperRef.current = swiper
 
     // Patch Swiper events with no arguments with Swiper instance.
     Object.entries(on).forEach(([eventName, callback]) => {
       swiper.on(eventName, (...args) => (args.length ? callback(...args) : callback(swiper)))
     })
-    swiper.init()
-
-    // Store Swiper instance to allow for a controlled component via the `activeIndex` property.
-    swiperRef.current = swiper
 
     return () => {
       swiperRef.current = null
-      swiper.destroy()
+      if (swiper.initialized) {
+        swiper.destroy()
+      }
     }
 
     // See Option 3. https://github.com/facebook/react/issues/14476#issuecomment-471199055
@@ -108,8 +107,16 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
   }, [JSON.stringify(other)])
 
   React.useEffect(() => {
-    if (swiperRef.current) {
-      swiperRef.current.slideTo(activeIndex)
+    const swiper = swiperRef.current
+    if (swiper && !swiper.initialized && init) {
+      swiper.init()
+    }
+  }, [init])
+
+  React.useEffect(() => {
+    const swiper = swiperRef.current
+    if (swiper && swiper.initialized) {
+      swiper.slideTo(activeIndex)
     }
   }, [activeIndex])
 
@@ -159,6 +166,7 @@ Slideshow.propTypes = {
   activeIndex: PropTypes.number,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  init: PropTypes.bool,
   style: PropTypes.object,
 }
 
