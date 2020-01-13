@@ -12,6 +12,9 @@
   "bugs": {
     "url": "https://github.com/oakwood/create-oakwood-app/issues"
   },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "scripts": {
     "build:storybook": "build-storybook -c .storybook -s ./public -o .styleguide",
     "build": "next build",
