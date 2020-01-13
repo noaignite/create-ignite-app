@@ -27,7 +27,7 @@
     "@oakwood/oui": "^0.6.0",
     "@oakwood/oui-utils": "^0.6.0",
     "clsx": "^1.0.2",
-    "next": "^9.1.6",
+    "next": "^9.1.7",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
