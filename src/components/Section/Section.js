@@ -16,12 +16,12 @@ export const styles = theme => ({
     },
   },
   spacing: {
-    '& > div': {
+    '& > *': {
       marginTop: theme.spacing(4),
       [theme.breakpoints.up('md')]: {
         marginTop: theme.spacing(6),
       },
-      '&:first-of-type': {
+      '&:first-child': {
         marginTop: 0,
       },
     },
