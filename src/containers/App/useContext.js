@@ -80,8 +80,8 @@ export default props => {
   }
 
   const onCartMenuExited = () => {
-    // This callback is run only once the component has unmounted.
-    // A good place to reset it's component state.
+    // This callback is run only once the menu has unmounted.
+    // A good place to reset desired state.
   }
 
   const onNavMenuClose = () => {
@@ -89,8 +89,8 @@ export default props => {
   }
 
   const onNavMenuExited = () => {
-    // This callback is run only once the component has unmounted.
-    // A good place to reset it's component state.
+    // This callback is run only once the menu has unmounted.
+    // A good place to reset desired state.
   }
 
   return {

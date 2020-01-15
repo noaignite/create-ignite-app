@@ -16,6 +16,6 @@ export const Default = compose(
   withAppContext(),
 )(App)
 
-stories.add('Default', () => <Default />)
+stories.add('Default', Default)
 
 export default App

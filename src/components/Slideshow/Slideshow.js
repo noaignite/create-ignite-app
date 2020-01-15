@@ -16,19 +16,13 @@ import { isUiElement } from '../utils'
 
 Swiper.use([A11y, Keyboard, Navigation, Pagination])
 
-export const defaultSwiperProps = {
-  centerInsufficientSlides: true,
-  slidesPerView: 'auto',
-  watchOverflow: true,
-}
-
 const Slideshow = React.forwardRef(function Slideshow(props, ref) {
   const {
     activeIndex = 0,
     children: childrenProp,
     className,
-    onSlideChange,
-    onSlideChangeTransitionEnd,
+    component: Component = 'div',
+    init = true,
     style,
     ...other
   } = props
@@ -37,6 +31,7 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
     navigation: navigationProp = {},
     pagination: paginationProp = {},
     scrollbar: scrollbarProp = {},
+    on = {},
     ...more
   } = other
 
@@ -50,7 +45,7 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
   React.useEffect(() => {
     const swiperProps = {
       initialSlide: activeIndex,
-      ...defaultSwiperProps,
+      init: false,
       ...more,
     }
 
@@ -101,30 +96,35 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
     }
 
     const swiper = new Swiper(rootRef.current, swiperProps)
-
-    // Patch Swiper events with associated arguments as it doesn't provide them by default.
-    if (onSlideChange) {
-      swiper.on('slideChange', () => onSlideChange(swiper.activeIndex))
-    }
-    if (onSlideChangeTransitionEnd) {
-      swiper.on('slideChangeTransitionEnd', () => onSlideChangeTransitionEnd(swiper.activeIndex))
-    }
-
-    // Store Swiper instance to allow for a controlled component via the `activeIndex` property.
     swiperRef.current = swiper
+
+    // Patch Swiper events with no arguments with Swiper instance.
+    Object.entries(on).forEach(([eventName, callback]) => {
+      swiper.on(eventName, (...args) => (args.length ? callback(...args) : callback(swiper)))
+    })
 
     return () => {
       swiperRef.current = null
-      swiper.destroy()
+      if (swiper.initialized) {
+        swiper.destroy()
+      }
     }
 
     // See Option 3. https://github.com/facebook/react/issues/14476#issuecomment-471199055
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onSlideChange, onSlideChangeTransitionEnd, JSON.stringify(other)])
+  }, [JSON.stringify(other)])
 
   React.useEffect(() => {
-    if (swiperRef.current) {
-      swiperRef.current.slideTo(activeIndex)
+    const swiper = swiperRef.current
+    if (swiper && !swiper.initialized && init) {
+      swiper.init()
+    }
+  }, [init])
+
+  React.useEffect(() => {
+    const swiper = swiperRef.current
+    if (swiper && swiper.initialized) {
+      swiper.slideTo(activeIndex)
     }
   }, [activeIndex])
 
@@ -159,14 +159,14 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
   const handleRef = useForkRef(rootRef, ref)
 
   return (
-    <div className={classnames('swiper-container', className)} ref={handleRef} style={style}>
+    <Component className={classnames('swiper-container', className)} ref={handleRef} style={style}>
       {children}
 
       {navigationPrev && React.cloneElement(navigationPrev, { ref: navigationPrevRef })}
       {navigationNext && React.cloneElement(navigationNext, { ref: navigationNextRef })}
       {pagination && React.cloneElement(pagination, { ref: paginationRef })}
       {scrollbar && React.cloneElement(scrollbar, { ref: scrollbarRef })}
-    </div>
+    </Component>
   )
 })
 
@@ -174,8 +174,8 @@ Slideshow.propTypes = {
   activeIndex: PropTypes.number,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  onSlideChange: PropTypes.func,
-  onSlideChangeTransitionEnd: PropTypes.func,
+  component: PropTypes.elementType,
+  init: PropTypes.bool,
   style: PropTypes.object,
 }
 
