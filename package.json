@@ -16,6 +16,7 @@
     "node": ">=12.0.0"
   },
   "scripts": {
+    "analyze": "ANALYZE=true next build",
     "build:storybook": "build-storybook -c .storybook -s ./public -o .styleguide",
     "build": "next build",
     "dev": "next",
@@ -37,6 +38,7 @@
     "swiper": "^5.3.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^9.1.6",
     "@storybook/addon-a11y": "^5.3.1",
     "@storybook/addon-actions": "^5.3.1",
     "@storybook/addon-knobs": "^5.3.1",
