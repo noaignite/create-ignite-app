@@ -22,6 +22,7 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
     children: childrenProp,
     className,
     component: Component = 'div',
+    disableTouchMove,
     init = true,
     style,
     ...other
@@ -128,6 +129,15 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
     }
   }, [activeIndex])
 
+  React.useEffect(() => {
+    const swiper = swiperRef.current
+    if (swiper && swiper.allowTouchMove && disableTouchMove) {
+      swiper.allowTouchMove = false
+    } else if (swiper && !swiper.allowTouchMove && !disableTouchMove) {
+      swiper.allowTouchMove = true
+    }
+  }, [disableTouchMove])
+
   let navigationPrev = null
   let navigationNext = null
   let pagination = null
@@ -175,6 +185,7 @@ Slideshow.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
   component: PropTypes.elementType,
+  disableTouchMove: PropTypes.bool,
   init: PropTypes.bool,
   style: PropTypes.object,
 }
