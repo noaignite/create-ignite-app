@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
-import { linkType } from 'utils'
+import { menuLinkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import Container from 'components/Container'
 import Link from 'components/Link'
@@ -64,7 +64,7 @@ const AppFooter = React.forwardRef(function AppFooter(props, ref) {
 AppFooter.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  menu: PropTypes.arrayOf(linkType),
+  menu: PropTypes.arrayOf(menuLinkType),
 }
 
 AppFooter.uiName = 'AppFooter'

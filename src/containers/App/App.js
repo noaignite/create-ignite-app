@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from 'src/site.config'
-import { linkType } from 'utils'
+import { menuLinkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import BrandIcon from 'components/icons/Brand'
 import BurgerIcon from 'components/icons/Burger'
@@ -153,8 +153,8 @@ App.propTypes = {
   isLoading: PropTypes.bool,
   isMounted: PropTypes.bool,
   isNavMenuOpen: PropTypes.bool,
-  menuFooter: PropTypes.arrayOf(linkType).isRequired,
-  menuPrimary: PropTypes.arrayOf(linkType).isRequired,
+  menuFooter: PropTypes.arrayOf(menuLinkType).isRequired,
+  menuPrimary: PropTypes.arrayOf(menuLinkType).isRequired,
   onAppBarBurgerClick: PropTypes.func,
   onAppBarCartClick: PropTypes.func,
 }
