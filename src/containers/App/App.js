@@ -130,12 +130,7 @@ const App = props => {
 
       <AppCartMenu />
 
-      <main
-        className={classnames(classes.main, SITE_HEADER_ID)}
-        role="main"
-        id={SITE_MAIN_ID}
-        tabIndex="-1"
-      >
+      <main className={classes.main} id={SITE_MAIN_ID} role="main" tabIndex="-1">
         {children}
       </main>
 
