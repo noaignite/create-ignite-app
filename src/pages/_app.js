@@ -1,4 +1,5 @@
-// based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_app.js
+// Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_app.js
+// Updated to functional component from docs https://nextjs.org/docs/advanced-features/custom-app
 
 import React from 'react'
 import { ThemeProvider } from '@material-ui/styles'
