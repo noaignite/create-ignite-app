@@ -1,15 +1,19 @@
 export const menuPrimary = [
   {
     label: 'Work',
-    url: '/work',
+    href: '/work',
   },
   {
     label: 'News',
-    url: '/news',
+    href: '/news',
   },
   {
     label: 'About',
-    url: '/about',
+    href: '/about',
+  },
+  {
+    label: 'Contact',
+    href: '/about/contact',
   },
 ]
 
