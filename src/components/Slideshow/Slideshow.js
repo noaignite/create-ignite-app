@@ -17,7 +17,16 @@ import { isUiElement } from '../utils'
 Swiper.use([A11y, Keyboard, Navigation, Pagination])
 
 const Slideshow = React.forwardRef(function Slideshow(props, ref) {
-  const { activeIndex = 0, children: childrenProp, className, init = true, style, ...other } = props
+  const {
+    activeIndex = 0,
+    children: childrenProp,
+    className,
+    component: Component = 'div',
+    disableTouchMove,
+    init = true,
+    style,
+    ...other
+  } = props
 
   const {
     navigation: navigationProp = {},
@@ -120,6 +129,15 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
     }
   }, [activeIndex])
 
+  React.useEffect(() => {
+    const swiper = swiperRef.current
+    if (swiper && swiper.allowTouchMove && disableTouchMove) {
+      swiper.allowTouchMove = false
+    } else if (swiper && !swiper.allowTouchMove && !disableTouchMove) {
+      swiper.allowTouchMove = true
+    }
+  }, [disableTouchMove])
+
   let navigationPrev = null
   let navigationNext = null
   let pagination = null
@@ -151,14 +169,14 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
   const handleRef = useForkRef(rootRef, ref)
 
   return (
-    <div className={classnames('swiper-container', className)} ref={handleRef} style={style}>
+    <Component className={classnames('swiper-container', className)} ref={handleRef} style={style}>
       {children}
 
       {navigationPrev && React.cloneElement(navigationPrev, { ref: navigationPrevRef })}
       {navigationNext && React.cloneElement(navigationNext, { ref: navigationNextRef })}
       {pagination && React.cloneElement(pagination, { ref: paginationRef })}
       {scrollbar && React.cloneElement(scrollbar, { ref: scrollbarRef })}
-    </div>
+    </Component>
   )
 })
 
@@ -166,6 +184,8 @@ Slideshow.propTypes = {
   activeIndex: PropTypes.number,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  component: PropTypes.elementType,
+  disableTouchMove: PropTypes.bool,
   init: PropTypes.bool,
   style: PropTypes.object,
 }

@@ -14,8 +14,8 @@ AppProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export const withAppProvider = initialState => Component =>
-  nest(compose(withProps({ initialState }))(AppProvider), Component)
+export const withAppProvider = props => Component =>
+  nest(compose(withProps(props))(AppProvider), Component)
 
 export const useAppContext = () => React.useContext(AppContext)
 

@@ -8,7 +8,7 @@ import AppBar from 'components/AppBar'
 const useEnhancedEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect
 
 const AppAppBar = React.forwardRef(function AppAppBar(props, ref) {
-  const { children, id = 'site-header', ...other } = props
+  const { children, ...other } = props
 
   const rootRef = React.useRef(null)
   const handleRef = useForkRef(rootRef, ref)
@@ -37,13 +37,13 @@ const AppAppBar = React.forwardRef(function AppAppBar(props, ref) {
   })
 
   return (
-    <AppBar ref={handleRef} id={id} {...other}>
+    <AppBar ref={handleRef} {...other}>
       <style
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: `
-          :root { --${id}-height: ${height}px }
-          .${id} { padding-top: ${height}px }
+          :root { --coa-header-height: ${height}px }
+          .coa-fixed { padding-top: ${height}px }
         `,
         }}
       />
@@ -54,7 +54,6 @@ const AppAppBar = React.forwardRef(function AppAppBar(props, ref) {
 
 AppAppBar.propTypes = {
   children: PropTypes.node.isRequired,
-  id: PropTypes.string,
 }
 
 AppAppBar.uiName = 'AppAppBar'

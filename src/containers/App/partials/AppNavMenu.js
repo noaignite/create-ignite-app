@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '@material-ui/core/styles/withStyles'
-import { linkType } from 'utils'
+import { menuLinkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import Link from 'components/Link'
 import { useAppContext } from '../AppContext'
@@ -60,7 +60,7 @@ const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
 
 AppNavMenu.propTypes = {
   classes: PropTypes.object.isRequired,
-  menu: PropTypes.arrayOf(linkType),
+  menu: PropTypes.arrayOf(menuLinkType),
 }
 
 AppNavMenu.uiName = 'AppNavMenu'
