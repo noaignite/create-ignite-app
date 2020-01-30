@@ -34,6 +34,16 @@ export default function createMixins(breakpoints, spacing, mixins) {
       WebkitLineClamp: lines,
       overflow: 'hidden',
     }),
+    fluidType: (minVw, maxVw, minFontSize, maxFontSize) => ({
+      fontSize: minFontSize,
+      [`@media (min-width: ${minVw}px)`]: {
+        fontSize: `calc(${minFontSize}px + ${maxFontSize -
+          minFontSize} * ((100vw - ${minVw}px) / ${maxVw - minVw}))`,
+      },
+      [`@media (min-width: ${maxVw}px)`]: {
+        fontSize: maxFontSize,
+      },
+    }),
     scrollable: {
       overflowX: 'hidden',
       overflowY: 'auto',
