@@ -18,6 +18,7 @@ import AppCartMenu from './partials/AppCartMenu'
 import AppFooter from './partials/AppFooter'
 import AppNavMenu from './partials/AppNavMenu'
 import AppSkipLink from './partials/AppSkipLink'
+import { useAppContext } from './AppContext'
 
 export const styles = theme => ({
   root: {
@@ -50,18 +51,17 @@ export const styles = theme => ({
 })
 
 const App = props => {
+  const { children, classes, menuFooter, menuPrimary } = props
+
   const {
-    children,
-    classes,
+    isAppBarFixed,
     isCartMenuOpen,
     isLoading,
     isMounted,
     isNavMenuOpen,
-    menuFooter,
-    menuPrimary,
     onAppBarBurgerClick,
     onAppBarCartClick,
-  } = props
+  } = useAppContext()
 
   const brandIconButton = (
     <IconButton
@@ -111,7 +111,11 @@ const App = props => {
     <div className={className}>
       <AppSkipLink href={`#${SITE_MAIN_ID}`}>Skip to content</AppSkipLink>
 
-      <AppAppBar className={classes.appBar} id={SITE_HEADER_ID}>
+      <AppAppBar
+        className={classes.appBar}
+        position={isAppBarFixed ? 'fixed' : 'sticky'}
+        id={SITE_HEADER_ID}
+      >
         <Toolbar
           className={classes.appBarToolbar}
           component={Container}
@@ -144,14 +148,8 @@ const App = props => {
 App.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
-  isCartMenuOpen: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  isMounted: PropTypes.bool,
-  isNavMenuOpen: PropTypes.bool,
   menuFooter: PropTypes.arrayOf(menuLinkType).isRequired,
   menuPrimary: PropTypes.arrayOf(menuLinkType).isRequired,
-  onAppBarBurgerClick: PropTypes.func,
-  onAppBarCartClick: PropTypes.func,
 }
 
 export default withStyles(styles)(App)

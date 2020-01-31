@@ -4,6 +4,7 @@ import { debounce } from '@oakwood/oui-utils'
 import { CLOSE_MENUS_ON_RESIZE } from 'src/site.config'
 
 export const defaultState = {
+  isAppBarFixed: false,
   isCartMenuOpen: false,
   isLoading: false,
   isMounted: false,
@@ -13,6 +14,7 @@ export const defaultState = {
 export default props => {
   const { initialState = defaultState } = props
 
+  const [isAppBarFixed, setIsAppBarFixed] = React.useState(initialState.isAppBarFixed)
   const [isCartMenuOpen, setIsCartMenuOpen] = React.useState(initialState.isCartMenuOpen)
   const [isLoading, setIsLoading] = React.useState(initialState.isLoading)
   const [isMounted, setIsMounted] = React.useState(initialState.isMounted)
@@ -94,10 +96,13 @@ export default props => {
   }
 
   return {
+    // Expose setters for custom hooks
+    setIsAppBarFixed,
     // Computed properties
     isBackdropOpen: isLoading,
     isMenusOpen: isCartMenuOpen || isNavMenuOpen,
     // Normal properties
+    isAppBarFixed,
     isCartMenuOpen,
     isLoading,
     isMounted,
