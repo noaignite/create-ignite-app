@@ -8,10 +8,10 @@ import App from './App'
 const stories = storiesOf('Containers/App', module)
 
 export const Default = compose(
-  withApiContext(),
   defaultProps({
     children: <div>[this.props.children]</div>,
   }),
+  withApiContext(),
   withAppProvider(),
 )(App)
 
