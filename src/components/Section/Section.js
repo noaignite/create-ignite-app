@@ -16,13 +16,10 @@ export const styles = theme => ({
     },
   },
   spacing: {
-    '& > *': {
+    '& > *:not([aria-hidden]) + *': {
       marginTop: theme.spacing(4),
       [theme.breakpoints.up('md')]: {
         marginTop: theme.spacing(6),
-      },
-      '&:first-child': {
-        marginTop: 0,
       },
     },
   },
