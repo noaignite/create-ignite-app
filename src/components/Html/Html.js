@@ -19,9 +19,12 @@ export const styles = theme => ({
         },
       },
       blockquote: {
-        margin: '40px 0',
+        margin: '40px auto',
         textAlign: 'center',
-        '& p': theme.typography.h3,
+        '& p': {
+          ...theme.typography.h3,
+          maxWidth: 'initial',
+        },
         '& cite': theme.typography.caption,
       },
       figure: {
@@ -32,10 +35,7 @@ export const styles = theme => ({
         margin: '10px 0 0',
       },
       'ol, ul': {
-        paddingLeft: 18,
-        [theme.breakpoints.up('md')]: {
-          paddingLeft: 0,
-        },
+        paddingLeft: '1.25em',
       },
       img: {
         display: 'block',
@@ -46,6 +46,7 @@ export const styles = theme => ({
         backgroundColor: theme.palette.divider,
       },
       a: {
+        color: 'inherit',
         textDecoration: 'underline',
       },
     },
