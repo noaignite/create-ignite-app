@@ -4,7 +4,7 @@ import Container from 'components/Container'
 import Html from 'components/Html'
 import Section from 'components/Section'
 
-const Wysiwyg = React.forwardRef(function Wysiwyg(props, ref) {
+const Content = React.forwardRef(function Content(props, ref) {
   const { children, content, ...other } = props
 
   const componentProps = {}
@@ -23,11 +23,11 @@ const Wysiwyg = React.forwardRef(function Wysiwyg(props, ref) {
   )
 })
 
-Wysiwyg.propTypes = {
+Content.propTypes = {
   children: PropTypes.node,
   content: PropTypes.string,
 }
 
-Wysiwyg.uiName = 'Block/Wysiwyg'
+Content.uiName = 'Block/Content'
 
-export default Wysiwyg
+export default Content

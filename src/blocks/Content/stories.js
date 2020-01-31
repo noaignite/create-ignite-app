@@ -1,6 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import Wysiwyg from './Wysiwyg'
+import Wysiwyg from './Content'
 
 const stories = storiesOf('Blocks/Wysiwyg', module)
 

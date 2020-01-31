@@ -1,7 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Default as AppStory } from 'containers/App/stories'
-import { Default as WysiwygStory } from 'blocks/Wysiwyg/stories'
+import { Default as ContentStory } from 'blocks/Content/stories'
 
 const stories = storiesOf('Pages', module)
 
@@ -15,6 +15,6 @@ function addPageStory(name, Page) {
 
 addPageStory('Home', () => (
   <>
-    <WysiwygStory />
+    <ContentStory />
   </>
 ))
