@@ -1287,10 +1287,10 @@
     "@babel/runtime" "^7.7.4"
     prop-types "^15.7.2"
 
-"@oakwood/oui@^0.6.2":
-  version "0.6.3"
-  resolved "https://registry.yarnpkg.com/@oakwood/oui/-/oui-0.6.3.tgz#ffad41271168f6dc0662ede6248d9b53c4149ea6"
-  integrity sha512-8xSSPwh4gtxv181fYa0D923pbBhobmf/Qs1HPgBI1fBjzfxMVDX83t0IpNhC4ikPn0AboOM1wUqdHeVuvDES1A==
+"@oakwood/oui@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@oakwood/oui/-/oui-0.7.0.tgz#d8c2b126ab6365aa2009d5f4324500cef84909b0"
+  integrity sha512-U9ez7OsDWoTHytb6U8ajqewg3/hZBNwY7hspYolTtUhQGrCVmVoxdv75+gBntFCBd4bP1WYze/fX+sS81K/3yQ==
   dependencies:
     "@babel/runtime" "^7.7.4"
     "@maeertin/medialoaded" "^1.0.0"
