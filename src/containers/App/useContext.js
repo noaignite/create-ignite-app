@@ -1,5 +1,6 @@
 import React from 'react'
 import Router from 'next/router'
+import mediaLoaded from '@maeertin/medialoaded'
 import { debounce } from '@oakwood/oui-utils'
 import { CLOSE_MENUS_ON_RESIZE } from 'src/site.config'
 
@@ -7,8 +8,9 @@ export const defaultState = {
   isAppBarFixed: false,
   isCartMenuOpen: false,
   isLoading: false,
-  isMounted: false,
+  isMediaReady: false,
   isNavMenuOpen: false,
+  isReady: false,
 }
 
 export default props => {
@@ -17,8 +19,9 @@ export default props => {
   const [isAppBarFixed, setIsAppBarFixed] = React.useState(initialState.isAppBarFixed)
   const [isCartMenuOpen, setIsCartMenuOpen] = React.useState(initialState.isCartMenuOpen)
   const [isLoading, setIsLoading] = React.useState(initialState.isLoading)
-  const [isMounted, setIsMounted] = React.useState(initialState.isMounted)
+  const [isMediaReady, setIsMediaReady] = React.useState(initialState.isMediaReady)
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(initialState.isNavMenuOpen)
+  const [isReady, setIsReady] = React.useState(initialState.isReady)
 
   // Helpers
 
@@ -29,8 +32,12 @@ export default props => {
 
   // Private handlers
 
-  const handleMount = React.useCallback(() => {
-    setIsMounted(true)
+  const handleMediaReady = React.useCallback(() => {
+    setIsMediaReady(true)
+
+    // The `setIsReady` setter can be moved elsewhere. For example, if a website intro
+    // sequence is implemented, this would be called when that animation finishes.
+    setIsReady(true)
   }, [])
 
   const handleRouteChangeStart = React.useCallback(() => {
@@ -51,8 +58,7 @@ export default props => {
       }
     })
 
-    handleMount()
-
+    mediaLoaded('.coa-preload', handleMediaReady)
     window.addEventListener('resize', handleResize)
     Router.events.on('routeChangeStart', handleRouteChangeStart)
     Router.events.on('routeChangeComplete', handleRouteChangeComplete)
@@ -63,37 +69,37 @@ export default props => {
       Router.events.off('routeChangeStart', handleRouteChangeStart)
       Router.events.off('routeChangeComplete', handleRouteChangeComplete)
     }
-  }, [handleMount, handleRouteChangeStart, handleRouteChangeComplete])
+  }, [handleMediaReady, handleRouteChangeStart, handleRouteChangeComplete])
 
   // Public handlers
 
-  const onAppBarBurgerClick = () => {
-    setIsCartMenuOpen(false)
+  const onAppBarBurgerClick = React.useCallback(() => {
     setIsNavMenuOpen(prev => !prev)
-  }
+    setIsCartMenuOpen(false)
+  }, [])
 
-  const onAppBarCartClick = () => {
+  const onAppBarCartClick = React.useCallback(() => {
     setIsCartMenuOpen(prev => !prev)
     setIsNavMenuOpen(false)
-  }
+  }, [])
 
-  const onCartMenuClose = () => {
+  const onCartMenuClose = React.useCallback(() => {
     setIsCartMenuOpen(false)
-  }
+  }, [])
 
-  const onCartMenuExited = () => {
+  const onCartMenuExited = React.useCallback(() => {
     // This callback is run only once the menu has unmounted.
     // A good place to reset desired state.
-  }
+  }, [])
 
-  const onNavMenuClose = () => {
+  const onNavMenuClose = React.useCallback(() => {
     setIsNavMenuOpen(false)
-  }
+  }, [])
 
-  const onNavMenuExited = () => {
+  const onNavMenuExited = React.useCallback(() => {
     // This callback is run only once the menu has unmounted.
     // A good place to reset desired state.
-  }
+  }, [])
 
   return {
     // Expose setters for custom hooks
@@ -105,8 +111,9 @@ export default props => {
     isAppBarFixed,
     isCartMenuOpen,
     isLoading,
-    isMounted,
+    isMediaReady,
     isNavMenuOpen,
+    isReady,
     onAppBarBurgerClick,
     onAppBarCartClick,
     onCartMenuClose,
