@@ -1,6 +1,10 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+const withTranspileModules = require('next-transpile-modules')([
+  'dom7/dist/dom7.modular',
+  'swiper/js/swiper.esm',
+])
 
 const nextConfig = {
   poweredByHeader: false,
@@ -32,4 +36,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withBundleAnalyzer(nextConfig)
+module.exports = withBundleAnalyzer(withTranspileModules(nextConfig))
