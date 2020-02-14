@@ -1,4 +1,4 @@
-// based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
+// Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
 
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
