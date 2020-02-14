@@ -11,7 +11,6 @@ import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import { useForkRef } from '@oakwood/oui-utils'
 import { Swiper, A11y, Keyboard, Navigation, Pagination } from 'swiper/js/swiper.esm'
-import 'swiper/css/swiper.min.css'
 import { isUiElement } from '../utils'
 
 Swiper.use([A11y, Keyboard, Navigation, Pagination])

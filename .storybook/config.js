@@ -6,6 +6,9 @@ import MuiThemeProvider from '@material-ui/styles/ThemeProvider'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import createTheme from 'components/styles/createTheme'
 import './nextRouterCompat'
+// As of NextJS 9, all global css *must* be imported in pages/_app.js
+// https://github.com/zeit/next.js/blob/master/errors/css-global.md
+import 'swiper/css/swiper.min.css'
 
 const context = require.context('../src', true, /\/*stories\.js$/)
 
