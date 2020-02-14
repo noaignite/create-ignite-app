@@ -30,7 +30,7 @@ const AppAppBar = React.forwardRef(function AppAppBar(props, ref) {
       handleResize.clear()
       window.removeEventListener('resize', handleResize)
     }
-  }, [children, syncHeight])
+  }, [syncHeight])
 
   useEnhancedEffect(() => {
     syncHeight()
