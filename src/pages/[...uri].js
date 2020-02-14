@@ -2,15 +2,15 @@ import React from 'react'
 import Head from 'next/head'
 import { Default as ContentStory } from 'blocks/Content/stories'
 
-const Home = () => {
+const Page = () => {
   return (
     <>
       <Head>
-        <title>Home | Create Oakwood App</title>
+        <title>Page | Create Oakwood App</title>
       </Head>
       <ContentStory />
     </>
   )
 }
 
-export default Home
+export default Page
