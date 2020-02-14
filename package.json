@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.9.1",
-    "@oakwood/oui": "^0.7.0",
+    "@oakwood/oui": "^0.7.1",
     "clsx": "^1.0.2",
     "next": "^9.2.1",
     "prop-types": "^15.7.2",
