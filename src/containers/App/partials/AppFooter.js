@@ -47,7 +47,7 @@ const AppFooter = React.forwardRef(function AppFooter(props, ref) {
                   className={classes.navlistItemText}
                   component={RouterLink}
                   href="/[...uri]"
-                  as={menuItem.href}
+                  as={menuItem.url}
                   variant="button"
                 >
                   {menuItem.label}

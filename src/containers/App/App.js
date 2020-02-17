@@ -45,8 +45,8 @@ export const styles = theme => ({
   },
   navlistItemText: {},
   main: {
-    outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
     flexGrow: 1,
+    outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
   },
 })
 
