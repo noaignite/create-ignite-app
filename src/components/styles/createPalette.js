@@ -1,6 +1,6 @@
+import { deepmerge } from '@material-ui/utils'
 import createMuiPalette from '@material-ui/core/styles/createPalette'
 import { fade } from '@material-ui/core/styles/colorManipulator'
-import deepmerge from '@oakwood/oui-utils/deepmerge'
 import blue from '../colors/blue'
 import blueGrey from '../colors/blueGrey'
 import common from '../colors/common'

@@ -1,5 +1,5 @@
+import { deepmerge } from '@material-ui/utils'
 import createMuiTypography from '@material-ui/core/styles/createTypography'
-import deepmerge from '@oakwood/oui-utils/deepmerge'
 
 const caseAllCaps = {
   textTransform: 'uppercase',
