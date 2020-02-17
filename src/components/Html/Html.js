@@ -12,14 +12,14 @@ export const styles = theme => ({
       h4: theme.typography.h6,
       h5: theme.typography.h6,
       h6: theme.typography.h6,
-      'h1, h2, h3, h4, h5, h6, p, ol, ul, li, img': {
-        margin: '1.2em 0 0',
+      'h1, h2, h3, h4, h5, h6, p, ol, ul, li, figure, img': {
+        margin: '1.2em auto 0',
         '&:first-child': {
           marginTop: 0,
         },
       },
       blockquote: {
-        margin: '40px auto',
+        margin: '2.8em auto',
         textAlign: 'center',
         '& p': {
           ...theme.typography.h3,
@@ -28,7 +28,7 @@ export const styles = theme => ({
         '& cite': theme.typography.caption,
       },
       figure: {
-        margin: '40px 0',
+        margin: '2.8em auto',
       },
       figcaption: {
         ...theme.typography.caption,
