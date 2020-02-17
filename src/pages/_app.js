@@ -2,6 +2,7 @@
 // Updated to functional component from docs https://nextjs.org/docs/advanced-features/custom-app
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from 'src/theme.default'
@@ -10,7 +11,9 @@ import AppBase from 'containers/App'
 // https://github.com/zeit/next.js/blob/master/errors/css-global.md
 import 'swiper/css/swiper.min.css'
 
-const App = ({ Component, pageProps }) => {
+const App = props => {
+  const { Component, pageProps } = props
+
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
@@ -20,17 +23,20 @@ const App = ({ Component, pageProps }) => {
   }, [])
 
   return (
-    <React.Fragment>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
+    <ThemeProvider theme={theme}>
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <CssBaseline />
 
-        <AppBase>
-          <Component {...pageProps} />
-        </AppBase>
-      </ThemeProvider>
-    </React.Fragment>
+      <AppBase>
+        <Component {...pageProps} />
+      </AppBase>
+    </ThemeProvider>
   )
+}
+
+App.propTypes = {
+  Component: PropTypes.element.isRequired,
+  pageProps: PropTypes.object.isRequired,
 }
 
 export default App
