@@ -33,7 +33,7 @@ const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
       SlideProps={{ onExited: onNavMenuExited }}
       open={isNavMenuOpen}
       onClose={onNavMenuClose}
-      anchor="right"
+      anchor="left"
       ref={ref}
       {...other}
     >

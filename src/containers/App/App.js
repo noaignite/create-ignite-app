@@ -20,35 +20,23 @@ import AppNavMenu from './partials/AppNavMenu'
 import AppSkipLink from './partials/AppSkipLink'
 import { useAppContext } from './AppContext'
 
-export const styles = theme => ({
+export const styles = {
   root: {
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
   },
+  isPreloading: {},
   isLoading: {},
-  isMounting: {},
   appBar: {},
   appBarToolbar: {
     justifyContent: 'space-between',
   },
-  nav: {},
-  navlist: {
-    display: 'flex',
-    margin: 0,
-  },
-  navlistItem: {
-    marginLeft: theme.spacing(4),
-    '&:first-child': {
-      marginLeft: 0,
-    },
-  },
-  navlistItemText: {},
   main: {
     flexGrow: 1,
     outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
   },
-})
+}
 
 const App = props => {
   const { children, classes, menuFooter, menuPrimary } = props
@@ -57,20 +45,28 @@ const App = props => {
     isAppBarFixed,
     isCartMenuOpen,
     isLoading,
-    isMounted,
+    isMediaReady,
     isNavMenuOpen,
     onAppBarBurgerClick,
     onAppBarCartClick,
   } = useAppContext()
 
-  const brandIconButton = (
+  const burgerIconButton = (
     <IconButton
-      component={RouterLink}
+      onClick={onAppBarBurgerClick}
       color="inherit"
       edge="start"
-      href="/"
-      aria-label="Go to the homepage"
+      size="small"
+      aria-haspopup="true"
+      aria-expanded={isNavMenuOpen}
+      aria-label="Toggle main menu"
     >
+      {isNavMenuOpen ? <CrossIcon /> : <BurgerIcon />}
+    </IconButton>
+  )
+
+  const brandIconButton = (
+    <IconButton component={RouterLink} color="inherit" href="/" aria-label="Go to the homepage">
       <BrandIcon style={{ width: 'auto' }} />
     </IconButton>
   )
@@ -79,6 +75,7 @@ const App = props => {
     <IconButton
       onClick={onAppBarCartClick}
       color="inherit"
+      edge="end"
       size="small"
       aria-haspopup="true"
       aria-expanded={isCartMenuOpen}
@@ -88,27 +85,13 @@ const App = props => {
     </IconButton>
   )
 
-  const burgerIconButton = (
-    <IconButton
-      onClick={onAppBarBurgerClick}
-      color="inherit"
-      size="small"
-      edge="end"
-      aria-haspopup="true"
-      aria-expanded={isNavMenuOpen}
-      aria-label="Toggle main menu"
-    >
-      {isNavMenuOpen ? <CrossIcon /> : <BurgerIcon />}
-    </IconButton>
-  )
-
-  const className = classnames(classes.root, {
-    [classes.isLoading]: isLoading,
-    [classes.isMounting]: !isMounted,
-  })
-
   return (
-    <div className={className}>
+    <div
+      className={classnames(classes.root, {
+        [classes.isPreloading]: !isMediaReady,
+        [classes.isLoading]: isLoading,
+      })}
+    >
       <AppSkipLink href={`#${SITE_MAIN_ID}`}>Skip to content</AppSkipLink>
 
       <AppAppBar
@@ -122,11 +105,9 @@ const App = props => {
           maxWidth={false}
           disableGutters
         >
+          <div>{burgerIconButton}</div>
           <div>{brandIconButton}</div>
-          <div>
-            {cartIconButton}
-            {burgerIconButton}
-          </div>
+          <div>{cartIconButton}</div>
         </Toolbar>
       </AppAppBar>
 
