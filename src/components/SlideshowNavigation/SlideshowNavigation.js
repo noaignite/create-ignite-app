@@ -1,4 +1,4 @@
-// @inheritedComponent IconButton
+// @inheritedComponent Fab
 
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -7,7 +7,7 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import capitalize from '@oakwood/oui-utils/capitalize'
 import KeyboardArrowLeftIcon from '../icons/KeyboardArrowLeft'
 import KeyboardArrowRightIcon from '../icons/KeyboardArrowRight'
-import IconButton from '../IconButton'
+import Fab from '../Fab'
 
 export const styles = theme => ({
   root: {
@@ -15,14 +15,9 @@ export const styles = theme => ({
     zIndex: 9,
     top: '50%',
     backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[2],
     transform: 'translateY(-50%)',
-    transition: theme.transitions.create(['box-shadow', 'color', 'opacity'], {
-      duration: theme.transitions.duration.shortest,
-    }),
     '&:hover': {
       backgroundColor: theme.palette.background.paper,
-      boxShadow: theme.shadows[4],
     },
     // Insufficient slides
     '&[class*="lock"]': {
@@ -52,7 +47,7 @@ const SlideshowNavigation = React.forwardRef(function SlideshowNavigation(props,
   const Icon = variantComponent[variant]
 
   return (
-    <IconButton
+    <Fab
       className={classnames(classes.root, classes[variant], className)}
       color={color}
       aria-label={`${capitalize(variant)} slide`}
@@ -60,7 +55,7 @@ const SlideshowNavigation = React.forwardRef(function SlideshowNavigation(props,
       {...other}
     >
       {children || <Icon color="inherit" fontSize="large" {...IconProps} />}
-    </IconButton>
+    </Fab>
   )
 })
 
