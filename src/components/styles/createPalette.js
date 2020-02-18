@@ -26,7 +26,6 @@ export const light = {
   background: {
     default: common.white,
     paper: common.white,
-    media: grey[100],
   },
   // The colors used to style the action elements.
   action: {
@@ -55,7 +54,6 @@ export const dark = {
   background: {
     default: common.black,
     paper: common.black,
-    media: grey[900],
   },
   action: {
     active: common.white,
