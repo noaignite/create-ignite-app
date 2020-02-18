@@ -7,7 +7,7 @@ import * as colors from '.'
 
 const stories = storiesOf('Common/Colors', module)
 
-stories.add('System Colors', () => (
+const SystemColors = () => (
   <div
     style={{
       display: 'grid',
@@ -19,7 +19,9 @@ stories.add('System Colors', () => (
       <Swatch key={name} color={color} name={name} />
     ))}
   </div>
-))
+)
+
+stories.add('System Colors', SystemColors)
 
 const SORT_ORDER = ['common', 'text', 'divider', 'background', 'action', 'primary', 'secondary']
 
@@ -27,7 +29,7 @@ function isValidColor([name, color]) {
   return name === 'divider' || typeof color === 'object'
 }
 
-stories.add('Theme Palette', () => {
+const ThemePalette = () => {
   const { palette } = useTheme()
 
   const paletteEntries = Object.entries(palette)
@@ -58,4 +60,6 @@ stories.add('Theme Palette', () => {
       ))}
     </div>
   )
-})
+}
+
+stories.add('Theme Palette', () => <ThemePalette />)
