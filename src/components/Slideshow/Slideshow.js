@@ -9,7 +9,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
-import { useForkRef } from '@oakwood/oui-utils'
+import { useForkRef } from '@material-ui/core/utils'
 import { Swiper, A11y, Keyboard, Navigation, Pagination } from 'swiper/js/swiper.esm'
 import { isUiElement } from '../utils'
 
@@ -36,6 +36,7 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
   } = other
 
   const rootRef = React.useRef(null)
+  const handleRootRef = useForkRef(rootRef, ref)
   const navigationPrevRef = React.useRef(null)
   const navigationNextRef = React.useRef(null)
   const paginationRef = React.useRef(null)
@@ -71,7 +72,6 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
 
     if (navigationPrev && navigationNext) {
       swiperProps.navigation = {
-        ...swiperProps.navigation,
         ...navigationProp,
         prevEl: navigationPrev,
         nextEl: navigationNext,
@@ -80,16 +80,14 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
 
     if (pagination) {
       swiperProps.pagination = {
-        modifierClass: '', // Empty for lower css specificity.
-        ...swiperProps.pagination,
         ...paginationProp,
+        modifierClass: '', // Empty for lower css specificity.
         el: pagination,
       }
     }
 
     if (scrollbar) {
       swiperProps.scrollbar = {
-        ...swiperProps.scrollbar,
         ...scrollbarProp,
         el: scrollbar,
       }
@@ -98,7 +96,7 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
     const swiper = new Swiper(rootRef.current, swiperProps)
     swiperRef.current = swiper
 
-    // Patch Swiper events with no arguments with Swiper instance.
+    // Patch Swiper events having no arguments with Swiper instance.
     Object.entries(on).forEach(([eventName, callback]) => {
       swiper.on(eventName, (...args) => (args.length ? callback(...args) : callback(swiper)))
     })
@@ -165,10 +163,12 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
     return child
   })
 
-  const handleRef = useForkRef(rootRef, ref)
-
   return (
-    <Component className={classnames('swiper-container', className)} ref={handleRef} style={style}>
+    <Component
+      className={classnames('swiper-container', className)}
+      ref={handleRootRef}
+      style={style}
+    >
       {children}
 
       {navigationPrev && React.cloneElement(navigationPrev, { ref: navigationPrevRef })}
