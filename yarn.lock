@@ -2780,10 +2780,10 @@ babel-plugin-named-asset-import@^0.3.1:
   resolved "https://registry.yarnpkg.com/babel-plugin-named-asset-import/-/babel-plugin-named-asset-import-0.3.5.tgz#d3fa1a7f1f4babd4ed0785b75e2f926df0d70d0d"
   integrity sha512-sGhfINU+AuMw9oFAdIn/nD5sem3pn/WgxAfDZ//Q3CnF+5uaho7C7shh2rKLk6sKE/XkfmyibghocwKdVjLIKg==
 
-babel-plugin-optimize-clsx@^2.3.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-optimize-clsx/-/babel-plugin-optimize-clsx-2.5.0.tgz#ed7b41b610562fc72bbe6910bccdef4bec7f7f64"
-  integrity sha512-5jP8zpqlGB2hwMpL6Dos+t8IwgG6a0VnQ17ktUNekkVM+Zz4DkPiofpARlY+GjDSQ1wgTCaR5ILn+AUf/GuvKQ==
+babel-plugin-optimize-clsx@^2.6.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-optimize-clsx/-/babel-plugin-optimize-clsx-2.6.0.tgz#ae0b9db19565ab0355607c9d58e23e73025e53f1"
+  integrity sha512-FizJqgyoj8EG3Y3F+BLxB+0rxDb9AFfh826ob4e70SXMxOcmibpi/8RiEHQ2FbGt/2PF6k2128dZ1xVQ4f1JNA==
   dependencies:
     "@babel/generator" "^7.6.2"
     "@babel/template" "^7.6.0"
