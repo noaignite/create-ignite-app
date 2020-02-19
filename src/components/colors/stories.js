@@ -7,35 +7,13 @@ import * as colors from '.'
 
 const stories = storiesOf('Common/Colors', module)
 
-const SystemColors = () => (
-  <div
-    style={{
-      display: 'grid',
-      gridGap: 10,
-      gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-    }}
-  >
-    {Object.entries(colors).map(([name, color]) => (
-      <Swatch key={name} color={color} name={name} />
-    ))}
-  </div>
-)
-
-stories.add('System Colors', SystemColors)
-
-const SORT_ORDER = ['common', 'text', 'divider', 'background', 'action', 'primary', 'secondary']
-
-function isValidColor([name, color]) {
+function isValidPaletteColor([name, color]) {
   return name === 'divider' || typeof color === 'object'
 }
 
-const ThemePalette = () => {
-  const { palette } = useTheme()
-
-  const paletteEntries = Object.entries(palette)
-  const colorEntries = paletteEntries.filter(isValidColor)
-  const sortedColorEntries = colorEntries.reduce((acc, val) => {
-    const sortIdx = SORT_ORDER.indexOf(val[0])
+function sortEntriesByKeyMap(entries, orderArr) {
+  return entries.reduce((acc, val) => {
+    const sortIdx = orderArr.indexOf(val[0])
     if (sortIdx !== -1) {
       acc[sortIdx] = val
     } else {
@@ -43,7 +21,39 @@ const ThemePalette = () => {
     }
 
     return acc
-  }, new Array(SORT_ORDER.length))
+  }, new Array(orderArr.length))
+}
+
+const SYSTEM_SORT_ORDER = ['common', 'grey']
+const PALETTE_SORT_ORDER = ['common', 'text', 'divider', 'background', 'action']
+
+const SystemColors = () => {
+  const colorEntries = Object.entries(colors)
+  const sortedColors = sortEntriesByKeyMap(colorEntries, SYSTEM_SORT_ORDER)
+
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridGap: 10,
+        gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+      }}
+    >
+      {sortedColors.map(([name, color]) => (
+        <Swatch key={name} color={color} name={name} />
+      ))}
+    </div>
+  )
+}
+
+stories.add('System Colors', SystemColors)
+
+const ThemePalette = () => {
+  const { palette } = useTheme()
+
+  const paletteEntries = Object.entries(palette)
+  const colorEntries = paletteEntries.filter(isValidPaletteColor)
+  const sortedColorEntries = sortEntriesByKeyMap(colorEntries, PALETTE_SORT_ORDER)
 
   return (
     <div
