@@ -12,16 +12,23 @@ function isValidPaletteColor([name, color]) {
 }
 
 function sortEntriesByKeyMap(entries, orderArr) {
-  return entries.reduce((acc, val) => {
-    const sortIdx = orderArr.indexOf(val[0])
-    if (sortIdx !== -1) {
-      acc[sortIdx] = val
-    } else {
-      acc.push(val)
-    }
+  return entries.slice(0).sort(([a], [b]) => {
+    const primA = orderArr.indexOf(a)
+    const primB = orderArr.indexOf(b)
+    const hasA = primA !== -1
+    const hasB = primB !== -1
 
-    return acc
-  }, new Array(orderArr.length))
+    if (hasA && hasB) {
+      return primA - primB
+    }
+    if (hasA) {
+      return -1
+    }
+    if (hasB) {
+      return 1
+    }
+    return entries.indexOf(a) - entries.indexOf(b)
+  })
 }
 
 const SYSTEM_SORT_ORDER = ['common', 'grey']
