@@ -44,13 +44,8 @@ const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
               <Link
                 className={classes.navlistItemText}
                 component={RouterLink}
-<<<<<<< HEAD
-                as={menuItem.href}
-                href="/[...slug]"
-=======
                 as={menuItem.url}
                 href="/[...uri]"
->>>>>>> develop
                 variant="h1"
               >
                 {menuItem.label}
