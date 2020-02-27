@@ -5,9 +5,8 @@ import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Drawer from '@material-ui/core/Drawer'
-import { SITE_HEADER_ID } from 'src/site.config'
 
-const headerHeight = `var(--${SITE_HEADER_ID}-height)`
+const headerHeight = 'var(--coa-header-height)'
 
 export const styles = {
   root: {

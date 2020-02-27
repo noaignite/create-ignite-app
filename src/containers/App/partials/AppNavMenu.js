@@ -3,7 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '@material-ui/core/styles/withStyles'
-import { linkType } from 'utils'
+import { menuLinkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import Link from 'components/Link'
 import { useAppContext } from '../AppContext'
@@ -33,7 +33,7 @@ const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
       SlideProps={{ onExited: onNavMenuExited }}
       open={isNavMenuOpen}
       onClose={onNavMenuClose}
-      anchor="right"
+      anchor="left"
       ref={ref}
       {...other}
     >
@@ -44,8 +44,13 @@ const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
               <Link
                 className={classes.navlistItemText}
                 component={RouterLink}
+<<<<<<< HEAD
                 as={menuItem.href}
                 href="/[...slug]"
+=======
+                as={menuItem.url}
+                href="/[...uri]"
+>>>>>>> develop
                 variant="h1"
               >
                 {menuItem.label}
@@ -60,7 +65,7 @@ const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
 
 AppNavMenu.propTypes = {
   classes: PropTypes.object.isRequired,
-  menu: PropTypes.arrayOf(linkType),
+  menu: PropTypes.arrayOf(menuLinkType),
 }
 
 AppNavMenu.uiName = 'AppNavMenu'

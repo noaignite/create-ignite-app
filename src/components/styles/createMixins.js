@@ -1,7 +1,35 @@
 import { constants } from './extras'
+import grey from '../colors/grey'
 
 export default function createMixins(breakpoints, spacing, mixins) {
+  // eslint-disable-next-line no-shadow
+  function position(position, ...args) {
+    const keys = ['top', 'right', 'bottom', 'left']
+    const map = [
+      [0, 0, 0, 0],
+      [0, 1, 0, 1],
+      [0, 1, 2, 1],
+      [0, 1, 2, 3],
+    ]
+
+    if (args.length === 0) {
+      args = [0, 0, 0, 0]
+    }
+
+    const styles = { position }
+    keys.forEach((key, idx) => {
+      styles[key] = args[map[args.length - 1][idx]]
+    })
+
+    return styles
+  }
+
   return {
+    // Mui mixins
+    gutters: (amount = 2) => ({
+      paddingLeft: spacing(amount),
+      paddingRight: spacing(amount),
+    }),
     toolbar: {
       minHeight: constants.TOOLBAR_MIN_HEIGHT,
       [breakpoints.up('sm')]: {
@@ -11,22 +39,35 @@ export default function createMixins(breakpoints, spacing, mixins) {
     toolbarDense: {
       minHeight: constants.TOOLBAR_MIN_HEIGHT_DENSE,
     },
-    // Utility mixins
-    gutters: (unit = 2) => ({
-      paddingLeft: spacing(unit),
-      paddingRight: spacing(unit),
-    }),
+    // Custom mixins
+    fluidType: (minBreakpoint, maxBreakpoint, minFontSize, maxFontSize) => {
+      const minVw = breakpoints.values[minBreakpoint] || minBreakpoint
+      const maxVw = breakpoints.values[maxBreakpoint] || maxBreakpoint
+
+      return {
+        fontSize: minFontSize,
+        [`@media (min-width: ${minVw}px)`]: {
+          fontSize: `calc(${minFontSize}px + ${maxFontSize -
+            minFontSize} * ((100vw - ${minVw}px) / ${maxVw - minVw}))`,
+        },
+        [`@media (min-width: ${maxVw}px)`]: {
+          fontSize: maxFontSize,
+        },
+      }
+    },
+    absolute: (...args) => {
+      return position('absolute', ...args)
+    },
+    fixed: (...args) => {
+      return position('fixed', ...args)
+    },
+    sticky: (...args) => {
+      return position('sticky', ...args)
+    },
     contain: (breakpoint = 'lg') => ({
       maxWidth: breakpoints.values[breakpoint] || breakpoint,
       marginRight: 'auto',
       marginLeft: 'auto',
-    }),
-    absoluteCover: (unit = 0) => ({
-      position: 'absolute',
-      top: spacing(unit),
-      right: spacing(unit),
-      bottom: spacing(unit),
-      left: spacing(unit),
     }),
     lineClamp: lines => ({
       display: '-webkit-box',
@@ -39,6 +80,19 @@ export default function createMixins(breakpoints, spacing, mixins) {
       overflowY: 'auto',
       // Add iOS momentum scrolling.
       WebkitOverflowScrolling: 'touch',
+    },
+    scrollbars: {
+      '&::-webkit-scrollbar': {
+        width: 5,
+        padding: 10,
+        backgroundColor: grey[200],
+      },
+      '&::-webkit-scrollbar-thumb': {
+        padding: 10,
+        margin: 10,
+        borderRadius: 4,
+        backgroundColor: grey[800],
+      },
     },
     ...mixins,
   }

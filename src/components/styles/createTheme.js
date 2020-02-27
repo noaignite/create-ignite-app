@@ -1,4 +1,4 @@
-import deepmerge from '@oakwood/oui-utils/deepmerge'
+import { deepmerge } from '@material-ui/utils'
 import createBreakpoints from './createBreakpoints'
 import createMixins from './createMixins'
 import createOverrides from './createOverrides'
@@ -12,6 +12,14 @@ import shape from './shape'
 import transitions from './transitions'
 import zIndex from './zIndex'
 
+/**
+ * The `createTheme` setup mimics the Material-UI `createMuiTheme` setup.
+ *
+ * Having a custom setup allows the following:
+ * - Switching between custom light/dark pallete objects.
+ * - Custom mixins having access to `breakpoints` and `spacing`.
+ * - Custom overrides having access to the `theme` object.
+ */
 export default function createTheme(options = {}) {
   const {
     breakpoints: breakpointsInput = {},
@@ -26,7 +34,7 @@ export default function createTheme(options = {}) {
   const palette = createPalette(paletteInput)
   const spacing = createSpacing(spacingInput)
 
-  const themeOutput = deepmerge(
+  const theme = deepmerge(
     {
       breakpoints,
       direction: 'ltr',
@@ -45,7 +53,7 @@ export default function createTheme(options = {}) {
   )
 
   // Create the overrides with the complete theme object
-  themeOutput.overrides = createOverrides(themeOutput)
+  theme.overrides = createOverrides(theme)
 
-  return themeOutput
+  return theme
 }

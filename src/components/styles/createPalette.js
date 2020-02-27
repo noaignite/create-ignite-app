@@ -1,6 +1,6 @@
+import { deepmerge } from '@material-ui/utils'
 import createMuiPalette from '@material-ui/core/styles/createPalette'
 import { fade } from '@material-ui/core/styles/colorManipulator'
-import deepmerge from '@oakwood/oui-utils/deepmerge'
 import blue from '../colors/blue'
 import blueGrey from '../colors/blueGrey'
 import common from '../colors/common'
@@ -26,7 +26,6 @@ export const light = {
   background: {
     default: common.white,
     paper: common.white,
-    media: grey[100],
   },
   // The colors used to style the action elements.
   action: {
@@ -55,7 +54,6 @@ export const dark = {
   background: {
     default: common.black,
     paper: common.black,
-    media: grey[900],
   },
   action: {
     active: common.white,

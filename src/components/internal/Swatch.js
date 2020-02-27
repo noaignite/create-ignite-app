@@ -7,7 +7,6 @@ import useTheme from '@material-ui/core/styles/useTheme'
 export const styles = theme => ({
   root: {
     position: 'relative',
-    border: `1px solid ${theme.palette.text.primary}`,
   },
   mainShade: {
     display: 'flex',
@@ -32,21 +31,27 @@ export const styles = theme => ({
 /**
  * @ignore - internal component.
  */
-const Palette = React.forwardRef(function Palette(props, ref) {
-  const { classes, className, color: colorProp, name, ...other } = props
+const Swatch = React.forwardRef(function Swatch(props, ref) {
+  const { classes, className, color, mainShade = 500, name, ...other } = props
 
   const { palette } = useTheme()
-
-  // Fix for palette groups like `divider`.
-  let color = colorProp
-  if (typeof color !== 'object') {
-    color = { [name]: color }
-  }
+  const mainColor = color[mainShade]
 
   return (
     <div className={classnames(classes.root, className)} ref={ref} {...other}>
-      <div className={classes.mainShade}>
-        <strong>{name}</strong>
+      <div
+        className={classes.mainShade}
+        style={{
+          backgroundColor: mainColor,
+          color: mainColor ? palette.getContrastText(mainColor) : '',
+        }}
+      >
+        <span>
+          <strong className={classes.mainShadeKey}>{name}</strong>
+          {mainColor && <span className={classes.mainShadeValue}>{mainShade}</span>}
+        </span>
+
+        <span>{mainColor}</span>
       </div>
 
       {Object.entries(color).map(([key, value]) => (
@@ -54,8 +59,8 @@ const Palette = React.forwardRef(function Palette(props, ref) {
           key={key}
           className={classes.shade}
           style={{
-            backgroundColor: typeof value === 'string' ? value : undefined,
-            color: typeof value === 'string' ? palette.getContrastText(value) : undefined,
+            backgroundColor: value,
+            color: palette.getContrastText(value),
           }}
         >
           <span>{key}</span>
@@ -66,14 +71,14 @@ const Palette = React.forwardRef(function Palette(props, ref) {
   )
 })
 
-Palette.propTypes = {
+Swatch.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  color: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
+  color: PropTypes.object.isRequired,
   mainShade: PropTypes.string,
   name: PropTypes.string,
 }
 
-Palette.uiName = 'Palette'
+Swatch.uiName = 'Swatch'
 
-export default withStyles(styles)(Palette)
+export default withStyles(styles)(Swatch)

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from 'src/site.config'
-import { linkType } from 'utils'
+import { menuLinkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import BrandIcon from 'components/icons/Brand'
 import BurgerIcon from 'components/icons/Burger'
@@ -18,59 +18,55 @@ import AppCartMenu from './partials/AppCartMenu'
 import AppFooter from './partials/AppFooter'
 import AppNavMenu from './partials/AppNavMenu'
 import AppSkipLink from './partials/AppSkipLink'
+import { useAppContext } from './AppContext'
 
-export const styles = theme => ({
+export const styles = {
   root: {
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
   },
+  isPreloading: {},
   isLoading: {},
-  isMounting: {},
   appBar: {},
   appBarToolbar: {
     justifyContent: 'space-between',
   },
-  nav: {},
-  navlist: {
-    display: 'flex',
-    margin: 0,
-  },
-  navlistItem: {
-    marginLeft: theme.spacing(4),
-    '&:first-child': {
-      marginLeft: 0,
-    },
-  },
-  navlistItemText: {},
   main: {
-    outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
     flexGrow: 1,
+    outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
   },
-})
+}
 
 const App = props => {
+  const { children, classes, menuFooter, menuPrimary } = props
+
   const {
-    children,
-    classes,
+    isAppBarFixed,
     isCartMenuOpen,
     isLoading,
-    isMounted,
+    isMediaReady,
     isNavMenuOpen,
-    menuFooter,
-    menuPrimary,
     onAppBarBurgerClick,
     onAppBarCartClick,
-  } = props
+  } = useAppContext()
 
-  const brandIconButton = (
+  const burgerIconButton = (
     <IconButton
-      component={RouterLink}
+      onClick={onAppBarBurgerClick}
       color="inherit"
       edge="start"
-      href="/"
-      aria-label="Go to the homepage"
+      size="small"
+      aria-haspopup="true"
+      aria-expanded={isNavMenuOpen}
+      aria-label="Toggle main menu"
     >
+      {isNavMenuOpen ? <CrossIcon /> : <BurgerIcon />}
+    </IconButton>
+  )
+
+  const brandIconButton = (
+    <IconButton component={RouterLink} color="inherit" href="/" aria-label="Go to the homepage">
       <BrandIcon style={{ width: 'auto' }} />
     </IconButton>
   )
@@ -79,6 +75,7 @@ const App = props => {
     <IconButton
       onClick={onAppBarCartClick}
       color="inherit"
+      edge="end"
       size="small"
       aria-haspopup="true"
       aria-expanded={isCartMenuOpen}
@@ -88,41 +85,29 @@ const App = props => {
     </IconButton>
   )
 
-  const burgerIconButton = (
-    <IconButton
-      onClick={onAppBarBurgerClick}
-      color="inherit"
-      size="small"
-      edge="end"
-      aria-haspopup="true"
-      aria-expanded={isNavMenuOpen}
-      aria-label="Toggle main menu"
-    >
-      {isNavMenuOpen ? <CrossIcon /> : <BurgerIcon />}
-    </IconButton>
-  )
-
-  const className = classnames(classes.root, {
-    [classes.isLoading]: isLoading,
-    [classes.isMounting]: !isMounted,
-  })
-
   return (
-    <div className={className}>
+    <div
+      className={classnames(classes.root, {
+        [classes.isPreloading]: !isMediaReady,
+        [classes.isLoading]: isLoading,
+      })}
+    >
       <AppSkipLink href={`#${SITE_MAIN_ID}`}>Skip to content</AppSkipLink>
 
-      <AppAppBar className={classes.appBar} id={SITE_HEADER_ID}>
+      <AppAppBar
+        className={classes.appBar}
+        position={isAppBarFixed ? 'fixed' : 'sticky'}
+        id={SITE_HEADER_ID}
+      >
         <Toolbar
           className={classes.appBarToolbar}
           component={Container}
           maxWidth={false}
           disableGutters
         >
+          <div>{burgerIconButton}</div>
           <div>{brandIconButton}</div>
-          <div>
-            {cartIconButton}
-            {burgerIconButton}
-          </div>
+          <div>{cartIconButton}</div>
         </Toolbar>
       </AppAppBar>
 
@@ -130,12 +115,7 @@ const App = props => {
 
       <AppCartMenu />
 
-      <main
-        className={classnames(classes.main, SITE_HEADER_ID)}
-        role="main"
-        id={SITE_MAIN_ID}
-        tabIndex="-1"
-      >
+      <main className={classes.main} id={SITE_MAIN_ID} role="main" tabIndex="-1">
         {children}
       </main>
 
@@ -149,14 +129,8 @@ const App = props => {
 App.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
-  isCartMenuOpen: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  isMounted: PropTypes.bool,
-  isNavMenuOpen: PropTypes.bool,
-  menuFooter: PropTypes.arrayOf(linkType).isRequired,
-  menuPrimary: PropTypes.arrayOf(linkType).isRequired,
-  onAppBarBurgerClick: PropTypes.func,
-  onAppBarCartClick: PropTypes.func,
+  menuFooter: PropTypes.arrayOf(menuLinkType).isRequired,
+  menuPrimary: PropTypes.arrayOf(menuLinkType).isRequired,
 }
 
 export default withStyles(styles)(App)

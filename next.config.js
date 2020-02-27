@@ -1,22 +1,12 @@
-const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
-
-const ANALYZE = process.env.ANALYZE === 'true'
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+const withTranspileModules = require('next-transpile-modules')([
+  'dom7/dist/dom7.modular',
+  'swiper/js/swiper.esm',
+])
 
 const nextConfig = {
-  analyzeServer: ANALYZE,
-  analyzeBrowser: ANALYZE,
-  bundleAnalyzerConfig: {
-    browser: {
-      openAnalyzer: false,
-      analyzerHost: '0.0.0.0',
-      analyzerPort: 3002,
-    },
-    server: {
-      openAnalyzer: false,
-      analyzerHost: '0.0.0.0',
-      analyzerPort: 3003,
-    },
-  },
   poweredByHeader: false,
   serverRuntimeConfig: {
     NODE_ENV: process.env.NODE_ENV,
@@ -46,4 +36,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withBundleAnalyzer(nextConfig)
+module.exports = withBundleAnalyzer(withTranspileModules(nextConfig))
