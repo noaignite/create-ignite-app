@@ -1,6 +1,6 @@
 import { compose } from 'recompose'
-import withApiContext from 'api'
+import { withCmsContext } from 'api'
 import { withAppProvider } from './AppContext'
 import App from './App'
 
-export default compose(withApiContext(), withAppProvider())(App)
+export default compose(withCmsContext(), withAppProvider())(App)

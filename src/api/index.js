@@ -1,6 +1,3 @@
-/**
- * Replace below export with desired implementation of an API context.
- * Make sure to add the created context provider to `pages/_app.js`
- */
+// Replace below mocked exports with real implementations.
 
-export { default } from './stories'
+export * from './stories'

@@ -7,8 +7,7 @@ module.exports = async props => {
   // Change Storybook default import files from `index.js` to `stories.js`
   config.plugins.push(
     new webpack.NormalModuleReplacementPlugin(
-      // only match index.js files in containers/ or components/
-      /(components|containers)(\/\w+)+\/(index\.js)/,
+      /(api|blocks|components|containers)(\/\w+)*\/(index\.js)/,
       resource => {
         if (resource.resourceResolveData !== undefined) {
           // module was resolved
