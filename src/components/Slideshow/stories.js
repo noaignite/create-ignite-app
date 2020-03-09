@@ -13,8 +13,8 @@ export const Default = () => (
   <Slideshow
     modules={[A11y, Keyboard, Navigation, Pagination]}
     navigation={{
-      prevEl: <SlideshowNavigation variant="previous" />,
-      nextEl: <SlideshowNavigation variant="next" />,
+      prevEl: <SlideshowNavigation variant="prev" aria-label="Previous slide" />,
+      nextEl: <SlideshowNavigation variant="next" aria-label="Next slide" />,
     }}
     pagination={{
       el: <SlideshowPagination />,
