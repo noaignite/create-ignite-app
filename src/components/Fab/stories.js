@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { boolean, select } from '@storybook/addon-knobs'
 import KeyboardArrowRightIcon from '../icons/KeyboardArrowRight'

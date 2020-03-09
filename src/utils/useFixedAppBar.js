@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { useAppContext } from 'containers/App/AppContext'
 
 export default function useFixedAppBar() {

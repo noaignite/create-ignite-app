@@ -1,7 +1,7 @@
 // Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_app.js
 // Updated to functional component from docs https://nextjs.org/docs/advanced-features/custom-app
 
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'

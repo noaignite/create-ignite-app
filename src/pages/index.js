@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import Head from 'next/head'
 import { Default as ContentStory } from 'blocks/Content/stories'
 import { Default as HeroStory } from 'blocks/Hero/stories'

@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Default as AppStory } from 'containers/App/stories'
 import { Default as ContentStory } from 'blocks/Content/stories'

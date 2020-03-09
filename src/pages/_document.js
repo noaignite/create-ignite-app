@@ -1,6 +1,6 @@
 // Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
 
-import React from 'react'
+import * as React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/styles'
 import theme from 'src/theme.default'

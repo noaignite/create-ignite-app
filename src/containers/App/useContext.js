@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import Router from 'next/router'
 import mediaLoaded from '@maeertin/medialoaded'
 import { debounce } from '@oakwood/oui-utils'
