@@ -14,7 +14,7 @@ export const Default = () => (
       ['error', 'inherit', 'primary', 'secondary', 'textPrimary', 'textSecondary'],
       'inherit',
     )}
-    underline={select('underline', ['none', 'hover', 'always', 'animate'], 'animate')}
+    underline={select('underline', ['none', 'hover', 'always'], 'hover')}
     variant={select(
       'variant',
       [
