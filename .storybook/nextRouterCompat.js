@@ -1,9 +1,7 @@
-// based on https://github.com/zeit/next.js/issues/1827#issuecomment-323721221
-
 import Router from 'next/router'
 import { action } from '@storybook/addon-actions'
 
-const actionWithPromise = () => {
+function actionWithPromise() {
   action('clicked link')()
   // we need to return promise because it is needed by Link.linkClicked
   return new Promise((resolve, reject) => reject())
@@ -11,9 +9,11 @@ const actionWithPromise = () => {
 
 export const mockedRouter = {
   pageLoader: { prefetched: {} },
-  prefetch: () => {},
+  pathname: 'mock-path',
+  prefetch: () => new Promise(resolve => resolve()),
   push: actionWithPromise,
   replace: actionWithPromise,
+  route: '/mock-route',
 }
 
 Router.router = mockedRouter
