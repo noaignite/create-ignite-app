@@ -1,26 +1,29 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { compose, nest, withProps } from 'recompose'
-import useContext from './useContext'
+import useCreateContext from './useCreateContext'
 
-export const AppContext = React.createContext({})
+const AppContext = React.createContext()
 
-export const AppProvider = props => {
-  const context = useContext(props)
+if (process.env.NODE_ENV !== 'production') {
+  AppContext.displayName = 'AppContext'
+}
+
+export function useAppContext() {
+  return React.useContext(AppContext)
+}
+
+export function AppContextProvider(props) {
+  const context = useCreateContext(props)
   return <AppContext.Provider value={context}>{props.children}</AppContext.Provider>
 }
 
-AppProvider.propTypes = {
+AppContextProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export const withAppProvider = props => Component =>
-  nest(compose(withProps(props))(AppProvider), Component)
-
-export const useAppContext = () => React.useContext(AppContext)
-
-export const withAppContext = () => compose(withProps(useAppContext))
-
-export const WithAppContext = AppContext.Consumer
+export function withAppContextProvider(props) {
+  return Component => nest(compose(withProps(props))(AppContextProvider), Component)
+}
 
 export default AppContext

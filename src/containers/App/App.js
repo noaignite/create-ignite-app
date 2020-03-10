@@ -38,8 +38,8 @@ export const styles = {
   },
 }
 
-const App = props => {
-  const { children, classes, menuFooter, menuPrimary } = props
+const App = React.forwardRef(function App(props, ref) {
+  const { children, classes, menuFooter, menuPrimary, ...other } = props
 
   const {
     isAppBarFixed,
@@ -91,6 +91,8 @@ const App = props => {
         [classes.isPreloading]: !isMediaReady,
         [classes.isLoading]: isLoading,
       })}
+      ref={ref}
+      {...other}
     >
       <AppSkipLink href={`#${SITE_MAIN_ID}`}>Skip to content</AppSkipLink>
 
@@ -124,7 +126,7 @@ const App = props => {
       <AppBackdrop />
     </div>
   )
-}
+})
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
