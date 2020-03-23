@@ -1,5 +1,5 @@
-import { constants } from './extras'
 import grey from '../colors/grey'
+import { constants } from './extras'
 
 export default function createMixins(breakpoints, spacing, mixins) {
   // eslint-disable-next-line no-shadow
