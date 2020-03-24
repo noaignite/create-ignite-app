@@ -55,6 +55,16 @@ export default function createMixins(breakpoints, spacing, mixins) {
         },
       }
     },
+    horizontalRhythm: (amount = 1) => ({
+      '& > * + *': {
+        marginLeft: spacing(amount),
+      },
+    }),
+    verticalRhythm: (amount = 1) => ({
+      '& > * + *': {
+        marginTop: spacing(amount),
+      },
+    }),
     absolute: (...args) => {
       return position('absolute', ...args)
     },
