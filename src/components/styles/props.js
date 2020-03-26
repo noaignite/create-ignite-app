@@ -38,7 +38,6 @@ const props = {
   MuiSelect: {
     displayEmpty: true,
     IconComponent: SelectArrowIcon,
-    native: true,
   },
   MuiTextField: {
     variant: 'outlined',
