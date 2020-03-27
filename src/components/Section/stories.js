@@ -1,17 +1,15 @@
 import * as React from 'react'
 import { storiesOf } from '@storybook/react'
-import { boolean } from '@storybook/addon-knobs'
+import { boolean, select } from '@storybook/addon-knobs'
 import Section from './Section'
 
 const stories = storiesOf('Components/Section', module)
 
 export const Default = () => (
   <Section
-    disablePadding={boolean('disablePadding', false)}
     disableSpacing={boolean('disableSpacing', false)}
+    spacingRule={select('spacingRule', ['padding', 'margin'], 'margin')}
   >
-    <div style={{ background: '#eee' }}>Section content</div>
-    <div style={{ background: '#eee' }}>Section content</div>
     <div style={{ background: '#eee' }}>Section content</div>
   </Section>
 )

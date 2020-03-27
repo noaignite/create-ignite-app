@@ -74,7 +74,7 @@ const Hero = React.forwardRef(function Hero(props, ref) {
         },
         className,
       )}
-      disablePadding
+      disableSpacing
       ref={ref}
       {...other}
     >

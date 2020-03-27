@@ -35,6 +35,7 @@ const AppFooter = React.forwardRef(function AppFooter(props, ref) {
     <Section
       className={classnames(classes.root, className)}
       component="footer"
+      spacingRule="padding"
       ref={ref}
       {...other}
     >
