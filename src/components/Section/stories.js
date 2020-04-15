@@ -9,8 +9,12 @@ export const Default = () => (
   <Section
     disableSpacing={boolean('disableSpacing', false)}
     spacingRule={select('spacingRule', ['padding', 'margin'], 'margin')}
+    rhythm={select('rhythm', ['regular', 'dense', false], false)}
+    style={{ background: '#eee' }}
   >
-    <div style={{ background: '#eee' }}>Section content</div>
+    <div style={{ background: '#ccc' }}>Section content</div>
+    <div style={{ background: '#ccc' }}>Section content</div>
+    <div style={{ background: '#ccc' }}>Section content</div>
   </Section>
 )
 

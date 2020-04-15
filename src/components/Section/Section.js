@@ -15,6 +15,13 @@ export const styles = theme => ({
       [`${spacingRule}Bottom`]: theme.spacing(6),
     },
   }),
+  regular: {
+    ...theme.mixins.verticalRhythm(4),
+    [theme.breakpoints.up('md')]: {
+      ...theme.mixins.verticalRhythm(8),
+    },
+  },
+  dense: theme.mixins.verticalRhythm(2),
 })
 
 const Section = React.forwardRef(function Section(props, ref) {
@@ -24,6 +31,7 @@ const Section = React.forwardRef(function Section(props, ref) {
     className,
     component: Component = 'section',
     disableSpacing,
+    rhythm,
     spacingRule,
     ...other
   } = props
@@ -33,6 +41,7 @@ const Section = React.forwardRef(function Section(props, ref) {
       className={classnames(
         classes.root,
         {
+          [classes[rhythm]]: rhythm !== false,
           [classes.spacing]: !disableSpacing,
         },
         className,
@@ -51,6 +60,7 @@ Section.propTypes = {
   className: PropTypes.string,
   component: PropTypes.elementType,
   disableSpacing: PropTypes.bool,
+  rhythm: PropTypes.oneOf(['regular', 'dense', false]),
   spacingRule: PropTypes.oneOf(['padding', 'margin']),
 }
 
