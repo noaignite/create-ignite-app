@@ -2,23 +2,23 @@ import { fade } from '@material-ui/core/styles/colorManipulator'
 
 export { default } from '@material-ui/core/Button'
 
-const borderWidth = 1
-const xPadding = 30
-const yPadding = 20
+const BORDER_WIDTH = 1
+const PADDING_X = 27
+const PADDING_Y = 17
 
 export const styles = theme => ({
   text: {
-    padding: `${yPadding}px ${xPadding}px`,
+    padding: `${PADDING_Y}px ${PADDING_X}px`,
   },
   outlined: {
-    padding: `${yPadding - borderWidth}px ${xPadding - borderWidth}px`,
+    padding: `${PADDING_Y - BORDER_WIDTH}px ${PADDING_X - BORDER_WIDTH}px`,
   },
   contained: {
-    padding: `${yPadding}px ${xPadding}px`,
-    color: theme.palette.getContrastText(theme.palette.text.primary),
+    padding: `${PADDING_Y}px ${PADDING_X}px`,
     backgroundColor: theme.palette.text.primary,
+    color: theme.palette.getContrastText(theme.palette.text.primary),
     '&:hover': {
-      backgroundColor: fade(theme.palette.text.primary, 1 - theme.palette.action.hoverOpacity * 2),
+      backgroundColor: fade(theme.palette.text.primary, 1 - theme.palette.action.activatedOpacity),
       // Reset on touch devices, it doesn't add specificity
       '@media (hover: none)': {
         backgroundColor: theme.palette.text.primary,
@@ -28,13 +28,28 @@ export const styles = theme => ({
       },
     },
   },
-  // All variants share size modifiers
-  sizeSmall: {
-    padding: `${yPadding - 3}px ${xPadding - 3}px`,
-    fontSize: theme.typography.pxToRem(10),
+  textSizeSmall: {
+    padding: `${PADDING_Y - 2}px ${PADDING_X - 4}px`,
+    fontSize: theme.typography.pxToRem(12),
   },
-  sizeLarge: {
-    padding: `${yPadding + 3}px ${xPadding + 3}px`,
-    fontSize: theme.typography.pxToRem(14),
+  textSizeLarge: {
+    padding: `${PADDING_Y + 4}px ${PADDING_X + 8}px`,
+    fontSize: theme.typography.button.fontSize,
+  },
+  outlinedSizeSmall: {
+    padding: `${PADDING_Y - 2 - BORDER_WIDTH}px ${PADDING_X - 4 - BORDER_WIDTH}px`,
+    fontSize: theme.typography.pxToRem(12),
+  },
+  outlinedSizeLarge: {
+    padding: `${PADDING_Y + 4 - BORDER_WIDTH}px ${PADDING_X + 8 - BORDER_WIDTH}px`,
+    fontSize: theme.typography.button.fontSize,
+  },
+  containedSizeSmall: {
+    padding: `${PADDING_Y - 2}px ${PADDING_X - 4}px`,
+    fontSize: theme.typography.pxToRem(12),
+  },
+  containedSizeLarge: {
+    padding: `${PADDING_Y + 4}px ${PADDING_X + 8}px`,
+    fontSize: theme.typography.button.fontSize,
   },
 })
