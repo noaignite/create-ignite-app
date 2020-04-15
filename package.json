@@ -35,7 +35,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "recompose": "^0.30.0",
-    "swiper": "^5.3.6"
+    "swiper": "^5.3.7"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^9.3.0",
