@@ -7,7 +7,6 @@ import TextField from './TextField'
 const stories = storiesOf('Components/TextField', module)
 
 export const Default = () => {
-  const labelKnob = text('label', 'Field label')
   const selectKnob = boolean('select', false)
 
   const [value, setValue] = React.useState('')
@@ -21,13 +20,13 @@ export const Default = () => {
       error={boolean('error', false)}
       fullWidth={boolean('fullWidth', false)}
       helperText={text('helperText', 'Field description')}
-      label={!selectKnob ? labelKnob : undefined}
+      label={text('label', 'Field label')}
       margin={select('margin', ['none', 'dense', 'normal'], 'none')}
       multiline={boolean('multiline', false)}
       placeholder={text('placeholder', 'Field placeholder')}
       required={boolean('required', false)}
       select={selectKnob}
-      variant={select('variant', ['standard', 'outlined', 'filled'], 'outlined')}
+      variant={select('variant', ['standard', 'outlined', 'filled'], 'standard')}
       onChange={handleChange}
       value={value}
     >

@@ -36,11 +36,7 @@ const props = {
     icon: <RadioUncheckedIcon />,
   },
   MuiSelect: {
-    displayEmpty: true,
     IconComponent: SelectArrowIcon,
-  },
-  MuiTextField: {
-    variant: 'outlined',
   },
 }
 
