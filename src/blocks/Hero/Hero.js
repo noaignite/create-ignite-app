@@ -35,11 +35,11 @@ export const styles = theme => ({
     height: '100%',
   },
   content: {
+    color: theme.palette.getContrastText(theme.palette.text.primary),
     textAlign: 'center',
   },
   heading: {
     margin: 0,
-    color: theme.palette.getContrastText(theme.palette.text.primary),
   },
   heading1: theme.mixins.fluidType('sm', 'xl', 45, 132),
   heading2: theme.mixins.fluidType('sm', 'xl', 47, 144),
@@ -123,6 +123,7 @@ const Hero = React.forwardRef(function Hero(props, ref) {
               className={classnames(classes.button, classes.fadeIn)}
               component={RouterLink}
               href={cta.url}
+              color="inherit"
               style={{ transitionDuration: `${ANIMATION_DELAY * 4}ms` }}
             >
               {cta.label}
