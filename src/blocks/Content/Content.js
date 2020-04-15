@@ -17,7 +17,7 @@ export const styles = theme => ({
       },
       'figure, img': {
         maxWidth: '100%',
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('lg')]: {
           maxWidth: theme.breakpoints.values.md,
         },
       },
