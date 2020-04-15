@@ -9,7 +9,7 @@ import BrandIcon from 'components/icons/Brand'
 import BurgerIcon from 'components/icons/Burger'
 import CartIcon from 'components/icons/Cart'
 import CrossIcon from 'components/icons/Cross'
-import Container from 'components/Container'
+import SearchIcon from 'components/icons/Search'
 import IconButton from 'components/IconButton'
 import Toolbar from 'components/Toolbar'
 import AppAppBar from './partials/AppAppBar'
@@ -20,7 +20,10 @@ import AppNavMenu from './partials/AppNavMenu'
 import AppSkipLink from './partials/AppSkipLink'
 import { useAppContext } from './AppContext'
 
-export const styles = {
+const BREAKPOINT_KEY_DOWN = 'sm'
+const BREAKPOINT_KEY_UP = 'md'
+
+export const styles = theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -29,14 +32,27 @@ export const styles = {
   isPreloading: {},
   isLoading: {},
   appBar: {},
-  appBarToolbar: {
-    justifyContent: 'space-between',
+  appBarToolbar: {},
+  appBarMobilePush: {
+    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
+      marginLeft: 'auto',
+    },
+  },
+  appBarDesktopPush: {
+    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
+      marginLeft: 'auto',
+    },
+  },
+  brandIconButton: {
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
   },
   main: {
     flexGrow: 1,
     outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
   },
-}
+})
 
 const App = React.forwardRef(function App(props, ref) {
   const { children, classes, menuFooter, menuPrimary, ...other } = props
@@ -47,14 +63,15 @@ const App = React.forwardRef(function App(props, ref) {
     isLoading,
     isMediaReady,
     isNavMenuOpen,
+    isSearchOpen,
     onAppBarBurgerClick,
     onAppBarCartClick,
+    onAppBarSearchClick,
   } = useAppContext()
 
   const burgerIconButton = (
     <IconButton
       onClick={onAppBarBurgerClick}
-      color="inherit"
       edge="start"
       size="small"
       aria-haspopup="true"
@@ -65,8 +82,25 @@ const App = React.forwardRef(function App(props, ref) {
     </IconButton>
   )
 
+  const searchIconButton = (
+    <IconButton
+      onClick={onAppBarSearchClick}
+      size="small"
+      aria-haspopup="true"
+      aria-expanded={isSearchOpen}
+      aria-label="Toggle search"
+    >
+      {isSearchOpen ? <CrossIcon /> : <SearchIcon />}
+    </IconButton>
+  )
+
   const brandIconButton = (
-    <IconButton component={RouterLink} color="inherit" href="/" aria-label="Go to the homepage">
+    <IconButton
+      className={classes.brandIconButton}
+      component={RouterLink}
+      href="/"
+      aria-label="Go to the homepage"
+    >
       <BrandIcon style={{ width: 'auto' }} />
     </IconButton>
   )
@@ -74,14 +108,13 @@ const App = React.forwardRef(function App(props, ref) {
   const cartIconButton = (
     <IconButton
       onClick={onAppBarCartClick}
-      color="inherit"
       edge="end"
       size="small"
       aria-haspopup="true"
       aria-expanded={isCartMenuOpen}
       aria-label="Toggle cart menu"
     >
-      {isCartMenuOpen ? <CrossIcon /> : <CartIcon />}
+      {isCartMenuOpen ? <CrossIcon /> : <CartIcon amount={3} />}
     </IconButton>
   )
 
@@ -101,15 +134,15 @@ const App = React.forwardRef(function App(props, ref) {
         position={isAppBarFixed ? 'fixed' : 'sticky'}
         id={SITE_HEADER_ID}
       >
-        <Toolbar
-          className={classes.appBarToolbar}
-          component={Container}
-          maxWidth={false}
-          disableGutters
-        >
-          <div>{burgerIconButton}</div>
-          <div>{brandIconButton}</div>
-          <div>{cartIconButton}</div>
+        <Toolbar className={classes.appBarToolbar}>
+          {burgerIconButton}
+
+          <div className={classes.appBarDesktopPush} />
+          {searchIconButton}
+          <div className={classes.appBarMobilePush} />
+
+          {brandIconButton}
+          {cartIconButton}
         </Toolbar>
       </AppAppBar>
 
