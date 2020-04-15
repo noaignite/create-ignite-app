@@ -18,7 +18,7 @@ export const styles = theme => ({
   regular: {
     ...theme.mixins.verticalRhythm(4),
     [theme.breakpoints.up('md')]: {
-      ...theme.mixins.verticalRhythm(8),
+      ...theme.mixins.verticalRhythm(6),
     },
   },
   dense: theme.mixins.verticalRhythm(2),
