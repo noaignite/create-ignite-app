@@ -14,10 +14,8 @@ const AppAppBar = React.forwardRef(function AppAppBar(props, ref) {
   const handleRef = useForkRef(rootRef, ref)
 
   const [height, setHeight] = React.useState(0)
-
   const syncHeight = React.useCallback(() => {
-    const clientHeight = rootRef.current ? rootRef.current.clientHeight : 0
-    setHeight(clientHeight)
+    setHeight(rootRef.current?.clientHeight || 0)
   }, [])
 
   React.useEffect(() => {
