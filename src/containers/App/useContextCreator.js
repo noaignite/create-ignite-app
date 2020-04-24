@@ -10,7 +10,6 @@ export const defaultState = {
   isLoading: false,
   isMediaReady: false,
   isNavMenuOpen: false,
-  isReady: false,
 }
 
 export default props => {
@@ -21,7 +20,6 @@ export default props => {
   const [isLoading, setIsLoading] = React.useState(initialState.isLoading)
   const [isMediaReady, setIsMediaReady] = React.useState(initialState.isMediaReady)
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(initialState.isNavMenuOpen)
-  const [isReady, setIsReady] = React.useState(initialState.isReady)
 
   // Helpers
 
@@ -34,10 +32,6 @@ export default props => {
 
   const handleMediaReady = React.useCallback(() => {
     setIsMediaReady(true)
-
-    // The `setIsReady` setter can be moved elsewhere. For example, if a website intro
-    // sequence is implemented, this would be called when that animation finishes.
-    setIsReady(true)
   }, [])
 
   const handleRouteChangeStart = React.useCallback(() => {
@@ -113,7 +107,6 @@ export default props => {
     isLoading,
     isMediaReady,
     isNavMenuOpen,
-    isReady,
     onAppBarBurgerClick,
     onAppBarCartClick,
     onCartMenuClose,
