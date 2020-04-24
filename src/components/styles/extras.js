@@ -5,19 +5,6 @@
  * before adding unnecessary values.
  */
 
-export const aspectRatios = {
-  // Generic ratios
-  square: {
-    width: 1,
-    height: 1,
-  },
-  video: {
-    width: 16,
-    height: 9,
-  },
-  // Project specific ratios
-}
-
 export const constants = {
   TOOLBAR_MIN_HEIGHT_DENSE: 50,
   TOOLBAR_MIN_HEIGHT_RESPONSIVE: 64,
@@ -25,6 +12,5 @@ export const constants = {
 }
 
 export default {
-  aspectRatios,
   constants,
 }
