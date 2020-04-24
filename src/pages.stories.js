@@ -17,6 +17,13 @@ function addPageStory(name, Page) {
 addPageStory('Home', () => (
   <>
     <HeroStory backgroundAttachment="sticky" />
+    <HeroStory
+      backgroundAttachment="fixed"
+      backgroundMediaProps={{
+        component: 'img',
+        src: '//source.unsplash.com/800x400',
+      }}
+    />
     <ContentStory />
   </>
 ))
