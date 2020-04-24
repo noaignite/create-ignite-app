@@ -22,7 +22,7 @@ export const styles = theme => ({
   navlistItemText: {},
 })
 
-const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
+const AppNavDrawer = React.forwardRef(function AppNavDrawer(props, ref) {
   const { classes, menu = [], open, ...other } = props
 
   const { onNavMenuClose, onNavMenuExited } = useAppHandlers()
@@ -58,12 +58,12 @@ const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
   )
 })
 
-AppNavMenu.propTypes = {
+AppNavDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
   menu: PropTypes.arrayOf(menuLinkType),
   open: PropTypes.bool,
 }
 
-AppNavMenu.uiName = 'AppNavMenu'
+AppNavDrawer.uiName = 'AppNavDrawer'
 
-export default withStyles(styles)(React.memo(AppNavMenu))
+export default withStyles(styles)(React.memo(AppNavDrawer))

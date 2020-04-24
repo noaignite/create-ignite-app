@@ -14,9 +14,9 @@ import IconButton from 'components/IconButton'
 import Toolbar from 'components/Toolbar'
 import AppAppBar from './partials/AppAppBar'
 import AppBackdrop from './partials/AppBackdrop'
-import AppCartMenu from './partials/AppCartMenu'
+import AppCartDrawer from './partials/AppCartDrawer'
 import AppFooter from './partials/AppFooter'
-import AppNavMenu from './partials/AppNavMenu'
+import AppNavDrawer from './partials/AppNavDrawer'
 import AppSkipLink from './partials/AppSkipLink'
 import { useApp } from './AppContext'
 
@@ -147,8 +147,8 @@ const App = React.forwardRef(function App(props, ref) {
         </Toolbar>
       </AppAppBar>
 
-      <AppNavMenu menu={menuPrimary} open={isNavMenuOpen} />
-      <AppCartMenu open={isCartMenuOpen} />
+      <AppNavDrawer menu={menuPrimary} open={isNavMenuOpen} />
+      <AppCartDrawer open={isCartMenuOpen} />
 
       <main className={classes.main} id={SITE_MAIN_ID} role="main" tabIndex="-1">
         {children}

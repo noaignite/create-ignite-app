@@ -14,7 +14,7 @@ export const styles = theme => ({
   nav: theme.mixins.gutters(),
 })
 
-const AppCartMenu = React.forwardRef(function AppCartMenu(props, ref) {
+const AppCartDrawer = React.forwardRef(function AppCartDrawer(props, ref) {
   const { classes, open, ...other } = props
 
   const { onCartMenuClose, onCartMenuExited } = useAppHandlers()
@@ -36,11 +36,11 @@ const AppCartMenu = React.forwardRef(function AppCartMenu(props, ref) {
   )
 })
 
-AppCartMenu.propTypes = {
+AppCartDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
   open: PropTypes.bool,
 }
 
-AppCartMenu.uiName = 'AppCartMenu'
+AppCartDrawer.uiName = 'AppCartDrawer'
 
-export default withStyles(styles)(React.memo(AppCartMenu))
+export default withStyles(styles)(React.memo(AppCartDrawer))
