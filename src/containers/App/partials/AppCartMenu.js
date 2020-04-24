@@ -3,7 +3,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '@material-ui/core/styles/withStyles'
-import { useAppContext } from '../AppContext'
+import { useAppHandlers } from '../AppContext'
 import AppDrawer from './AppDrawer'
 
 export const styles = theme => ({
@@ -15,15 +15,15 @@ export const styles = theme => ({
 })
 
 const AppCartMenu = React.forwardRef(function AppCartMenu(props, ref) {
-  const { classes, ...other } = props
+  const { classes, open, ...other } = props
 
-  const { isCartMenuOpen, onCartMenuClose, onCartMenuExited } = useAppContext()
+  const { onCartMenuClose, onCartMenuExited } = useAppHandlers()
 
   return (
     <AppDrawer
       classes={{ paper: classes.paper }}
       SlideProps={{ onExited: onCartMenuExited }}
-      open={isCartMenuOpen}
+      open={open}
       onClose={onCartMenuClose}
       anchor="right"
       ref={ref}
@@ -38,8 +38,9 @@ const AppCartMenu = React.forwardRef(function AppCartMenu(props, ref) {
 
 AppCartMenu.propTypes = {
   classes: PropTypes.object.isRequired,
+  open: PropTypes.bool,
 }
 
 AppCartMenu.uiName = 'AppCartMenu'
 
-export default withStyles(styles)(AppCartMenu)
+export default withStyles(styles)(React.memo(AppCartMenu))

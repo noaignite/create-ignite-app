@@ -6,7 +6,7 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import { menuLinkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import Link from 'components/Link'
-import { useAppContext } from '../AppContext'
+import { useAppHandlers } from '../AppContext'
 import AppDrawer from './AppDrawer'
 
 export const styles = theme => ({
@@ -23,15 +23,15 @@ export const styles = theme => ({
 })
 
 const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
-  const { classes, menu = [], ...other } = props
+  const { classes, menu = [], open, ...other } = props
 
-  const { isNavMenuOpen, onNavMenuClose, onNavMenuExited } = useAppContext()
+  const { onNavMenuClose, onNavMenuExited } = useAppHandlers()
 
   return (
     <AppDrawer
       classes={{ paper: classes.paper }}
       SlideProps={{ onExited: onNavMenuExited }}
-      open={isNavMenuOpen}
+      open={open}
       onClose={onNavMenuClose}
       anchor="left"
       ref={ref}
@@ -61,8 +61,9 @@ const AppNavMenu = React.forwardRef(function AppNavMenu(props, ref) {
 AppNavMenu.propTypes = {
   classes: PropTypes.object.isRequired,
   menu: PropTypes.arrayOf(menuLinkType),
+  open: PropTypes.bool,
 }
 
 AppNavMenu.uiName = 'AppNavMenu'
 
-export default withStyles(styles)(AppNavMenu)
+export default withStyles(styles)(React.memo(AppNavMenu))

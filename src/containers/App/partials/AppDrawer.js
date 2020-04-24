@@ -77,4 +77,4 @@ AppDrawer.propTypes = {
 
 AppDrawer.uiName = 'AppDrawer'
 
-export default withStyles(styles)(AppDrawer)
+export default withStyles(styles)(React.memo(AppDrawer))

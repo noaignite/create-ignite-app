@@ -56,4 +56,4 @@ AppAppBar.propTypes = {
 
 AppAppBar.uiName = 'AppAppBar'
 
-export default AppAppBar
+export default React.memo(AppAppBar)

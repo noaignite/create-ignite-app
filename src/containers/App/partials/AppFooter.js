@@ -70,4 +70,4 @@ AppFooter.propTypes = {
 
 AppFooter.uiName = 'AppFooter'
 
-export default withStyles(styles)(AppFooter)
+export default withStyles(styles)(React.memo(AppFooter))

@@ -18,7 +18,7 @@ import AppCartMenu from './partials/AppCartMenu'
 import AppFooter from './partials/AppFooter'
 import AppNavMenu from './partials/AppNavMenu'
 import AppSkipLink from './partials/AppSkipLink'
-import { useAppContext } from './AppContext'
+import { useApp } from './AppContext'
 
 const BREAKPOINT_KEY_DOWN = 'sm'
 const BREAKPOINT_KEY_UP = 'md'
@@ -59,6 +59,7 @@ const App = React.forwardRef(function App(props, ref) {
 
   const {
     isAppBarFixed,
+    isBackdropOpen,
     isCartMenuOpen,
     isLoading,
     isMediaReady,
@@ -67,7 +68,7 @@ const App = React.forwardRef(function App(props, ref) {
     onAppBarBurgerClick,
     onAppBarCartClick,
     onAppBarSearchClick,
-  } = useAppContext()
+  } = useApp()
 
   const burgerIconButton = (
     <IconButton
@@ -146,9 +147,8 @@ const App = React.forwardRef(function App(props, ref) {
         </Toolbar>
       </AppAppBar>
 
-      <AppNavMenu menu={menuPrimary} />
-
-      <AppCartMenu />
+      <AppNavMenu menu={menuPrimary} open={isNavMenuOpen} />
+      <AppCartMenu open={isCartMenuOpen} />
 
       <main className={classes.main} id={SITE_MAIN_ID} role="main" tabIndex="-1">
         {children}
@@ -156,7 +156,7 @@ const App = React.forwardRef(function App(props, ref) {
 
       <AppFooter menu={menuFooter} id={SITE_FOOTER_ID} />
 
-      <AppBackdrop />
+      <AppBackdrop open={isBackdropOpen} loading={isLoading} />
     </div>
   )
 })
