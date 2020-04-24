@@ -8,7 +8,7 @@ const defaultAlias = {
 }
 
 const productionPlugins = [
-  'babel-plugin-transform-react-constant-elements',
+  '@babel/plugin-transform-react-constant-elements',
   'babel-plugin-transform-dev-warning',
   [
     'babel-plugin-transform-react-remove-prop-types',
