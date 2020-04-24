@@ -11,7 +11,7 @@ export const Default = compose(
   defaultProps({
     children: <div>[this.props.children]</div>,
   }),
-  withCmsContext(),
+  withCmsContext,
   withAppContextProvider,
 )(App)
 

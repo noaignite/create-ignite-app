@@ -3,4 +3,4 @@ import { withCmsContext } from 'api'
 import { withAppContextProvider } from './AppContext'
 import App from './App'
 
-export default compose(withCmsContext(), withAppContextProvider)(App)
+export default compose(withCmsContext, withAppContextProvider)(App)

@@ -1,12 +1,10 @@
 import { withProps } from 'recompose'
 import { menuPrimary, menuFooter } from './mock'
 
-export const withCmsContext = () => {
-  return withProps({
-    menuPrimary,
-    menuFooter,
-  })
-}
+export const withCmsContext = withProps({
+  menuPrimary,
+  menuFooter,
+})
 
 export const useCartContext = () => ({
   cartItems: [],
