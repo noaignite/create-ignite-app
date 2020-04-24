@@ -106,7 +106,7 @@ export default props => {
     setIsAppBarFixed,
     // Computed properties
     isBackdropOpen: isLoading,
-    isMenusOpen: isCartMenuOpen || isNavMenuOpen,
+    isSomeMenusOpen: isCartMenuOpen || isNavMenuOpen,
     // Normal properties
     isAppBarFixed,
     isCartMenuOpen,

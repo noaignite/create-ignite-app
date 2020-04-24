@@ -12,7 +12,7 @@ export const Default = compose(
     children: <div>[this.props.children]</div>,
   }),
   withCmsContext(),
-  withAppContextProvider(),
+  withAppContextProvider,
 )(App)
 
 stories.add('Default', Default)
