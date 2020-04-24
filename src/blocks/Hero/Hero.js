@@ -26,17 +26,8 @@ export const styles = theme => ({
     },
   },
   content: {},
-  backgroundContainer: {
-    zIndex: -1,
-  },
   backgroundWrapperSticky: {
     top: 'var(--coa-header-height)',
-  },
-  backgroundLoader: {
-    height: '100%',
-  },
-  backgroundMedia: {
-    height: '100%',
   },
   heading: {
     margin: 0,
@@ -71,14 +62,13 @@ const Hero = React.forwardRef(function Hero(props, ref) {
       {backgroundMediaProps && (
         <BackgroundMedia
           classes={{
-            root: classes.backgroundContainer,
             wrapperSticky: classes.backgroundWrapperSticky,
           }}
           attachment={backgroundAttachment}
         >
-          <MediaLoader className={classes.backgroundLoader}>
+          <MediaLoader>
             <Media
-              className={classnames(classes.backgroundMedia, 'coa-preload')}
+              className="coa-preload"
               {...(backgroundMediaProps?.component === 'video'
                 ? { autoPlay: true, muted: true, loop: true, playsInline: true }
                 : {})}
