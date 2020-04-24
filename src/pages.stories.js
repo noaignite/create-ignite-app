@@ -16,7 +16,7 @@ function addPageStory(name, Page) {
 
 addPageStory('Home', () => (
   <>
-    <HeroStory />
+    <HeroStory backgroundAttachment="sticky" />
     <ContentStory />
   </>
 ))
