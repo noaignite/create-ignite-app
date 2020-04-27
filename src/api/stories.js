@@ -6,7 +6,7 @@ export const withCmsContext = withProps({
   menuFooter,
 })
 
-export const useCartContext = () => ({
+export const useCart = () => ({
   cartItems: [],
   onDecrease: console.log, // eslint-disable-line no-console
   onIncrease: console.log, // eslint-disable-line no-console
