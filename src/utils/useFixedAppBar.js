@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { useAppContext } from 'containers/App/AppContext'
+import { useAppHandlers } from 'containers/App/AppContext'
 
 export default function useFixedAppBar() {
-  const { setIsAppBarFixed } = useAppContext()
+  const { setIsAppBarFixed } = useAppHandlers()
 
   React.useEffect(() => {
     setIsAppBarFixed(true)
