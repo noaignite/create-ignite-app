@@ -9,7 +9,15 @@ const Home = () => {
       <Head>
         <title>Home | Create Oakwood App</title>
       </Head>
-      <HeroStory />
+
+      <HeroStory backgroundAttachment="sticky" />
+      <HeroStory
+        backgroundAttachment="fixed"
+        backgroundMediaProps={{
+          component: 'img',
+          src: '//source.unsplash.com/800x400',
+        }}
+      />
       <ContentStory />
     </>
   )
