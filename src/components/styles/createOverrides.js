@@ -5,7 +5,7 @@ import { styles as MuiContainer } from '../Container/Container'
 import { styles as MuiFab } from '../Fab/Fab'
 import { styles as MuiIconButton } from '../IconButton/IconButton'
 import { styles as MuiToolbar } from '../Toolbar/Toolbar'
-import * as internalOverrides from '../internal/overrides'
+import * as internalOverrides from './overrides'
 
 export default function createOverrides(theme) {
   const overrides = {
