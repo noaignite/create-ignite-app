@@ -58,13 +58,14 @@ const App = React.forwardRef(function App(props, ref) {
   const { children, classes, menuFooter, menuPrimary, ...other } = props
 
   const {
-    isAppBarFixed,
+    appBarColor,
     isBackdropOpen,
     isCartMenuOpen,
     isLoading,
     isMediaReady,
     isNavMenuOpen,
     isSearchOpen,
+    isSomeMenuOpen,
     onAppBarBurgerClick,
     onAppBarCartClick,
     onAppBarSearchClick,
@@ -132,7 +133,8 @@ const App = React.forwardRef(function App(props, ref) {
 
       <AppAppBar
         className={classes.appBar}
-        position={isAppBarFixed ? 'fixed' : 'sticky'}
+        color={appBarColor}
+        disableTransparency={isSomeMenuOpen}
         id={SITE_HEADER_ID}
       >
         <Toolbar className={classes.appBarToolbar}>

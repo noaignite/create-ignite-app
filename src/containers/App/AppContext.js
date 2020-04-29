@@ -23,7 +23,7 @@ export function useApp() {
 }
 
 export function AppContextProvider(props) {
-  const [isAppBarFixed, setIsAppBarFixed] = React.useState(false)
+  const [appBarColor, setAppBarColor] = React.useState('default')
   const [isCartMenuOpen, setIsCartMenuOpen] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
   const [isMediaReady, setIsMediaReady] = React.useState(false)
@@ -114,7 +114,7 @@ export function AppContextProvider(props) {
       onNavMenuClose,
       onNavMenuExited,
       // Expose setters for custom hooks
-      setIsAppBarFixed,
+      setAppBarColor,
     }),
     [
       onAppBarBurgerClick,
@@ -123,7 +123,7 @@ export function AppContextProvider(props) {
       onCartMenuExited,
       onNavMenuClose,
       onNavMenuExited,
-      setIsAppBarFixed,
+      setAppBarColor,
     ],
   )
 
@@ -131,18 +131,18 @@ export function AppContextProvider(props) {
   // higher up the tree.
   const appContext = React.useMemo(
     () => ({
-      isAppBarFixed,
+      appBarColor,
       isCartMenuOpen,
       isLoading,
       isMediaReady,
       isNavMenuOpen,
       // Computed props
       isBackdropOpen: isLoading,
-      isSomeMenusOpen: isCartMenuOpen || isNavMenuOpen,
+      isSomeMenuOpen: isCartMenuOpen || isNavMenuOpen,
       // Merge in handlers for easy access
       ...appHandlersContext,
     }),
-    [appHandlersContext, isAppBarFixed, isCartMenuOpen, isLoading, isMediaReady, isNavMenuOpen],
+    [appBarColor, appHandlersContext, isCartMenuOpen, isLoading, isMediaReady, isNavMenuOpen],
   )
 
   return (

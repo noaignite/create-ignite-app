@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { storiesOf } from '@storybook/react'
+import { useHeaderColor } from 'utils'
 import { Default as AppStory } from 'containers/App/stories'
 import { Default as ContentStory } from 'blocks/Content/stories'
 import { Default as HeroStory } from 'blocks/Hero/stories'
@@ -14,16 +15,27 @@ function addPageStory(name, Page) {
   ))
 }
 
-addPageStory('Home', () => (
+addPageStory('Home', () => {
+  useHeaderColor('auto')
+
+  return (
+    <>
+      <HeroStory backgroundAttachment="sticky" />
+      <HeroStory
+        backgroundAttachment="fixed"
+        backgroundMediaProps={{
+          component: 'img',
+          src: '//source.unsplash.com/800x400',
+        }}
+      />
+      <ContentStory />
+    </>
+  )
+})
+
+addPageStory('Content', () => (
   <>
-    <HeroStory backgroundAttachment="sticky" />
-    <HeroStory
-      backgroundAttachment="fixed"
-      backgroundMediaProps={{
-        component: 'img',
-        src: '//source.unsplash.com/800x400',
-      }}
-    />
+    <HeroStory />
     <ContentStory />
   </>
 ))
