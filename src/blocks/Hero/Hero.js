@@ -27,7 +27,10 @@ export const styles = theme => ({
   },
   content: {},
   backgroundWrapperSticky: {
-    top: 'var(--coa-header-height)',
+    top: 'var(--coa-sticky-top)',
+    '$root:first-child &': {
+      top: 'var(--coa-initial-sticky-top)',
+    },
   },
   heading: {
     margin: 0,
@@ -62,6 +65,7 @@ const Hero = React.forwardRef(function Hero(props, ref) {
       {backgroundMediaProps && (
         <BackgroundMedia
           classes={{
+            wrapperFixed: 'mui-fixed',
             wrapperSticky: classes.backgroundWrapperSticky,
           }}
           attachment={backgroundAttachment}
