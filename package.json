@@ -16,15 +16,16 @@
     "node": ">=12.0.0"
   },
   "scripts": {
+    "lint": "eslint . --cache --report-unused-disable-directives",
+    "lint:ci": "eslint . --report-unused-disable-directives",
+    "lint:fix": "eslint . --cache --fix",
     "analyze": "ANALYZE=true next build",
-    "build:storybook": "build-storybook -c .storybook -s ./public -o .styleguide",
-    "build": "next build",
-    "dev": "next",
-    "lint:fix": "eslint . --cache --fix && echo \"eslint: no lint errors\"",
-    "lint": "eslint . --cache --report-unused-disable-directives && echo \"eslint: no lint errors\"",
     "now-build": "build-storybook -c .storybook -s ./public -o .styleguide",
+    "build:storybook": "build-storybook -c .storybook -s ./public -o .styleguide",
+    "storybook": "start-storybook -s ./public -p 3001 --ci",
+    "build": "next build",
     "start": "next start -p $PORT",
-    "storybook": "start-storybook -s ./public -p 3001 --ci"
+    "dev": "next"
   },
   "dependencies": {
     "@material-ui/core": "4.9.12",
