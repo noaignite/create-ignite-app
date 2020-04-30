@@ -5,7 +5,7 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Backdrop from 'components/Backdrop'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     zIndex: theme.zIndex.appBar - 1,
   },

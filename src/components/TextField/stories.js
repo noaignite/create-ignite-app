@@ -10,7 +10,7 @@ export const Default = () => {
   const selectKnob = boolean('select', false)
 
   const [value, setValue] = React.useState('')
-  const handleChange = event => {
+  const handleChange = (event) => {
     setValue(event.target.value)
   }
 

@@ -4,7 +4,7 @@ import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Link from 'components/Link'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     position: 'absolute',
     zIndex: theme.zIndex.appBar + 1,

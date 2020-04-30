@@ -4,7 +4,7 @@ import Content from './Content'
 
 const stories = storiesOf('Blocks/Content', module)
 
-export const Default = props => (
+export const Default = (props) => (
   <Content {...props}>
     <h1>HTML Ipsum Presents</h1>
 

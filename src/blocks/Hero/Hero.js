@@ -12,7 +12,7 @@ import Container from 'components/Container'
 import Section from 'components/Section'
 import Typography from 'components/Typography'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',

@@ -25,7 +25,7 @@ export default function createTypography(palette, typography) {
   } = typeof typography === 'function' ? typography(palette) : typography
 
   const coef = fontSize / 14
-  const pxToRem = size => `${(size / htmlFontSize) * coef}rem`
+  const pxToRem = (size) => `${(size / htmlFontSize) * coef}rem`
   const buildVariant = (typeFace, fontWeight, size, lineHeight, letterSpacing, casing) => ({
     fontFamily: typeFace,
     fontWeight,

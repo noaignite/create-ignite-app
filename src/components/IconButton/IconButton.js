@@ -5,7 +5,7 @@ export { default } from '@material-ui/core/IconButton'
 const MD_PADDING = 12
 const SM_PADDING = 6
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     padding: MD_PADDING,
     borderRadius: 0,

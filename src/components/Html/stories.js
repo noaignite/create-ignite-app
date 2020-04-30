@@ -4,7 +4,7 @@ import Html from './Html'
 
 const stories = storiesOf('Components/Html', module)
 
-export const Default = props => (
+export const Default = (props) => (
   <Html {...props}>
     <h1>HTML Ipsum Presents</h1>
 

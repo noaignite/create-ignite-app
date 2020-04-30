@@ -47,8 +47,9 @@ export default function createMixins(breakpoints, spacing, mixins) {
       return {
         fontSize: minFontSize,
         [`@media (min-width: ${minVw}px)`]: {
-          fontSize: `calc(${minFontSize}px + ${maxFontSize -
-            minFontSize} * ((100vw - ${minVw}px) / ${maxVw - minVw}))`,
+          fontSize: `calc(${minFontSize}px + ${
+            maxFontSize - minFontSize
+          } * ((100vw - ${minVw}px) / ${maxVw - minVw}))`,
         },
         [`@media (min-width: ${maxVw}px)`]: {
           fontSize: maxFontSize,
@@ -79,7 +80,7 @@ export default function createMixins(breakpoints, spacing, mixins) {
       marginRight: 'auto',
       marginLeft: 'auto',
     }),
-    lineClamp: lines => ({
+    lineClamp: (lines) => ({
       display: '-webkit-box',
       WebkitBoxOrient: 'vertical',
       WebkitLineClamp: lines,

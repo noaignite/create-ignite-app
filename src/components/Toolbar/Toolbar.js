@@ -1,6 +1,6 @@
 export { default } from '@material-ui/core/Toolbar'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   gutters: {
     ...theme.mixins.gutters(),
     // Disable MUI responsive gutters.

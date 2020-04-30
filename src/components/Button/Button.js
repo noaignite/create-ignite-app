@@ -6,7 +6,7 @@ const BORDER_WIDTH = 1
 const PADDING_X = 27
 const PADDING_Y = 17
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   text: {
     padding: `${PADDING_Y}px ${PADDING_X}px`,
   },
