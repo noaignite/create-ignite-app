@@ -1,49 +1,32 @@
-export const subMenu = [
-  {
-    label: 'Sub link1',
-    url: '/sub-link1',
-  },
-  {
-    label: 'Sub link2',
-    url: '/sub-link2',
-  },
-  {
-    label: 'Sub link3',
-    url: '/sub-link3',
-  },
-  {
-    label: 'Sub link4',
-    url: '/sub-link4',
-  },
-  {
-    label: 'Sub link5',
-    url: '/sub-link5',
-  },
-  {
-    label: 'Sub link6',
-    url: '/sub-link6',
-  },
-]
+function generateSubMenu(amount) {
+  return Array.from(new Array(amount), (_, idx) => ({
+    label: `Sub link ${idx + 1}`,
+    url: `/sub-link-${idx + 1}`,
+  }))
+}
 
 export const menuPrimary = [
   {
     label: 'Work',
-    links: subMenu,
+    links: generateSubMenu(7),
+    mediaSrc: '//source.unsplash.com/300x200',
     url: '/work',
   },
   {
     label: 'News',
-    links: subMenu,
+    links: generateSubMenu(8),
+    mediaSrc: '//source.unsplash.com/300x201',
     url: '/news',
   },
   {
     label: 'Press',
-    links: subMenu,
+    links: generateSubMenu(4),
+    mediaSrc: '//source.unsplash.com/300x202',
     url: '/press',
   },
   {
     label: 'About',
-    links: subMenu,
+    links: generateSubMenu(5),
     url: '/about',
   },
 ]

@@ -17,6 +17,7 @@ import AppBackdrop from './partials/AppBackdrop'
 import AppCartDrawer from './partials/AppCartDrawer'
 import AppFooter from './partials/AppFooter'
 import AppNavDrawer from './partials/AppNavDrawer'
+import AppNavDropdown from './partials/AppNavDropdown'
 import AppSkipLink from './partials/AppSkipLink'
 import { useApp } from './AppContext'
 
@@ -43,10 +44,24 @@ export const styles = (theme) => ({
       marginLeft: 'auto',
     },
   },
+  burgerIconButton: {
+    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
+      display: 'none',
+    },
+  },
+  searchIconButton: {},
   brandIconButton: {
-    position: 'absolute',
-    left: '50%',
-    transform: 'translateX(-50%)',
+    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
+      position: 'absolute',
+      left: '50%',
+      transform: 'translateX(-50%)',
+    },
+  },
+  cartIconButton: {},
+  navDropdown: {
+    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
+      display: 'none',
+    },
   },
   main: {
     flexGrow: 1,
@@ -73,6 +88,7 @@ const App = React.forwardRef(function App(props, ref) {
 
   const burgerIconButton = (
     <IconButton
+      className={classes.burgerIconButton}
       onClick={onAppBarBurgerClick}
       edge="start"
       size="small"
@@ -86,6 +102,7 @@ const App = React.forwardRef(function App(props, ref) {
 
   const searchIconButton = (
     <IconButton
+      className={classes.searchIconButton}
       onClick={onAppBarSearchClick}
       size="small"
       aria-haspopup="true"
@@ -109,6 +126,7 @@ const App = React.forwardRef(function App(props, ref) {
 
   const cartIconButton = (
     <IconButton
+      className={classes.cartIconButton}
       onClick={onAppBarCartClick}
       edge="end"
       size="small"
@@ -139,12 +157,18 @@ const App = React.forwardRef(function App(props, ref) {
       >
         <Toolbar className={classes.appBarToolbar}>
           {burgerIconButton}
+          {brandIconButton}
+
+          <AppNavDropdown
+            // key={location} // Re-render on route change to close nav despite hovered.
+            className={classes.navDropdown}
+            primary={menuPrimary}
+          />
 
           <div className={classes.appBarDesktopPush} />
           {searchIconButton}
           <div className={classes.appBarMobilePush} />
 
-          {brandIconButton}
           {cartIconButton}
         </Toolbar>
       </AppAppBar>
