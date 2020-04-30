@@ -6,20 +6,16 @@ import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Drawer from '@material-ui/core/Drawer'
 
-const headerHeight = 'var(--coa-header-height)'
-
-export const styles = {
+export const styles = (theme) => ({
   root: {
-    top: `${headerHeight} !important`, // Override `MuiModal` inline style.
+    zIndex: `${theme.zIndex.appBar - 1} !important`,
   },
-  backdrop: {
-    top: headerHeight,
-  },
+  backdrop: {},
   paper: {
-    top: headerHeight,
+    top: 'var(--coa-header-height)',
     width: 414, // iPhone 6/7/8 Plus
     maxWidth: '100%',
-    height: `calc(100% - ${headerHeight})`,
+    height: 'calc(100% - var(--coa-header-height))',
   },
   paperAnchorRight: {
     // Prevent `Drawer` position jumps due to scrollbar being shown/hidden.
@@ -28,7 +24,7 @@ export const styles = {
       boxSizing: 'border-box',
     },
   },
-}
+})
 
 const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
   const {

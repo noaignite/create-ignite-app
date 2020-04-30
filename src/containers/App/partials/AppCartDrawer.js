@@ -6,29 +6,17 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import { useAppHandlers } from '../AppContext'
 import AppDrawer from './AppDrawer'
 
-export const styles = theme => ({
-  paper: {
-    backgroundColor: theme.palette.secondary.main,
-    color: theme.palette.getContrastText(theme.palette.text.primary),
-  },
+export const styles = (theme) => ({
   nav: theme.mixins.gutters(),
 })
 
 const AppCartDrawer = React.forwardRef(function AppCartDrawer(props, ref) {
   const { classes, open, ...other } = props
 
-  const { onCartMenuClose, onCartMenuExited } = useAppHandlers()
+  const { onCartMenuClose } = useAppHandlers()
 
   return (
-    <AppDrawer
-      classes={{ paper: classes.paper }}
-      SlideProps={{ onExited: onCartMenuExited }}
-      open={open}
-      onClose={onCartMenuClose}
-      anchor="right"
-      ref={ref}
-      {...other}
-    >
+    <AppDrawer open={open} onClose={onCartMenuClose} anchor="right" ref={ref} {...other}>
       <nav className={classes.nav} aria-label="Cart navigation">
         Cart items...
       </nav>

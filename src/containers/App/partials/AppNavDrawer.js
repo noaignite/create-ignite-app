@@ -3,55 +3,142 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '@material-ui/core/styles/withStyles'
+import ButtonBase from '@material-ui/core/ButtonBase'
+import Collapse from '@material-ui/core/Collapse'
 import { menuLinkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
+import ExpandMoreIcon from 'components/icons/ExpandMore'
 import Link from 'components/Link'
 import { useAppHandlers } from '../AppContext'
 import AppDrawer from './AppDrawer'
 
-export const styles = theme => ({
-  paper: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.getContrastText(theme.palette.text.primary),
-  },
+export const styles = (theme) => ({
   nav: {
-    margin: 'auto 0',
+    padding: theme.spacing(8, 2),
+    textAlign: 'center',
   },
-  navlist: theme.mixins.gutters(),
-  navlistItem: {},
-  navlistItemText: {},
+  subnav: {},
+  navlist: {
+    padding: 0,
+    margin: 0,
+    '$subnav &': {
+      padding: theme.spacing(2, 0, 1),
+    },
+  },
+  navlistItem: {
+    padding: theme.spacing(1, 0),
+  },
+  navlistItemText: {
+    display: 'block',
+    width: '100%',
+  },
+  navlistItemIcon: {
+    position: 'absolute',
+    top: '50%',
+    transform: 'translate(-100%, -50%)',
+    marginLeft: theme.spacing(-1),
+  },
+  navlinks: {
+    borderTop: `1px solid ${theme.palette.divider}`,
+    borderBottom: `1px solid ${theme.palette.divider}`,
+  },
+  navlinksItem: {
+    display: 'block',
+    padding: theme.spacing(2, 0),
+    borderTop: `1px solid ${theme.palette.divider}`,
+    '&:first-child': {
+      borderTop: 'none',
+    },
+  },
 })
 
 const AppNavDrawer = React.forwardRef(function AppNavDrawer(props, ref) {
-  const { classes, menu = [], open, ...other } = props
+  const { classes, defaultExpanded = [], primary, open, ...other } = props
 
-  const { onNavMenuClose, onNavMenuExited } = useAppHandlers()
+  const { onNavMenuClose } = useAppHandlers()
+
+  const [expanded, setExpanded] = React.useState(defaultExpanded)
+
+  const handleExited = React.useCallback(() => {
+    setExpanded(defaultExpanded)
+  }, [defaultExpanded])
+
+  const handleClick = React.useCallback((event) => {
+    const value = event.currentTarget.value
+
+    setExpanded((prev) => {
+      const next = Array.isArray(prev) ? [...prev] : []
+      const itemIndex = next.indexOf(value)
+
+      if (itemIndex === -1) {
+        next.push(value)
+      } else {
+        next.splice(itemIndex, 1)
+      }
+
+      return next
+    })
+  }, [])
 
   return (
     <AppDrawer
-      classes={{ paper: classes.paper }}
-      SlideProps={{ onExited: onNavMenuExited }}
-      open={open}
+      SlideProps={{ onExited: handleExited }}
       onClose={onNavMenuClose}
+      open={open}
       anchor="left"
       ref={ref}
       {...other}
     >
       <nav className={classes.nav} aria-label="Main navigation">
         <ul className={classes.navlist}>
-          {menu.map((menuItem, idx) => (
-            <li key={idx} className={classes.navlistItem}>
-              <Link
-                className={classes.navlistItemText}
-                component={RouterLink}
-                as={menuItem.url}
-                href="/[...uri]"
-                variant="h1"
-              >
-                {menuItem.label}
-              </Link>
-            </li>
-          ))}
+          {primary?.map((menuItem, idx) => {
+            const submenu = menuItem.links
+            const hasSubmenu = submenu?.length > 0
+            const value = menuItem.url
+
+            let moreProps = {
+              component: ButtonBase,
+              onClick: handleClick,
+              value,
+            }
+            if (!hasSubmenu) {
+              moreProps = { component: RouterLink, href: menuItem.url }
+            }
+
+            return (
+              <li key={idx} className={classes.navlistItem}>
+                <Link // eslint-disable-line jsx-a11y/anchor-is-valid
+                  className={classes.navlistItemText}
+                  underline="hover"
+                  variant="h3"
+                  {...moreProps}
+                >
+                  {hasSubmenu && <ExpandMoreIcon className={classes.navlistItemIcon} />}
+                  {menuItem.label}
+                </Link>
+
+                {hasSubmenu && (
+                  <Collapse className={classes.subnav} in={expanded.includes(value)} unmountOnExit>
+                    <ul className={classes.navlist}>
+                      {submenu?.map((subMenuItem, idx2) => (
+                        <li key={idx2} className={classes.navlistItem}>
+                          <Link // eslint-disable-line jsx-a11y/anchor-is-valid
+                            className={classes.navlistItemText}
+                            component={RouterLink}
+                            href={subMenuItem.url}
+                            underline="hover"
+                            variant="body1"
+                          >
+                            {subMenuItem.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </Collapse>
+                )}
+              </li>
+            )
+          })}
         </ul>
       </nav>
     </AppDrawer>
@@ -60,8 +147,9 @@ const AppNavDrawer = React.forwardRef(function AppNavDrawer(props, ref) {
 
 AppNavDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
-  menu: PropTypes.arrayOf(menuLinkType),
+  defaultExpanded: PropTypes.arrayOf(PropTypes.string),
   open: PropTypes.bool,
+  primary: PropTypes.arrayOf(menuLinkType),
 }
 
 AppNavDrawer.uiName = 'AppNavDrawer'

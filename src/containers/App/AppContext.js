@@ -76,12 +76,12 @@ export function AppContextProvider(props) {
   // Public handlers
 
   const onAppBarBurgerClick = React.useCallback(() => {
-    setIsNavMenuOpen(prev => !prev)
+    setIsNavMenuOpen((prev) => !prev)
     setIsCartMenuOpen(false)
   }, [])
 
   const onAppBarCartClick = React.useCallback(() => {
-    setIsCartMenuOpen(prev => !prev)
+    setIsCartMenuOpen((prev) => !prev)
     setIsNavMenuOpen(false)
   }, [])
 
@@ -89,18 +89,8 @@ export function AppContextProvider(props) {
     setIsCartMenuOpen(false)
   }, [])
 
-  const onCartMenuExited = React.useCallback(() => {
-    // This callback is run only once the menu has unmounted.
-    // A good place to reset desired state.
-  }, [])
-
   const onNavMenuClose = React.useCallback(() => {
     setIsNavMenuOpen(false)
-  }, [])
-
-  const onNavMenuExited = React.useCallback(() => {
-    // This callback is run only once the menu has unmounted.
-    // A good place to reset desired state.
   }, [])
 
   // Memoize handlers context separately so that one can subscribe
@@ -110,21 +100,11 @@ export function AppContextProvider(props) {
       onAppBarBurgerClick,
       onAppBarCartClick,
       onCartMenuClose,
-      onCartMenuExited,
       onNavMenuClose,
-      onNavMenuExited,
       // Expose setters for custom hooks
       setAppBarColor,
     }),
-    [
-      onAppBarBurgerClick,
-      onAppBarCartClick,
-      onCartMenuClose,
-      onCartMenuExited,
-      onNavMenuClose,
-      onNavMenuExited,
-      setAppBarColor,
-    ],
+    [onAppBarBurgerClick, onAppBarCartClick, onCartMenuClose, onNavMenuClose, setAppBarColor],
   )
 
   // Memoize context so that no re-renders occur despite props changing

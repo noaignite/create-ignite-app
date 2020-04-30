@@ -23,7 +23,7 @@ import { useApp } from './AppContext'
 const BREAKPOINT_KEY_DOWN = 'sm'
 const BREAKPOINT_KEY_UP = 'md'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -149,14 +149,14 @@ const App = React.forwardRef(function App(props, ref) {
         </Toolbar>
       </AppAppBar>
 
-      <AppNavDrawer menu={menuPrimary} open={isNavMenuOpen} />
+      <AppNavDrawer primary={menuPrimary} open={isNavMenuOpen} />
       <AppCartDrawer open={isCartMenuOpen} />
 
       <main className={classes.main} id={SITE_MAIN_ID} role="main" tabIndex="-1">
         {children}
       </main>
 
-      <AppFooter menu={menuFooter} id={SITE_FOOTER_ID} />
+      <AppFooter primary={menuFooter} id={SITE_FOOTER_ID} />
 
       <AppBackdrop open={isBackdropOpen} loading={isLoading} />
     </div>
