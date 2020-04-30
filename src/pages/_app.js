@@ -12,7 +12,7 @@ import AppBase from 'containers/App'
 import 'swiper/css/swiper.min.css'
 
 const App = (props) => {
-  const { Component, pageProps } = props
+  const { Component, pageProps, router } = props
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -27,7 +27,7 @@ const App = (props) => {
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
 
-      <AppBase>
+      <AppBase asPath={router.asPath}>
         <Component {...pageProps} />
       </AppBase>
     </ThemeProvider>
@@ -37,6 +37,7 @@ const App = (props) => {
 App.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired,
+  router: PropTypes.object.isRequired,
 }
 
 export default App

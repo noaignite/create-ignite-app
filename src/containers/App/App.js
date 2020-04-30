@@ -70,7 +70,7 @@ export const styles = (theme) => ({
 })
 
 const App = React.forwardRef(function App(props, ref) {
-  const { children, classes, menuFooter, menuPrimary, ...other } = props
+  const { asPath, children, classes, menuFooter, menuPrimary, ...other } = props
 
   const {
     appBarColor,
@@ -150,6 +150,7 @@ const App = React.forwardRef(function App(props, ref) {
       <AppSkipLink href={`#${SITE_MAIN_ID}`}>Skip to content</AppSkipLink>
 
       <AppAppBar
+        key={asPath} // Re-render on route change to close nav despite hovered.
         className={classes.appBar}
         color={appBarColor}
         disableTransparency={isSomeMenuOpen}
@@ -159,11 +160,7 @@ const App = React.forwardRef(function App(props, ref) {
           {burgerIconButton}
           {brandIconButton}
 
-          <AppNavDropdown
-            // key={location} // Re-render on route change to close nav despite hovered.
-            className={classes.navDropdown}
-            primary={menuPrimary}
-          />
+          <AppNavDropdown className={classes.navDropdown} primary={menuPrimary} />
 
           <div className={classes.appBarDesktopPush} />
           {searchIconButton}
@@ -188,6 +185,7 @@ const App = React.forwardRef(function App(props, ref) {
 })
 
 App.propTypes = {
+  asPath: PropTypes.string,
   children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
   menuFooter: PropTypes.arrayOf(menuLinkType).isRequired,
