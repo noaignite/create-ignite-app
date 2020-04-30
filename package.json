@@ -19,6 +19,8 @@
     "lint": "eslint . --cache --report-unused-disable-directives",
     "lint:ci": "eslint . --report-unused-disable-directives",
     "lint:fix": "eslint . --cache --fix",
+    "prettier": "prettier --check \"src/**/*.js\"",
+    "prettier:fix": "prettier --write \"src/**/*.js\"",
     "analyze": "ANALYZE=true next build",
     "now-build": "build-storybook -c .storybook -s ./public -o .styleguide",
     "build:storybook": "build-storybook -c .storybook -s ./public -o .styleguide",
@@ -63,6 +65,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.1.1",
-    "next-transpile-modules": "^3.2.0"
+    "next-transpile-modules": "^3.2.0",
+    "prettier": "^2.0.1"
   }
 }
