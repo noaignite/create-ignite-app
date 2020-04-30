@@ -7,12 +7,18 @@ import { debounce, useForkRef } from '@oakwood/oui-utils'
 import withStyles from '@material-ui/core/styles/withStyles'
 import AppBar from 'components/AppBar'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {},
   transitions: {
     transition: theme.transitions.create(['background-color'], {
       duration: theme.transitions.duration.shortest, // Match value of `IconButton`
     }),
+  },
+  transparent: {
+    '&:not(:hover):not(:focus-within)': {
+      backgroundColor: 'transparent',
+      color: 'inherit',
+    },
   },
 })
 
@@ -86,10 +92,10 @@ const AppAppBar = React.forwardRef(function AppAppBar(props, ref) {
         classes.root,
         {
           [classes.transitions]: disableTransparency !== undefined, // Enable transitions once defined
+          [classes.transparent]: color === 'transparent',
         },
         className,
       )}
-      color={color}
       position={colorProp === 'default' ? 'sticky' : 'fixed'}
       ref={handleRef}
       {...other}
