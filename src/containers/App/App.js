@@ -74,6 +74,8 @@ const App = React.forwardRef(function App(props, ref) {
 
   const {
     appBarColor,
+    hideFooter,
+    hideHeader,
     isBackdropOpen,
     isCartMenuOpen,
     isLoading,
@@ -149,35 +151,37 @@ const App = React.forwardRef(function App(props, ref) {
     >
       <AppSkipLink href={`#${SITE_MAIN_ID}`}>Skip to content</AppSkipLink>
 
-      <AppAppBar
-        key={asPath} // Re-render on route change to close nav despite hovered.
-        className={classes.appBar}
-        color={appBarColor}
-        disableTransparency={isSomeMenuOpen}
-        id={SITE_HEADER_ID}
-      >
-        <Toolbar className={classes.appBarToolbar}>
-          {burgerIconButton}
-          {brandIconButton}
+      {!hideHeader && (
+        <AppAppBar
+          key={asPath} // Re-render on route change to close nav despite hovered.
+          className={classes.appBar}
+          color={appBarColor}
+          disableTransparency={isSomeMenuOpen}
+          id={SITE_HEADER_ID}
+        >
+          <Toolbar className={classes.appBarToolbar}>
+            {burgerIconButton}
+            {brandIconButton}
 
-          <AppNavDropdown className={classes.navDropdown} primary={menuPrimary} />
+            <AppNavDropdown className={classes.navDropdown} primary={menuPrimary} />
 
-          <div className={classes.appBarDesktopPush} />
-          {searchIconButton}
-          <div className={classes.appBarMobilePush} />
+            <div className={classes.appBarDesktopPush} />
+            {searchIconButton}
+            <div className={classes.appBarMobilePush} />
 
-          {cartIconButton}
-        </Toolbar>
-      </AppAppBar>
-
-      <AppNavDrawer primary={menuPrimary} open={isNavMenuOpen} />
-      <AppCartDrawer open={isCartMenuOpen} />
+            {cartIconButton}
+          </Toolbar>
+        </AppAppBar>
+      )}
 
       <main className={classes.main} id={SITE_MAIN_ID} role="main" tabIndex="-1">
         {children}
       </main>
 
-      <AppFooter primary={menuFooter} id={SITE_FOOTER_ID} />
+      {!hideFooter && <AppFooter primary={menuFooter} id={SITE_FOOTER_ID} />}
+
+      <AppNavDrawer primary={menuPrimary} open={isNavMenuOpen} />
+      <AppCartDrawer open={isCartMenuOpen} />
 
       <AppBackdrop open={isBackdropOpen} loading={isLoading} />
     </div>

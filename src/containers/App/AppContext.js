@@ -24,6 +24,8 @@ export function useApp() {
 
 export function AppContextProvider(props) {
   const [appBarColor, setAppBarColor] = React.useState('default')
+  const [hideFooter, setHideFooter] = React.useState(false)
+  const [hideHeader, setHideHeader] = React.useState(false)
   const [isCartMenuOpen, setIsCartMenuOpen] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
   const [isMediaReady, setIsMediaReady] = React.useState(false)
@@ -103,8 +105,10 @@ export function AppContextProvider(props) {
       onNavMenuClose,
       // Expose setters for custom hooks
       setAppBarColor,
+      setHideFooter,
+      setHideHeader,
     }),
-    [onAppBarBurgerClick, onAppBarCartClick, onCartMenuClose, onNavMenuClose, setAppBarColor],
+    [onAppBarBurgerClick, onAppBarCartClick, onCartMenuClose, onNavMenuClose],
   )
 
   // Memoize context so that no re-renders occur despite props changing
@@ -112,6 +116,8 @@ export function AppContextProvider(props) {
   const appContext = React.useMemo(
     () => ({
       appBarColor,
+      hideFooter,
+      hideHeader,
       isCartMenuOpen,
       isLoading,
       isMediaReady,
@@ -122,7 +128,16 @@ export function AppContextProvider(props) {
       // Merge in handlers for easy access
       ...appHandlersContext,
     }),
-    [appBarColor, appHandlersContext, isCartMenuOpen, isLoading, isMediaReady, isNavMenuOpen],
+    [
+      appBarColor,
+      hideFooter,
+      hideHeader,
+      appHandlersContext,
+      isCartMenuOpen,
+      isLoading,
+      isMediaReady,
+      isNavMenuOpen,
+    ],
   )
 
   return (
