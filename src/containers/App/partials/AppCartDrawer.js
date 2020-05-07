@@ -9,7 +9,7 @@ import Button from 'components/Button'
 import { useAppHandlers } from '../AppContext'
 import AppDrawer from './AppDrawer'
 
-export const styles = (theme) => ({
+export const styles = {
   list: {
     flexGrow: 1,
   },
@@ -21,7 +21,7 @@ export const styles = (theme) => ({
     position: 'sticky',
     bottom: 0,
   },
-})
+}
 
 const AppCartDrawer = React.forwardRef(function AppCartDrawer(props, ref) {
   const { classes, open, ...other } = props

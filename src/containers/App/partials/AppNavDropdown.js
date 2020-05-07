@@ -87,7 +87,7 @@ const AppNavDropdown = React.forwardRef(function AppNavDropdown(props, ref) {
 
           return (
             <li key={idx} className={classes.navlistItem}>
-              <Link // eslint-disable-line jsx-a11y/anchor-is-valid
+              <Link
                 className={classes.navlistItemText}
                 component={RouterLink}
                 href={menuItem.url}
@@ -103,7 +103,7 @@ const AppNavDropdown = React.forwardRef(function AppNavDropdown(props, ref) {
                     <ul className={classes.navlist}>
                       {submenu?.map((subMenuItem, idx2) => (
                         <li key={idx2} className={classes.navlistItem}>
-                          <Link // eslint-disable-line jsx-a11y/anchor-is-valid
+                          <Link
                             className={classes.navlistItemText}
                             component={RouterLink}
                             href={subMenuItem.url}
