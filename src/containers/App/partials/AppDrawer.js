@@ -12,17 +12,11 @@ export const styles = (theme) => ({
   },
   backdrop: {},
   paper: {
+    ...theme.mixins.scrollbars,
     top: 'var(--coa-header-height)',
     width: 414, // iPhone 6/7/8 Plus
     maxWidth: '100%',
     height: 'calc(100% - var(--coa-header-height))',
-  },
-  paperAnchorRight: {
-    // Prevent `Drawer` position jumps due to scrollbar being shown/hidden.
-    boxSizing: 'content-box',
-    '& > *': {
-      boxSizing: 'border-box',
-    },
   },
 })
 
@@ -40,14 +34,7 @@ const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
     <Drawer
       classes={{
         root: classes.root,
-        paper: classnames(
-          classes.paper,
-          {
-            [classes.paperAnchorRight]: anchor === 'right',
-            'mui-fixed': anchor === 'right',
-          },
-          PaperClassName,
-        ),
+        paper: classnames(classes.paper, PaperClassName),
       }}
       BackdropProps={{
         className: classnames(classes.backdrop, BackdropClassName),

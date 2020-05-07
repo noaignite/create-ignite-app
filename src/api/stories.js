@@ -1,6 +1,6 @@
 import { withProps } from 'recompose'
 import { sleep } from 'utils'
-import { menuPrimary, menuFooter } from './mock'
+import { cartItem, menuPrimary, menuFooter } from './mock'
 
 const actionWithPromise = (eventName) => async (...args) => {
   await sleep(300)
@@ -20,7 +20,13 @@ export function useCart() {
   const cartHandlers = useCartHandlers()
 
   return {
-    cartItems: [],
+    totals: {
+      grandTotalPrice: '124 EUR',
+      itemsTotalPrice: '120 EUR',
+      shippingPrice: '4 EUR',
+      totalQuantity: 6,
+    },
+    items: [cartItem, cartItem, cartItem],
     ...cartHandlers,
   }
 }
