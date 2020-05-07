@@ -14,4 +14,8 @@ export const ASPECT_RATIOS = {
     height: 9,
   },
   // Add project specific ratios below
+  product: {
+    width: 380,
+    height: 560,
+  },
 }

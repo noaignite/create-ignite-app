@@ -4,6 +4,8 @@ import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Media from '@oakwood/oui/Media'
+import MediaLoader from '@oakwood/oui/MediaLoader'
+import { ASPECT_RATIOS } from 'src/site.config'
 import { useCartHandlers } from 'api'
 import { cartItemType } from 'utils'
 import RouterLink from 'containers/RouterLink'
@@ -76,9 +78,14 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
 
   return (
     <div className={classnames(classes.root, className)} ref={ref} {...other}>
-      <RouterLink href="/product/[...uri]" as={`/product/${product.uri}`}>
+      <MediaLoader
+        component={RouterLink}
+        href="/product/[...uri]"
+        as={`/product/${product.uri}`}
+        {...ASPECT_RATIOS.product}
+      >
         <Media component="img" src={product.media?.thumb?.[0]} alt={product.name} />
-      </RouterLink>
+      </MediaLoader>
 
       <div className={classes.content}>
         <Link
