@@ -55,7 +55,7 @@ const Palette = React.forwardRef(function Palette(props, ref) {
           className={classes.shade}
           style={{
             backgroundColor: typeof value === 'string' ? value : undefined,
-            color: typeof value === 'string' ? palette.getContrastText(value) : undefined,
+            color: value && value.length > 3 ? palette.getContrastText(value) : '',
           }}
         >
           <span>{key}</span>

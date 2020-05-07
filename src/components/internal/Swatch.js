@@ -60,7 +60,7 @@ const Swatch = React.forwardRef(function Swatch(props, ref) {
           className={classes.shade}
           style={{
             backgroundColor: value,
-            color: value.length > 3 ? palette.getContrastText(value) : '',
+            color: value && value.length > 3 ? palette.getContrastText(value) : '',
           }}
         >
           <span>{key}</span>
