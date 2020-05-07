@@ -55,6 +55,7 @@ export const styles = (theme) => ({
       position: 'absolute',
       left: '50%',
       transform: 'translateX(-50%)',
+      marginLeft: 0, // Cancel margin of `edge="start"`
     },
   },
   cartIconButton: {},
@@ -120,6 +121,7 @@ const App = React.forwardRef(function App(props, ref) {
       className={classes.brandIconButton}
       component={RouterLink}
       href="/"
+      edge="start"
       aria-label="Go to the homepage"
     >
       <BrandIcon style={{ width: 'auto' }} />
