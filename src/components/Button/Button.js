@@ -29,27 +29,27 @@ export const styles = (theme) => ({
     },
   },
   textSizeSmall: {
-    padding: `${PADDING_Y - 2}px ${PADDING_X - 4}px`,
+    padding: `${PADDING_Y - 5}px ${PADDING_X - 10}px`,
     fontSize: theme.typography.pxToRem(12),
   },
   textSizeLarge: {
-    padding: `${PADDING_Y + 4}px ${PADDING_X + 8}px`,
+    padding: `${PADDING_Y + 5}px ${PADDING_X + 10}px`,
     fontSize: theme.typography.button.fontSize,
   },
   outlinedSizeSmall: {
-    padding: `${PADDING_Y - 2 - BORDER_WIDTH}px ${PADDING_X - 4 - BORDER_WIDTH}px`,
+    padding: `${PADDING_Y - 5 - BORDER_WIDTH}px ${PADDING_X - 10 - BORDER_WIDTH}px`,
     fontSize: theme.typography.pxToRem(12),
   },
   outlinedSizeLarge: {
-    padding: `${PADDING_Y + 4 - BORDER_WIDTH}px ${PADDING_X + 8 - BORDER_WIDTH}px`,
+    padding: `${PADDING_Y + 5 - BORDER_WIDTH}px ${PADDING_X + 10 - BORDER_WIDTH}px`,
     fontSize: theme.typography.button.fontSize,
   },
   containedSizeSmall: {
-    padding: `${PADDING_Y - 2}px ${PADDING_X - 4}px`,
+    padding: `${PADDING_Y - 5}px ${PADDING_X - 10}px`,
     fontSize: theme.typography.pxToRem(12),
   },
   containedSizeLarge: {
-    padding: `${PADDING_Y + 4}px ${PADDING_X + 8}px`,
+    padding: `${PADDING_Y + 5}px ${PADDING_X + 10}px`,
     fontSize: theme.typography.button.fontSize,
   },
 })
