@@ -30,12 +30,14 @@ export function AppContextProvider(props) {
   const [isLoading, setIsLoading] = React.useState(false)
   const [isMediaReady, setIsMediaReady] = React.useState(false)
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false)
+  const [isSearchMenuOpen, setIsSearchMenuOpen] = React.useState(false)
 
   // Helpers
 
   const closeAllMenus = () => {
     setIsCartMenuOpen(false)
     setIsNavMenuOpen(false)
+    setIsSearchMenuOpen(false)
   }
 
   // Private handlers
@@ -80,10 +82,18 @@ export function AppContextProvider(props) {
   const onAppBarBurgerClick = React.useCallback(() => {
     setIsNavMenuOpen((prev) => !prev)
     setIsCartMenuOpen(false)
+    setIsSearchMenuOpen(false)
   }, [])
 
   const onAppBarCartClick = React.useCallback(() => {
     setIsCartMenuOpen((prev) => !prev)
+    setIsNavMenuOpen(false)
+    setIsSearchMenuOpen(false)
+  }, [])
+
+  const onAppBarSearchClick = React.useCallback(() => {
+    setIsSearchMenuOpen((prev) => !prev)
+    setIsCartMenuOpen(false)
     setIsNavMenuOpen(false)
   }, [])
 
@@ -95,20 +105,33 @@ export function AppContextProvider(props) {
     setIsNavMenuOpen(false)
   }, [])
 
+  const onSearchMenuClose = React.useCallback(() => {
+    setIsSearchMenuOpen(false)
+  }, [])
+
   // Memoize handlers context separately so that one can subscribe
   // to them without re-rendering on state updates.
   const appHandlersContext = React.useMemo(
     () => ({
       onAppBarBurgerClick,
       onAppBarCartClick,
+      onAppBarSearchClick,
       onCartMenuClose,
       onNavMenuClose,
+      onSearchMenuClose,
       // Expose setters for custom hooks
       setAppBarColor,
       setHideFooter,
       setHideHeader,
     }),
-    [onAppBarBurgerClick, onAppBarCartClick, onCartMenuClose, onNavMenuClose],
+    [
+      onAppBarBurgerClick,
+      onAppBarCartClick,
+      onAppBarSearchClick,
+      onCartMenuClose,
+      onNavMenuClose,
+      onSearchMenuClose,
+    ],
   )
 
   // Memoize context so that no re-renders occur despite props changing
@@ -122,9 +145,10 @@ export function AppContextProvider(props) {
       isLoading,
       isMediaReady,
       isNavMenuOpen,
+      isSearchMenuOpen,
       // Computed props
       isBackdropOpen: isLoading,
-      isSomeMenuOpen: isCartMenuOpen || isNavMenuOpen,
+      isSomeMenuOpen: isCartMenuOpen || isNavMenuOpen || isSearchMenuOpen,
       // Merge in handlers for easy access
       ...appHandlersContext,
     }),
@@ -137,6 +161,7 @@ export function AppContextProvider(props) {
       isLoading,
       isMediaReady,
       isNavMenuOpen,
+      isSearchMenuOpen,
     ],
   )
 

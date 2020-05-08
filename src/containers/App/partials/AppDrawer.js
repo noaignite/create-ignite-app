@@ -14,6 +14,8 @@ export const styles = (theme) => ({
   paper: {
     ...theme.mixins.scrollbars,
     top: 'var(--coa-header-height)',
+  },
+  paperAnchorHorizontal: {
     width: 414, // iPhone 6/7/8 Plus
     maxWidth: '100%',
     height: 'calc(100% - var(--coa-header-height))',
@@ -34,7 +36,13 @@ const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
     <Drawer
       classes={{
         root: classes.root,
-        paper: classnames(classes.paper, PaperClassName),
+        paper: classnames(
+          classes.paper,
+          {
+            [classes.paperAnchorHorizontal]: ['left', 'right'].includes(anchor),
+          },
+          PaperClassName,
+        ),
       }}
       BackdropProps={{
         className: classnames(classes.backdrop, BackdropClassName),

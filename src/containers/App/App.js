@@ -18,6 +18,7 @@ import AppCartDrawer from './partials/AppCartDrawer'
 import AppFooter from './partials/AppFooter'
 import AppNavDrawer from './partials/AppNavDrawer'
 import AppNavDropdown from './partials/AppNavDropdown'
+import AppSearchDrawer from './partials/AppSearchDrawer'
 import AppSkipLink from './partials/AppSkipLink'
 import { useApp } from './AppContext'
 
@@ -82,7 +83,7 @@ const App = React.forwardRef(function App(props, ref) {
     isLoading,
     isMediaReady,
     isNavMenuOpen,
-    isSearchOpen,
+    isSearchMenuOpen,
     isSomeMenuOpen,
     onAppBarBurgerClick,
     onAppBarCartClick,
@@ -109,10 +110,10 @@ const App = React.forwardRef(function App(props, ref) {
       onClick={onAppBarSearchClick}
       size="small"
       aria-haspopup="true"
-      aria-expanded={isSearchOpen}
+      aria-expanded={isSearchMenuOpen}
       aria-label="Toggle search"
     >
-      {isSearchOpen ? <CrossIcon /> : <SearchIcon />}
+      {isSearchMenuOpen ? <CrossIcon /> : <SearchIcon />}
     </IconButton>
   )
 
@@ -184,6 +185,7 @@ const App = React.forwardRef(function App(props, ref) {
 
       <AppNavDrawer primary={menuPrimary} open={isNavMenuOpen} />
       <AppCartDrawer open={isCartMenuOpen} />
+      <AppSearchDrawer open={isSearchMenuOpen} />
 
       <AppBackdrop open={isBackdropOpen} loading={isLoading} />
     </div>
