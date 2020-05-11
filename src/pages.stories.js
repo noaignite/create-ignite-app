@@ -4,6 +4,7 @@ import { useHeaderColor } from 'utils'
 import { Default as AppStory } from 'containers/App/stories'
 import { Default as ContentStory } from 'blocks/Content/stories'
 import { Default as HeroStory } from 'blocks/Hero/stories'
+import { Default as ProductSlideshowStory } from 'blocks/ProductSlideshow/stories'
 
 const stories = storiesOf('Pages', module)
 
@@ -28,7 +29,7 @@ addPageStory('Home', () => {
           src: '//source.unsplash.com/800x400',
         }}
       />
-      <ContentStory />
+      <ProductSlideshowStory />
     </>
   )
 })

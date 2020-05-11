@@ -1,8 +1,8 @@
 import * as React from 'react'
 import Head from 'next/head'
 import { useHeaderColor } from 'utils'
-import { Default as ContentStory } from 'blocks/Content/stories'
 import { Default as HeroStory } from 'blocks/Hero/stories'
+import { Default as ProductSlideshowStory } from 'blocks/ProductSlideshow/stories'
 
 const Home = () => {
   useHeaderColor('auto')
@@ -21,7 +21,7 @@ const Home = () => {
           src: '//source.unsplash.com/800x400',
         }}
       />
-      <ContentStory />
+      <ProductSlideshowStory />
     </>
   )
 }
