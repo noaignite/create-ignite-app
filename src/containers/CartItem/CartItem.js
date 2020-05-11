@@ -15,6 +15,7 @@ import PlusIcon from 'components/icons/Plus'
 import Button from 'components/Button'
 import IconButton from 'components/IconButton'
 import Link from 'components/Link'
+import MediaLink from 'components/MediaLink'
 import Typography from 'components/Typography'
 
 export const styles = (theme) => ({
@@ -33,6 +34,7 @@ export const styles = (theme) => ({
   actionButton: {
     minWidth: 35,
     padding: theme.spacing(0.5),
+    // Reset hover effect if not of type button
     'span&:hover': {
       backgroundColor: 'transparent',
       cursor: 'auto',
@@ -76,24 +78,22 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
     [onItemRemove],
   )
 
+  const linkProps = {
+    component: RouterLink,
+    href: '/product/[...uri]',
+    as: `/product/${product.uri}`,
+  }
+
   return (
-    <div className={classnames(classes.root, className)} ref={ref} {...other}>
-      <MediaLoader
-        component={RouterLink}
-        href="/product/[...uri]"
-        as={`/product/${product.uri}`}
-        {...ASPECT_RATIOS.product}
-      >
-        <Media component="img" src={product.media?.thumb?.[0]} alt={product.name} />
-      </MediaLoader>
+    <article className={classnames(classes.root, className)} ref={ref} {...other}>
+      <MediaLink {...linkProps}>
+        <MediaLoader {...ASPECT_RATIOS.product}>
+          <Media component="img" src={product.media?.thumb?.[0]} alt={product.name} />
+        </MediaLoader>
+      </MediaLink>
 
       <div className={classes.content}>
-        <Link
-          component={RouterLink}
-          href="/product/[...uri]"
-          as={`/product/${product.uri}`}
-          variant="body2"
-        >
+        <Link variant="body2" {...linkProps}>
           {product.name}
         </Link>
 
@@ -130,7 +130,7 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
       >
         <CrossIcon fontSize="small" />
       </IconButton>
-    </div>
+    </article>
   )
 })
 

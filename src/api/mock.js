@@ -47,7 +47,7 @@ export const product = {
   },
   name: 'Generic Product',
   price: '20 EUR',
-  priceBeforeDiscount: '20 EUR',
+  priceBeforeDiscount: '30 EUR',
   stock: 10,
   uri: 'generic-product',
 }
