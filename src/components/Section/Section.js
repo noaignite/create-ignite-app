@@ -10,14 +10,14 @@ export const styles = (theme) => ({
   spacing: ({ spacingRule = 'margin' }) => ({
     [`${spacingRule}Top`]: theme.spacing(4),
     [`${spacingRule}Bottom`]: theme.spacing(4),
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('sm')]: {
       [`${spacingRule}Top`]: theme.spacing(6),
       [`${spacingRule}Bottom`]: theme.spacing(6),
     },
   }),
   regular: {
     ...theme.mixins.verticalRhythm(4),
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('sm')]: {
       ...theme.mixins.verticalRhythm(6),
     },
   },

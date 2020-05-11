@@ -6,9 +6,5 @@ export const styles = (theme) => ({
       paddingLeft: theme.spacing(4),
       paddingRight: theme.spacing(4),
     },
-    [theme.breakpoints.up('md')]: {
-      paddingLeft: theme.spacing(6),
-      paddingRight: theme.spacing(6),
-    },
   },
 })
