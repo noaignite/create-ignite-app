@@ -39,7 +39,7 @@ export const styles = (theme) => ({
   heading2: theme.mixins.fluidType('sm', 'xl', 47, 144),
   cta: {
     position: 'static',
-    marginTop: 'calc(20px + 5vw)',
+    marginTop: 'calc(20px + 3vh)',
     // Make entire component clicable
     '&::before': {
       ...theme.mixins.absolute(),
