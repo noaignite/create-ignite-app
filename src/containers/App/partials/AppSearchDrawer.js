@@ -102,11 +102,7 @@ const AppSearchDrawer = React.forwardRef(function AppSearchDrawer(props, ref) {
 AppSearchDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  // onChange: PropTypes.func,
-  // onClose: PropTypes.func,
-  // onSubmit: PropTypes.func,
   open: PropTypes.bool,
-  // value: PropTypes.string,
 }
 
 AppSearchDrawer.uiName = 'AppSearchDrawer'
