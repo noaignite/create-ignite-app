@@ -16,12 +16,12 @@ export const styles = (theme) => ({
     },
   }),
   regular: {
-    ...theme.mixins.verticalRhythm(4),
+    ...theme.mixins.verticalRhythm(4, '*:not([aria-hidden])'),
     [theme.breakpoints.up('sm')]: {
-      ...theme.mixins.verticalRhythm(6),
+      ...theme.mixins.verticalRhythm(6, '*:not([aria-hidden])'),
     },
   },
-  dense: theme.mixins.verticalRhythm(2),
+  dense: theme.mixins.verticalRhythm(2, '*:not([aria-hidden])'),
 })
 
 const Section = React.forwardRef(function Section(props, ref) {

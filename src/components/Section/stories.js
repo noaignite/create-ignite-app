@@ -12,9 +12,11 @@ export const Default = () => (
     rhythm={select('rhythm', ['regular', 'dense', false], false)}
     style={{ background: '#eee' }}
   >
+    <div aria-hidden />
     <div style={{ background: '#ccc' }}>Section content</div>
     <div style={{ background: '#ccc' }}>Section content</div>
     <div style={{ background: '#ccc' }}>Section content</div>
+    <div aria-hidden />
   </Section>
 )
 

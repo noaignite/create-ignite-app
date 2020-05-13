@@ -56,13 +56,13 @@ export default function createMixins(breakpoints, spacing, mixins) {
         },
       }
     },
-    horizontalRhythm: (amount = 1) => ({
-      '& > * + *': {
+    horizontalRhythm: (amount = 1, selector = '*') => ({
+      [`& > ${selector} + ${selector}`]: {
         marginLeft: spacing(amount),
       },
     }),
-    verticalRhythm: (amount = 1) => ({
-      '& > * + *': {
+    verticalRhythm: (amount = 1, selector = '*') => ({
+      [`& > ${selector} + ${selector}`]: {
         marginTop: spacing(amount),
       },
     }),
