@@ -4,7 +4,7 @@ import { useAppHandlers } from 'containers/App/AppContext'
 export default function useHeaderColor(color) {
   const { setAppBarColor } = useAppHandlers()
 
-  React.useLayoutEffect(() => {
+  React.useEffect(() => {
     if (color) {
       setAppBarColor(color)
       return () => {
