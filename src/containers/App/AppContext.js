@@ -6,8 +6,8 @@ import mediaLoaded from '@maeertin/medialoaded'
 import { debounce } from '@oakwood/oui-utils'
 import { CLOSE_MENUS_ON_RESIZE } from 'src/site.config'
 
-const AppHandlersContext = React.createContext()
-const AppContext = React.createContext()
+const AppHandlersContext = React.createContext({})
+const AppContext = React.createContext({})
 
 if (process.env.NODE_ENV !== 'production') {
   AppHandlersContext.displayName = 'AppHandlersContext'
