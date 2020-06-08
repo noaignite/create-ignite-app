@@ -1,7 +1,9 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
+import { useRouter } from 'next/router'
 import withStyles from '@material-ui/core/styles/withStyles'
+import ButtonBase from '@material-ui/core/ButtonBase'
 import { menuLinkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import Container from 'components/Container'
@@ -73,8 +75,11 @@ export const styles = (theme) => ({
 const AppNavDropdown = React.forwardRef(function AppNavDropdown(props, ref) {
   const { classes, className, primary, ...other } = props
 
+  const router = useRouter()
+
   return (
     <nav
+      key={router.asPath} // Re-render on route change to close nav despite hovered.
       className={classnames(classes.root, className)}
       ref={ref}
       aria-label="Main navigation"
@@ -85,14 +90,21 @@ const AppNavDropdown = React.forwardRef(function AppNavDropdown(props, ref) {
           const submenu = menuItem.links
           const hasSubmenu = submenu?.length > 0
 
+          const topLinkProps = {}
+          if (menuItem.url) {
+            topLinkProps.component = RouterLink
+            topLinkProps.as = menuItem.url
+            topLinkProps.href = '[...uri]'
+          }
+
           return (
             <li key={idx} className={classes.navlistItem}>
               <Link
                 className={classes.navlistItemText}
-                component={RouterLink}
-                href={menuItem.url}
+                component={ButtonBase}
                 underline="none"
                 variant="subtitle1"
+                {...topLinkProps}
               >
                 {menuItem.label}
               </Link>
@@ -106,7 +118,8 @@ const AppNavDropdown = React.forwardRef(function AppNavDropdown(props, ref) {
                           <Link
                             className={classes.navlistItemText}
                             component={RouterLink}
-                            href={subMenuItem.url}
+                            as={subMenuItem.url}
+                            href="[...uri]"
                             underline="hover"
                             variant="body1"
                           >

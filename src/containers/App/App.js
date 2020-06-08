@@ -72,7 +72,7 @@ export const styles = (theme) => ({
 })
 
 function App(props) {
-  const { asPath, children, classes, menuFooter, menuPrimary, ...other } = props
+  const { children, classes, menuFooter, menuPrimary, ...other } = props
 
   const {
     appBarColor,
@@ -155,7 +155,6 @@ function App(props) {
 
       {!hideHeader && (
         <AppAppBar
-          key={asPath} // Re-render on route change to close nav despite hovered.
           className={classes.appBar}
           color={appBarColor}
           disableTransparency={isSomeMenuOpen}
@@ -192,7 +191,6 @@ function App(props) {
 }
 
 App.propTypes = {
-  asPath: PropTypes.string,
   children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
   menuFooter: PropTypes.arrayOf(menuLinkType).isRequired,

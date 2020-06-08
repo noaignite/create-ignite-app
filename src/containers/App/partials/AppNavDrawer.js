@@ -96,22 +96,25 @@ const AppNavDrawer = React.forwardRef(function AppNavDrawer(props, ref) {
             const hasSubmenu = submenu?.length > 0
             const value = menuItem.url
 
-            let moreProps = {
-              component: ButtonBase,
-              onClick: handleClick,
-              value,
-            }
+            const topLinkProps = {}
             if (!hasSubmenu) {
-              moreProps = { component: RouterLink, href: menuItem.url }
+              topLinkProps.component = RouterLink
+              topLinkProps.as = menuItem.url
+              topLinkProps.href = '[...uri]'
+              topLinkProps.onClick = undefined
+              topLinkProps.value = undefined
             }
 
             return (
               <li key={idx} className={classes.navlistItem}>
                 <Link
                   className={classes.navlistItemText}
+                  component={ButtonBase}
+                  onClick={handleClick}
+                  value={value}
                   underline="hover"
                   variant="h3"
-                  {...moreProps}
+                  {...topLinkProps}
                 >
                   {hasSubmenu && <ExpandMoreIcon className={classes.navlistItemIcon} />}
                   {menuItem.label}
@@ -125,7 +128,8 @@ const AppNavDrawer = React.forwardRef(function AppNavDrawer(props, ref) {
                           <Link
                             className={classes.navlistItemText}
                             component={RouterLink}
-                            href={subMenuItem.url}
+                            as={subMenuItem.url}
+                            href="[...uri]"
                             underline="hover"
                             variant="body1"
                           >
