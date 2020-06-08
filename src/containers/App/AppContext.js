@@ -111,10 +111,9 @@ export function AppContextProvider(props) {
 
   // Memoize handlers context separately so that one can subscribe
   // to them without re-rendering on state updates.
+  const prevAppHandlersContextRef = React.useRef()
   const appHandlersContext = React.useMemo(() => {
-    console.warn('AppHandlersContext received new values, was this intentional?')
-
-    return {
+    const nextAppHandlersContext = {
       onAppBarBurgerClick,
       onAppBarCartClick,
       onAppBarSearchClick,
@@ -126,6 +125,19 @@ export function AppContextProvider(props) {
       setHideFooter,
       setHideHeader,
     }
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (prevAppHandlersContextRef.current) {
+        console.warn(
+          `Warning: ${AppHandlersContext.displayName} received new values, was this intentional?`,
+        )
+        console.log('Before:', prevAppHandlersContextRef.current) // eslint-disable-line no-console
+        console.log('After:', nextAppHandlersContext) // eslint-disable-line no-console
+      }
+      prevAppHandlersContextRef.current = nextAppHandlersContext
+    }
+
+    return nextAppHandlersContext
   }, [
     onAppBarBurgerClick,
     onAppBarCartClick,
