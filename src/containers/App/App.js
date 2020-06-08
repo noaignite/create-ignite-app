@@ -71,7 +71,7 @@ export const styles = (theme) => ({
   },
 })
 
-const App = React.forwardRef(function App(props, ref) {
+function App(props) {
   const { asPath, children, classes, menuFooter, menuPrimary, ...other } = props
 
   const {
@@ -149,7 +149,6 @@ const App = React.forwardRef(function App(props, ref) {
         [classes.isPreloading]: !isMediaReady,
         [classes.isLoading]: isLoading,
       })}
-      ref={ref}
       {...other}
     >
       <AppSkipLink href={`#${SITE_MAIN_ID}`}>Skip to content</AppSkipLink>
@@ -190,7 +189,7 @@ const App = React.forwardRef(function App(props, ref) {
       <AppBackdrop open={isBackdropOpen} loading={isLoading} />
     </div>
   )
-})
+}
 
 App.propTypes = {
   asPath: PropTypes.string,

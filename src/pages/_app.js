@@ -1,5 +1,4 @@
 // Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_app.js
-// Updated to functional component from docs https://nextjs.org/docs/advanced-features/custom-app
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
@@ -11,7 +10,7 @@ import AppBase from 'containers/App'
 // https://github.com/zeit/next.js/blob/master/errors/css-global.md
 import 'swiper/css/swiper.min.css'
 
-const App = (props) => {
+function App(props) {
   const { Component, pageProps, router } = props
 
   React.useEffect(() => {
