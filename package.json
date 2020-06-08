@@ -38,7 +38,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "recompose": "^0.30.0",
-    "swiper": "^5.3.8"
+    "swiper": "^5.4.2"
   },
   "devDependencies": {
     "@babel/plugin-transform-react-constant-elements": "^7.9.0",
