@@ -79,7 +79,7 @@ const AppNavDropdown = React.forwardRef(function AppNavDropdown(props, ref) {
 
   return (
     <nav
-      key={router.asPath} // Re-render on route change to close nav despite hovered.
+      key={router?.asPath} // Re-render on route change to close nav despite hovered.
       className={classnames(classes.root, className)}
       ref={ref}
       aria-label="Main navigation"
