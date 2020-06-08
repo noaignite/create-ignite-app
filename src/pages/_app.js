@@ -4,7 +4,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import theme from 'src/theme.default'
+import theme from 'src/theme.light'
 import AppBase from 'containers/App'
 // As of NextJS 9, all global css *must* be imported in pages/_app.js
 // https://github.com/zeit/next.js/blob/master/errors/css-global.md
