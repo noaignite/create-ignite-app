@@ -3,6 +3,7 @@
 # However, in order to prevent issues. We also ignore editors' files here.
 .idea
 .vscode
+.vercel
 
 *.log
 .DS_STORE

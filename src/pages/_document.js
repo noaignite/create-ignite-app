@@ -3,7 +3,7 @@
 import * as React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/styles'
-import theme from 'src/theme.default'
+import theme from 'src/theme.light'
 
 export default class MyDocument extends Document {
   render() {

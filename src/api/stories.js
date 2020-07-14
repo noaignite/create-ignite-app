@@ -1,16 +1,37 @@
 import { withProps } from 'recompose'
-import { menuPrimary, menuFooter } from './mock'
+import { sleep } from 'utils'
+import { cartItem, menuPrimary, menuFooter } from './mock'
 
-export const withCmsContext = () => {
-  return withProps({
-    menuPrimary,
-    menuFooter,
-  })
+const actionWithPromise = (eventName) => async (...args) => {
+  await sleep(300)
+  return console.log(eventName, ...args) // eslint-disable-line no-console
 }
 
-export const useCartContext = () => ({
-  cartItems: [],
-  onDecrease: console.log, // eslint-disable-line no-console
-  onIncrease: console.log, // eslint-disable-line no-console
-  onRemove: console.log, // eslint-disable-line no-console
+export function useCartHandlers() {
+  return {
+    onItemAdd: actionWithPromise('onItemAdd'),
+    onItemIncrease: actionWithPromise('onIncrease'),
+    onItemDecrease: actionWithPromise('onDecrease'),
+    onItemRemove: actionWithPromise('onRemove'),
+  }
+}
+
+export function useCart() {
+  const cartHandlers = useCartHandlers()
+
+  return {
+    totals: {
+      grandTotalPrice: '124 EUR',
+      itemsTotalPrice: '120 EUR',
+      shippingPrice: '4 EUR',
+      totalQuantity: 6,
+    },
+    items: [cartItem, cartItem, cartItem],
+    ...cartHandlers,
+  }
+}
+
+export const withCmsContext = withProps({
+  menuPrimary,
+  menuFooter,
 })
