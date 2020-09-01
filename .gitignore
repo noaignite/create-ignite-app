@@ -6,6 +6,7 @@
 
 *.log
 .DS_STORE
+/.vercel
 /.styleguide
 /.eslintcache
 /.cache
