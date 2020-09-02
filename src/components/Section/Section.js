@@ -64,6 +64,4 @@ Section.propTypes = {
   spacingRule: PropTypes.oneOf(['padding', 'margin']),
 }
 
-Section.uiName = 'Section'
-
 export default withStyles(styles)(Section)
