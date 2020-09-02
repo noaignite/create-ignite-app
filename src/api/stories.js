@@ -27,6 +27,7 @@ export function useCart() {
       totalQuantity: 6,
     },
     items: [cartItem, cartItem, cartItem],
+    test: 'troll',
     ...cartHandlers,
   }
 }

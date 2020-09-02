@@ -1,8 +1,3 @@
-// Replace below mocked exports with real implementations.
-
-// @todo - Remove mocked functions taken from storybook api file once webpack custom setup works
-// export * from './stories'
-
 import { withProps } from 'recompose'
 import { sleep } from 'utils'
 import { cartItem, menuPrimary, menuFooter } from './mock'
@@ -34,7 +29,7 @@ export function useCart() {
     items: [cartItem, cartItem, cartItem],
     ...cartHandlers,
     // @todo - Remove once webpack custom setup works
-    test: '..............nope',
+    test: 'WOOP',
   }
 }
 
