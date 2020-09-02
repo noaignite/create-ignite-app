@@ -8,6 +8,12 @@ import 'swiper/css/swiper.min.css'
 
 export const parameters = {
   layout: 'fullscreen',
+  options: {
+    storySort: {
+      method: 'alphabetical',
+      order: ['Common', 'Components', 'Containers', 'Blocks', 'Pages'],
+    },
+  },
 }
 
 export const globalTypes = {

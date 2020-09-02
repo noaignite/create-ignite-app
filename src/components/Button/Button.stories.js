@@ -10,7 +10,7 @@ export default {
     color: storySelectArgType(['default', 'inherit', 'primary', 'secondary']),
     size: storySelectArgType(['small', 'medium', 'large']),
     variant: storySelectArgType(['text', 'outlined', 'contained']),
-    argTypes: { onClick: { action: 'clicked' } },
+    onClick: { action: 'clicked' },
   },
 }
 
