@@ -1,13 +1,12 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { nest } from 'recompose'
 import Router from 'next/router'
 import mediaLoaded from '@maeertin/medialoaded'
 import { debounce } from '@oakwood/oui-utils'
 import { CLOSE_MENUS_ON_RESIZE } from 'src/site.config'
 
-const AppHandlersContext = React.createContext({})
-const AppContext = React.createContext({})
+export const AppHandlersContext = React.createContext({})
+export const AppContext = React.createContext({})
 
 if (process.env.NODE_ENV !== 'production') {
   AppHandlersContext.displayName = 'AppHandlersContext'
@@ -22,7 +21,7 @@ export function useApp() {
   return React.useContext(AppContext)
 }
 
-export function AppContextProvider(props) {
+export function AppProvider(props) {
   const [appBarColor, setAppBarColor] = React.useState('default')
   const [hideFooter, setHideFooter] = React.useState(false)
   const [hideHeader, setHideHeader] = React.useState(false)
@@ -111,9 +110,14 @@ export function AppContextProvider(props) {
 
   // Memoize handlers context separately so that one can subscribe
   // to them without re-rendering on state updates.
-  const prevAppHandlersContextRef = React.useRef()
   const appHandlersContext = React.useMemo(() => {
-    const nextAppHandlersContext = {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(
+        `Warning: ${AppHandlersContext.displayName} received new values, was this intentional?`,
+      )
+    }
+
+    return {
       onAppBarBurgerClick,
       onAppBarCartClick,
       onAppBarSearchClick,
@@ -125,19 +129,6 @@ export function AppContextProvider(props) {
       setHideFooter,
       setHideHeader,
     }
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (prevAppHandlersContextRef.current) {
-        console.warn(
-          `Warning: ${AppHandlersContext.displayName} received new values, was this intentional?`,
-        )
-        console.log('Before:', prevAppHandlersContextRef.current) // eslint-disable-line no-console
-        console.log('After:', nextAppHandlersContext) // eslint-disable-line no-console
-      }
-      prevAppHandlersContextRef.current = nextAppHandlersContext
-    }
-
-    return nextAppHandlersContext
   }, [
     onAppBarBurgerClick,
     onAppBarCartClick,
@@ -147,36 +138,21 @@ export function AppContextProvider(props) {
     onSearchMenuClose,
   ])
 
-  // Memoize context so that no re-renders occur despite props changing
-  // higher up the tree.
-  const appContext = React.useMemo(
-    () => ({
-      appBarColor,
-      hideFooter,
-      hideHeader,
-      isCartMenuOpen,
-      isLoading,
-      isMediaReady,
-      isNavMenuOpen,
-      isSearchMenuOpen,
-      // Computed props
-      isBackdropOpen: isLoading,
-      isSomeMenuOpen: isCartMenuOpen || isNavMenuOpen || isSearchMenuOpen,
-      // Merge in handlers for easy access
-      ...appHandlersContext,
-    }),
-    [
-      appBarColor,
-      hideFooter,
-      hideHeader,
-      appHandlersContext,
-      isCartMenuOpen,
-      isLoading,
-      isMediaReady,
-      isNavMenuOpen,
-      isSearchMenuOpen,
-    ],
-  )
+  const appContext = {
+    appBarColor,
+    hideFooter,
+    hideHeader,
+    isCartMenuOpen,
+    isLoading,
+    isMediaReady,
+    isNavMenuOpen,
+    isSearchMenuOpen,
+    // Computed props
+    isBackdropOpen: isLoading,
+    isSomeMenuOpen: isCartMenuOpen || isNavMenuOpen || isSearchMenuOpen,
+    // Merge in handlers for easy access
+    ...appHandlersContext,
+  }
 
   return (
     <AppHandlersContext.Provider value={appHandlersContext}>
@@ -185,12 +161,8 @@ export function AppContextProvider(props) {
   )
 }
 
-AppContextProvider.propTypes = {
+AppProvider.propTypes = {
   children: PropTypes.node.isRequired,
-}
-
-export function withAppContextProvider(Component) {
-  return nest(AppContextProvider, Component)
 }
 
 export default AppContext

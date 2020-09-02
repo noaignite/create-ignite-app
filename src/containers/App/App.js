@@ -193,8 +193,8 @@ function App(props) {
 App.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
-  menuFooter: PropTypes.arrayOf(menuLinkType).isRequired,
-  menuPrimary: PropTypes.arrayOf(menuLinkType).isRequired,
+  menuFooter: PropTypes.arrayOf(menuLinkType),
+  menuPrimary: PropTypes.arrayOf(menuLinkType),
 }
 
 export default withStyles(styles)(App)

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from 'src/theme.light'
+import { AppProvider } from 'containers/App/AppContext'
 import AppBase from 'containers/App'
 // As of NextJS 9, all global css *must* be imported in pages/_app.js
 // https://github.com/zeit/next.js/blob/master/errors/css-global.md
@@ -26,9 +27,11 @@ function App(props) {
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
 
-      <AppBase>
-        <Component {...pageProps} />
-      </AppBase>
+      <AppProvider>
+        <AppBase>
+          <Component {...pageProps} />
+        </AppBase>
+      </AppProvider>
     </ThemeProvider>
   )
 }

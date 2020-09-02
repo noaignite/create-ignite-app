@@ -27,7 +27,10 @@ export const styles = (theme) => ({
 const CartList = React.forwardRef(function CartList(props, ref) {
   const { classes, className, ...other } = props
 
-  const { items, totals } = useCart()
+  const { items, totals /* , test */ } = useCart()
+
+  // @todo - Remove test console when custom webpack setup is working
+  // console.log('useCart', test, items)
 
   return (
     <div className={classnames(classes.root, className)} ref={ref} {...other}>
