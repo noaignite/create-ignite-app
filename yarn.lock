@@ -2849,13 +2849,6 @@ babel-plugin-transform-property-literals@^6.9.4:
   dependencies:
     esutils "^2.0.2"
 
-babel-plugin-transform-react-constant-elements@^6.23.0:
-  version "6.23.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-constant-elements/-/babel-plugin-transform-react-constant-elements-6.23.0.tgz#2f119bf4d2cdd45eb9baaae574053c604f6147dd"
-  integrity sha1-LxGb9NLN1F65uqrldAU8YE9hR90=
-  dependencies:
-    babel-runtime "^6.22.0"
-
 babel-plugin-transform-react-remove-prop-types@0.4.24, babel-plugin-transform-react-remove-prop-types@^0.4.21:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-remove-prop-types/-/babel-plugin-transform-react-remove-prop-types-0.4.24.tgz#f2edaf9b4c6a5fbe5c1d678bfb531078c1555f3a"
@@ -2921,14 +2914,6 @@ babel-plugin-transform-undefined-to-void@^6.9.4:
     babel-plugin-transform-simplify-comparison-operators "^6.9.4"
     babel-plugin-transform-undefined-to-void "^6.9.4"
     lodash "^4.17.11"
-
-babel-runtime@^6.22.0:
-  version "6.26.0"
-  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
-  integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
-  dependencies:
-    core-js "^2.4.0"
-    regenerator-runtime "^0.11.0"
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -3770,11 +3755,6 @@ core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
-
-core-js@^2.4.0:
-  version "2.6.11"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
-  integrity sha512-5wjnpaT/3dV+XB4borEsnAYQchn00XSgTAWKDkEqv+K8KevjbzmofK6hfJ9TZIlpj2N0xQpazy7PiRQiWHqzWg==
 
 core-js@^3.0.1, core-js@^3.0.4:
   version "3.6.5"
@@ -4662,7 +4642,7 @@ eslint-config-prettier@^6.2.0:
   dependencies:
     get-stdin "^6.0.0"
 
-eslint-import-resolver-babel-module@^5.1.1:
+eslint-import-resolver-babel-module@^5.1.0:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-babel-module/-/eslint-import-resolver-babel-module-5.1.2.tgz#3d5599d49f641f9c832f001ccf7087a70a3c8c1b"
   integrity sha512-pzKE6UzXgT1Opp4N2P2yoE7OY29+LX3FNX6bqAjmGV+btR/ZYnE/oQFoGzL2/3RkLYRTBYRFwvrphRy5wEAUwg==
@@ -8280,7 +8260,7 @@ react-docgen@^5.0.0:
     node-dir "^0.1.10"
     strip-indent "^3.0.0"
 
-react-dom@^16.13.0, react-dom@^16.8.3:
+react-dom@^16.13.1, react-dom@^16.8.3:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"
   integrity sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag==
@@ -8461,7 +8441,7 @@ react-transition-group@^4.3.0, react-transition-group@^4.4.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^16.13.0, react@^16.8.3:
+react@^16.13.1, react@^16.8.3:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
   integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
@@ -8596,11 +8576,6 @@ regenerate@^1.4.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.4.1.tgz#cad92ad8e6b591773485fbe05a485caf4f457e6f"
   integrity sha512-j2+C8+NtXQgEKWk49MMP5P/u2GhnahTtVkRIHr5R5lVRlbKvmQ+oS+A5aLKWp2ma5VkT8sh6v+v4hbH0YHR66A==
-
-regenerator-runtime@^0.11.0:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
-  integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
 regenerator-runtime@^0.13.2, regenerator-runtime@^0.13.3, regenerator-runtime@^0.13.4:
   version "0.13.7"
@@ -9578,7 +9553,7 @@ svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-swiper@^5.3.6:
+swiper@^5.4.2:
   version "5.4.5"
   resolved "https://registry.yarnpkg.com/swiper/-/swiper-5.4.5.tgz#a350f654bf68426dbb651793824925512d223c0f"
   integrity sha512-7QjA0XpdOmiMoClfaZ2lYN6ICHcMm72LXiY+NF4fQLFidigameaofvpjEEiTQuw3xm5eksG5hzkaRsjQX57vtA==
