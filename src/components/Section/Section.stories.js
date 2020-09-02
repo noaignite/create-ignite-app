@@ -13,9 +13,8 @@ export default {
 
 const Template = (args) => <Section {...args} />
 
-export const DefaultStory = Template.bind({})
-
-DefaultStory.args = {
+export const Default = Template.bind({})
+Default.args = {
   children: (
     <>
       <div aria-hidden />

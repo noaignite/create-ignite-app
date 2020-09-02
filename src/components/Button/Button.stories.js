@@ -16,9 +16,8 @@ export default {
 
 const Template = (args) => <Button {...args} />
 
-export const DefaultStory = Template.bind({})
-
-DefaultStory.args = {
+export const Default = Template.bind({})
+Default.args = {
   children: 'Just a button',
   color: 'default',
   disabled: false,
