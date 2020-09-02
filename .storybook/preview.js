@@ -18,16 +18,15 @@ export const globalTypes = {
 }
 
 export const decorators = [
-  (Story, context) => (
-    <ThemeProvider
-      theme={createTheme({
-        palette: {
-          type: context.globals.theme,
-        },
-      })}
-    >
-      <CssBaseline />
-      <Story />
-    </ThemeProvider>
-  ),
+  (Story, context) => {
+    const type = context.globals.theme
+    const theme = createTheme({ palette: { type } })
+
+    return (
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Story />
+      </ThemeProvider>
+    )
+  },
 ]
