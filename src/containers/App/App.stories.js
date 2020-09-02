@@ -9,7 +9,6 @@ export default {
 const Template = (args) => <App {...args} />
 
 export const Default = Template.bind({})
-
 Default.args = {
   children: <div>[this.props.children]</div>,
 }
