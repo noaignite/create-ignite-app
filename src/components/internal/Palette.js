@@ -4,7 +4,7 @@ import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import useTheme from '@material-ui/core/styles/useTheme'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     position: 'relative',
     border: `1px solid ${theme.palette.text.primary}`,
@@ -55,7 +55,7 @@ const Palette = React.forwardRef(function Palette(props, ref) {
           className={classes.shade}
           style={{
             backgroundColor: typeof value === 'string' ? value : undefined,
-            color: typeof value === 'string' ? palette.getContrastText(value) : undefined,
+            color: value && value.length > 3 ? palette.getContrastText(value) : '',
           }}
         >
           <span>{key}</span>

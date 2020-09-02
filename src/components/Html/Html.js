@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     '@global': {
       h1: theme.typography.h3,

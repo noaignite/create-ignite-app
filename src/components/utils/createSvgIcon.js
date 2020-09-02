@@ -1,10 +1,10 @@
 import * as React from 'react'
 import SvgIcon from '../SvgIcon'
 
-export default function createSvgIcon(path, displayName) {
+export default function createSvgIcon(path, displayName, viewBox) {
   const Component = React.memo(
     React.forwardRef((props, ref) => (
-      <SvgIcon ref={ref} {...props}>
+      <SvgIcon viewBox={viewBox} ref={ref} {...props}>
         {path}
       </SvgIcon>
     )),
@@ -14,7 +14,7 @@ export default function createSvgIcon(path, displayName) {
     Component.displayName = `${displayName}Icon`
   }
 
-  Component.uiName = SvgIcon.uiName || 'SvgIcon'
+  Component.uiName = SvgIcon.uiName || SvgIcon.muiName
 
   return Component
 }

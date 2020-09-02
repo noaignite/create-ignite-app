@@ -1,6 +1,6 @@
 export { default } from '@material-ui/core/Fab'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     boxShadow: theme.shadows[3],
     '&:active': {

@@ -1,5 +1,5 @@
-import { constants } from './extras'
 import grey from '../colors/grey'
+import { constants } from './extras'
 
 export default function createMixins(breakpoints, spacing, mixins) {
   // eslint-disable-next-line no-shadow
@@ -47,14 +47,25 @@ export default function createMixins(breakpoints, spacing, mixins) {
       return {
         fontSize: minFontSize,
         [`@media (min-width: ${minVw}px)`]: {
-          fontSize: `calc(${minFontSize}px + ${maxFontSize -
-            minFontSize} * ((100vw - ${minVw}px) / ${maxVw - minVw}))`,
+          fontSize: `calc(${minFontSize}px + ${
+            maxFontSize - minFontSize
+          } * ((100vw - ${minVw}px) / ${maxVw - minVw}))`,
         },
         [`@media (min-width: ${maxVw}px)`]: {
           fontSize: maxFontSize,
         },
       }
     },
+    horizontalRhythm: (amount = 1, selector = '*') => ({
+      [`& > ${selector} + ${selector}`]: {
+        marginLeft: spacing(amount),
+      },
+    }),
+    verticalRhythm: (amount = 1, selector = '*') => ({
+      [`& > ${selector} + ${selector}`]: {
+        marginTop: spacing(amount),
+      },
+    }),
     absolute: (...args) => {
       return position('absolute', ...args)
     },
@@ -69,7 +80,7 @@ export default function createMixins(breakpoints, spacing, mixins) {
       marginRight: 'auto',
       marginLeft: 'auto',
     }),
-    lineClamp: lines => ({
+    lineClamp: (lines) => ({
       display: '-webkit-box',
       WebkitBoxOrient: 'vertical',
       WebkitLineClamp: lines,

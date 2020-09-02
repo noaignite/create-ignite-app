@@ -2,8 +2,6 @@ import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import Media from '@oakwood/oui/Media'
 import { A11y, Keyboard, Navigation, Pagination } from 'swiper/js/swiper.esm'
-import SlideshowNavigation from '../SlideshowNavigation'
-import SlideshowPagination from '../SlideshowPagination'
 import SlideshowSlide from '../SlideshowSlide'
 import Slideshow from './Slideshow'
 
@@ -13,11 +11,11 @@ export const Default = () => (
   <Slideshow
     modules={[A11y, Keyboard, Navigation, Pagination]}
     navigation={{
-      prevEl: <SlideshowNavigation variant="prev" aria-label="Previous slide" />,
-      nextEl: <SlideshowNavigation variant="next" aria-label="Next slide" />,
+      prevEl: <div className="swiper-button-prev" />,
+      nextEl: <div className="swiper-button-next" />,
     }}
     pagination={{
-      el: <SlideshowPagination />,
+      el: <div className="swiper-pagination" />,
       clickable: true,
     }}
     keyboard

@@ -11,8 +11,8 @@ export const Default = compose(
   defaultProps({
     children: <div>[this.props.children]</div>,
   }),
-  withCmsContext(),
-  withAppContextProvider(),
+  withCmsContext,
+  withAppContextProvider,
 )(App)
 
 stories.add('Default', Default)
