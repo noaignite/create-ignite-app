@@ -6,7 +6,7 @@ const borderWidth = 1
 const xPadding = 30
 const yPadding = 20
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   text: {
     padding: `${yPadding}px ${xPadding}px`,
   },

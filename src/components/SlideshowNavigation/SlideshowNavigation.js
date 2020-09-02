@@ -8,7 +8,7 @@ import KeyboardArrowLeftIcon from '../icons/KeyboardArrowLeft'
 import KeyboardArrowRightIcon from '../icons/KeyboardArrowRight'
 import Fab from '../Fab'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     position: 'absolute',
     zIndex: 9,

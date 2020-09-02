@@ -2,7 +2,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator'
 
 export { default } from '@material-ui/core/IconButton'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     color: theme.palette.action.active,
     transition: theme.transitions.create(['background-color', 'color'], {

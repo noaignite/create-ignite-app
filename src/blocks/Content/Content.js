@@ -6,7 +6,7 @@ import Container from 'components/Container'
 import Html from 'components/Html'
 import Section from 'components/Section'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     '@global': {
       'h1, h2, h3, h4, h5, h6, p, ol, ul': {

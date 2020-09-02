@@ -11,7 +11,7 @@ import AppBase from 'containers/App'
 // https://github.com/zeit/next.js/blob/master/errors/css-global.md
 import 'swiper/css/swiper.min.css'
 
-const App = props => {
+const App = (props) => {
   const { Component, pageProps } = props
 
   React.useEffect(() => {

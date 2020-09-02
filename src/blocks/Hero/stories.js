@@ -4,7 +4,7 @@ import Hero from './Hero'
 
 const stories = storiesOf('Blocks/Hero', module)
 
-export const Default = props => (
+export const Default = (props) => (
   <Hero
     backgroundMediaProps={{
       component: 'picture',

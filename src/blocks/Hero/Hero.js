@@ -15,7 +15,7 @@ import Typography from 'components/Typography'
 const ANIMATION_DURATION = 1250
 const ANIMATION_DELAY = 200
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {},
   isReady: {},
   container: {

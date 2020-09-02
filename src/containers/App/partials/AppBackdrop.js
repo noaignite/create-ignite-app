@@ -6,7 +6,7 @@ import Backdrop from 'components/Backdrop'
 import CircularProgress from 'components/CircularProgress'
 import { useAppContext } from '../AppContext'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     zIndex: theme.zIndex.appBar - 1,
   },

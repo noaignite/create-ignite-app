@@ -13,7 +13,7 @@ export const defaultState = {
   isReady: false,
 }
 
-export default props => {
+export default (props) => {
   const { initialState = defaultState } = props
 
   const [isAppBarFixed, setIsAppBarFixed] = React.useState(initialState.isAppBarFixed)
@@ -74,12 +74,12 @@ export default props => {
   // Public handlers
 
   const onAppBarBurgerClick = React.useCallback(() => {
-    setIsNavMenuOpen(prev => !prev)
+    setIsNavMenuOpen((prev) => !prev)
     setIsCartMenuOpen(false)
   }, [])
 
   const onAppBarCartClick = React.useCallback(() => {
-    setIsCartMenuOpen(prev => !prev)
+    setIsCartMenuOpen((prev) => !prev)
     setIsNavMenuOpen(false)
   }, [])
 

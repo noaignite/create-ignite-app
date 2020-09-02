@@ -4,7 +4,7 @@ import Wysiwyg from './Content'
 
 const stories = storiesOf('Blocks/Wysiwyg', module)
 
-export const Default = props => (
+export const Default = (props) => (
   <Wysiwyg {...props}>
     <h1>HTML Ipsum Presents</h1>
 

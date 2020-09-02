@@ -1,6 +1,6 @@
 export { default } from '@material-ui/core/Container'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     [theme.breakpoints.up('sm')]: {
       paddingLeft: theme.spacing(4),

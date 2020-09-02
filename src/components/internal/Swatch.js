@@ -4,7 +4,7 @@ import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import useTheme from '@material-ui/core/styles/useTheme'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     position: 'relative',
   },

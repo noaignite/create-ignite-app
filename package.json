@@ -17,14 +17,17 @@
   },
   "scripts": {
     "analyze": "ANALYZE=true next build",
-    "build:storybook": "build-storybook -c .storybook -s ./public -o .styleguide",
     "build": "next build",
     "dev": "next",
-    "lint:fix": "eslint . --cache --fix && echo \"eslint: no lint errors\"",
-    "lint": "eslint . --cache --report-unused-disable-directives && echo \"eslint: no lint errors\"",
-    "now-build": "build-storybook -c .storybook -s ./public -o .styleguide",
     "start": "next start -p $PORT",
-    "storybook": "start-storybook -s ./public -p 3001 --ci"
+    "now-build": "build-storybook -c .storybook -s ./public -o .styleguide",
+    "build:storybook": "build-storybook -c .storybook -s ./public -o .styleguide",
+    "storybook": "start-storybook -s ./public -p 3001 --ci",
+    "lint": "eslint . --cache --report-unused-disable-directives",
+    "lint:ci": "eslint . --report-unused-disable-directives",
+    "lint:fix": "eslint . --cache --fix",
+    "prettier": "prettier --check \"src/**/*.js\"",
+    "prettier:fix": "prettier --write \"src/**/*.js\""
   },
   "dependencies": {
     "@material-ui/core": "4.9.5",
@@ -63,6 +66,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.1.1",
-    "next-transpile-modules": "^3.0.2"
+    "next-transpile-modules": "^3.0.2",
+    "prettier": "^2.0.1"
   }
 }

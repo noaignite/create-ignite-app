@@ -8,7 +8,7 @@ import Container from 'components/Container'
 import Link from 'components/Link'
 import Section from 'components/Section'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.getContrastText(theme.palette.text.primary),

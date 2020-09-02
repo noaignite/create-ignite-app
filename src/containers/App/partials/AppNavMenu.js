@@ -9,7 +9,7 @@ import Link from 'components/Link'
 import { useAppContext } from '../AppContext'
 import AppDrawer from './AppDrawer'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   paper: {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.getContrastText(theme.palette.text.primary),

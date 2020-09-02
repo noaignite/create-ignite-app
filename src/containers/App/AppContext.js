@@ -23,7 +23,7 @@ AppContextProvider.propTypes = {
 }
 
 export function withAppContextProvider(props) {
-  return Component => nest(compose(withProps(props))(AppContextProvider), Component)
+  return (Component) => nest(compose(withProps(props))(AppContextProvider), Component)
 }
 
 export default AppContext

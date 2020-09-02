@@ -6,7 +6,7 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import { useAppContext } from '../AppContext'
 import AppDrawer from './AppDrawer'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   paper: {
     backgroundColor: theme.palette.secondary.main,
     color: theme.palette.getContrastText(theme.palette.text.primary),
