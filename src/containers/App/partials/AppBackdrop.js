@@ -2,9 +2,8 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import Backdrop from 'components/Backdrop'
-import CircularProgress from 'components/CircularProgress'
-import { useAppContext } from '../AppContext'
 
 export const styles = (theme) => ({
   root: {
@@ -13,19 +12,17 @@ export const styles = (theme) => ({
 })
 
 const AppBackdrop = React.forwardRef(function AppBackdrop(props, ref) {
-  const { classes, className, ...other } = props
-
-  const { isBackdropOpen, isLoading } = useAppContext()
+  const { classes, className, loading, open, ...other } = props
 
   return (
     <Backdrop
       className={classnames(classes.root, className)}
-      open={isBackdropOpen}
+      open={open}
       unmountOnExit
       ref={ref}
       {...other}
     >
-      {isLoading && <CircularProgress />}
+      {loading && <CircularProgress />}
     </Backdrop>
   )
 })
@@ -33,8 +30,10 @@ const AppBackdrop = React.forwardRef(function AppBackdrop(props, ref) {
 AppBackdrop.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
+  loading: PropTypes.bool,
+  open: PropTypes.bool,
 }
 
 AppBackdrop.uiName = 'AppBackdrop'
 
-export default withStyles(styles)(AppBackdrop)
+export default withStyles(styles)(React.memo(AppBackdrop))

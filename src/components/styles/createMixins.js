@@ -1,5 +1,5 @@
-import { constants } from './extras'
 import grey from '../colors/grey'
+import { constants } from './extras'
 
 export default function createMixins(breakpoints, spacing, mixins) {
   // eslint-disable-next-line no-shadow
@@ -56,6 +56,16 @@ export default function createMixins(breakpoints, spacing, mixins) {
         },
       }
     },
+    horizontalRhythm: (amount = 1, selector = '*') => ({
+      [`& > ${selector} + ${selector}`]: {
+        marginLeft: spacing(amount),
+      },
+    }),
+    verticalRhythm: (amount = 1, selector = '*') => ({
+      [`& > ${selector} + ${selector}`]: {
+        marginTop: spacing(amount),
+      },
+    }),
     absolute: (...args) => {
       return position('absolute', ...args)
     },

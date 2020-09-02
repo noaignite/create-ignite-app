@@ -7,22 +7,21 @@ export const styles = (theme) => ({
   root: {
     position: 'relative',
   },
-  padding: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-    [theme.breakpoints.up('md')]: {
-      paddingTop: theme.spacing(6),
-      paddingBottom: theme.spacing(6),
+  spacing: ({ spacingRule = 'margin' }) => ({
+    [`${spacingRule}Top`]: theme.spacing(4),
+    [`${spacingRule}Bottom`]: theme.spacing(4),
+    [theme.breakpoints.up('sm')]: {
+      [`${spacingRule}Top`]: theme.spacing(6),
+      [`${spacingRule}Bottom`]: theme.spacing(6),
+    },
+  }),
+  regular: {
+    ...theme.mixins.verticalRhythm(4, '*:not([aria-hidden])'),
+    [theme.breakpoints.up('sm')]: {
+      ...theme.mixins.verticalRhythm(6, '*:not([aria-hidden])'),
     },
   },
-  spacing: {
-    '& > *:not([aria-hidden]) + *': {
-      marginTop: theme.spacing(4),
-      [theme.breakpoints.up('md')]: {
-        marginTop: theme.spacing(6),
-      },
-    },
-  },
+  dense: theme.mixins.verticalRhythm(2, '*:not([aria-hidden])'),
 })
 
 const Section = React.forwardRef(function Section(props, ref) {
@@ -31,8 +30,9 @@ const Section = React.forwardRef(function Section(props, ref) {
     classes,
     className,
     component: Component = 'section',
-    disablePadding,
     disableSpacing,
+    rhythm,
+    spacingRule,
     ...other
   } = props
 
@@ -41,7 +41,7 @@ const Section = React.forwardRef(function Section(props, ref) {
       className={classnames(
         classes.root,
         {
-          [classes.padding]: !disablePadding,
+          [classes[rhythm]]: rhythm !== false,
           [classes.spacing]: !disableSpacing,
         },
         className,
@@ -59,8 +59,9 @@ Section.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   component: PropTypes.elementType,
-  disablePadding: PropTypes.bool,
   disableSpacing: PropTypes.bool,
+  rhythm: PropTypes.oneOf(['regular', 'dense', false]),
+  spacingRule: PropTypes.oneOf(['padding', 'margin']),
 }
 
 Section.uiName = 'Section'

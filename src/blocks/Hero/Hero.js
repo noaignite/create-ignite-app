@@ -2,139 +2,109 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
+import BackgroundMedia from '@oakwood/oui/BackgroundMedia'
 import Media from '@oakwood/oui/Media'
 import MediaLoader from '@oakwood/oui/MediaLoader'
 import { linkType, mediaType } from 'utils'
 import RouterLink from 'containers/RouterLink'
-import { aspectRatios } from 'components/styles/extras'
 import Button from 'components/Button'
 import Container from 'components/Container'
 import Section from 'components/Section'
 import Typography from 'components/Typography'
 
-const ANIMATION_DURATION = 1250
-const ANIMATION_DELAY = 200
-
 export const styles = (theme) => ({
-  root: {},
-  isReady: {},
-  container: {
+  root: {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: '100vh',
+    minHeight: '75vh',
+    color: theme.palette.getContrastText(theme.palette.text.primary),
+    textAlign: 'center',
     [theme.breakpoints.up('sm')]: {
-      minHeight: 750,
+      minHeight: 650,
     },
   },
-  background: {
-    ...theme.mixins.absolute(),
-    zIndex: -1,
-  },
-  backgroundMedia: {
-    height: '100%',
-  },
-  content: {
-    textAlign: 'center',
+  content: {},
+  backgroundWrapperSticky: {
+    top: 'var(--coa-sticky-top)',
+    '$root:first-child &': {
+      top: 'var(--coa-initial-sticky-top)',
+    },
   },
   heading: {
     margin: 0,
-    color: theme.palette.getContrastText(theme.palette.text.primary),
   },
   heading1: theme.mixins.fluidType('sm', 'xl', 45, 132),
   heading2: theme.mixins.fluidType('sm', 'xl', 47, 144),
-  button: {
-    marginTop: 'calc(20px + 5vw)',
-  },
-  fadeIn: {
-    transition: theme.transitions.create(['transform', 'opacity'], {
-      duration: ANIMATION_DURATION,
-    }),
-    '$root:not($isReady) &': {
-      transform: 'translate3d(0, 60px, 0)',
-      opacity: 0,
+  cta: {
+    position: 'static',
+    marginTop: 'calc(20px + 3vh)',
+    // Make entire component clicable
+    '&::before': {
+      ...theme.mixins.absolute(),
+      content: '""',
     },
   },
 })
 
 const Hero = React.forwardRef(function Hero(props, ref) {
-  const { backgroundMediaProps, classes, className, cta, heading1, heading2, ...other } = props
-
-  const [isReady, setReady] = React.useState(false)
-  const handleReady = React.useCallback(() => {
-    setReady(true)
-  }, [])
+  const {
+    backgroundAttachment = 'static',
+    backgroundMediaProps,
+    classes,
+    className,
+    cta,
+    heading1,
+    heading2,
+    ...other
+  } = props
 
   return (
-    <Section
-      className={classnames(
-        classes.root,
-        {
-          [classes.isReady]: isReady,
-        },
-        className,
-      )}
-      disablePadding
-      ref={ref}
-      {...other}
-    >
-      <Container className={classes.container} maxWidth="xl">
-        {backgroundMediaProps && (
-          <MediaLoader
-            className={classes.background}
-            TransitionProps={{ onEnter: handleReady }}
-            {...aspectRatios.hero}
-          >
+    <Section className={classnames(classes.root, className)} disableSpacing ref={ref} {...other}>
+      {backgroundMediaProps && (
+        <BackgroundMedia
+          classes={{
+            wrapperFixed: 'mui-fixed',
+            wrapperSticky: classes.backgroundWrapperSticky,
+          }}
+          attachment={backgroundAttachment}
+        >
+          <MediaLoader>
             <Media
-              className={classnames(classes.backgroundMedia, 'coa-preload')}
+              className="coa-preload" // Register to `AppContext` mediaReady
               {...(backgroundMediaProps?.component === 'video'
                 ? { autoPlay: true, muted: true, loop: true, playsInline: true }
                 : {})}
               {...backgroundMediaProps}
             />
           </MediaLoader>
+        </BackgroundMedia>
+      )}
+
+      <Container className={classes.content} maxWidth="xl">
+        <h1 className={classes.heading}>
+          <Typography className={classes.heading1} component="span" display="block" variant="h2">
+            {heading1}
+          </Typography>
+
+          <Typography className={classes.heading2} component="span" display="block" variant="h1">
+            {heading2}
+          </Typography>
+        </h1>
+
+        {cta?.url && (
+          <Button className={classes.cta} component={RouterLink} href={cta.url} color="inherit">
+            {cta?.label}
+          </Button>
         )}
-
-        <div className={classes.content}>
-          <h1 className={classes.heading}>
-            <Typography
-              className={classnames(classes.heading1, classes.fadeIn)}
-              component="span"
-              display="block"
-              variant="h2"
-              style={{ transitionDuration: `${ANIMATION_DELAY * 2}ms` }}
-            >
-              {heading1}
-            </Typography>
-
-            <Typography
-              className={classnames(classes.heading2, classes.fadeIn)}
-              component="span"
-              display="block"
-              variant="h1"
-              style={{ transitionDuration: `${ANIMATION_DELAY * 3}ms` }}
-            >
-              {heading2}
-            </Typography>
-          </h1>
-
-          {cta?.label && (
-            <Button
-              className={classnames(classes.button, classes.fadeIn)}
-              component={RouterLink}
-              href={cta.url}
-              style={{ transitionDuration: `${ANIMATION_DELAY * 4}ms` }}
-            >
-              {cta.label}
-            </Button>
-          )}
-        </div>
       </Container>
     </Section>
   )
 })
 
 Hero.propTypes = {
+  backgroundAttachment: PropTypes.oneOf(['static', 'fixed', 'sticky']),
   backgroundMediaProps: mediaType,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,

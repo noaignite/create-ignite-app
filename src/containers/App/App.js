@@ -9,18 +9,23 @@ import BrandIcon from 'components/icons/Brand'
 import BurgerIcon from 'components/icons/Burger'
 import CartIcon from 'components/icons/Cart'
 import CrossIcon from 'components/icons/Cross'
-import Container from 'components/Container'
+import SearchIcon from 'components/icons/Search'
 import IconButton from 'components/IconButton'
 import Toolbar from 'components/Toolbar'
 import AppAppBar from './partials/AppAppBar'
 import AppBackdrop from './partials/AppBackdrop'
-import AppCartMenu from './partials/AppCartMenu'
+import AppCartDrawer from './partials/AppCartDrawer'
 import AppFooter from './partials/AppFooter'
-import AppNavMenu from './partials/AppNavMenu'
+import AppNavDrawer from './partials/AppNavDrawer'
+import AppNavDropdown from './partials/AppNavDropdown'
+import AppSearchDrawer from './partials/AppSearchDrawer'
 import AppSkipLink from './partials/AppSkipLink'
-import { useAppContext } from './AppContext'
+import { useApp } from './AppContext'
 
-export const styles = {
+const BREAKPOINT_KEY_DOWN = 'sm'
+const BREAKPOINT_KEY_UP = 'md'
+
+export const styles = (theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -29,32 +34,66 @@ export const styles = {
   isPreloading: {},
   isLoading: {},
   appBar: {},
-  appBarToolbar: {
-    justifyContent: 'space-between',
+  appBarToolbar: {},
+  appBarMobilePush: {
+    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
+      marginLeft: 'auto',
+    },
+  },
+  appBarDesktopPush: {
+    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
+      marginLeft: 'auto',
+    },
+  },
+  burgerIconButton: {
+    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
+      display: 'none',
+    },
+  },
+  searchIconButton: {},
+  brandIconButton: {
+    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
+      position: 'absolute',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      marginLeft: 0, // Cancel margin of `edge="start"`
+    },
+  },
+  cartIconButton: {},
+  navDropdown: {
+    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
+      display: 'none',
+    },
   },
   main: {
     flexGrow: 1,
     outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
   },
-}
+})
 
-const App = React.forwardRef(function App(props, ref) {
+function App(props) {
   const { children, classes, menuFooter, menuPrimary, ...other } = props
 
   const {
-    isAppBarFixed,
+    appBarColor,
+    hideFooter,
+    hideHeader,
+    isBackdropOpen,
     isCartMenuOpen,
     isLoading,
     isMediaReady,
     isNavMenuOpen,
+    isSearchMenuOpen,
+    isSomeMenuOpen,
     onAppBarBurgerClick,
     onAppBarCartClick,
-  } = useAppContext()
+    onAppBarSearchClick,
+  } = useApp()
 
   const burgerIconButton = (
     <IconButton
+      className={classes.burgerIconButton}
       onClick={onAppBarBurgerClick}
-      color="inherit"
       edge="start"
       size="small"
       aria-haspopup="true"
@@ -65,23 +104,42 @@ const App = React.forwardRef(function App(props, ref) {
     </IconButton>
   )
 
+  const searchIconButton = (
+    <IconButton
+      className={classes.searchIconButton}
+      onClick={onAppBarSearchClick}
+      size="small"
+      aria-haspopup="true"
+      aria-expanded={isSearchMenuOpen}
+      aria-label="Toggle search"
+    >
+      {isSearchMenuOpen ? <CrossIcon /> : <SearchIcon />}
+    </IconButton>
+  )
+
   const brandIconButton = (
-    <IconButton component={RouterLink} color="inherit" href="/" aria-label="Go to the homepage">
+    <IconButton
+      className={classes.brandIconButton}
+      component={RouterLink}
+      href="/"
+      edge="start"
+      aria-label="Go to the homepage"
+    >
       <BrandIcon style={{ width: 'auto' }} />
     </IconButton>
   )
 
   const cartIconButton = (
     <IconButton
+      className={classes.cartIconButton}
       onClick={onAppBarCartClick}
-      color="inherit"
       edge="end"
       size="small"
       aria-haspopup="true"
       aria-expanded={isCartMenuOpen}
       aria-label="Toggle cart menu"
     >
-      {isCartMenuOpen ? <CrossIcon /> : <CartIcon />}
+      {isCartMenuOpen ? <CrossIcon /> : <CartIcon amount={3} />}
     </IconButton>
   )
 
@@ -91,42 +149,46 @@ const App = React.forwardRef(function App(props, ref) {
         [classes.isPreloading]: !isMediaReady,
         [classes.isLoading]: isLoading,
       })}
-      ref={ref}
       {...other}
     >
       <AppSkipLink href={`#${SITE_MAIN_ID}`}>Skip to content</AppSkipLink>
 
-      <AppAppBar
-        className={classes.appBar}
-        position={isAppBarFixed ? 'fixed' : 'sticky'}
-        id={SITE_HEADER_ID}
-      >
-        <Toolbar
-          className={classes.appBarToolbar}
-          component={Container}
-          maxWidth={false}
-          disableGutters
+      {!hideHeader && (
+        <AppAppBar
+          className={classes.appBar}
+          color={appBarColor}
+          disableTransparency={isSomeMenuOpen}
+          id={SITE_HEADER_ID}
         >
-          <div>{burgerIconButton}</div>
-          <div>{brandIconButton}</div>
-          <div>{cartIconButton}</div>
-        </Toolbar>
-      </AppAppBar>
+          <Toolbar className={classes.appBarToolbar}>
+            {burgerIconButton}
+            {brandIconButton}
 
-      <AppNavMenu menu={menuPrimary} />
+            <AppNavDropdown className={classes.navDropdown} primary={menuPrimary} />
 
-      <AppCartMenu />
+            <div className={classes.appBarDesktopPush} />
+            {searchIconButton}
+            <div className={classes.appBarMobilePush} />
+
+            {cartIconButton}
+          </Toolbar>
+        </AppAppBar>
+      )}
 
       <main className={classes.main} id={SITE_MAIN_ID} role="main" tabIndex="-1">
         {children}
       </main>
 
-      <AppFooter menu={menuFooter} id={SITE_FOOTER_ID} />
+      {!hideFooter && <AppFooter primary={menuFooter} id={SITE_FOOTER_ID} />}
 
-      <AppBackdrop />
+      <AppNavDrawer primary={menuPrimary} open={isNavMenuOpen} />
+      <AppCartDrawer open={isCartMenuOpen} />
+      <AppSearchDrawer open={isSearchMenuOpen} />
+
+      <AppBackdrop open={isBackdropOpen} loading={isLoading} />
     </div>
   )
-})
+}
 
 App.propTypes = {
   children: PropTypes.node.isRequired,

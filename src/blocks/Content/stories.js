@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { storiesOf } from '@storybook/react'
-import Wysiwyg from './Content'
+import Content from './Content'
 
-const stories = storiesOf('Blocks/Wysiwyg', module)
+const stories = storiesOf('Blocks/Content', module)
 
 export const Default = (props) => (
-  <Wysiwyg {...props}>
+  <Content {...props}>
     <h1>HTML Ipsum Presents</h1>
 
     <p>
@@ -56,9 +56,9 @@ export const Default = (props) => (
     <h5>Header Level 5</h5>
 
     <h6>Header Level 6</h6>
-  </Wysiwyg>
+  </Content>
 )
 
 stories.add('Default', Default)
 
-export default Wysiwyg
+export default Content

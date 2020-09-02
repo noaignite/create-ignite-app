@@ -29,19 +29,20 @@ export const styles = (theme) => ({
 })
 
 const AppFooter = React.forwardRef(function AppFooter(props, ref) {
-  const { classes, className, menu = [], ...other } = props
+  const { classes, className, primary = [], ...other } = props
 
   return (
     <Section
       className={classnames(classes.root, className)}
       component="footer"
+      spacingRule="padding"
       ref={ref}
       {...other}
     >
       <Container className={classes.mainDetails}>
         <nav className={classes.nav} aria-label="Main navigation">
           <ul className={classes.navlist}>
-            {menu.map((menuItem, idx) => (
+            {primary.map((menuItem, idx) => (
               <li key={idx} className={classes.navlistItem}>
                 <Link
                   className={classes.navlistItemText}
@@ -64,9 +65,9 @@ const AppFooter = React.forwardRef(function AppFooter(props, ref) {
 AppFooter.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  menu: PropTypes.arrayOf(menuLinkType),
+  primary: PropTypes.arrayOf(menuLinkType),
 }
 
 AppFooter.uiName = 'AppFooter'
 
-export default withStyles(styles)(AppFooter)
+export default withStyles(styles)(React.memo(AppFooter))

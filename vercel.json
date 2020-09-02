@@ -1,5 +1,4 @@
 {
-  "name": "create-oakwood-app",
   "builds": [
     {
       "src": "package.json",
