@@ -10,7 +10,7 @@ import { AppProvider } from 'containers/App/AppContext'
 import AppBase from 'containers/App'
 // As of NextJS 9, all global css *must* be imported in pages/_app.js
 // https://github.com/zeit/next.js/blob/master/errors/css-global.md
-import 'swiper/css/swiper.min.css'
+import 'swiper/swiper-bundle.min.css'
 
 function App(props) {
   const { Component, pageProps } = props
@@ -31,6 +31,7 @@ function App(props) {
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
         />
       </Head>
+
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
 
