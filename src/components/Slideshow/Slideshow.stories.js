@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Keyboard, Navigation, Pagination } from 'swiper/js/swiper.esm'
+import { Keyboard, Navigation, Pagination } from 'swiper'
 import Media from '@oakwood/oui/Media'
 import SlideshowSlide from '../SlideshowSlide'
 import Slideshow from './Slideshow'
@@ -23,8 +23,8 @@ export const Default = Template.bind({})
 Default.args = {
   modules: [Keyboard, Navigation, Pagination],
   navigation: {
-    prevEl: <div className="swiper-button-prev" />,
-    nextEl: <div className="swiper-button-next" />,
+    prevEl: <div className="swiper-button-prev custom-prev" />,
+    nextEl: <div className="swiper-button-next custom-next" />,
   },
   pagination: {
     el: <div className="swiper-pagination" />,
