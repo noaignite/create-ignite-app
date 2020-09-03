@@ -1,13 +1,13 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
+import SwiperCore, { A11y } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { productType } from 'utils'
 import ProductItem from 'containers/ProductItem'
 import Container from 'components/Container'
 import Section from 'components/Section'
-import Slideshow from 'components/Slideshow'
-import SlideshowSlide from 'components/SlideshowSlide'
 import Typography from 'components/Typography'
 
 export const styles = (theme) => ({
@@ -40,6 +40,8 @@ export const styles = (theme) => ({
 const ProductSlideshow = React.forwardRef(function ProductSlideshow(props, ref) {
   const { classes, className, heading, products, ...other } = props
 
+  SwiperCore.use([A11y])
+
   return (
     <Section className={classnames(classes.root, className)} rhythm="regular" ref={ref} {...other}>
       {heading && (
@@ -51,13 +53,13 @@ const ProductSlideshow = React.forwardRef(function ProductSlideshow(props, ref) 
       )}
 
       <Container className={classes.content} maxWidth={false}>
-        <Slideshow className={classes.slideshow} slidesPerView="auto">
+        <Swiper className={classes.slideshow} slidesPerView="auto">
           {products.map((product, idx) => (
-            <SlideshowSlide key={idx} className={classes.slide}>
+            <SwiperSlide key={idx} className={classes.slide}>
               <ProductItem product={product} />
-            </SlideshowSlide>
+            </SwiperSlide>
           ))}
-        </Slideshow>
+        </Swiper>
       </Container>
     </Section>
   )
