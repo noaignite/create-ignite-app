@@ -1,15 +1,17 @@
 import * as React from 'react'
-import { storiesOf } from '@storybook/react'
-import { boolean, select } from '@storybook/addon-knobs'
+import storySelectArgType from '../utils/storySelectArgType'
 import Container from './Container'
 
-const stories = storiesOf('Components/Container', module)
+export default {
+  title: 'Components/Container',
+  component: Container,
+  argTypes: {
+    maxWidth: storySelectArgType(['xs', 'sm', 'md', 'lg', 'xl', false]),
+  },
+}
 
-export const Default = () => (
-  <Container
-    maxWidth={select('maxWidth', ['xs', 'sm', 'md', 'lg', 'xl', false], false)}
-    fixed={boolean('fixed', false)}
-  >
+const Template = (args) => (
+  <Container {...args}>
     {Array.from(new Array(6), (_, idx) => (
       <p key={idx} style={{ marginTop: 0 }}>
         Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
@@ -20,6 +22,8 @@ export const Default = () => (
   </Container>
 )
 
-stories.add('Default', Default)
-
-export default Container
+export const Default = Template.bind({})
+Default.args = {
+  fixed: false,
+  maxWidth: false,
+}

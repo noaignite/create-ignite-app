@@ -1,17 +1,18 @@
 import * as React from 'react'
-import { storiesOf } from '@storybook/react'
-import { boolean, select } from '@storybook/addon-knobs'
+import storySelectArgType from '../utils/storySelectArgType'
 import Section from './Section'
 
-const stories = storiesOf('Components/Section', module)
+export default {
+  title: 'Components/Section',
+  component: Section,
+  argTypes: {
+    spacingRule: storySelectArgType(['padding', 'margin']),
+    rhythm: storySelectArgType(['regular', 'dense', false]),
+  },
+}
 
-export const Default = () => (
-  <Section
-    disableSpacing={boolean('disableSpacing', false)}
-    spacingRule={select('spacingRule', ['padding', 'margin'], 'margin')}
-    rhythm={select('rhythm', ['regular', 'dense', false], false)}
-    style={{ background: '#eee' }}
-  >
+const Template = (args) => (
+  <Section {...args}>
     <div aria-hidden />
     <div style={{ background: '#ccc' }}>Section content</div>
     <div style={{ background: '#ccc' }}>Section content</div>
@@ -20,6 +21,10 @@ export const Default = () => (
   </Section>
 )
 
-stories.add('Default', Default)
-
-export default Section
+export const Default = Template.bind({})
+Default.args = {
+  disableSpacing: false,
+  spacingRule: 'margin',
+  rhythm: false,
+  style: { background: '#eee' },
+}

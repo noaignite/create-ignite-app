@@ -1,6 +1,4 @@
 import * as React from 'react'
-import { storiesOf } from '@storybook/react'
-import { boolean } from '@storybook/addon-knobs'
 import KeyboardArrowRightIcon from '../icons/KeyboardArrowRight'
 import FacebookIcon from '../icons/Facebook'
 import ListItem from '../ListItem'
@@ -9,14 +7,13 @@ import ListItemIcon from '../ListItemIcon'
 import ListItemText from '../ListItemText'
 import List from './List'
 
-const stories = storiesOf('Components/List', module)
+export default {
+  title: 'Components/List',
+  component: List,
+}
 
-export const Default = () => (
-  <List
-    dense={boolean('dense', false)}
-    disablePadding={boolean('disablePadding', false)}
-    component="div"
-  >
+const Template = (args) => (
+  <List {...args}>
     <ListItem component="div" button divider>
       <ListItemAvatar>
         <img src="//source.unsplash.com/40x60" alt="" />
@@ -107,6 +104,9 @@ export const Default = () => (
   </List>
 )
 
-stories.add('Default', Default)
-
-export default List
+export const Default = Template.bind({})
+Default.args = {
+  component: 'div',
+  dense: false,
+  disablePadding: false,
+}

@@ -1,12 +1,15 @@
 import * as React from 'react'
-import { storiesOf } from '@storybook/react'
 import { cartItem } from 'api/mock'
 import CartItem from './CartItem'
 
-const stories = storiesOf('Containers/CartItem', module)
+export default {
+  title: 'Containers/CartItem',
+  component: CartItem,
+}
 
-export const Default = () => <CartItem cartItem={cartItem} />
+const Template = (args) => <CartItem {...args} />
 
-stories.add('Default', Default)
-
-export default CartItem
+export const Default = Template.bind({})
+Default.args = {
+  cartItem,
+}

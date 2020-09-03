@@ -1,28 +1,13 @@
 import * as React from 'react'
-import { storiesOf } from '@storybook/react'
+import { blocks } from 'api/mock'
 import Hero from './Hero'
 
-const stories = storiesOf('Blocks/Hero', module)
+export default {
+  title: 'Blocks/Hero',
+  component: Hero,
+}
 
-export const Default = (props) => (
-  <Hero
-    backgroundMediaProps={{
-      component: 'picture',
-      breakpoints: {
-        xs: '//source.unsplash.com/360x715',
-        sm: '//source.unsplash.com/1440x650',
-      },
-    }}
-    heading1="Lorem ipsum dolor sit"
-    heading2="Nullam quis tortor"
-    cta={{
-      label: 'Discover',
-      url: 'https://material-ui.com',
-    }}
-    {...props}
-  />
-)
+const Template = (args) => <Hero {...args} />
 
-stories.add('Default', Default)
-
-export default Hero
+export const Default = Template.bind({})
+Default.args = blocks.Hero

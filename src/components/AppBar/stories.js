@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { storiesOf } from '@storybook/react'
-import { select } from '@storybook/addon-knobs'
+import storySelectArgType from '../utils/storySelectArgType'
 import BrandIcon from '../icons/Brand'
 import BurgerIcon from '../icons/Burger'
 import CrossIcon from '../icons/Cross'
@@ -8,33 +7,44 @@ import IconButton from '../IconButton'
 import Toolbar from '../Toolbar'
 import AppBar from './AppBar'
 
-const stories = storiesOf('Components/AppBar', module)
+export default {
+  title: 'Components/AppBar',
+  component: AppBar,
+  decorators: [
+    (Story) => (
+      <div style={{ height: '100vh', background: '#eee' }}>
+        <Story />
+      </div>
+    ),
+  ],
+  argTypes: {
+    color: storySelectArgType(['default', 'inherit', 'primary', 'secondary']),
+    position: storySelectArgType(['fixed', 'absolute', 'sticky', 'static', 'relative']),
+  },
+}
 
-export const Default = () => (
-  <div style={{ height: '100vh', background: '#eee' }}>
-    <AppBar
-      color={select('color', ['default', 'inherit', 'primary', 'secondary'], 'default')}
-      position={select('position', ['fixed', 'absolute', 'sticky', 'static', 'relative'], 'fixed')}
-    >
-      <Toolbar variant="dense">
-        <IconButton edge="start">
-          <BurgerIcon />
+const Template = (args) => (
+  <AppBar {...args}>
+    <Toolbar variant="dense">
+      <IconButton edge="start">
+        <BurgerIcon />
+      </IconButton>
+
+      <div style={{ flexGrow: 1, textAlign: 'center' }}>
+        <IconButton>
+          <BrandIcon style={{ width: 90 }} />
         </IconButton>
+      </div>
 
-        <div style={{ flexGrow: 1, textAlign: 'center' }}>
-          <IconButton>
-            <BrandIcon style={{ width: 90 }} />
-          </IconButton>
-        </div>
-
-        <IconButton edge="end">
-          <CrossIcon />
-        </IconButton>
-      </Toolbar>
-    </AppBar>
-  </div>
+      <IconButton edge="end">
+        <CrossIcon />
+      </IconButton>
+    </Toolbar>
+  </AppBar>
 )
 
-stories.add('Default', Default)
-
-export default AppBar
+export const Default = Template.bind({})
+Default.args = {
+  color: 'default',
+  position: 'fixed',
+}

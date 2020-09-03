@@ -1,18 +1,19 @@
 import * as React from 'react'
-import { storiesOf } from '@storybook/react'
-import { boolean, select } from '@storybook/addon-knobs'
+import storySelectArgType from '../utils/storySelectArgType'
 import Radio from './Radio'
 
-const stories = storiesOf('Components/Radio', module)
+export default {
+  title: 'Components/Radio',
+  component: Radio,
+  argTypes: {
+    color: storySelectArgType(['primary', 'secondary', 'default']),
+  },
+}
 
-export const Default = () => (
-  <Radio
-    checked={boolean('checked', false)}
-    color={select('color', ['primary', 'secondary', 'default'], 'default')}
-    disabled={boolean('disabled', false)}
-  />
-)
+const Template = (args) => <Radio {...args} />
 
-stories.add('Default', Default)
-
-export default Radio
+export const Default = Template.bind({})
+Default.args = {
+  checked: false,
+  disabled: false,
+}

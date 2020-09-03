@@ -1,11 +1,12 @@
 import * as React from 'react'
-import { storiesOf } from '@storybook/react'
 import CartList from './CartList'
 
-const stories = storiesOf('Containers/CartList', module)
+export default {
+  title: 'Containers/CartList',
+  component: CartList,
+}
 
-export const Default = () => <CartList />
+const Template = (args) => <CartList {...args} />
 
-stories.add('Default', Default)
-
-export default CartList
+export const Default = Template.bind({})
+Default.args = {}

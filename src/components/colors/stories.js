@@ -1,11 +1,8 @@
 import * as React from 'react'
-import { storiesOf } from '@storybook/react'
 import useTheme from '@material-ui/core/styles/useTheme'
 import Palette from '../internal/Palette'
 import Swatch from '../internal/Swatch'
 import * as colors from '.'
-
-const stories = storiesOf('Common/Colors', module)
 
 function isValidPaletteColor([name, color]) {
   return name === 'divider' || typeof color === 'object'
@@ -34,7 +31,11 @@ function sortEntriesByKeyMap(entries, orderArr) {
 const SYSTEM_SORT_ORDER = ['common', 'grey']
 const PALETTE_SORT_ORDER = ['common', 'text', 'divider', 'background', 'action']
 
-const SystemColors = () => {
+export default {
+  title: 'Common/Colors',
+}
+
+const Template1 = () => {
   const colorEntries = Object.entries(colors)
   const sortedColors = sortEntriesByKeyMap(colorEntries, SYSTEM_SORT_ORDER)
 
@@ -47,15 +48,18 @@ const SystemColors = () => {
       }}
     >
       {sortedColors.map(([name, color]) => (
-        <Swatch key={name} color={color} name={name} />
+        <div key={name}>
+          <Swatch color={color} name={name} />
+        </div>
       ))}
     </div>
   )
 }
 
-stories.add('System Colors', SystemColors)
+export const SystemColors = Template1.bind({})
+SystemColors.args = {}
 
-const ThemePalette = () => {
+const Template2 = () => {
   const { palette } = useTheme()
 
   const paletteEntries = Object.entries(palette)
@@ -79,4 +83,5 @@ const ThemePalette = () => {
   )
 }
 
-stories.add('Theme Palette', () => <ThemePalette />)
+export const ThemeColors = Template2.bind({})
+ThemeColors.args = {}

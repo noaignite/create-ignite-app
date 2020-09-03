@@ -1,25 +1,16 @@
 import * as React from 'react'
-import { storiesOf } from '@storybook/react'
+import { Keyboard, Navigation, Pagination } from 'swiper'
 import Media from '@oakwood/oui/Media'
-import { A11y, Keyboard, Navigation, Pagination } from 'swiper/js/swiper.esm'
 import SlideshowSlide from '../SlideshowSlide'
 import Slideshow from './Slideshow'
 
-const stories = storiesOf('Components/Slideshow', module)
+export default {
+  title: 'Components/Slideshow',
+  component: Slideshow,
+}
 
-export const Default = () => (
-  <Slideshow
-    modules={[A11y, Keyboard, Navigation, Pagination]}
-    navigation={{
-      prevEl: <div className="swiper-button-prev" />,
-      nextEl: <div className="swiper-button-next" />,
-    }}
-    pagination={{
-      el: <div className="swiper-pagination" />,
-      clickable: true,
-    }}
-    keyboard
-  >
+const Template = (args) => (
+  <Slideshow {...args}>
     {Array.from(new Array(6), (val, idx) => (
       <SlideshowSlide key={idx}>
         <Media component="img" src={`//placekitten.com/800/${400 - idx}`} />
@@ -28,6 +19,16 @@ export const Default = () => (
   </Slideshow>
 )
 
-stories.add('Default', Default)
-
-export default Slideshow
+export const Default = Template.bind({})
+Default.args = {
+  modules: [Keyboard, Navigation, Pagination],
+  navigation: {
+    prevEl: <div className="swiper-button-prev custom-prev" />,
+    nextEl: <div className="swiper-button-next custom-next" />,
+  },
+  pagination: {
+    el: <div className="swiper-pagination" />,
+    clickable: true,
+  },
+  keyboard: true,
+}
