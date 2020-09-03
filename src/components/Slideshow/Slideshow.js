@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Rwiper from '@oakwood/oui/Rwiper'
-import { Swiper, A11y } from 'swiper/js/swiper.esm'
+import SwiperCore, { A11y } from 'swiper'
 
 const Slideshow = React.forwardRef(function Slideshow(props, ref) {
   const { modules: modulesProp = [] } = props
@@ -11,7 +11,7 @@ const Slideshow = React.forwardRef(function Slideshow(props, ref) {
     modules.push(A11y)
   }
 
-  return <Rwiper Swiper={Swiper} modules={modules} ref={ref} {...props} />
+  return <Rwiper Swiper={SwiperCore} modules={modules} ref={ref} {...props} />
 })
 
 Slideshow.propTypes = {
