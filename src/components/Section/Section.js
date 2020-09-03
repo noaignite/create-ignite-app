@@ -7,21 +7,12 @@ export const styles = (theme) => ({
   root: {
     position: 'relative',
   },
-  spacing: ({ spacingRule = 'margin' }) => ({
-    [`${spacingRule}Top`]: theme.spacing(4),
-    [`${spacingRule}Bottom`]: theme.spacing(4),
-    [theme.breakpoints.up('sm')]: {
-      [`${spacingRule}Top`]: theme.spacing(6),
-      [`${spacingRule}Bottom`]: theme.spacing(6),
-    },
-  }),
   regular: {
     ...theme.mixins.verticalRhythm(4, '*:not([aria-hidden])'),
-    [theme.breakpoints.up('sm')]: {
-      ...theme.mixins.verticalRhythm(6, '*:not([aria-hidden])'),
-    },
+    [theme.breakpoints.up('sm')]: theme.mixins.verticalRhythm(6, '*:not([aria-hidden])'),
   },
   dense: theme.mixins.verticalRhythm(2, '*:not([aria-hidden])'),
+  spacing: ({ spacingRule = 'margin' }) => theme.mixins.section(spacingRule),
 })
 
 const Section = React.forwardRef(function Section(props, ref) {

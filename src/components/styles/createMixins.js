@@ -40,6 +40,22 @@ export default function createMixins(breakpoints, spacing, mixins) {
       minHeight: constants.TOOLBAR_MIN_HEIGHT_DENSE,
     },
     // Custom mixins
+    container: (spacingType = 'padding') => ({
+      [`${spacingType}Left`]: spacing(2),
+      [`${spacingType}Right`]: spacing(2),
+      [breakpoints.up('sm')]: {
+        [`${spacingType}Left`]: spacing(3),
+        [`${spacingType}Right`]: spacing(3),
+      },
+    }),
+    section: (spacingType = 'margin') => ({
+      [`${spacingType}Top`]: spacing(4),
+      [`${spacingType}Bottom`]: spacing(4),
+      [breakpoints.up('sm')]: {
+        [`${spacingType}Top`]: spacing(6),
+        [`${spacingType}Bottom`]: spacing(6),
+      },
+    }),
     fluidType: (minBreakpoint, maxBreakpoint, minFontSize, maxFontSize) => {
       const minVw = breakpoints.values[minBreakpoint] || minBreakpoint
       const maxVw = breakpoints.values[maxBreakpoint] || maxBreakpoint
