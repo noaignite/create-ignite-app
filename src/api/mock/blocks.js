@@ -62,4 +62,13 @@ export default {
       <h6>Header Level 6</h6>
     `,
   },
+  Media: {
+    mediaProps: {
+      component: 'picture',
+      breakpoints: {
+        xs: '//source.unsplash.com/360x715',
+        sm: '//source.unsplash.com/1440x650',
+      },
+    },
+  },
 }
