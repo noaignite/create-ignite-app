@@ -74,6 +74,4 @@ Palette.propTypes = {
   name: PropTypes.string,
 }
 
-Palette.uiName = 'Palette'
-
 export default withStyles(styles)(Palette)

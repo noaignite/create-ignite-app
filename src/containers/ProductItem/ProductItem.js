@@ -71,6 +71,4 @@ ProductItem.propTypes = {
   product: productType.isRequired,
 }
 
-ProductItem.uiName = 'ProductItem'
-
 export default withStyles(styles)(ProductItem)

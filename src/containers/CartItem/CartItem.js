@@ -140,6 +140,4 @@ CartItem.propTypes = {
   className: PropTypes.string,
 }
 
-CartItem.uiName = 'CartItem'
-
 export default withStyles(styles)(CartItem)

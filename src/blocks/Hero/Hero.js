@@ -113,6 +113,4 @@ Hero.propTypes = {
   heading2: PropTypes.string,
 }
 
-Hero.uiName = 'Blocks/Hero'
-
 export default withStyles(styles)(Hero)

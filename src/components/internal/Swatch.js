@@ -79,6 +79,4 @@ Swatch.propTypes = {
   name: PropTypes.string,
 }
 
-Swatch.uiName = 'Swatch'
-
 export default withStyles(styles)(Swatch)

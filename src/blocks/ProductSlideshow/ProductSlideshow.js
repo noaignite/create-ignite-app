@@ -72,6 +72,4 @@ ProductSlideshow.propTypes = {
   products: PropTypes.arrayOf(productType).isRequired,
 }
 
-ProductSlideshow.uiName = 'ProductSlideshow'
-
 export default withStyles(styles)(ProductSlideshow)

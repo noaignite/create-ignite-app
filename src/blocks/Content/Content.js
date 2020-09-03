@@ -51,6 +51,4 @@ Content.propTypes = {
   content: PropTypes.string,
 }
 
-Content.uiName = 'Block/Content'
-
 export default withStyles(styles)(Content)

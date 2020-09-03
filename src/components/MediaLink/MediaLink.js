@@ -91,6 +91,4 @@ MediaLink.propTypes = {
   onFocus: PropTypes.func,
 }
 
-MediaLink.uiName = 'MediaLink'
-
 export default withStyles(styles)(MediaLink)

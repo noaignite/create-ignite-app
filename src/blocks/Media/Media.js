@@ -20,6 +20,4 @@ Media.propTypes = {
   mediaProps: mediaType.isRequired,
 }
 
-Media.uiName = 'Block/Media'
-
 export default Media

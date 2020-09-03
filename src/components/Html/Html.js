@@ -70,6 +70,4 @@ Html.propTypes = {
   component: PropTypes.elementType,
 }
 
-Html.uiName = 'Html'
-
 export default withStyles(styles)(Html)
