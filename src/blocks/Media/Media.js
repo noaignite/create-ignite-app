@@ -10,7 +10,12 @@ const Media = React.forwardRef(function Media(props, ref) {
   return (
     <Section ref={ref} {...other}>
       <Container>
-        <OuiMedia {...mediaProps} />
+        <OuiMedia
+          {...(mediaProps?.component === 'video'
+            ? { autoPlay: true, muted: true, loop: true, playsInline: true }
+            : {})}
+          {...mediaProps}
+        />
       </Container>
     </Section>
   )
