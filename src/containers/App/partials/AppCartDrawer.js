@@ -46,6 +46,4 @@ AppCartDrawer.propTypes = {
   open: PropTypes.bool,
 }
 
-AppCartDrawer.uiName = 'AppCartDrawer'
-
 export default withStyles(styles)(React.memo(AppCartDrawer))

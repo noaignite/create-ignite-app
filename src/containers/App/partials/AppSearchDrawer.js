@@ -105,6 +105,4 @@ AppSearchDrawer.propTypes = {
   open: PropTypes.bool,
 }
 
-AppSearchDrawer.uiName = 'AppSearchDrawer'
-
 export default withStyles(styles)(React.memo(AppSearchDrawer))

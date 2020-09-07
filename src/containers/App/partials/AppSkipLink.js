@@ -35,6 +35,4 @@ AppSkipLink.propTypes = {
   className: PropTypes.string,
 }
 
-AppSkipLink.uiName = 'AppSkipLink'
-
 export default withStyles(styles)(React.memo(AppSkipLink))

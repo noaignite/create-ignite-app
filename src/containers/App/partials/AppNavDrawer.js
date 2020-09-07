@@ -156,6 +156,4 @@ AppNavDrawer.propTypes = {
   primary: PropTypes.arrayOf(menuLinkType),
 }
 
-AppNavDrawer.uiName = 'AppNavDrawer'
-
 export default withStyles(styles)(React.memo(AppNavDrawer))

@@ -149,6 +149,4 @@ AppNavDropdown.propTypes = {
   primary: PropTypes.arrayOf(menuLinkType).isRequired,
 }
 
-AppNavDropdown.uiName = 'AppNavDropdown'
-
 export default withStyles(styles)(React.memo(AppNavDropdown))

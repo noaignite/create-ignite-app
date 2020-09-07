@@ -68,6 +68,4 @@ AppFooter.propTypes = {
   primary: PropTypes.arrayOf(menuLinkType),
 }
 
-AppFooter.uiName = 'AppFooter'
-
 export default withStyles(styles)(React.memo(AppFooter))

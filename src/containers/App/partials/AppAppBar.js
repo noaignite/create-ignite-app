@@ -125,6 +125,4 @@ AppAppBar.propTypes = {
   disableTransparency: PropTypes.bool,
 }
 
-AppAppBar.uiName = 'AppAppBar'
-
 export default withStyles(styles)(React.memo(AppAppBar))

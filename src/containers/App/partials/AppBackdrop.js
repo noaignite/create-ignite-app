@@ -34,6 +34,4 @@ AppBackdrop.propTypes = {
   open: PropTypes.bool,
 }
 
-AppBackdrop.uiName = 'AppBackdrop'
-
 export default withStyles(styles)(React.memo(AppBackdrop))
