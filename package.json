@@ -25,8 +25,8 @@
     "lint": "eslint . --cache --report-unused-disable-directives",
     "lint:ci": "eslint . --report-unused-disable-directives",
     "lint:fix": "eslint . --cache --fix",
-    "prettier": "prettier --check \"src/**/*.js\"",
-    "prettier:fix": "prettier --write \"src/**/*.js\""
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write"
   },
   "dependencies": {
     "@material-ui/core": "4.11.0",

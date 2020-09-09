@@ -18,7 +18,7 @@ const nextConfig = {
     WORDPRESS_URL: process.env.WORDPRESS_URL,
     GTM_ID: process.env.GTM_ID,
   },
-  webpack: config => {
+  webpack: (config) => {
     // Extend webpack config here
     config.module.rules.push({
       test: /\.(svg|otf|eot|ttf|woff|woff2|png)$/,
