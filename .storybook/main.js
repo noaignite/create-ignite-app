@@ -15,6 +15,9 @@ module.exports = {
      */
     const replacementPlugin = webpack.NormalModuleReplacementPlugin
     config.plugins.push(new replacementPlugin(/(src\/api\/index\.js)/, './storybook.index.js'))
+    config.plugins.push(
+      new replacementPlugin(/(src\/containers\/RouterLink\/index\.js)/, './storybook.index.js'),
+    )
     /* config.plugins.push(
       new webpack.NormalModuleReplacementPlugin(
         /(api|blocks|components|containers)(\/\w+)*\/(index\.js)/,
