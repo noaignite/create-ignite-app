@@ -25,6 +25,7 @@
     "lint": "eslint . --cache --report-unused-disable-directives",
     "lint:ci": "eslint . --report-unused-disable-directives",
     "lint:fix": "eslint . --cache --fix",
+    "lint:staged": "lint-staged",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write"
   },
@@ -83,6 +84,7 @@
     "eslint-plugin-react-hooks": "^2.1.1",
     "lint-staged": "^10.3.0",
     "next-transpile-modules": "^4.1.0",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.0.1"
   }
 }
