@@ -1,5 +1,4 @@
 import { deepmerge } from '@material-ui/utils'
-import createMuiPalette from '@material-ui/core/styles/createPalette'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import blue from '../colors/blue'
 import blueGrey from '../colors/blueGrey'
@@ -109,13 +108,12 @@ export default function createPalette(palette) {
       main: green[500],
       dark: green[700],
     },
+    types = { dark, light },
     type = 'light',
     contrastThreshold = 3,
     tonalOffset = 0.2,
     ...other
   } = palette
-
-  const types = { dark, light }
 
   const paletteOutput = deepmerge(
     {
@@ -150,7 +148,5 @@ export default function createPalette(palette) {
     other,
   )
 
-  // Lastly patch the palette with missing data as our other theme creators
-  // expect the palette object to be complete.
-  return createMuiPalette(paletteOutput)
+  return paletteOutput
 }

@@ -1,5 +1,4 @@
 import { deepmerge } from '@material-ui/utils'
-import createMuiTypography from '@material-ui/core/styles/createTypography'
 
 const caseAllCaps = {
   textTransform: 'uppercase',
@@ -75,5 +74,5 @@ export default function createTypography(palette, typography) {
     },
   )
 
-  return createMuiTypography(palette, typographyOutput)
+  return typographyOutput
 }
