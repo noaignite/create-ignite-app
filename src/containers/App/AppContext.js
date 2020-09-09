@@ -1,7 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
-import mediaLoaded from '@maeertin/medialoaded'
 import { debounce } from '@oakwood/oui-utils'
 import { CLOSE_MENUS_ON_RESIZE } from 'src/site.config'
 
@@ -27,7 +26,6 @@ export function AppProvider(props) {
   const [hideHeader, setHideHeader] = React.useState(false)
   const [isCartMenuOpen, setIsCartMenuOpen] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
-  const [isMediaReady, setIsMediaReady] = React.useState(false)
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false)
   const [isSearchMenuOpen, setIsSearchMenuOpen] = React.useState(false)
 
@@ -40,10 +38,6 @@ export function AppProvider(props) {
   }
 
   // Private handlers
-
-  const handleMediaReady = React.useCallback(() => {
-    setIsMediaReady(true)
-  }, [])
 
   const handleRouteChangeStart = React.useCallback(() => {
     setIsLoading(true)
@@ -63,7 +57,6 @@ export function AppProvider(props) {
       }
     })
 
-    mediaLoaded('.coa-preload', handleMediaReady)
     window.addEventListener('resize', handleResize)
     Router.events.on('routeChangeStart', handleRouteChangeStart)
     Router.events.on('routeChangeComplete', handleRouteChangeComplete)
@@ -74,7 +67,7 @@ export function AppProvider(props) {
       Router.events.off('routeChangeStart', handleRouteChangeStart)
       Router.events.off('routeChangeComplete', handleRouteChangeComplete)
     }
-  }, [handleMediaReady, handleRouteChangeStart, handleRouteChangeComplete])
+  }, [handleRouteChangeStart, handleRouteChangeComplete])
 
   // Public handlers
 
@@ -144,7 +137,6 @@ export function AppProvider(props) {
     hideHeader,
     isCartMenuOpen,
     isLoading,
-    isMediaReady,
     isNavMenuOpen,
     isSearchMenuOpen,
     // Computed props

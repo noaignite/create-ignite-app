@@ -1,6 +1,5 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from 'src/site.config'
 import { menuLinkType } from 'utils'
@@ -82,7 +81,6 @@ function App(props) {
     isBackdropOpen,
     isCartMenuOpen,
     isLoading,
-    isMediaReady,
     isNavMenuOpen,
     isSearchMenuOpen,
     isSomeMenuOpen,
@@ -145,13 +143,7 @@ function App(props) {
   )
 
   return (
-    <div
-      className={classnames(classes.root, {
-        [classes.isPreloading]: !isMediaReady,
-        [classes.isLoading]: isLoading,
-      })}
-      {...other}
-    >
+    <div className={classes.root} {...other}>
       <AppSkipLink href={`#${SITE_MAIN_ID}`}>Skip to content</AppSkipLink>
 
       {!hideHeader && (

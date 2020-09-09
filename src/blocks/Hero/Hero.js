@@ -72,7 +72,6 @@ const Hero = React.forwardRef(function Hero(props, ref) {
         >
           <MediaLoader>
             <Media
-              className="coa-preload" // Register to `AppContext` mediaReady
               {...(backgroundMediaProps?.component === 'video'
                 ? { autoPlay: true, muted: true, loop: true, playsInline: true }
                 : {})}
