@@ -1,5 +1,4 @@
 import grey from '../colors/grey'
-import { constants } from './extras'
 
 export default function createMixins(breakpoints, spacing, mixins) {
   // eslint-disable-next-line no-shadow
@@ -25,53 +24,46 @@ export default function createMixins(breakpoints, spacing, mixins) {
   }
 
   return {
-    // Mui mixins
+    // Components
+    toolbar: {
+      '--toolbar-min-height': '56px',
+      minHeight: 'var(--toolbar-min-height)',
+      [breakpoints.up('sm')]: {
+        '--toolbar-min-height': '64px',
+      },
+    },
+    toolbarDense: {
+      '--toolbar-min-height': '48px',
+      minHeight: 'var(--toolbar-min-height)',
+    },
+    section: (spacingType = 'margin') => ({
+      '--section-spacing': `${spacing(4)}px`,
+      [`${spacingType}Top`]: 'var(--section-spacing)',
+      [`${spacingType}Bottom`]: 'var(--section-spacing)',
+      [breakpoints.up('sm')]: {
+        '--section-spacing': `${spacing(6)}px`,
+      },
+    }),
+    container: {
+      '--container-spacing': `${spacing(2)}px`,
+      paddingLeft: 'var(--container-spacing)',
+      paddingRight: 'var(--container-spacing)',
+      [breakpoints.up('sm')]: {
+        '--container-spacing': `${spacing(3)}px`,
+        paddingLeft: 'var(--container-spacing)', // Override Mui styles
+        paddingRight: 'var(--container-spacing)', // Override Mui styles
+      },
+    },
+    // Utils
     gutters: (amount = 2) => ({
       paddingLeft: spacing(amount),
       paddingRight: spacing(amount),
     }),
-    toolbar: {
-      minHeight: constants.TOOLBAR_MIN_HEIGHT,
-      [breakpoints.up('sm')]: {
-        minHeight: constants.TOOLBAR_MIN_HEIGHT_RESPONSIVE,
-      },
-    },
-    toolbarDense: {
-      minHeight: constants.TOOLBAR_MIN_HEIGHT_DENSE,
-    },
-    // Custom mixins
-    container: (spacingType = 'padding') => ({
-      [`${spacingType}Left`]: spacing(2),
-      [`${spacingType}Right`]: spacing(2),
-      [breakpoints.up('sm')]: {
-        [`${spacingType}Left`]: spacing(3),
-        [`${spacingType}Right`]: spacing(3),
-      },
+    contain: (breakpoint = 'lg') => ({
+      maxWidth: breakpoints.values[breakpoint] || breakpoint,
+      marginRight: 'auto',
+      marginLeft: 'auto',
     }),
-    section: (spacingType = 'margin') => ({
-      [`${spacingType}Top`]: spacing(4),
-      [`${spacingType}Bottom`]: spacing(4),
-      [breakpoints.up('sm')]: {
-        [`${spacingType}Top`]: spacing(6),
-        [`${spacingType}Bottom`]: spacing(6),
-      },
-    }),
-    fluidType: (minBreakpoint, maxBreakpoint, minFontSize, maxFontSize) => {
-      const minVw = breakpoints.values[minBreakpoint] || minBreakpoint
-      const maxVw = breakpoints.values[maxBreakpoint] || maxBreakpoint
-
-      return {
-        fontSize: minFontSize,
-        [`@media (min-width: ${minVw}px)`]: {
-          fontSize: `calc(${minFontSize}px + ${
-            maxFontSize - minFontSize
-          } * ((100vw - ${minVw}px) / ${maxVw - minVw}))`,
-        },
-        [`@media (min-width: ${maxVw}px)`]: {
-          fontSize: maxFontSize,
-        },
-      }
-    },
     horizontalRhythm: (amount = 1, selector = '*') => ({
       [`& > ${selector} + ${selector}`]: {
         marginLeft: spacing(amount),
@@ -91,11 +83,22 @@ export default function createMixins(breakpoints, spacing, mixins) {
     sticky: (...args) => {
       return position('sticky', ...args)
     },
-    contain: (breakpoint = 'lg') => ({
-      maxWidth: breakpoints.values[breakpoint] || breakpoint,
-      marginRight: 'auto',
-      marginLeft: 'auto',
-    }),
+    fluidType: (minBreakpoint, maxBreakpoint, minFontSize, maxFontSize) => {
+      const minVw = breakpoints.values[minBreakpoint] || minBreakpoint
+      const maxVw = breakpoints.values[maxBreakpoint] || maxBreakpoint
+
+      return {
+        fontSize: minFontSize,
+        [`@media (min-width: ${minVw}px)`]: {
+          fontSize: `calc(${minFontSize}px + ${
+            maxFontSize - minFontSize
+          } * ((100vw - ${minVw}px) / ${maxVw - minVw}))`,
+        },
+        [`@media (min-width: ${maxVw}px)`]: {
+          fontSize: maxFontSize,
+        },
+      }
+    },
     lineClamp: (lines) => ({
       display: '-webkit-box',
       WebkitBoxOrient: 'vertical',

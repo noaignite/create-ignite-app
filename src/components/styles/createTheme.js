@@ -5,7 +5,6 @@ import createOverrides from './createOverrides'
 import createPalette from './createPalette'
 import createSpacing from './createSpacing'
 import createTypography from './createTypography'
-import extras from './extras'
 import props from './props'
 import shadows from './shadows'
 import shape from './shape'
@@ -38,7 +37,6 @@ export default function createTheme(options = {}) {
     {
       breakpoints,
       direction: 'ltr',
-      extras,
       mixins: createMixins(breakpoints, spacing, mixinsInput),
       palette,
       props,
