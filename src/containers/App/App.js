@@ -13,6 +13,7 @@ import Toolbar from 'components/Toolbar'
 import AppAppBar from './partials/AppAppBar'
 import AppBackdrop from './partials/AppBackdrop'
 import AppCartDrawer from './partials/AppCartDrawer'
+import AppCookieBar from './partials/AppCookieBar'
 import AppFooter from './partials/AppFooter'
 import AppNavDrawer from './partials/AppNavDrawer'
 import AppNavDropdown from './partials/AppNavDropdown'
@@ -77,6 +78,7 @@ function App(props) {
     hideHeader,
     isBackdropOpen,
     isCartMenuOpen,
+    isCookieBarOpen,
     isLoading,
     isNavMenuOpen,
     isSearchMenuOpen,
@@ -174,7 +176,7 @@ function App(props) {
       <AppNavDrawer open={isNavMenuOpen} />
       <AppCartDrawer open={isCartMenuOpen} />
       <AppSearchDrawer open={isSearchMenuOpen} />
-
+      <AppCookieBar open={isCookieBarOpen} />
       <AppBackdrop open={isBackdropOpen} loading={isLoading} />
     </div>
   )

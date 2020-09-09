@@ -25,6 +25,7 @@ export function AppProvider(props) {
   const [hideFooter, setHideFooter] = React.useState(false)
   const [hideHeader, setHideHeader] = React.useState(false)
   const [isCartMenuOpen, setIsCartMenuOpen] = React.useState(false)
+  const [isCookieBarOpen, setIsCookieBarOpen] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false)
   const [isSearchMenuOpen, setIsSearchMenuOpen] = React.useState(false)
@@ -56,6 +57,12 @@ export function AppProvider(props) {
         closeAllMenus()
       }
     })
+
+    if (!localStorage.getItem('cookie-consent')) {
+      setTimeout(() => {
+        setIsCookieBarOpen(true)
+      }, 2000)
+    }
 
     window.addEventListener('resize', handleResize)
     Router.events.on('routeChangeStart', handleRouteChangeStart)
@@ -101,6 +108,11 @@ export function AppProvider(props) {
     setIsSearchMenuOpen(false)
   }, [])
 
+  const onCookieBarClose = React.useCallback(() => {
+    localStorage.setItem('cookie-consent', 1)
+    setIsCookieBarOpen(true)
+  }, [])
+
   // Memoize handlers context separately so that one can subscribe
   // to them without re-rendering on state updates.
   const appHandlersContext = React.useMemo(() => {
@@ -115,6 +127,7 @@ export function AppProvider(props) {
       onAppBarCartClick,
       onAppBarSearchClick,
       onCartMenuClose,
+      onCookieBarClose,
       onNavMenuClose,
       onSearchMenuClose,
       // Expose setters for custom hooks
@@ -127,6 +140,7 @@ export function AppProvider(props) {
     onAppBarCartClick,
     onAppBarSearchClick,
     onCartMenuClose,
+    onCookieBarClose,
     onNavMenuClose,
     onSearchMenuClose,
   ])
@@ -136,6 +150,7 @@ export function AppProvider(props) {
     hideFooter,
     hideHeader,
     isCartMenuOpen,
+    isCookieBarOpen,
     isLoading,
     isNavMenuOpen,
     isSearchMenuOpen,
