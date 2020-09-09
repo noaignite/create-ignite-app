@@ -1,11 +1,11 @@
 import * as React from 'react'
 import Head from 'next/head'
+import { pages } from 'api/mock'
 import { useHeaderColor } from 'utils'
-import { Default as HeroStory } from 'blocks/Hero/stories'
-import { Default as ProductSlideshowStory } from 'blocks/ProductSlideshow/stories'
+import * as blocks from 'blocks'
 
-const Home = () => {
-  useHeaderColor('auto')
+function Home() {
+  useHeaderColor(pages.Home.headerColor)
 
   return (
     <>
@@ -13,15 +13,10 @@ const Home = () => {
         <title>Home | Create Oakwood App</title>
       </Head>
 
-      <HeroStory backgroundAttachment="sticky" />
-      <HeroStory
-        backgroundAttachment="fixed"
-        backgroundMediaProps={{
-          component: 'img',
-          src: '//source.unsplash.com/800x400',
-        }}
-      />
-      <ProductSlideshowStory />
+      {pages.Home.blocks.map((block, idx) => {
+        const Block = blocks[block.name]
+        return <Block key={idx} {...block.props} />
+      })}
     </>
   )
 }
