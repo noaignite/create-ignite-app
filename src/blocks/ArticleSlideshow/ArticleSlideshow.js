@@ -95,7 +95,7 @@ const ArticleSlideshow = React.forwardRef(function ArticleSlideshow(props, ref) 
                     {item.excerpt}
                   </Typography>
 
-                  <Button component={RouterLink} href={item.url}>
+                  <Button component={RouterLink} href={item.url} variant="contained">
                     Read more
                   </Button>
                 </div>

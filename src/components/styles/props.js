@@ -16,7 +16,6 @@ const props = {
   },
   MuiButton: {
     disableElevation: true,
-    variant: 'outlined',
   },
   MuiCheckbox: {
     color: 'default',

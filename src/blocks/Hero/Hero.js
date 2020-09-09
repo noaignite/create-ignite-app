@@ -95,7 +95,13 @@ const Hero = React.forwardRef(function Hero(props, ref) {
         </h1>
 
         {cta?.url && (
-          <Button className={classes.cta} component={RouterLink} href={cta.url} color="inherit">
+          <Button
+            className={classes.cta}
+            component={RouterLink}
+            href={cta.url}
+            color="inherit"
+            variant="outlined"
+          >
             {cta?.label}
           </Button>
         )}
