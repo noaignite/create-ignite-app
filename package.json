@@ -16,13 +16,12 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "analyze": "ANALYZE=true next build",
-    "build": "next build",
     "dev": "next",
+    "build": "next build",
     "start": "next start -p $PORT",
-    "now-build": "build-storybook -c .storybook -s ./public -o .styleguide",
-    "build:storybook": "build-storybook -c .storybook -s ./public -o .styleguide",
+    "analyze": "ANALYZE=true next build",
     "storybook": "start-storybook -s ./public -p 3001 --ci",
+    "build-storybook": "build-storybook -s ./public -o .storybook-static",
     "lint": "eslint . --cache --report-unused-disable-directives",
     "lint:ci": "eslint . --report-unused-disable-directives",
     "lint:fix": "eslint . --cache --fix",
@@ -41,6 +40,7 @@
     "swiper": "^6.1.2"
   },
   "devDependencies": {
+    "@babel/plugin-transform-react-constant-elements": "^7.10.1",
     "@next/bundle-analyzer": "^9.5.3",
     "@storybook/addon-a11y": "^6.0.21",
     "@storybook/addon-actions": "^6.0.21",
@@ -58,6 +58,7 @@
     "babel-plugin-transform-dev-warning": "^0.1.0",
     "babel-plugin-transform-imports": "^2.0.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
+    "chromatic": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.2.0",

@@ -8,7 +8,7 @@
 *.log
 .DS_STORE
 /.vercel
-/.styleguide
+/.storybook-static
 /.eslintcache
 /.cache
 /.next
