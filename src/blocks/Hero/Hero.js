@@ -34,17 +34,17 @@ export const styles = (theme) => ({
       top: 'var(--coa-initial-sticky-top)',
     },
   },
-  heading: {
-    margin: 0,
+  heading: theme.mixins.fluidType('sm', 'xl', 45, 132),
+  excerpt: {
+    ...theme.mixins.contain('sm'),
+    marginTop: theme.spacing(2),
   },
-  heading1: theme.mixins.fluidType('sm', 'xl', 45, 132),
-  heading2: theme.mixins.fluidType('sm', 'xl', 47, 144),
   cta: {
     position: 'static',
     marginTop: 'calc(20px + 3vh)',
     // Make entire component clicable
     '&::before': {
-      ...theme.mixins.absolute(),
+      ...theme.mixins.absolute(0),
       content: '""',
     },
   },
@@ -56,9 +56,10 @@ const Hero = React.forwardRef(function Hero(props, ref) {
     backgroundMediaProps,
     classes,
     className,
-    cta,
-    heading1,
-    heading2,
+    ctaLabel,
+    ctaUrl,
+    heading,
+    excerpt,
     ...other
   } = props
 
@@ -72,7 +73,7 @@ const Hero = React.forwardRef(function Hero(props, ref) {
           }}
           attachment={backgroundAttachment}
         >
-          <MediaLoader>
+          <MediaLoader lazy>
             <Media
               {...(backgroundMediaProps?.component === 'video'
                 ? { autoPlay: true, muted: true, loop: true, playsInline: true }
@@ -83,26 +84,22 @@ const Hero = React.forwardRef(function Hero(props, ref) {
         </BackgroundMedia>
       )}
 
-      <Container className={classes.content} maxWidth="xl">
-        <h1 className={classes.heading}>
-          <Typography className={classes.heading1} component="span" display="block" variant="h2">
-            {heading1}
-          </Typography>
+      <Container className={classes.content} maxWidth="md">
+        <Typography className={classes.heading} component="h1" variant="h2">
+          {heading}
+        </Typography>
 
-          <Typography className={classes.heading2} component="span" display="block" variant="h1">
-            {heading2}
-          </Typography>
-        </h1>
+        <Typography className={classes.excerpt}>{excerpt}</Typography>
 
-        {cta?.url && (
+        {ctaUrl && (
           <Button
             className={classes.cta}
             component={RouterLink}
-            href={cta.url}
+            href={ctaUrl}
             color="inherit"
             variant="outlined"
           >
-            {cta?.label}
+            {ctaLabel}
           </Button>
         )}
       </Container>
@@ -115,9 +112,10 @@ Hero.propTypes = {
   backgroundMediaProps: mediaType,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  cta: linkType,
-  heading1: PropTypes.string,
-  heading2: PropTypes.string,
+  ctaLabel: PropTypes.string,
+  ctaUrl: PropTypes.string,
+  excerpt: PropTypes.string,
+  heading: PropTypes.string,
 }
 
 export default withStyles(styles)(Hero)

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import OuiMedia from '@oakwood/oui/Media'
+import MediaLoader from '@oakwood/oui/MediaLoader'
 import { mediaType } from 'utils'
 import Container from 'components/Container'
 import Section from 'components/Section'
@@ -8,15 +9,16 @@ const Media = React.forwardRef(function Media(props, ref) {
   const { mediaProps, ...other } = props
 
   return (
-    <Section ref={ref} {...other}>
+    <Section disableSpacing ref={ref} {...other}>
       <Container>
-        <OuiMedia
-          {...(mediaProps?.component === 'video'
-            ? { autoPlay: true, muted: true, loop: true, playsInline: true }
-            : {})}
-          {...mediaProps}
-          loading="lazy"
-        />
+        <MediaLoader lazy>
+          <OuiMedia
+            {...(mediaProps?.component === 'video'
+              ? { autoPlay: true, muted: true, loop: true, playsInline: true }
+              : {})}
+            {...mediaProps}
+          />
+        </MediaLoader>
       </Container>
     </Section>
   )

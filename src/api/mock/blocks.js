@@ -8,12 +8,11 @@ export default {
         sm: '//source.unsplash.com/1440x650',
       },
     },
-    heading1: 'Lorem ipsum dolor sit',
-    heading2: 'Nullam quis tortor',
-    cta: {
-      label: 'Discover',
-      url: 'https://material-ui.com',
-    },
+    heading: 'Lorem ipsum dolor',
+    excerpt:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie varius viverra. Quisque urna tortor, bibendum ac quam a, bibendum fringilla nulla.',
+    ctaLabel: 'Discover',
+    ctaUrl: 'https://material-ui.com',
   },
   ArticleSlideshow: {
     heading: 'Generic Heading',
