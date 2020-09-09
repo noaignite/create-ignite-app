@@ -19,7 +19,17 @@ const nextConfig = {
     GTM_ID: process.env.GTM_ID,
   },
   webpack: (config) => {
-    // Extend webpack config here
+    const originalEntry = config.entry
+    config.entry = async () => {
+      const entries = await originalEntry()
+
+      if (entries['main.js'] && !entries['main.js'].includes('./client/polyfills.js')) {
+        entries['main.js'].unshift('./client/polyfills.js')
+      }
+
+      return entries
+    }
+
     config.module.rules.push({
       test: /\.(svg|otf|eot|ttf|woff|woff2|png)$/,
       use: {
