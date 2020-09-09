@@ -1,22 +1,12 @@
-const withBundleAnalyzer = require('@zeit/next-bundle-analyzer')
-
-const ANALYZE = process.env.ANALYZE === 'true'
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+const withTranspileModules = require('next-transpile-modules')([
+  'dom7/dist/dom7.modular',
+  'swiper/js/swiper.esm',
+])
 
 const nextConfig = {
-  analyzeServer: ANALYZE,
-  analyzeBrowser: ANALYZE,
-  bundleAnalyzerConfig: {
-    browser: {
-      openAnalyzer: false,
-      analyzerHost: '0.0.0.0',
-      analyzerPort: 3002,
-    },
-    server: {
-      openAnalyzer: false,
-      analyzerHost: '0.0.0.0',
-      analyzerPort: 3003,
-    },
-  },
   poweredByHeader: false,
   serverRuntimeConfig: {
     NODE_ENV: process.env.NODE_ENV,
@@ -28,8 +18,18 @@ const nextConfig = {
     WORDPRESS_URL: process.env.WORDPRESS_URL,
     GTM_ID: process.env.GTM_ID,
   },
-  webpack: config => {
-    // Extend webpack config here
+  webpack: (config) => {
+    const originalEntry = config.entry
+    config.entry = async () => {
+      const entries = await originalEntry()
+
+      if (entries['main.js'] && !entries['main.js'].includes('./client/polyfills.js')) {
+        entries['main.js'].unshift('./client/polyfills.js')
+      }
+
+      return entries
+    }
+
     config.module.rules.push({
       test: /\.(svg|otf|eot|ttf|woff|woff2|png)$/,
       use: {
@@ -46,4 +46,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withBundleAnalyzer(nextConfig)
+module.exports = withBundleAnalyzer(withTranspileModules(nextConfig))

@@ -1,21 +1,14 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { compose, defaultProps } from 'recompose'
-import withApiContext from 'api'
-import { withAppContext, withAppProvider } from './AppContext'
+import * as React from 'react'
 import App from './App'
 
-const stories = storiesOf('Containers/App', module)
+export default {
+  title: 'Containers/App',
+  component: App,
+}
 
-export const Default = compose(
-  withApiContext(),
-  defaultProps({
-    children: <div>[this.props.children]</div>,
-  }),
-  withAppProvider(),
-  withAppContext(),
-)(App)
+const Template = (args) => <App {...args} />
 
-stories.add('Default', () => <Default />)
-
-export default App
+export const Default = Template.bind({})
+Default.args = {
+  children: <div>[this.props.children]</div>,
+}

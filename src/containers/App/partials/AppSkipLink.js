@@ -1,10 +1,10 @@
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Link from 'components/Link'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     position: 'absolute',
     zIndex: theme.zIndex.appBar + 1,
@@ -35,6 +35,4 @@ AppSkipLink.propTypes = {
   className: PropTypes.string,
 }
 
-AppSkipLink.uiName = 'AppSkipLink'
-
-export default withStyles(styles)(AppSkipLink)
+export default withStyles(styles)(React.memo(AppSkipLink))

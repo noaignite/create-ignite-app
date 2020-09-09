@@ -1,5 +1,4 @@
-import createMuiTypography from '@material-ui/core/styles/createTypography'
-import deepmerge from '@oakwood/oui-utils/deepmerge'
+import { deepmerge } from '@material-ui/utils'
 
 const caseAllCaps = {
   textTransform: 'uppercase',
@@ -25,7 +24,7 @@ export default function createTypography(palette, typography) {
   } = typeof typography === 'function' ? typography(palette) : typography
 
   const coef = fontSize / 14
-  const pxToRem = size => `${(size / htmlFontSize) * coef}rem`
+  const pxToRem = (size) => `${(size / htmlFontSize) * coef}rem`
   const buildVariant = (typeFace, fontWeight, size, lineHeight, letterSpacing, casing) => ({
     fontFamily: typeFace,
     fontWeight,
@@ -48,7 +47,7 @@ export default function createTypography(palette, typography) {
     subtitle2: buildVariant(fontFamilyPrimary, fontWeightMedium, 12, 1.7, 0.02),
     body1: buildVariant(fontFamilyPrimary, fontWeightRegular, 16, 1.7, 0),
     body2: buildVariant(fontFamilyPrimary, fontWeightRegular, 14, 1.7, 0),
-    button: buildVariant(fontFamilySecondary, fontWeightMedium, 12, 1.3, 0.04, caseAllCaps),
+    button: buildVariant(fontFamilySecondary, fontWeightMedium, 12, 1.4, 0.04, caseAllCaps),
     caption: buildVariant(fontFamilyPrimary, fontWeightSemibold, 14, 1.3, 0.02),
     overline: buildVariant(fontFamilySecondary, fontWeightRegular, 8, 1.7, 0.12, caseAllCaps),
   }
@@ -75,5 +74,5 @@ export default function createTypography(palette, typography) {
     },
   )
 
-  return createMuiTypography(palette, typographyOutput)
+  return typographyOutput
 }

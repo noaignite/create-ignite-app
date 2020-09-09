@@ -1,11 +1,13 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react'
+import * as React from 'react'
 import Html from './Html'
 
-const stories = storiesOf('Components/Html', module)
+export default {
+  title: 'Components/Html',
+  component: Html,
+}
 
-export const Default = props => (
-  <Html {...props}>
+const Template = (args) => (
+  <Html {...args}>
     <h1>HTML Ipsum Presents</h1>
 
     <p>
@@ -59,6 +61,5 @@ export const Default = props => (
   </Html>
 )
 
-stories.add('Default', Default)
-
-export default Html
+export const Default = Template.bind({})
+Default.args = {}

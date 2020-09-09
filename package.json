@@ -12,51 +12,78 @@
   "bugs": {
     "url": "https://github.com/oakwood/create-oakwood-app/issues"
   },
-  "scripts": {
-    "build:storybook": "build-storybook -c .storybook -s ./public -o .styleguide",
-    "build": "next build",
-    "dev": "next",
-    "lint:fix": "eslint . --cache --fix && echo \"eslint: no lint errors\"",
-    "lint": "eslint . --cache --report-unused-disable-directives && echo \"eslint: no lint errors\"",
-    "now-build": "build-storybook -c .storybook -s ./public -o .styleguide",
-    "start": "next start -p $PORT",
-    "storybook": "start-storybook -s ./public -p 3001 --ci"
+  "engines": {
+    "node": ">=12.0.0"
   },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start -p $PORT",
+    "analyze": "ANALYZE=true next build",
+    "storybook": "start-storybook -s ./public -p 3001 --ci",
+    "build-storybook": "build-storybook -s ./public -o .storybook-static",
+    "lint": "eslint . --cache --report-unused-disable-directives",
+    "lint:ci": "eslint . --report-unused-disable-directives",
+    "lint:fix": "eslint . --cache --fix",
+    "lint:staged": "lint-staged",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write"
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn lint:fix",
+      "git add --force"
+    ],
+    "*.json": [
+      "yarn prettier:fix",
+      "git add --force"
+    ]
+  },
+  "pre-commit": "lint:staged",
   "dependencies": {
-    "@material-ui/core": "^4.8.0",
-    "@oakwood/oui": "^0.6.0",
-    "@oakwood/oui-utils": "^0.6.0",
-    "clsx": "^1.0.2",
-    "next": "^9.1.6",
+    "@material-ui/core": "4.11.0",
+    "@oakwood/oui": "0.9.7",
+    "clsx": "^1.1.0",
+    "next": "^9.5.3",
     "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "recompose": "^0.30.0",
-    "swiper": "^5.2.1"
+    "smoothscroll-polyfill": "^0.4.4",
+    "swiper": "^6.1.2"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^5.2.8",
-    "@storybook/addon-knobs": "^5.2.8",
-    "@storybook/addons": "^5.2.8",
-    "@storybook/react": "^5.2.8",
+    "@babel/plugin-transform-react-constant-elements": "^7.10.1",
+    "@next/bundle-analyzer": "^9.5.3",
+    "@storybook/addon-a11y": "^6.0.21",
+    "@storybook/addon-actions": "^6.0.21",
+    "@storybook/addon-controls": "^6.0.21",
+    "@storybook/addon-knobs": "^6.0.21",
+    "@storybook/addon-toolbars": "^6.0.21",
+    "@storybook/addons": "^6.0.21",
+    "@storybook/react": "^6.0.21",
     "@zeit/next-bundle-analyzer": "^0.1.2",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.5",
     "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-module-resolver": "^4.0.0",
-    "babel-plugin-optimize-clsx": "^2.3.0",
+    "babel-plugin-optimize-clsx": "^2.6.0",
     "babel-plugin-transform-dev-warning": "^0.1.0",
     "babel-plugin-transform-imports": "^2.0.0",
-    "babel-plugin-transform-react-constant-elements": "^6.23.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
-    "eslint": "^5.9.0",
-    "eslint-config-airbnb": "^17.1.1",
+    "chromatic": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.2.0",
     "eslint-import-resolver-babel-module": "^5.1.0",
     "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^2.1.2"
+    "eslint-plugin-react-hooks": "^2.1.1",
+    "lint-staged": "^10.3.0",
+    "next-transpile-modules": "^4.1.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^2.0.1"
   }
 }

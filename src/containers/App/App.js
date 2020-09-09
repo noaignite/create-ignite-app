@@ -1,99 +1,99 @@
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from 'src/site.config'
-import { linkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import BrandIcon from 'components/icons/Brand'
 import BurgerIcon from 'components/icons/Burger'
 import CartIcon from 'components/icons/Cart'
 import CrossIcon from 'components/icons/Cross'
-import Container from 'components/Container'
+import SearchIcon from 'components/icons/Search'
 import IconButton from 'components/IconButton'
 import Toolbar from 'components/Toolbar'
 import AppAppBar from './partials/AppAppBar'
 import AppBackdrop from './partials/AppBackdrop'
-import AppCartMenu from './partials/AppCartMenu'
+import AppCartDrawer from './partials/AppCartDrawer'
+import AppCookieBar from './partials/AppCookieBar'
 import AppFooter from './partials/AppFooter'
-import AppNavMenu from './partials/AppNavMenu'
+import AppNavDrawer from './partials/AppNavDrawer'
+import AppNavDropdown from './partials/AppNavDropdown'
+import AppSearchDrawer from './partials/AppSearchDrawer'
 import AppSkipLink from './partials/AppSkipLink'
+import { useApp } from './AppContext'
 
-export const styles = theme => ({
+const BREAKPOINT_KEY_DOWN = 'sm'
+const BREAKPOINT_KEY_UP = 'md'
+
+export const styles = (theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
   },
-  isLoading: {},
-  isMounting: {},
   appBar: {},
-  appBarToolbar: {
-    justifyContent: 'space-between',
-  },
-  nav: {},
-  navlist: {
-    display: 'flex',
-    margin: 0,
-  },
-  navlistItem: {
-    marginLeft: theme.spacing(4),
-    '&:first-child': {
-      marginLeft: 0,
+  appBarToolbar: {},
+  appBarMobilePush: {
+    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
+      marginLeft: 'auto',
     },
   },
-  navlistItemText: {},
+  appBarDesktopPush: {
+    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
+      marginLeft: 'auto',
+    },
+  },
+  burgerIconButton: {
+    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
+      display: 'none',
+    },
+  },
+  searchIconButton: {},
+  brandIconButton: {
+    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
+      position: 'absolute',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      marginLeft: 0, // Cancel margin of `edge="start"`
+    },
+  },
+  cartIconButton: {},
+  navDropdown: {
+    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
+      display: 'none',
+    },
+  },
   main: {
-    outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
     flexGrow: 1,
+    paddingTop: 'var(--coa-initial-sticky-top, 0px)',
+    outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
   },
 })
 
-const App = props => {
+function App(props) {
+  const { children, classes, ...other } = props
+
   const {
-    children,
-    classes,
+    appBarColor,
+    hideFooter,
+    hideHeader,
+    isBackdropOpen,
     isCartMenuOpen,
+    isCookieBarOpen,
     isLoading,
-    isMounted,
     isNavMenuOpen,
-    menuFooter,
-    menuPrimary,
+    isSearchMenuOpen,
+    isSomeMenuOpen,
     onAppBarBurgerClick,
     onAppBarCartClick,
-  } = props
-
-  const brandIconButton = (
-    <IconButton
-      component={RouterLink}
-      color="inherit"
-      edge="start"
-      href="/"
-      aria-label="Go to the homepage"
-    >
-      <BrandIcon style={{ width: 'auto' }} />
-    </IconButton>
-  )
-
-  const cartIconButton = (
-    <IconButton
-      onClick={onAppBarCartClick}
-      color="inherit"
-      size="small"
-      aria-haspopup="true"
-      aria-expanded={isCartMenuOpen}
-      aria-label="Toggle cart menu"
-    >
-      {isCartMenuOpen ? <CrossIcon /> : <CartIcon />}
-    </IconButton>
-  )
+    onAppBarSearchClick,
+  } = useApp()
 
   const burgerIconButton = (
     <IconButton
+      className={classes.burgerIconButton}
       onClick={onAppBarBurgerClick}
-      color="inherit"
+      edge="start"
       size="small"
-      edge="end"
       aria-haspopup="true"
       aria-expanded={isNavMenuOpen}
       aria-label="Toggle main menu"
@@ -102,46 +102,82 @@ const App = props => {
     </IconButton>
   )
 
-  const className = classnames(classes.root, {
-    [classes.isLoading]: isLoading,
-    [classes.isMounting]: !isMounted,
-  })
+  const searchIconButton = (
+    <IconButton
+      className={classes.searchIconButton}
+      onClick={onAppBarSearchClick}
+      size="small"
+      aria-haspopup="true"
+      aria-expanded={isSearchMenuOpen}
+      aria-label="Toggle search"
+    >
+      {isSearchMenuOpen ? <CrossIcon /> : <SearchIcon />}
+    </IconButton>
+  )
+
+  const brandIconButton = (
+    <IconButton
+      className={classes.brandIconButton}
+      component={RouterLink}
+      href="/"
+      edge="start"
+      aria-label="Go to the homepage"
+    >
+      <BrandIcon style={{ width: 'auto' }} />
+    </IconButton>
+  )
+
+  const cartIconButton = (
+    <IconButton
+      className={classes.cartIconButton}
+      onClick={onAppBarCartClick}
+      edge="end"
+      size="small"
+      aria-haspopup="true"
+      aria-expanded={isCartMenuOpen}
+      aria-label="Toggle cart menu"
+    >
+      {isCartMenuOpen ? <CrossIcon /> : <CartIcon amount={3} />}
+    </IconButton>
+  )
 
   return (
-    <div className={className}>
+    <div className={classes.root} {...other}>
       <AppSkipLink href={`#${SITE_MAIN_ID}`}>Skip to content</AppSkipLink>
 
-      <AppAppBar className={classes.appBar} id={SITE_HEADER_ID}>
-        <Toolbar
-          className={classes.appBarToolbar}
-          component={Container}
-          maxWidth={false}
-          disableGutters
+      {!hideHeader && (
+        <AppAppBar
+          className={classes.appBar}
+          color={appBarColor}
+          disableTransparency={isSomeMenuOpen}
+          id={SITE_HEADER_ID}
         >
-          <div>{brandIconButton}</div>
-          <div>
-            {cartIconButton}
+          <Toolbar className={classes.appBarToolbar}>
             {burgerIconButton}
-          </div>
-        </Toolbar>
-      </AppAppBar>
+            {brandIconButton}
 
-      <AppNavMenu menu={menuPrimary} />
+            <AppNavDropdown className={classes.navDropdown} />
 
-      <AppCartMenu />
+            <div className={classes.appBarDesktopPush} />
+            {searchIconButton}
+            <div className={classes.appBarMobilePush} />
 
-      <main
-        className={classnames(classes.main, SITE_HEADER_ID)}
-        role="main"
-        id={SITE_MAIN_ID}
-        tabIndex="-1"
-      >
+            {cartIconButton}
+          </Toolbar>
+        </AppAppBar>
+      )}
+
+      <main className={classes.main} id={SITE_MAIN_ID} role="main" tabIndex="-1">
         {children}
       </main>
 
-      <AppFooter menu={menuFooter} id={SITE_FOOTER_ID} />
+      {!hideFooter && <AppFooter id={SITE_FOOTER_ID} />}
 
-      <AppBackdrop />
+      <AppNavDrawer open={isNavMenuOpen} />
+      <AppCartDrawer open={isCartMenuOpen} />
+      <AppSearchDrawer open={isSearchMenuOpen} />
+      <AppCookieBar open={isCookieBarOpen} />
+      <AppBackdrop open={isBackdropOpen} loading={isLoading} />
     </div>
   )
 }
@@ -149,14 +185,6 @@ const App = props => {
 App.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
-  isCartMenuOpen: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  isMounted: PropTypes.bool,
-  isNavMenuOpen: PropTypes.bool,
-  menuFooter: PropTypes.arrayOf(linkType).isRequired,
-  menuPrimary: PropTypes.arrayOf(linkType).isRequired,
-  onAppBarBurgerClick: PropTypes.func,
-  onAppBarCartClick: PropTypes.func,
 }
 
 export default withStyles(styles)(App)

@@ -1,14 +1,15 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { boolean } from '@storybook/addon-knobs'
+import * as React from 'react'
 import Backdrop from './Backdrop'
 
-const stories = storiesOf('Components/Backdrop', module)
+export default {
+  title: 'Components/Backdrop',
+  component: Backdrop,
+}
 
-export const Default = () => (
-  <Backdrop invisible={boolean('invisible', false)} open={boolean('open', false)} />
-)
+const Template = (args) => <Backdrop {...args} />
 
-stories.add('Default', Default)
-
-export default Backdrop
+export const Default = Template.bind({})
+Default.args = {
+  invisible: false,
+  open: false,
+}

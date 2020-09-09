@@ -1,30 +1,29 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { boolean, select } from '@storybook/addon-knobs'
+import * as React from 'react'
+import storySelectArgType from '../utils/storySelectArgType'
 import CrossIcon from '../icons/Cross'
 import Button from './Button'
 
-const stories = storiesOf('Components/Button', module)
+export default {
+  title: 'Components/Button',
+  component: Button,
+  argTypes: {
+    color: storySelectArgType(['default', 'inherit', 'primary', 'secondary']),
+    size: storySelectArgType(['small', 'medium', 'large']),
+    variant: storySelectArgType(['text', 'outlined', 'contained']),
+    onClick: { action: 'clicked' },
+  },
+}
 
-export const Default = () => (
-  <Button
-    color={select('color', ['default', 'inherit', 'primary', 'secondary'], 'default')}
-    size={select('size', ['small', 'medium', 'large'], 'medium')}
-    variant={select('variant', ['text', 'outlined', 'contained'], 'outlined')}
-    disabled={boolean('disabled', false)}
-    fullWidth={boolean('fullWidth', false)}
-  >
-    Just a button
-  </Button>
-)
+const Template = (args) => <Button {...args} />
 
-export const WithIcons = () => (
-  <Button endIcon={<CrossIcon />} startIcon={<CrossIcon />}>
-    Button with icons
-  </Button>
-)
-
-stories.add('Default', Default)
-stories.add('WithIcons', WithIcons)
-
-export default Button
+export const Default = Template.bind({})
+Default.args = {
+  children: 'Just a button',
+  color: 'default',
+  disabled: false,
+  endIcon: <CrossIcon />,
+  fullWidth: false,
+  size: 'medium',
+  startIcon: <CrossIcon />,
+  variant: 'outlined',
+}

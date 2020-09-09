@@ -1,14 +1,14 @@
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
-import { linkType } from 'utils'
+import { useGlobal } from 'containers/Global/GlobalContext'
 import RouterLink from 'containers/RouterLink'
 import Container from 'components/Container'
 import Link from 'components/Link'
 import Section from 'components/Section'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.getContrastText(theme.palette.text.primary),
@@ -29,25 +29,28 @@ export const styles = theme => ({
 })
 
 const AppFooter = React.forwardRef(function AppFooter(props, ref) {
-  const { classes, className, menu = [], ...other } = props
+  const { classes, className, ...other } = props
+
+  const { menus } = useGlobal()
 
   return (
     <Section
       className={classnames(classes.root, className)}
       component="footer"
+      spacingRule="padding"
       ref={ref}
       {...other}
     >
       <Container className={classes.mainDetails}>
         <nav className={classes.nav} aria-label="Main navigation">
           <ul className={classes.navlist}>
-            {menu.map((menuItem, idx) => (
+            {menus?.menuFooter.map((menuItem, idx) => (
               <li key={idx} className={classes.navlistItem}>
                 <Link
                   className={classes.navlistItemText}
                   component={RouterLink}
-                  href="/[slug]"
-                  as={menuItem.href}
+                  as={menuItem.url}
+                  href="/[...uri]"
                   variant="button"
                 >
                   {menuItem.label}
@@ -64,9 +67,6 @@ const AppFooter = React.forwardRef(function AppFooter(props, ref) {
 AppFooter.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  menu: PropTypes.arrayOf(linkType),
 }
 
-AppFooter.uiName = 'AppFooter'
-
-export default withStyles(styles)(AppFooter)
+export default withStyles(styles)(React.memo(AppFooter))

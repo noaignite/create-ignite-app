@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import CheckboxCheckedIcon from '../icons/CheckboxChecked'
 import CheckboxUncheckedIcon from '../icons/CheckboxUnchecked'
 import RadioCheckedIcon from '../icons/RadioChecked'
@@ -16,7 +16,6 @@ const props = {
   },
   MuiButton: {
     disableElevation: true,
-    variant: 'outlined',
   },
   MuiCheckbox: {
     color: 'default',
@@ -36,12 +35,7 @@ const props = {
     icon: <RadioUncheckedIcon />,
   },
   MuiSelect: {
-    displayEmpty: true,
     IconComponent: SelectArrowIcon,
-    native: true,
-  },
-  MuiTextField: {
-    variant: 'outlined',
   },
 }
 

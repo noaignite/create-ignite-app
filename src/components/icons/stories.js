@@ -1,17 +1,19 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react'
+import * as React from 'react'
 import * as SvgIcons from '.'
 
-const stories = storiesOf('Common/Icons', module)
+export default {
+  title: 'Common/Icons',
+}
 
-export const Default = () => (
+const Template = (args) => (
   <>
     {Object.entries(SvgIcons).map(([name, SvgIcon]) => (
-      <SvgIcon key={name} style={{ margin: 1 }} />
+      <SvgIcon key={name} titleAccess={name} {...args} />
     ))}
   </>
 )
 
-stories.add('Default', Default)
-
-export default SvgIcons
+export const Default = Template.bind({})
+Default.args = {
+  style: { margin: 1 },
+}

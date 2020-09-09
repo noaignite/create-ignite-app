@@ -1,21 +1,15 @@
-// based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
+// Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
 
-import React from 'react'
-import Document, { Head, Main, NextScript } from 'next/document'
+import * as React from 'react'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheets } from '@material-ui/styles'
-import theme from 'src/theme.default'
+import theme from 'src/theme.light'
 
 export default class MyDocument extends Document {
   render() {
     return (
-      <html lang="en">
+      <Html lang="en">
         <Head>
-          <meta charSet="utf-8" />
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-          />
-
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
 
@@ -30,12 +24,12 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     )
   }
 }
 
-MyDocument.getInitialProps = async ctx => {
+MyDocument.getInitialProps = async (ctx) => {
   // Resolution order
   //
   // On the server:
@@ -64,7 +58,7 @@ MyDocument.getInitialProps = async ctx => {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: App => props => sheets.collect(<App {...props} />),
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
     })
 
   const initialProps = await Document.getInitialProps(ctx)

@@ -1,25 +1,31 @@
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
-import Typography from '../Typography'
+import useTheme from '@material-ui/core/styles/useTheme'
 
-export const styles = theme => ({
+export const styles = (theme) => ({
   root: {
-    display: 'inline-block',
-    minWidth: 160,
-    padding: theme.spacing(1),
-    textAlign: 'center',
+    position: 'relative',
+    border: `1px solid ${theme.palette.text.primary}`,
   },
-  circle: {
-    ...theme.mixins.contain(80),
-    borderRadius: '50%',
-    border: '1px solid #000',
-    '&::before': {
-      display: 'block',
-      content: '""',
-      paddingBottom: '100%',
-    },
+  mainShade: {
+    display: 'flex',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    padding: theme.spacing(1.5, 2),
+  },
+  mainShadeKey: {},
+  mainShadeValue: {
+    display: 'block',
+    marginTop: theme.spacing(5),
+  },
+  shade: {
+    ...theme.mixins.gutters(),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    minHeight: 34,
   },
 })
 
@@ -27,13 +33,35 @@ export const styles = theme => ({
  * @ignore - internal component.
  */
 const Palette = React.forwardRef(function Palette(props, ref) {
-  const { classes, className, color, label, ...other } = props
+  const { classes, className, color: colorProp, name, ...other } = props
+
+  const { palette } = useTheme()
+
+  // Fix for palette groups like `divider`.
+  let color = colorProp
+  if (typeof color !== 'object') {
+    color = { [name]: color }
+  }
 
   return (
     <div className={classnames(classes.root, className)} ref={ref} {...other}>
-      <div className={classes.circle} style={{ backgroundColor: color }} />
-      <Typography variant="subtitle2">{label}</Typography>
-      <Typography variant="subtitle2">{color}</Typography>
+      <div className={classes.mainShade}>
+        <strong>{name}</strong>
+      </div>
+
+      {Object.entries(color).map(([key, value]) => (
+        <div
+          key={key}
+          className={classes.shade}
+          style={{
+            backgroundColor: typeof value === 'string' ? value : undefined,
+            color: value && value.length > 3 ? palette.getContrastText(value) : '',
+          }}
+        >
+          <span>{key}</span>
+          <span>{value}</span>
+        </div>
+      ))}
     </div>
   )
 })
@@ -41,10 +69,9 @@ const Palette = React.forwardRef(function Palette(props, ref) {
 Palette.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  color: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  label: PropTypes.string.isRequired,
+  color: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
+  mainShade: PropTypes.string,
+  name: PropTypes.string,
 }
-
-Palette.uiName = 'Palette'
 
 export default withStyles(styles)(Palette)

@@ -1,21 +1,22 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { boolean, text, select } from '@storybook/addon-knobs'
+import * as React from 'react'
+import storySelectArgType from '../utils/storySelectArgType'
 import Checkbox from '../Checkbox'
 import FormControlLabel from './FormControlLabel'
 
-const stories = storiesOf('Components/FormControlLabel', module)
+export default {
+  title: 'Components/FormControlLabel',
+  component: FormControlLabel,
+  argTypes: {
+    labelPlacement: storySelectArgType(['bottom', 'end', 'start', 'top']),
+  },
+}
 
-export const Default = () => (
-  <FormControlLabel
-    checked={boolean('checked', false)}
-    control={<Checkbox />}
-    disabled={boolean('disabled', false)}
-    label={text('label', 'Field label')}
-    labelPlacement={select('labelPlacement', ['end', 'start'], 'end')}
-  />
-)
+const Template = (args) => <FormControlLabel control={<Checkbox />} {...args} />
 
-stories.add('Default', Default)
-
-export default FormControlLabel
+export const Default = Template.bind({})
+Default.args = {
+  checked: false,
+  disabled: false,
+  label: 'Field label',
+  labelPlacement: 'end',
+}

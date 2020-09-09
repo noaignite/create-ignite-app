@@ -4,7 +4,7 @@ import { styles as MuiButton } from '../Button/Button'
 import { styles as MuiContainer } from '../Container/Container'
 import { styles as MuiIconButton } from '../IconButton/IconButton'
 import { styles as MuiToolbar } from '../Toolbar/Toolbar'
-import * as internalOverrides from '../internal/overrides'
+import * as privateOverrides from './privateOverrides'
 
 export default function createOverrides(theme) {
   const overrides = {
@@ -14,7 +14,7 @@ export default function createOverrides(theme) {
     MuiContainer,
     MuiIconButton,
     MuiToolbar,
-    ...internalOverrides,
+    ...privateOverrides,
   }
 
   return Object.entries(overrides).reduce((acc, [muiName, styles]) => {

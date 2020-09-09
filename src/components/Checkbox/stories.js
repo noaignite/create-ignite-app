@@ -1,18 +1,20 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { boolean, select } from '@storybook/addon-knobs'
+import * as React from 'react'
+import storySelectArgType from '../utils/storySelectArgType'
 import Checkbox from './Checkbox'
 
-const stories = storiesOf('Components/Checkbox', module)
+export default {
+  title: 'Components/Checkbox',
+  component: Checkbox,
+  argTypes: {
+    color: storySelectArgType(['primary', 'secondary', 'default']),
+  },
+}
 
-export const Default = () => (
-  <Checkbox
-    checked={boolean('checked', false)}
-    color={select('color', ['primary', 'secondary', 'default'], 'default')}
-    disabled={boolean('disabled', false)}
-  />
-)
+const Template = (args) => <Checkbox {...args} />
 
-stories.add('Default', Default)
-
-export default Checkbox
+export const Default = Template.bind({})
+Default.args = {
+  checked: false,
+  color: 'default',
+  disabled: false,
+}

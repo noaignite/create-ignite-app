@@ -1,35 +1,26 @@
 // @inheritedComponent Drawer
 
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Drawer from '@material-ui/core/Drawer'
-import { SITE_HEADER_ID } from 'src/site.config'
 
-const headerHeight = `var(--${SITE_HEADER_ID}-height)`
-
-export const styles = {
+export const styles = (theme) => ({
   root: {
-    top: `${headerHeight} !important`, // Override `MuiModal` inline style.
+    zIndex: `${theme.zIndex.appBar - 1} !important`,
   },
-  backdrop: {
-    top: headerHeight,
-  },
+  backdrop: {},
   paper: {
-    top: headerHeight,
+    ...theme.mixins.scrollbars,
+    top: 'var(--coa-header-height)',
+  },
+  paperAnchorHorizontal: {
     width: 414, // iPhone 6/7/8 Plus
     maxWidth: '100%',
-    height: `calc(100% - ${headerHeight})`,
+    height: 'calc(100% - var(--coa-header-height))',
   },
-  paperAnchorRight: {
-    // Prevent `Drawer` position jumps due to scrollbar being shown/hidden.
-    boxSizing: 'content-box',
-    '& > *': {
-      boxSizing: 'border-box',
-    },
-  },
-}
+})
 
 const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
   const {
@@ -48,8 +39,7 @@ const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
         paper: classnames(
           classes.paper,
           {
-            [classes.paperAnchorRight]: anchor === 'right',
-            'mui-fixed': anchor === 'right',
+            [classes.paperAnchorHorizontal]: ['left', 'right'].includes(anchor),
           },
           PaperClassName,
         ),
@@ -76,6 +66,4 @@ AppDrawer.propTypes = {
   PaperProps: PropTypes.object,
 }
 
-AppDrawer.uiName = 'AppDrawer'
-
-export default withStyles(styles)(AppDrawer)
+export default withStyles(styles)(React.memo(AppDrawer))

@@ -1,25 +1,29 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { boolean, select } from '@storybook/addon-knobs'
+import * as React from 'react'
+import storySelectArgType from '../utils/storySelectArgType'
 import Toolbar from './Toolbar'
 
-const stories = storiesOf('Components/Toolbar', module)
+export default {
+  title: 'Components/Toolbar',
+  component: Toolbar,
+  argTypes: {
+    variant: storySelectArgType(['regular', 'dense']),
+  },
+}
 
-export const Default = () => (
-  <Toolbar
-    disableGutters={boolean('disableGutters', false)}
-    variant={select('variant', ['regular', 'dense'], 'regular')}
-  >
+const Template = (args) => (
+  <Toolbar {...args}>
     <button type="button">Burger</button>
 
     <div style={{ flexGrow: 1, textAlign: 'center' }}>
-      <img src="//placekitten.com/120/30" alt="" />
+      <img src="//source.unsplash.com/120x30" alt="" />
     </div>
 
     <button type="button">Log in</button>
   </Toolbar>
 )
 
-stories.add('Default', Default)
-
-export default Toolbar
+export const Default = Template.bind({})
+Default.args = {
+  disableGutters: false,
+  variant: 'regular',
+}

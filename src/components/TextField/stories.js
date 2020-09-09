@@ -1,38 +1,51 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { boolean, text, select } from '@storybook/addon-knobs'
+import * as React from 'react'
+import storySelectArgType from '../utils/storySelectArgType'
+import MenuItem from '../MenuItem'
 import TextField from './TextField'
 
-const stories = storiesOf('Components/TextField', module)
+export default {
+  title: 'Components/TextField',
+  component: TextField,
+  argTypes: {
+    color: storySelectArgType(['primary', 'secondary']),
+    margin: storySelectArgType(['none', 'dense', 'normal']),
+    size: storySelectArgType(['medium', 'small']),
+    variant: storySelectArgType(['standard', 'outlined', 'filled']),
+  },
+}
 
-export const Default = () => {
-  const selectKnob = boolean('select', false)
+const Template = (args) => {
+  const [value, setValue] = React.useState('')
+  const handleChange = (event) => {
+    setValue(event.target.value)
+  }
 
   return (
-    <TextField
-      disabled={boolean('disabled', false)}
-      error={boolean('error', false)}
-      fullWidth={boolean('fullWidth', false)}
-      helperText={text('helperText', 'Field description')}
-      label={text('label', 'Field label')}
-      margin={select('margin', ['none', 'dense', 'normal'], 'none')}
-      multiline={boolean('multiline', false)}
-      placeholder={text('placeholder', 'Field placeholder')}
-      required={boolean('required', false)}
-      select={selectKnob}
-      variant={select('variant', ['standard', 'outlined', 'filled'], 'outlined')}
-    >
-      {selectKnob && (
-        <>
-          <option>Value 1</option>
-          <option>Value 2</option>
-          <option>Value 3</option>
-        </>
-      )}
+    <TextField onChange={handleChange} value={value} {...args}>
+      {args.select &&
+        Array.from(new Array(4), (_, idx) => (
+          <MenuItem key={idx} value={idx + 1}>
+            Value {idx + 1}
+          </MenuItem>
+        ))}
     </TextField>
   )
 }
 
-stories.add('Default', Default)
-
-export default TextField
+export const Default = Template.bind({})
+Default.args = {
+  color: 'primary',
+  disabled: false,
+  error: false,
+  fullWidth: false,
+  helperText: 'Field description',
+  hiddenLabel: false,
+  label: 'Field label',
+  margin: 'none',
+  multiline: false,
+  placeholder: 'Field placeholder',
+  required: false,
+  select: false,
+  size: 'medium',
+  variant: 'standard',
+}
