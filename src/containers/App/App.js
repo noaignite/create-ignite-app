@@ -2,7 +2,6 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from 'src/site.config'
-import { menuLinkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import BrandIcon from 'components/icons/Brand'
 import BurgerIcon from 'components/icons/Burger'
@@ -184,8 +183,6 @@ function App(props) {
 App.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.object.isRequired,
-  menuFooter: PropTypes.arrayOf(menuLinkType),
-  menuPrimary: PropTypes.arrayOf(menuLinkType),
 }
 
 export default withStyles(styles)(App)
