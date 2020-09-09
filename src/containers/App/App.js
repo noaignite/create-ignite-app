@@ -67,6 +67,7 @@ export const styles = (theme) => ({
   },
   main: {
     flexGrow: 1,
+    paddingTop: 'var(--coa-initial-sticky-top, 0px)',
     outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
   },
 })

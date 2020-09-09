@@ -96,7 +96,6 @@ const AppAppBar = React.forwardRef(function AppAppBar(props, ref) {
         },
         className,
       )}
-      position={colorProp === 'default' ? 'sticky' : 'fixed'}
       ref={handleRef}
       {...other}
     >
