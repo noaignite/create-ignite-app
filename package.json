@@ -28,6 +28,18 @@
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write"
   },
+  "lint-staged": {
+    "*.js": [
+      "yarn lint:fix",
+      "yarn prettier:fix",
+      "git add --force"
+    ],
+    "*.json": [
+      "yarn prettier:fix",
+      "git add --force"
+    ]
+  },
+  "pre-commit": "lint:staged",
   "dependencies": {
     "@material-ui/core": "4.11.0",
     "@oakwood/oui": "0.9.7",
@@ -69,6 +81,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.1.1",
+    "lint-staged": "^10.3.0",
     "next-transpile-modules": "^4.1.0",
     "prettier": "^2.0.1"
   }
