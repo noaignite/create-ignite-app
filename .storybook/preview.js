@@ -1,6 +1,8 @@
 import ThemeProvider from '@material-ui/styles/ThemeProvider'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { cmsProps } from 'api/mock'
 import { AppProvider } from 'containers/App/AppContext'
+import { GlobalProvider } from 'containers/Global/GlobalContext'
 import createTheme from 'components/styles/createTheme'
 // As of NextJS 9, all global css *must* be imported in pages/_app.js
 // https://github.com/zeit/next.js/blob/master/errors/css-global.md
@@ -37,9 +39,11 @@ export const decorators = [
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
-        <AppProvider>
-          <Story />
-        </AppProvider>
+        <GlobalProvider {...cmsProps}>
+          <AppProvider>
+            <Story />
+          </AppProvider>
+        </GlobalProvider>
       </ThemeProvider>
     )
   },
