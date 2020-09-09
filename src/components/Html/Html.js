@@ -5,6 +5,7 @@ import withStyles from '@material-ui/core/styles/withStyles'
 
 export const styles = (theme) => ({
   root: {
+    ...theme.typography.body1,
     '@global': {
       h1: theme.typography.h3,
       h2: theme.typography.h4,
@@ -31,8 +32,9 @@ export const styles = (theme) => ({
         margin: '2.8em auto',
       },
       figcaption: {
+        ...theme.mixins.container,
         ...theme.typography.caption,
-        margin: '10px 0 0',
+        margin: theme.spacing(2, 0, 0),
       },
       'ol, ul': {
         paddingLeft: '1.25em',
@@ -46,7 +48,7 @@ export const styles = (theme) => ({
         backgroundColor: theme.palette.divider,
       },
       a: {
-        color: 'inherit',
+        color: theme.palette.primary.main,
         textDecoration: 'underline',
       },
     },

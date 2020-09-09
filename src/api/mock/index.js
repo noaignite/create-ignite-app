@@ -1,6 +1,7 @@
-export { default as product } from './product'
 export { default as blocks } from './blocks'
 export { default as cartItem } from './cartItem'
+export { default as pages } from './pages'
+export { default as product } from './product'
 
 function generateSubMenu(amount) {
   return Array.from(new Array(amount), (_, idx) => ({

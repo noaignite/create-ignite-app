@@ -6,24 +6,23 @@ import Container from 'components/Container'
 import Html from 'components/Html'
 import Section from 'components/Section'
 
-export const styles = (theme) => ({
+export const styles = {
   root: {
     '@global': {
-      'h1, h2, h3, h4, h5, h6, p, ol, ul': {
-        maxWidth: theme.breakpoints.values.sm,
+      'h1, h2, h3, h4, h5, h6, p, ol, ul, blockquote': {
+        maxWidth: 480,
       },
-      blockquote: {
-        maxWidth: theme.breakpoints.values.lg,
+      figure: {
+        marginLeft: 'calc(var(--container-spacing, 0px) * -1)',
+        marginRight: 'calc(var(--container-spacing, 0px) * -1)',
       },
-      'figure, img': {
-        maxWidth: '100%',
-        [theme.breakpoints.up('lg')]: {
-          maxWidth: theme.breakpoints.values.md,
-        },
+      'figure img': {
+        width: '100%',
       },
     },
   },
-})
+  content: {},
+}
 
 const Content = React.forwardRef(function Content(props, ref) {
   const { children, classes, className, content, ...other } = props
@@ -37,7 +36,7 @@ const Content = React.forwardRef(function Content(props, ref) {
 
   return (
     <Section className={classnames(classes.root, className)} ref={ref} {...other}>
-      <Container>
+      <Container className={classes.content} maxWidth="md">
         <Html {...componentProps} />
       </Container>
     </Section>

@@ -15,6 +15,7 @@ const Media = React.forwardRef(function Media(props, ref) {
             ? { autoPlay: true, muted: true, loop: true, playsInline: true }
             : {})}
           {...mediaProps}
+          loading="lazy"
         />
       </Container>
     </Section>

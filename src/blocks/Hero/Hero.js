@@ -12,6 +12,8 @@ import Container from 'components/Container'
 import Section from 'components/Section'
 import Typography from 'components/Typography'
 
+const BREAKPOINT_KEY_UP = 'sm'
+
 export const styles = (theme) => ({
   root: {
     display: 'flex',
@@ -21,7 +23,7 @@ export const styles = (theme) => ({
     minHeight: '75vh',
     color: theme.palette.getContrastText(theme.palette.text.primary),
     textAlign: 'center',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
       minHeight: 650,
     },
   },

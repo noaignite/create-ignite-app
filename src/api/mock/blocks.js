@@ -1,7 +1,6 @@
-import product from './product'
-
 export default {
   Hero: {
+    backgroundAttachment: 'static',
     backgroundMediaProps: {
       component: 'picture',
       breakpoints: {
@@ -16,9 +15,28 @@ export default {
       url: 'https://material-ui.com',
     },
   },
-  ProductSlideshow: {
+  ArticleSlideshow: {
     heading: 'Generic Heading',
-    products: new Array(6).fill(product),
+    items: Array.from(new Array(6), () => ({
+      mediaProps: {
+        component: 'img',
+        src: '//source.unsplash.com/500x700',
+      },
+      subheading: 'Vivamus',
+      heading: 'Lorem ipsum dolor',
+      excerpt:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie varius viverra. Quisque urna tortor, bibendum ac quam a, bibendum fringilla nulla.',
+      url: 'https://material-ui.com/',
+    })),
+  },
+  Media: {
+    mediaProps: {
+      component: 'picture',
+      breakpoints: {
+        xs: '//source.unsplash.com/360x715',
+        sm: '//source.unsplash.com/1440x650',
+      },
+    },
   },
   Content: {
     content: `
@@ -26,7 +44,7 @@ export default {
       <p>
         <strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames
         ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet,
-        ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em>{' '}
+        ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em>
         Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
         Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi.
         Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
@@ -61,14 +79,5 @@ export default {
       <h5>Header Level 5</h5>
       <h6>Header Level 6</h6>
     `,
-  },
-  Media: {
-    mediaProps: {
-      component: 'picture',
-      breakpoints: {
-        xs: '//source.unsplash.com/360x715',
-        sm: '//source.unsplash.com/1440x650',
-      },
-    },
   },
 }
