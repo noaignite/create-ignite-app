@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
-import { menuLinkType } from 'utils'
+import { useGlobal } from 'containers/Global/GlobalContext'
 import RouterLink from 'containers/RouterLink'
 import Container from 'components/Container'
 import Link from 'components/Link'
@@ -29,7 +29,9 @@ export const styles = (theme) => ({
 })
 
 const AppFooter = React.forwardRef(function AppFooter(props, ref) {
-  const { classes, className, primary = [], ...other } = props
+  const { classes, className, ...other } = props
+
+  const { menus } = useGlobal()
 
   return (
     <Section
@@ -42,7 +44,7 @@ const AppFooter = React.forwardRef(function AppFooter(props, ref) {
       <Container className={classes.mainDetails}>
         <nav className={classes.nav} aria-label="Main navigation">
           <ul className={classes.navlist}>
-            {primary.map((menuItem, idx) => (
+            {menus?.menuFooter.map((menuItem, idx) => (
               <li key={idx} className={classes.navlistItem}>
                 <Link
                   className={classes.navlistItemText}
@@ -65,7 +67,6 @@ const AppFooter = React.forwardRef(function AppFooter(props, ref) {
 AppFooter.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  primary: PropTypes.arrayOf(menuLinkType),
 }
 
 export default withStyles(styles)(React.memo(AppFooter))

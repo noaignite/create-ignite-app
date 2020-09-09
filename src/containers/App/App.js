@@ -30,8 +30,6 @@ export const styles = (theme) => ({
     flexDirection: 'column',
     minHeight: '100vh',
   },
-  isPreloading: {},
-  isLoading: {},
   appBar: {},
   appBarToolbar: {},
   appBarMobilePush: {
@@ -72,7 +70,7 @@ export const styles = (theme) => ({
 })
 
 function App(props) {
-  const { children, classes, menuFooter, menuPrimary, ...other } = props
+  const { children, classes, ...other } = props
 
   const {
     appBarColor,
@@ -157,7 +155,7 @@ function App(props) {
             {burgerIconButton}
             {brandIconButton}
 
-            <AppNavDropdown className={classes.navDropdown} primary={menuPrimary} />
+            <AppNavDropdown className={classes.navDropdown} />
 
             <div className={classes.appBarDesktopPush} />
             {searchIconButton}
@@ -172,9 +170,9 @@ function App(props) {
         {children}
       </main>
 
-      {!hideFooter && <AppFooter primary={menuFooter} id={SITE_FOOTER_ID} />}
+      {!hideFooter && <AppFooter id={SITE_FOOTER_ID} />}
 
-      <AppNavDrawer primary={menuPrimary} open={isNavMenuOpen} />
+      <AppNavDrawer open={isNavMenuOpen} />
       <AppCartDrawer open={isCartMenuOpen} />
       <AppSearchDrawer open={isSearchMenuOpen} />
 

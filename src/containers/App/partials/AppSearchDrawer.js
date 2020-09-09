@@ -70,7 +70,9 @@ const AppSearchDrawer = React.forwardRef(function AppSearchDrawer(props, ref) {
         component="form"
         maxWidth="md"
         role="search"
-        action=""
+        // iOS needs an "action" attribute for nice input: https://stackoverflow.com/a/39485162/406725
+        // We default the action to "#" in case the preventDefault fails (just updates the URL hash)
+        action="#"
       >
         <TextField
           className={classes.textField}

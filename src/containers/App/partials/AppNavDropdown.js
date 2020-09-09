@@ -3,12 +3,11 @@ import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import { useRouter } from 'next/router'
 import withStyles from '@material-ui/core/styles/withStyles'
-import ButtonBase from '@material-ui/core/ButtonBase'
-import { menuLinkType } from 'utils'
+import { useGlobal } from 'containers/Global/GlobalContext'
 import RouterLink from 'containers/RouterLink'
+import Button from 'components/Button'
 import Container from 'components/Container'
 import Link from 'components/Link'
-import Toolbar from 'components/Toolbar'
 
 export const styles = (theme) => ({
   root: {
@@ -16,9 +15,16 @@ export const styles = (theme) => ({
     display: 'flex',
     justifyContent: 'center',
     pointerEvents: 'none',
-    '& > *': {
-      pointerEvents: 'auto',
-    },
+  },
+  navlist: {
+    display: 'flex',
+    margin: 0,
+    pointerEvents: 'auto',
+  },
+  navlistItem: {},
+  navlistItemButton: {
+    ...theme.typography.subtitle1,
+    minHeight: 'var(--toolbar-min-height)',
   },
   subnav: {
     ...theme.mixins.fixed('var(--coa-header-height)', 0, undefined),
@@ -32,50 +38,30 @@ export const styles = (theme) => ({
       opacity: 0,
     },
   },
-  subnavContainer: {
+  subnavInner: {
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
   },
-  navlist: {
-    position: 'static', // Reset MuiToolbar
-    alignItems: 'stretch',
-    padding: 0,
+  list: {
+    display: 'grid',
+    gridGap: theme.spacing(1),
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    flex: '0 1 800px',
     margin: 0,
-    '$subnav &': {
-      display: 'grid',
-      gridGap: theme.spacing(1),
-      gridTemplateColumns: 'repeat(3, 1fr)',
-      flex: '0 1 800px',
-    },
   },
-  navlistItem: {
-    // Mimic `Button` hover transition
-    transition: theme.transitions.create(['background-color'], {
-      duration: theme.transitions.duration.short,
-    }),
-    '&:hover, &:focus-within': {
-      backgroundColor: theme.palette.background.paper,
-    },
-  },
-  navlistItemText: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    height: '100%',
-    padding: theme.spacing(0, 2),
-    '$subnav &': {
-      padding: 0,
-    },
-  },
+  listItem: {},
+  listItemLink: {},
   mediaContainer: {
     flex: '0 0 300px',
   },
 })
 
 const AppNavDropdown = React.forwardRef(function AppNavDropdown(props, ref) {
-  const { classes, className, primary, ...other } = props
+  const { classes, className, ...other } = props
 
   const router = useRouter()
+  const { menus } = useGlobal()
 
   return (
     <nav
@@ -85,8 +71,8 @@ const AppNavDropdown = React.forwardRef(function AppNavDropdown(props, ref) {
       aria-label="Main navigation"
       {...other}
     >
-      <Toolbar className={classes.navlist} component="ul">
-        {primary?.map((menuItem, idx) => {
+      <ul className={classes.navlist}>
+        {menus?.menuPrimary?.map((menuItem, idx) => {
           const submenu = menuItem.links
           const hasSubmenu = submenu?.length > 0
 
@@ -99,24 +85,18 @@ const AppNavDropdown = React.forwardRef(function AppNavDropdown(props, ref) {
 
           return (
             <li key={idx} className={classes.navlistItem}>
-              <Link
-                className={classes.navlistItemText}
-                component={ButtonBase}
-                underline="none"
-                variant="subtitle1"
-                {...topLinkProps}
-              >
+              <Button className={classes.navlistItemButton} {...topLinkProps}>
                 {menuItem.label}
-              </Link>
+              </Button>
 
               {hasSubmenu && (
                 <div className={classes.subnav}>
-                  <Container className={classes.subnavContainer}>
-                    <ul className={classes.navlist}>
-                      {submenu?.map((subMenuItem, idx2) => (
-                        <li key={idx2} className={classes.navlistItem}>
+                  <Container className={classes.subnavInner}>
+                    <ul className={classes.list}>
+                      {submenu.map((subMenuItem, idx2) => (
+                        <li key={idx2} className={classes.listItem}>
                           <Link
-                            className={classes.navlistItemText}
+                            className={classes.listItemLink}
                             component={RouterLink}
                             as={subMenuItem.url}
                             href="[...uri]"
@@ -138,7 +118,7 @@ const AppNavDropdown = React.forwardRef(function AppNavDropdown(props, ref) {
             </li>
           )
         })}
-      </Toolbar>
+      </ul>
     </nav>
   )
 })
@@ -146,7 +126,6 @@ const AppNavDropdown = React.forwardRef(function AppNavDropdown(props, ref) {
 AppNavDropdown.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  primary: PropTypes.arrayOf(menuLinkType).isRequired,
 }
 
 export default withStyles(styles)(React.memo(AppNavDropdown))
