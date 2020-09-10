@@ -19,6 +19,24 @@ export const styles = {
       'figure img': {
         width: '100%',
       },
+      '.wp-block-video, .wp-block-embed__wrapper': {
+        display: 'block',
+        position: 'relative',
+        width: '100%',
+        '&::before': {
+          content: '""',
+          display: 'block',
+          paddingBottom: 'calc(9/16 * 100%)', // 16:9 aspect ratio
+        },
+        '& > *': {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+        },
+      },
     },
   },
   content: {},
