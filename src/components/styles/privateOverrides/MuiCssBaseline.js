@@ -7,8 +7,8 @@ const styles = {
       //   fontWeight: 400,
       //   fontDisplay: 'swap',
       //   src: `
-      //     url("/fonts/SuisseIntl-Regular.woff2") format("woff2"),
-      //     url("/fonts/SuisseIntl-Regular.woff") format("woff")
+      //     url("/fonts/SuisseIntl/SuisseIntl-Regular.woff2") format("woff2"),
+      //     url("/fonts/SuisseIntl/SuisseIntl-Regular.woff") format("woff")
       //   `,
       // },
     ],
