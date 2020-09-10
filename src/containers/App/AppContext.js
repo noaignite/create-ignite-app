@@ -78,7 +78,7 @@ export function AppProvider(props) {
 
   // Public handlers
 
-  const onAppBarBurgerClick = React.useCallback(() => {
+  const onAppBarMenuClick = React.useCallback(() => {
     setIsNavMenuOpen((prev) => !prev)
     setIsCartMenuOpen(false)
     setIsSearchMenuOpen(false)
@@ -110,7 +110,7 @@ export function AppProvider(props) {
 
   const onCookieBarClose = React.useCallback(() => {
     localStorage.setItem('cookie-consent', 1)
-    setIsCookieBarOpen(true)
+    setIsCookieBarOpen(false)
   }, [])
 
   // Memoize handlers context separately so that one can subscribe
@@ -123,8 +123,8 @@ export function AppProvider(props) {
     }
 
     return {
-      onAppBarBurgerClick,
       onAppBarCartClick,
+      onAppBarMenuClick,
       onAppBarSearchClick,
       onCartMenuClose,
       onCookieBarClose,
@@ -136,8 +136,8 @@ export function AppProvider(props) {
       setHideHeader,
     }
   }, [
-    onAppBarBurgerClick,
     onAppBarCartClick,
+    onAppBarMenuClick,
     onAppBarSearchClick,
     onCartMenuClose,
     onCookieBarClose,

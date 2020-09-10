@@ -1,8 +1,8 @@
 import * as React from 'react'
 import storySelectArgType from '../utils/storySelectArgType'
 import BrandIcon from '../icons/Brand'
-import BurgerIcon from '../icons/Burger'
-import CrossIcon from '../icons/Cross'
+import MenuIcon from '../icons/Menu'
+import CloseIcon from '../icons/Close'
 import IconButton from '../IconButton'
 import Toolbar from '../Toolbar'
 import AppBar from './AppBar'
@@ -27,7 +27,7 @@ const Template = (args) => (
   <AppBar {...args}>
     <Toolbar variant="dense">
       <IconButton edge="start">
-        <BurgerIcon />
+        <MenuIcon />
       </IconButton>
 
       <div style={{ flexGrow: 1, textAlign: 'center' }}>
@@ -37,7 +37,7 @@ const Template = (args) => (
       </div>
 
       <IconButton edge="end">
-        <CrossIcon />
+        <CloseIcon />
       </IconButton>
     </Toolbar>
   </AppBar>
