@@ -1,6 +1,6 @@
 import * as React from 'react'
 import storySelectArgType from '../utils/storySelectArgType'
-import CrossIcon from '../icons/Cross'
+import CloseIcon from '../icons/Close'
 import Button from './Button'
 
 export default {
@@ -21,9 +21,9 @@ Default.args = {
   children: 'Just a button',
   color: 'default',
   disabled: false,
-  endIcon: <CrossIcon />,
+  endIcon: <CloseIcon />,
   fullWidth: false,
   size: 'medium',
-  startIcon: <CrossIcon />,
+  startIcon: <CloseIcon />,
   variant: 'outlined',
 }

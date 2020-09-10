@@ -4,9 +4,9 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from 'src/site.config'
 import RouterLink from 'containers/RouterLink'
 import BrandIcon from 'components/icons/Brand'
-import BurgerIcon from 'components/icons/Burger'
 import CartIcon from 'components/icons/Cart'
-import CrossIcon from 'components/icons/Cross'
+import CloseIcon from 'components/icons/Close'
+import MenuIcon from 'components/icons/Menu'
 import SearchIcon from 'components/icons/Search'
 import IconButton from 'components/IconButton'
 import Toolbar from 'components/Toolbar'
@@ -42,7 +42,7 @@ export const styles = (theme) => ({
       marginLeft: 'auto',
     },
   },
-  burgerIconButton: {
+  menuIconButton: {
     [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
       display: 'none',
     },
@@ -83,22 +83,22 @@ function App(props) {
     isNavMenuOpen,
     isSearchMenuOpen,
     isSomeMenuOpen,
-    onAppBarBurgerClick,
     onAppBarCartClick,
+    onAppBarMenuClick,
     onAppBarSearchClick,
   } = useApp()
 
-  const burgerIconButton = (
+  const menuIconButton = (
     <IconButton
-      className={classes.burgerIconButton}
-      onClick={onAppBarBurgerClick}
+      className={classes.menuIconButton}
+      onClick={onAppBarMenuClick}
       edge="start"
       size="small"
       aria-haspopup="true"
       aria-expanded={isNavMenuOpen}
       aria-label="Toggle main menu"
     >
-      {isNavMenuOpen ? <CrossIcon /> : <BurgerIcon />}
+      {isNavMenuOpen ? <CloseIcon /> : <MenuIcon />}
     </IconButton>
   )
 
@@ -111,7 +111,7 @@ function App(props) {
       aria-expanded={isSearchMenuOpen}
       aria-label="Toggle search"
     >
-      {isSearchMenuOpen ? <CrossIcon /> : <SearchIcon />}
+      {isSearchMenuOpen ? <CloseIcon /> : <SearchIcon />}
     </IconButton>
   )
 
@@ -137,7 +137,7 @@ function App(props) {
       aria-expanded={isCartMenuOpen}
       aria-label="Toggle cart menu"
     >
-      {isCartMenuOpen ? <CrossIcon /> : <CartIcon amount={3} />}
+      {isCartMenuOpen ? <CloseIcon /> : <CartIcon amount={3} />}
     </IconButton>
   )
 
@@ -153,7 +153,7 @@ function App(props) {
           id={SITE_HEADER_ID}
         >
           <Toolbar className={classes.appBarToolbar}>
-            {burgerIconButton}
+            {menuIconButton}
             {brandIconButton}
 
             <AppNavDropdown className={classes.navDropdown} />

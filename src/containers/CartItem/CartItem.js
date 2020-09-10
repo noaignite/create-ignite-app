@@ -9,9 +9,9 @@ import { ASPECT_RATIOS } from 'src/site.config'
 import { useCartHandlers } from 'api'
 import { cartItemType } from 'utils'
 import RouterLink from 'containers/RouterLink'
-import CrossIcon from 'components/icons/Cross'
-import MinusIcon from 'components/icons/Minus'
-import PlusIcon from 'components/icons/Plus'
+import AddIcon from 'components/icons/Add'
+import CloseIcon from 'components/icons/Close'
+import RemoveIcon from 'components/icons/Remove'
 import Button from 'components/Button'
 import IconButton from 'components/IconButton'
 import Link from 'components/Link'
@@ -103,7 +103,7 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
 
         <ButtonGroup className={classes.actionButtons}>
           <Button className={classes.actionButton} onClick={handleDecrease} value={cartItem.id}>
-            <MinusIcon fontSize="small" />
+            <RemoveIcon fontSize="small" />
           </Button>
 
           <Button
@@ -117,7 +117,7 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
           </Button>
 
           <Button className={classes.actionButton} onClick={handleIncrease} value={cartItem.id}>
-            <PlusIcon fontSize="small" />
+            <AddIcon fontSize="small" />
           </Button>
         </ButtonGroup>
       </div>
@@ -128,7 +128,7 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
         value={cartItem.id}
         size="small"
       >
-        <CrossIcon fontSize="small" />
+        <CloseIcon fontSize="small" />
       </IconButton>
     </article>
   )

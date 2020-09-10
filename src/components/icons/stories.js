@@ -5,15 +5,17 @@ export default {
   title: 'Common/Icons',
 }
 
-const Template = (args) => (
+// eslint-disable-next-line react/prop-types
+const Template = ({ fontSize, margin, ...args }) => (
   <>
     {Object.entries(SvgIcons).map(([name, SvgIcon]) => (
-      <SvgIcon key={name} titleAccess={name} {...args} />
+      <SvgIcon key={name} titleAccess={name} style={{ fontSize, margin }} {...args} />
     ))}
   </>
 )
 
 export const Default = Template.bind({})
 Default.args = {
-  style: { margin: 1 },
+  fontSize: 24,
+  margin: 0,
 }

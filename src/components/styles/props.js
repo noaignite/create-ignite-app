@@ -1,9 +1,9 @@
 import * as React from 'react'
-import CheckboxCheckedIcon from '../icons/CheckboxChecked'
-import CheckboxUncheckedIcon from '../icons/CheckboxUnchecked'
-import RadioCheckedIcon from '../icons/RadioChecked'
-import RadioUncheckedIcon from '../icons/RadioUnchecked'
-import SelectArrowIcon from '../icons/SelectArrow'
+import CheckBoxIcon from '../icons/CheckBox'
+import CheckBoxOutlineBlankIcon from '../icons/CheckBoxOutlineBlank'
+import RadioButtonCheckedIcon from '../icons/RadioButtonChecked'
+import RadioButtonUncheckedIcon from '../icons/RadioButtonUnchecked'
+import ArrowDropDownIcon from '../icons/ArrowDropDown'
 
 const props = {
   MuiAppBar: {
@@ -19,8 +19,8 @@ const props = {
   },
   MuiCheckbox: {
     color: 'default',
-    checkedIcon: <CheckboxCheckedIcon />,
-    icon: <CheckboxUncheckedIcon />,
+    checkedIcon: <CheckBoxIcon />,
+    icon: <CheckBoxOutlineBlankIcon />,
   },
   MuiLink: {
     color: 'inherit',
@@ -31,11 +31,11 @@ const props = {
   },
   MuiRadio: {
     color: 'default',
-    checkedIcon: <RadioCheckedIcon />,
-    icon: <RadioUncheckedIcon />,
+    checkedIcon: <RadioButtonCheckedIcon />,
+    icon: <RadioButtonUncheckedIcon />,
   },
   MuiSelect: {
-    IconComponent: SelectArrowIcon,
+    IconComponent: ArrowDropDownIcon,
   },
 }
 
