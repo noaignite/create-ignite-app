@@ -48,7 +48,6 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "recompose": "^0.30.0",
     "smoothscroll-polyfill": "^0.4.4",
     "swiper": "^6.1.2"
   },
