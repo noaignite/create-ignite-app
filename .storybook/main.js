@@ -2,7 +2,12 @@ const webpack = require('webpack')
 
 module.exports = {
   stories: ['../src/**/*stories.js'],
-  addons: ['@storybook/addon-toolbars', '@storybook/addon-controls', '@storybook/addon-actions'],
+  addons: [
+    '@storybook/addon-toolbars',
+    '@storybook/addon-controls',
+    '@storybook/addon-actions',
+    '@storybook/addon-a11y',
+  ],
   webpackFinal: async (config /*, { configType }*/) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
@@ -41,8 +46,3 @@ module.exports = {
     return config
   },
 }
-
-// @todo - Make sure all desired addons work
-// import '@storybook/addon-knobs/register'
-// import '@storybook/addon-actions/register'
-// import '@storybook/addon-a11y/register'
