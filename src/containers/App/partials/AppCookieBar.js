@@ -40,7 +40,6 @@ const AppCookieBar = React.forwardRef(function AppCookieBar(props, ref) {
       {...other}
     >
       <SnackbarContent
-        className={classes.content}
         classes={{
           root: classes.content,
           message: classes.message,
