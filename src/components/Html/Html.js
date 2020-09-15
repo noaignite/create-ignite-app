@@ -13,7 +13,7 @@ export const styles = (theme) => ({
       h4: theme.typography.h6,
       h5: theme.typography.h6,
       h6: theme.typography.h6,
-      'h1, h2, h3, h4, h5, h6, p, ol, ul, li, figure, img': {
+      'h1, h2, h3, h4, h5, h6, p, ol, ul, figure, img': {
         margin: '1.2em auto 0',
         '&:first-child': {
           marginTop: 0,
