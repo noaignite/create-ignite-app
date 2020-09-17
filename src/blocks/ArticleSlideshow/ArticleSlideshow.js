@@ -14,7 +14,10 @@ import MediaLink from 'components/MediaLink'
 import Section from 'components/Section'
 import Typography from 'components/Typography'
 
-const BREAKPOINT_KEY_UP = 'sm'
+function getSlideWidth(slidesPerView, spacing) {
+  const totalSpacing = spacing * (slidesPerView - 1) // Subtract last slide spacing.
+  return `calc(100% / ${slidesPerView} - ${Math.round(totalSpacing / slidesPerView)}px)`
+}
 
 export const styles = (theme) => ({
   root: {},
@@ -27,6 +30,9 @@ export const styles = (theme) => ({
   },
   slideshow: {
     overflow: 'visible',
+    [theme.breakpoints.up('sm')]: {
+      overflow: 'hidden',
+    },
   },
   slide: {
     marginRight: theme.spacing(2),
@@ -34,19 +40,16 @@ export const styles = (theme) => ({
       marginRight: 0,
     },
     [theme.breakpoints.up('sm')]: {
-      width: `calc(100% / 2 - ${theme.spacing(1)}px)`,
+      width: getSlideWidth(2, theme.spacing(2)),
     },
     [theme.breakpoints.up('md')]: {
-      width: 440,
+      width: getSlideWidth(3, theme.spacing(2)),
     },
   },
   card: {},
   cardContent: {
     ...theme.mixins.verticalRhythm(1),
-    padding: theme.spacing(3, 2),
-    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
-      padding: theme.spacing(3, 4),
-    },
+    padding: theme.spacing(3),
   },
 })
 
