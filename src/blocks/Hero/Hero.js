@@ -4,7 +4,7 @@ import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import BackgroundMedia from '@oakwood/oui/BackgroundMedia'
 import Media from '@oakwood/oui/Media'
-import MediaLoader from '@oakwood/oui/MediaLoader'
+import MediaReveal from '@oakwood/oui/MediaReveal'
 import { mediaType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import Button from 'components/Button'
@@ -73,14 +73,15 @@ const Hero = React.forwardRef(function Hero(props, ref) {
           }}
           attachment={backgroundAttachment}
         >
-          <MediaLoader lazy>
+          <MediaReveal>
             <Media
               {...(backgroundMediaProps?.component === 'video'
                 ? { autoPlay: true, muted: true, loop: true, playsInline: true }
                 : {})}
               {...backgroundMediaProps}
+              lazy
             />
-          </MediaLoader>
+          </MediaReveal>
         </BackgroundMedia>
       )}
 

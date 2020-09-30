@@ -5,7 +5,7 @@ import SwiperCore, { A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Media from '@oakwood/oui/Media'
-import MediaLoader from '@oakwood/oui/MediaLoader'
+import MediaReveal from '@oakwood/oui/MediaReveal'
 import { mediaType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import Button from 'components/Button'
@@ -53,7 +53,9 @@ export const styles = (theme) => ({
   },
 })
 
-const EnhancedMediaLink = (props) => <MediaLink component={RouterLink} {...props} />
+const EnhancedMediaLink = React.forwardRef((props, ref) => (
+  <MediaLink component={RouterLink} ref={ref} {...props} />
+))
 
 const ArticleSlideshow = React.forwardRef(function ArticleSlideshow(props, ref) {
   const { classes, className, heading, items, ...other } = props
@@ -76,15 +78,15 @@ const ArticleSlideshow = React.forwardRef(function ArticleSlideshow(props, ref) 
             <SwiperSlide key={idx} className={classes.slide}>
               <article className={classes.card}>
                 {item.mediaProps && (
-                  <MediaLoader
+                  <MediaReveal
                     component={EnhancedMediaLink}
+                    rootMargin="-100px"
                     href={item.url}
                     width={320}
                     height={420}
-                    lazy
                   >
-                    <Media {...item.mediaProps} />
-                  </MediaLoader>
+                    <Media {...item.mediaProps} lazy />
+                  </MediaReveal>
                 )}
 
                 <div className={classes.cardContent}>
