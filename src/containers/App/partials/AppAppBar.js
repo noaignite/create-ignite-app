@@ -3,7 +3,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
-import { debounce, useForkRef } from '@oakwood/oui-utils'
+import { debounce, useForkRef } from '@material-ui/core/utils'
 import withStyles from '@material-ui/core/styles/withStyles'
 import AppBar from 'components/AppBar'
 

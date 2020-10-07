@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
-import { debounce } from '@oakwood/oui-utils'
+import { debounce } from '@material-ui/core/utils'
 import { CLOSE_MENUS_ON_RESIZE } from 'src/site.config'
 
 export const AppHandlersContext = React.createContext({})
