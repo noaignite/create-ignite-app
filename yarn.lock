@@ -1673,23 +1673,23 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@oakwood/oui-utils@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@oakwood/oui-utils/-/oui-utils-0.11.0.tgz#768d05a0f2e0c19ddd9f57bd1f10431bd85d5021"
-  integrity sha512-r6N67Mf6Uf4GZfMhlQ5SRSw/Xotb/g6SgpfIr4HO+MRy7HZfuKCnEhlA4TESoJvZUPK/bNYUedl6ZwPvR86c2w==
+"@oakwood/oui-utils@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@oakwood/oui-utils/-/oui-utils-1.0.0.tgz#bb57704ef54731dfff0f45c204f14353534ed3af"
+  integrity sha512-vg9A19V/3biOJqUSt++k3LjvP0kBriqOANd/Z1Rt0P0Z5pSQQgfY/ygUUX8ouq6+zAvjhW/x71ATIqtnCPBTTQ==
   dependencies:
     "@babel/runtime" "^7.7.4"
     intersection-observer-admin "^0.2.12"
     prop-types "^15.7.2"
 
-"@oakwood/oui@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@oakwood/oui/-/oui-0.11.0.tgz#764898180edd5f5e9c722f362fd04f72d3cef60f"
-  integrity sha512-mmuExpIfZ8rXyFQVrAZOiVYc43HBHVFItjWTAJgD8oSoku10vl5vb1apMaNKLzo5llHrLXysed+/DhzevWW5Sg==
+"@oakwood/oui@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@oakwood/oui/-/oui-1.0.0.tgz#93f8fa65eec311900a419c52c7cb95e28dd67093"
+  integrity sha512-5PLXFigeMMpfwL498S95qXXI91GOMLGZhnZ8i7BQByaYwmZ1Lprg11dtVDPujp4TkCfojUiX+T/+HOhsvrC98Q==
   dependencies:
     "@babel/runtime" "^7.7.4"
     "@maeertin/medialoaded" "^1.2.1"
-    "@oakwood/oui-utils" "0.11.0"
+    "@oakwood/oui-utils" "1.0.0"
     clsx "^1.1.1"
     prop-types "^15.7.2"
 

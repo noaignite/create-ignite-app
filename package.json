@@ -42,7 +42,7 @@
   "pre-commit": "lint:staged",
   "dependencies": {
     "@material-ui/core": "4.11.0",
-    "@oakwood/oui": "0.11.0",
+    "@oakwood/oui": "1.0.0",
     "clsx": "^1.1.0",
     "next": "^9.5.3",
     "prop-types": "^15.7.2",
@@ -54,8 +54,8 @@
   "devDependencies": {
     "@babel/plugin-transform-react-constant-elements": "^7.10.1",
     "@next/bundle-analyzer": "^9.5.3",
-    "@storybook/addon-essentials": "^6.0.26",
     "@storybook/addon-a11y": "^6.0.26",
+    "@storybook/addon-essentials": "^6.0.26",
     "@storybook/react": "^6.0.26",
     "@zeit/next-bundle-analyzer": "^0.1.2",
     "babel-eslint": "^10.0.3",
