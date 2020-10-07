@@ -14,6 +14,13 @@ import AppBase from 'containers/App'
 // https://github.com/zeit/next.js/blob/master/errors/css-global.md
 import 'swiper/swiper-bundle.min.css'
 
+// Based on: https://github.com/vercel/next.js/blob/canary/examples/with-why-did-you-render/pages/_app.js
+if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
+  // eslint-disable-next-line global-require
+  const whyDidYouRender = require('@welldone-software/why-did-you-render')
+  whyDidYouRender(React, { trackAllPureComponents: true })
+}
+
 function App(props) {
   const { Component, pageProps, cmsProps } = props
 

@@ -115,14 +115,8 @@ export function AppProvider(props) {
 
   // Memoize handlers context separately so that one can subscribe
   // to them without re-rendering on state updates.
-  const appHandlersContext = React.useMemo(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      console.warn(
-        `Warning: ${AppHandlersContext.displayName} received new values, was this intentional?`,
-      )
-    }
-
-    return {
+  const appHandlersContext = React.useMemo(
+    () => ({
       onAppBarCartClick,
       onAppBarMenuClick,
       onAppBarSearchClick,
@@ -134,16 +128,17 @@ export function AppProvider(props) {
       setAppBarColor,
       setHideFooter,
       setHideHeader,
-    }
-  }, [
-    onAppBarCartClick,
-    onAppBarMenuClick,
-    onAppBarSearchClick,
-    onCartMenuClose,
-    onCookieBarClose,
-    onNavMenuClose,
-    onSearchMenuClose,
-  ])
+    }),
+    [
+      onAppBarCartClick,
+      onAppBarMenuClick,
+      onAppBarSearchClick,
+      onCartMenuClose,
+      onCookieBarClose,
+      onNavMenuClose,
+      onSearchMenuClose,
+    ],
+  )
 
   const appContext = {
     appBarColor,

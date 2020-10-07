@@ -56,6 +56,9 @@ export const styles = (theme) => ({
       marginLeft: 0, // Cancel margin of `edge="start"`
     },
   },
+  brandIcon: {
+    width: 'auto',
+  },
   cartIconButton: {},
   navDropdown: {
     [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
@@ -71,6 +74,8 @@ export const styles = (theme) => ({
 
 function App(props) {
   const { children, classes, ...other } = props
+
+  // console.log('App render')
 
   const {
     appBarColor,
@@ -123,7 +128,7 @@ function App(props) {
       edge="start"
       aria-label="Go to the homepage"
     >
-      <BrandIcon style={{ width: 'auto' }} />
+      <BrandIcon className={classes.brandIcon} />
     </IconButton>
   )
 
