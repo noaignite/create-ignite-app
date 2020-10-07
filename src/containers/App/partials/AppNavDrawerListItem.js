@@ -28,8 +28,7 @@ function AppNavDrawerListItem(props) {
     topLinkProps.onClick = handleClick
   } else if (menuLink.url) {
     topLinkProps.component = RouterLink
-    topLinkProps.as = menuLink.url
-    topLinkProps.href = '[...uri]'
+    topLinkProps.href = menuLink.url
   }
 
   return (
