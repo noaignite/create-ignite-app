@@ -64,4 +64,4 @@ AppNavDrawerListItem.propTypes = {
   menuLink: menuLinkType.isRequired,
 }
 
-export default withStyles(styles)(React.memo(AppNavDrawerListItem))
+export default withStyles(styles)(AppNavDrawerListItem)
