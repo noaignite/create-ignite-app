@@ -21,12 +21,13 @@ export function useApp() {
 }
 
 export function AppProvider(props) {
+  const { children } = props
+
   const [appBarColor, setAppBarColor] = React.useState('default')
   const [hideFooter, setHideFooter] = React.useState(false)
   const [hideHeader, setHideHeader] = React.useState(false)
   const [isCartMenuOpen, setIsCartMenuOpen] = React.useState(false)
   const [isCookieBarOpen, setIsCookieBarOpen] = React.useState(false)
-  const [isLoading, setIsLoading] = React.useState(false)
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false)
   const [isSearchMenuOpen, setIsSearchMenuOpen] = React.useState(false)
 
@@ -38,43 +39,34 @@ export function AppProvider(props) {
     setIsSearchMenuOpen(false)
   }
 
-  // Private handlers
-
-  const handleRouteChangeStart = React.useCallback(() => {
-    setIsLoading(true)
-    closeAllMenus()
-  }, [])
-
-  const handleRouteChangeComplete = React.useCallback(() => {
-    setIsLoading(false)
-  }, [])
-
   // Mount hook
 
   React.useEffect(() => {
-    const handleResize = debounce(() => {
-      if (CLOSE_MENUS_ON_RESIZE) {
-        closeAllMenus()
-      }
-    })
-
     if (!localStorage.getItem('cookie-consent')) {
       setTimeout(() => {
         setIsCookieBarOpen(true)
       }, 2000)
     }
 
+    const handleResize = debounce(() => {
+      if (CLOSE_MENUS_ON_RESIZE) {
+        closeAllMenus()
+      }
+    })
+
+    const handleRouteChangeStart = () => {
+      closeAllMenus()
+    }
+
     window.addEventListener('resize', handleResize)
     Router.events.on('routeChangeStart', handleRouteChangeStart)
-    Router.events.on('routeChangeComplete', handleRouteChangeComplete)
 
     return () => {
       handleResize.clear()
       window.removeEventListener('resize', handleResize)
       Router.events.off('routeChangeStart', handleRouteChangeStart)
-      Router.events.off('routeChangeComplete', handleRouteChangeComplete)
     }
-  }, [handleRouteChangeStart, handleRouteChangeComplete])
+  }, [])
 
   // Public handlers
 
@@ -146,11 +138,9 @@ export function AppProvider(props) {
     hideHeader,
     isCartMenuOpen,
     isCookieBarOpen,
-    isLoading,
     isNavMenuOpen,
     isSearchMenuOpen,
     // Computed props
-    isBackdropOpen: isLoading,
     isSomeMenuOpen: isCartMenuOpen || isNavMenuOpen || isSearchMenuOpen,
     // Merge in handlers for easy access
     ...appHandlersContext,
@@ -158,7 +148,7 @@ export function AppProvider(props) {
 
   return (
     <AppHandlersContext.Provider value={appHandlersContext}>
-      <AppContext.Provider value={appContext}>{props.children}</AppContext.Provider>
+      <AppContext.Provider value={appContext}>{children}</AppContext.Provider>
     </AppHandlersContext.Provider>
   )
 }

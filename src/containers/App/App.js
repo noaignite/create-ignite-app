@@ -11,10 +11,10 @@ import SearchIcon from 'components/icons/Search'
 import IconButton from 'components/IconButton'
 import Toolbar from 'components/Toolbar'
 import AppAppBar from './partials/AppAppBar'
-import AppBackdrop from './partials/AppBackdrop'
 import AppCartDrawer from './partials/AppCartDrawer'
 import AppCookieBar from './partials/AppCookieBar'
 import AppFooter from './partials/AppFooter'
+import AppLoader from './partials/AppLoader'
 import AppNavDrawer from './partials/AppNavDrawer'
 import AppNavDropdown from './partials/AppNavDropdown'
 import AppSearchDrawer from './partials/AppSearchDrawer'
@@ -75,16 +75,12 @@ export const styles = (theme) => ({
 function App(props) {
   const { children, classes, ...other } = props
 
-  // console.log('App render')
-
   const {
     appBarColor,
     hideFooter,
     hideHeader,
-    isBackdropOpen,
     isCartMenuOpen,
     isCookieBarOpen,
-    isLoading,
     isNavMenuOpen,
     isSearchMenuOpen,
     isSomeMenuOpen,
@@ -182,7 +178,8 @@ function App(props) {
       <AppCartDrawer open={isCartMenuOpen} />
       <AppSearchDrawer open={isSearchMenuOpen} />
       <AppCookieBar open={isCookieBarOpen} />
-      <AppBackdrop open={isBackdropOpen} loading={isLoading} />
+
+      <AppLoader />
     </div>
   )
 }
