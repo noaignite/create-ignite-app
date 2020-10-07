@@ -1,12 +1,3 @@
-const defaultAlias = {
-  api: './src/api',
-  blocks: './src/blocks',
-  components: './src/components',
-  containers: './src/containers',
-  src: './src',
-  utils: './src/utils',
-}
-
 const productionPlugins = [
   '@babel/plugin-transform-react-constant-elements',
   'babel-plugin-transform-dev-warning',
@@ -34,13 +25,6 @@ module.exports = {
   plugins: [
     'babel-plugin-optimize-clsx',
     'babel-plugin-lodash',
-    [
-      'babel-plugin-module-resolver',
-      {
-        root: ['./'],
-        alias: defaultAlias,
-      },
-    ],
     [
       'babel-plugin-transform-imports',
       {

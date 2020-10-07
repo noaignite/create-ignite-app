@@ -1,3 +1,5 @@
+const deepmerge = require('@material-ui/utils/deepmerge').default
+const baseConfig = require('./next.baseConfig')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
@@ -19,6 +21,8 @@ const nextConfig = {
     GTM_ID: process.env.GTM_ID,
   },
   webpack: (config) => {
+    config = deepmerge(config, baseConfig)
+
     const originalEntry = config.entry
     config.entry = async () => {
       const entries = await originalEntry()

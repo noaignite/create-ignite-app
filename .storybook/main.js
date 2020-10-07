@@ -1,3 +1,6 @@
+const deepmerge = require('@material-ui/utils/deepmerge').default
+const baseConfig = require('../next.baseConfig')
+
 module.exports = {
   stories: ['../src/**/*stories.js'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
@@ -5,6 +8,8 @@ module.exports = {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
     // 'PRODUCTION' is used when building the static version of storybook.
+
+    config = deepmerge(config, baseConfig)
 
     // Enable Storybook forking of main files
     config.resolve.mainFiles = ['storybook.index', 'index']
