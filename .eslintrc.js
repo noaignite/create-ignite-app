@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   root: true, // So parent files don't get applied
   env: {
@@ -14,7 +16,9 @@ module.exports = {
   plugins: ['babel', 'react-hooks'],
   settings: {
     'import/resolver': {
-      'babel-module': {},
+      webpack: {
+        config: path.join(__dirname, './webpackBaseConfig.js'),
+      },
     },
   },
   /**
