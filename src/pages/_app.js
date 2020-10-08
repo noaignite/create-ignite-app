@@ -14,11 +14,24 @@ import AppBase from 'containers/App'
 // https://github.com/zeit/next.js/blob/master/errors/css-global.md
 import 'swiper/swiper-bundle.min.css'
 
-// Based on: https://github.com/vercel/next.js/blob/canary/examples/with-why-did-you-render/pages/_app.js
+/**
+ * Monkey patches React to notify you about avoidable re-renders.
+ * Based on: https://github.com/vercel/next.js/blob/canary/examples/with-why-did-you-render/pages/_app.js
+ */
 if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
   // eslint-disable-next-line global-require
   const whyDidYouRender = require('@welldone-software/why-did-you-render')
   whyDidYouRender(React, { trackAllPureComponents: true })
+}
+
+/**
+ * Initialize polyfills
+ * Based on: https://nextjs.org/docs/basic-features/supported-browsers-features#custom-polyfills
+ */
+if (typeof window !== 'undefined') {
+  // eslint-disable-next-line global-require
+  const smoothscroll = require('smoothscroll-polyfill')
+  smoothscroll.polyfill()
 }
 
 function App(props) {
