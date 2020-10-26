@@ -12,6 +12,28 @@ export const styles = (theme) => ({
   },
   outlined: {
     padding: `${PADDING_Y - BORDER_WIDTH}px ${PADDING_X - BORDER_WIDTH}px`,
+    border: `${BORDER_WIDTH}px solid ${theme.palette.text.primary}`,
+    '&$disabled': {
+      border: `${BORDER_WIDTH}px solid ${theme.palette.action.disabledBackground}`,
+    },
+  },
+  outlinedPrimary: {
+    border: `${BORDER_WIDTH}px solid ${fade(theme.palette.primary.main, 0.5)}`,
+    '&:hover': {
+      border: `${BORDER_WIDTH}px solid ${theme.palette.primary.main}`,
+    },
+    '&$disabled': {
+      border: `${BORDER_WIDTH}px solid ${theme.palette.action.disabledBackground}`,
+    },
+  },
+  outlinedSecondary: {
+    border: `${BORDER_WIDTH}px solid ${fade(theme.palette.secondary.main, 0.5)}`,
+    '&:hover': {
+      border: `${BORDER_WIDTH}px solid ${theme.palette.secondary.main}`,
+    },
+    '&$disabled': {
+      border: `${BORDER_WIDTH}px solid ${theme.palette.action.disabledBackground}`,
+    },
   },
   contained: {
     padding: `${PADDING_Y}px ${PADDING_X}px`,
