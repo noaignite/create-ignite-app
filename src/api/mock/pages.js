@@ -3,7 +3,7 @@ import blocks from './blocks'
 export default {
   Home: {
     headerColor: 'auto',
-    blocks: [
+    children: [
       {
         name: 'Hero',
         props: {
@@ -32,7 +32,7 @@ export default {
     ],
   },
   Content: {
-    blocks: [
+    children: [
       {
         name: 'Media',
         props: blocks.Media,

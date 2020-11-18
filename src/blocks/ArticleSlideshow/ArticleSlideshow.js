@@ -57,13 +57,13 @@ const EnhancedMediaLink = React.forwardRef((props, ref) => (
   <MediaLink component={RouterLink} ref={ref} {...props} />
 ))
 
-const ArticleSlideshow = React.forwardRef(function ArticleSlideshow(props, ref) {
-  const { classes, className, heading, items, ...other } = props
+function ArticleSlideshow(props) {
+  const { classes, className, heading, items } = props
 
   SwiperCore.use([A11y])
 
   return (
-    <Section className={classnames(classes.root, className)} rhythm="regular" ref={ref} {...other}>
+    <Section className={classnames(classes.root, className)} rhythm="regular">
       {heading && (
         <Container className={classes.header} component="header" maxWidth="sm">
           <Typography component="h1" variant="h4">
@@ -111,7 +111,7 @@ const ArticleSlideshow = React.forwardRef(function ArticleSlideshow(props, ref) 
       </Container>
     </Section>
   )
-})
+}
 
 const itemType = PropTypes.shape({
   mediaProps: mediaType,

@@ -50,7 +50,7 @@ export const styles = (theme) => ({
   },
 })
 
-const Hero = React.forwardRef(function Hero(props, ref) {
+function Hero(props) {
   const {
     backgroundAttachment = 'static',
     backgroundMediaProps,
@@ -60,11 +60,10 @@ const Hero = React.forwardRef(function Hero(props, ref) {
     ctaUrl,
     heading,
     excerpt,
-    ...other
   } = props
 
   return (
-    <Section className={classnames(classes.root, className)} disableSpacing ref={ref} {...other}>
+    <Section className={classnames(classes.root, className)} disableSpacing>
       {backgroundMediaProps && (
         <BackgroundMedia
           classes={{
@@ -106,7 +105,7 @@ const Hero = React.forwardRef(function Hero(props, ref) {
       </Container>
     </Section>
   )
-})
+}
 
 Hero.propTypes = {
   backgroundAttachment: PropTypes.oneOf(['static', 'fixed', 'sticky']),

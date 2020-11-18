@@ -1,15 +1,18 @@
 import * as React from 'react'
 import { pages } from 'api/mock'
-import { useHeaderColor } from 'utils'
+import { createRenderBlock, useHeaderColor } from 'utils'
+import * as blockVariants from 'blocks'
 import App from 'containers/App'
-import * as blocks from 'blocks'
 
 export default {
   title: 'Pages',
   component: App,
   argTypes: {
     headerColor: {
-      control: ['default', 'transparent', 'auto'],
+      control: {
+        type: 'select',
+        options: ['default', 'transparent', 'auto'],
+      },
     },
   },
 }
@@ -21,20 +24,16 @@ const Template = ({ headerColor, ...args }) => {
   return <App {...args} />
 }
 
+const renderBlock = createRenderBlock(blockVariants)
+
 export const HomePage = Template.bind({})
 HomePage.args = {
   headerColor: pages.Home.headerColor,
-  children: pages.Home.blocks.map((block, idx) => {
-    const Block = blocks[block.name]
-    return <Block key={idx} {...block.props} />
-  }),
+  children: pages.Home.children.map(renderBlock),
 }
 
 export const ContentPage = Template.bind({})
 ContentPage.args = {
   headerColor: pages.Content.headerColor,
-  children: pages.Content.blocks.map((block, idx) => {
-    const Block = blocks[block.name]
-    return <Block key={idx} {...block.props} />
-  }),
+  children: pages.Content.children.map(renderBlock),
 }

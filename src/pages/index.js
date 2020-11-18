@@ -1,8 +1,10 @@
 import * as React from 'react'
 import Head from 'next/head'
 import { pages } from 'api/mock'
-import { useHeaderColor } from 'utils'
-import * as blocks from 'blocks'
+import { createRenderBlock, useHeaderColor } from 'utils'
+import * as blockVariants from 'blocks'
+
+const renderBlock = createRenderBlock(blockVariants)
 
 function Home() {
   useHeaderColor(pages.Home.headerColor)
@@ -13,10 +15,7 @@ function Home() {
         <title>Home | Create Oakwood App</title>
       </Head>
 
-      {pages.Home.blocks.map((block, idx) => {
-        const Block = blocks[block.name]
-        return <Block key={idx} {...block.props} />
-      })}
+      {pages.Home.children.map(renderBlock)}
     </>
   )
 }

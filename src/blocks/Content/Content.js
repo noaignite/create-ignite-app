@@ -45,8 +45,8 @@ export const styles = {
   content: {},
 }
 
-const Content = React.forwardRef(function Content(props, ref) {
-  const { children, classes, className, content, ...other } = props
+function Content(props) {
+  const { children, classes, className, content } = props
 
   const componentProps = {}
   if (content) {
@@ -56,13 +56,13 @@ const Content = React.forwardRef(function Content(props, ref) {
   }
 
   return (
-    <Section className={classnames(classes.root, className)} ref={ref} {...other}>
+    <Section className={classnames(classes.root, className)}>
       <Container className={classes.content} maxWidth="md">
         <Html {...componentProps} />
       </Container>
     </Section>
   )
-})
+}
 
 Content.propTypes = {
   children: PropTypes.node,
