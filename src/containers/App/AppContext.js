@@ -73,34 +73,34 @@ export function AppProvider(props) {
 
   // Public handlers
 
-  const onAppBarMenuClick = React.useCallback(() => {
+  const onNavMenuToggle = React.useCallback(() => {
     setNavMenuOpen((prev) => !prev)
     setCartMenuOpen(false)
     setSearchMenuOpen(false)
-  }, [])
-
-  const onAppBarCartClick = React.useCallback(() => {
-    setCartMenuOpen((prev) => !prev)
-    setNavMenuOpen(false)
-    setSearchMenuOpen(false)
-  }, [])
-
-  const onAppBarSearchClick = React.useCallback(() => {
-    setSearchMenuOpen((prev) => !prev)
-    setCartMenuOpen(false)
-    setNavMenuOpen(false)
-  }, [])
-
-  const onCartMenuClose = React.useCallback(() => {
-    setCartMenuOpen(false)
   }, [])
 
   const onNavMenuClose = React.useCallback(() => {
     setNavMenuOpen(false)
   }, [])
 
+  const onSearchMenuToggle = React.useCallback(() => {
+    setSearchMenuOpen((prev) => !prev)
+    setCartMenuOpen(false)
+    setNavMenuOpen(false)
+  }, [])
+
   const onSearchMenuClose = React.useCallback(() => {
     setSearchMenuOpen(false)
+  }, [])
+
+  const onCartMenuToggle = React.useCallback(() => {
+    setCartMenuOpen((prev) => !prev)
+    setNavMenuOpen(false)
+    setSearchMenuOpen(false)
+  }, [])
+
+  const onCartMenuClose = React.useCallback(() => {
+    setCartMenuOpen(false)
   }, [])
 
   const onCookieBarClose = React.useCallback(() => {
@@ -112,26 +112,26 @@ export function AppProvider(props) {
   // to them without re-rendering on state updates.
   const appHandlersContext = React.useMemo(
     () => ({
-      onAppBarCartClick,
-      onAppBarMenuClick,
-      onAppBarSearchClick,
       onCartMenuClose,
+      onCartMenuToggle,
       onCookieBarClose,
       onNavMenuClose,
+      onNavMenuToggle,
       onSearchMenuClose,
+      onSearchMenuToggle,
       // Expose setters for custom hooks
       setAppBarColor,
       setHideFooter,
       setHideHeader,
     }),
     [
-      onAppBarCartClick,
-      onAppBarMenuClick,
-      onAppBarSearchClick,
       onCartMenuClose,
+      onCartMenuToggle,
       onCookieBarClose,
       onNavMenuClose,
+      onNavMenuToggle,
       onSearchMenuClose,
+      onSearchMenuToggle,
     ],
   )
 

@@ -5,14 +5,30 @@ import PropTypes from 'prop-types'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import CartList from 'containers/CartList'
 import RouterLink from 'containers/RouterLink'
+import CloseIcon from 'components/icons/Close'
 import Button from 'components/Button'
+import IconButton from 'components/IconButton'
+import Toolbar from 'components/Toolbar'
+import Typography from 'components/Typography'
 import { useApp } from '../AppContext'
 import AppDrawer from './AppDrawer'
 
 export const useStyles = makeStyles((theme) => ({
-  root: {
-    '--drawer-top': 'var(--coa-header-height)',
-    zIndex: `${theme.zIndex.appBar - 1} !important`,
+  root: {},
+  menuToolbar: {
+    position: 'sticky',
+    zIndex: theme.zIndex.appBar,
+    top: 0,
+    backgroundColor: theme.palette.background.paper,
+  },
+  menuButton: {
+    marginLeft: 'auto',
+  },
+  menuLabel: {
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
   },
   list: {
     flexGrow: 1,
@@ -39,6 +55,21 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
       anchor="right"
       {...other}
     >
+      <Toolbar className={classes.menuToolbar}>
+        <IconButton
+          className={classes.menuButton}
+          onClick={onCartMenuClose}
+          edge="end"
+          aria-label="Close cart menu"
+        >
+          <CloseIcon />
+        </IconButton>
+
+        <Typography className={classes.menuLabel} component="h1" variant="h4">
+          Checkout
+        </Typography>
+      </Toolbar>
+
       <CartList className={classes.list} />
 
       <div className={classes.footer}>

@@ -59,5 +59,7 @@ export default {
     menuPrimary,
     menuFooter,
   },
-  settings: {},
+  settings: {
+    globalSalesBanner: 'lorem ipsum dolor sit amet, consectetur',
+  },
 }
