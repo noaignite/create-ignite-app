@@ -158,7 +158,7 @@ function App(props) {
 
   return (
     <div className={classes.root} {...other}>
-      <AppSkipLink href={`#${SITE_MAIN_ID}`}>Skip to content</AppSkipLink>
+      <AppSkipLink href={`#${SITE_MAIN_ID}`} />
 
       {!hideHeader && (
         <AppAppBar

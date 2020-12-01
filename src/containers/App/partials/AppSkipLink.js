@@ -1,10 +1,10 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
-import withStyles from '@material-ui/core/styles/withStyles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import Link from 'components/Link'
 
-export const styles = (theme) => ({
+export const useStyles = makeStyles((theme) => ({
   root: {
     position: 'absolute',
     zIndex: theme.zIndex.appBar + 1,
@@ -17,22 +17,21 @@ export const styles = (theme) => ({
       top: 0,
     },
   },
-})
+}))
 
-const AppSkipLink = React.forwardRef(function AppSkipLink(props, ref) {
-  const { children, classes, className, ...other } = props
+const AppSkipLink = React.memo(function AppSkipLink(props) {
+  const { className, ...other } = props
+  const classes = useStyles(props)
 
   return (
-    <Link className={classnames(classes.root, className)} ref={ref} {...other}>
-      {children}
+    <Link className={classnames(classes.root, className)} {...other}>
+      Skip to content
     </Link>
   )
 })
 
 AppSkipLink.propTypes = {
-  children: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired,
   className: PropTypes.string,
 }
 
-export default withStyles(styles)(React.memo(AppSkipLink))
+export default AppSkipLink
