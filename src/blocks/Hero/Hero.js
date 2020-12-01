@@ -7,6 +7,7 @@ import Media from '@oakwood/oui/Media'
 import MediaReveal from '@oakwood/oui/MediaReveal'
 import { mediaType } from 'utils'
 import RouterLink from 'containers/RouterLink'
+import BlockButton from 'components/BlockButton'
 import Button from 'components/Button'
 import Container from 'components/Container'
 import Section from 'components/Section'
@@ -39,14 +40,9 @@ export const styles = (theme) => ({
     ...theme.mixins.contain('sm'),
     marginTop: theme.spacing(2),
   },
+  ctaArea: theme.mixins.absolute(0),
   cta: {
-    position: 'static',
     marginTop: 'calc(20px + 3vh)',
-    // Make entire component clicable
-    '&::before': {
-      ...theme.mixins.absolute(0),
-      content: '""',
-    },
   },
 })
 
@@ -67,10 +63,7 @@ function Hero(props) {
     <Section className={classnames(classes.root, className)} disableSpacing>
       {backgroundMediaProps && (
         <BackgroundMedia
-          classes={{
-            wrapperFixed: 'mui-fixed',
-            wrapperSticky: classes.backgroundWrapperSticky,
-          }}
+          classes={{ wrapperSticky: classes.backgroundWrapperSticky }}
           attachment={backgroundAttachment}
         >
           <MediaReveal>
@@ -93,6 +86,15 @@ function Hero(props) {
         <Typography className={classes.excerpt}>{excerpt}</Typography>
 
         {ctaUrl && (
+          <BlockButton
+            className={classes.ctaArea}
+            component={RouterLink}
+            href={ctaUrl}
+            aria-label={ctaLabel}
+          />
+        )}
+
+        {ctaLabel && ctaUrl && (
           <Button
             className={classes.cta}
             component={RouterLink}

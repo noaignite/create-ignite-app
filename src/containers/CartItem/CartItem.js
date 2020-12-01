@@ -12,10 +12,10 @@ import RouterLink from 'containers/RouterLink'
 import AddIcon from 'components/icons/Add'
 import CloseIcon from 'components/icons/Close'
 import RemoveIcon from 'components/icons/Remove'
+import BlockButton from 'components/BlockButton'
 import Button from 'components/Button'
 import IconButton from 'components/IconButton'
 import Link from 'components/Link'
-import MediaLink from 'components/MediaLink'
 import Typography from 'components/Typography'
 
 export const styles = (theme) => ({
@@ -86,11 +86,16 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
 
   return (
     <article className={classnames(classes.root, className)} ref={ref} {...other}>
-      <MediaLink {...linkProps}>
+      <BlockButton {...linkProps}>
         <MediaReveal {...ASPECT_RATIOS.product}>
-          <Media component="img" src={product.media?.thumb?.[0]} alt={product.name} />
+          <Media
+            component="img"
+            src={product.media?.thumb?.[0]}
+            alt={product.name}
+            {...ASPECT_RATIOS.product}
+          />
         </MediaReveal>
-      </MediaLink>
+      </BlockButton>
 
       <div className={classes.content}>
         <Link variant="body2" {...linkProps}>

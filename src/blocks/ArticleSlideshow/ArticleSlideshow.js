@@ -6,11 +6,12 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Media from '@oakwood/oui/Media'
 import MediaReveal from '@oakwood/oui/MediaReveal'
+import { ASPECT_RATIOS } from 'utils/constants'
 import { mediaType } from 'utils'
 import RouterLink from 'containers/RouterLink'
+import BlockButton from 'components/BlockButton'
 import Button from 'components/Button'
 import Container from 'components/Container'
-import MediaLink from 'components/MediaLink'
 import Section from 'components/Section'
 import Typography from 'components/Typography'
 
@@ -53,10 +54,6 @@ export const styles = (theme) => ({
   },
 })
 
-const EnhancedMediaLink = React.forwardRef((props, ref) => (
-  <MediaLink component={RouterLink} ref={ref} {...props} />
-))
-
 function ArticleSlideshow(props) {
   const { classes, className, heading, items } = props
 
@@ -78,15 +75,11 @@ function ArticleSlideshow(props) {
             <SwiperSlide key={idx} className={classes.slide}>
               <article className={classes.card}>
                 {item.mediaProps && (
-                  <MediaReveal
-                    component={EnhancedMediaLink}
-                    rootMargin="-100px"
-                    href={item.url}
-                    width={320}
-                    height={420}
-                  >
-                    <Media {...item.mediaProps} />
-                  </MediaReveal>
+                  <BlockButton component={RouterLink} href={item.url}>
+                    <MediaReveal {...ASPECT_RATIOS.article}>
+                      <Media {...ASPECT_RATIOS.article} {...item.mediaProps} />
+                    </MediaReveal>
+                  </BlockButton>
                 )}
 
                 <div className={classes.cardContent}>
