@@ -1,4 +1,5 @@
 import * as React from 'react'
+import PropTypes from 'prop-types'
 import OuiMedia from '@oakwood/oui/Media'
 import MediaReveal from '@oakwood/oui/MediaReveal'
 import { mediaType } from 'utils'
@@ -6,7 +7,7 @@ import Container from 'components/Container'
 import Section from 'components/Section'
 
 function Media(props) {
-  const { mediaProps } = props
+  const { mediaProps, renderIndex } = props
 
   return (
     <Section disableSpacing>
@@ -17,7 +18,7 @@ function Media(props) {
               ? { autoPlay: true, muted: true, loop: true, playsInline: true }
               : {})}
             {...mediaProps}
-            lazy
+            priority={renderIndex === 0}
           />
         </MediaReveal>
       </Container>
@@ -27,6 +28,7 @@ function Media(props) {
 
 Media.propTypes = {
   mediaProps: mediaType.isRequired,
+  renderIndex: PropTypes.number.isRequired,
 }
 
 export default Media

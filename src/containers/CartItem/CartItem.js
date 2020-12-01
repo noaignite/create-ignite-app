@@ -4,7 +4,7 @@ import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Media from '@oakwood/oui/Media'
-import MediaLoader from '@oakwood/oui/MediaLoader'
+import MediaReveal from '@oakwood/oui/MediaReveal'
 import { ASPECT_RATIOS } from 'utils/constants'
 import { useCartHandlers } from 'api'
 import { cartItemType } from 'utils'
@@ -87,9 +87,9 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
   return (
     <article className={classnames(classes.root, className)} ref={ref} {...other}>
       <MediaLink {...linkProps}>
-        <MediaLoader {...ASPECT_RATIOS.product}>
+        <MediaReveal {...ASPECT_RATIOS.product}>
           <Media component="img" src={product.media?.thumb?.[0]} alt={product.name} />
-        </MediaLoader>
+        </MediaReveal>
       </MediaLink>
 
       <div className={classes.content}>

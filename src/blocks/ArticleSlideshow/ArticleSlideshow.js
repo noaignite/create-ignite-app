@@ -85,7 +85,7 @@ function ArticleSlideshow(props) {
                     width={320}
                     height={420}
                   >
-                    <Media {...item.mediaProps} lazy />
+                    <Media {...item.mediaProps} />
                   </MediaReveal>
                 )}
 

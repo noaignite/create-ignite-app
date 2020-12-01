@@ -60,6 +60,7 @@ function Hero(props) {
     ctaUrl,
     heading,
     excerpt,
+    renderIndex,
   } = props
 
   return (
@@ -78,7 +79,7 @@ function Hero(props) {
                 ? { autoPlay: true, muted: true, loop: true, playsInline: true }
                 : {})}
               {...backgroundMediaProps}
-              lazy
+              priority={renderIndex === 0}
             />
           </MediaReveal>
         </BackgroundMedia>
@@ -116,6 +117,7 @@ Hero.propTypes = {
   ctaUrl: PropTypes.string,
   excerpt: PropTypes.string,
   heading: PropTypes.string,
+  renderIndex: PropTypes.number.isRequired,
 }
 
 export default withStyles(styles)(Hero)
