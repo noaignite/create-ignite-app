@@ -1,14 +1,13 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import withStyles from '@material-ui/core/styles/withStyles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import Slide from '@material-ui/core/Slide'
 import Snackbar from '@material-ui/core/Snackbar'
 import SnackbarContent from '@material-ui/core/SnackbarContent'
 import Button from 'components/Button'
 import Typography from 'components/Typography'
-import { useAppHandlers } from '../AppContext'
 
-export const styles = (theme) => ({
+export const useStyles = makeStyles((theme) => ({
   root: theme.mixins.fixed(undefined, 0, 0),
   content: {
     flexGrow: 1,
@@ -20,12 +19,11 @@ export const styles = (theme) => ({
   message: {
     maxWidth: 830,
   },
-})
+}))
 
-const AppCookieBar = React.forwardRef(function AppCookieBar(props, ref) {
-  const { classes, open, ...other } = props
-
-  const { onCookieBarClose } = useAppHandlers()
+const AppCookieBar = React.memo(function AppCookieBar(props) {
+  const { onClose, open, ...other } = props
+  const classes = useStyles(props)
 
   return (
     <Snackbar
@@ -36,7 +34,6 @@ const AppCookieBar = React.forwardRef(function AppCookieBar(props, ref) {
       }}
       TransitionComponent={Slide}
       open={open}
-      ref={ref}
       {...other}
     >
       <SnackbarContent
@@ -51,7 +48,7 @@ const AppCookieBar = React.forwardRef(function AppCookieBar(props, ref) {
           </Typography>
         }
         action={
-          <Button onClick={onCookieBarClose} color="primary" size="small" variant="contained">
+          <Button onClick={onClose} color="primary" size="small" variant="contained">
             Accept cookies
           </Button>
         }
@@ -61,8 +58,8 @@ const AppCookieBar = React.forwardRef(function AppCookieBar(props, ref) {
 })
 
 AppCookieBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  onClose: PropTypes.func,
   open: PropTypes.bool,
 }
 
-export default withStyles(styles)(React.memo(AppCookieBar))
+export default AppCookieBar

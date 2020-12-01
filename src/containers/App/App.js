@@ -1,6 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import withStyles from '@material-ui/core/styles/withStyles'
+import dynamic from 'next/dynamic'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from 'utils/constants'
 import RouterLink from 'containers/RouterLink'
 import BrandIcon from 'components/icons/Brand'
@@ -11,20 +12,33 @@ import SearchIcon from 'components/icons/Search'
 import IconButton from 'components/IconButton'
 import Toolbar from 'components/Toolbar'
 import AppAppBar from './partials/AppAppBar'
-import AppCartDrawer from './partials/AppCartDrawer'
-import AppCookieBar from './partials/AppCookieBar'
 import AppFooter from './partials/AppFooter'
 import AppLoader from './partials/AppLoader'
-import AppNavDrawer from './partials/AppNavDrawer'
 import AppNavDropdown from './partials/AppNavDropdown'
-import AppSearchDrawer from './partials/AppSearchDrawer'
 import AppSkipLink from './partials/AppSkipLink'
-import { useApp } from './AppContext'
+import { AppContext, useApp } from './AppContext'
+
+const AppCartDrawer = dynamic(
+  () => import(/* webpackChunkName: "./partials/AppCartDrawer" */ './partials/AppCartDrawer'),
+  { ssr: false },
+)
+const AppNavDrawer = dynamic(
+  () => import(/* webpackChunkName: "./partials/AppNavDrawer" */ './partials/AppNavDrawer'),
+  { ssr: false },
+)
+const AppSearchDrawer = dynamic(
+  () => import(/* webpackChunkName: "./partials/AppSearchDrawer" */ './partials/AppSearchDrawer'),
+  { ssr: false },
+)
+const AppCookieBar = dynamic(
+  () => import(/* webpackChunkName: "./partials/AppCookieBar" */ './partials/AppCookieBar'),
+  { ssr: false },
+)
 
 const BREAKPOINT_KEY_DOWN = 'sm'
 const BREAKPOINT_KEY_UP = 'md'
 
-export const styles = (theme) => ({
+export const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -70,17 +84,17 @@ export const styles = (theme) => ({
     paddingTop: 'var(--coa-initial-sticky-top, 0px)',
     outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
   },
-})
+}))
 
 function App(props) {
-  const { children, classes, ...other } = props
+  const { children, ...other } = props
+  const classes = useStyles(props)
 
   const {
     appBarColor,
     hideFooter,
     hideHeader,
     isCartMenuOpen,
-    isCookieBarOpen,
     isNavMenuOpen,
     isSearchMenuOpen,
     isSomeMenuOpen,
@@ -177,7 +191,13 @@ function App(props) {
       <AppNavDrawer open={isNavMenuOpen} />
       <AppCartDrawer open={isCartMenuOpen} />
       <AppSearchDrawer open={isSearchMenuOpen} />
-      <AppCookieBar open={isCookieBarOpen} />
+
+      <AppContext.Consumer>
+        {({ isCookieBarOpen, onCookieBarClose }) => {
+          // Will only fetch `AppCookieBar` chunk if user has not consented.
+          return isCookieBarOpen ? <AppCookieBar onClose={onCookieBarClose} open /> : null
+        }}
+      </AppContext.Consumer>
 
       <AppLoader />
     </div>
@@ -186,7 +206,6 @@ function App(props) {
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(App)
+export default App

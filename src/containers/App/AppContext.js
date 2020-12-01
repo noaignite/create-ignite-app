@@ -2,7 +2,6 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import { debounce } from '@material-ui/core/utils'
-import { CLOSE_MENUS_ON_RESIZE } from 'utils/constants'
 
 export const AppHandlersContext = React.createContext({})
 export const AppContext = React.createContext({})
@@ -20,34 +19,32 @@ export function useApp() {
   return React.useContext(AppContext)
 }
 
+const CLOSE_MENUS_ON_RESIZE = true
+const COOKIE_CONSENT_ID = 'cookie-consent'
+const COOKIE_BAR_ENTER_DELAY = 2000
+
 export function AppProvider(props) {
   const { children } = props
 
   const [appBarColor, setAppBarColor] = React.useState('default')
   const [hideFooter, setHideFooter] = React.useState(false)
   const [hideHeader, setHideHeader] = React.useState(false)
-  const [isCartMenuOpen, setIsCartMenuOpen] = React.useState(false)
-  const [isCookieBarOpen, setIsCookieBarOpen] = React.useState(false)
-  const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false)
-  const [isSearchMenuOpen, setIsSearchMenuOpen] = React.useState(false)
+  const [isCartMenuOpen, setCartMenuOpen] = React.useState(false)
+  const [isCookieBarOpen, setCookieBarOpen] = React.useState(false)
+  const [isNavMenuOpen, setNavMenuOpen] = React.useState(false)
+  const [isSearchMenuOpen, setSearchMenuOpen] = React.useState(false)
 
   // Helpers
 
   const closeAllMenus = () => {
-    setIsCartMenuOpen(false)
-    setIsNavMenuOpen(false)
-    setIsSearchMenuOpen(false)
+    setCartMenuOpen(false)
+    setNavMenuOpen(false)
+    setSearchMenuOpen(false)
   }
 
   // Mount hook
 
   React.useEffect(() => {
-    if (!localStorage.getItem('cookie-consent')) {
-      setTimeout(() => {
-        setIsCookieBarOpen(true)
-      }, 2000)
-    }
-
     const handleResize = debounce(() => {
       if (CLOSE_MENUS_ON_RESIZE) {
         closeAllMenus()
@@ -56,6 +53,12 @@ export function AppProvider(props) {
 
     const handleRouteChangeStart = () => {
       closeAllMenus()
+    }
+
+    if (!localStorage?.getItem(COOKIE_CONSENT_ID)) {
+      setTimeout(() => {
+        setCookieBarOpen(true)
+      }, COOKIE_BAR_ENTER_DELAY)
     }
 
     window.addEventListener('resize', handleResize)
@@ -71,38 +74,38 @@ export function AppProvider(props) {
   // Public handlers
 
   const onAppBarMenuClick = React.useCallback(() => {
-    setIsNavMenuOpen((prev) => !prev)
-    setIsCartMenuOpen(false)
-    setIsSearchMenuOpen(false)
+    setNavMenuOpen((prev) => !prev)
+    setCartMenuOpen(false)
+    setSearchMenuOpen(false)
   }, [])
 
   const onAppBarCartClick = React.useCallback(() => {
-    setIsCartMenuOpen((prev) => !prev)
-    setIsNavMenuOpen(false)
-    setIsSearchMenuOpen(false)
+    setCartMenuOpen((prev) => !prev)
+    setNavMenuOpen(false)
+    setSearchMenuOpen(false)
   }, [])
 
   const onAppBarSearchClick = React.useCallback(() => {
-    setIsSearchMenuOpen((prev) => !prev)
-    setIsCartMenuOpen(false)
-    setIsNavMenuOpen(false)
+    setSearchMenuOpen((prev) => !prev)
+    setCartMenuOpen(false)
+    setNavMenuOpen(false)
   }, [])
 
   const onCartMenuClose = React.useCallback(() => {
-    setIsCartMenuOpen(false)
+    setCartMenuOpen(false)
   }, [])
 
   const onNavMenuClose = React.useCallback(() => {
-    setIsNavMenuOpen(false)
+    setNavMenuOpen(false)
   }, [])
 
   const onSearchMenuClose = React.useCallback(() => {
-    setIsSearchMenuOpen(false)
+    setSearchMenuOpen(false)
   }, [])
 
   const onCookieBarClose = React.useCallback(() => {
-    localStorage.setItem('cookie-consent', 1)
-    setIsCookieBarOpen(false)
+    localStorage.setItem(COOKIE_CONSENT_ID, 1)
+    setCookieBarOpen(false)
   }, [])
 
   // Memoize handlers context separately so that one can subscribe
