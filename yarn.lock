@@ -2618,10 +2618,10 @@
     text-table "^0.2.0"
     webpack-log "^1.1.2"
 
-"@welldone-software/why-did-you-render@^4.3.2":
-  version "4.3.2"
-  resolved "https://registry.npmjs.org/@welldone-software/why-did-you-render/-/why-did-you-render-4.3.2.tgz#db1c700df1729402f2ceacf05cebd72dca30f1af"
-  integrity sha512-pzaFmUUH+FjbsDgcMB1xNPncIaxibvo0FLbGySLIh+v+7Bp5pqSJFO6zlqo4orPLm3nAdYEgL2vrlj8befoypg==
+"@welldone-software/why-did-you-render@^6.0.3":
+  version "6.0.3"
+  resolved "https://registry.npmjs.org/@welldone-software/why-did-you-render/-/why-did-you-render-6.0.3.tgz#99c58ea8e3f2ea8c042fb1d58ebf147d345fff26"
+  integrity sha512-9HskvqZrCVEnKur2WIZ2Jm36u+1bCbb1c+iHa8QljjHmEVOA2US1qKq3HeUcwsjgKZRo5xucV6td2FeJP8agmQ==
   dependencies:
     lodash "^4"
 
