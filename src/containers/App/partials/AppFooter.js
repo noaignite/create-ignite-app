@@ -1,14 +1,15 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
-import withStyles from '@material-ui/core/styles/withStyles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import { useGlobal } from 'containers/Global/GlobalContext'
 import RouterLink from 'containers/RouterLink'
 import Container from 'components/Container'
 import Link from 'components/Link'
 import Section from 'components/Section'
+import { useApp } from '../AppContext'
 
-export const styles = (theme) => ({
+export const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.getContrastText(theme.palette.text.primary),
@@ -26,10 +27,11 @@ export const styles = (theme) => ({
     },
   },
   navlistItemText: {},
-})
+}))
 
-const AppFooter = React.forwardRef(function AppFooter(props, ref) {
-  const { classes, className, ...other } = props
+const AppFooter = React.memo(function AppFooter(props) {
+  const { className, ...other } = props
+  const classes = useStyles(props)
 
   const { menus } = useGlobal()
 
@@ -38,7 +40,6 @@ const AppFooter = React.forwardRef(function AppFooter(props, ref) {
       className={classnames(classes.root, className)}
       component="footer"
       spacingRule="padding"
-      ref={ref}
       {...other}
     >
       <Container className={classes.mainDetails}>
@@ -65,8 +66,18 @@ const AppFooter = React.forwardRef(function AppFooter(props, ref) {
 })
 
 AppFooter.propTypes = {
-  classes: PropTypes.object.isRequired,
   className: PropTypes.string,
+  onMarketMenuToggle: PropTypes.func,
 }
 
-export default withStyles(styles)(React.memo(AppFooter))
+function AppFooterContainer(props) {
+  const { hideFooter } = useApp()
+
+  if (hideFooter) {
+    return null
+  }
+
+  return <AppFooter {...props} />
+}
+
+export default AppFooterContainer

@@ -2,14 +2,18 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import withStyles from '@material-ui/core/styles/withStyles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import CartList from 'containers/CartList'
 import RouterLink from 'containers/RouterLink'
 import Button from 'components/Button'
-import { useAppHandlers } from '../AppContext'
+import { useApp } from '../AppContext'
 import AppDrawer from './AppDrawer'
 
-export const styles = {
+export const useStyles = makeStyles((theme) => ({
+  root: {
+    '--drawer-top': 'var(--coa-header-height)',
+    zIndex: `${theme.zIndex.appBar - 1} !important`,
+  },
   list: {
     flexGrow: 1,
   },
@@ -21,15 +25,20 @@ export const styles = {
     position: 'sticky',
     bottom: 0,
   },
-}
+}))
 
-const AppCartDrawer = React.forwardRef(function AppCartDrawer(props, ref) {
-  const { classes, open, ...other } = props
-
-  const { onCartMenuClose } = useAppHandlers()
+const AppCartDrawer = React.memo(function AppCartDrawer(props) {
+  const { isCartMenuOpen, onCartMenuClose, ...other } = props
+  const classes = useStyles(props)
 
   return (
-    <AppDrawer open={open} onClose={onCartMenuClose} anchor="right" ref={ref} {...other}>
+    <AppDrawer
+      classes={{ root: classes.root }}
+      onClose={onCartMenuClose}
+      open={isCartMenuOpen}
+      anchor="right"
+      {...other}
+    >
       <CartList className={classes.list} />
 
       <div className={classes.footer}>
@@ -42,8 +51,16 @@ const AppCartDrawer = React.forwardRef(function AppCartDrawer(props, ref) {
 })
 
 AppCartDrawer.propTypes = {
-  classes: PropTypes.object.isRequired,
-  open: PropTypes.bool,
+  isCartMenuOpen: PropTypes.bool,
+  onCartMenuClose: PropTypes.func,
 }
 
-export default withStyles(styles)(React.memo(AppCartDrawer))
+function AppCartDrawerContainer(props) {
+  const { isCartMenuOpen, onCartMenuClose } = useApp()
+
+  return (
+    <AppCartDrawer isCartMenuOpen={isCartMenuOpen} onCartMenuClose={onCartMenuClose} {...props} />
+  )
+}
+
+export default AppCartDrawerContainer

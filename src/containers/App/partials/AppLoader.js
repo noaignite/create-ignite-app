@@ -2,18 +2,19 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import Router from 'next/router'
-import withStyles from '@material-ui/core/styles/withStyles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Backdrop from 'components/Backdrop'
 
-export const styles = (theme) => ({
+export const useStyles = makeStyles((theme) => ({
   root: {
     zIndex: theme.zIndex.appBar - 1,
   },
-})
+}))
 
-const AppLoader = React.forwardRef(function AppLoader(props, ref) {
-  const { classes, className, ...other } = props
+const AppLoader = React.memo(function AppLoader(props) {
+  const { className, ...other } = props
+  const classes = useStyles(props)
 
   const [loading, setLoading] = React.useState(false)
 
@@ -40,7 +41,6 @@ const AppLoader = React.forwardRef(function AppLoader(props, ref) {
       className={classnames(classes.root, className)}
       open={loading}
       unmountOnExit
-      ref={ref}
       {...other}
     >
       <CircularProgress />
@@ -49,8 +49,8 @@ const AppLoader = React.forwardRef(function AppLoader(props, ref) {
 })
 
 AppLoader.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object,
   className: PropTypes.string,
 }
 
-export default withStyles(styles)(React.memo(AppLoader))
+export default AppLoader

@@ -7,18 +7,19 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import Drawer from '@material-ui/core/Drawer'
 
 export const styles = (theme) => ({
-  root: {
-    zIndex: `${theme.zIndex.appBar - 1} !important`,
+  root: {},
+  backdrop: {
+    top: 'var(--drawer-top, 0px)',
   },
-  backdrop: {},
   paper: {
     ...theme.mixins.scrollbars,
-    top: 'var(--coa-header-height)',
+    top: 'var(--drawer-top, 0px)',
+    overflowX: 'hidden',
   },
   paperAnchorHorizontal: {
     width: 414, // iPhone 6/7/8 Plus
     maxWidth: '100%',
-    height: 'calc(100% - var(--coa-header-height))',
+    height: 'calc(100% - var(--drawer-top, 0px))',
   },
 })
 

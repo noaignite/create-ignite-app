@@ -2,23 +2,34 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import withStyles from '@material-ui/core/styles/withStyles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import { useGlobal } from 'containers/Global/GlobalContext'
 import List from 'components/List'
-import { useAppHandlers } from '../AppContext'
+import { useApp } from '../AppContext'
 import AppDrawer from './AppDrawer'
 import AppNavDrawerListItem from './AppNavDrawerListItem'
 
-export const styles = {}
+export const useStyles = makeStyles((theme) => ({
+  root: {
+    '--drawer-top': 'var(--coa-header-height)',
+    zIndex: `${theme.zIndex.appBar - 1} !important`,
+  },
+}))
 
-const AppNavDrawer = React.forwardRef(function AppNavDrawer(props, ref) {
-  const { classes, open, ...other } = props
+const AppNavDrawer = React.memo(function AppNavDrawer(props) {
+  const { isNavMenuOpen, onNavMenuClose, ...other } = props
+  const classes = useStyles(props)
 
   const { menus } = useGlobal()
-  const { onNavMenuClose } = useAppHandlers()
 
   return (
-    <AppDrawer onClose={onNavMenuClose} open={open} anchor="left" ref={ref} {...other}>
+    <AppDrawer
+      classes={{ root: classes.root }}
+      onClose={onNavMenuClose}
+      open={isNavMenuOpen}
+      anchor="left"
+      {...other}
+    >
       <List component="nav" disablePadding aria-label="Main navigation">
         {menus?.menuPrimary?.map((menuLink, idx) => (
           <AppNavDrawerListItem key={idx} menuLink={menuLink} />
@@ -29,8 +40,14 @@ const AppNavDrawer = React.forwardRef(function AppNavDrawer(props, ref) {
 })
 
 AppNavDrawer.propTypes = {
-  classes: PropTypes.object.isRequired,
-  open: PropTypes.bool,
+  isNavMenuOpen: PropTypes.bool,
+  onNavMenuClose: PropTypes.func,
 }
 
-export default withStyles(styles)(React.memo(AppNavDrawer))
+function AppNavDrawerContainer(props) {
+  const { isNavMenuOpen, onNavMenuClose } = useApp()
+
+  return <AppNavDrawer isNavMenuOpen={isNavMenuOpen} onNavMenuClose={onNavMenuClose} {...props} />
+}
+
+export default AppNavDrawerContainer

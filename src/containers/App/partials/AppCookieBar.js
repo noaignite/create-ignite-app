@@ -1,5 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'clsx'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import Slide from '@material-ui/core/Slide'
 import Snackbar from '@material-ui/core/Snackbar'
@@ -22,12 +23,12 @@ export const useStyles = makeStyles((theme) => ({
 }))
 
 const AppCookieBar = React.memo(function AppCookieBar(props) {
-  const { onClose, open, ...other } = props
+  const { className, onClose, open, ...other } = props
   const classes = useStyles(props)
 
   return (
     <Snackbar
-      className={classes.root}
+      className={classnames(classes.root, 'mui-fixed', className)}
       anchorOrigin={{
         horizontal: 'right',
         vertical: 'bottom',
@@ -58,6 +59,7 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
 })
 
 AppCookieBar.propTypes = {
+  className: PropTypes.string,
   onClose: PropTypes.func,
   open: PropTypes.bool,
 }

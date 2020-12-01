@@ -3,15 +3,19 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
-import withStyles from '@material-ui/core/styles/withStyles'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import SearchIcon from 'components/icons/Search'
 import Container from 'components/Container'
 import IconButton from 'components/IconButton'
 import TextField from 'components/TextField'
-import { useAppHandlers } from '../AppContext'
+import { useApp } from '../AppContext'
 import AppDrawer from './AppDrawer'
 
-export const styles = (theme) => ({
+export const useStyles = makeStyles((theme) => ({
+  root: {
+    '--drawer-top': 'var(--coa-header-height)',
+    zIndex: `${theme.zIndex.appBar - 1} !important`,
+  },
   paper: {
     backgroundColor: theme.palette.background.default,
   },
@@ -23,12 +27,11 @@ export const styles = (theme) => ({
   inputBase: {},
   input: {},
   submitButton: {},
-})
+}))
 
-const AppSearchDrawer = React.forwardRef(function AppSearchDrawer(props, ref) {
-  const { classes, className, open, ...other } = props
-
-  const { onSearchMenuClose } = useAppHandlers()
+const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
+  const { isSearchMenuOpen, onSearchMenuClose, ...other } = props
+  const classes = useStyles(props)
 
   const valueRef = React.useRef('')
   const [value, setValue] = React.useState('')
@@ -56,12 +59,12 @@ const AppSearchDrawer = React.forwardRef(function AppSearchDrawer(props, ref) {
   return (
     <AppDrawer
       classes={{
+        root: classes.root,
         paper: classes.paper,
       }}
       onClose={onSearchMenuClose}
-      open={open}
+      open={isSearchMenuOpen}
       anchor="top"
-      ref={ref}
       {...other}
     >
       <Container
@@ -102,9 +105,20 @@ const AppSearchDrawer = React.forwardRef(function AppSearchDrawer(props, ref) {
 })
 
 AppSearchDrawer.propTypes = {
-  classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
-  open: PropTypes.bool,
+  isSearchMenuOpen: PropTypes.bool,
+  onSearchMenuClose: PropTypes.func,
 }
 
-export default withStyles(styles)(React.memo(AppSearchDrawer))
+function AppSearchDrawerContainer(props) {
+  const { isSearchMenuOpen, onSearchMenuClose } = useApp()
+
+  return (
+    <AppSearchDrawer
+      isSearchMenuOpen={isSearchMenuOpen}
+      onSearchMenuClose={onSearchMenuClose}
+      {...props}
+    />
+  )
+}
+
+export default AppSearchDrawerContainer

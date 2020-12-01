@@ -92,7 +92,6 @@ function App(props) {
 
   const {
     appBarColor,
-    hideFooter,
     hideHeader,
     isCartMenuOpen,
     isNavMenuOpen,
@@ -186,11 +185,12 @@ function App(props) {
         {children}
       </main>
 
-      {!hideFooter && <AppFooter id={SITE_FOOTER_ID} />}
+      <AppFooter id={SITE_FOOTER_ID} />
 
-      <AppNavDrawer open={isNavMenuOpen} />
-      <AppCartDrawer open={isCartMenuOpen} />
-      <AppSearchDrawer open={isSearchMenuOpen} />
+      <AppNavDrawer />
+      <AppCartDrawer />
+      <AppSearchDrawer />
+      <AppLoader />
 
       <AppContext.Consumer>
         {({ isCookieBarOpen, onCookieBarClose }) => {
@@ -198,8 +198,6 @@ function App(props) {
           return isCookieBarOpen ? <AppCookieBar onClose={onCookieBarClose} open /> : null
         }}
       </AppContext.Consumer>
-
-      <AppLoader />
     </div>
   )
 }

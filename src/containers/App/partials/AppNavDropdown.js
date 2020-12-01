@@ -122,8 +122,8 @@ const AppNavDropdown = React.forwardRef(function AppNavDropdown(props, ref) {
 })
 
 AppNavDropdown.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object,
   className: PropTypes.string,
 }
 
-export default withStyles(styles)(React.memo(AppNavDropdown))
+export default withStyles(styles)(AppNavDropdown)
