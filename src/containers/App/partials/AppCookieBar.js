@@ -28,7 +28,7 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
 
   return (
     <Snackbar
-      className={classnames(classes.root, 'mui-fixed', className)}
+      className={classnames(classes.root, className)}
       anchorOrigin={{
         horizontal: 'right',
         vertical: 'bottom',
@@ -41,6 +41,7 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
         classes={{
           root: classes.content,
           message: classes.message,
+          action: 'mui-fixed',
         }}
         message={
           <Typography color="inherit" variant="caption">
