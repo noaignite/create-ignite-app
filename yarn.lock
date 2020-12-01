@@ -1501,24 +1501,25 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@oakwood/oui-utils@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@oakwood/oui-utils/-/oui-utils-1.0.0.tgz#bb57704ef54731dfff0f45c204f14353534ed3af"
-  integrity sha512-vg9A19V/3biOJqUSt++k3LjvP0kBriqOANd/Z1Rt0P0Z5pSQQgfY/ygUUX8ouq6+zAvjhW/x71ATIqtnCPBTTQ==
+"@oakwood/oui-utils@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@oakwood/oui-utils/-/oui-utils-1.1.0.tgz#e81835427af14e76a0205f917d3c9c30a4d6f8e6"
+  integrity sha512-gL/1ZtHzU1R2j6ktYnX2lZiwdACRKUpkPUZTcwfSCzPF7+WjMg2RS96NqtIiHdnsjzGrxAvodXMlFLvAJmlu5w==
   dependencies:
     "@babel/runtime" "^7.7.4"
     intersection-observer-admin "^0.2.12"
     prop-types "^15.7.2"
 
-"@oakwood/oui@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@oakwood/oui/-/oui-1.0.0.tgz#93f8fa65eec311900a419c52c7cb95e28dd67093"
-  integrity sha512-5PLXFigeMMpfwL498S95qXXI91GOMLGZhnZ8i7BQByaYwmZ1Lprg11dtVDPujp4TkCfojUiX+T/+HOhsvrC98Q==
+"@oakwood/oui@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@oakwood/oui/-/oui-1.1.0.tgz#43070de1a9855f61278fc83ce99b77b6f90cf03d"
+  integrity sha512-PmoIZgDml7yyRQ6RZd/s4ONS+DItfmBaWwkcbeNAxIQPcGC3EAi+UZ6dRsqlF8Kgy4pCINC2H7hlWZN/z+1jtQ==
   dependencies:
     "@babel/runtime" "^7.7.4"
     "@maeertin/medialoaded" "^1.2.1"
-    "@oakwood/oui-utils" "1.0.0"
+    "@oakwood/oui-utils" "1.1.0"
     clsx "^1.1.1"
+    ios-inner-height "^1.1.1"
     prop-types "^15.7.2"
 
 "@octokit/auth-token@^2.4.0":
@@ -7133,6 +7134,11 @@ invariant@^2.2.3, invariant@^2.2.4:
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
   dependencies:
     loose-envify "^1.0.0"
+
+ios-inner-height@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.npmjs.org/ios-inner-height/-/ios-inner-height-1.1.1.tgz#987c62350a04586b4025a21fa0e8bef054b7b64e"
+  integrity sha512-1/eCW+slv9Zm83Ugsq34dOU3QDzf/mcQQnOH0W8fLgvNKWYH3Kn8lod83K6JHDNWRgZCRJ1swFNiQrZqiJOiwA==
 
 ip@^1.1.5:
   version "1.1.5"
