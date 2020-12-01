@@ -4,13 +4,13 @@ export const menuPrimary = [
     links: Array.from(new Array(6), (_, idx) => {
       const link = {
         label: `Link ${idx + 1}`,
-        url: `link-${idx + 1}`,
+        url: `/link-${idx + 1}`,
       }
 
       if (idx === 0) {
         link.links = Array.from(new Array(2), (__, idx2) => ({
           label: `Another link ${idx2 + 1}`,
-          url: `sublink-${idx + 1}`,
+          url: `/sublink-${idx + 1}`,
         }))
       }
 
