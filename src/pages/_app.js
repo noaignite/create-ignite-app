@@ -18,11 +18,11 @@ import 'swiper/swiper-bundle.min.css'
  * Monkey patches React to notify you about avoidable re-renders.
  * Based on: https://github.com/vercel/next.js/blob/canary/examples/with-why-did-you-render/pages/_app.js
  */
-if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
-  // eslint-disable-next-line global-require
-  const whyDidYouRender = require('@welldone-software/why-did-you-render')
-  whyDidYouRender(React, { trackAllPureComponents: true })
-}
+// if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
+//   // eslint-disable-next-line global-require
+//   const whyDidYouRender = require('@welldone-software/why-did-you-render')
+//   whyDidYouRender(React, { trackAllPureComponents: true })
+// }
 
 /**
  * Initialize polyfills
