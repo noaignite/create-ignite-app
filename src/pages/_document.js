@@ -19,6 +19,9 @@ export default class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="manifest" href="/site.webmanifest" />
+
+          {/* Preload font files here: */}
+          {/* <link rel="preload" href="/fonts/family/family-regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" /> */}
         </Head>
         <body>
           <Main />
