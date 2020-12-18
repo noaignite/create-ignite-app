@@ -3,12 +3,12 @@ const styles = {
     '@font-face': [
       // Include font files here:
       // {
-      //   fontFamily: 'SuisseIntl',
+      //   fontFamily: 'Family',
       //   fontWeight: 400,
       //   fontDisplay: 'swap',
       //   src: `
-      //     url("/fonts/SuisseIntl/SuisseIntl-Regular.woff2") format("woff2"),
-      //     url("/fonts/SuisseIntl/SuisseIntl-Regular.woff") format("woff")
+      //     url("/fonts/family/family-regular.woff2") format("woff2"),
+      //     url("/fonts/family/family-regular.woff") format("woff")
       //   `,
       // },
     ],
