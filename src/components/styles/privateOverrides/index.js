@@ -1,2 +1,6 @@
 export { default as MuiButtonBase } from './MuiButtonBase'
 export { default as MuiCssBaseline } from './MuiCssBaseline'
+export { default as MuiFilledInput } from './MuiFilledInput'
+export { default as MuiFormLabel } from './MuiFormLabel'
+export { default as MuiInput } from './MuiInput'
+export { default as MuiOutlinedInput } from './MuiOutlinedInput'
