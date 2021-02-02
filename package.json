@@ -25,7 +25,6 @@
     "lint": "eslint . --cache --report-unused-disable-directives",
     "lint:ci": "eslint . --report-unused-disable-directives",
     "lint:fix": "eslint . --cache --fix",
-    "lint:staged": "lint-staged",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write"
   },
@@ -39,7 +38,11 @@
       "git add --force"
     ]
   },
-  "pre-commit": "lint:staged",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "@material-ui/core": "4.11.1",
     "@oakwood/oui": "1.1.0",
@@ -74,9 +77,9 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.1.1",
+    "husky": "^4.3.8",
     "lint-staged": "^10.3.0",
     "next-transpile-modules": "^4.1.0",
-    "pre-commit": "^1.2.2",
     "prettier": "^2.0.1",
     "webpack-merge": "^5.2.0"
   }
