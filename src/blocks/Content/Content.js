@@ -1,6 +1,5 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Container from 'components/Container'
 import Html from 'components/Html'
@@ -46,7 +45,7 @@ export const styles = {
 }
 
 function Content(props) {
-  const { children, classes, className, content } = props
+  const { children, classes, content } = props
 
   const componentProps = {}
   if (content) {
@@ -56,7 +55,7 @@ function Content(props) {
   }
 
   return (
-    <Section className={classnames(classes.root, className)}>
+    <Section className={classes.root}>
       <Container className={classes.content} maxWidth="md">
         <Html {...componentProps} />
       </Container>
@@ -67,7 +66,6 @@ function Content(props) {
 Content.propTypes = {
   children: PropTypes.node,
   classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
   content: PropTypes.string,
 }
 

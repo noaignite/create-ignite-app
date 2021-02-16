@@ -1,6 +1,5 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import BackgroundMedia from '@oakwood/oui/BackgroundMedia'
 import Media from '@oakwood/oui/Media'
@@ -51,7 +50,6 @@ function Hero(props) {
     backgroundAttachment = 'static',
     backgroundMediaProps,
     classes,
-    className,
     ctaLabel,
     ctaUrl,
     heading,
@@ -60,7 +58,7 @@ function Hero(props) {
   } = props
 
   return (
-    <Section className={classnames(classes.root, className)} disableSpacing>
+    <Section className={classes.root} disableSpacing>
       {backgroundMediaProps && (
         <BackgroundMedia
           classes={{ wrapperSticky: classes.backgroundWrapperSticky }}
@@ -114,7 +112,6 @@ Hero.propTypes = {
   backgroundAttachment: PropTypes.oneOf(['static', 'fixed', 'sticky']),
   backgroundMediaProps: mediaType,
   classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
   ctaLabel: PropTypes.string,
   ctaUrl: PropTypes.string,
   excerpt: PropTypes.string,

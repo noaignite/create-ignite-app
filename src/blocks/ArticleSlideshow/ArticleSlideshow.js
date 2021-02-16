@@ -1,6 +1,5 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
 import SwiperCore, { A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import withStyles from '@material-ui/core/styles/withStyles'
@@ -55,12 +54,12 @@ export const styles = (theme) => ({
 })
 
 function ArticleSlideshow(props) {
-  const { classes, className, heading, items } = props
+  const { classes, heading, items } = props
 
   SwiperCore.use([A11y])
 
   return (
-    <Section className={classnames(classes.root, className)} rhythm="regular">
+    <Section className={classes.root} rhythm="regular">
       {heading && (
         <Container className={classes.header} component="header" maxWidth="sm">
           <Typography component="h1" variant="h4">
@@ -116,7 +115,6 @@ const itemType = PropTypes.shape({
 
 ArticleSlideshow.propTypes = {
   classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
   heading: PropTypes.string,
   items: PropTypes.arrayOf(itemType),
 }
