@@ -24,35 +24,29 @@ export default function createMixins(breakpoints, spacing, mixins) {
   }
 
   return {
-    // Components
-    toolbar: {
-      '--toolbar-min-height': '56px',
-      minHeight: 'var(--toolbar-min-height)',
+    // Global
+    root: {
+      '--coa-theme-spacing': `${spacing(1)}px`,
+      '--coa-section-spacing': `${spacing(4)}px`,
+      '--coa-container-spacing': `${spacing(2)}px`,
+      '--coa-content-max-width': `640px`,
+      '--coa-toolbar-min-height': '56px',
       [breakpoints.up('sm')]: {
-        '--toolbar-min-height': '64px',
+        '--coa-section-spacing': `${spacing(6)}px`,
+        '--coa-container-spacing': `${spacing(4)}px`,
+      },
+    },
+    toolbar: {
+      // Override Mui styles
+      minHeight: 'var(--coa-toolbar-min-height)',
+      [breakpoints.up('sm')]: {
+        minHeight: 'var(--coa-toolbar-min-height)',
       },
     },
     toolbarDense: {
-      '--toolbar-min-height': '48px',
-      minHeight: 'var(--toolbar-min-height)',
-    },
-    section: (spacingType = 'margin') => ({
-      '--section-spacing': `${spacing(4)}px`,
-      [`${spacingType}Top`]: 'var(--section-spacing)',
-      [`${spacingType}Bottom`]: 'var(--section-spacing)',
-      [breakpoints.up('sm')]: {
-        '--section-spacing': `${spacing(6)}px`,
-      },
-    }),
-    container: {
-      '--container-spacing': `${spacing(2)}px`,
-      paddingLeft: 'var(--container-spacing)',
-      paddingRight: 'var(--container-spacing)',
-      [breakpoints.up('sm')]: {
-        '--container-spacing': `${spacing(3)}px`,
-        paddingLeft: 'var(--container-spacing)', // Override Mui styles
-        paddingRight: 'var(--container-spacing)', // Override Mui styles
-      },
+      // Override Mui styles
+      '--coa-toolbar-min-height': '48px',
+      minHeight: 'var(--coa-toolbar-min-height)',
     },
     // Utils
     gutters: (amount = 2) => ({
@@ -86,16 +80,18 @@ export default function createMixins(breakpoints, spacing, mixins) {
     fluidType: (minBreakpoint, maxBreakpoint, minFontSize, maxFontSize) => {
       const minVw = breakpoints.values[minBreakpoint] || minBreakpoint
       const maxVw = breakpoints.values[maxBreakpoint] || maxBreakpoint
+      const minFs = minFontSize.fontSize || minFontSize
+      const maxFs = maxFontSize.fontSize || maxFontSize
 
       return {
-        fontSize: minFontSize,
+        fontSize: minFs,
         [`@media (min-width: ${minVw}px)`]: {
-          fontSize: `calc(${minFontSize}px + ${
-            maxFontSize - minFontSize
-          } * ((100vw - ${minVw}px) / ${maxVw - minVw}))`,
+          fontSize: `calc(${minFs}px + ${maxFs - minFs} * ((100vw - ${minVw}px) / ${
+            maxVw - minVw
+          }))`,
         },
         [`@media (min-width: ${maxVw}px)`]: {
-          fontSize: maxFontSize,
+          fontSize: maxFs,
         },
       }
     },

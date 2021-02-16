@@ -24,6 +24,7 @@ const Template = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
+  disableGutters: false,
   fixed: false,
   maxWidth: false,
 }

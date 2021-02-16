@@ -6,8 +6,7 @@ export default {
   title: 'Components/Section',
   component: Section,
   argTypes: {
-    spacingRule: storySelectArgType(['padding', 'margin']),
-    rhythm: storySelectArgType(['regular', 'dense', false]),
+    gutters: storySelectArgType(['padding', 'margin', false]),
   },
 }
 
@@ -23,8 +22,6 @@ const Template = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  disableSpacing: false,
-  spacingRule: 'margin',
-  rhythm: false,
+  gutters: false,
   style: { background: '#eee' },
 }

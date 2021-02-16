@@ -27,13 +27,13 @@ export const styles = (theme) => ({
       minHeight: 650,
     },
   },
-  content: {},
   backgroundWrapperSticky: {
     top: 'var(--coa-sticky-top)',
     '$root:first-child &': {
       top: 'var(--coa-initial-sticky-top)',
     },
   },
+  main: {},
   heading: theme.mixins.fluidType('sm', 'xl', 45, 132),
   excerpt: {
     ...theme.mixins.contain('sm'),
@@ -58,7 +58,7 @@ function Hero(props) {
   } = props
 
   return (
-    <Section className={classes.root} disableSpacing>
+    <Section className={classes.root}>
       {backgroundMediaProps && (
         <BackgroundMedia
           classes={{ wrapperSticky: classes.backgroundWrapperSticky }}
@@ -76,7 +76,7 @@ function Hero(props) {
         </BackgroundMedia>
       )}
 
-      <Container className={classes.content} maxWidth="md">
+      <Container className={classes.main} maxWidth="md">
         <Typography className={classes.heading} component="h1" variant="h2">
           {heading}
         </Typography>

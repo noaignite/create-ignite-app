@@ -39,7 +39,7 @@ const AppFooter = React.memo(function AppFooter(props) {
     <Section
       className={classnames(classes.root, className)}
       component="footer"
-      spacingRule="padding"
+      gutters="padding"
       {...other}
     >
       <Container className={classes.mainDetails}>

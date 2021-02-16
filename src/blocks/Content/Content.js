@@ -41,7 +41,7 @@ export const styles = {
       },
     },
   },
-  content: {},
+  main: {},
 }
 
 function Content(props) {
@@ -55,8 +55,8 @@ function Content(props) {
   }
 
   return (
-    <Section className={classes.root}>
-      <Container className={classes.content} maxWidth="md">
+    <Section className={classes.root} gutters="margin">
+      <Container className={classes.main} maxWidth="md">
         <Html {...componentProps} />
       </Container>
     </Section>

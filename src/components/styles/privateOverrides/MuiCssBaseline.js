@@ -1,4 +1,4 @@
-const styles = {
+const styles = (theme) => ({
   '@global': {
     '@font-face': [
       // Include font files here:
@@ -12,6 +12,7 @@ const styles = {
       //   `,
       // },
     ],
+    ':root': theme.mixins.root,
     // Opinionated defaults taken from sanitize.css
     // https://github.com/csstools/sanitize.css
     'iframe, img, input, select, textarea': {
@@ -29,6 +30,6 @@ const styles = {
       fill: 'currentColor',
     },
   },
-}
+})
 
 export default styles

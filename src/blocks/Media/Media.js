@@ -10,7 +10,7 @@ function Media(props) {
   const { mediaProps, renderIndex } = props
 
   return (
-    <Section disableSpacing>
+    <Section>
       <Container>
         <MediaReveal>
           <OuiMedia

@@ -1,26 +1,22 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
+import { capitalize } from '@material-ui/core/utils'
 import withStyles from '@material-ui/core/styles/withStyles'
 
-export const styles = (theme) => ({
-  root: ({ spacingRule = 'margin' }) => ({
-    ...theme.mixins.section(spacingRule),
+export const styles = {
+  root: {
     position: 'relative',
-  }),
-  // Applying spacing to root and thereafter canceling via `disableSpacing`
-  // allows for the css variable `--section-spacing` to still be applied for
-  // nested styling use.
-  disableSpacing: ({ spacingRule = 'margin' }) => ({
-    [`${spacingRule}Top`]: 0,
-    [`${spacingRule}Bottom`]: 0,
-  }),
-  regular: {
-    ...theme.mixins.verticalRhythm(4, '*:not([aria-hidden])'),
-    [theme.breakpoints.up('sm')]: theme.mixins.verticalRhythm(6, '*:not([aria-hidden])'),
   },
-  dense: theme.mixins.verticalRhythm(2, '*:not([aria-hidden])'),
-})
+  guttersMargin: {
+    marginTop: 'var(--coa-section-spacing)',
+    marginBottom: 'var(--coa-section-spacing)',
+  },
+  guttersPadding: {
+    paddingTop: 'var(--coa-section-spacing)',
+    paddingBottom: 'var(--coa-section-spacing)',
+  },
+}
 
 const Section = React.forwardRef(function Section(props, ref) {
   const {
@@ -28,9 +24,7 @@ const Section = React.forwardRef(function Section(props, ref) {
     classes,
     className,
     component: Component = 'section',
-    disableSpacing,
-    rhythm,
-    spacingRule,
+    gutters = false,
     ...other
   } = props
 
@@ -39,8 +33,7 @@ const Section = React.forwardRef(function Section(props, ref) {
       className={classnames(
         classes.root,
         {
-          [classes[rhythm]]: rhythm !== false,
-          [classes.disableSpacing]: disableSpacing,
+          [classes[`gutters${capitalize(String(gutters))}`]]: gutters !== false,
         },
         className,
       )}
@@ -57,9 +50,7 @@ Section.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   component: PropTypes.elementType,
-  disableSpacing: PropTypes.bool,
-  rhythm: PropTypes.oneOf(['regular', 'dense', false]),
-  spacingRule: PropTypes.oneOf(['padding', 'margin']),
+  gutters: PropTypes.oneOf(['margin', 'padding', false]),
 }
 
 export default withStyles(styles)(Section)

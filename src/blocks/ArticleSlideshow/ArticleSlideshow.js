@@ -24,8 +24,9 @@ export const styles = (theme) => ({
   header: {
     textAlign: 'center',
   },
-  content: {
+  main: {
     ...theme.mixins.gutters(4),
+    marginTop: 'var(--coa-section-spacing)',
     overflow: 'hidden',
   },
   slideshow: {
@@ -46,8 +47,8 @@ export const styles = (theme) => ({
       width: getSlideWidth(3, theme.spacing(2)),
     },
   },
-  card: {},
-  cardContent: {
+  article: {},
+  articleContent: {
     ...theme.mixins.verticalRhythm(1),
     padding: theme.spacing(3),
   },
@@ -59,7 +60,7 @@ function ArticleSlideshow(props) {
   SwiperCore.use([A11y])
 
   return (
-    <Section className={classes.root} rhythm="regular">
+    <Section className={classes.root} gutters="margin">
       {heading && (
         <Container className={classes.header} component="header" maxWidth="sm">
           <Typography component="h1" variant="h4">
@@ -68,11 +69,11 @@ function ArticleSlideshow(props) {
         </Container>
       )}
 
-      <Container className={classes.content} maxWidth={false}>
+      <Container className={classes.main} maxWidth={false}>
         <Swiper className={classes.slideshow} centerInsufficientSlides slidesPerView="auto">
           {items?.map((item, idx) => (
             <SwiperSlide key={idx} className={classes.slide}>
-              <article className={classes.card}>
+              <article className={classes.article}>
                 {item.mediaProps && (
                   <BlockButton component={RouterLink} href={item.url}>
                     <MediaReveal {...ASPECT_RATIOS.article}>
@@ -81,7 +82,7 @@ function ArticleSlideshow(props) {
                   </BlockButton>
                 )}
 
-                <div className={classes.cardContent}>
+                <div className={classes.articleContent}>
                   {item.subheading && <Typography variant="overline">{item.subheading}</Typography>}
 
                   <Typography component="h2" variant="h4" paragraph>
