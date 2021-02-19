@@ -34,12 +34,15 @@ export const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   footer: {
+    position: 'sticky',
+    bottom: 0,
     /**
      * ⚠️ Firefox bug: "Position: sticky doesn't work properly with flexbox"
      * https://bugzilla.mozilla.org/show_bug.cgi?id=1488080
      */
-    position: 'sticky',
-    bottom: 0,
+    '@supports (-moz-appearance:none)': {
+      position: 'static',
+    },
   },
 }))
 
