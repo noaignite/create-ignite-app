@@ -1,2 +1,5 @@
-// Replace below mocked exports with real implementations.
-export * from './storybook.index'
+export { default as GlobalContext } from './GlobalContext'
+export * from './GlobalContext'
+
+// Replace below mocked exports with real implementation.
+export { useCartHandlers, useCart } from './storybook.index'

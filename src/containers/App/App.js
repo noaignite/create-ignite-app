@@ -7,7 +7,7 @@ import AppHeader from './partials/AppHeader'
 import AppFooter from './partials/AppFooter'
 import AppLoader from './partials/AppLoader'
 import AppSkipLink from './partials/AppSkipLink'
-import { AppContext } from './AppContext'
+import AppContext from './AppContext'
 
 const AppCartDrawer = dynamic(
   () => import(/* webpackChunkName: "./partials/AppCartDrawer" */ './partials/AppCartDrawer'),

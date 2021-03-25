@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 
-export const GlobalContext = React.createContext({})
+const GlobalContext = React.createContext({})
 
 if (process.env.NODE_ENV !== 'production') {
   GlobalContext.displayName = 'GlobalContext'

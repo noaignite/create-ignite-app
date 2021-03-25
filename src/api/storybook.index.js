@@ -1,9 +1,13 @@
 import { sleep } from 'utils'
-import { cartItem } from './mock'
+import { cartItem, global as globalData } from './mock'
 
 const actionWithPromise = (eventName) => async (...args) => {
   await sleep(300)
   return console.log(eventName, ...args) // eslint-disable-line no-console
+}
+
+export function useGlobal() {
+  return globalData
 }
 
 export function useCartHandlers() {

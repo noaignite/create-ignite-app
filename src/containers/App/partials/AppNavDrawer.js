@@ -3,7 +3,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import { useGlobal } from 'containers/Global/GlobalContext'
+import { useGlobal } from 'api'
 import List from 'components/List'
 import { useApp } from '../AppContext'
 import AppDrawer from './AppDrawer'
