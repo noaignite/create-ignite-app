@@ -12,17 +12,17 @@ export function useGlobal() {
 
 export function useCheckoutHandlers() {
   return {
-    onCountryChange: actionWithPromise('onCountryChange'),
-    onItemAdd: actionWithPromise('onItemAdd'),
-    onItemDecrease: actionWithPromise('onItemDecrease'),
-    onItemIncrease: actionWithPromise('onItemIncrease'),
-    onItemQuantityChange: actionWithPromise('onItemQuantityChange'),
-    onItemRemove: actionWithPromise('onItemRemove'),
-    onPaymentMethodChange: actionWithPromise('onPaymentMethodChange'),
-    onShipmentMethodChange: actionWithPromise('onShipmentMethodChange'),
-    onSubmit: actionWithPromise('onSubmit'),
-    onVoucherAdd: actionWithPromise('onVoucherAdd'),
-    onVoucherRemove: actionWithPromise('onVoucherRemove'),
+    addItem: actionWithPromise('addItem'),
+    addVoucher: actionWithPromise('addVoucher'),
+    decreaseItem: actionWithPromise('decreaseItem'),
+    increaseItem: actionWithPromise('increaseItem'),
+    removeItem: actionWithPromise('removeItem'),
+    removeVoucher: actionWithPromise('removeVoucher'),
+    setCountry: actionWithPromise('setCountry'),
+    setItemQuantity: actionWithPromise('setItemQuantity'),
+    setPaymentMethod: actionWithPromise('setPaymentMethod'),
+    setShipmentMethod: actionWithPromise('setShipmentMethod'),
+    submitCheckout: actionWithPromise('submitCheckout'),
   }
 }
 
@@ -42,4 +42,4 @@ export function useCheckout() {
   }
 }
 
-export const onNewsletterSignUp = actionWithPromise('onNewsletterSignUp')
+export const addNewsletterSubscriber = actionWithPromise('addNewsletterSubscriber')

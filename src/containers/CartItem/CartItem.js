@@ -48,45 +48,39 @@ export const styles = (theme) => ({
 const CartItem = React.forwardRef(function CartItem(props, ref) {
   const { cartItem, classes, className, ...other } = props
 
-  const { onItemIncrease, onItemDecrease, onItemRemove } = useCheckoutHandlers()
+  const { decreaseItem, increaseItem, removeItem } = useCheckoutHandlers()
   const { product } = cartItem
 
   const handleIncrease = React.useCallback(
     (event) => {
-      if (onItemIncrease) {
-        onItemIncrease(event.currentTarget.value)
+      if (increaseItem) {
+        increaseItem(event.currentTarget.value)
       }
     },
-    [onItemIncrease],
+    [increaseItem],
   )
 
   const handleDecrease = React.useCallback(
     (event) => {
-      if (onItemDecrease) {
-        onItemDecrease(event.currentTarget.value)
+      if (decreaseItem) {
+        decreaseItem(event.currentTarget.value)
       }
     },
-    [onItemDecrease],
+    [decreaseItem],
   )
 
   const handleRemove = React.useCallback(
     (event) => {
-      if (onItemRemove) {
-        onItemRemove(event.currentTarget.value)
+      if (removeItem) {
+        removeItem(event.currentTarget.value)
       }
     },
-    [onItemRemove],
+    [removeItem],
   )
-
-  const linkProps = {
-    component: RouterLink,
-    href: '/product/[...uri]',
-    as: `/product/${product.uri}`,
-  }
 
   return (
     <article className={classnames(classes.root, className)} ref={ref} {...other}>
-      <BlockButton {...linkProps}>
+      <BlockButton component={RouterLink} href={`/product/${product.uri}`}>
         <MediaReveal {...ASPECT_RATIOS.product}>
           <Media
             component="img"
@@ -98,7 +92,7 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
       </BlockButton>
 
       <div className={classes.content}>
-        <Link variant="body2" {...linkProps}>
+        <Link component={RouterLink} href={`/product/${product.uri}`} variant="body2">
           {product.name}
         </Link>
 
@@ -140,7 +134,7 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
 })
 
 CartItem.propTypes = {
-  cartItem: cartItemType,
+  cartItem: cartItemType.isRequired,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
 }
