@@ -1,5 +1,5 @@
 import { sleep } from 'utils'
-import { cartItem, global as globalData } from './mock'
+import { cartItem, countries, global as globalData } from './mock'
 
 const actionWithPromise = (eventName) => async (...args) => {
   await sleep(300)
@@ -10,26 +10,36 @@ export function useGlobal() {
   return globalData
 }
 
-export function useCartHandlers() {
+export function useCheckoutHandlers() {
   return {
+    onCountryChange: actionWithPromise('onCountryChange'),
     onItemAdd: actionWithPromise('onItemAdd'),
-    onItemIncrease: actionWithPromise('onIncrease'),
-    onItemDecrease: actionWithPromise('onDecrease'),
-    onItemRemove: actionWithPromise('onRemove'),
+    onItemDecrease: actionWithPromise('onItemDecrease'),
+    onItemIncrease: actionWithPromise('onItemIncrease'),
+    onItemQuantityChange: actionWithPromise('onItemQuantityChange'),
+    onItemRemove: actionWithPromise('onItemRemove'),
+    onPaymentMethodChange: actionWithPromise('onPaymentMethodChange'),
+    onShipmentMethodChange: actionWithPromise('onShipmentMethodChange'),
+    onSubmit: actionWithPromise('onSubmit'),
+    onVoucherAdd: actionWithPromise('onVoucherAdd'),
+    onVoucherRemove: actionWithPromise('onVoucherRemove'),
   }
 }
 
-export function useCart() {
-  const cartHandlers = useCartHandlers()
+export function useCheckout() {
+  const handlers = useCheckoutHandlers()
 
   return {
+    countries,
+    items: new Array(3).fill(cartItem),
     totals: {
       grandTotalPrice: '124 EUR',
       itemsTotalPrice: '120 EUR',
       shippingPrice: '4 EUR',
       totalQuantity: 6,
     },
-    items: new Array(3).fill(cartItem),
-    ...cartHandlers,
+    ...handlers,
   }
 }
+
+export const onNewsletterSignUp = actionWithPromise('onNewsletterSignUp')

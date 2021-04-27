@@ -1,5 +1,6 @@
 export { default as blocks } from './blocks'
 export { default as cartItem } from './cartItem'
+export { default as countries } from './countries'
 export { default as global } from './global'
 export { default as pages } from './pages'
 export { default as products } from './products'

@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
-import { useCart } from 'api'
+import { useCheckout } from 'api'
 import CartItem from 'containers/CartItem'
 
 export const styles = (theme) => ({
@@ -27,7 +27,7 @@ export const styles = (theme) => ({
 const CartList = React.forwardRef(function CartList(props, ref) {
   const { classes, className, ...other } = props
 
-  const { items, totals } = useCart()
+  const { items, totals } = useCheckout()
 
   return (
     <div className={classnames(classes.root, className)} ref={ref} {...other}>

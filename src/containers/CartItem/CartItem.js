@@ -6,7 +6,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Media from '@oakwood/oui/Media'
 import MediaReveal from '@oakwood/oui/MediaReveal'
 import { ASPECT_RATIOS } from 'utils/constants'
-import { useCartHandlers } from 'api'
+import { useCheckoutHandlers } from 'api'
 import { cartItemType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import AddIcon from 'components/icons/Add'
@@ -48,7 +48,7 @@ export const styles = (theme) => ({
 const CartItem = React.forwardRef(function CartItem(props, ref) {
   const { cartItem, classes, className, ...other } = props
 
-  const { onItemIncrease, onItemDecrease, onItemRemove } = useCartHandlers()
+  const { onItemIncrease, onItemDecrease, onItemRemove } = useCheckoutHandlers()
   const { product } = cartItem
 
   const handleIncrease = React.useCallback(
