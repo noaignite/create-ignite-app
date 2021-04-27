@@ -110,7 +110,7 @@ export function AppProvider(props) {
 
   // Memoize handlers context separately so that one can subscribe
   // to them without re-rendering on state updates.
-  const appHandlersContext = React.useMemo(
+  const handlersContextValue = React.useMemo(
     () => ({
       onCartMenuClose,
       onCartMenuToggle,
@@ -135,7 +135,7 @@ export function AppProvider(props) {
     ],
   )
 
-  const appContext = {
+  const contextValue = {
     appBarColor,
     hideFooter,
     hideHeader,
@@ -146,12 +146,12 @@ export function AppProvider(props) {
     // Computed props
     isSomeMenuOpen: isCartMenuOpen || isNavMenuOpen || isSearchMenuOpen,
     // Merge in handlers for easy access
-    ...appHandlersContext,
+    ...handlersContextValue,
   }
 
   return (
-    <AppHandlersContext.Provider value={appHandlersContext}>
-      <AppContext.Provider value={appContext}>{children}</AppContext.Provider>
+    <AppHandlersContext.Provider value={handlersContextValue}>
+      <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
     </AppHandlersContext.Provider>
   )
 }
