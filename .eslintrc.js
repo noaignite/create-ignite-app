@@ -7,13 +7,12 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: ['plugin:import/recommended', 'airbnb', 'prettier', 'prettier/react'],
+  extends: ['plugin:import/recommended', 'airbnb', 'prettier'],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 7,
-    sourceType: 'module',
   },
-  plugins: ['babel', 'react-hooks'],
+  plugins: ['eslint-plugin-babel', 'eslint-plugin-react-hooks'],
   settings: {
     'import/resolver': {
       webpack: {
@@ -52,22 +51,16 @@ module.exports = {
     // Destructuring harm grep potential.
     'prefer-destructuring': 'off',
 
-    'import/namespace': ['error', { allowComputed: true }],
-    'import/no-extraneous-dependencies': 'off', // It would be better to enable this rule.
-    'import/order': [
-      'error',
-      {
-        groups: [['index', 'sibling', 'parent', 'internal', 'external', 'builtin']],
-        'newlines-between': 'never',
-      },
-    ],
+    // Not sure why it doesn't work
+    'import/named': 'off',
+    // Missing yarn workspace support
+    'import/no-extraneous-dependencies': 'off',
 
     'jsx-a11y/label-has-associated-control': 'off',
-    'jsx-a11y/label-has-for': 'off', // deprecated
     'jsx-a11y/no-autofocus': 'off',
 
-    'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': ['error', { additionalHooks: 'useEnhancedEffect' }],
+    'react-hooks/rules-of-hooks': 'error',
 
     // Can add verbosity to small functions making them harder to grok.
     // Though we have to manually enforce it for function components with default values.
