@@ -3,24 +3,15 @@ import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from 'utils/constants'
-import AppHeader from './partials/AppHeader'
-import AppFooter from './partials/AppFooter'
-import AppLoader from './partials/AppLoader'
-import AppSkipLink from './partials/AppSkipLink'
 import AppContext from './AppContext'
+import AppCartDrawer from './partials/AppCartDrawer'
+import AppFooter from './partials/AppFooter'
+import AppHeader from './partials/AppHeader'
+import AppLoader from './partials/AppLoader'
+import AppNavDrawer from './partials/AppNavDrawer'
+import AppSearchDrawer from './partials/AppSearchDrawer'
+import AppSkipLink from './partials/AppSkipLink'
 
-const AppCartDrawer = dynamic(
-  () => import(/* webpackChunkName: "./partials/AppCartDrawer" */ './partials/AppCartDrawer'),
-  { ssr: false },
-)
-const AppNavDrawer = dynamic(
-  () => import(/* webpackChunkName: "./partials/AppNavDrawer" */ './partials/AppNavDrawer'),
-  { ssr: false },
-)
-const AppSearchDrawer = dynamic(
-  () => import(/* webpackChunkName: "./partials/AppSearchDrawer" */ './partials/AppSearchDrawer'),
-  { ssr: false },
-)
 const AppCookieBar = dynamic(
   () => import(/* webpackChunkName: "./partials/AppCookieBar" */ './partials/AppCookieBar'),
   { ssr: false },
