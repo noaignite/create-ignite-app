@@ -31,9 +31,6 @@ export const styles = (theme) => ({
   },
   slideshow: {
     overflow: 'visible',
-    [theme.breakpoints.up('sm')]: {
-      overflow: 'hidden',
-    },
   },
   slide: {
     marginRight: theme.spacing(2),
