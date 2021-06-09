@@ -52,7 +52,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "smoothscroll-polyfill": "^0.4.4",
-    "swiper": "^6.1.2"
+    "swiper": "^6.7.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-react-constant-elements": "^7.10.1",
