@@ -1,9 +1,11 @@
 import { sleep } from 'utils'
 import { cartItem, countries, global as globalData } from './mock'
 
-const actionWithPromise = (eventName) => async (...args) => {
-  await sleep(300)
-  return console.log(eventName, ...args) // eslint-disable-line no-console
+function actionWithPromise(eventName) {
+  return async (...args) => {
+    await sleep(300)
+    return console.log(eventName, ...args) // eslint-disable-line no-console
+  }
 }
 
 export function useGlobal() {
