@@ -1,3 +1,4 @@
+export { default as MuiBadge } from './MuiBadge'
 export { default as MuiButtonBase } from './MuiButtonBase'
 export { default as MuiCssBaseline } from './MuiCssBaseline'
 export { default as MuiFilledInput } from './MuiFilledInput'
