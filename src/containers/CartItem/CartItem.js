@@ -103,7 +103,7 @@ function CartItem(props) {
               className={classes.quantityButton}
               onClick={onDecreaseItem}
               value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
-              aria-label={t('containers/CartItem/aria-decreaseQuantity', 'Decrease quantity')}
+              aria-label={t('containers/CartItem/aria-decreaseQuantityButton', 'Decrease quantity')}
             >
               <RemoveIcon color="inherit" fontSize="small" />
             </ButtonBase>
@@ -114,7 +114,7 @@ function CartItem(props) {
               className={classes.quantityButton}
               onClick={onIncreaseItem}
               value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
-              aria-label={t('containers/CartItem/aria-increaseQuantity', 'Increase quantity')}
+              aria-label={t('containers/CartItem/aria-increaseQuantityButton', 'Increase quantity')}
             >
               <AddIcon color="inherit" fontSize="small" />
             </ButtonBase>
