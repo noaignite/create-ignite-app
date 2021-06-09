@@ -30,7 +30,9 @@ export default function createMixins(breakpoints, spacing, mixins) {
       '--coa-section-spacing': `${spacing(4)}px`,
       '--coa-container-spacing': `${spacing(2)}px`,
       '--coa-content-max-width': `640px`,
+      '--coa-toolbar-dense-min-height': '48px',
       '--coa-toolbar-min-height': '56px',
+      '--coa-toolbar-spacing': `${spacing(2)}px`,
       [breakpoints.up('sm')]: {
         '--coa-section-spacing': `${spacing(6)}px`,
         '--coa-container-spacing': `${spacing(4)}px`,
@@ -45,8 +47,7 @@ export default function createMixins(breakpoints, spacing, mixins) {
     },
     toolbarDense: {
       // Override Mui styles
-      '--coa-toolbar-min-height': '48px',
-      minHeight: 'var(--coa-toolbar-min-height)',
+      minHeight: 'var(--coa-toolbar-dense-min-height)',
     },
     // Utils
     gutters: (amount = 2) => ({
