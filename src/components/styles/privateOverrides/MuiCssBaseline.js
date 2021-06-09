@@ -1,7 +1,7 @@
 const styles = (theme) => ({
   '@global': {
+    // Include font files here.
     '@font-face': [
-      // Include font files here:
       // {
       //   fontFamily: 'Family',
       //   fontWeight: 400,
@@ -12,7 +12,6 @@ const styles = (theme) => ({
       //   `,
       // },
     ],
-    ':root': theme.mixins.root,
     // Opinionated defaults taken from sanitize.css
     // https://github.com/csstools/sanitize.css
     'iframe, img, input, select, textarea': {
@@ -28,6 +27,15 @@ const styles = (theme) => ({
     },
     'svg:not([fill])': {
       fill: 'currentColor',
+    },
+    // Custom global css
+    ':root': theme.mixins.root,
+    '[type="search"]::-webkit-search-cancel-button, [type="search"]::-webkit-search-decoration': {
+      WebkitAppearance: 'none',
+      appearance: 'none',
+    },
+    '[id]': {
+      scrollMarginTop: 'var(--coa-sticky-top, 0px)',
     },
   },
 })

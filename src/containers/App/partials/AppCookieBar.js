@@ -2,7 +2,6 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import Slide from '@material-ui/core/Slide'
 import Snackbar from '@material-ui/core/Snackbar'
 import { useI18n } from 'api'
 import CloseIcon from 'components/icons/Close'
@@ -45,7 +44,6 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
         horizontal: 'right',
         vertical: 'bottom',
       }}
-      TransitionComponent={Slide}
       open={open}
       {...other}
     >
