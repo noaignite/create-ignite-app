@@ -3,7 +3,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import CartList from 'containers/CartList'
+import Cart from 'containers/Cart'
 import RouterLink from 'containers/RouterLink'
 import CloseIcon from 'components/icons/Close'
 import Button from 'components/Button'
@@ -30,7 +30,7 @@ export const useStyles = makeStyles((theme) => ({
     top: '50%',
     transform: 'translate(-50%, -50%)',
   },
-  list: {
+  cart: {
     flexGrow: 1,
   },
   footer: {
@@ -73,7 +73,7 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
         </Typography>
       </Toolbar>
 
-      <CartList className={classes.list} />
+      <Cart className={classes.cart} />
 
       <div className={classes.footer}>
         <Button component={RouterLink} href="/checkout" variant="contained" fullWidth>

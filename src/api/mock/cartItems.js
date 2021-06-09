@@ -1,0 +1,30 @@
+import products from './products'
+
+export default [
+  {
+    anyDiscount: false,
+    category: null,
+    comment: null,
+    ean: '7325720334963',
+    item: '2045-57580',
+    line: '2b292737bdc3a587234b444ed5a1f57a',
+    priceEach: '3 900.00 SEK',
+    priceEachAsNumber: 3900,
+    priceEachBeforeDiscount: '3 900.00 SEK',
+    priceEachBeforeDiscountAsNumber: 3900,
+    priceEachReduction: '0.00 SEK',
+    priceEachReductionAsNumber: 0,
+    priceEachWithoutTax: '3 120.00 SEK',
+    priceEachWithoutTaxAsNumber: 3120,
+    product: products[0],
+    productUrl: null,
+    quantity: 1,
+    size: '34',
+    sku: '61382-816089900034',
+    taxPercent: 25,
+    totalPrice: '3 900.00 SEK',
+    totalPriceAsNumber: 3900,
+    totalPriceBeforeDiscount: '3 900.00 SEK',
+    totalPriceBeforeDiscountAsNumber: 3900,
+  },
+]

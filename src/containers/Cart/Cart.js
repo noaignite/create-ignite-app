@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
-import { useCheckout } from 'api'
+import { useCheckoutSelection } from 'api'
 import CartItem from 'containers/CartItem'
 
 export const styles = (theme) => ({
@@ -24,13 +24,13 @@ export const styles = (theme) => ({
   },
 })
 
-const CartList = React.forwardRef(function CartList(props, ref) {
-  const { classes, className, ...other } = props
+function Cart(props) {
+  const { classes, className } = props
 
-  const { items, totals } = useCheckout()
+  const { items, totals } = useCheckoutSelection()
 
   return (
-    <div className={classnames(classes.root, className)} ref={ref} {...other}>
+    <div className={classnames(classes.root, className)}>
       <div className={classes.items}>
         {items.map((cartItem, idx) => (
           <CartItem key={idx} cartItem={cartItem} />
@@ -55,11 +55,11 @@ const CartList = React.forwardRef(function CartList(props, ref) {
       </div>
     </div>
   )
-})
+}
 
-CartList.propTypes = {
+Cart.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
 }
 
-export default withStyles(styles)(CartList)
+export default withStyles(styles)(Cart)

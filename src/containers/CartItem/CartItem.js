@@ -5,7 +5,7 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Media from '@oakwood/oui/Media'
 import MediaReveal from '@oakwood/oui/MediaReveal'
-import { ASPECT_RATIOS } from 'utils/constants'
+import { ASPECT_RATIOS, CENTRA_CART_ITEM_UNIQUE_KEY } from 'utils/constants'
 import { useCheckoutHandlers } from 'api'
 import { cartItemType } from 'utils'
 import RouterLink from 'containers/RouterLink'
@@ -48,35 +48,10 @@ export const styles = (theme) => ({
 const CartItem = React.forwardRef(function CartItem(props, ref) {
   const { cartItem, classes, className, ...other } = props
 
-  const { decreaseItem, increaseItem, removeItem } = useCheckoutHandlers()
+  const { onItemDecrease, onItemIncrease, onItemRemove } = useCheckoutHandlers()
+
   const { product } = cartItem
-
-  const handleIncrease = React.useCallback(
-    (event) => {
-      if (increaseItem) {
-        increaseItem(event.currentTarget.value)
-      }
-    },
-    [increaseItem],
-  )
-
-  const handleDecrease = React.useCallback(
-    (event) => {
-      if (decreaseItem) {
-        decreaseItem(event.currentTarget.value)
-      }
-    },
-    [decreaseItem],
-  )
-
-  const handleRemove = React.useCallback(
-    (event) => {
-      if (removeItem) {
-        removeItem(event.currentTarget.value)
-      }
-    },
-    [removeItem],
-  )
+  const value = cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]
 
   return (
     <article className={classnames(classes.root, className)} ref={ref} {...other}>
@@ -101,7 +76,7 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
         </Typography>
 
         <ButtonGroup className={classes.actionButtons}>
-          <Button className={classes.actionButton} onClick={handleDecrease} value={cartItem.id}>
+          <Button className={classes.actionButton} onClick={onItemDecrease} value={value}>
             <RemoveIcon fontSize="small" />
           </Button>
 
@@ -115,7 +90,7 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
             {cartItem.quantity}
           </Button>
 
-          <Button className={classes.actionButton} onClick={handleIncrease} value={cartItem.id}>
+          <Button className={classes.actionButton} onClick={onItemIncrease} value={value}>
             <AddIcon fontSize="small" />
           </Button>
         </ButtonGroup>
@@ -123,8 +98,8 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
 
       <IconButton
         className={classes.removeButton}
-        onClick={handleRemove}
-        value={cartItem.id}
+        onClick={onItemRemove}
+        value={value}
         size="small"
       >
         <CloseIcon fontSize="small" />

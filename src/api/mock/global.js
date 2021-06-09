@@ -16,17 +16,14 @@ export const menuPrimary = [
 
       return link
     }),
-    mediaSrc: '//source.unsplash.com/300x200',
     url: '/work',
   },
   {
     label: 'News',
-    mediaSrc: '//source.unsplash.com/300x201',
     url: '/news',
   },
   {
     label: 'Press',
-    mediaSrc: '//source.unsplash.com/300x202',
     url: '/press',
   },
   {
@@ -60,6 +57,11 @@ export default {
     menuFooter,
   },
   settings: {
+    facebookUrl: 'https://www.facebook.com/',
     globalSalesBanner: 'lorem ipsum dolor sit amet, consectetur',
+    instagramUrl: 'https://www.instagram.com/',
+    pinterestUrl: 'https://www.pinterest.se/',
+    termsPageUrl: '/terms-and-conditions',
+    twitterUrl: 'https://twitter.com/',
   },
 }

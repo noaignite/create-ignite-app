@@ -6,7 +6,7 @@ import Head from 'next/head'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { global as mockedCmsProps } from 'api/mock'
-import { GlobalProvider } from 'api'
+import { GlobalProvider, CheckoutProvider } from 'api'
 import theme from 'utils/theme.light'
 import { AppProvider } from 'containers/App/AppContext'
 import AppBase from 'containers/App'
@@ -58,11 +58,13 @@ function App(props) {
       <CssBaseline />
 
       <GlobalProvider {...cmsProps}>
-        <AppProvider>
-          <AppBase>
-            <Component {...pageProps} />
-          </AppBase>
-        </AppProvider>
+        <CheckoutProvider>
+          <AppProvider>
+            <AppBase>
+              <Component {...pageProps} />
+            </AppBase>
+          </AppProvider>
+        </CheckoutProvider>
       </GlobalProvider>
     </ThemeProvider>
   )
