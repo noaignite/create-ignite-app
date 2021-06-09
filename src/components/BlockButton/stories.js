@@ -7,9 +7,9 @@ export default {
   component: BlockButton,
   argTypes: {
     overlayPlacement: {
+      options: ['background', 'foreground'],
       control: {
         type: 'select',
-        options: ['background', 'foreground'],
       },
     },
   },
