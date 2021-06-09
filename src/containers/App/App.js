@@ -8,6 +8,7 @@ import AppCartDrawer from './partials/AppCartDrawer'
 import AppFooter from './partials/AppFooter'
 import AppHeader from './partials/AppHeader'
 import AppLoader from './partials/AppLoader'
+import AppMarketDialog from './partials/AppMarketDialog'
 import AppNavDrawer from './partials/AppNavDrawer'
 import AppSearchDrawer from './partials/AppSearchDrawer'
 import AppSkipLink from './partials/AppSkipLink'
@@ -47,6 +48,7 @@ function App(props) {
       <AppNavDrawer />
       <AppCartDrawer />
       <AppSearchDrawer />
+      <AppMarketDialog />
       <AppLoader />
 
       <AppContext.Consumer>

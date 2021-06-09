@@ -4,6 +4,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import { useI18n } from 'api'
 import SearchIcon from 'components/icons/Search'
 import Container from 'components/Container'
 import IconButton from 'components/IconButton'
@@ -33,6 +34,8 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
   const { isSearchMenuOpen, onSearchMenuClose, ...other } = props
   const classes = useStyles(props)
 
+  const { t } = useI18n()
+
   const valueRef = React.useRef('')
   const [value, setValue] = React.useState('')
   const handleChange = React.useCallback((event) => {
@@ -50,7 +53,7 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
       className={classes.submitButton}
       disabled={!value}
       type="submit"
-      aria-label="Search"
+      aria-label={t('containers/App/AppSearchDrawer/aria-submitButton', 'Submit search')}
     >
       <SearchIcon />
     </IconButton>
@@ -79,9 +82,12 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
       >
         <TextField
           className={classes.textField}
-          placeholder="Search products"
           onChange={handleChange}
           value={value}
+          placeholder={t(
+            'containers/App/AppSearchDrawer/searchFieldPlaceholder',
+            'Search products',
+          )}
           InputProps={{
             className: classes.inputBase,
             endAdornment: submitButton,

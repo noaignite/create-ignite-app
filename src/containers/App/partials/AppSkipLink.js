@@ -2,7 +2,8 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import Link from 'components/Link'
+import { useI18n } from 'api'
+import Button from 'components/Button'
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,7 +11,6 @@ export const useStyles = makeStyles((theme) => ({
     zIndex: theme.zIndex.appBar + 1,
     top: -100,
     left: 0,
-    padding: theme.spacing(1, 2),
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.getContrastText(theme.palette.text.primary),
     '&:focus': {
@@ -23,10 +23,12 @@ const AppSkipLink = React.memo(function AppSkipLink(props) {
   const { className, ...other } = props
   const classes = useStyles(props)
 
+  const { t } = useI18n()
+
   return (
-    <Link className={clsx(classes.root, className)} {...other}>
-      Skip to content
-    </Link>
+    <Button className={clsx(classes.root, className)} {...other}>
+      {t('containers/App/AppSkipLink/skipToContentButton', 'Skip to content')}
+    </Button>
   )
 })
 

@@ -7,6 +7,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import { useI18n } from 'api'
 import RouterLink from 'containers/RouterLink'
+import CartIcon from 'components/icons/Cart'
 import CloseIcon from 'components/icons/Close'
 import Button from 'components/Button'
 import IconButton from 'components/IconButton'
@@ -22,22 +23,26 @@ const Cart = dynamic(() => import(/* webpackChunkName: "containers/Cart" */ 'con
 
 export const useStyles = makeStyles((theme) => ({
   root: {},
-  menuToolbar: {},
-  menuButton: {
-    marginLeft: 'auto',
+  toolbar: {},
+  toolbarLabel: {
+    marginLeft: theme.spacing(1),
+    transform: 'translateY(3px)', // Optically align to icon.
   },
-  menuLabel: {
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
+  closeButton: {
+    marginLeft: 'auto',
   },
   scrollContainer: {
     ...theme.mixins.scrollable,
     ...theme.mixins.scrollbars,
+    display: 'inherit',
+    flexDirection: 'inherit',
+    flexGrow: 1,
+    padding: 'var(--coa-toolbar-spacing)',
+    paddingTop: 0,
+  },
+  cart: {
     flexGrow: 1,
   },
-  cart: {},
   footer: {},
 }))
 
@@ -68,19 +73,20 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
       anchor="right"
       {...other}
     >
-      <Toolbar className={classes.menuToolbar}>
+      <Toolbar className={classes.toolbar}>
+        <CartIcon />
+        <Typography className={classes.toolbarLabel} variant="body1">
+          {t('containers/App/AppCartDrawer/headerLabel', 'Bag')}
+        </Typography>
+
         <IconButton
-          className={classes.menuButton}
+          className={classes.closeButton}
           onClick={onCartMenuClose}
           edge="end"
           aria-label={t('containers/App/AppCartDrawer/aria-closeButton', 'Close cart menu')}
         >
           <CloseIcon />
         </IconButton>
-
-        <Typography className={classes.menuLabel} component="h1" variant="h4">
-          {t('containers/App/AppCartDrawer/heading', 'Checkout')}
-        </Typography>
       </Toolbar>
 
       <div className={classes.scrollContainer}>

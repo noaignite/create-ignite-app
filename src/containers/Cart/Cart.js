@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { useCheckoutSelection } from 'api'
 import CartItem from 'containers/CartItem'
+import CartSummary from 'containers/CartSummary'
 
 export const styles = (theme) => ({
   root: {
@@ -11,16 +12,11 @@ export const styles = (theme) => ({
     flexDirection: 'column',
   },
   items: {
-    ...theme.mixins.verticalRhythm(1),
-  },
-  distribute: {
-    display: 'flex',
-    justifyContent: 'space-between',
+    ...theme.mixins.verticalRhythm(2),
+    flexGrow: 1,
   },
   summary: {
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    marginTop: 'auto',
+    marginTop: 'var(--coa-toolbar-spacing)',
   },
 })
 
@@ -37,22 +33,7 @@ function Cart(props) {
         ))}
       </div>
 
-      <div className={classes.summary}>
-        <div className={classes.distribute}>
-          <div>Subtotal:</div>
-          <div>{totals.itemsTotalPrice}</div>
-        </div>
-
-        <div className={classes.distribute}>
-          <div>Shipping:</div>
-          <div>{totals.shippingPrice}</div>
-        </div>
-
-        <div className={classes.distribute}>
-          <div>Total:</div>
-          <div>{totals.grandTotalPrice}</div>
-        </div>
-      </div>
+      <CartSummary className={classes.summary} items={items} totals={totals} />
     </div>
   )
 }

@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
-import ButtonGroup from '@material-ui/core/ButtonGroup'
+import ButtonBase from '@material-ui/core/ButtonBase'
 import Media from '@oakwood/oui/Media'
 import MediaReveal from '@oakwood/oui/MediaReveal'
 import { ASPECT_RATIOS, CENTRA_CART_ITEM_UNIQUE_KEY } from 'utils/constants'
@@ -10,119 +10,130 @@ import { useCheckoutHandlers, useI18n } from 'api'
 import { cartItemType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import AddIcon from 'components/icons/Add'
-import CloseIcon from 'components/icons/Close'
 import RemoveIcon from 'components/icons/Remove'
-import BlockButton from 'components/BlockButton'
-import Button from 'components/Button'
-import IconButton from 'components/IconButton'
 import Link from 'components/Link'
-import Typography from 'components/Typography'
 
 export const styles = (theme) => ({
   root: {
+    ...theme.typography.body2,
     display: 'grid',
-    gridTemplateColumns: '80px 1fr auto',
+    gridTemplateColumns: '100px auto',
+    borderRadius: theme.shape.borderRadius * 2,
+    backgroundColor: theme.palette.background.default,
+  },
+  figure: {},
+  image: {
+    borderRadius: theme.shape.borderRadius,
   },
   content: {
     display: 'flex',
     flexDirection: 'column',
-    padding: theme.spacing(1),
+    padding: theme.spacing(2),
   },
-  actionButtons: {
-    marginTop: 'auto',
-  },
-  actionButton: {
-    minWidth: 35,
-    padding: theme.spacing(0.5),
-    // Reset hover effect if not of type button
-    'span&:hover': {
-      backgroundColor: 'transparent',
-      cursor: 'auto',
+  row: {
+    display: 'grid',
+    gridGap: theme.spacing(2),
+    gridTemplateColumns: '1fr auto',
+    '& + &': {
+      marginTop: theme.spacing(0.5),
     },
   },
+  quantity: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  quantityButton: {
+    minWidth: 35,
+    padding: theme.spacing(1),
+    color: theme.palette.primary.main,
+    textAlign: 'center',
+  },
+  quantityLabel: {},
+  price: {},
+  actionbar: {
+    display: 'flex',
+    alignItems: 'center',
+    margin: theme.spacing('auto', 0, -1),
+  },
   removeButton: {
-    alignSelf: 'flex-start',
+    marginLeft: 'auto',
   },
 })
 
-const CartItem = React.forwardRef(function CartItem(props, ref) {
-  const { cartItem, classes, className, ...other } = props
-
-  const { t } = useI18n()
-  const { onItemDecrease, onItemIncrease, onItemRemove } = useCheckoutHandlers()
-
+function CartItem(props) {
+  const { cartItem, classes, className } = props
   const { product } = cartItem
-  const value = cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]
+
+  const { onDecreaseItem, onIncreaseItem, onRemoveItem } = useCheckoutHandlers()
+  const { t } = useI18n()
 
   return (
-    <article className={clsx(classes.root, className)} ref={ref} {...other}>
-      <BlockButton
-        component={RouterLink}
-        href={`/product/${product.uri}`}
-        aria-label={product.name}
-      >
-        <MediaReveal {...ASPECT_RATIOS.product}>
+    <article className={clsx(classes.root, className)}>
+      <RouterLink href={`/product/${product.uri}`} aria-label={product.name}>
+        <MediaReveal className={classes.figure} {...ASPECT_RATIOS.product}>
           <Media
-            component="img"
-            src={product.media?.thumb?.[0]}
+            className={classes.image}
+            src={product.media?.standard?.[0]}
             alt={product.name}
             {...ASPECT_RATIOS.product}
           />
         </MediaReveal>
-      </BlockButton>
+      </RouterLink>
 
       <div className={classes.content}>
-        <Link component={RouterLink} href={`/product/${product.uri}`} variant="body2">
-          {product.name}
-        </Link>
+        <div className={classes.row}>
+          <Link component={RouterLink} href={`/product/${product.uri}`}>
+            {product.name}
+          </Link>
 
-        <Typography color="textSecondary" variant="body2">
-          {cartItem.priceEach}
-        </Typography>
+          <span className={classes.price}>{cartItem.priceEach}</span>
+        </div>
 
-        <ButtonGroup className={classes.actionButtons}>
-          <Button
-            className={classes.actionButton}
-            onClick={onItemDecrease}
-            value={value}
-            aria-label={t('containers/CartItem/aria-decreaseQuantity', 'Decrease quantity')}
+        <div className={classes.row}>
+          <span>
+            {t('containers/CartItem/sizeLabel', 'Size')}: {cartItem.size}
+          </span>
+        </div>
+
+        <div className={classes.actionbar}>
+          <span>{t('containers/CartItem/quantityLabel', 'Quantity')}:</span>
+
+          <div className={classes.quantity}>
+            <ButtonBase
+              className={classes.quantityButton}
+              onClick={onDecreaseItem}
+              value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
+              aria-label={t('containers/CartItem/aria-decreaseQuantity', 'Decrease quantity')}
+            >
+              <RemoveIcon color="inherit" fontSize="small" />
+            </ButtonBase>
+
+            <span className={classes.quantityLabel}>{cartItem.quantity}</span>
+
+            <ButtonBase
+              className={classes.quantityButton}
+              onClick={onIncreaseItem}
+              value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
+              aria-label={t('containers/CartItem/aria-increaseQuantity', 'Increase quantity')}
+            >
+              <AddIcon color="inherit" fontSize="small" />
+            </ButtonBase>
+          </div>
+
+          <Link // eslint-disable-line jsx-a11y/anchor-is-valid
+            className={classes.removeButton}
+            component={ButtonBase}
+            onClick={onRemoveItem}
+            value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
+            color="primary"
           >
-            <RemoveIcon fontSize="small" />
-          </Button>
-
-          <Button
-            className={classes.actionButton}
-            component="span"
-            tabIndex="-1"
-            role={undefined}
-            aria-disabled={undefined}
-          >
-            {cartItem.quantity}
-          </Button>
-
-          <Button
-            className={classes.actionButton}
-            onClick={onItemIncrease}
-            value={value}
-            aria-label={t('containers/CartItem/aria-increaseQuantity', 'Increase quantity')}
-          >
-            <AddIcon fontSize="small" />
-          </Button>
-        </ButtonGroup>
+            {t('containers/CartItem/removeProductButton', 'Remove')}
+          </Link>
+        </div>
       </div>
-
-      <IconButton
-        className={classes.removeButton}
-        onClick={onItemRemove}
-        value={value}
-        size="small"
-        aria-label={t('containers/CartItem/aria-removeButton', 'Remove product')}
-      >
-        <CloseIcon fontSize="small" />
-      </IconButton>
     </article>
   )
-})
+}
 
 CartItem.propTypes = {
   cartItem: cartItemType.isRequired,

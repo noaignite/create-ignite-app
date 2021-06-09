@@ -31,6 +31,7 @@ export function AppProvider(props) {
   const [hideHeader, setHideHeader] = React.useState(false)
   const [isCartMenuOpen, setCartMenuOpen] = React.useState(false)
   const [isCookieBarOpen, setCookieBarOpen] = React.useState(false)
+  const [isMarketMenuOpen, setMarketMenuOpen] = React.useState(false)
   const [isNavMenuOpen, setNavMenuOpen] = React.useState(false)
   const [isSearchMenuOpen, setSearchMenuOpen] = React.useState(false)
 
@@ -83,6 +84,16 @@ export function AppProvider(props) {
     setNavMenuOpen(false)
   }, [])
 
+  const onCartMenuToggle = React.useCallback(() => {
+    setCartMenuOpen((prev) => !prev)
+    setNavMenuOpen(false)
+    setSearchMenuOpen(false)
+  }, [])
+
+  const onCartMenuClose = React.useCallback(() => {
+    setCartMenuOpen(false)
+  }, [])
+
   const onSearchMenuToggle = React.useCallback(() => {
     setSearchMenuOpen((prev) => !prev)
     setCartMenuOpen(false)
@@ -93,14 +104,12 @@ export function AppProvider(props) {
     setSearchMenuOpen(false)
   }, [])
 
-  const onCartMenuToggle = React.useCallback(() => {
-    setCartMenuOpen((prev) => !prev)
-    setNavMenuOpen(false)
-    setSearchMenuOpen(false)
+  const onMarketMenuToggle = React.useCallback(() => {
+    setMarketMenuOpen((prev) => !prev)
   }, [])
 
-  const onCartMenuClose = React.useCallback(() => {
-    setCartMenuOpen(false)
+  const onMarketMenuClose = React.useCallback(() => {
+    setMarketMenuOpen(false)
   }, [])
 
   const onCookieBarClose = React.useCallback(() => {
@@ -115,6 +124,8 @@ export function AppProvider(props) {
       onCartMenuClose,
       onCartMenuToggle,
       onCookieBarClose,
+      onMarketMenuClose,
+      onMarketMenuToggle,
       onNavMenuClose,
       onNavMenuToggle,
       onSearchMenuClose,
@@ -128,6 +139,8 @@ export function AppProvider(props) {
       onCartMenuClose,
       onCartMenuToggle,
       onCookieBarClose,
+      onMarketMenuClose,
+      onMarketMenuToggle,
       onNavMenuClose,
       onNavMenuToggle,
       onSearchMenuClose,
@@ -141,6 +154,7 @@ export function AppProvider(props) {
     hideHeader,
     isCartMenuOpen,
     isCookieBarOpen,
+    isMarketMenuOpen,
     isNavMenuOpen,
     isSearchMenuOpen,
     // Computed props

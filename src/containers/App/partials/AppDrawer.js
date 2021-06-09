@@ -19,8 +19,8 @@ export const styles = (theme) => ({
     overflowX: 'hidden',
   },
   paperAnchorHorizontal: {
-    width: 414, // iPhone 6/7/8 Plus
     maxWidth: '100%',
+    width: 414, // iPhone 6/7/8 Plus
     height: 'calc(100% - var(--drawer-top, 0px))',
   },
 })
