@@ -6,7 +6,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Media from '@oakwood/oui/Media'
 import MediaReveal from '@oakwood/oui/MediaReveal'
 import { ASPECT_RATIOS, CENTRA_CART_ITEM_UNIQUE_KEY } from 'utils/constants'
-import { useCheckoutHandlers } from 'api'
+import { useCheckoutHandlers, useI18n } from 'api'
 import { cartItemType } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import AddIcon from 'components/icons/Add'
@@ -48,6 +48,7 @@ export const styles = (theme) => ({
 const CartItem = React.forwardRef(function CartItem(props, ref) {
   const { cartItem, classes, className, ...other } = props
 
+  const { t } = useI18n()
   const { onItemDecrease, onItemIncrease, onItemRemove } = useCheckoutHandlers()
 
   const { product } = cartItem
@@ -55,7 +56,11 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
 
   return (
     <article className={classnames(classes.root, className)} ref={ref} {...other}>
-      <BlockButton component={RouterLink} href={`/product/${product.uri}`}>
+      <BlockButton
+        component={RouterLink}
+        href={`/product/${product.uri}`}
+        aria-label={product.name}
+      >
         <MediaReveal {...ASPECT_RATIOS.product}>
           <Media
             component="img"
@@ -76,7 +81,12 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
         </Typography>
 
         <ButtonGroup className={classes.actionButtons}>
-          <Button className={classes.actionButton} onClick={onItemDecrease} value={value}>
+          <Button
+            className={classes.actionButton}
+            onClick={onItemDecrease}
+            value={value}
+            aria-label={t('containers/CartItem/aria-decreaseQuantity', 'Decrease quantity')}
+          >
             <RemoveIcon fontSize="small" />
           </Button>
 
@@ -90,7 +100,12 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
             {cartItem.quantity}
           </Button>
 
-          <Button className={classes.actionButton} onClick={onItemIncrease} value={value}>
+          <Button
+            className={classes.actionButton}
+            onClick={onItemIncrease}
+            value={value}
+            aria-label={t('containers/CartItem/aria-increaseQuantity', 'Increase quantity')}
+          >
             <AddIcon fontSize="small" />
           </Button>
         </ButtonGroup>
@@ -101,6 +116,7 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
         onClick={onItemRemove}
         value={value}
         size="small"
+        aria-label={t('containers/CartItem/aria-removeButton', 'Remove product')}
       >
         <CloseIcon fontSize="small" />
       </IconButton>
