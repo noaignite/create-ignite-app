@@ -1,8 +1,7 @@
 /.git
-/.next
 /coverage
 /tmp
 /docker
-/static
+.next
 build
 node_modules
