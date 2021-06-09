@@ -7,7 +7,9 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import Drawer from '@material-ui/core/Drawer'
 
 export const styles = (theme) => ({
-  root: {},
+  root: {
+    top: 'var(--drawer-top, 0px) !important',
+  },
   backdrop: {
     top: 'var(--drawer-top, 0px)',
   },

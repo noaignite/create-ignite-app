@@ -4,8 +4,9 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'clsx'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import Badge from '@material-ui/core/Badge'
 import { useDimensions } from 'utils'
-import { useGlobal } from 'api'
+import { useCheckoutSelection, useGlobal, useI18n } from 'api'
 import RouterLink from 'containers/RouterLink'
 import BrandIcon from 'components/icons/Brand'
 import CartIcon from 'components/icons/Cart'
@@ -16,7 +17,6 @@ import AppBar from 'components/AppBar'
 import IconButton from 'components/IconButton'
 import Toolbar from 'components/Toolbar'
 import { useApp } from '../AppContext'
-import AppNavDropdown from './AppNavDropdown'
 
 const BREAKPOINT_KEY_DOWN = 'sm'
 const BREAKPOINT_KEY_UP = 'md'
@@ -51,29 +51,19 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   menuToolbar: {},
-  menuButton: {
-    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
-      display: 'none',
-    },
-  },
-  searchButton: {},
+  menuButton: {},
   brandButton: {
     [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
       position: 'absolute',
       left: '50%',
       transform: 'translateX(-50%)',
-      marginLeft: 0, // Cancel margin of `edge="start"`
     },
   },
   brandIcon: {
     width: 'auto',
   },
+  searchButton: {},
   cartButton: {},
-  navDropdown: {
-    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
-      display: 'none',
-    },
-  },
 }))
 
 const AppHeader = React.memo(function AppHeader(props) {
@@ -91,8 +81,12 @@ const AppHeader = React.memo(function AppHeader(props) {
   } = props
   const classes = useStyles(props)
 
+  const { t } = useI18n()
   const { settings } = useGlobal()
   const [rootRef, dimensions] = useDimensions()
+
+  const { totals: cartTotals } = useCheckoutSelection()
+  const totalCartItems = React.useMemo(() => cartTotals?.totalQuantity ?? 0, [cartTotals])
 
   const [disableTransparency, setDisableTransparency] = React.useState(undefined)
   const syncDisableTransparency = React.useCallback(() => {
@@ -150,7 +144,7 @@ const AppHeader = React.memo(function AppHeader(props) {
       />
 
       {settings?.globalSalesBanner && (
-        <div className={classes.salesToolbar}>{settings?.globalSalesBanner}</div>
+        <div className={classes.salesToolbar}>{settings.globalSalesBanner}</div>
       )}
 
       <Toolbar className={classes.menuToolbar}>
@@ -161,7 +155,7 @@ const AppHeader = React.memo(function AppHeader(props) {
           size="small"
           aria-haspopup="true"
           aria-expanded={isNavMenuOpen}
-          aria-label="Toggle main menu"
+          aria-label={t('containers/App/AppHeader/aria-menuButton', 'Toggle main menu')}
         >
           {isNavMenuOpen ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
@@ -171,12 +165,10 @@ const AppHeader = React.memo(function AppHeader(props) {
           component={RouterLink}
           href="/"
           edge="start"
-          aria-label="Go to the homepage"
+          aria-label={t('containers/App/AppHeader/aria-brandButton', 'Go to the homepage')}
         >
           <BrandIcon className={classes.brandIcon} />
         </IconButton>
-
-        <AppNavDropdown className={classes.navDropdown} />
 
         <div className={classes.toolbarDesktopPush} />
 
@@ -186,7 +178,7 @@ const AppHeader = React.memo(function AppHeader(props) {
           size="small"
           aria-haspopup="true"
           aria-expanded={isSearchMenuOpen}
-          aria-label="Toggle search"
+          aria-label={t('containers/App/AppHeader/aria-searchButton', 'Toggle search')}
         >
           {isSearchMenuOpen ? <CloseIcon /> : <SearchIcon />}
         </IconButton>
@@ -200,9 +192,15 @@ const AppHeader = React.memo(function AppHeader(props) {
           size="small"
           aria-haspopup="true"
           aria-expanded={isCartMenuOpen}
-          aria-label="Toggle cart menu"
+          aria-label={t('containers/App/AppHeader/aria-cartButton', 'Toggle cart menu')}
         >
-          {isCartMenuOpen ? <CloseIcon /> : <CartIcon amount={3} />}
+          {isCartMenuOpen ? (
+            <CloseIcon />
+          ) : (
+            <Badge badgeContent={totalCartItems} color="primary" overlap="circle">
+              <CartIcon />
+            </Badge>
+          )}
         </IconButton>
       </Toolbar>
     </AppBar>
