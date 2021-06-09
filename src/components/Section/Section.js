@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
+import clsx from 'clsx'
 import { capitalize } from '@material-ui/core/utils'
 import withStyles from '@material-ui/core/styles/withStyles'
 
@@ -30,7 +30,7 @@ const Section = React.forwardRef(function Section(props, ref) {
 
   return (
     <Component
-      className={classnames(
+      className={clsx(
         classes.root,
         {
           [classes[`gutters${capitalize(String(gutters))}`]]: gutters !== false,

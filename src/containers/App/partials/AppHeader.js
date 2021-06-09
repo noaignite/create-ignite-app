@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
+import clsx from 'clsx'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import Badge from '@material-ui/core/Badge'
 import { useDimensions } from 'utils'
@@ -116,7 +116,7 @@ const AppHeader = React.memo(function AppHeader(props) {
 
   return (
     <AppBar
-      className={classnames(
+      className={clsx(
         classes.root,
         {
           [classes.transitions]: disableTransparency !== undefined, // Enable transitions once defined

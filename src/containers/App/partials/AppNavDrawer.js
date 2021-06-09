@@ -31,7 +31,7 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
       {...other}
     >
       <List component="nav" disablePadding aria-label="Main navigation">
-        {menus?.menuPrimary?.map((menuLink, idx) => (
+        {menus.menuPrimary?.map((menuLink, idx) => (
           <AppNavDrawerListItem key={idx} menuLink={menuLink} />
         ))}
       </List>

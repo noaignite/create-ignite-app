@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
+import clsx from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Drawer from '@material-ui/core/Drawer'
 
@@ -39,7 +39,7 @@ const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
     <Drawer
       classes={{
         root: classes.root,
-        paper: classnames(
+        paper: clsx(
           classes.paper,
           {
             [classes.paperAnchorHorizontal]: ['left', 'right'].includes(anchor),
@@ -48,7 +48,7 @@ const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
         ),
       }}
       BackdropProps={{
-        className: classnames(classes.backdrop, BackdropClassName),
+        className: clsx(classes.backdrop, BackdropClassName),
         ...BackdropProps,
       }}
       PaperProps={PaperProps}

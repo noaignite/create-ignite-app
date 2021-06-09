@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
+import clsx from 'clsx'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import Slide from '@material-ui/core/Slide'
 import Snackbar from '@material-ui/core/Snackbar'
@@ -40,7 +40,7 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
 
   return (
     <Snackbar
-      className={classnames(classes.root, className)}
+      className={clsx(classes.root, className)}
       anchorOrigin={{
         horizontal: 'right',
         vertical: 'bottom',

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
+import clsx from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import useTheme from '@material-ui/core/styles/useTheme'
 
@@ -44,7 +44,7 @@ const Palette = React.forwardRef(function Palette(props, ref) {
   }
 
   return (
-    <div className={classnames(classes.root, className)} ref={ref} {...other}>
+    <div className={clsx(classes.root, className)} ref={ref} {...other}>
       <div className={classes.mainShade}>
         <strong>{name}</strong>
       </div>

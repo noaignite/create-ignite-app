@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
+import clsx from 'clsx'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { useGlobal } from 'api'
 import RouterLink from 'containers/RouterLink'
@@ -37,15 +37,15 @@ const AppFooter = React.memo(function AppFooter(props) {
 
   return (
     <Section
-      className={classnames(classes.root, className)}
+      className={clsx(classes.root, className)}
       component="footer"
       gutters="padding"
       {...other}
     >
       <Container className={classes.mainDetails}>
-        <nav className={classes.nav} aria-label="Main navigation">
+        <nav className={classes.nav}>
           <ul className={classes.navlist}>
-            {menus?.menuFooter.map((menuItem, idx) => (
+            {menus.menuFooter?.map((menuItem, idx) => (
               <li key={idx} className={classes.navlistItem}>
                 <Link
                   className={classes.navlistItemText}
@@ -67,7 +67,6 @@ const AppFooter = React.memo(function AppFooter(props) {
 
 AppFooter.propTypes = {
   className: PropTypes.string,
-  onMarketMenuToggle: PropTypes.func,
 }
 
 function AppFooterContainer(props) {

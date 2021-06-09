@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
+import clsx from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 
 export const styles = (theme) => ({
@@ -59,7 +59,7 @@ const Html = React.forwardRef(function Html(props, ref) {
   const { children, className, classes, component: Component = 'div', ...other } = props
 
   return (
-    <Component className={classnames(classes.root, className)} ref={ref} {...other}>
+    <Component className={clsx(classes.root, className)} ref={ref} {...other}>
       {children}
     </Component>
   )

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
+import clsx from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { useCheckoutSelection } from 'api'
 import CartItem from 'containers/CartItem'
@@ -30,7 +30,7 @@ function Cart(props) {
   const { items, totals } = useCheckoutSelection()
 
   return (
-    <div className={classnames(classes.root, className)}>
+    <div className={clsx(classes.root, className)}>
       <div className={classes.items}>
         {items.map((cartItem, idx) => (
           <CartItem key={idx} cartItem={cartItem} />

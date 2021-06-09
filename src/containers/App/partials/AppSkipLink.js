@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
+import clsx from 'clsx'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import Link from 'components/Link'
 
@@ -24,7 +24,7 @@ const AppSkipLink = React.memo(function AppSkipLink(props) {
   const classes = useStyles(props)
 
   return (
-    <Link className={classnames(classes.root, className)} {...other}>
+    <Link className={clsx(classes.root, className)} {...other}>
       Skip to content
     </Link>
   )

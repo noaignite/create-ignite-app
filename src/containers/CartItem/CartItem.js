@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
+import clsx from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
 import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Media from '@oakwood/oui/Media'
@@ -55,7 +55,7 @@ const CartItem = React.forwardRef(function CartItem(props, ref) {
   const value = cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]
 
   return (
-    <article className={classnames(classes.root, className)} ref={ref} {...other}>
+    <article className={clsx(classes.root, className)} ref={ref} {...other}>
       <BlockButton
         component={RouterLink}
         href={`/product/${product.uri}`}
