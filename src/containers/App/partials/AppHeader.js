@@ -53,11 +53,9 @@ export const useStyles = makeStyles((theme) => ({
   menuToolbar: {},
   menuButton: {},
   brandButton: {
-    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
-      position: 'absolute',
-      left: '50%',
-      transform: 'translateX(-50%)',
-    },
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
   },
   brandIcon: {
     width: 'auto',
@@ -160,6 +158,9 @@ const AppHeader = React.memo(function AppHeader(props) {
           {isNavMenuOpen ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
 
+        <div className={classes.toolbarDesktopPush} />
+        <div className={classes.toolbarMobilePush} />
+
         <IconButton
           className={classes.brandButton}
           component={RouterLink}
@@ -169,8 +170,6 @@ const AppHeader = React.memo(function AppHeader(props) {
         >
           <BrandIcon className={classes.brandIcon} />
         </IconButton>
-
-        <div className={classes.toolbarDesktopPush} />
 
         <IconButton
           className={classes.searchButton}
@@ -182,8 +181,6 @@ const AppHeader = React.memo(function AppHeader(props) {
         >
           {isSearchMenuOpen ? <CloseIcon /> : <SearchIcon />}
         </IconButton>
-
-        <div className={classes.toolbarMobilePush} />
 
         <IconButton
           className={classes.cartButton}
