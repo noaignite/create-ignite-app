@@ -64,7 +64,7 @@ function CartItem(props) {
   const { cartItem, classes, className } = props
   const { product } = cartItem
 
-  const { onDecreaseItem, onIncreaseItem, onRemoveItem } = useCheckoutHandlers()
+  const { onItemDecrease, onItemIncrease, onItemRemove } = useCheckoutHandlers()
   const { t } = useI18n()
 
   return (
@@ -101,7 +101,7 @@ function CartItem(props) {
           <div className={classes.quantity}>
             <ButtonBase
               className={classes.quantityButton}
-              onClick={onDecreaseItem}
+              onClick={onItemDecrease}
               value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
               aria-label={t('containers/CartItem/aria-decreaseQuantityButton', 'Decrease quantity')}
             >
@@ -112,7 +112,7 @@ function CartItem(props) {
 
             <ButtonBase
               className={classes.quantityButton}
-              onClick={onIncreaseItem}
+              onClick={onItemIncrease}
               value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
               aria-label={t('containers/CartItem/aria-increaseQuantityButton', 'Increase quantity')}
             >
@@ -123,7 +123,7 @@ function CartItem(props) {
           <Link // eslint-disable-line jsx-a11y/anchor-is-valid
             className={classes.removeButton}
             component={ButtonBase}
-            onClick={onRemoveItem}
+            onClick={onItemRemove}
             value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
             color="primary"
           >
