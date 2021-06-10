@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { cartSelection } from 'api/mock'
 import CartSummary from './CartSummary'
 
 export default {
@@ -10,7 +9,4 @@ export default {
 const Template = (args) => <CartSummary {...args} />
 
 export const Default = Template.bind({})
-Default.args = {
-  items: cartSelection.items,
-  totals: cartSelection.totals,
-}
+Default.args = {}

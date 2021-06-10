@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import withStyles from '@material-ui/core/styles/withStyles'
-import { useI18n } from 'api'
+import { useCheckoutSelection, useI18n } from 'api'
 import { productType } from 'utils'
 
 export const styles = (theme) => ({
@@ -31,7 +31,8 @@ export const styles = (theme) => ({
 })
 
 function CartSummary(props) {
-  const { classes, className, items, totals } = props
+  const { items: itemsCtx, totals: totalsCtx } = useCheckoutSelection()
+  const { classes, className, items = itemsCtx, totals = totalsCtx } = props
 
   const { t } = useI18n()
 

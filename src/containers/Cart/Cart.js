@@ -23,7 +23,7 @@ export const styles = (theme) => ({
 function Cart(props) {
   const { classes, className } = props
 
-  const { items, totals } = useCheckoutSelection()
+  const { items } = useCheckoutSelection()
 
   return (
     <div className={clsx(classes.root, className)}>
@@ -33,7 +33,7 @@ function Cart(props) {
         ))}
       </div>
 
-      <CartSummary className={classes.summary} items={items} totals={totals} />
+      <CartSummary className={classes.summary} />
     </div>
   )
 }
