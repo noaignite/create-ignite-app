@@ -12,26 +12,26 @@ export function useI18n() {
   return React.useContext(I18nContext)
 }
 
-const DEFAULT_LANG = 'en'
+const DEFAULT_LOCALE = 'en'
+
 export function I18nProvider(props) {
-  const { children, lang = DEFAULT_LANG } = props
+  const { children, defaultLocale = DEFAULT_LOCALE, locale } = props
 
   let translations
   try {
     // eslint-disable-next-line global-require, import/no-dynamic-require
-    translations = require(`../../../public/locales/${lang}.json`)
+    translations = require(`../../../public/locales/${locale}.json`)
   } catch (err) {
     // eslint-disable-next-line global-require, import/no-dynamic-require
-    translations = require(`../../../public/locales/${DEFAULT_LANG}.json`)
+    translations = require(`../../../public/locales/${defaultLocale}.json`)
   }
 
   i18nConfig({
-    // locales: 'en-US',
     translations,
-    // Intl NumberFormat options as described here: https://goo.gl/pDwbG2
-    number: {},
     // Intl DateTimeFormat options as described here: https://goo.gl/lslekB
     date: {},
+    // Intl NumberFormat options as described here: https://goo.gl/pDwbG2
+    number: {},
   })
 
   const contextValue = {
@@ -43,7 +43,8 @@ export function I18nProvider(props) {
 
 I18nProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  lang: PropTypes.string,
+  defaultLocale: PropTypes.string,
+  locale: PropTypes.string,
 }
 
 export default I18nContext

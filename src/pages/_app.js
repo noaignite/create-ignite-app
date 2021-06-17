@@ -35,7 +35,7 @@ if (typeof window !== 'undefined') {
 }
 
 function App(props) {
-  const { Component, pageProps, cmsProps } = props
+  const { cmsProps, Component, defaultLocale, locale, pageProps } = props
 
   React.useEffect(() => {
     // Remove the server-side injected CSS.
@@ -57,7 +57,7 @@ function App(props) {
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
 
-      <I18nProvider>
+      <I18nProvider defaultLocale={defaultLocale} locale={locale}>
         <GlobalProvider {...cmsProps}>
           <CheckoutProvider>
             <AppProvider>
@@ -88,14 +88,18 @@ App.getInitialProps = async (props) => {
 
   return {
     cmsProps,
+    defaultLocale: ctx.defaultLocale,
+    locale: ctx.locale,
     pageProps,
   }
 }
 
 App.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired,
   cmsProps: PropTypes.object.isRequired,
+  Component: PropTypes.elementType.isRequired,
+  defaultLocale: PropTypes.string.isRequired,
+  locale: PropTypes.string.isRequired,
+  pageProps: PropTypes.object.isRequired,
 }
 
 export default App
