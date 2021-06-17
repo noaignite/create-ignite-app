@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import translations from '../../../public/locales/en.json'
+import i18n, { i18nConfig } from 'es2015-i18n-tag'
 
 const I18nContext = React.createContext({})
 
@@ -12,42 +12,30 @@ export function useI18n() {
   return React.useContext(I18nContext)
 }
 
+const DEFAULT_LANG = 'en'
 export function I18nProvider(props) {
-  const { children } = props
+  const { children, lang = DEFAULT_LANG } = props
 
-  const t = (keys, ...args) => {
-    let string = ''
-
-    if (keys.constructor === Array) {
-      // Looks like we got a tagged template, proceed to transform.
-      keys.forEach((key, i) => {
-        // Find path and index of key.
-        const partsWithIndex = key.match(/[^ ]+(\$\d)/g)
-        if (partsWithIndex !== null) {
-          const partPaths = partsWithIndex.map((part) => part.split('$')[0])
-          const indexes = partsWithIndex.map((part) => part.split('$')[1])
-
-          // Get correct translation.
-          const trans = partPaths
-            .map((path, j) => {
-              const full = translations[path] || path
-              const match = full.match(new RegExp(`(?:\\$${indexes[j]})([^$ ]+)`))
-              return match ? match[1] : ''
-            })
-            .join(' ')
-          string += `${trans || key} ${args[i] || ''} `
-        }
-      })
-    } else {
-      // Get the key value.
-      string = translations[keys] || args[0]
-    }
-
-    return string
+  let translations
+  try {
+    // eslint-disable-next-line global-require, import/no-dynamic-require
+    translations = require(`../../../public/locales/${lang}.json`)
+  } catch (err) {
+    // eslint-disable-next-line global-require, import/no-dynamic-require
+    translations = require(`../../../public/locales/${DEFAULT_LANG}.json`)
   }
 
+  i18nConfig({
+    // locales: 'en-US',
+    translations,
+    // Intl NumberFormat options as described here: https://goo.gl/pDwbG2
+    number: {},
+    // Intl DateTimeFormat options as described here: https://goo.gl/lslekB
+    date: {},
+  })
+
   const contextValue = {
-    t,
+    t: i18n,
   }
 
   return <I18nContext.Provider value={contextValue}>{children}</I18nContext.Provider>
@@ -55,6 +43,7 @@ export function I18nProvider(props) {
 
 I18nProvider.propTypes = {
   children: PropTypes.node.isRequired,
+  lang: PropTypes.string,
 }
 
 export default I18nContext

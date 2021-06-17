@@ -56,7 +56,7 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
     >
       <DialogTitle disableTypography>
         <Typography component="h1" variant="subtitle1" id="coa-market-menu-title">
-          {t('containers/App/partials/AppMarketDialog/heading', 'Choose country and shipping')}
+          {t(__translationGroup)`Choose country and shipping`}
         </Typography>
 
         {onMarketMenuClose && (
@@ -64,10 +64,7 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
             className={classes.closeButton}
             onClick={onMarketMenuClose}
             color="inherit"
-            aria-label={t(
-              'containers/App/partials/AppMarketDialog/aria-closeButton',
-              'Close market menu',
-            )}
+            aria-label={t(__translationGroup)`Close market menu`}
           >
             <CloseIcon />
           </IconButton>
@@ -77,15 +74,14 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
       <DialogContent>
         <Typography variant="body2" paragraph>
           {t(
-            'containers/App/partials/AppMarketDialog/text',
-            'Please select the country to which your order will be sent. This will give you accurate pricing, delivery times and shipping costs for your destination.',
-          )}
+            __translationGroup,
+          )`Please select the country to which your order will be sent. This will give you accurate pricing, delivery times and shipping costs for your destination.`}
         </Typography>
 
         <TextField
           onChange={onCountryChange}
           value={location.country}
-          label={t('containers/App/partials/AppMarketDialog/countryFieldLabel', 'Choose country')}
+          label={t(__translationGroup)`Choose country`}
           margin="normal"
           fullWidth
           select

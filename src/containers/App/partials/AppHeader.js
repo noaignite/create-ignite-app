@@ -153,7 +153,7 @@ const AppHeader = React.memo(function AppHeader(props) {
           size="small"
           aria-haspopup="true"
           aria-expanded={isNavMenuOpen}
-          aria-label={t('containers/App/AppHeader/aria-menuButton', 'Toggle main menu')}
+          aria-label={t(__translationGroup)`Toggle main menu`}
         >
           {isNavMenuOpen ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
@@ -166,7 +166,7 @@ const AppHeader = React.memo(function AppHeader(props) {
           component={RouterLink}
           href="/"
           edge="start"
-          aria-label={t('containers/App/AppHeader/aria-brandButton', 'Go to the homepage')}
+          aria-label={t(__translationGroup)`Go to the homepage`}
         >
           <BrandIcon className={classes.brandIcon} />
         </IconButton>
@@ -177,7 +177,7 @@ const AppHeader = React.memo(function AppHeader(props) {
           size="small"
           aria-haspopup="true"
           aria-expanded={isSearchMenuOpen}
-          aria-label={t('containers/App/AppHeader/aria-searchButton', 'Toggle search')}
+          aria-label={t(__translationGroup)`Toggle search`}
         >
           {isSearchMenuOpen ? <CloseIcon /> : <SearchIcon />}
         </IconButton>
@@ -189,7 +189,7 @@ const AppHeader = React.memo(function AppHeader(props) {
           size="small"
           aria-haspopup="true"
           aria-expanded={isCartMenuOpen}
-          aria-label={t('containers/App/AppHeader/aria-cartButton', 'Toggle cart menu')}
+          aria-label={t(__translationGroup)`Toggle cart menu`}
         >
           {isCartMenuOpen ? (
             <CloseIcon />

@@ -1,25 +1,45 @@
 {
-  "containers/App/AppCartDrawer/aria-closeButton": "Close cart menu",
-  "containers/App/AppCartDrawer/checkoutLink": "To checkout",
-  "containers/App/AppCartDrawer/headerLabel": "Bag",
-  "containers/App/AppCookieBar/aria-closeButton": "Close cookie bar",
-  "containers/App/AppCookieBar/text": "We use cookies to give you the best user experience. By using our website you agree to our privacy policy.",
-  "containers/App/AppHeader/aria-brandButton": "Go to the homepage",
-  "containers/App/AppHeader/aria-cartButton": "Toggle cart menu",
-  "containers/App/AppHeader/aria-menuButton": "Toggle main menu",
-  "containers/App/AppHeader/aria-searchButton": "Toggle search",
-  "containers/App/AppSearchDrawer/aria-submitButton": "Submit search",
-  "containers/App/AppSearchDrawer/searchFieldPlaceholder": "Search products",
-  "containers/App/AppSkipLink/skipToContentButton": "Skip to content",
-  "containers/App/partials/AppMarketDialog/aria-closeButton": "Close market menu",
-  "containers/App/partials/AppMarketDialog/countryFieldLabel": "Choose country",
-  "containers/App/partials/AppMarketDialog/heading": "Choose country and shipping",
-  "containers/App/partials/AppMarketDialog/text": "Please select the country to which your order will be sent. This will give you accurate pricing: delivery times and shipping costs for your destination.",
-  "containers/App/partials/AppNavDrawer/marketMenuButton": "Country",
-  "containers/CartItem/aria-decreaseQuantityButton": "Decrease quantity",
-  "containers/CartItem/aria-increaseQuantityButton": "Increase quantity",
-  "containers/CartItem/removeProductButton": "Remove",
-  "containers/CartItem/sizeLabel": "Size",
-  "containers/CartSummary/shipping": "Shipping",
-  "containers/CartSummary/total": "Total"
+  "containers/App/partials/AppCartDrawer.js": {
+    "Bag": "",
+    "Close cart menu": "",
+    "To checkout": ""
+  },
+  "containers/App/partials/AppCookieBar.js": {
+    "Close cookie bar": "",
+    "We use cookies to give you the best user experience. By using our website you agree to our privacy policy.": ""
+  },
+  "containers/App/partials/AppHeader.js": {
+    "Go to the homepage": "",
+    "Toggle cart menu": "",
+    "Toggle main menu": "",
+    "Toggle search": ""
+  },
+  "containers/App/partials/AppMarketDialog.js": {
+    "Choose country and shipping": "",
+    "Choose country": "",
+    "Close market menu": "",
+    "Please select the country to which your order will be sent. This will give you accurate pricing: delivery times and shipping costs for your destination.": ""
+  },
+  "containers/App/partials/AppNavDrawer.js": {
+    "Country": "",
+    "Main navigation": ""
+  },
+  "containers/App/partials/AppSearchDrawer.js": {
+    "Search products": "",
+    "Submit search": ""
+  },
+  "containers/App/partials/AppSkipLink.js": {
+    "Skip to content": ""
+  },
+  "containers/CartItem/CartItem.js": {
+    "Decrease quantity to ${0}": "",
+    "Increase quantity to ${0}": "",
+    "Quantity": "",
+    "Remove": "",
+    "Size": ""
+  },
+  "containers/CartSummary/CartSummary.js": {
+    "Shipping": "",
+    "Total": ""
+  }
 }

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
-import makeStyles from '@material-ui/core/styles/makeStyles'
+import withStyles from '@material-ui/core/styles/withStyles'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from 'utils/constants'
 import AppContext from './AppContext'
 import AppCartDrawer from './partials/AppCartDrawer'
@@ -18,7 +18,7 @@ const AppCookieBar = dynamic(
   { ssr: false },
 )
 
-export const useStyles = makeStyles({
+export const styles = {
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -28,11 +28,10 @@ export const useStyles = makeStyles({
     flexGrow: 1,
     outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
   },
-})
+}
 
 function App(props) {
-  const { children, ...other } = props
-  const classes = useStyles(props)
+  const { children, classes, ...other } = props
 
   return (
     <div className={classes.root} {...other}>
@@ -63,6 +62,7 @@ function App(props) {
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
+  classes: PropTypes.object.isRequired,
 }
 
-export default App
+export default withStyles(styles)(App)

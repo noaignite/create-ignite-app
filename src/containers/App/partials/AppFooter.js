@@ -50,8 +50,7 @@ const AppFooter = React.memo(function AppFooter(props) {
                 <Link
                   className={classes.navlistItemText}
                   component={RouterLink}
-                  as={menuItem.url}
-                  href="/[...uri]"
+                  href={menuItem.url}
                   variant="button"
                 >
                   {menuItem.label}

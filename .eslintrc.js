@@ -7,6 +7,9 @@ module.exports = {
     browser: true,
     node: true,
   },
+  globals: {
+    __translationGroup: 'readonly',
+  },
   extends: ['plugin:import/recommended', 'airbnb', 'prettier'],
   parser: 'babel-eslint',
   parserOptions: {

@@ -53,7 +53,7 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
       className={classes.submitButton}
       disabled={!value}
       type="submit"
-      aria-label={t('containers/App/AppSearchDrawer/aria-submitButton', 'Submit search')}
+      aria-label={t(__translationGroup)`Submit search`}
     >
       <SearchIcon />
     </IconButton>
@@ -84,10 +84,7 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
           className={classes.textField}
           onChange={handleChange}
           value={value}
-          placeholder={t(
-            'containers/App/AppSearchDrawer/searchFieldPlaceholder',
-            'Search products',
-          )}
+          placeholder={t(__translationGroup)`Search products`}
           InputProps={{
             className: classes.inputBase,
             endAdornment: submitButton,

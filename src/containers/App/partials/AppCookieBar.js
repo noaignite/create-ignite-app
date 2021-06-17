@@ -50,9 +50,8 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
       <div className={classes.content}>
         <Typography variant="body2">
           {t(
-            'containers/App/AppCookieBar/text',
-            'We use cookies to give you the best user experience. By using our website you agree to our privacy policy.',
-          )}
+            __translationGroup,
+          )`We use cookies to give you the best user experience. By using our website you agree to our privacy policy.`}
         </Typography>
 
         <IconButton
@@ -60,7 +59,7 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
           color="inherit"
           edge="end"
           size="small"
-          aria-label={t('containers/App/AppCookieBar/aria-closeButton', 'Close cookie bar')}
+          aria-label={t(__translationGroup)`Close cookie bar`}
         >
           <CloseIcon />
         </IconButton>

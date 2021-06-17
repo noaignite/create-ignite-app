@@ -68,12 +68,7 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
       anchor="left"
       {...other}
     >
-      <nav
-        aria-label={t(
-          'containers/App/partials/AppNavDrawer/aria-mainNavigation',
-          'Main navigation',
-        )}
-      >
+      <nav aria-label={t(__translationGroup)`Main navigation`}>
         {menus.menuPrimary && (
           <ul className={classes.list}>
             {menus.menuPrimary.map((menuLink, idx) => (
@@ -100,7 +95,7 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
       </nav>
 
       <Typography variant="body2">
-        {t('containers/App/partials/AppNavDrawer/marketMenuButton', 'Country')}:{' '}
+        {t(__translationGroup)`Country`}:{' '}
         <Link // eslint-disable-line jsx-a11y/anchor-is-valid
           onClick={onMarketMenuToggle}
           component="button"

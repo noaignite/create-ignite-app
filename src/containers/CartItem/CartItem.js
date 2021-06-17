@@ -91,19 +91,19 @@ function CartItem(props) {
 
         <div className={classes.row}>
           <span>
-            {t('containers/CartItem/sizeLabel', 'Size')}: {cartItem.size}
+            {t(__translationGroup)`Size`}: {cartItem.size}
           </span>
         </div>
 
         <div className={classes.actionbar}>
-          <span>{t('containers/CartItem/quantityLabel', 'Quantity')}:</span>
+          <span>{t(__translationGroup)`Quantity`}:</span>
 
           <div className={classes.quantity}>
             <ButtonBase
               className={classes.quantityButton}
               onClick={onItemDecrease}
               value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
-              aria-label={t('containers/CartItem/aria-decreaseQuantityButton', 'Decrease quantity')}
+              aria-label={t(__translationGroup)`Decrease quantity to ${cartItem.quantity - 1}`}
             >
               <RemoveIcon color="inherit" fontSize="small" />
             </ButtonBase>
@@ -114,7 +114,7 @@ function CartItem(props) {
               className={classes.quantityButton}
               onClick={onItemIncrease}
               value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
-              aria-label={t('containers/CartItem/aria-increaseQuantityButton', 'Increase quantity')}
+              aria-label={t(__translationGroup)`Increase quantity to ${cartItem.quantity + 1}`}
             >
               <AddIcon color="inherit" fontSize="small" />
             </ButtonBase>
@@ -127,7 +127,7 @@ function CartItem(props) {
             value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
             color="primary"
           >
-            {t('containers/CartItem/removeProductButton', 'Remove')}
+            {t(__translationGroup)`Remove`}
           </Link>
         </div>
       </div>

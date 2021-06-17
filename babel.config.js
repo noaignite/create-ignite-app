@@ -25,6 +25,12 @@ module.exports = {
     'babel-plugin-optimize-clsx',
     'babel-plugin-lodash',
     [
+      'i18n-tag-translate',
+      {
+        groupDir: './src',
+      },
+    ],
+    [
       'babel-plugin-transform-imports',
       {
         '@material-ui/core': {

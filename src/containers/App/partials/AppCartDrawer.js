@@ -76,14 +76,14 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
       <Toolbar className={classes.toolbar}>
         <CartIcon />
         <Typography className={classes.toolbarLabel} variant="body1">
-          {t('containers/App/AppCartDrawer/headerLabel', 'Bag')}
+          {t(__translationGroup)`Bag`}
         </Typography>
 
         <IconButton
           className={classes.closeButton}
           onClick={onCartMenuClose}
           edge="end"
-          aria-label={t('containers/App/AppCartDrawer/aria-closeButton', 'Close cart menu')}
+          aria-label={t(__translationGroup)`Close cart menu`}
         >
           <CloseIcon />
         </IconButton>
@@ -95,7 +95,7 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
 
       <div className={classes.footer}>
         <Button component={RouterLink} href="/checkout" variant="contained" fullWidth>
-          {t('containers/App/AppCartDrawer/checkoutLink', 'To checkout')}
+          {t(__translationGroup)`To checkout`}
         </Button>
       </div>
     </AppDrawer>

@@ -27,7 +27,7 @@ const AppSkipLink = React.memo(function AppSkipLink(props) {
 
   return (
     <Button className={clsx(classes.root, className)} {...other}>
-      {t('containers/App/AppSkipLink/skipToContentButton', 'Skip to content')}
+      {t(__translationGroup)`Skip to content`}
     </Button>
   )
 })
