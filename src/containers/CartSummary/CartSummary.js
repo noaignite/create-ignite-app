@@ -31,10 +31,13 @@ export const styles = (theme) => ({
 })
 
 function CartSummary(props) {
-  const { items: itemsCtx, totals: totalsCtx } = useCheckoutSelection()
-  const { classes, className, items = itemsCtx, totals = totalsCtx } = props
+  const { classes, className, items: itemsProp, totals: totalsProp } = props
 
   const { t } = useI18n()
+  const selection = useCheckoutSelection()
+
+  const items = itemsProp || selection?.items
+  const totals = totalsProp || selection?.totals
 
   return (
     <div className={clsx(classes.root, className)}>
@@ -50,13 +53,13 @@ function CartSummary(props) {
 
       <div className={classes.summary}>
         <div>
-          + {t('containers/CartSummary/shipping', 'Shipping')}: {totals.shippingPrice}
+          + {t(__translationGroup)`Shipping`}: {totals.shippingPrice}
         </div>
       </div>
 
       <div className={classes.summary}>
         <div>
-          {t('containers/CartSummary/total', 'Total')}: {totals.grandTotalPrice}
+          {t(__translationGroup)`Total`}: {totals.grandTotalPrice}
         </div>
       </div>
     </div>
@@ -77,8 +80,8 @@ const totalsType = PropTypes.shape({
 CartSummary.propTypes = {
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  items: PropTypes.arrayOf(itemType).isRequired,
-  totals: totalsType.isRequired,
+  items: PropTypes.arrayOf(itemType),
+  totals: totalsType,
 }
 
 export default withStyles(styles)(CartSummary)
