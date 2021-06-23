@@ -31,6 +31,7 @@ module.exports = {
     /**
      * Custom rules
      */
+    '@next/next/no-img-element': 'off', // Perhaps better to have enabled?
     'arrow-body-style': 'off', // Don't enforce, readability firsthand.
     'react/sort-prop-types': 'off', // Too strict, no time for that
 
