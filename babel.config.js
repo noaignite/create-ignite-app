@@ -1,12 +1,4 @@
-const productionPlugins = [
-  '@babel/plugin-transform-react-constant-elements',
-  [
-    'babel-plugin-transform-react-remove-prop-types',
-    {
-      mode: 'unsafe-wrap',
-    },
-  ],
-]
+const productionPlugins = ['@babel/plugin-transform-react-constant-elements']
 
 module.exports = {
   presets: [
