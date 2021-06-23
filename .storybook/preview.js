@@ -4,9 +4,6 @@ import { global } from 'api/mock'
 import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
 import { AppProvider } from 'containers/App/AppContext'
 import createTheme from 'components/styles/createTheme'
-// As of NextJS 9, all global css *must* be imported in pages/_app.js
-// https://github.com/zeit/next.js/blob/master/errors/css-global.md
-import 'swiper/swiper-bundle.min.css'
 
 export const parameters = {
   layout: 'fullscreen',

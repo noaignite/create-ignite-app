@@ -1,4 +1,7 @@
 {
+  "blocks/ArticleSlideshow/ArticleSlideshow.js": {
+    "Read more": ""
+  },
   "containers/App/partials/AppCartDrawer.js": {
     "Bag": "",
     "Close cart menu": "",

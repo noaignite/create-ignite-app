@@ -10,9 +10,6 @@ import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
 import theme from 'utils/theme.light'
 import { AppProvider } from 'containers/App/AppContext'
 import AppBase from 'containers/App'
-// As of NextJS 9, all global css *must* be imported in pages/_app.js
-// https://github.com/zeit/next.js/blob/master/errors/css-global.md
-import 'swiper/swiper-bundle.min.css'
 
 /**
  * Monkey patches React to notify you about avoidable re-renders.
