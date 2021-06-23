@@ -3,10 +3,7 @@ require('dotenv').config()
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
-const withTranspileModules = require('next-transpile-modules')([
-  'dom7/dist/dom7.modular',
-  'swiper/js/swiper.esm',
-])
+const withTranspileModules = require('next-transpile-modules')(['swiper'])
 const { merge } = require('webpack-merge')
 const webpackBaseConfig = require('./webpackBaseConfig')
 
