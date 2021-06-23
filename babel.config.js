@@ -25,7 +25,7 @@ module.exports = {
     'babel-plugin-optimize-clsx',
     'babel-plugin-lodash',
     [
-      'i18n-tag-translate',
+      'babel-plugin-i18n-tag-translate',
       {
         groupDir: './src',
       },
