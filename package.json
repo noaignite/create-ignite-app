@@ -26,7 +26,8 @@
     "lint:ci": "eslint . --report-unused-disable-directives",
     "lint:fix": "eslint . --cache --fix",
     "prettier": "prettier . --check",
-    "prettier:fix": "prettier . --write"
+    "prettier:fix": "prettier . --write",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.js": [
@@ -37,11 +38,6 @@
       "yarn prettier:fix",
       "git add --force"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "dependencies": {
     "@material-ui/core": "4.11.4",
@@ -77,8 +73,8 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.7",
-    "husky": "^4.3.8",
-    "lint-staged": "^10.3.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
     "prettier": "^2.0.1",
     "webpack-merge": "^5.2.0"
   }
