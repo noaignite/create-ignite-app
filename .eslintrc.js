@@ -10,7 +10,7 @@ module.exports = {
   globals: {
     __translationGroup: 'readonly',
   },
-  extends: ['plugin:import/recommended', 'airbnb', 'prettier'],
+  extends: ['plugin:import/recommended', 'plugin:@next/next/recommended', 'airbnb', 'prettier'],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 7,
