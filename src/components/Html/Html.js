@@ -56,17 +56,12 @@ export const styles = (theme) => ({
 })
 
 const Html = React.forwardRef(function Html(props, ref) {
-  const { children, className, classes, component: Component = 'div', ...other } = props
+  const { className, classes, component: Component = 'div', ...other } = props
 
-  return (
-    <Component className={clsx(classes.root, className)} ref={ref} {...other}>
-      {children}
-    </Component>
-  )
+  return <Component className={clsx(classes.root, className)} ref={ref} {...other} />
 })
 
 Html.propTypes = {
-  children: PropTypes.node,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   component: PropTypes.elementType,
