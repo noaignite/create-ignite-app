@@ -15,13 +15,6 @@ module.exports = {
   ],
   plugins: [
     'babel-plugin-optimize-clsx',
-    'babel-plugin-lodash',
-    [
-      'babel-plugin-i18n-tag-translate',
-      {
-        groupDir: './src',
-      },
-    ],
     [
       'babel-plugin-transform-imports',
       {
@@ -31,6 +24,12 @@ module.exports = {
           transform: '@material-ui/core/esm/${member}',
           preventFullImport: true,
         },
+      },
+    ],
+    [
+      'babel-plugin-i18n-tag-translate',
+      {
+        groupDir: './src',
       },
     ],
   ],
