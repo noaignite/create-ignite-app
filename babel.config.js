@@ -8,55 +8,44 @@ const productionPlugins = [
   ],
 ]
 
-module.exports = function config(api) {
-  const isServer = api.caller((caller) => caller && caller.isServer)
-  const isCallerDevelopment = api.caller((caller) => caller && caller.isDev)
-
-  return {
-    presets: [
-      [
-        'next/babel',
-        {
-          // Target ES2015+ browsers
-          'preset-env': {
-            targets: 'Chrome >= 60, Safari >= 10.1, iOS >= 10.3, Firefox >= 54, Edge >= 15',
-            useBuiltIns: false,
-          },
-          // Monkey patches React to notify you about avoidable re-renders.
-          // Based on: https://github.com/vercel/next.js/tree/canary/examples/with-why-did-you-render
-          'preset-react': {
-            importSource:
-              !isServer && isCallerDevelopment ? '@welldone-software/why-did-you-render' : 'react',
-          },
+module.exports = {
+  presets: [
+    [
+      'next/babel',
+      {
+        // Target ES2015+ browsers
+        'preset-env': {
+          targets: 'Chrome >= 60, Safari >= 10.1, iOS >= 10.3, Firefox >= 54, Edge >= 15',
+          useBuiltIns: false,
         },
-      ],
-    ],
-    plugins: [
-      'babel-plugin-optimize-clsx',
-      'babel-plugin-lodash',
-      [
-        'babel-plugin-i18n-tag-translate',
-        {
-          groupDir: './src',
-        },
-      ],
-      [
-        'babel-plugin-transform-imports',
-        {
-          '@material-ui/core': {
-            // Use "transform: '@material-ui/core/${member}'," if your bundler does not support ES modules
-            // eslint-disable-next-line no-template-curly-in-string
-            transform: '@material-ui/core/esm/${member}',
-            preventFullImport: true,
-          },
-        },
-      ],
-    ],
-    env: {
-      development: {},
-      production: {
-        plugins: productionPlugins,
       },
+    ],
+  ],
+  plugins: [
+    'babel-plugin-optimize-clsx',
+    'babel-plugin-lodash',
+    [
+      'babel-plugin-i18n-tag-translate',
+      {
+        groupDir: './src',
+      },
+    ],
+    [
+      'babel-plugin-transform-imports',
+      {
+        '@material-ui/core': {
+          // Use "transform: '@material-ui/core/${member}'," if your bundler does not support ES modules
+          // eslint-disable-next-line no-template-curly-in-string
+          transform: '@material-ui/core/esm/${member}',
+          preventFullImport: true,
+        },
+      },
+    ],
+  ],
+  env: {
+    development: {},
+    production: {
+      plugins: productionPlugins,
     },
-  }
+  },
 }
