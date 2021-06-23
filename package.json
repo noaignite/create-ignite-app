@@ -69,7 +69,6 @@
     "babel-plugin-optimize-clsx": "^2.6.0",
     "babel-plugin-transform-imports": "^2.0.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
-    "chromatic": "^5.1.0",
     "eslint": "^7.4.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-next": "^11.0.1",
