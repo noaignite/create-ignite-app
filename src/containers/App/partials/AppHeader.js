@@ -3,7 +3,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import makeStyles from '@material-ui/core/styles/makeStyles'
+import { makeStyles } from '@material-ui/core/styles'
 import Badge from '@material-ui/core/Badge'
 import { useDimensions } from 'utils'
 import { useCheckoutSelection, useGlobal, useI18n } from 'api'

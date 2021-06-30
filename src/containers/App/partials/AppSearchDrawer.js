@@ -3,7 +3,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
-import makeStyles from '@material-ui/core/styles/makeStyles'
+import { makeStyles } from '@material-ui/core/styles'
 import { useI18n } from 'api'
 import { Search as SearchIcon } from 'components/icons'
 import { Container, IconButton, TextField } from 'components'

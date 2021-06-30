@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import withStyles from '@material-ui/core/styles/withStyles'
+import { withStyles } from '@material-ui/core/styles'
 import Collapse from '@material-ui/core/Collapse'
 import { menuLinkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
