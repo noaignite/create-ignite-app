@@ -7,19 +7,4 @@ module.exports = {
       test: path.join(__dirname, './test'),
     },
   },
-  module: {
-    rules: [
-      {
-        test: /\.(svg|otf|eot|ttf|woff|woff2|png)$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 100000,
-            publicPath: `/_next/public`,
-            outputPath: 'public',
-          },
-        },
-      },
-    ],
-  },
 }
