@@ -11,7 +11,7 @@ module.exports = {
     __translationGroup: 'readonly',
   },
   extends: ['plugin:import/recommended', 'plugin:@next/next/recommended', 'airbnb', 'prettier'],
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 7,
   },
