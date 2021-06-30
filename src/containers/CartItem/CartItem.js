@@ -61,11 +61,32 @@ export const styles = (theme) => ({
 })
 
 function CartItem(props) {
-  const { cartItem, classes, className } = props
+  const { cartItem, classes, className, hideActions } = props
   const { product } = cartItem
 
-  const { onItemDecrease, onItemIncrease, onItemRemove } = useCheckoutHandlers()
+  const { itemDecrease, itemIncrease, itemRemove } = useCheckoutHandlers()
   const { t } = useI18n()
+
+  const onItemDecrease = React.useCallback(
+    (event) => {
+      itemDecrease(event.currentTarget.value)
+    },
+    [itemDecrease],
+  )
+
+  const onItemIncrease = React.useCallback(
+    (event) => {
+      itemIncrease(event.currentTarget.value)
+    },
+    [itemIncrease],
+  )
+
+  const onItemRemove = React.useCallback(
+    (event) => {
+      itemRemove(event.currentTarget.value)
+    },
+    [itemRemove],
+  )
 
   return (
     <article className={clsx(classes.root, className)}>
@@ -95,41 +116,43 @@ function CartItem(props) {
           </span>
         </div>
 
-        <div className={classes.actionbar}>
-          <span>{t(__translationGroup)`Quantity`}:</span>
+        {!hideActions && (
+          <div className={classes.actionbar}>
+            <span>{t(__translationGroup)`Quantity`}:</span>
 
-          <div className={classes.quantity}>
-            <ButtonBase
-              className={classes.quantityButton}
-              onClick={onItemDecrease}
+            <div className={classes.quantity}>
+              <ButtonBase
+                className={classes.quantityButton}
+                onClick={onItemDecrease}
+                value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
+                aria-label={t(__translationGroup)`Decrease quantity to ${cartItem.quantity - 1}`}
+              >
+                <RemoveIcon color="inherit" fontSize="small" />
+              </ButtonBase>
+
+              <span className={classes.quantityLabel}>{cartItem.quantity}</span>
+
+              <ButtonBase
+                className={classes.quantityButton}
+                onClick={onItemIncrease}
+                value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
+                aria-label={t(__translationGroup)`Increase quantity to ${cartItem.quantity + 1}`}
+              >
+                <AddIcon color="inherit" fontSize="small" />
+              </ButtonBase>
+            </div>
+
+            <Link // eslint-disable-line jsx-a11y/anchor-is-valid
+              className={classes.removeButton}
+              component={ButtonBase}
+              onClick={onItemRemove}
               value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
-              aria-label={t(__translationGroup)`Decrease quantity to ${cartItem.quantity - 1}`}
+              color="primary"
             >
-              <RemoveIcon color="inherit" fontSize="small" />
-            </ButtonBase>
-
-            <span className={classes.quantityLabel}>{cartItem.quantity}</span>
-
-            <ButtonBase
-              className={classes.quantityButton}
-              onClick={onItemIncrease}
-              value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
-              aria-label={t(__translationGroup)`Increase quantity to ${cartItem.quantity + 1}`}
-            >
-              <AddIcon color="inherit" fontSize="small" />
-            </ButtonBase>
+              {t(__translationGroup)`Remove`}
+            </Link>
           </div>
-
-          <Link // eslint-disable-line jsx-a11y/anchor-is-valid
-            className={classes.removeButton}
-            component={ButtonBase}
-            onClick={onItemRemove}
-            value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
-            color="primary"
-          >
-            {t(__translationGroup)`Remove`}
-          </Link>
-        </div>
+        )}
       </div>
     </article>
   )
@@ -139,6 +162,7 @@ CartItem.propTypes = {
   cartItem: cartItemType.isRequired,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
+  hideActions: PropTypes.bool,
 }
 
 export default withStyles(styles)(CartItem)

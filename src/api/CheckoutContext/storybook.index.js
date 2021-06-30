@@ -1,7 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import actionWithPromise from 'api/utils/actionWithPromise'
-import formitActionWithPromise from 'api/utils/formitActionWithPromise'
 import {
   cartSelection,
   countries,
@@ -34,106 +33,85 @@ export function useCheckout() {
 export function CheckoutProvider(props) {
   const { children } = props
 
-  // Public handlers
+  // Storybook specific local state otherwise coming from @oakwood/accelerator
+  const [selection, setSelection] = React.useState({})
 
-  const onItemAdd = React.useCallback((event) => {
-    actionWithPromise('actionWithPromise')(event.currentTarget.value)
+  // API calls
+
+  const addNewsletterSubscriber = React.useCallback(async (...args) => {
+    await actionWithPromise('addNewsletterSubscriber')(...args)
   }, [])
 
-  const onItemRemove = React.useCallback((event) => {
-    actionWithPromise('onItemRemove')(event.currentTarget.value)
+  const itemAdd = React.useCallback(async (...args) => {
+    await actionWithPromise('itemAdd')(...args)
   }, [])
 
-  const onItemIncrease = React.useCallback((event) => {
-    actionWithPromise('onItemIncrease')(event.currentTarget.value)
+  const itemRemove = React.useCallback(async (...args) => {
+    await actionWithPromise('itemRemove')(...args)
   }, [])
 
-  const onItemDecrease = React.useCallback((event) => {
-    actionWithPromise('onItemDecrease')(event.currentTarget.value)
+  const itemDecrease = React.useCallback(async (...args) => {
+    await actionWithPromise('itemDecrease')(...args)
   }, [])
 
-  const onItemSizeChange = React.useCallback((event) => {
-    const { value } = event.target
-    const { 0: productId, 1: prevCartItemId, 2: prevCartItemQuantity } = value.split('/')
-    actionWithPromise('onItemSizeChange')(productId, prevCartItemId, prevCartItemQuantity)
+  const itemIncrease = React.useCallback(async (...args) => {
+    await actionWithPromise('itemIncrease')(...args)
   }, [])
 
-  const onItemQuantityChange = React.useCallback((event) => {
-    const { value } = event.target
-    const { 0: cartItemId, 1: quantity } = value.split('/')
-    actionWithPromise('onItemQuantityChange')(cartItemId, quantity)
+  const voucherAdd = React.useCallback(async (...args) => {
+    await actionWithPromise('voucherAdd')(...args)
   }, [])
 
-  const onPaymentMethodChange = React.useCallback((event) => {
-    actionWithPromise('onPaymentMethodChange')(event.target.value)
+  const voucherRemove = React.useCallback(async (...args) => {
+    await actionWithPromise('voucherRemove')(...args)
   }, [])
 
-  const onShippingMethodChange = React.useCallback((event) => {
-    actionWithPromise('onShippingMethodChange')(event.target.value)
+  const setCountry = React.useCallback(async (...args) => {
+    await actionWithPromise('setCountry')(...args)
   }, [])
 
-  const onCountryChange = React.useCallback((event) => {
-    actionWithPromise('onCountryChange')(event.target.value)
+  const setPaymentMethod = React.useCallback(async (...args) => {
+    await actionWithPromise('setPaymentMethod')(...args)
+    setSelection((prev) => ({ ...prev, paymentMethod: args[0] }))
   }, [])
 
-  const onLanguageChange = React.useCallback((event) => {
-    actionWithPromise('onLanguageChange')(event.target.value)
+  const setShippingMethod = React.useCallback(async (...args) => {
+    await actionWithPromise('setShippingMethod')(...args)
+    setSelection((prev) => ({ ...prev, shippingMethod: args[0] }))
   }, [])
 
-  const onVoucherSubmit = React.useCallback(async (values, { setSubmitting }) => {
-    setSubmitting(true)
-
-    try {
-      await formitActionWithPromise('onVoucherSubmit')(values.voucher)
-    } catch (err) {
-      console.error(err)
-    }
-
-    setSubmitting(false)
-  }, [])
-
-  const onCheckoutSubmit = React.useCallback(async (values, { setSubmitting }) => {
-    setSubmitting(true)
-
-    try {
-      await formitActionWithPromise('onCheckoutSubmit')(values)
-    } catch (err) {
-      console.error(err)
-    }
-
-    setSubmitting(false)
+  const paymentSubmit = React.useCallback(async (...args) => {
+    await actionWithPromise('paymentSubmit')(...args)
   }, [])
 
   // Memoize handlers context separately so that one can subscribe
   // to them without re-rendering on state updates.
   const handlersContextValue = React.useMemo(
     () => ({
-      onItemAdd,
-      onItemRemove,
-      onItemIncrease,
-      onItemDecrease,
-      onItemSizeChange,
-      onItemQuantityChange,
-      onPaymentMethodChange,
-      onShippingMethodChange,
-      onCountryChange,
-      onLanguageChange,
-      onVoucherSubmit,
-      onCheckoutSubmit,
+      addNewsletterSubscriber,
+      itemAdd,
+      itemDecrease,
+      itemIncrease,
+      itemRemove,
+      paymentSubmit,
+      setCountry,
+      setPaymentMethod,
+      setShippingMethod,
+      voucherAdd,
+      voucherRemove,
     }),
     [
-      onItemAdd,
-      onItemRemove,
-      onItemIncrease,
-      onItemDecrease,
-      onItemSizeChange,
-      onItemQuantityChange,
-      onPaymentMethodChange,
-      onShippingMethodChange,
-      onCountryChange,
-      onLanguageChange,
-      onVoucherSubmit,
-      onCheckoutSubmit,
+      addNewsletterSubscriber,
+      itemAdd,
+      itemDecrease,
+      itemIncrease,
+      itemRemove,
+      paymentSubmit,
+      setCountry,
+      setPaymentMethod,
+      setShippingMethod,
+      voucherAdd,
+      voucherRemove,
     ],
   )
 
@@ -143,7 +121,10 @@ export function CheckoutProvider(props) {
     languages,
     location,
     paymentMethods,
-    selection: cartSelection,
+    selection: {
+      ...cartSelection,
+      ...selection,
+    },
     shippingMethods,
   }
 

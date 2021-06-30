@@ -34,10 +34,17 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
   const { isMarketMenuOpen, onMarketMenuClose, ...other } = props
   const classes = useStyles(props)
 
-  const { location, countries, onCountryChange } = useCheckout()
+  const { location, countries, setCountry } = useCheckout()
   const { t } = useI18n()
 
   const isBreakpointUp = useMediaQuery((theme) => theme.breakpoints.up('sm'))
+
+  const handleCountryChange = React.useCallback(
+    (event) => {
+      setCountry(event.target.value)
+    },
+    [setCountry],
+  )
 
   return (
     <Dialog
@@ -79,7 +86,7 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
         </Typography>
 
         <TextField
-          onChange={onCountryChange}
+          onChange={handleCountryChange}
           value={location.country}
           label={t(__translationGroup)`Choose country`}
           margin="normal"
