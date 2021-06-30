@@ -7,5 +7,5 @@ export * from './GlobalContext'
 export { default as I18nContext } from './I18nContext'
 export * from './I18nContext'
 
-// @todo Replace mocked api calls with real implementation.
-export { addNewsletterSubscriber } from './storybook.index'
+/** @todo Replace mocked api calls with real implementation. */
+export { fetchProducts, useReceipt } from './storybook.index'
