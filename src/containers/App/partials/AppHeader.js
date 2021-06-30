@@ -75,6 +75,7 @@ const AppHeader = React.memo(function AppHeader(props) {
     onCartMenuToggle,
     onNavMenuToggle,
     onSearchMenuToggle,
+    productsCount,
     ...other
   } = props
   const classes = useStyles(props)
@@ -82,9 +83,6 @@ const AppHeader = React.memo(function AppHeader(props) {
   const { t } = useI18n()
   const { settings } = useGlobal()
   const [rootRef, dimensions] = useDimensions()
-
-  const { totals: cartTotals } = useCheckoutSelection()
-  const totalCartItems = React.useMemo(() => cartTotals?.totalQuantity ?? 0, [cartTotals])
 
   const [disableTransparency, setDisableTransparency] = React.useState(undefined)
   const syncDisableTransparency = React.useCallback(() => {
@@ -194,7 +192,7 @@ const AppHeader = React.memo(function AppHeader(props) {
           {isCartMenuOpen ? (
             <CloseIcon />
           ) : (
-            <Badge badgeContent={totalCartItems} color="primary" overlap="circle">
+            <Badge badgeContent={productsCount} color="primary" overlap="circle">
               <CartIcon />
             </Badge>
           )}
@@ -214,6 +212,7 @@ AppHeader.propTypes = {
   onCartMenuToggle: PropTypes.func,
   onNavMenuToggle: PropTypes.func,
   onSearchMenuToggle: PropTypes.func,
+  productsCount: PropTypes.number,
 }
 
 function AppHeaderContainer(props) {
@@ -228,6 +227,7 @@ function AppHeaderContainer(props) {
     onNavMenuToggle,
     onSearchMenuToggle,
   } = useApp()
+  const { items } = useCheckoutSelection()
 
   if (hideHeader) {
     return null
@@ -243,6 +243,7 @@ function AppHeaderContainer(props) {
       onCartMenuToggle={onCartMenuToggle}
       onNavMenuToggle={onNavMenuToggle}
       onSearchMenuToggle={onSearchMenuToggle}
+      productsCount={items.length}
       {...props}
     />
   )
