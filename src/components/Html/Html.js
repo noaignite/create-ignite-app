@@ -41,6 +41,7 @@ export const styles = (theme) => ({
       },
       img: {
         display: 'block',
+        width: '100%',
       },
       hr: {
         height: 1,

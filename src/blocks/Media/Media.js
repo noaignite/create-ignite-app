@@ -4,13 +4,12 @@ import OuiMedia from '@oakwood/oui/Media'
 import MediaReveal from '@oakwood/oui/MediaReveal'
 import { mediaType } from 'utils'
 import Container from 'components/Container'
-import Section from 'components/Section'
 
 function Media(props) {
   const { mediaProps, renderIndex } = props
 
   return (
-    <Section>
+    <section>
       <Container>
         <MediaReveal>
           <OuiMedia
@@ -22,7 +21,7 @@ function Media(props) {
           />
         </MediaReveal>
       </Container>
-    </Section>
+    </section>
   )
 }
 

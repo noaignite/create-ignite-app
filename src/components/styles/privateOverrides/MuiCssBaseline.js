@@ -12,6 +12,19 @@ const styles = (theme) => ({
       //   `,
       // },
     ],
+    // Define :root css variables.
+    ':root': {
+      '--coa-theme-spacing': `${theme.spacing(1)}px`,
+      '--coa-section-spacing': `${theme.spacing(4)}px`,
+      '--coa-container-spacing': `${theme.spacing(2)}px`,
+      '--coa-toolbar-dense-min-height': '48px',
+      '--coa-toolbar-min-height': '56px',
+      '--coa-toolbar-spacing': `${theme.spacing(2)}px`,
+      [theme.breakpoints.up('sm')]: {
+        '--coa-section-spacing': `${theme.spacing(6)}px`,
+        '--coa-container-spacing': `${theme.spacing(4)}px`,
+      },
+    },
     // Opinionated defaults taken from sanitize.css
     // https://github.com/csstools/sanitize.css
     'iframe, img, input, select, textarea': {
@@ -29,7 +42,6 @@ const styles = (theme) => ({
       fill: 'currentColor',
     },
     // Custom global css
-    ':root': theme.mixins.root,
     '[type="search"]::-webkit-search-cancel-button, [type="search"]::-webkit-search-decoration': {
       WebkitAppearance: 'none',
       appearance: 'none',

@@ -24,20 +24,7 @@ export default function createMixins(breakpoints, spacing, mixins) {
   }
 
   return {
-    // Global
-    root: {
-      '--coa-theme-spacing': `${spacing(1)}px`,
-      '--coa-section-spacing': `${spacing(4)}px`,
-      '--coa-container-spacing': `${spacing(2)}px`,
-      '--coa-content-max-width': `640px`,
-      '--coa-toolbar-dense-min-height': '48px',
-      '--coa-toolbar-min-height': '56px',
-      '--coa-toolbar-spacing': `${spacing(2)}px`,
-      [breakpoints.up('sm')]: {
-        '--coa-section-spacing': `${spacing(6)}px`,
-        '--coa-container-spacing': `${spacing(4)}px`,
-      },
-    },
+    // Components
     toolbar: {
       // Override Mui styles
       minHeight: 'var(--coa-toolbar-min-height)',

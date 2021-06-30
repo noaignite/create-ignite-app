@@ -3,20 +3,14 @@ import PropTypes from 'prop-types'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Container from 'components/Container'
 import Html from 'components/Html'
-import Section from 'components/Section'
 
 export const styles = {
   root: {
+    position: 'relative',
+    margin: 'var(--coa-section-spacing) 0',
     '@global': {
       'h1, h2, h3, h4, h5, h6, p, ol, ul, blockquote': {
         maxWidth: 480,
-      },
-      figure: {
-        marginLeft: 'calc(var(--container-spacing, 0px) * -1)',
-        marginRight: 'calc(var(--container-spacing, 0px) * -1)',
-      },
-      'figure img': {
-        width: '100%',
       },
       '.wp-block-video, .wp-block-embed__wrapper': {
         display: 'block',
@@ -55,11 +49,11 @@ function Content(props) {
   }
 
   return (
-    <Section className={classes.root} gutters="margin">
+    <section className={classes.root}>
       <Container className={classes.main} maxWidth="md">
         <Html {...componentProps} />
       </Container>
-    </Section>
+    </section>
   )
 }
 

@@ -11,7 +11,6 @@ import RouterLink from 'containers/RouterLink'
 import BlockButton from 'components/BlockButton'
 import Button from 'components/Button'
 import Container from 'components/Container'
-import Section from 'components/Section'
 import Typography from 'components/Typography'
 
 function getSlideWidth(slidesPerView, spacing) {
@@ -20,7 +19,10 @@ function getSlideWidth(slidesPerView, spacing) {
 }
 
 export const styles = (theme) => ({
-  root: {},
+  root: {
+    position: 'relative',
+    margin: 'var(--coa-section-spacing) 0',
+  },
   header: {
     textAlign: 'center',
   },
@@ -68,7 +70,7 @@ function ArticleSlideshow(props) {
   })
 
   return (
-    <Section className={classes.root} gutters="margin">
+    <section className={classes.root}>
       {heading && (
         <Container className={classes.header} component="header" maxWidth="sm">
           <Typography component="h1" variant="h4">
@@ -114,7 +116,7 @@ function ArticleSlideshow(props) {
           </div>
         </div>
       </Container>
-    </Section>
+    </section>
   )
 }
 

@@ -6,11 +6,11 @@ import { useGlobal } from 'api'
 import RouterLink from 'containers/RouterLink'
 import Container from 'components/Container'
 import Link from 'components/Link'
-import Section from 'components/Section'
 import { useApp } from '../AppContext'
 
 export const useStyles = makeStyles((theme) => ({
   root: {
+    padding: 'var(--coa-section-spacing) 0',
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.getContrastText(theme.palette.text.primary),
   },
@@ -36,12 +36,7 @@ const AppFooter = React.memo(function AppFooter(props) {
   const { menus } = useGlobal()
 
   return (
-    <Section
-      className={clsx(classes.root, className)}
-      component="footer"
-      gutters="padding"
-      {...other}
-    >
+    <footer className={clsx(classes.root, className)} {...other}>
       <Container className={classes.mainDetails}>
         <nav className={classes.nav}>
           <ul className={classes.navlist}>
@@ -60,7 +55,7 @@ const AppFooter = React.memo(function AppFooter(props) {
           </ul>
         </nav>
       </Container>
-    </Section>
+    </footer>
   )
 })
 
