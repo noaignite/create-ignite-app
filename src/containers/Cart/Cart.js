@@ -1,35 +1,53 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import withStyles from '@material-ui/core/styles/withStyles'
-import { useCheckoutSelection } from 'api'
+import makeStyles from '@material-ui/core/styles/makeStyles'
+import { useCheckoutSelection, useI18n } from 'api'
+import { cartItemType } from 'utils'
 import CartItem from 'containers/CartItem'
 import CartSummary from 'containers/CartSummary'
+import Typography from 'components/Typography'
 
-export const styles = (theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  items: {
-    ...theme.mixins.verticalRhythm(2),
-    flexGrow: 1,
-  },
-  summary: {
-    marginTop: 'var(--coa-toolbar-spacing)',
-  },
-})
+export const useStyles = makeStyles(
+  (theme) => ({
+    root: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    items: {
+      ...theme.mixins.verticalRhythm(2),
+      flexGrow: 1,
+    },
+    summary: {
+      marginTop: 'var(--coa-toolbar-spacing)',
+    },
+    emptyLabel: {
+      margin: 'auto',
+      textAlign: 'center',
+    },
+  }),
+  { name: 'Cart' },
+)
 
 function Cart(props) {
-  const { classes, className } = props
+  const { CartItemProps, className, items } = props
+  const classes = useStyles(props)
 
-  const { items } = useCheckoutSelection()
+  const { t } = useI18n()
+
+  if (!items?.length) {
+    return (
+      <Typography className={classes.emptyLabel} component="p" variant="subtitle1">
+        {t(__translationGroup)`Empty cart`}
+      </Typography>
+    )
+  }
 
   return (
     <div className={clsx(classes.root, className)}>
       <div className={classes.items}>
         {items.map((cartItem, idx) => (
-          <CartItem key={idx} cartItem={cartItem} />
+          <CartItem key={idx} cartItem={cartItem} {...CartItemProps} />
         ))}
       </div>
 
@@ -39,8 +57,15 @@ function Cart(props) {
 }
 
 Cart.propTypes = {
-  classes: PropTypes.object.isRequired,
+  CartItemProps: PropTypes.object,
   className: PropTypes.string,
+  items: PropTypes.arrayOf(cartItemType).isRequired,
 }
 
-export default withStyles(styles)(Cart)
+function CartContainer(props) {
+  const { items } = useCheckoutSelection()
+
+  return <Cart items={items} {...props} />
+}
+
+export default CartContainer

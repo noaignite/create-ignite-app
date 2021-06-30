@@ -34,6 +34,9 @@
   "containers/App/partials/AppSkipLink.js": {
     "Skip to content": ""
   },
+  "containers/Cart/Cart.js": {
+    "Empty cart": ""
+  },
   "containers/CartItem/CartItem.js": {
     "Decrease quantity to ${0}": "",
     "Increase quantity to ${0}": "",
