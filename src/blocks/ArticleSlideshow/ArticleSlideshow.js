@@ -7,11 +7,8 @@ import MediaReveal from '@oakwood/oui/MediaReveal'
 import { useI18n } from 'api'
 import { ASPECT_RATIOS } from 'utils/constants'
 import { mediaType } from 'utils'
-import RouterLink from 'containers/RouterLink'
-import BlockButton from 'components/BlockButton'
-import Button from 'components/Button'
-import Container from 'components/Container'
-import Typography from 'components/Typography'
+import { RouterLink } from 'containers'
+import { BlockButton, Button, Container, Typography } from 'components'
 
 function getSlideWidth(slidesPerView, spacing) {
   const totalSpacing = spacing * (slidesPerView - 1) // Subtract last slide spacing.

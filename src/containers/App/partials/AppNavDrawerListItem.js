@@ -5,9 +5,8 @@ import withStyles from '@material-ui/core/styles/withStyles'
 import Collapse from '@material-ui/core/Collapse'
 import { menuLinkType } from 'utils'
 import RouterLink from 'containers/RouterLink'
-import AddIcon from 'components/icons/Add'
-import RemoveIcon from 'components/icons/Remove'
-import Link from 'components/Link'
+import { Add as AddIcon, Remove as RemoveIcon } from 'components/icons'
+import { Link } from 'components'
 
 export const styles = {
   list: {},

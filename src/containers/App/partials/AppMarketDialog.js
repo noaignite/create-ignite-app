@@ -9,11 +9,8 @@ import DialogContent from '@material-ui/core/DialogContent'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Slide from '@material-ui/core/Slide'
 import { useCheckout, useI18n } from 'api'
-import CloseIcon from 'components/icons/Close'
-import IconButton from 'components/IconButton'
-import MenuItem from 'components/MenuItem'
-import TextField from 'components/TextField'
-import Typography from 'components/Typography'
+import { Close as CloseIcon } from 'components/icons'
+import { IconButton, MenuItem, TextField, Typography } from 'components'
 import { useApp } from '../AppContext'
 
 export const useStyles = makeStyles((theme) => ({

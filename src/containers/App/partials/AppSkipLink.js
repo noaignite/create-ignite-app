@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { useI18n } from 'api'
-import Button from 'components/Button'
+import { Button } from 'components'
 
 export const useStyles = makeStyles((theme) => ({
   root: {

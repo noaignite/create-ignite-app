@@ -5,11 +5,8 @@ import BackgroundMedia from '@oakwood/oui/BackgroundMedia'
 import Media from '@oakwood/oui/Media'
 import MediaReveal from '@oakwood/oui/MediaReveal'
 import { mediaType } from 'utils'
-import RouterLink from 'containers/RouterLink'
-import BlockButton from 'components/BlockButton'
-import Button from 'components/Button'
-import Container from 'components/Container'
-import Typography from 'components/Typography'
+import { RouterLink } from 'containers'
+import { BlockButton, Button, Container, Typography } from 'components'
 
 const BREAKPOINT_KEY_UP = 'sm'
 

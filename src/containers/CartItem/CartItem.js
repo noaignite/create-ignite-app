@@ -9,9 +9,8 @@ import { ASPECT_RATIOS, CENTRA_CART_ITEM_UNIQUE_KEY } from 'utils/constants'
 import { useCheckoutHandlers, useI18n } from 'api'
 import { cartItemType } from 'utils'
 import RouterLink from 'containers/RouterLink'
-import AddIcon from 'components/icons/Add'
-import RemoveIcon from 'components/icons/Remove'
-import Link from 'components/Link'
+import { Add as AddIcon, Remove as RemoveIcon } from 'components/icons'
+import { Link } from 'components'
 
 export const styles = (theme) => ({
   root: {
@@ -61,7 +60,7 @@ export const styles = (theme) => ({
 })
 
 function CartItem(props) {
-  const { cartItem, classes, className, hideActions } = props
+  const { cartItem, classes, className, disableActions } = props
   const { product } = cartItem
 
   const { itemDecrease, itemIncrease, itemRemove } = useCheckoutHandlers()
@@ -116,7 +115,7 @@ function CartItem(props) {
           </span>
         </div>
 
-        {!hideActions && (
+        {!disableActions && (
           <div className={classes.actionbar}>
             <span>{t(__translationGroup)`Quantity`}:</span>
 
@@ -162,7 +161,7 @@ CartItem.propTypes = {
   cartItem: cartItemType.isRequired,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
-  hideActions: PropTypes.bool,
+  disableActions: PropTypes.bool,
 }
 
 export default withStyles(styles)(CartItem)

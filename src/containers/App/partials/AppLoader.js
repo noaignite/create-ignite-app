@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import Router from 'next/router'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import Backdrop from 'components/Backdrop'
+import { Backdrop } from 'components'
 
 export const useStyles = makeStyles((theme) => ({
   root: {

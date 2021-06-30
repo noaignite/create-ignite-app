@@ -4,8 +4,7 @@ import clsx from 'clsx'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { useGlobal } from 'api'
 import RouterLink from 'containers/RouterLink'
-import Container from 'components/Container'
-import Link from 'components/Link'
+import { Container, Link } from 'components'
 import { useApp } from '../AppContext'
 
 export const useStyles = makeStyles((theme) => ({

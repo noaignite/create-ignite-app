@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import { debounce } from '@material-ui/core/utils'
 
-const AppHandlersContext = React.createContext({})
+export const AppHandlersContext = React.createContext({})
 const AppContext = React.createContext({})
 
 if (process.env.NODE_ENV !== 'production') {

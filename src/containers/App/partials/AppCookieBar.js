@@ -4,9 +4,8 @@ import clsx from 'clsx'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import Snackbar from '@material-ui/core/Snackbar'
 import { useI18n } from 'api'
-import CloseIcon from 'components/icons/Close'
-import IconButton from 'components/IconButton'
-import Typography from 'components/Typography'
+import { Close as CloseIcon } from 'components/icons'
+import { IconButton, Typography } from 'components'
 
 export const useStyles = makeStyles((theme) => ({
   root: {

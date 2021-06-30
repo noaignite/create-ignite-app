@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import OuiMedia from '@oakwood/oui/Media'
 import MediaReveal from '@oakwood/oui/MediaReveal'
 import { mediaType } from 'utils'
-import Container from 'components/Container'
+import { Container } from 'components'
 
 function Media(props) {
   const { mediaProps, renderIndex } = props

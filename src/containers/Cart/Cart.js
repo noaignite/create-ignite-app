@@ -6,7 +6,7 @@ import { useCheckoutSelection, useI18n } from 'api'
 import { cartItemType } from 'utils'
 import CartItem from 'containers/CartItem'
 import CartSummary from 'containers/CartSummary'
-import Typography from 'components/Typography'
+import { Typography } from 'components'
 
 export const useStyles = makeStyles(
   (theme) => ({

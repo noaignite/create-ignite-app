@@ -1,8 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import withStyles from '@material-ui/core/styles/withStyles'
-import Container from 'components/Container'
-import Html from 'components/Html'
+import { Container, Html } from 'components'
 
 export const styles = {
   root: {

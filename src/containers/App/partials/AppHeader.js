@@ -8,14 +8,14 @@ import Badge from '@material-ui/core/Badge'
 import { useDimensions } from 'utils'
 import { useCheckoutSelection, useGlobal, useI18n } from 'api'
 import RouterLink from 'containers/RouterLink'
-import BrandIcon from 'components/icons/Brand'
-import CartIcon from 'components/icons/Cart'
-import SearchIcon from 'components/icons/Search'
-import CloseIcon from 'components/icons/Close'
-import MenuIcon from 'components/icons/Menu'
-import AppBar from 'components/AppBar'
-import IconButton from 'components/IconButton'
-import Toolbar from 'components/Toolbar'
+import {
+  Brand as BrandIcon,
+  Cart as CartIcon,
+  Search as SearchIcon,
+  Close as CloseIcon,
+  Menu as MenuIcon,
+} from 'components/icons'
+import { AppBar, IconButton, Toolbar } from 'components'
 import { useApp } from '../AppContext'
 
 const BREAKPOINT_KEY_DOWN = 'sm'
