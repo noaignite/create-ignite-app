@@ -6,10 +6,10 @@ import dynamic from 'next/dynamic'
 import { makeStyles } from '@material-ui/core/styles'
 import { CircularProgress } from '@material-ui/core'
 import { useI18n } from 'api'
-import { useApp } from 'containers/App/AppContext'
-import RouterLink from 'containers/RouterLink'
 import { Cart as CartIcon, Close as CloseIcon } from 'components/icons'
 import { Button, IconButton, Toolbar, Typography } from 'components'
+import RouterLink from '../../RouterLink'
+import { useApp } from '../AppContext'
 import AppDrawer from './AppDrawer'
 
 const Cart = dynamic(() => import(/* webpackChunkName: "containers/Cart" */ 'containers/Cart'), {

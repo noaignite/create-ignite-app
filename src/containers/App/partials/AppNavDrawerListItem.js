@@ -4,9 +4,9 @@ import clsx from 'clsx'
 import { withStyles } from '@material-ui/core/styles'
 import { Collapse } from '@material-ui/core'
 import { menuLinkType } from 'utils'
-import RouterLink from 'containers/RouterLink'
 import { Add as AddIcon, Remove as RemoveIcon } from 'components/icons'
 import { Link } from 'components'
+import RouterLink from '../../RouterLink'
 
 export const styles = {
   list: {},

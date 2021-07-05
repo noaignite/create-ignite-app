@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import { useGlobal } from 'api'
-import RouterLink from 'containers/RouterLink'
 import { Container, Link } from 'components'
 import { useApp } from '../AppContext'
+import RouterLink from '../../RouterLink'
 
 export const useStyles = makeStyles((theme) => ({
   root: {

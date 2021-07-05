@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Media from '@oakwood/oui/Media'
+import { Media } from '@oakwood/oui'
 import BlockButton from './BlockButton'
 
 export default {

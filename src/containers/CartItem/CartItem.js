@@ -3,14 +3,13 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { withStyles } from '@material-ui/core/styles'
 import { ButtonBase } from '@material-ui/core'
-import Media from '@oakwood/oui/Media'
-import MediaReveal from '@oakwood/oui/MediaReveal'
+import { Media, MediaReveal } from '@oakwood/oui'
 import { ASPECT_RATIOS, CENTRA_CART_ITEM_UNIQUE_KEY } from 'utils/constants'
 import { useCheckoutHandlers, useI18n } from 'api'
 import { cartItemType } from 'utils'
-import RouterLink from 'containers/RouterLink'
 import { Add as AddIcon, Remove as RemoveIcon } from 'components/icons'
 import { Link } from 'components'
+import RouterLink from '../RouterLink'
 
 export const styles = (theme) => ({
   root: {

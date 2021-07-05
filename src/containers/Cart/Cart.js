@@ -4,9 +4,9 @@ import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import { useCheckoutSelection, useI18n } from 'api'
 import { cartItemType } from 'utils'
-import CartItem from 'containers/CartItem'
-import CartSummary from 'containers/CartSummary'
 import { Typography } from 'components'
+import CartItem from '../CartItem'
+import CartSummary from '../CartSummary'
 
 export const useStyles = makeStyles(
   (theme) => ({

@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import { Dialog, DialogTitle, DialogContent, useMediaQuery, Slide } from '@material-ui/core'
 import { useCheckout, useI18n } from 'api'
-import { useApp } from 'containers/App/AppContext'
 import { Close as CloseIcon } from 'components/icons'
 import { IconButton, MenuItem, TextField, Typography } from 'components'
+import { useApp } from '../AppContext'
 
 export const useStyles = makeStyles((theme) => ({
   root: {},

@@ -1,7 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import OuiMedia from '@oakwood/oui/Media'
-import MediaReveal from '@oakwood/oui/MediaReveal'
+import { Media as OuiMedia, MediaReveal } from '@oakwood/oui'
 import { mediaType } from 'utils'
 import { Container } from 'components'
 

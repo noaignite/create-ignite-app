@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Badge } from '@material-ui/core'
 import { useCheckoutSelection, useGlobal, useI18n } from 'api'
 import { useDimensions } from 'utils'
-import RouterLink from 'containers/RouterLink'
 import {
   Brand as BrandIcon,
   Cart as CartIcon,
@@ -16,6 +15,7 @@ import {
   Menu as MenuIcon,
 } from 'components/icons'
 import { AppBar, IconButton, Toolbar } from 'components'
+import RouterLink from '../../RouterLink'
 import { useApp } from '../AppContext'
 
 const BREAKPOINT_KEY_DOWN = 'sm'
