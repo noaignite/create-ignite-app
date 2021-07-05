@@ -1,6 +1,6 @@
 // import '../scripts/wdyr'
-import ThemeProvider from '@material-ui/styles/ThemeProvider'
-import CssBaseline from '@material-ui/core/CssBaseline'
+import { ThemeProvider } from '@material-ui/styles'
+import { CssBaseline } from '@material-ui/core'
 import { global } from 'api/mock'
 import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
 import { AppProvider } from 'containers/App/AppContext'
