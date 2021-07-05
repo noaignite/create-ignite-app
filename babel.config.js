@@ -16,17 +16,6 @@ module.exports = {
   plugins: [
     'babel-plugin-optimize-clsx',
     [
-      'babel-plugin-transform-imports',
-      {
-        '@material-ui/core': {
-          // Use "transform: '@material-ui/core/${member}'," if your bundler does not support ES modules
-          // eslint-disable-next-line no-template-curly-in-string
-          transform: '@material-ui/core/esm/${member}',
-          preventFullImport: true,
-        },
-      },
-    ],
-    [
       'babel-plugin-i18n-tag-translate',
       {
         groupDir: './src',

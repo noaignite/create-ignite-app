@@ -62,7 +62,6 @@
     "@welldone-software/why-did-you-render": "^6.0.3",
     "babel-plugin-i18n-tag-translate": "^2.0.0",
     "babel-plugin-optimize-clsx": "^2.6.0",
-    "babel-plugin-transform-imports": "^2.0.0",
     "eslint": "^7.4.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-next": "^11.0.1",
