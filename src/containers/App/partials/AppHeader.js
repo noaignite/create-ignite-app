@@ -4,9 +4,9 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
-import Badge from '@material-ui/core/Badge'
-import { useDimensions } from 'utils'
+import { Badge } from '@material-ui/core'
 import { useCheckoutSelection, useGlobal, useI18n } from 'api'
+import { useDimensions } from 'utils'
 import RouterLink from 'containers/RouterLink'
 import {
   Brand as BrandIcon,

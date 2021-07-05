@@ -4,7 +4,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { withStyles } from '@material-ui/core/styles'
-import Drawer from '@material-ui/core/Drawer'
+import { Drawer } from '@material-ui/core'
 
 export const styles = (theme) => ({
   root: {
