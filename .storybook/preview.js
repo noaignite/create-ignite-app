@@ -5,6 +5,10 @@ import { global } from 'api/mock'
 import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
 import { AppProvider } from 'containers/App/AppContext'
 import createTheme from 'components/styles/createTheme'
+import smoothscroll from 'smoothscroll-polyfill'
+
+// Initialize polyfills
+smoothscroll.polyfill()
 
 export const parameters = {
   layout: 'fullscreen',
