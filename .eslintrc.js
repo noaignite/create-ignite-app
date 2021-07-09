@@ -59,6 +59,13 @@ module.exports = {
     'import/named': 'off',
     // Missing yarn workspace support
     'import/no-extraneous-dependencies': 'off',
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
+        'newlines-between': 'never',
+      },
+    ],
 
     'jsx-a11y/label-has-associated-control': 'off',
     'jsx-a11y/no-autofocus': 'off',
