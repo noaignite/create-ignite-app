@@ -1,5 +1,5 @@
 import { deepmerge } from '@material-ui/utils'
-import { fade } from '@material-ui/core/styles/colorManipulator'
+import { alpha } from '@material-ui/core/styles'
 import blue from '../colors/blue'
 import blueGrey from '../colors/blueGrey'
 import common from '../colors/common'
@@ -14,11 +14,11 @@ export const light = {
     // The most important text.
     primary: common.black,
     // Secondary text.
-    secondary: fade(common.black, 0.65),
+    secondary: alpha(common.black, 0.65),
     // Disabled text have even lower visual prominence.
-    disabled: fade(common.black, 0.4),
+    disabled: alpha(common.black, 0.4),
     // Text hints.
-    hint: fade(common.black, 0.4),
+    hint: alpha(common.black, 0.4),
   },
   // The color used to divide different elements.
   divider: 'rgba(0, 0, 0, 0.12)',
@@ -52,9 +52,9 @@ export const light = {
 export const dark = {
   text: {
     primary: common.white,
-    secondary: fade(common.white, 0.65),
-    disabled: fade(common.white, 0.4),
-    hint: fade(common.white, 0.4),
+    secondary: alpha(common.white, 0.65),
+    disabled: alpha(common.white, 0.4),
+    hint: alpha(common.white, 0.4),
   },
   divider: 'rgba(255, 255, 255, 0.12)',
   background: {

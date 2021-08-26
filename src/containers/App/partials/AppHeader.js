@@ -192,7 +192,7 @@ const AppHeader = React.memo(function AppHeader(props) {
           {isCartMenuOpen ? (
             <CloseIcon />
           ) : (
-            <Badge badgeContent={productsCount} color="primary" overlap="circle">
+            <Badge badgeContent={productsCount} color="primary" overlap="circular">
               <CartIcon />
             </Badge>
           )}

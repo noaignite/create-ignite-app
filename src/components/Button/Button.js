@@ -1,4 +1,4 @@
-import { fade } from '@material-ui/core/styles/colorManipulator'
+import { alpha } from '@material-ui/core/styles'
 
 export { default } from '@material-ui/core/Button'
 
@@ -18,7 +18,7 @@ export const styles = (theme) => ({
     },
   },
   outlinedPrimary: {
-    border: `${BORDER_WIDTH}px solid ${fade(theme.palette.primary.main, 0.5)}`,
+    border: `${BORDER_WIDTH}px solid ${alpha(theme.palette.primary.main, 0.5)}`,
     '&:hover': {
       border: `${BORDER_WIDTH}px solid ${theme.palette.primary.main}`,
     },
@@ -27,7 +27,7 @@ export const styles = (theme) => ({
     },
   },
   outlinedSecondary: {
-    border: `${BORDER_WIDTH}px solid ${fade(theme.palette.secondary.main, 0.5)}`,
+    border: `${BORDER_WIDTH}px solid ${alpha(theme.palette.secondary.main, 0.5)}`,
     '&:hover': {
       border: `${BORDER_WIDTH}px solid ${theme.palette.secondary.main}`,
     },
@@ -40,7 +40,7 @@ export const styles = (theme) => ({
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.getContrastText(theme.palette.text.primary),
     '&:hover': {
-      backgroundColor: fade(theme.palette.text.primary, 1 - theme.palette.action.activatedOpacity),
+      backgroundColor: alpha(theme.palette.text.primary, 1 - theme.palette.action.activatedOpacity),
       // Reset on touch devices, it doesn't add specificity
       '@media (hover: none)': {
         backgroundColor: theme.palette.text.primary,
