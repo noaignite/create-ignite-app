@@ -1,21 +1,18 @@
-import * as React from 'react'
-import PropTypes from 'prop-types'
-import clsx from 'clsx'
-import Router from 'next/router'
-import { makeStyles } from '@material-ui/styles'
-import { CircularProgress } from '@material-ui/core'
-import { Backdrop } from 'components'
+// @inheritedComponent Backdrop
 
-export const useStyles = makeStyles((theme) => ({
-  root: {
-    zIndex: theme.zIndex.appBar - 1,
-  },
+import * as React from 'react'
+import Router from 'next/router'
+import { styled } from '@material-ui/system'
+import { Backdrop, CircularProgress } from '@material-ui/core'
+
+const AppLoaderRoot = styled(Backdrop, {
+  name: 'AppLoader',
+  slot: 'Root',
+})(({ theme }) => ({
+  zIndex: theme.zIndex.appBar - 1,
 }))
 
 const AppLoader = React.memo(function AppLoader(props) {
-  const { className, ...other } = props
-  const classes = useStyles(props)
-
   const [loading, setLoading] = React.useState(false)
 
   const handleRouteChangeStart = React.useCallback(() => {
@@ -37,15 +34,10 @@ const AppLoader = React.memo(function AppLoader(props) {
   }, [handleRouteChangeStart, handleRouteChangeComplete])
 
   return (
-    <Backdrop className={clsx(classes.root, className)} open={loading} unmountOnExit {...other}>
+    <AppLoaderRoot open={loading} unmountOnExit {...props}>
       <CircularProgress />
-    </Backdrop>
+    </AppLoaderRoot>
   )
 })
-
-AppLoader.propTypes = {
-  classes: PropTypes.object,
-  className: PropTypes.string,
-}
 
 export default AppLoader

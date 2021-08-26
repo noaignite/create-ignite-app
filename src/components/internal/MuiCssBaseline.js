@@ -14,15 +14,15 @@ const overrides = {
     ],
     // Define :root css variables.
     ':root': {
-      '--coa-theme-spacing': `${theme.spacing(1)}px`,
-      '--coa-section-spacing': `${theme.spacing(4)}px`,
-      '--coa-container-spacing': `${theme.spacing(2)}px`,
+      '--coa-theme-spacing': theme.spacing(1),
+      '--coa-section-spacing': theme.spacing(4),
+      '--coa-container-spacing': theme.spacing(2),
       '--coa-toolbar-dense-min-height': '48px',
       '--coa-toolbar-min-height': '56px',
-      '--coa-toolbar-spacing': `${theme.spacing(2)}px`,
+      '--coa-toolbar-spacing': theme.spacing(2),
       [theme.breakpoints.up('sm')]: {
-        '--coa-section-spacing': `${theme.spacing(6)}px`,
-        '--coa-container-spacing': `${theme.spacing(4)}px`,
+        '--coa-section-spacing': theme.spacing(6),
+        '--coa-container-spacing': theme.spacing(4),
       },
     },
     // Opinionated defaults taken from sanitize.css

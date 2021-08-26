@@ -7,7 +7,15 @@ export default {
   title: 'Components/Button',
   component: Button,
   argTypes: {
-    color: storySelectArgType(['default', 'inherit', 'primary', 'secondary']),
+    color: storySelectArgType([
+      'inherit',
+      'primary',
+      'secondary',
+      'success',
+      'error',
+      'info',
+      'warning',
+    ]),
     size: storySelectArgType(['small', 'medium', 'large']),
     variant: storySelectArgType(['text', 'outlined', 'contained']),
     onClick: { action: 'clicked' },

@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/styles'
 // import { BackgroundMedia, Media, MediaReveal } from '@oakwood/oui'
 // import { mediaType } from 'utils'
 import { RouterLink } from 'containers'
-import { BlockButton, Button, Container, Typography } from 'components'
+import { Button, Container, Typography } from 'components'
 
 const BREAKPOINT_KEY_UP = 'sm'
 
@@ -78,14 +78,7 @@ function Hero(props) {
 
         <Typography className={classes.excerpt}>{excerpt}</Typography>
 
-        {ctaUrl && (
-          <BlockButton
-            className={classes.ctaArea}
-            component={RouterLink}
-            href={ctaUrl}
-            aria-label={ctaLabel}
-          />
-        )}
+        {ctaUrl && <RouterLink className={classes.ctaArea} href={ctaUrl} aria-label={ctaLabel} />}
 
         {ctaLabel && ctaUrl && (
           <Button

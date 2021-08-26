@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/styles'
 import { Badge } from '@material-ui/core'
-import { useCheckoutSelection, useGlobal, useI18n } from 'api'
+import { useCheckoutSelection, useI18n } from 'api'
 import { useDimensions } from 'utils'
 import {
   Brand as BrandIcon,
@@ -44,12 +44,6 @@ export const useStyles = makeStyles((theme) => ({
       marginLeft: 'auto',
     },
   },
-  salesToolbar: {
-    padding: theme.spacing(0.5, 2),
-    backgroundColor: theme.palette.text.primary,
-    color: theme.palette.getContrastText(theme.palette.text.primary),
-    textAlign: 'center',
-  },
   menuToolbar: {},
   menuButton: {},
   brandButton: {
@@ -81,7 +75,6 @@ const AppHeader = React.memo(function AppHeader(props) {
   const classes = useStyles(props)
 
   const { t } = useI18n()
-  const { settings } = useGlobal()
   const [rootRef, dimensions] = useDimensions()
 
   const [disableTransparency, setDisableTransparency] = React.useState(undefined)
@@ -138,10 +131,6 @@ const AppHeader = React.memo(function AppHeader(props) {
         `,
         }}
       />
-
-      {settings?.globalSalesBanner && (
-        <div className={classes.salesToolbar}>{settings.globalSalesBanner}</div>
-      )}
 
       <Toolbar className={classes.menuToolbar}>
         <IconButton

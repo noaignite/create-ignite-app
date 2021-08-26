@@ -1,8 +1,10 @@
 import { overrides as MuiAppBar } from '../AppBar/AppBar'
-import { overrides as MuiBackdrop } from '../Backdrop/Backdrop'
 import { overrides as MuiButton } from '../Button/Button'
+import { overrides as MuiCheckbox } from '../Checkbox/Checkbox'
 import { overrides as MuiContainer } from '../Container/Container'
 import { overrides as MuiIconButton } from '../IconButton/IconButton'
+import { overrides as MuiLink } from '../Link/Link'
+import { overrides as MuiRadio } from '../Radio/Radio'
 import { overrides as MuiToolbar } from '../Toolbar/Toolbar'
 import * as internalComponents from '../internal'
 
@@ -10,10 +12,12 @@ export default function createOverrides(theme) {
   const components = {
     ...internalComponents,
     MuiAppBar,
-    MuiBackdrop,
     MuiButton,
+    MuiCheckbox,
     MuiContainer,
     MuiIconButton,
+    MuiLink,
+    MuiRadio,
     MuiToolbar,
   }
 

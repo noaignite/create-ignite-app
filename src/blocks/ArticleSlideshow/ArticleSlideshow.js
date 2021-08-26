@@ -7,7 +7,7 @@ import { useI18n } from 'api'
 // import { ASPECT_RATIOS } from 'utils/constants'
 import { mediaType } from 'utils'
 import { RouterLink } from 'containers'
-import { BlockButton, Button, Container, Typography } from 'components'
+import { Button, Container, Typography } from 'components'
 
 function getSlideWidth(slidesPerView, spacing) {
   const totalSpacing = spacing * (slidesPerView - 1) // Subtract last slide spacing.
@@ -82,11 +82,11 @@ function ArticleSlideshow(props) {
               <div key={idx} className={classes.emblaSlide}>
                 <article className={classes.article}>
                   {item.mediaProps && (
-                    <BlockButton component={RouterLink} href={item.url}>
+                    <RouterLink href={item.url}>
                       {/* <MediaReveal {...ASPECT_RATIOS.article}>
                         <Media {...ASPECT_RATIOS.article} {...item.mediaProps} />
                       </MediaReveal> */}
-                    </BlockButton>
+                    </RouterLink>
                   )}
 
                   <div className={classes.articleContent}>

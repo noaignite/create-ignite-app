@@ -1,22 +1,41 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import clsx from 'clsx'
-import { withStyles } from '@material-ui/styles'
+import { styled } from '@material-ui/system'
 import { Collapse } from '@material-ui/core'
 import { menuLinkType } from 'utils'
 import { Add as AddIcon, Remove as RemoveIcon } from 'components/icons'
 import { Link } from 'components'
 import RouterLink from '../../RouterLink'
 
-export const styles = {
-  list: {},
-  listItem: {},
-  listItemLink: {},
-  listItemIcon: {},
-}
+const AppNavDrawerListItemItem = styled('li', {
+  name: 'AppNavDrawerListItem',
+  slot: 'Item',
+})(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(1, 0),
+  paddingLeft: 'calc(32px * var(--level))', // Medium icon size + theme.spacing(1)
+}))
+
+const AppNavDrawerListItemLink = styled(Link, {
+  name: 'AppNavDrawerListItem',
+  slot: 'Link',
+})(({ theme }) => ({
+  display: 'inherit',
+  alignItems: 'inherit',
+  [`ul &`]: theme.typography.h4,
+  [`ul ul &`]: theme.typography.body2,
+}))
+
+const AppNavDrawerListItemList = styled('ul', {
+  name: 'AppNavDrawerListItem',
+  slot: 'List',
+})(({ theme }) => ({
+  margin: theme.spacing(1, 0, 2),
+}))
 
 function AppNavDrawerListItem(props) {
-  const { classes, level = 0, menuLink } = props
+  const { level = 0, menuLink } = props
 
   const [expanded, setExpanded] = React.useState(false)
   const handleClick = React.useCallback(() => {
@@ -39,30 +58,20 @@ function AppNavDrawerListItem(props) {
 
   return (
     <>
-      <li
-        className={clsx(classes.listItem, {
-          'has-submenu': hasSubmenu,
-        })}
-        style={{ '--level': level }}
-      >
-        <Link className={classes.listItemLink} {...LinkProps}>
-          {hasSubmenu && <Icon className={classes.listItemIcon} />}
+      <AppNavDrawerListItemItem style={{ '--level': level }}>
+        <AppNavDrawerListItemLink {...LinkProps}>
+          {hasSubmenu && <Icon sx={{ mr: 1 }} />}
           <span>{menuLink.label}</span>
-        </Link>
-      </li>
+        </AppNavDrawerListItemLink>
+      </AppNavDrawerListItemItem>
 
       {hasSubmenu && (
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <ul className={classes.list}>
+        <Collapse in={expanded} component="li" timeout="auto" unmountOnExit>
+          <AppNavDrawerListItemList>
             {submenu.map((submenuLink, idx) => (
-              <AppNavDrawerListItem
-                key={idx}
-                classes={classes}
-                level={level + 1}
-                menuLink={submenuLink}
-              />
+              <AppNavDrawerListItem key={idx} level={level + 1} menuLink={submenuLink} />
             ))}
-          </ul>
+          </AppNavDrawerListItemList>
         </Collapse>
       )}
     </>
@@ -70,9 +79,8 @@ function AppNavDrawerListItem(props) {
 }
 
 AppNavDrawerListItem.propTypes = {
-  classes: PropTypes.object,
   level: PropTypes.number,
   menuLink: menuLinkType.isRequired,
 }
 
-export default withStyles(styles)(AppNavDrawerListItem)
+export default AppNavDrawerListItem

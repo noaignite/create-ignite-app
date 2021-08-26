@@ -6,12 +6,6 @@ export * from './utils'
 export { default as AppBar } from './AppBar'
 export * from './AppBar'
 
-export { default as Backdrop } from './Backdrop'
-export * from './Backdrop'
-
-export { default as BlockButton } from './BlockButton'
-export * from './BlockButton'
-
 export { default as Button } from './Button'
 export * from './Button'
 

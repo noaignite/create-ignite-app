@@ -13,6 +13,7 @@ export const useStyles = makeStyles(
     root: {
       display: 'flex',
       flexDirection: 'column',
+      flexGrow: 1,
     },
     items: {
       ...theme.mixins.verticalRhythm(2),
