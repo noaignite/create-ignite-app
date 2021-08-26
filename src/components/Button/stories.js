@@ -19,7 +19,7 @@ const Template = (args) => <Button {...args} />
 export const Default = Template.bind({})
 Default.args = {
   children: 'Just a button',
-  color: 'default',
+  color: 'inherit',
   disabled: false,
   endIcon: <CloseIcon />,
   fullWidth: false,

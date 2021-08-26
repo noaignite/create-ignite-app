@@ -1,24 +1,32 @@
-import { styles as MuiAppBar } from '../AppBar/AppBar'
-import { styles as MuiBackdrop } from '../Backdrop/Backdrop'
-import { styles as MuiButton } from '../Button/Button'
-import { styles as MuiContainer } from '../Container/Container'
-import { styles as MuiIconButton } from '../IconButton/IconButton'
-import { styles as MuiToolbar } from '../Toolbar/Toolbar'
-import * as privateOverrides from './privateOverrides'
+import { overrides as MuiAppBar } from '../AppBar/AppBar'
+import { overrides as MuiBackdrop } from '../Backdrop/Backdrop'
+import { overrides as MuiButton } from '../Button/Button'
+import { overrides as MuiContainer } from '../Container/Container'
+import { overrides as MuiIconButton } from '../IconButton/IconButton'
+import { overrides as MuiToolbar } from '../Toolbar/Toolbar'
+import * as internalComponents from '../internal'
 
 export default function createOverrides(theme) {
-  const overrides = {
+  const components = {
+    ...internalComponents,
     MuiAppBar,
     MuiBackdrop,
     MuiButton,
     MuiContainer,
     MuiIconButton,
     MuiToolbar,
-    ...privateOverrides,
   }
 
-  return Object.entries(overrides).reduce((acc, [muiName, styles]) => {
-    acc[muiName] = typeof styles === 'function' ? styles(theme) : styles
+  const overridesOutput = Object.entries(components).reduce((acc, [muiName, overrides]) => {
+    const { defaultProps, styles } = overrides
+
+    acc[muiName] = {
+      defaultProps,
+      styleOverrides: typeof styles === 'function' ? styles(theme) : styles,
+    }
+
     return acc
   }, {})
+
+  return overridesOutput
 }

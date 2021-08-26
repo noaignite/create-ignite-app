@@ -1,8 +1,8 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
-import { BackgroundMedia, Media, MediaReveal } from '@oakwood/oui'
-import { mediaType } from 'utils'
+import { withStyles } from '@material-ui/styles'
+// import { BackgroundMedia, Media, MediaReveal } from '@oakwood/oui'
+// import { mediaType } from 'utils'
 import { RouterLink } from 'containers'
 import { BlockButton, Button, Container, Typography } from 'components'
 
@@ -42,19 +42,19 @@ export const styles = (theme) => ({
 
 function Hero(props) {
   const {
-    backgroundAttachment = 'static',
-    backgroundMediaProps,
+    // backgroundAttachment = 'static',
+    // backgroundMediaProps,
     classes,
     ctaLabel,
     ctaUrl,
     heading,
     excerpt,
-    renderIndex,
+    // renderIndex,
   } = props
 
   return (
     <section className={classes.root}>
-      {backgroundMediaProps && (
+      {/* {backgroundMediaProps && (
         <BackgroundMedia
           classes={{ wrapperSticky: classes.backgroundWrapperSticky }}
           attachment={backgroundAttachment}
@@ -69,7 +69,7 @@ function Hero(props) {
             />
           </MediaReveal>
         </BackgroundMedia>
-      )}
+      )} */}
 
       <Container className={classes.main} maxWidth="md">
         <Typography className={classes.heading} component="h1" variant="h2">
@@ -104,14 +104,14 @@ function Hero(props) {
 }
 
 Hero.propTypes = {
-  backgroundAttachment: PropTypes.oneOf(['static', 'fixed', 'sticky']),
-  backgroundMediaProps: mediaType,
+  // backgroundAttachment: PropTypes.oneOf(['static', 'fixed', 'sticky']),
+  // backgroundMediaProps: mediaType,
   classes: PropTypes.object.isRequired,
   ctaLabel: PropTypes.string,
   ctaUrl: PropTypes.string,
   excerpt: PropTypes.string,
   heading: PropTypes.string,
-  renderIndex: PropTypes.number.isRequired,
+  // renderIndex: PropTypes.number.isRequired,
 }
 
 export default withStyles(styles)(Hero)

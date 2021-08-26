@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/styles'
 import { Collapse } from '@material-ui/core'
 import { menuLinkType } from 'utils'
 import { Add as AddIcon, Remove as RemoveIcon } from 'components/icons'

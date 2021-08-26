@@ -1,6 +1,6 @@
 import * as React from 'react'
 import storySelectArgType from '../utils/storySelectArgType'
-import Radio from './Radio'
+import Radio, { overrides } from './Radio'
 
 export default {
   title: 'Components/Radio',
@@ -16,4 +16,5 @@ export const Default = Template.bind({})
 Default.args = {
   checked: false,
   disabled: false,
+  ...overrides.defaultProps,
 }

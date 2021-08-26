@@ -108,8 +108,8 @@ export default function createPalette(palette) {
       main: green[500],
       dark: green[700],
     },
-    types = { dark, light },
-    type = 'light',
+    modes = { dark, light },
+    mode = 'light',
     contrastThreshold = 3,
     tonalOffset = 0.2,
     ...other
@@ -119,8 +119,8 @@ export default function createPalette(palette) {
     {
       // A collection of common colors.
       common,
-      // The palette type, can be light or dark.
-      type,
+      // The palette mode, can be light or dark.
+      mode,
       // The colors used to represent primary interface elements for a user.
       primary,
       // The colors used to represent secondary interface elements for a user.
@@ -143,7 +143,7 @@ export default function createPalette(palette) {
       // E.g., shift from Red 500 to Red 300 or Red 700.
       tonalOffset,
       // The light and dark type object.
-      ...types[type],
+      ...modes[mode],
     },
     other,
   )

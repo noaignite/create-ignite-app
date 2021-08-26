@@ -3,7 +3,7 @@ import generatePreload from './generatePreload'
 
 const theme = createTheme({
   palette: {
-    type: 'light',
+    mode: 'light',
   },
   props: {
     OuiMedia: { generatePreload },

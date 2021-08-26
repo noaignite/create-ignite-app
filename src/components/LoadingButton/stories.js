@@ -18,7 +18,7 @@ const Template = (args) => <LoadingButton {...args} />
 export const Default = Template.bind({})
 Default.args = {
   children: 'Just a button',
-  color: 'default',
+  color: 'inherit',
   disabled: false,
   pending: false,
   pendingPosition: 'center',

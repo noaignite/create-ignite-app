@@ -1,5 +1,5 @@
-const styles = (theme) => ({
-  '@global': {
+const overrides = {
+  styles: (theme) => ({
     // Include font files here.
     '@font-face': [
       // {
@@ -49,7 +49,7 @@ const styles = (theme) => ({
     '[id]': {
       scrollMarginTop: 'var(--coa-sticky-top, 0px)',
     },
-  },
-})
+  }),
+}
 
-export default styles
+export default overrides

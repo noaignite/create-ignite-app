@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Media } from '@oakwood/oui'
+// import { Media } from '@oakwood/oui'
 import BlockButton from './BlockButton'
 
 export default {
@@ -17,7 +17,7 @@ export default {
 
 const Template = (args) => (
   <BlockButton {...args}>
-    <Media component="img" src="//source.unsplash.com/600x300" />
+    {/* <Media component="img" src="//source.unsplash.com/600x300" /> */}
   </BlockButton>
 )
 

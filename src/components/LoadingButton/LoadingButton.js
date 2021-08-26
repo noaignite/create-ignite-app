@@ -1,13 +1,15 @@
+// @inheritedComponent Button
+
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { chainPropTypes } from '@material-ui/utils'
 import { capitalize } from '@material-ui/core/utils'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/styles'
 import { CircularProgress } from '@material-ui/core'
 import Button from '../Button'
 
-export const styles = () => ({
+export const styles = {
   /* Styles applied to the root element. */
   root: {},
   /* Styles applied to the root element if `pending={true}`. */
@@ -43,7 +45,7 @@ export const styles = () => ({
   labelPendingCenter: {
     visibility: 'hidden',
   },
-})
+}
 
 const PendingIndicator = <CircularProgress color="inherit" size={20} />
 

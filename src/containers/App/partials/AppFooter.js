@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/styles'
 import { useGlobal } from 'api'
 import { Container, Link } from 'components'
 import { useApp } from '../AppContext'

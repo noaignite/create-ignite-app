@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/styles'
 import { useCheckout, useGlobal, useI18n } from 'api'
 import { Link, Typography } from 'components'
 import { useApp } from '../AppContext'

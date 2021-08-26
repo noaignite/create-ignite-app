@@ -1,10 +1,10 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { withStyles } from '@material-ui/core/styles'
+import { withStyles } from '@material-ui/styles'
 import { ButtonBase } from '@material-ui/core'
-import { Media, MediaReveal } from '@oakwood/oui'
-import { ASPECT_RATIOS, CENTRA_CART_ITEM_UNIQUE_KEY } from 'utils/constants'
+// import { Media, MediaReveal } from '@oakwood/oui'
+import { /* ASPECT_RATIOS, */ CENTRA_CART_ITEM_UNIQUE_KEY } from 'utils/constants'
 import { useCheckoutHandlers, useI18n } from 'api'
 import { cartItemType } from 'utils'
 import { Add as AddIcon, Remove as RemoveIcon } from 'components/icons'
@@ -89,14 +89,14 @@ function CartItem(props) {
   return (
     <article className={clsx(classes.root, className)}>
       <RouterLink href={`/product/${product.uri}`} aria-label={product.name}>
-        <MediaReveal className={classes.figure} {...ASPECT_RATIOS.product}>
+        {/* <MediaReveal className={classes.figure} {...ASPECT_RATIOS.product}>
           <Media
             className={classes.image}
             src={product.media?.standard?.[0]}
             alt={product.name}
             {...ASPECT_RATIOS.product}
           />
-        </MediaReveal>
+        </MediaReveal> */}
       </RouterLink>
 
       <div className={classes.content}>

@@ -46,5 +46,6 @@ const Template = (args) => (
 export const Default = Template.bind({})
 Default.args = {
   color: 'default',
+  elevation: 0,
   position: 'fixed',
 }

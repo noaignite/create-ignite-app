@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/styles'
 import { Dialog, DialogTitle, DialogContent, useMediaQuery, Slide } from '@material-ui/core'
 import { useCheckout, useI18n } from 'api'
 import { Close as CloseIcon } from 'components/icons'

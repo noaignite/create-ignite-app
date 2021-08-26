@@ -3,7 +3,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/styles'
 import { CircularProgress } from '@material-ui/core'
 import { useI18n } from 'api'
 import { Cart as CartIcon, Close as CloseIcon } from 'components/icons'

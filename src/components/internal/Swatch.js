@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { useTheme, withStyles } from '@material-ui/core/styles'
+import { useTheme, withStyles } from '@material-ui/styles'
 
 export const styles = (theme) => ({
   root: {
