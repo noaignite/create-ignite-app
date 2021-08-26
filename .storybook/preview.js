@@ -1,14 +1,11 @@
 // import '../scripts/wdyr'
+import '../scripts/polyfills'
 import { ThemeProvider } from '@material-ui/styles'
 import { CssBaseline } from '@material-ui/core'
 import { global } from 'api/mock'
 import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
 import { AppProvider } from 'containers/App/AppContext'
 import createTheme from 'components/styles/createTheme'
-import smoothscroll from 'smoothscroll-polyfill'
-
-// Initialize polyfills
-smoothscroll.polyfill()
 
 export const parameters = {
   layout: 'fullscreen',

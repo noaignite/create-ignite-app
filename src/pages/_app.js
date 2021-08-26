@@ -1,6 +1,7 @@
 // Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_app.js
 
 // import '../../scripts/wdyr'
+import '../../scripts/polyfills'
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
@@ -11,14 +12,6 @@ import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
 import theme from 'utils/theme.light'
 import { AppProvider } from 'containers/App/AppContext'
 import AppBase from 'containers/App'
-
-// Initialize polyfills
-// Based on: https://github.com/vercel/next.js/blob/canary/examples/with-polyfills
-if (typeof window !== 'undefined') {
-  // eslint-disable-next-line global-require
-  const smoothscroll = require('smoothscroll-polyfill')
-  smoothscroll.polyfill()
-}
 
 function App(props) {
   const { cmsProps, Component, defaultLocale, locale, pageProps } = props
