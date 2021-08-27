@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/styles'
 import { RouterLink } from 'containers'
 import { Button, Container, Typography } from 'components'
 
-const BREAKPOINT_KEY_UP = 'sm'
+const BREAKPOINT_KEY = 'sm'
 
 export const styles = (theme) => ({
   root: {
@@ -18,7 +18,7 @@ export const styles = (theme) => ({
     minHeight: '75vh',
     color: theme.palette.getContrastText(theme.palette.text.primary),
     textAlign: 'center',
-    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
+    [theme.breakpoints.up(BREAKPOINT_KEY)]: {
       minHeight: 650,
     },
   },

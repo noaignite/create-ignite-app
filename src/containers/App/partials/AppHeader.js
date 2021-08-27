@@ -2,8 +2,7 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import clsx from 'clsx'
-import { makeStyles } from '@material-ui/styles'
+import { styled } from '@material-ui/system'
 import { Badge } from '@material-ui/core'
 import { useCheckoutSelection, useI18n } from 'api'
 import { useDimensions } from 'utils'
@@ -18,45 +17,53 @@ import { AppBar, IconButton, Toolbar } from 'components'
 import RouterLink from '../../RouterLink'
 import { useApp } from '../AppContext'
 
-const BREAKPOINT_KEY_DOWN = 'sm'
-const BREAKPOINT_KEY_UP = 'md'
+const BREAKPOINT_KEY = 'md'
 
-export const useStyles = makeStyles((theme) => ({
-  root: {},
-  transitions: {
-    transition: theme.transitions.create(['background-color'], {
-      duration: theme.transitions.duration.shortest, // Match value of `IconButton`
-    }),
-  },
-  transparent: {
+const AppHeaderRoot = styled(AppBar, {
+  name: 'AppHeader',
+  slot: 'Root',
+})(({ theme, ownerState }) => ({
+  ...(ownerState.color === 'transparent' && {
     '&:not(:hover):not(:focus)': {
       backgroundColor: 'transparent',
       color: 'inherit',
     },
-  },
-  toolbarMobilePush: {
-    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
+  }),
+  ...(ownerState.disableTransparency !== undefined && {
+    transition: theme.transitions.create(['background-color'], {
+      duration: theme.transitions.duration.shortest, // Match value of `IconButton`
+    }),
+  }),
+}))
+
+const AppHeaderToolbarPush = styled('div', {
+  name: 'AppHeader',
+  slot: 'ToolbarPush',
+})(({ theme, ownerState }) => ({
+  ...(ownerState.variant === 'mobile' && {
+    [theme.breakpoints.down(BREAKPOINT_KEY)]: {
       marginLeft: 'auto',
     },
-  },
-  toolbarDesktopPush: {
-    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
+  }),
+  ...(ownerState.variant === 'desktop' && {
+    [theme.breakpoints.up(BREAKPOINT_KEY)]: {
       marginLeft: 'auto',
     },
-  },
-  menuToolbar: {},
-  menuButton: {},
-  brandButton: {
-    position: 'absolute',
-    left: '50%',
-    transform: 'translateX(-50%)',
-  },
-  brandIcon: {
+  }),
+}))
+
+const AppHeaderBrandLink = styled(RouterLink, {
+  name: 'AppHeader',
+  slot: 'BrandLink',
+})({
+  position: 'absolute',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  color: 'inherit',
+  '& > svg': {
     width: 'auto',
   },
-  searchButton: {},
-  cartButton: {},
-}))
+})
 
 const AppHeader = React.memo(function AppHeader(props) {
   const {
@@ -72,7 +79,7 @@ const AppHeader = React.memo(function AppHeader(props) {
     productsCount,
     ...other
   } = props
-  const classes = useStyles(props)
+  // const classes = useStyles(props)
 
   const { t } = useI18n()
   const [rootRef, dimensions] = useDimensions()
@@ -106,15 +113,8 @@ const AppHeader = React.memo(function AppHeader(props) {
   }
 
   return (
-    <AppBar
-      className={clsx(
-        classes.root,
-        {
-          [classes.transitions]: disableTransparency !== undefined, // Enable transitions once defined
-          [classes.transparent]: color === 'transparent',
-        },
-        className,
-      )}
+    <AppHeaderRoot
+      ownerState={{ color, disableTransparency }}
       position={appBarColor === 'default' ? 'sticky' : 'fixed'}
       ref={rootRef}
       {...other}
@@ -132,9 +132,8 @@ const AppHeader = React.memo(function AppHeader(props) {
         }}
       />
 
-      <Toolbar className={classes.menuToolbar}>
+      <Toolbar>
         <IconButton
-          className={classes.menuButton}
           onClick={onNavMenuToggle}
           edge="start"
           size="small"
@@ -145,21 +144,14 @@ const AppHeader = React.memo(function AppHeader(props) {
           {isNavMenuOpen ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
 
-        <div className={classes.toolbarDesktopPush} />
-        <div className={classes.toolbarMobilePush} />
+        <AppHeaderToolbarPush ownerState={{ variant: 'mobile' }} />
+        <AppHeaderToolbarPush ownerState={{ variant: 'desktop' }} />
+
+        <AppHeaderBrandLink href="/" aria-label={t(__translationGroup)`Go to the homepage`}>
+          <BrandIcon />
+        </AppHeaderBrandLink>
 
         <IconButton
-          className={classes.brandButton}
-          component={RouterLink}
-          href="/"
-          edge="start"
-          aria-label={t(__translationGroup)`Go to the homepage`}
-        >
-          <BrandIcon className={classes.brandIcon} />
-        </IconButton>
-
-        <IconButton
-          className={classes.searchButton}
           onClick={onSearchMenuToggle}
           size="small"
           aria-haspopup="true"
@@ -170,7 +162,6 @@ const AppHeader = React.memo(function AppHeader(props) {
         </IconButton>
 
         <IconButton
-          className={classes.cartButton}
           onClick={onCartMenuToggle}
           edge="end"
           size="small"
@@ -187,7 +178,7 @@ const AppHeader = React.memo(function AppHeader(props) {
           )}
         </IconButton>
       </Toolbar>
-    </AppBar>
+    </AppHeaderRoot>
   )
 })
 

@@ -1,9 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import clsx from 'clsx'
-import { withStyles } from '@material-ui/styles'
+import { styled } from '@material-ui/system'
 import { ButtonBase } from '@material-ui/core'
-// import { Media, MediaReveal } from '@oakwood/oui'
 import { /* ASPECT_RATIOS, */ CENTRA_CART_ITEM_UNIQUE_KEY } from 'utils/constants'
 import { useCheckoutHandlers, useI18n } from 'api'
 import { cartItemType } from 'utils'
@@ -11,24 +9,20 @@ import { Add as AddIcon, Remove as RemoveIcon } from 'components/icons'
 import { Link } from 'components'
 import RouterLink from '../RouterLink'
 
-export const styles = (theme) => ({
-  root: {
-    ...theme.typography.body2,
-    display: 'grid',
-    gridTemplateColumns: '100px auto',
-    borderRadius: theme.shape.borderRadius * 2,
-    backgroundColor: theme.palette.background.default,
-  },
-  figure: {},
-  image: {
-    borderRadius: theme.shape.borderRadius,
-  },
-  content: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: theme.spacing(2),
-  },
-  row: {
+const classes = {
+  row: 'CoaCartItem-Row',
+}
+
+const CartItemRoot = styled('article', {
+  name: 'CartItem',
+  slot: 'Root',
+})(({ theme }) => ({
+  ...theme.typography.body2,
+  display: 'grid',
+  gridTemplateColumns: '100px auto',
+  borderRadius: theme.shape.borderRadius * 2,
+  backgroundColor: theme.palette.background.default,
+  [`& .${classes.row}`]: {
     display: 'grid',
     gridGap: theme.spacing(2),
     gridTemplateColumns: '1fr auto',
@@ -36,30 +30,46 @@ export const styles = (theme) => ({
       marginTop: theme.spacing(0.5),
     },
   },
-  quantity: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  quantityButton: {
-    minWidth: 35,
-    padding: theme.spacing(1),
-    color: theme.palette.primary.main,
-    textAlign: 'center',
-  },
-  quantityLabel: {},
-  price: {},
-  actionbar: {
-    display: 'flex',
-    alignItems: 'center',
-    margin: theme.spacing('auto', 0, -1),
-  },
-  removeButton: {
-    marginLeft: 'auto',
-  },
+}))
+
+const CartItemContent = styled('div', {
+  name: 'CartItem',
+  slot: 'Content',
+})(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  padding: theme.spacing(2),
+}))
+
+const CartItemActionbar = styled('div', {
+  name: 'CartItem',
+  slot: 'Actionbar',
+})(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  margin: theme.spacing('auto', 0, -1),
+}))
+
+const CartItemQuantity = styled('div', {
+  name: 'CartItem',
+  slot: 'Quantity',
+})({
+  display: 'flex',
+  alignItems: 'center',
 })
 
+const CartItemQuantityButton = styled(ButtonBase, {
+  name: 'CartItem',
+  slot: 'QuantityButton',
+})(({ theme }) => ({
+  minWidth: 35,
+  padding: theme.spacing(1),
+  color: theme.palette.primary.main,
+  textAlign: 'center',
+}))
+
 function CartItem(props) {
-  const { cartItem, classes, className, disableActions } = props
+  const { cartItem, disableActions } = props
   const { product } = cartItem
 
   const { itemDecrease, itemIncrease, itemRemove } = useCheckoutHandlers()
@@ -87,7 +97,7 @@ function CartItem(props) {
   )
 
   return (
-    <article className={clsx(classes.root, className)}>
+    <CartItemRoot>
       <RouterLink href={`/product/${product.uri}`} aria-label={product.name}>
         {/* <MediaReveal className={classes.figure} {...ASPECT_RATIOS.product}>
           <Media
@@ -99,7 +109,7 @@ function CartItem(props) {
         </MediaReveal> */}
       </RouterLink>
 
-      <div className={classes.content}>
+      <CartItemContent>
         <div className={classes.row}>
           <Link component={RouterLink} href={`/product/${product.uri}`}>
             {product.name}
@@ -115,33 +125,31 @@ function CartItem(props) {
         </div>
 
         {!disableActions && (
-          <div className={classes.actionbar}>
+          <CartItemActionbar>
             <span>{t(__translationGroup)`Quantity`}:</span>
 
-            <div className={classes.quantity}>
-              <ButtonBase
-                className={classes.quantityButton}
+            <CartItemQuantity>
+              <CartItemQuantityButton
                 onClick={onItemDecrease}
                 value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
                 aria-label={t(__translationGroup)`Decrease quantity to ${cartItem.quantity - 1}`}
               >
                 <RemoveIcon color="inherit" fontSize="small" />
-              </ButtonBase>
+              </CartItemQuantityButton>
 
-              <span className={classes.quantityLabel}>{cartItem.quantity}</span>
+              <span>{cartItem.quantity}</span>
 
-              <ButtonBase
-                className={classes.quantityButton}
+              <CartItemQuantityButton
                 onClick={onItemIncrease}
                 value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
                 aria-label={t(__translationGroup)`Increase quantity to ${cartItem.quantity + 1}`}
               >
                 <AddIcon color="inherit" fontSize="small" />
-              </ButtonBase>
-            </div>
+              </CartItemQuantityButton>
+            </CartItemQuantity>
 
             <Link // eslint-disable-line jsx-a11y/anchor-is-valid
-              className={classes.removeButton}
+              sx={{ ml: 'auto' }}
               component={ButtonBase}
               onClick={onItemRemove}
               value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
@@ -149,18 +157,16 @@ function CartItem(props) {
             >
               {t(__translationGroup)`Remove`}
             </Link>
-          </div>
+          </CartItemActionbar>
         )}
-      </div>
-    </article>
+      </CartItemContent>
+    </CartItemRoot>
   )
 }
 
 CartItem.propTypes = {
   cartItem: cartItemType.isRequired,
-  classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
   disableActions: PropTypes.bool,
 }
 
-export default withStyles(styles)(CartItem)
+export default CartItem

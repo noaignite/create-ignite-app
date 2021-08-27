@@ -45,7 +45,7 @@ const AppFooterListItem = styled('li', {
   },
 }))
 
-const AppFooter = React.memo(function AppFooter() {
+const AppFooter = React.memo(function AppFooter(props) {
   const { menus, settings } = useGlobal()
 
   return (
@@ -54,7 +54,7 @@ const AppFooter = React.memo(function AppFooter() {
         <AppFooterSalesBanner>{settings.globalSalesBanner}</AppFooterSalesBanner>
       )}
 
-      <AppFooterRoot>
+      <AppFooterRoot {...props}>
         <Container>
           <nav>
             <AppFooterList>
