@@ -1,44 +1,47 @@
+// @inheritedComponent Snackbar
+
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import clsx from 'clsx'
-import { makeStyles } from '@material-ui/styles'
+import { styled } from '@material-ui/system'
 import { Snackbar } from '@material-ui/core'
 import { useI18n } from 'api'
 import { Close as CloseIcon } from 'components/icons'
 import { IconButton, Typography } from 'components'
 
-export const useStyles = makeStyles((theme) => ({
-  root: {
-    left: 'auto',
-    right: 0,
-    bottom: 0,
-    [theme.breakpoints.up('sm')]: {
-      maxWidth: '50%',
-    },
-    [theme.breakpoints.up('md')]: {
-      maxWidth: '25%',
-    },
+const AppCookieBarRoot = styled(Snackbar, {
+  name: 'AppCookieBar',
+  slot: 'Root',
+})(({ theme }) => ({
+  left: 'auto',
+  right: 0,
+  bottom: 0,
+  [theme.breakpoints.up('sm')]: {
+    maxWidth: '50%',
   },
-  content: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: 'var(--coa-toolbar-spacing)',
-    margin: 'var(--coa-toolbar-spacing)',
-    borderRadius: theme.shape.borderRadius * 2,
-    backgroundColor: theme.palette.text.primary,
-    color: theme.palette.background.default,
+  [theme.breakpoints.up('lg')]: {
+    maxWidth: '25%',
   },
 }))
 
-const AppCookieBar = React.memo(function AppCookieBar(props) {
-  const { className, onClose, open, ...other } = props
-  const classes = useStyles(props)
+const AppCookieBarContent = styled('div', {
+  name: 'AppCookieBar',
+  slot: 'Content',
+})(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: 'var(--coa-toolbar-spacing)',
+  margin: 'var(--coa-toolbar-spacing)',
+  borderRadius: theme.shape.borderRadius * 2,
+  backgroundColor: theme.palette.text.primary,
+  color: theme.palette.background.default,
+}))
 
+const AppCookieBar = React.memo(function AppCookieBar(props) {
+  const { onClose, open, ...other } = props
   const { t } = useI18n()
 
   return (
-    <Snackbar
-      className={clsx(classes.root, className)}
+    <AppCookieBarRoot
       anchorOrigin={{
         horizontal: 'right',
         vertical: 'bottom',
@@ -46,7 +49,7 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
       open={open}
       {...other}
     >
-      <div className={classes.content}>
+      <AppCookieBarContent>
         <Typography variant="body2">
           {t(
             __translationGroup,
@@ -62,8 +65,8 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
         >
           <CloseIcon />
         </IconButton>
-      </div>
-    </Snackbar>
+      </AppCookieBarContent>
+    </AppCookieBarRoot>
   )
 })
 
