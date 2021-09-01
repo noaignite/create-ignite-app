@@ -7,6 +7,10 @@ export default function createRenderBlock(variants) {
     const Component = variants[name]
     const children = childrenProp ? childrenProp.map(renderBlock) : undefined
 
+    if (!Component) {
+      return null
+    }
+
     return (
       <Component key={key} renderIndex={key} {...other}>
         {children}
