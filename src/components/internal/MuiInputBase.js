@@ -1,5 +1,5 @@
 const overrides = {
-  styles: (theme) => ({
+  styleOverrides: (theme) => ({
     root: theme.typography.input,
   }),
 }

@@ -1,7 +1,7 @@
 import { alpha } from '@material-ui/core/styles'
 
 const overrides = {
-  styles: (theme) => ({
+  styleOverrides: (theme) => ({
     root: {
       backgroundColor: alpha(theme.palette.text.primary, 0.2),
     },

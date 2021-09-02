@@ -6,7 +6,7 @@ const MD_PADDING = 12
 const SM_PADDING = 6
 
 export const overrides = {
-  styles: (theme) => ({
+  styleOverrides: (theme) => ({
     root: {
       padding: MD_PADDING,
       borderRadius: 0,

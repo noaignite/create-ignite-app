@@ -3,7 +3,7 @@ const overrides = {
     disableRipple: true,
     disableTouchRipple: true,
   },
-  styles: {
+  styleOverrides: {
     root: {
       '&.Mui-focusVisible': {
         // Mimic native browser focus styles

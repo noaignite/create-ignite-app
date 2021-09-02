@@ -1,7 +1,7 @@
 export { default } from '@material-ui/core/Container'
 
 export const overrides = {
-  styles: (theme) => ({
+  styleOverrides: (theme) => ({
     root: {
       paddingLeft: 'var(--coa-container-spacing)',
       paddingRight: 'var(--coa-container-spacing)',

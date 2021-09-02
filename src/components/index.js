@@ -27,21 +27,6 @@ export * from './IconButton'
 export { default as Link } from './Link'
 export * from './Link'
 
-export { default as List } from './List'
-export * from './List'
-
-export { default as ListItem } from './ListItem'
-export * from './ListItem'
-
-export { default as ListItemAvatar } from './ListItemAvatar'
-export * from './ListItemAvatar'
-
-export { default as ListItemIcon } from './ListItemIcon'
-export * from './ListItemIcon'
-
-export { default as ListItemText } from './ListItemText'
-export * from './ListItemText'
-
 export { default as LoadingButton } from './LoadingButton'
 export * from './LoadingButton'
 

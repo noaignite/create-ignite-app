@@ -2,7 +2,7 @@ const RADIUS_STANDARD = 8
 const RADIUS_DOT = 4
 
 const overrides = {
-  styles: {
+  styleOverrides: {
     badge: {
       minWidth: RADIUS_STANDARD * 2,
       height: RADIUS_STANDARD * 2,

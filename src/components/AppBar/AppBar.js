@@ -5,7 +5,7 @@ export const overrides = {
     color: 'default',
     elevation: 0,
   },
-  styles: (theme) => ({
+  styleOverrides: (theme) => ({
     colorDefault: {
       backgroundColor: theme.palette.background.default,
       color: theme.palette.text.primary,

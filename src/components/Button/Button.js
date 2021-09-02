@@ -10,7 +10,7 @@ export const overrides = {
   defaultProps: {
     disableElevation: true,
   },
-  styles: (theme) => ({
+  styleOverrides: (theme) => ({
     text: {
       padding: `${PADDING_Y}px ${PADDING_X}px`,
     },

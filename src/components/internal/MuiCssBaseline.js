@@ -1,5 +1,5 @@
 const overrides = {
-  styles: (theme) => ({
+  styleOverrides: (theme) => ({
     // Include font files here.
     '@font-face': [
       // {

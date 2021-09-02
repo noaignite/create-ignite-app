@@ -1,5 +1,5 @@
 const overrides = {
-  styles: (theme) => ({
+  styleOverrides: (theme) => ({
     root: {
       '&$focused $notchedOutline': {
         borderColor: theme.palette.text.primary,

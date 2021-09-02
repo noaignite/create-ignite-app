@@ -1,5 +1,5 @@
 const overrides = {
-  styles: (theme) => ({
+  styleOverrides: (theme) => ({
     underline: {
       '&:after': {
         borderBottom: `2px solid ${theme.palette.text.primary}`,

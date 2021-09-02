@@ -22,11 +22,11 @@ export default function createOverrides(theme) {
   }
 
   const overridesOutput = Object.entries(components).reduce((acc, [muiName, overrides]) => {
-    const { defaultProps, styles } = overrides
+    const { defaultProps, styleOverrides } = overrides
 
     acc[muiName] = {
       defaultProps,
-      styleOverrides: typeof styles === 'function' ? styles(theme) : styles,
+      styleOverrides: typeof styleOverrides === 'function' ? styleOverrides(theme) : styleOverrides,
     }
 
     return acc
