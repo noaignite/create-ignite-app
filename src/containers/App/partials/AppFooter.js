@@ -21,7 +21,7 @@ const AppFooterSalesBanner = styled('div', {
   position: 'sticky',
   bottom: 0,
   padding: theme.spacing(0.5, 2),
-  backgroundColor: theme.palette.text.primary,
+  backgroundColor: theme.palette.text.secondary,
   color: theme.palette.getContrastText(theme.palette.text.primary),
   textAlign: 'center',
 }))
