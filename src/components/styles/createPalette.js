@@ -32,10 +32,10 @@ export const light = {
   action: {
     // The color of an active action like an icon button.
     active: common.black,
-    // The color of an hovered action.
+    // The background color of an hovered action.
     hover: 'rgba(0, 0, 0, 0.04)',
     hoverOpacity: 0.04,
-    // The color of a selected action.
+    // The background color of a selected action.
     selected: 'rgba(0, 0, 0, 0.08)',
     selectedOpacity: 0.08,
     // The color of a disabled action.
@@ -46,6 +46,18 @@ export const light = {
     focus: 'rgba(0, 0, 0, 0.12)',
     focusOpacity: 0.12,
     activatedOpacity: 0.12,
+  },
+  // Custom group used for creating a text colored contained button.
+  textDefault: {
+    main: common.black,
+    dark: alpha(common.black, 0.8),
+    contrastText: common.white,
+  },
+  // Custom group used for creating an inverted text colored contained button.
+  textInverted: {
+    main: common.white,
+    dark: alpha(common.white, 0.9),
+    contrastText: common.black,
   },
 }
 
@@ -73,6 +85,16 @@ export const dark = {
     focus: 'rgba(255, 255, 255, 0.12)',
     focusOpacity: 0.12,
     activatedOpacity: 0.24,
+  },
+  textDefault: {
+    main: common.white,
+    dark: alpha(common.white, 0.9),
+    contrastText: common.black,
+  },
+  textInverted: {
+    main: common.black,
+    dark: alpha(common.black, 0.8),
+    contrastText: common.white,
   },
 }
 

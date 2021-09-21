@@ -1,6 +1,5 @@
 import * as React from 'react'
 import storySelectArgType from '../utils/storySelectArgType'
-import CloseIcon from '../icons/Close'
 import Button from './Button'
 
 export default {
@@ -9,6 +8,8 @@ export default {
   argTypes: {
     color: storySelectArgType([
       'inherit',
+      'textDefault',
+      'textInverted',
       'primary',
       'secondary',
       'success',
@@ -18,7 +19,6 @@ export default {
     ]),
     size: storySelectArgType(['small', 'medium', 'large']),
     variant: storySelectArgType(['text', 'outlined', 'contained']),
-    onClick: { action: 'clicked' },
   },
 }
 
@@ -29,9 +29,7 @@ Default.args = {
   children: 'Just a button',
   color: 'inherit',
   disabled: false,
-  endIcon: <CloseIcon />,
   fullWidth: false,
   size: 'medium',
-  startIcon: <CloseIcon />,
   variant: 'outlined',
 }

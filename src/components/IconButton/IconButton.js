@@ -10,8 +10,7 @@ export const overrides = {
     root: {
       padding: MD_PADDING,
       borderRadius: 0,
-      color: theme.palette.action.active,
-      transition: theme.transitions.create(['background-color', 'color'], {
+      transition: theme.transitions.create('color', {
         duration: theme.transitions.duration.shortest,
       }),
       '&:hover': {
@@ -43,14 +42,22 @@ export const overrides = {
     },
     colorPrimary: {
       '&:hover': {
-        backgroundColor: 'transparent',
+        backgroundColor: 'transparent', // Disable Mui backgroundColor
         color: alpha(theme.palette.primary.main, 1 - theme.palette.action.activatedOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          color: theme.palette.primary.main,
+        },
       },
     },
     colorSecondary: {
       '&:hover': {
-        backgroundColor: 'transparent',
+        backgroundColor: 'transparent', // Disable Mui backgroundColor
         color: alpha(theme.palette.secondary.main, 1 - theme.palette.action.activatedOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          color: theme.palette.secondary.main,
+        },
       },
     },
     sizeSmall: {

@@ -1,5 +1,3 @@
-import { alpha } from '@mui/material/styles'
-
 export { default } from '@mui/material/Button'
 
 const BORDER_WIDTH = 1
@@ -16,46 +14,9 @@ export const overrides = {
     },
     outlined: {
       padding: `${PADDING_Y - BORDER_WIDTH}px ${PADDING_X - BORDER_WIDTH}px`,
-      border: `${BORDER_WIDTH}px solid ${theme.palette.text.primary}`,
-      '&$disabled': {
-        border: `${BORDER_WIDTH}px solid ${theme.palette.action.disabledBackground}`,
-      },
-    },
-    outlinedPrimary: {
-      border: `${BORDER_WIDTH}px solid ${alpha(theme.palette.primary.main, 0.5)}`,
-      '&:hover': {
-        border: `${BORDER_WIDTH}px solid ${theme.palette.primary.main}`,
-      },
-      '&$disabled': {
-        border: `${BORDER_WIDTH}px solid ${theme.palette.action.disabledBackground}`,
-      },
-    },
-    outlinedSecondary: {
-      border: `${BORDER_WIDTH}px solid ${alpha(theme.palette.secondary.main, 0.5)}`,
-      '&:hover': {
-        border: `${BORDER_WIDTH}px solid ${theme.palette.secondary.main}`,
-      },
-      '&$disabled': {
-        border: `${BORDER_WIDTH}px solid ${theme.palette.action.disabledBackground}`,
-      },
     },
     contained: {
       padding: `${PADDING_Y}px ${PADDING_X}px`,
-      backgroundColor: theme.palette.text.primary,
-      color: theme.palette.getContrastText(theme.palette.text.primary),
-      '&:hover': {
-        backgroundColor: alpha(
-          theme.palette.text.primary,
-          1 - theme.palette.action.activatedOpacity,
-        ),
-        // Reset on touch devices, it doesn't add specificity
-        '@media (hover: none)': {
-          backgroundColor: theme.palette.text.primary,
-        },
-        '&$disabled': {
-          backgroundColor: theme.palette.action.disabledBackground,
-        },
-      },
     },
     textSizeSmall: {
       padding: `${PADDING_Y - 5}px ${PADDING_X - 10}px`,
