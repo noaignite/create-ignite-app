@@ -1,7 +1,7 @@
 // import '../scripts/wdyr'
 import '../scripts/polyfills'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
-import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { global } from 'api/mock'
 import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
@@ -41,25 +41,19 @@ export const decorators = [
         // https://github.com/mui-org/material-ui/issues/24282#issuecomment-859393395
         theme={theme}
       >
-        <StyledEngineProvider
-          // @todo Is this needed?
-          // https://next.material-ui.com/guides/migration-v4/#style-library
-          injectFirst
-        >
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
 
-            <I18nProvider>
-              <GlobalProvider {...global}>
-                <CheckoutProvider>
-                  <AppProvider>
-                    <Story />
-                  </AppProvider>
-                </CheckoutProvider>
-              </GlobalProvider>
-            </I18nProvider>
-          </ThemeProvider>
-        </StyledEngineProvider>
+          <I18nProvider>
+            <GlobalProvider {...global}>
+              <CheckoutProvider>
+                <AppProvider>
+                  <Story />
+                </AppProvider>
+              </CheckoutProvider>
+            </GlobalProvider>
+          </I18nProvider>
+        </ThemeProvider>
       </EmotionThemeProvider>
     )
   },

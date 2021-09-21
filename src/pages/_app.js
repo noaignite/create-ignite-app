@@ -1,4 +1,4 @@
-// Based on https://github.com/mui-org/material-ui/blob/next/examples/nextjs/pages/_app.js
+// Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_app.js
 
 // import '../../scripts/wdyr'
 import '../../scripts/polyfills'
@@ -6,6 +6,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
+import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { global as mockedCmsProps } from 'api/mock'
@@ -28,39 +29,37 @@ function App(props) {
     pageProps,
   } = props
 
-  React.useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles)
-    }
-  }, [])
-
   return (
     <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={theme}>
-        <Head>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-          />
-        </Head>
+      <Head>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+        />
+      </Head>
 
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
+      <EmotionThemeProvider
+        // Bug: Custom theme not propagated within Storybook.js
+        // https://github.com/mui-org/material-ui/issues/24282#issuecomment-859393395
+        theme={theme}
+      >
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
 
-        <I18nProvider defaultLocale={defaultLocale} locale={locale}>
-          <GlobalProvider {...cmsProps}>
-            <CheckoutProvider>
-              <AppProvider>
-                <AppBase>
-                  <Component {...pageProps} />
-                </AppBase>
-              </AppProvider>
-            </CheckoutProvider>
-          </GlobalProvider>
-        </I18nProvider>
-      </ThemeProvider>
+          <I18nProvider defaultLocale={defaultLocale} locale={locale}>
+            <GlobalProvider {...cmsProps}>
+              <CheckoutProvider>
+                <AppProvider>
+                  <AppBase>
+                    <Component {...pageProps} />
+                  </AppBase>
+                </AppProvider>
+              </CheckoutProvider>
+            </GlobalProvider>
+          </I18nProvider>
+        </ThemeProvider>
+      </EmotionThemeProvider>
     </CacheProvider>
   )
 }

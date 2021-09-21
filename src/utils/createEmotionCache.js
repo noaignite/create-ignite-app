@@ -1,4 +1,4 @@
-// Based on https://github.com/mui-org/material-ui/blob/next/examples/nextjs/src/createEmotionCache.js
+// Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/src/createEmotionCache.js
 
 import createCache from '@emotion/cache'
 
