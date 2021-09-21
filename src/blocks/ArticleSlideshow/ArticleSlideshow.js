@@ -1,62 +1,78 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useEmblaCarousel } from 'embla-carousel/react'
-import { withStyles } from '@mui/styles'
-import { mediaType } from '@oakwood/oui-utils'
-import { Media, MediaReveal } from '@oakwood/oui'
+import { styled } from '@mui/system'
+import { Button, Typography } from '@mui/material'
+import { mediaType } from '@noaignite/oui/utils'
+import { Media, MediaReveal } from '@noaignite/oui'
 import { useI18n } from 'api'
 import { ASPECT_RATIOS } from 'utils/constants'
 import { RouterLink } from 'containers'
-import { Button, Container, Typography } from 'components'
 
 function getSlideWidth(slidesPerView, spacing) {
-  const totalSpacing = spacing * (slidesPerView - 1) // Subtract last slide spacing.
-  return `calc(100% / ${slidesPerView} - ${Math.round(totalSpacing / slidesPerView)}px)`
+  return `calc(100% / ${slidesPerView} - ${spacing} * ${slidesPerView - 1} / ${slidesPerView})`
 }
 
-export const styles = (theme) => ({
-  root: {
-    position: 'relative',
-    margin: 'var(--coa-section-spacing) 0',
-  },
-  header: {
-    textAlign: 'center',
-  },
-  main: {
-    ...theme.mixins.gutters(4),
-    marginTop: 'var(--coa-section-spacing)',
-    overflow: 'hidden',
-  },
-  embla: {
-    overflow: 'visible',
-  },
-  emblaContainer: {
-    display: 'flex',
-  },
-  emblaSlide: {
-    position: 'relative',
-    flexShrink: 0,
-    width: '100%',
-    padding: theme.spacing(0, 1),
-    [theme.breakpoints.up('sm')]: {
-      width: getSlideWidth(2, theme.spacing(2)),
-    },
-    [theme.breakpoints.up('md')]: {
-      width: getSlideWidth(3, theme.spacing(2)),
-    },
-    [theme.breakpoints.up('lg')]: {
-      width: getSlideWidth(4, theme.spacing(2)),
-    },
-  },
-  article: {},
-  articleContent: {
-    ...theme.mixins.verticalRhythm(1),
-    padding: theme.spacing(2, 0),
-  },
+const ArticleSlideshowRoot = styled('section', {
+  name: 'ArticleSlideshow',
+  slot: 'Root',
+})({
+  position: 'relative',
+  margin: 'var(--coa-section-spacing) 0',
 })
 
+const ArticleSlideshowHeader = styled('header', {
+  name: 'ArticleSlideshow',
+  slot: 'Header',
+})({
+  paddingLeft: 'var(--coa-container-spacing)',
+  paddingRight: 'var(--coa-container-spacing)',
+  marginBottom: 'var(--coa-section-spacing)',
+  textAlign: 'center',
+})
+
+const ArticleSlideshowMain = styled('div', {
+  name: 'ArticleSlideshow',
+  slot: 'Main',
+})({
+  paddingLeft: 'var(--coa-container-spacing)',
+  paddingRight: 'var(--coa-container-spacing)',
+  overflow: 'hidden',
+})
+
+const ArticleSlideshowEmblaContainer = styled('div', {
+  name: 'ArticleSlideshow',
+  slot: 'EmblaContainer',
+})(({ theme }) => ({
+  display: 'flex',
+  gap: theme.spacing(2),
+}))
+
+const ArticleSlideshowEmblaSlide = styled('div', {
+  name: 'ArticleSlideshow',
+  slot: 'EmblaSlide',
+})(({ theme }) => ({
+  position: 'relative',
+  flexShrink: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    width: getSlideWidth(2, theme.spacing(2)),
+  },
+  [theme.breakpoints.up('md')]: {
+    width: getSlideWidth(3, theme.spacing(2)),
+  },
+}))
+
+const ArticleSlideshowArticleContent = styled('div', {
+  name: 'ArticleSlideshow',
+  slot: 'EmblaSlide',
+})(({ theme }) => ({
+  ...theme.mixins.verticalRhythm(1),
+  padding: theme.spacing(2, 0),
+}))
+
 function ArticleSlideshow(props) {
-  const { classes, heading, items } = props
+  const { heading, items } = props
 
   const { t } = useI18n()
 
@@ -66,21 +82,21 @@ function ArticleSlideshow(props) {
   })
 
   return (
-    <section className={classes.root}>
+    <ArticleSlideshowRoot>
       {heading && (
-        <Container className={classes.header} component="header" maxWidth="sm">
+        <ArticleSlideshowHeader>
           <Typography component="h1" variant="h4">
             {heading}
           </Typography>
-        </Container>
+        </ArticleSlideshowHeader>
       )}
 
-      <Container className={classes.main} maxWidth={false}>
-        <div className={classes.embla} ref={emblaRef}>
-          <div className={classes.emblaContainer}>
+      <ArticleSlideshowMain>
+        <div ref={emblaRef}>
+          <ArticleSlideshowEmblaContainer>
             {items?.map((item, idx) => (
-              <div key={idx} className={classes.emblaSlide}>
-                <article className={classes.article}>
+              <ArticleSlideshowEmblaSlide key={idx}>
+                <article>
                   {item.mediaProps && (
                     <RouterLink href={item.url}>
                       <MediaReveal {...ASPECT_RATIOS.article}>
@@ -89,7 +105,7 @@ function ArticleSlideshow(props) {
                     </RouterLink>
                   )}
 
-                  <div className={classes.articleContent}>
+                  <ArticleSlideshowArticleContent>
                     {item.subheading && (
                       <Typography variant="overline">{item.subheading}</Typography>
                     )}
@@ -105,14 +121,14 @@ function ArticleSlideshow(props) {
                     <Button component={RouterLink} href={item.url} variant="contained">
                       {t(__translationGroup)`Read more`}
                     </Button>
-                  </div>
+                  </ArticleSlideshowArticleContent>
                 </article>
-              </div>
+              </ArticleSlideshowEmblaSlide>
             ))}
-          </div>
+          </ArticleSlideshowEmblaContainer>
         </div>
-      </Container>
-    </section>
+      </ArticleSlideshowMain>
+    </ArticleSlideshowRoot>
   )
 }
 
@@ -125,9 +141,8 @@ const itemType = PropTypes.shape({
 })
 
 ArticleSlideshow.propTypes = {
-  classes: PropTypes.object.isRequired,
   heading: PropTypes.string,
   items: PropTypes.arrayOf(itemType),
 }
 
-export default withStyles(styles)(ArticleSlideshow)
+export default ArticleSlideshow

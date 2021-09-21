@@ -1093,13 +1093,6 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.7.4":
-  version "7.15.4"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
-  integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
 "@babel/template@^7.12.7", "@babel/template@^7.14.5", "@babel/template@^7.6.0":
   version "7.14.5"
   resolved "https://registry.npmjs.org/@babel/template/-/template-7.14.5.tgz#a9bc9d8b33354ff6e55a9c60d1109200a68974f4"
@@ -1713,6 +1706,23 @@
   resolved "https://registry.yarnpkg.com/@next/react-refresh-utils/-/react-refresh-utils-11.1.0.tgz#60c3c7b127a5dab8b0a2889a7dcf8a90d2c4e592"
   integrity sha512-g5DtFTpLTGa36iy9DuZawtJeitI11gysFGKPQQqy+mNbSFazguArcJ10gAYFlbqpIi4boUamWNI5mAoSPx3kog==
 
+"@noaignite/oui-utils@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@noaignite/oui-utils/-/oui-utils-2.0.0.tgz#7255fdd3860a5308332646a5b0fa083bf60db98a"
+  integrity sha512-/0dg1VHn9/F6FGS1J0iafMkgkzhCiSmPTwgNdIRQBmZ4HQbHNe9+vRS7w99OnNyomMs7q1SDlZvHMPAjn3HBhA==
+  dependencies:
+    "@babel/runtime" "^7.14.8"
+    intersection-observer-admin "^0.3.2"
+
+"@noaignite/oui@file:.yalc/@noaignite/oui":
+  version "2.0.0"
+  dependencies:
+    "@babel/runtime" "^7.14.8"
+    "@maeertin/medialoaded" "^1.2.1"
+    "@noaignite/oui-utils" "2.0.0"
+    clsx "^1.1.1"
+    prop-types "^15.7.2"
+
 "@node-rs/helper@1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@node-rs/helper/-/helper-1.2.1.tgz#e079b05f21ff4329d82c4e1f71c0290e4ecdc70c"
@@ -1753,24 +1763,6 @@
   dependencies:
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
-
-"@oakwood/oui-utils@2.0.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@oakwood/oui-utils/-/oui-utils-1.1.0.tgz#e81835427af14e76a0205f917d3c9c30a4d6f8e6"
-  integrity sha512-gL/1ZtHzU1R2j6ktYnX2lZiwdACRKUpkPUZTcwfSCzPF7+WjMg2RS96NqtIiHdnsjzGrxAvodXMlFLvAJmlu5w==
-  dependencies:
-    "@babel/runtime" "^7.7.4"
-    intersection-observer-admin "^0.2.12"
-    prop-types "^15.7.2"
-
-"@oakwood/oui@file:.yalc/@oakwood/oui":
-  version "2.0.0"
-  dependencies:
-    "@babel/runtime" "^7.7.4"
-    "@maeertin/medialoaded" "^1.2.1"
-    "@oakwood/oui-utils" "2.0.0"
-    clsx "^1.1.1"
-    prop-types "^15.7.2"
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.4.3":
   version "0.4.3"
@@ -6845,10 +6837,10 @@ interpret@^2.2.0:
   resolved "https://registry.npmjs.org/interpret/-/interpret-2.2.0.tgz#1a78a0b5965c40a5416d007ad6f50ad27c417df9"
   integrity sha512-Ju0Bz/cEia55xDwUWEa8+olFpCiQoypjnQySseKtmjNrnps3P+xfpUmGr90T7yjlVJmOtybRvPXhKMbHr+fWnw==
 
-intersection-observer-admin@^0.2.12:
-  version "0.2.13"
-  resolved "https://registry.yarnpkg.com/intersection-observer-admin/-/intersection-observer-admin-0.2.13.tgz#00a021695bf5aef8d198204514d2f849fd27d089"
-  integrity sha512-REIM59IHXPe9U5eTnowurzzfhgqVkSImZJnOSJZTAJ0LnyJqw8S/eD5s8ZYneQfm9JszhGIBwudF9gF02A3BpQ==
+intersection-observer-admin@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/intersection-observer-admin/-/intersection-observer-admin-0.3.2.tgz#0b6e95ce7272a383e8bbdd47f9ff48de9eab9919"
+  integrity sha512-kJEcF9iVRuI4thXiJd28UzFDgvFHBNUgwkKA4F0bPMmRdzc+1Eq7/J13n2gSgfZ5tsVxb+wJOV7k3DXcsc7D6Q==
 
 invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"

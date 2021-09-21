@@ -47,7 +47,7 @@
     "@mui/lab": "^5.0.0-alpha.47",
     "@mui/material": "^5.0.0",
     "@mui/styles": "^5.0.0",
-    "@oakwood/oui": "file:.yalc/@oakwood/oui",
+    "@noaignite/oui": "file:.yalc/@noaignite/oui",
     "clsx": "^1.1.0",
     "embla-carousel": "^4.5.3",
     "es2015-i18n-tag": "^1.6.1",
