@@ -6,7 +6,6 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
-import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { global as mockedCmsProps } from 'api/mock'
@@ -38,28 +37,22 @@ function App(props) {
         />
       </Head>
 
-      <EmotionThemeProvider
-        // Bug: Custom theme not propagated within Storybook.js
-        // https://github.com/mui-org/material-ui/issues/24282#issuecomment-859393395
-        theme={theme}
-      >
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
 
-          <I18nProvider defaultLocale={defaultLocale} locale={locale}>
-            <GlobalProvider {...cmsProps}>
-              <CheckoutProvider>
-                <AppProvider>
-                  <AppBase>
-                    <Component {...pageProps} />
-                  </AppBase>
-                </AppProvider>
-              </CheckoutProvider>
-            </GlobalProvider>
-          </I18nProvider>
-        </ThemeProvider>
-      </EmotionThemeProvider>
+        <I18nProvider defaultLocale={defaultLocale} locale={locale}>
+          <GlobalProvider {...cmsProps}>
+            <CheckoutProvider>
+              <AppProvider>
+                <AppBase>
+                  <Component {...pageProps} />
+                </AppBase>
+              </AppProvider>
+            </CheckoutProvider>
+          </GlobalProvider>
+        </I18nProvider>
+      </ThemeProvider>
     </CacheProvider>
   )
 }

@@ -2,4 +2,4 @@
  * Replace export with custom color definition
  * if in need of changing the color scale.
  */
-export { default } from '@mui/material/colors/red'
+export { red as default } from '@mui/material/colors'

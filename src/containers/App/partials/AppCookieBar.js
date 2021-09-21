@@ -3,10 +3,9 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
-import { Snackbar } from '@mui/material'
+import { IconButton, Snackbar, Typography } from '@mui/material'
 import { useI18n } from 'api'
 import { Close as CloseIcon } from 'components/icons'
-import { IconButton, Typography } from 'components'
 
 const AppCookieBarRoot = styled(Snackbar, {
   name: 'AppCookieBar',

@@ -6,7 +6,7 @@ import { CssBaseline } from '@mui/material'
 import { global } from 'api/mock'
 import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
 import { AppProvider } from 'containers/App/AppContext'
-import createTheme from 'components/styles/createTheme'
+import { createTheme } from 'components/styles'
 
 export const parameters = {
   layout: 'fullscreen',

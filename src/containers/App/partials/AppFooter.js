@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { styled } from '@mui/system'
+import { Container, Link } from '@mui/material'
 import { useGlobal } from 'api'
-import { Container, Link } from 'components'
 import { useApp } from '../AppContext'
 import RouterLink from '../../RouterLink'
 

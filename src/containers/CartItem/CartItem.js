@@ -1,13 +1,12 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
-import { ButtonBase } from '@mui/material'
+import { ButtonBase, Link } from '@mui/material'
 import { Media, MediaReveal } from '@noaignite/oui'
 import { ASPECT_RATIOS, CENTRA_CART_ITEM_UNIQUE_KEY } from 'utils/constants'
 import { useCheckoutHandlers, useI18n } from 'api'
 import { cartItemType } from 'utils'
 import { Add as AddIcon, Remove as RemoveIcon } from 'components/icons'
-import { Link } from 'components'
 import RouterLink from '../RouterLink'
 
 const classes = {

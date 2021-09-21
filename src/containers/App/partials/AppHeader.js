@@ -3,7 +3,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
-import { Badge } from '@mui/material'
+import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
 import { useCheckoutSelection, useI18n } from 'api'
 import { useDimensions } from 'utils'
 import {
@@ -13,7 +13,6 @@ import {
   Close as CloseIcon,
   Menu as MenuIcon,
 } from 'components/icons'
-import { AppBar, IconButton, Toolbar } from 'components'
 import RouterLink from '../../RouterLink'
 import { useApp } from '../AppContext'
 

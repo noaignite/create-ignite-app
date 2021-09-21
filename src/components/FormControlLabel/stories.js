@@ -1,6 +1,6 @@
 import * as React from 'react'
+import { Checkbox, Radio } from '@mui/material'
 import storySelectArgType from '../utils/storySelectArgType'
-import Checkbox from '../Checkbox'
 import FormControlLabel from './FormControlLabel'
 
 export default {
@@ -11,10 +11,20 @@ export default {
   },
 }
 
-const Template = (args) => <FormControlLabel control={<Checkbox />} {...args} />
+const Template = (args) => <FormControlLabel {...args} />
 
-export const Default = Template.bind({})
-Default.args = {
+export const WithCheckbox = Template.bind({})
+WithCheckbox.args = {
+  control: <Checkbox />,
+  checked: false,
+  disabled: false,
+  label: 'Field label',
+  labelPlacement: 'end',
+}
+
+export const WithRadio = Template.bind({})
+WithRadio.args = {
+  control: <Radio />,
   checked: false,
   disabled: false,
   label: 'Field label',

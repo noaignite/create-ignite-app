@@ -1,6 +1,4 @@
-export { default } from '@mui/material/Toolbar'
-
-export const overrides = {
+const overrides = {
   styleOverrides: (theme) => ({
     gutters: {
       paddingLeft: 'var(--coa-toolbar-spacing)',
@@ -14,3 +12,5 @@ export const overrides = {
     dense: theme.mixins.toolbarDense,
   }),
 }
+
+export default overrides

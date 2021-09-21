@@ -1,6 +1,4 @@
-export { default } from '@mui/material/Container'
-
-export const overrides = {
+const overrides = {
   styleOverrides: (theme) => ({
     root: {
       paddingLeft: 'var(--coa-container-spacing)',
@@ -12,3 +10,5 @@ export const overrides = {
     },
   }),
 }
+
+export default overrides

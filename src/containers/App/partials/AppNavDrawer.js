@@ -3,10 +3,9 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
-import { Drawer } from '@mui/material'
+import { Drawer, IconButton, Link, Toolbar, Typography } from '@mui/material'
 import { useCheckout, useGlobal, useI18n } from 'api'
 import { Close as CloseIcon } from 'components/icons'
-import { IconButton, Link, Toolbar, Typography } from 'components'
 import { useApp } from '../AppContext'
 import AppNavDrawerListItem from './AppNavDrawerListItem'
 

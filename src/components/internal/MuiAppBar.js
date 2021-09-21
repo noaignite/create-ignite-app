@@ -1,6 +1,4 @@
-export { default } from '@mui/material/AppBar'
-
-export const overrides = {
+const overrides = {
   defaultProps: {
     color: 'default',
     elevation: 0,
@@ -12,3 +10,5 @@ export const overrides = {
     },
   }),
 }
+
+export default overrides

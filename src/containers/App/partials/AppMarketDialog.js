@@ -2,10 +2,19 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { Dialog, DialogTitle, DialogContent, useMediaQuery, Slide } from '@mui/material'
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  MenuItem,
+  Slide,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from '@mui/material'
 import { useCheckout, useI18n } from 'api'
 import { Close as CloseIcon } from 'components/icons'
-import { IconButton, MenuItem, TextField, Typography } from 'components'
 import { useApp } from '../AppContext'
 
 const TransitionComponent = React.forwardRef(function TransitionComponent(props, ref) {

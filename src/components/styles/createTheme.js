@@ -4,7 +4,6 @@ import createMixins from './createMixins'
 import createOverrides from './createOverrides'
 import createPalette from './createPalette'
 import createTypography from './createTypography'
-import shadows from './shadows'
 import shape from './shape'
 import spacing from './spacing'
 import zIndex from './zIndex'
@@ -32,7 +31,6 @@ export default function createTheme(options = {}) {
     {
       breakpoints,
       palette,
-      shadows,
       shape,
       spacing,
       typography,
