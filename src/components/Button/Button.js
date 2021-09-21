@@ -1,6 +1,6 @@
-import { alpha } from '@material-ui/core/styles'
+import { alpha } from '@mui/material/styles'
 
-export { default } from '@material-ui/core/Button'
+export { default } from '@mui/material/Button'
 
 const BORDER_WIDTH = 1
 const PADDING_X = 27

@@ -2,8 +2,8 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { styled } from '@material-ui/system'
-import { Snackbar } from '@material-ui/core'
+import { styled } from '@mui/system'
+import { Snackbar } from '@mui/material'
 import { useI18n } from 'api'
 import { Close as CloseIcon } from 'components/icons'
 import { IconButton, Typography } from 'components'

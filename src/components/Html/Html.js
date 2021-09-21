@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { styled } from '@material-ui/system'
+import { styled } from '@mui/system'
 
 export const HtmlRoot = styled('div', {
   name: 'Html',

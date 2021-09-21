@@ -1,7 +1,7 @@
 /**
  * Single export of custom `createTheme`.
  *
- * Access to other `@material-ui/core/styles` utilities should be done
+ * Access to other `@mui/material/styles` utilities should be done
  * directly from it's npm package.
  */
 

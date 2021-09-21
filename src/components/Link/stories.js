@@ -43,7 +43,7 @@ Default.args = {
   children: 'Just another link',
   color: 'inherit',
   display: 'initial',
-  href: 'https://material-ui.com/',
+  href: 'https://mui.com/',
   underline: 'hover',
   variant: 'inherit',
 }

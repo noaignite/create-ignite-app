@@ -2,8 +2,8 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { styled } from '@material-ui/system'
-import { Badge } from '@material-ui/core'
+import { styled } from '@mui/system'
+import { Badge } from '@mui/material'
 import { useCheckoutSelection, useI18n } from 'api'
 import { useDimensions } from 'utils'
 import {

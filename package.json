@@ -1,9 +1,9 @@
 {
   "name": "create-oakwood-app",
   "private": true,
-  "author": "Oakwood Creative",
+  "author": "NoA Ignite",
   "version": "0.0.0",
-  "description": "Oakwood App Scaffolding",
+  "description": "App Scaffolding",
   "repository": {
     "type": "git",
     "url": "https://github.com/oakwood/create-oakwood-app.git"
@@ -44,10 +44,10 @@
     "@emotion/react": "^11.4.1",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "@material-ui/core": "^5.0.0-beta.5",
-    "@material-ui/lab": "^5.0.0-alpha.44",
-    "@material-ui/styles": "^5.0.0-beta.5",
-    "@oakwood/oui": "1.1.0",
+    "@mui/lab": "^5.0.0-alpha.47",
+    "@mui/material": "^5.0.0",
+    "@mui/styles": "^5.0.0",
+    "@oakwood/oui": "file:.yalc/@oakwood/oui",
     "clsx": "^1.1.0",
     "embla-carousel": "^4.5.3",
     "es2015-i18n-tag": "^1.6.1",

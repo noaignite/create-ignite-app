@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
-import { styled } from '@material-ui/system'
+import { styled } from '@mui/system'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from 'utils/constants'
 import AppContext from './AppContext'
 import AppCartDrawer from './partials/AppCartDrawer'

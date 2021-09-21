@@ -2,8 +2,8 @@
 
 import * as React from 'react'
 import Router from 'next/router'
-import { styled } from '@material-ui/system'
-import { Backdrop, CircularProgress } from '@material-ui/core'
+import { styled } from '@mui/system'
+import { Backdrop, CircularProgress } from '@mui/material'
 
 const AppLoaderRoot = styled(Backdrop, {
   name: 'AppLoader',

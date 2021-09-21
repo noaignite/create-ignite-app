@@ -2,7 +2,7 @@ import * as React from 'react'
 import CheckBoxIcon from '../icons/CheckBox'
 import CheckBoxOutlineBlankIcon from '../icons/CheckBoxOutlineBlank'
 
-export { default } from '@material-ui/core/Checkbox'
+export { default } from '@mui/material/Checkbox'
 
 export const overrides = {
   defaultProps: {

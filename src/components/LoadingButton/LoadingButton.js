@@ -1,1 +1,1 @@
-export { default } from '@material-ui/lab/LoadingButton'
+export { default } from '@mui/lab/LoadingButton'

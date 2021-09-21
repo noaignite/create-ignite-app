@@ -1,11 +1,11 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useEmblaCarousel } from 'embla-carousel/react'
-import { withStyles } from '@material-ui/styles'
-// import { Media, MediaReveal } from '@oakwood/oui'
+import { withStyles } from '@mui/styles'
+import { mediaType } from '@oakwood/oui-utils'
+import { Media, MediaReveal } from '@oakwood/oui'
 import { useI18n } from 'api'
-// import { ASPECT_RATIOS } from 'utils/constants'
-import { mediaType } from 'utils'
+import { ASPECT_RATIOS } from 'utils/constants'
 import { RouterLink } from 'containers'
 import { Button, Container, Typography } from 'components'
 
@@ -83,9 +83,9 @@ function ArticleSlideshow(props) {
                 <article className={classes.article}>
                   {item.mediaProps && (
                     <RouterLink href={item.url}>
-                      {/* <MediaReveal {...ASPECT_RATIOS.article}>
+                      <MediaReveal {...ASPECT_RATIOS.article}>
                         <Media {...ASPECT_RATIOS.article} {...item.mediaProps} />
-                      </MediaReveal> */}
+                      </MediaReveal>
                     </RouterLink>
                   )}
 

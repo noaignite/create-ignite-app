@@ -1,4 +1,4 @@
-export { default } from '@material-ui/core/Link'
+export { default } from '@mui/material/Link'
 
 export const overrides = {
   defaultProps: {

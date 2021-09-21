@@ -1,8 +1,8 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/styles'
-// import { BackgroundMedia, Media, MediaReveal } from '@oakwood/oui'
-// import { mediaType } from 'utils'
+import { withStyles } from '@mui/styles'
+import { mediaType } from '@oakwood/oui-utils'
+import { Media, MediaReveal } from '@oakwood/oui'
 import { RouterLink } from 'containers'
 import { Button, Container, Typography } from 'components'
 
@@ -22,11 +22,12 @@ export const styles = (theme) => ({
       minHeight: 650,
     },
   },
-  backgroundWrapperSticky: {
-    top: 'var(--coa-sticky-top)',
-    '$root:first-child &': {
-      top: 'var(--coa-initial-sticky-top)',
-    },
+  background: {
+    ...theme.mixins.absolute(0),
+    zIndex: -1,
+  },
+  media: {
+    height: '100%',
   },
   main: {},
   heading: theme.mixins.fluidType('sm', 'xl', 45, 132),
@@ -41,35 +42,22 @@ export const styles = (theme) => ({
 })
 
 function Hero(props) {
-  const {
-    // backgroundAttachment = 'static',
-    // backgroundMediaProps,
-    classes,
-    ctaLabel,
-    ctaUrl,
-    heading,
-    excerpt,
-    // renderIndex,
-  } = props
+  const { backgroundMediaProps, classes, ctaLabel, ctaUrl, heading, excerpt, renderIndex } = props
 
   return (
     <section className={classes.root}>
-      {/* {backgroundMediaProps && (
-        <BackgroundMedia
-          classes={{ wrapperSticky: classes.backgroundWrapperSticky }}
-          attachment={backgroundAttachment}
-        >
-          <MediaReveal>
-            <Media
-              {...(backgroundMediaProps?.component === 'video'
-                ? { autoPlay: true, muted: true, loop: true, playsInline: true }
-                : {})}
-              {...backgroundMediaProps}
-              priority={renderIndex === 0}
-            />
-          </MediaReveal>
-        </BackgroundMedia>
-      )} */}
+      {backgroundMediaProps && (
+        <MediaReveal className={classes.background}>
+          <Media
+            className={classes.media}
+            {...(backgroundMediaProps?.component === 'video'
+              ? { autoPlay: true, muted: true, loop: true, playsInline: true }
+              : {})}
+            {...backgroundMediaProps}
+            priority={renderIndex === 0}
+          />
+        </MediaReveal>
+      )}
 
       <Container className={classes.main} maxWidth="md">
         <Typography className={classes.heading} component="h1" variant="h2">
@@ -97,14 +85,13 @@ function Hero(props) {
 }
 
 Hero.propTypes = {
-  // backgroundAttachment: PropTypes.oneOf(['static', 'fixed', 'sticky']),
-  // backgroundMediaProps: mediaType,
+  backgroundMediaProps: mediaType,
   classes: PropTypes.object.isRequired,
   ctaLabel: PropTypes.string,
   ctaUrl: PropTypes.string,
   excerpt: PropTypes.string,
   heading: PropTypes.string,
-  // renderIndex: PropTypes.number.isRequired,
+  renderIndex: PropTypes.number.isRequired,
 }
 
 export default withStyles(styles)(Hero)

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { styled } from '@material-ui/system'
+import { styled } from '@mui/system'
 import { useGlobal } from 'api'
 import { Container, Link } from 'components'
 import { useApp } from '../AppContext'

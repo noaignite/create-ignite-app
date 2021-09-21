@@ -1,10 +1,14 @@
-export { default } from '@material-ui/core/Toolbar'
+export { default } from '@mui/material/Toolbar'
 
 export const overrides = {
   styleOverrides: (theme) => ({
     gutters: {
-      ...theme.mixins.gutters(2),
-      [theme.breakpoints.up('sm')]: theme.mixins.gutters(2), // Override Mui styles
+      paddingLeft: 'var(--coa-toolbar-spacing)',
+      paddingRight: 'var(--coa-toolbar-spacing)',
+      [theme.breakpoints.up('sm')]: {
+        paddingLeft: 'var(--coa-toolbar-spacing)',
+        paddingRight: 'var(--coa-toolbar-spacing)',
+      },
     },
     regular: theme.mixins.toolbar,
     dense: theme.mixins.toolbarDense,

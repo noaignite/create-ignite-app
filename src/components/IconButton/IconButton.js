@@ -1,6 +1,6 @@
-import { alpha } from '@material-ui/core/styles'
+import { alpha } from '@mui/material/styles'
 
-export { default } from '@material-ui/core/IconButton'
+export { default } from '@mui/material/IconButton'
 
 const MD_PADDING = 12
 const SM_PADDING = 6

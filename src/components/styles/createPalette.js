@@ -1,5 +1,5 @@
-import { deepmerge } from '@material-ui/utils'
-import { alpha } from '@material-ui/core/styles'
+import { deepmerge } from '@mui/utils'
+import { alpha } from '@mui/material/styles'
 import blue from '../colors/blue'
 import blueGrey from '../colors/blueGrey'
 import common from '../colors/common'

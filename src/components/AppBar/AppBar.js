@@ -1,4 +1,4 @@
-export { default } from '@material-ui/core/AppBar'
+export { default } from '@mui/material/AppBar'
 
 export const overrides = {
   defaultProps: {
