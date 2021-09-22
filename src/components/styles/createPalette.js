@@ -8,18 +8,36 @@ import grey from '../colors/grey'
 import orange from '../colors/orange'
 import red from '../colors/red'
 
+export const darkText = {
+  // The most important text.
+  primary: common.black,
+  // Secondary text.
+  secondary: alpha(common.black, 0.65),
+  // Disabled text have even lower visual prominence.
+  disabled: alpha(common.black, 0.4),
+  // Text hints.
+  hint: alpha(common.black, 0.4),
+  // Complementing keys used for component color variants.
+  main: common.black,
+  dark: alpha(common.black, 0.8), // Mui uses `dark` for hover. We want a lighter color.
+  contrastText: common.white,
+}
+
+export const lightText = {
+  primary: common.white,
+  secondary: alpha(common.white, 0.65),
+  disabled: alpha(common.white, 0.4),
+  hint: alpha(common.white, 0.4),
+  main: common.white,
+  dark: alpha(common.white, 0.9),
+  contrastText: common.black,
+}
+
 export const light = {
   // The colors used to style the text.
-  text: {
-    // The most important text.
-    primary: common.black,
-    // Secondary text.
-    secondary: alpha(common.black, 0.65),
-    // Disabled text have even lower visual prominence.
-    disabled: alpha(common.black, 0.4),
-    // Text hints.
-    hint: alpha(common.black, 0.4),
-  },
+  text: darkText,
+  // The colors used to style inverted text.
+  textInverted: lightText,
   // The color used to divide different elements.
   divider: 'rgba(0, 0, 0, 0.12)',
   // The background colors used to style the surfaces.
@@ -47,27 +65,11 @@ export const light = {
     focusOpacity: 0.12,
     activatedOpacity: 0.12,
   },
-  // Custom group used for creating a text colored contained button.
-  textDefault: {
-    main: common.black,
-    dark: alpha(common.black, 0.8),
-    contrastText: common.white,
-  },
-  // Custom group used for creating an inverted text colored contained button.
-  textInverted: {
-    main: common.white,
-    dark: alpha(common.white, 0.9),
-    contrastText: common.black,
-  },
 }
 
 export const dark = {
-  text: {
-    primary: common.white,
-    secondary: alpha(common.white, 0.65),
-    disabled: alpha(common.white, 0.4),
-    hint: alpha(common.white, 0.4),
-  },
+  text: lightText,
+  textInverted: darkText,
   divider: 'rgba(255, 255, 255, 0.12)',
   background: {
     default: common.black,
@@ -85,16 +87,6 @@ export const dark = {
     focus: 'rgba(255, 255, 255, 0.12)',
     focusOpacity: 0.12,
     activatedOpacity: 0.24,
-  },
-  textDefault: {
-    main: common.white,
-    dark: alpha(common.white, 0.9),
-    contrastText: common.black,
-  },
-  textInverted: {
-    main: common.black,
-    dark: alpha(common.black, 0.8),
-    contrastText: common.white,
   },
 }
 

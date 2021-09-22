@@ -8,7 +8,7 @@ export default {
   argTypes: {
     color: storySelectArgType([
       'inherit',
-      'textDefault',
+      'text',
       'textInverted',
       'primary',
       'secondary',
