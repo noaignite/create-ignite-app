@@ -1706,8 +1706,10 @@
     "@babel/runtime" "^7.14.8"
     intersection-observer-admin "^0.3.2"
 
-"@noaignite/oui@file:.yalc/@noaignite/oui":
+"@noaignite/oui@^2.0.0":
   version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@noaignite/oui/-/oui-2.0.0.tgz#7a71cdb04c2286cd4860bb003ea143e5ca398f8c"
+  integrity sha512-DMRaPYCu5f45sTe1ApuoCQsWLNnvOZeHGf3gtuFI+9S059AbznANM4mgfgk9n67jI++Nc+O8XEet3ljA3qA50Q==
   dependencies:
     "@babel/runtime" "^7.14.8"
     "@maeertin/medialoaded" "^1.2.1"

@@ -46,7 +46,7 @@
     "@emotion/styled": "^11.3.0",
     "@mui/lab": "^5.0.0-alpha.47",
     "@mui/material": "^5.0.0",
-    "@noaignite/oui": "file:.yalc/@noaignite/oui",
+    "@noaignite/oui": "^2.0.0",
     "clsx": "^1.1.0",
     "embla-carousel": "^4.5.3",
     "es2015-i18n-tag": "^1.6.1",
