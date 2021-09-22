@@ -15,7 +15,7 @@ const Cart = dynamic(() => import(/* webpackChunkName: "containers/Cart" */ 'con
   ssr: false,
 })
 
-const AppNavDrawerRoot = styled(Drawer, {
+const AppCartDrawerRoot = styled(Drawer, {
   name: 'AppCartDrawer',
   slot: 'Root',
 })({
@@ -25,8 +25,8 @@ const AppNavDrawerRoot = styled(Drawer, {
   },
 })
 
-const AppNavDrawerScrollContainer = styled('div', {
-  name: 'AppNavDrawer',
+const AppCartDrawerScrollContainer = styled('div', {
+  name: 'AppCartDrawer',
   slot: 'ScrollContainer',
 })(({ theme }) => ({
   ...theme.mixins.scrollable,
@@ -56,7 +56,7 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
   }, [isCartMenuOpen])
 
   return (
-    <AppNavDrawerRoot
+    <AppCartDrawerRoot
       SlideProps={{ onExited: handleExited }}
       onClose={onCartMenuClose}
       open={isCartMenuOpen}
@@ -78,14 +78,14 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
         </IconButton>
       </Toolbar>
 
-      <AppNavDrawerScrollContainer>{isVisible && <Cart />}</AppNavDrawerScrollContainer>
+      <AppCartDrawerScrollContainer>{isVisible && <Cart />}</AppCartDrawerScrollContainer>
 
       <div>
         <Button component={RouterLink} href="/checkout" variant="contained" fullWidth>
           {t(__translationGroup)`To checkout`}
         </Button>
       </div>
-    </AppNavDrawerRoot>
+    </AppCartDrawerRoot>
   )
 })
 

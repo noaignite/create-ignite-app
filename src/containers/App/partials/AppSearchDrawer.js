@@ -9,7 +9,7 @@ import { useI18n } from 'api'
 import { Search as SearchIcon } from 'components/icons'
 import { useApp } from '../AppContext'
 
-const AppNavDrawerRoot = styled(Drawer, {
+const AppCartDrawerRoot = styled(Drawer, {
   name: 'AppCartDrawer',
   slot: 'Root',
 })(({ theme }) => ({
@@ -20,7 +20,7 @@ const AppNavDrawerRoot = styled(Drawer, {
   },
 }))
 
-const AppNavDrawerForm = styled('form', {
+const AppCartDrawerForm = styled('form', {
   name: 'AppCartDrawer',
   slot: 'Form',
 })(({ theme }) => ({
@@ -58,8 +58,8 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
   )
 
   return (
-    <AppNavDrawerRoot onClose={onSearchMenuClose} open={isSearchMenuOpen} anchor="top" {...other}>
-      <AppNavDrawerForm
+    <AppCartDrawerRoot onClose={onSearchMenuClose} open={isSearchMenuOpen} anchor="top" {...other}>
+      <AppCartDrawerForm
         onSubmit={handleSubmit}
         role="search"
         // iOS needs an "action" attribute for nice input: https://stackoverflow.com/a/39485162/406725
@@ -86,8 +86,8 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
           fullWidth
           autoFocus
         />
-      </AppNavDrawerForm>
-    </AppNavDrawerRoot>
+      </AppCartDrawerForm>
+    </AppCartDrawerRoot>
   )
 })
 
