@@ -38,7 +38,7 @@ const HeroMain = styled('div', {
   name: 'Hero',
   slot: 'Main',
 })(({ theme }) => ({
-  '&': theme.mixins.verticalRhythm(2), // Why does this not add specificity but changes style order?
+  ...theme.mixins.verticalRhythm(2),
   ...theme.mixins.contain('sm'),
   paddingLeft: 'var(--cia-container-spacing)',
   paddingRight: 'var(--cia-container-spacing)',
