@@ -2,7 +2,7 @@
   "name": "create-oakwood-app",
   "private": true,
   "author": "Oakwood Creative",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Oakwood App Scaffolding",
   "repository": {
     "type": "git",
