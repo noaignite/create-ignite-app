@@ -79,15 +79,10 @@ module.exports = {
     'react/forbid-prop-types': 'off', // Too strict, no time for that
     'react/jsx-curly-brace-presence': 'off', // broken
     // airbnb is using .jsx
-    'react/jsx-filename-extension': ['error', { extensions: ['.js'] }],
-    'react/jsx-handler-names': [
-      'error',
-      {
-        // airbnb is disabling this rule
-        eventHandlerPrefix: 'handle',
-        eventHandlerPropPrefix: 'on',
-      },
-    ],
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.tsx'] }],
+    // Enforces premature optimization
+    'react/jsx-no-bind': 'off',
+    // We are a UI library.
     'react/jsx-props-no-spreading': 'off',
     // This rule is great for raising people awareness of what a key is and how it works.
     'react/no-array-index-key': 'off',
