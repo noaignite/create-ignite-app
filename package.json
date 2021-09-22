@@ -26,7 +26,8 @@
     "lint:ci": "eslint . --report-unused-disable-directives",
     "lint:fix": "eslint . --cache --fix",
     "prettier": "prettier . --check",
-    "prettier:fix": "prettier . --write"
+    "prettier:fix": "prettier . --write",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.js": [
@@ -38,48 +39,41 @@
       "git add --force"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "dependencies": {
-    "@material-ui/core": "4.11.3",
+    "@material-ui/core": "4.12.3",
     "@oakwood/oui": "1.1.0",
     "clsx": "^1.1.0",
-    "next": "^10.0.3",
+    "embla-carousel": "^4.5.3",
+    "es2015-i18n-tag": "^1.6.1",
+    "next": "^11.1.0",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "smoothscroll-polyfill": "^0.4.4",
-    "swiper": "^6.1.2"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/eslint-parser": "^7.14.7",
     "@babel/plugin-transform-react-constant-elements": "^7.10.1",
-    "@next/bundle-analyzer": "^10.0.3",
-    "@storybook/addon-a11y": "^6.1.10",
-    "@storybook/addon-essentials": "^6.1.10",
-    "@storybook/react": "^6.1.10",
+    "@next/bundle-analyzer": "^11.1.0",
+    "@storybook/addon-a11y": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/react": "^6.3.7",
     "@welldone-software/why-did-you-render": "^6.0.3",
-    "babel-eslint": "^10.0.3",
-    "babel-loader": "^8.0.5",
-    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-i18n-tag-translate": "^2.0.0",
     "babel-plugin-optimize-clsx": "^2.6.0",
-    "babel-plugin-transform-imports": "^2.0.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.21",
-    "chromatic": "^5.1.0",
     "eslint": "^7.4.0",
     "eslint-config-airbnb": "^18.1.0",
-    "eslint-config-prettier": "^7.0.0",
+    "eslint-config-next": "^11.0.1",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-webpack": "^0.13.0",
     "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.7",
-    "husky": "^4.3.8",
-    "lint-staged": "^10.3.0",
-    "next-transpile-modules": "^4.1.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.0.0",
     "prettier": "^2.0.1",
     "webpack-merge": "^5.2.0"
   }

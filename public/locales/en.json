@@ -1,0 +1,51 @@
+{
+  "blocks/ArticleSlideshow/ArticleSlideshow.js": {
+    "Read more": ""
+  },
+  "containers/App/partials/AppCartDrawer.js": {
+    "Bag": "",
+    "Close cart menu": "",
+    "To checkout": ""
+  },
+  "containers/App/partials/AppCookieBar.js": {
+    "Close cookie bar": "",
+    "We use cookies to give you the best user experience. By using our website you agree to our privacy policy.": ""
+  },
+  "containers/App/partials/AppHeader.js": {
+    "Go to the homepage": "",
+    "Toggle cart menu": "",
+    "Toggle main menu": "",
+    "Toggle search": ""
+  },
+  "containers/App/partials/AppMarketDialog.js": {
+    "Choose country and shipping": "",
+    "Choose country": "",
+    "Close market menu": "",
+    "Please select the country to which your order will be sent. This will give you accurate pricing: delivery times and shipping costs for your destination.": ""
+  },
+  "containers/App/partials/AppNavDrawer.js": {
+    "Country": "",
+    "Main navigation": ""
+  },
+  "containers/App/partials/AppSearchDrawer.js": {
+    "Search products": "",
+    "Submit search": ""
+  },
+  "containers/App/partials/AppSkipLink.js": {
+    "Skip to content": ""
+  },
+  "containers/Cart/Cart.js": {
+    "Empty cart": ""
+  },
+  "containers/CartItem/CartItem.js": {
+    "Decrease quantity to ${0}": "",
+    "Increase quantity to ${0}": "",
+    "Quantity": "",
+    "Remove": "",
+    "Size": ""
+  },
+  "containers/CartSummary/CartSummary.js": {
+    "Shipping": "",
+    "Total": ""
+  }
+}

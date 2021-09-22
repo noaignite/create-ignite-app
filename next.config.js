@@ -1,14 +1,16 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
-const withTranspileModules = require('next-transpile-modules')([
-  'dom7/dist/dom7.modular',
-  'swiper/js/swiper.esm',
-])
 const { merge } = require('webpack-merge')
 const webpackBaseConfig = require('./webpackBaseConfig')
 
 const nextConfig = {
+  // For more on internalization see:
+  // https://nextjs.org/docs/advanced-features/i18n-routing
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
   poweredByHeader: false,
   serverRuntimeConfig: {
     NODE_ENV: process.env.NODE_ENV,
@@ -23,4 +25,4 @@ const nextConfig = {
   webpack: (config) => merge(config, webpackBaseConfig),
 }
 
-module.exports = withBundleAnalyzer(withTranspileModules(nextConfig))
+module.exports = withBundleAnalyzer(nextConfig)

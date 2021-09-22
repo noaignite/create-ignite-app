@@ -1,7 +1,7 @@
 const styles = (theme) => ({
   '@global': {
+    // Include font files here.
     '@font-face': [
-      // Include font files here:
       // {
       //   fontFamily: 'Family',
       //   fontWeight: 400,
@@ -12,7 +12,19 @@ const styles = (theme) => ({
       //   `,
       // },
     ],
-    ':root': theme.mixins.root,
+    // Define :root css variables.
+    ':root': {
+      '--coa-theme-spacing': `${theme.spacing(1)}px`,
+      '--coa-section-spacing': `${theme.spacing(4)}px`,
+      '--coa-container-spacing': `${theme.spacing(2)}px`,
+      '--coa-toolbar-dense-min-height': '48px',
+      '--coa-toolbar-min-height': '56px',
+      '--coa-toolbar-spacing': `${theme.spacing(2)}px`,
+      [theme.breakpoints.up('sm')]: {
+        '--coa-section-spacing': `${theme.spacing(6)}px`,
+        '--coa-container-spacing': `${theme.spacing(4)}px`,
+      },
+    },
     // Opinionated defaults taken from sanitize.css
     // https://github.com/csstools/sanitize.css
     'iframe, img, input, select, textarea': {
@@ -28,6 +40,14 @@ const styles = (theme) => ({
     },
     'svg:not([fill])': {
       fill: 'currentColor',
+    },
+    // Custom global css
+    '[type="search"]::-webkit-search-cancel-button, [type="search"]::-webkit-search-decoration': {
+      WebkitAppearance: 'none',
+      appearance: 'none',
+    },
+    '[id]': {
+      scrollMarginTop: 'var(--coa-sticky-top, 0px)',
     },
   },
 })

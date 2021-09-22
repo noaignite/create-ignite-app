@@ -1,32 +1,24 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
-import makeStyles from '@material-ui/core/styles/makeStyles'
+import { withStyles } from '@material-ui/core/styles'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from 'utils/constants'
-import AppHeader from './partials/AppHeader'
-import AppFooter from './partials/AppFooter'
-import AppLoader from './partials/AppLoader'
-import AppSkipLink from './partials/AppSkipLink'
 import AppContext from './AppContext'
+import AppCartDrawer from './partials/AppCartDrawer'
+import AppFooter from './partials/AppFooter'
+import AppHeader from './partials/AppHeader'
+import AppLoader from './partials/AppLoader'
+import AppMarketDialog from './partials/AppMarketDialog'
+import AppNavDrawer from './partials/AppNavDrawer'
+import AppSearchDrawer from './partials/AppSearchDrawer'
+import AppSkipLink from './partials/AppSkipLink'
 
-const AppCartDrawer = dynamic(
-  () => import(/* webpackChunkName: "./partials/AppCartDrawer" */ './partials/AppCartDrawer'),
-  { ssr: false },
-)
-const AppNavDrawer = dynamic(
-  () => import(/* webpackChunkName: "./partials/AppNavDrawer" */ './partials/AppNavDrawer'),
-  { ssr: false },
-)
-const AppSearchDrawer = dynamic(
-  () => import(/* webpackChunkName: "./partials/AppSearchDrawer" */ './partials/AppSearchDrawer'),
-  { ssr: false },
-)
 const AppCookieBar = dynamic(
   () => import(/* webpackChunkName: "./partials/AppCookieBar" */ './partials/AppCookieBar'),
   { ssr: false },
 )
 
-export const useStyles = makeStyles({
+export const styles = {
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -36,11 +28,10 @@ export const useStyles = makeStyles({
     flexGrow: 1,
     outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
   },
-})
+}
 
 function App(props) {
-  const { children, ...other } = props
-  const classes = useStyles(props)
+  const { children, classes, ...other } = props
 
   return (
     <div className={classes.root} {...other}>
@@ -56,6 +47,7 @@ function App(props) {
       <AppNavDrawer />
       <AppCartDrawer />
       <AppSearchDrawer />
+      <AppMarketDialog />
       <AppLoader />
 
       <AppContext.Consumer>
@@ -70,6 +62,7 @@ function App(props) {
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
+  classes: PropTypes.object.isRequired,
 }
 
-export default App
+export default withStyles(styles)(App)

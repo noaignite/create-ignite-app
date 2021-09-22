@@ -1,24 +1,32 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import Slide from '@material-ui/core/Slide'
-import Snackbar from '@material-ui/core/Snackbar'
-import SnackbarContent from '@material-ui/core/SnackbarContent'
-import Button from 'components/Button'
-import Typography from 'components/Typography'
+import clsx from 'clsx'
+import { makeStyles } from '@material-ui/core/styles'
+import { Snackbar } from '@material-ui/core'
+import { useI18n } from 'api'
+import { Close as CloseIcon } from 'components/icons'
+import { IconButton, Typography } from 'components'
 
 export const useStyles = makeStyles((theme) => ({
-  root: theme.mixins.fixed(undefined, 0, 0),
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(1, 4),
-    border: `1px solid ${theme.palette.divider}`,
-    backgroundColor: theme.palette.text.primary,
-    color: theme.palette.getContrastText(theme.palette.text.primary),
+  root: {
+    left: 'auto',
+    right: 0,
+    bottom: 0,
+    [theme.breakpoints.up('sm')]: {
+      maxWidth: '50%',
+    },
+    [theme.breakpoints.up('md')]: {
+      maxWidth: '25%',
+    },
   },
-  message: {
-    maxWidth: 830,
+  content: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: 'var(--coa-toolbar-spacing)',
+    margin: 'var(--coa-toolbar-spacing)',
+    borderRadius: theme.shape.borderRadius * 2,
+    backgroundColor: theme.palette.text.primary,
+    color: theme.palette.background.default,
   },
 }))
 
@@ -26,35 +34,35 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
   const { className, onClose, open, ...other } = props
   const classes = useStyles(props)
 
+  const { t } = useI18n()
+
   return (
     <Snackbar
-      className={classnames(classes.root, className)}
+      className={clsx(classes.root, className)}
       anchorOrigin={{
         horizontal: 'right',
         vertical: 'bottom',
       }}
-      TransitionComponent={Slide}
       open={open}
       {...other}
     >
-      <SnackbarContent
-        classes={{
-          root: classes.content,
-          message: classes.message,
-          action: 'mui-fixed',
-        }}
-        message={
-          <Typography color="inherit" variant="caption">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie varius viverra.
-            Quisque urna tortor, bibendum ac quam a, bibendum fringilla nulla.
-          </Typography>
-        }
-        action={
-          <Button onClick={onClose} color="primary" size="small" variant="contained">
-            Accept cookies
-          </Button>
-        }
-      />
+      <div className={classes.content}>
+        <Typography variant="body2">
+          {t(
+            __translationGroup,
+          )`We use cookies to give you the best user experience. By using our website you agree to our privacy policy.`}
+        </Typography>
+
+        <IconButton
+          onClick={onClose}
+          color="inherit"
+          edge="end"
+          size="small"
+          aria-label={t(__translationGroup)`Close cookie bar`}
+        >
+          <CloseIcon />
+        </IconButton>
+      </div>
     </Snackbar>
   )
 })

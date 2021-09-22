@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Head from 'next/head'
 import { pages } from 'api/mock'
+import { SITE_NAME } from 'utils/constants'
 import { createRenderBlock, useHeaderColor } from 'utils'
 import * as blockVariants from 'blocks'
 
@@ -12,7 +13,7 @@ function Home() {
   return (
     <>
       <Head>
-        <title>Home | Create Oakwood App</title>
+        <title>Home | {SITE_NAME}</title>
       </Head>
 
       {pages.Home.children.map(renderBlock)}

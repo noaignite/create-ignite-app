@@ -1,10 +1,11 @@
-import ThemeProvider from '@material-ui/styles/ThemeProvider'
-import CssBaseline from '@material-ui/core/CssBaseline'
+// import '../scripts/wdyr'
+import '../scripts/polyfills'
+import { ThemeProvider } from '@material-ui/styles'
+import { CssBaseline } from '@material-ui/core'
+import { global } from 'api/mock'
+import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
 import { AppProvider } from 'containers/App/AppContext'
 import createTheme from 'components/styles/createTheme'
-// As of NextJS 9, all global css *must* be imported in pages/_app.js
-// https://github.com/zeit/next.js/blob/master/errors/css-global.md
-import 'swiper/swiper-bundle.min.css'
 
 export const parameters = {
   layout: 'fullscreen',
@@ -37,9 +38,15 @@ export const decorators = [
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
-        <AppProvider>
-          <Story />
-        </AppProvider>
+        <I18nProvider>
+          <GlobalProvider {...global}>
+            <CheckoutProvider>
+              <AppProvider>
+                <Story />
+              </AppProvider>
+            </CheckoutProvider>
+          </GlobalProvider>
+        </I18nProvider>
       </ThemeProvider>
     )
   },

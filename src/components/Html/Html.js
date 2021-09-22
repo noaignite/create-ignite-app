@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
-import withStyles from '@material-ui/core/styles/withStyles'
+import clsx from 'clsx'
+import { withStyles } from '@material-ui/core/styles'
 
 export const styles = (theme) => ({
   root: {
@@ -41,6 +41,7 @@ export const styles = (theme) => ({
       },
       img: {
         display: 'block',
+        width: '100%',
       },
       hr: {
         height: 1,
@@ -56,17 +57,12 @@ export const styles = (theme) => ({
 })
 
 const Html = React.forwardRef(function Html(props, ref) {
-  const { children, className, classes, component: Component = 'div', ...other } = props
+  const { className, classes, component: Component = 'div', ...other } = props
 
-  return (
-    <Component className={classnames(classes.root, className)} ref={ref} {...other}>
-      {children}
-    </Component>
-  )
+  return <Component className={clsx(classes.root, className)} ref={ref} {...other} />
 })
 
 Html.propTypes = {
-  children: PropTypes.node,
   classes: PropTypes.object.isRequired,
   className: PropTypes.string,
   component: PropTypes.elementType,

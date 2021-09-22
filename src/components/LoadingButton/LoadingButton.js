@@ -1,10 +1,10 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
+import clsx from 'clsx'
 import { chainPropTypes } from '@material-ui/utils'
 import { capitalize } from '@material-ui/core/utils'
 import { withStyles } from '@material-ui/core/styles'
-import CircularProgress from '@material-ui/core/CircularProgress'
+import { CircularProgress } from '@material-ui/core'
 import Button from '../Button'
 
 export const styles = () => ({
@@ -61,7 +61,7 @@ const LoadingButton = React.forwardRef(function LoadingButton(props, ref) {
 
   return (
     <Button
-      className={classnames(
+      className={clsx(
         classes.root,
         {
           [classes.pending]: pending,
@@ -79,7 +79,7 @@ const LoadingButton = React.forwardRef(function LoadingButton(props, ref) {
     >
       {pending && (
         <div
-          className={classnames(
+          className={clsx(
             classes.pendingIndicator,
             classes[`pendingIndicator${capitalize(pendingPosition)}`],
           )}

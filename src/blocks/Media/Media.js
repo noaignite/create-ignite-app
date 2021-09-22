@@ -1,16 +1,14 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import OuiMedia from '@oakwood/oui/Media'
-import MediaReveal from '@oakwood/oui/MediaReveal'
+import { Media as OuiMedia, MediaReveal } from '@oakwood/oui'
 import { mediaType } from 'utils'
-import Container from 'components/Container'
-import Section from 'components/Section'
+import { Container } from 'components'
 
 function Media(props) {
   const { mediaProps, renderIndex } = props
 
   return (
-    <Section>
+    <section>
       <Container>
         <MediaReveal>
           <OuiMedia
@@ -22,7 +20,7 @@ function Media(props) {
           />
         </MediaReveal>
       </Container>
-    </Section>
+    </section>
   )
 }
 

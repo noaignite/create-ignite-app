@@ -2,12 +2,14 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
-import withStyles from '@material-ui/core/styles/withStyles'
-import Drawer from '@material-ui/core/Drawer'
+import clsx from 'clsx'
+import { withStyles } from '@material-ui/core/styles'
+import { Drawer } from '@material-ui/core'
 
 export const styles = (theme) => ({
-  root: {},
+  root: {
+    top: 'var(--drawer-top, 0px) !important',
+  },
   backdrop: {
     top: 'var(--drawer-top, 0px)',
   },
@@ -17,8 +19,8 @@ export const styles = (theme) => ({
     overflowX: 'hidden',
   },
   paperAnchorHorizontal: {
-    width: 414, // iPhone 6/7/8 Plus
     maxWidth: '100%',
+    width: 414, // iPhone 6/7/8 Plus
     height: 'calc(100% - var(--drawer-top, 0px))',
   },
 })
@@ -37,7 +39,7 @@ const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
     <Drawer
       classes={{
         root: classes.root,
-        paper: classnames(
+        paper: clsx(
           classes.paper,
           {
             [classes.paperAnchorHorizontal]: ['left', 'right'].includes(anchor),
@@ -46,7 +48,7 @@ const AppDrawer = React.forwardRef(function AppDrawer(props, ref) {
         ),
       }}
       BackdropProps={{
-        className: classnames(classes.backdrop, BackdropClassName),
+        className: clsx(classes.backdrop, BackdropClassName),
         ...BackdropProps,
       }}
       PaperProps={PaperProps}

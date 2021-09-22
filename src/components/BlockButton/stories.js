@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Media from '@oakwood/oui/Media'
+import { Media } from '@oakwood/oui'
 import BlockButton from './BlockButton'
 
 export default {
@@ -7,9 +7,9 @@ export default {
   component: BlockButton,
   argTypes: {
     overlayPlacement: {
+      options: ['background', 'foreground'],
       control: {
         type: 'select',
-        options: ['background', 'foreground'],
       },
     },
   },

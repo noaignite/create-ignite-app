@@ -3,11 +3,10 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
-import makeStyles from '@material-ui/core/styles/makeStyles'
-import SearchIcon from 'components/icons/Search'
-import Container from 'components/Container'
-import IconButton from 'components/IconButton'
-import TextField from 'components/TextField'
+import { makeStyles } from '@material-ui/core/styles'
+import { useI18n } from 'api'
+import { Search as SearchIcon } from 'components/icons'
+import { Container, IconButton, TextField } from 'components'
 import { useApp } from '../AppContext'
 import AppDrawer from './AppDrawer'
 
@@ -33,6 +32,8 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
   const { isSearchMenuOpen, onSearchMenuClose, ...other } = props
   const classes = useStyles(props)
 
+  const { t } = useI18n()
+
   const valueRef = React.useRef('')
   const [value, setValue] = React.useState('')
   const handleChange = React.useCallback((event) => {
@@ -50,7 +51,7 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
       className={classes.submitButton}
       disabled={!value}
       type="submit"
-      aria-label="Search"
+      aria-label={t(__translationGroup)`Submit search`}
     >
       <SearchIcon />
     </IconButton>
@@ -79,9 +80,9 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
       >
         <TextField
           className={classes.textField}
-          placeholder="Search products"
           onChange={handleChange}
           value={value}
+          placeholder={t(__translationGroup)`Search products`}
           InputProps={{
             className: classes.inputBase,
             endAdornment: submitButton,

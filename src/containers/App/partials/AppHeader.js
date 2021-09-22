@@ -2,21 +2,21 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
-import makeStyles from '@material-ui/core/styles/makeStyles'
+import clsx from 'clsx'
+import { makeStyles } from '@material-ui/core/styles'
+import { Badge } from '@material-ui/core'
+import { useCheckoutSelection, useGlobal, useI18n } from 'api'
 import { useDimensions } from 'utils'
-import { useGlobal } from 'api'
-import RouterLink from 'containers/RouterLink'
-import BrandIcon from 'components/icons/Brand'
-import CartIcon from 'components/icons/Cart'
-import SearchIcon from 'components/icons/Search'
-import CloseIcon from 'components/icons/Close'
-import MenuIcon from 'components/icons/Menu'
-import AppBar from 'components/AppBar'
-import IconButton from 'components/IconButton'
-import Toolbar from 'components/Toolbar'
+import {
+  Brand as BrandIcon,
+  Cart as CartIcon,
+  Search as SearchIcon,
+  Close as CloseIcon,
+  Menu as MenuIcon,
+} from 'components/icons'
+import { AppBar, IconButton, Toolbar } from 'components'
+import RouterLink from '../../RouterLink'
 import { useApp } from '../AppContext'
-import AppNavDropdown from './AppNavDropdown'
 
 const BREAKPOINT_KEY_DOWN = 'sm'
 const BREAKPOINT_KEY_UP = 'md'
@@ -51,29 +51,17 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   menuToolbar: {},
-  menuButton: {
-    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
-      display: 'none',
-    },
-  },
-  searchButton: {},
+  menuButton: {},
   brandButton: {
-    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
-      position: 'absolute',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      marginLeft: 0, // Cancel margin of `edge="start"`
-    },
+    position: 'absolute',
+    left: '50%',
+    transform: 'translateX(-50%)',
   },
   brandIcon: {
     width: 'auto',
   },
+  searchButton: {},
   cartButton: {},
-  navDropdown: {
-    [theme.breakpoints.down(BREAKPOINT_KEY_DOWN)]: {
-      display: 'none',
-    },
-  },
 }))
 
 const AppHeader = React.memo(function AppHeader(props) {
@@ -87,10 +75,12 @@ const AppHeader = React.memo(function AppHeader(props) {
     onCartMenuToggle,
     onNavMenuToggle,
     onSearchMenuToggle,
+    productsCount,
     ...other
   } = props
   const classes = useStyles(props)
 
+  const { t } = useI18n()
   const { settings } = useGlobal()
   const [rootRef, dimensions] = useDimensions()
 
@@ -124,7 +114,7 @@ const AppHeader = React.memo(function AppHeader(props) {
 
   return (
     <AppBar
-      className={classnames(
+      className={clsx(
         classes.root,
         {
           [classes.transitions]: disableTransparency !== undefined, // Enable transitions once defined
@@ -150,7 +140,7 @@ const AppHeader = React.memo(function AppHeader(props) {
       />
 
       {settings?.globalSalesBanner && (
-        <div className={classes.salesToolbar}>{settings?.globalSalesBanner}</div>
+        <div className={classes.salesToolbar}>{settings.globalSalesBanner}</div>
       )}
 
       <Toolbar className={classes.menuToolbar}>
@@ -161,24 +151,23 @@ const AppHeader = React.memo(function AppHeader(props) {
           size="small"
           aria-haspopup="true"
           aria-expanded={isNavMenuOpen}
-          aria-label="Toggle main menu"
+          aria-label={t(__translationGroup)`Toggle main menu`}
         >
           {isNavMenuOpen ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
+
+        <div className={classes.toolbarDesktopPush} />
+        <div className={classes.toolbarMobilePush} />
 
         <IconButton
           className={classes.brandButton}
           component={RouterLink}
           href="/"
           edge="start"
-          aria-label="Go to the homepage"
+          aria-label={t(__translationGroup)`Go to the homepage`}
         >
           <BrandIcon className={classes.brandIcon} />
         </IconButton>
-
-        <AppNavDropdown className={classes.navDropdown} />
-
-        <div className={classes.toolbarDesktopPush} />
 
         <IconButton
           className={classes.searchButton}
@@ -186,12 +175,10 @@ const AppHeader = React.memo(function AppHeader(props) {
           size="small"
           aria-haspopup="true"
           aria-expanded={isSearchMenuOpen}
-          aria-label="Toggle search"
+          aria-label={t(__translationGroup)`Toggle search`}
         >
           {isSearchMenuOpen ? <CloseIcon /> : <SearchIcon />}
         </IconButton>
-
-        <div className={classes.toolbarMobilePush} />
 
         <IconButton
           className={classes.cartButton}
@@ -200,9 +187,15 @@ const AppHeader = React.memo(function AppHeader(props) {
           size="small"
           aria-haspopup="true"
           aria-expanded={isCartMenuOpen}
-          aria-label="Toggle cart menu"
+          aria-label={t(__translationGroup)`Toggle cart menu`}
         >
-          {isCartMenuOpen ? <CloseIcon /> : <CartIcon amount={3} />}
+          {isCartMenuOpen ? (
+            <CloseIcon />
+          ) : (
+            <Badge badgeContent={productsCount} color="primary" overlap="circular">
+              <CartIcon />
+            </Badge>
+          )}
         </IconButton>
       </Toolbar>
     </AppBar>
@@ -219,6 +212,7 @@ AppHeader.propTypes = {
   onCartMenuToggle: PropTypes.func,
   onNavMenuToggle: PropTypes.func,
   onSearchMenuToggle: PropTypes.func,
+  productsCount: PropTypes.number,
 }
 
 function AppHeaderContainer(props) {
@@ -233,6 +227,7 @@ function AppHeaderContainer(props) {
     onNavMenuToggle,
     onSearchMenuToggle,
   } = useApp()
+  const { items } = useCheckoutSelection()
 
   if (hideHeader) {
     return null
@@ -248,6 +243,7 @@ function AppHeaderContainer(props) {
       onCartMenuToggle={onCartMenuToggle}
       onNavMenuToggle={onNavMenuToggle}
       onSearchMenuToggle={onSearchMenuToggle}
+      productsCount={items.length}
       {...props}
     />
   )

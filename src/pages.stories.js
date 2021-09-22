@@ -9,9 +9,9 @@ export default {
   component: App,
   argTypes: {
     headerColor: {
+      options: ['default', 'transparent', 'auto'],
       control: {
         type: 'select',
-        options: ['default', 'transparent', 'auto'],
       },
     },
   },

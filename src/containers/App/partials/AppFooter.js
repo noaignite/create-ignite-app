@@ -1,16 +1,15 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
-import makeStyles from '@material-ui/core/styles/makeStyles'
+import clsx from 'clsx'
+import { makeStyles } from '@material-ui/core/styles'
 import { useGlobal } from 'api'
-import RouterLink from 'containers/RouterLink'
-import Container from 'components/Container'
-import Link from 'components/Link'
-import Section from 'components/Section'
+import { Container, Link } from 'components'
 import { useApp } from '../AppContext'
+import RouterLink from '../../RouterLink'
 
 export const useStyles = makeStyles((theme) => ({
   root: {
+    padding: 'var(--coa-section-spacing) 0',
     backgroundColor: theme.palette.text.primary,
     color: theme.palette.getContrastText(theme.palette.text.primary),
   },
@@ -36,22 +35,16 @@ const AppFooter = React.memo(function AppFooter(props) {
   const { menus } = useGlobal()
 
   return (
-    <Section
-      className={classnames(classes.root, className)}
-      component="footer"
-      gutters="padding"
-      {...other}
-    >
+    <footer className={clsx(classes.root, className)} {...other}>
       <Container className={classes.mainDetails}>
-        <nav className={classes.nav} aria-label="Main navigation">
+        <nav className={classes.nav}>
           <ul className={classes.navlist}>
-            {menus?.menuFooter.map((menuItem, idx) => (
+            {menus.menuFooter?.map((menuItem, idx) => (
               <li key={idx} className={classes.navlistItem}>
                 <Link
                   className={classes.navlistItemText}
                   component={RouterLink}
-                  as={menuItem.url}
-                  href="/[...uri]"
+                  href={menuItem.url}
                   variant="button"
                 >
                   {menuItem.label}
@@ -61,13 +54,12 @@ const AppFooter = React.memo(function AppFooter(props) {
           </ul>
         </nav>
       </Container>
-    </Section>
+    </footer>
   )
 })
 
 AppFooter.propTypes = {
   className: PropTypes.string,
-  onMarketMenuToggle: PropTypes.func,
 }
 
 function AppFooterContainer(props) {

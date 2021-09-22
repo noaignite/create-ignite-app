@@ -1,37 +1,44 @@
+const subLinks = Array.from(new Array(12), (_, idx) => ({
+  label: `Link ${idx + 1}`,
+  url: `/link-${idx + 1}`,
+}))
+
 export const menuPrimary = [
   {
-    label: 'Work',
-    links: Array.from(new Array(6), (_, idx) => {
-      const link = {
-        label: `Link ${idx + 1}`,
-        url: `/link-${idx + 1}`,
-      }
+    label: 'Brands',
+    url: '/brands',
+  },
+  {
+    label: 'New arrivals',
+    url: '/new-arrivals',
+  },
+]
 
-      if (idx === 0) {
-        link.links = Array.from(new Array(2), (__, idx2) => ({
-          label: `Another link ${idx2 + 1}`,
-          url: `/sublink-${idx + 1}`,
-        }))
-      }
-
-      return link
-    }),
-    mediaSrc: '//source.unsplash.com/300x200',
-    url: '/work',
+export const menuSecondary = [
+  {
+    label: 'Clothing',
+    links: subLinks,
+    url: '/clothing',
   },
   {
-    label: 'News',
-    mediaSrc: '//source.unsplash.com/300x201',
-    url: '/news',
+    label: 'Accessories',
+    links: subLinks,
+    url: '/accessories',
   },
   {
-    label: 'Press',
-    mediaSrc: '//source.unsplash.com/300x202',
-    url: '/press',
+    label: 'Shoes',
+    links: subLinks,
+    url: '/shoes',
   },
   {
-    label: 'About',
-    url: '/about',
+    label: 'Homewear',
+    links: subLinks,
+    url: '/homewear',
+  },
+  {
+    label: 'Skincare',
+    links: subLinks,
+    url: '/skincare',
   },
 ]
 
@@ -57,9 +64,15 @@ export const menuFooter = [
 export default {
   menus: {
     menuPrimary,
+    menuSecondary,
     menuFooter,
   },
   settings: {
+    facebookUrl: 'https://www.facebook.com/',
     globalSalesBanner: 'lorem ipsum dolor sit amet, consectetur',
+    instagramUrl: 'https://www.instagram.com/',
+    pinterestUrl: 'https://www.pinterest.se/',
+    termsPageUrl: '/terms-and-conditions',
+    twitterUrl: 'https://twitter.com/',
   },
 }

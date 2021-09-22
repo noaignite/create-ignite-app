@@ -1,4 +1,4 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
+import { createTheme as createMuiTheme } from '@material-ui/core/styles'
 import breakpoints from './breakpoints'
 import createMixins from './createMixins'
 import createOverrides from './createOverrides'

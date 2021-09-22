@@ -1,20 +1,12 @@
-const productionPlugins = [
-  '@babel/plugin-transform-react-constant-elements',
-  [
-    'babel-plugin-transform-react-remove-prop-types',
-    {
-      mode: 'unsafe-wrap',
-    },
-  ],
-]
+const productionPlugins = ['@babel/plugin-transform-react-constant-elements']
 
 module.exports = {
   presets: [
     [
       'next/babel',
       {
+        // Target ES2015+ browsers
         'preset-env': {
-          // ES2015+ browsers
           targets: 'Chrome >= 60, Safari >= 10.1, iOS >= 10.3, Firefox >= 54, Edge >= 15',
           useBuiltIns: false,
         },
@@ -23,16 +15,10 @@ module.exports = {
   ],
   plugins: [
     'babel-plugin-optimize-clsx',
-    'babel-plugin-lodash',
     [
-      'babel-plugin-transform-imports',
+      'babel-plugin-i18n-tag-translate',
       {
-        '@material-ui/core': {
-          // Use "transform: '@material-ui/core/${member}'," if your bundler does not support ES modules
-          // eslint-disable-next-line no-template-curly-in-string
-          transform: '@material-ui/core/esm/${member}',
-          preventFullImport: true,
-        },
+        groupDir: './src',
       },
     ],
   ],

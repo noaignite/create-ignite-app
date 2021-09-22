@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { cartItem } from 'api/mock'
+import { cartItems } from 'api/mock'
 import CartItem from './CartItem'
 
 export default {
@@ -11,5 +11,5 @@ const Template = (args) => <CartItem {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  cartItem,
+  cartItem: cartItems[0],
 }

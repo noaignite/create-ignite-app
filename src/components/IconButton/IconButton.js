@@ -1,4 +1,4 @@
-import { fade } from '@material-ui/core/styles/colorManipulator'
+import { alpha } from '@material-ui/core/styles'
 
 export { default } from '@material-ui/core/IconButton'
 
@@ -15,7 +15,7 @@ export const styles = (theme) => ({
     }),
     '&:hover': {
       backgroundColor: 'transparent', // Disable Mui backgroundColor
-      color: fade(theme.palette.action.active, 1 - theme.palette.action.activatedOpacity),
+      color: alpha(theme.palette.action.active, 1 - theme.palette.action.activatedOpacity),
       // Reset on touch devices, it doesn't add specificity
       '@media (hover: none)': {
         color: theme.palette.action.active,
@@ -43,13 +43,13 @@ export const styles = (theme) => ({
   colorPrimary: {
     '&:hover': {
       backgroundColor: 'transparent',
-      color: fade(theme.palette.primary.main, 1 - theme.palette.action.activatedOpacity),
+      color: alpha(theme.palette.primary.main, 1 - theme.palette.action.activatedOpacity),
     },
   },
   colorSecondary: {
     '&:hover': {
       backgroundColor: 'transparent',
-      color: fade(theme.palette.secondary.main, 1 - theme.palette.action.activatedOpacity),
+      color: alpha(theme.palette.secondary.main, 1 - theme.palette.action.activatedOpacity),
     },
   },
   sizeSmall: {

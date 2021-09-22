@@ -1,18 +1,13 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import SwiperCore, { A11y } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import withStyles from '@material-ui/core/styles/withStyles'
-import Media from '@oakwood/oui/Media'
-import MediaReveal from '@oakwood/oui/MediaReveal'
+import { useEmblaCarousel } from 'embla-carousel/react'
+import { withStyles } from '@material-ui/core/styles'
+import { Media, MediaReveal } from '@oakwood/oui'
+import { useI18n } from 'api'
 import { ASPECT_RATIOS } from 'utils/constants'
 import { mediaType } from 'utils'
-import RouterLink from 'containers/RouterLink'
-import BlockButton from 'components/BlockButton'
-import Button from 'components/Button'
-import Container from 'components/Container'
-import Section from 'components/Section'
-import Typography from 'components/Typography'
+import { RouterLink } from 'containers'
+import { BlockButton, Button, Container, Typography } from 'components'
 
 function getSlideWidth(slidesPerView, spacing) {
   const totalSpacing = spacing * (slidesPerView - 1) // Subtract last slide spacing.
@@ -20,7 +15,10 @@ function getSlideWidth(slidesPerView, spacing) {
 }
 
 export const styles = (theme) => ({
-  root: {},
+  root: {
+    position: 'relative',
+    margin: 'var(--coa-section-spacing) 0',
+  },
   header: {
     textAlign: 'center',
   },
@@ -29,38 +27,46 @@ export const styles = (theme) => ({
     marginTop: 'var(--coa-section-spacing)',
     overflow: 'hidden',
   },
-  slideshow: {
+  embla: {
     overflow: 'visible',
-    [theme.breakpoints.up('sm')]: {
-      overflow: 'hidden',
-    },
   },
-  slide: {
-    marginRight: theme.spacing(2),
-    '&:last-child': {
-      marginRight: 0,
-    },
+  emblaContainer: {
+    display: 'flex',
+  },
+  emblaSlide: {
+    position: 'relative',
+    flexShrink: 0,
+    width: '100%',
+    padding: theme.spacing(0, 1),
     [theme.breakpoints.up('sm')]: {
       width: getSlideWidth(2, theme.spacing(2)),
     },
     [theme.breakpoints.up('md')]: {
       width: getSlideWidth(3, theme.spacing(2)),
     },
+    [theme.breakpoints.up('lg')]: {
+      width: getSlideWidth(4, theme.spacing(2)),
+    },
   },
   article: {},
   articleContent: {
     ...theme.mixins.verticalRhythm(1),
-    padding: theme.spacing(3),
+    padding: theme.spacing(2, 0),
   },
 })
 
 function ArticleSlideshow(props) {
   const { classes, heading, items } = props
 
-  SwiperCore.use([A11y])
+  const { t } = useI18n()
+
+  const [emblaRef] = useEmblaCarousel({
+    align: 'start',
+    containScroll: 'trimSnaps',
+  })
 
   return (
-    <Section className={classes.root} gutters="margin">
+    <section className={classes.root}>
       {heading && (
         <Container className={classes.header} component="header" maxWidth="sm">
           <Typography component="h1" variant="h4">
@@ -70,39 +76,43 @@ function ArticleSlideshow(props) {
       )}
 
       <Container className={classes.main} maxWidth={false}>
-        <Swiper className={classes.slideshow} centerInsufficientSlides slidesPerView="auto">
-          {items?.map((item, idx) => (
-            <SwiperSlide key={idx} className={classes.slide}>
-              <article className={classes.article}>
-                {item.mediaProps && (
-                  <BlockButton component={RouterLink} href={item.url}>
-                    <MediaReveal {...ASPECT_RATIOS.article}>
-                      <Media {...ASPECT_RATIOS.article} {...item.mediaProps} />
-                    </MediaReveal>
-                  </BlockButton>
-                )}
+        <div className={classes.embla} ref={emblaRef}>
+          <div className={classes.emblaContainer}>
+            {items?.map((item, idx) => (
+              <div key={idx} className={classes.emblaSlide}>
+                <article className={classes.article}>
+                  {item.mediaProps && (
+                    <BlockButton component={RouterLink} href={item.url}>
+                      <MediaReveal {...ASPECT_RATIOS.article}>
+                        <Media {...ASPECT_RATIOS.article} {...item.mediaProps} />
+                      </MediaReveal>
+                    </BlockButton>
+                  )}
 
-                <div className={classes.articleContent}>
-                  {item.subheading && <Typography variant="overline">{item.subheading}</Typography>}
+                  <div className={classes.articleContent}>
+                    {item.subheading && (
+                      <Typography variant="overline">{item.subheading}</Typography>
+                    )}
 
-                  <Typography component="h2" variant="h4" paragraph>
-                    {item.heading}
-                  </Typography>
+                    <Typography component="h2" variant="h4" paragraph>
+                      {item.heading}
+                    </Typography>
 
-                  <Typography variant="body1" paragraph>
-                    {item.excerpt}
-                  </Typography>
+                    <Typography variant="body1" paragraph>
+                      {item.excerpt}
+                    </Typography>
 
-                  <Button component={RouterLink} href={item.url} variant="contained">
-                    Read more
-                  </Button>
-                </div>
-              </article>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+                    <Button component={RouterLink} href={item.url} variant="contained">
+                      {t(__translationGroup)`Read more`}
+                    </Button>
+                  </div>
+                </article>
+              </div>
+            ))}
+          </div>
+        </div>
       </Container>
-    </Section>
+    </section>
   )
 }
 

@@ -1,21 +1,16 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import withStyles from '@material-ui/core/styles/withStyles'
-import BackgroundMedia from '@oakwood/oui/BackgroundMedia'
-import Media from '@oakwood/oui/Media'
-import MediaReveal from '@oakwood/oui/MediaReveal'
+import { withStyles } from '@material-ui/core/styles'
+import { BackgroundMedia, Media, MediaReveal } from '@oakwood/oui'
 import { mediaType } from 'utils'
-import RouterLink from 'containers/RouterLink'
-import BlockButton from 'components/BlockButton'
-import Button from 'components/Button'
-import Container from 'components/Container'
-import Section from 'components/Section'
-import Typography from 'components/Typography'
+import { RouterLink } from 'containers'
+import { BlockButton, Button, Container, Typography } from 'components'
 
 const BREAKPOINT_KEY_UP = 'sm'
 
 export const styles = (theme) => ({
   root: {
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -58,7 +53,7 @@ function Hero(props) {
   } = props
 
   return (
-    <Section className={classes.root}>
+    <section className={classes.root}>
       {backgroundMediaProps && (
         <BackgroundMedia
           classes={{ wrapperSticky: classes.backgroundWrapperSticky }}
@@ -104,7 +99,7 @@ function Hero(props) {
           </Button>
         )}
       </Container>
-    </Section>
+    </section>
   )
 }
 

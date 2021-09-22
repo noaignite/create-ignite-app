@@ -2,9 +2,9 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'clsx'
-import withStyles from '@material-ui/core/styles/withStyles'
-import ButtonBase from '@material-ui/core/ButtonBase'
+import clsx from 'clsx'
+import { withStyles } from '@material-ui/core/styles'
+import { ButtonBase } from '@material-ui/core'
 
 export const styles = (theme) => ({
   root: {
@@ -61,7 +61,7 @@ const BlockButton = React.forwardRef(function BlockButton(props, ref) {
 
   return (
     <ButtonBase
-      className={classnames(
+      className={clsx(
         classes.root,
         {
           [classes.backgroundOverlay]: overlayPlacement !== 'foreground',
@@ -70,7 +70,7 @@ const BlockButton = React.forwardRef(function BlockButton(props, ref) {
         },
         className,
       )}
-      focusVisibleClassName={classnames(classes.focusVisible, focusVisibleClassName)}
+      focusVisibleClassName={clsx(classes.focusVisible, focusVisibleClassName)}
       disabled={disabled}
       ref={ref}
       aria-pressed={selected}

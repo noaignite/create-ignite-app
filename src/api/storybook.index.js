@@ -1,45 +1,22 @@
-import { sleep } from 'utils'
-import { cartItem, countries, global as globalData } from './mock'
+import { filter, order, products } from './mock'
+import sleep from './utils/sleep'
 
-const actionWithPromise = (eventName) => async (...args) => {
-  await sleep(300)
-  return console.log(eventName, ...args) // eslint-disable-line no-console
+export { default as CheckoutContext } from './CheckoutContext'
+export * from './CheckoutContext'
+
+export { default as GlobalContext } from './GlobalContext'
+export * from './GlobalContext'
+
+export { default as I18nContext } from './I18nContext'
+export * from './I18nContext'
+
+export async function fetchProducts(query) {
+  await sleep(500)
+  console.log('fetchProducts', query) // eslint-disable-line no-console
+
+  return { filter, products, productCount: products.length }
 }
 
-export function useGlobal() {
-  return globalData
+export function useReceipt() {
+  return order
 }
-
-export function useCheckoutHandlers() {
-  return {
-    addItem: actionWithPromise('addItem'),
-    addVoucher: actionWithPromise('addVoucher'),
-    decreaseItem: actionWithPromise('decreaseItem'),
-    increaseItem: actionWithPromise('increaseItem'),
-    removeItem: actionWithPromise('removeItem'),
-    removeVoucher: actionWithPromise('removeVoucher'),
-    setCountry: actionWithPromise('setCountry'),
-    setItemQuantity: actionWithPromise('setItemQuantity'),
-    setPaymentMethod: actionWithPromise('setPaymentMethod'),
-    setShipmentMethod: actionWithPromise('setShipmentMethod'),
-    submitCheckout: actionWithPromise('submitCheckout'),
-  }
-}
-
-export function useCheckout() {
-  const handlers = useCheckoutHandlers()
-
-  return {
-    countries,
-    items: new Array(3).fill(cartItem),
-    totals: {
-      grandTotalPrice: '124 EUR',
-      itemsTotalPrice: '120 EUR',
-      shippingPrice: '4 EUR',
-      totalQuantity: 6,
-    },
-    ...handlers,
-  }
-}
-
-export const addNewsletterSubscriber = actionWithPromise('addNewsletterSubscriber')
