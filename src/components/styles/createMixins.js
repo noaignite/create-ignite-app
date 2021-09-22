@@ -46,12 +46,16 @@ export default function createMixins(breakpoints, spacing, mixins) {
       marginRight: 'auto',
       marginLeft: 'auto',
     }),
-    horizontalRhythm: (amount = 1, selector = '*') => ({
+    // Higher CSS specificity is needed, hence the `:not(style)` selector is needed.
+    // https://github.com/mui-org/material-ui/issues/26384#issuecomment-844890584
+    horizontalRhythm: (amount = 1, selector = ':not(style)') => ({
       [`& > ${selector} + ${selector}`]: {
         marginLeft: spacing(amount),
       },
     }),
-    verticalRhythm: (amount = 1, selector = '*') => ({
+    // Higher CSS specificity is needed, hence the `:not(style)` selector is needed.
+    // https://github.com/mui-org/material-ui/issues/26384#issuecomment-844890584
+    verticalRhythm: (amount = 1, selector = ':not(style)') => ({
       [`& > ${selector} + ${selector}`]: {
         marginTop: spacing(amount),
       },
