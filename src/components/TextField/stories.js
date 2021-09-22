@@ -47,5 +47,5 @@ Default.args = {
   required: false,
   select: false,
   size: 'medium',
-  variant: 'standard',
+  variant: 'outlined',
 }
