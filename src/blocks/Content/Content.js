@@ -8,7 +8,7 @@ const ContentRoot = styled('section', {
   name: 'Content',
   slot: 'Root',
 })({
-  margin: 'var(--coa-section-spacing) 0',
+  margin: 'var(--cia-section-spacing) 0',
   'h1, h2, h3, h4, h5, h6, p, ol, ul, blockquote': {
     maxWidth: 480,
   },

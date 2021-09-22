@@ -15,7 +15,7 @@ const AppNavDrawerRoot = styled(Drawer, {
 })(({ theme }) => ({
   zIndex: `${theme.zIndex.appBar - 1} !important`,
   '& .MuiDrawer-paper': {
-    top: 'var(--coa-header-height)',
+    top: 'var(--cia-header-height)',
     backgroundColor: theme.palette.background.default,
   },
 }))
@@ -26,7 +26,7 @@ const AppNavDrawerForm = styled('form', {
 })(({ theme }) => ({
   ...theme.mixins.contain('md'),
   width: '100%',
-  padding: theme.spacing(0, 'var(--coa-container-spacing)', 2),
+  padding: theme.spacing(0, 'var(--cia-container-spacing)', 2),
 }))
 
 const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {

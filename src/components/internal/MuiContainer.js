@@ -1,11 +1,11 @@
 const overrides = {
   styleOverrides: (theme) => ({
     root: {
-      paddingLeft: 'var(--coa-container-spacing)',
-      paddingRight: 'var(--coa-container-spacing)',
+      paddingLeft: 'var(--cia-container-spacing)',
+      paddingRight: 'var(--cia-container-spacing)',
       [theme.breakpoints.up('sm')]: {
-        paddingLeft: 'var(--coa-container-spacing)',
-        paddingRight: 'var(--coa-container-spacing)',
+        paddingLeft: 'var(--cia-container-spacing)',
+        paddingRight: 'var(--cia-container-spacing)',
       },
     },
   }),

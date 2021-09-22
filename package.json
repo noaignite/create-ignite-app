@@ -1,16 +1,16 @@
 {
-  "name": "coa",
+  "name": "create-ignite-app",
   "version": "2.0.0",
   "private": false,
   "author": "NoA Ignite",
-  "description": "App Scaffolding",
+  "description": "NoA Ignite App Scaffolding",
   "repository": {
     "type": "git",
-    "url": "https://github.com/noaignite/coa.git"
+    "url": "https://github.com/noaignite/create-ignite-app.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/noaignite/coa/issues"
+    "url": "https://github.com/noaignite/create-ignite-app/issues"
   },
   "scripts": {
     "dev": "next",

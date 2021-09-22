@@ -40,8 +40,8 @@ const HeroMain = styled('div', {
 })(({ theme }) => ({
   '&': theme.mixins.verticalRhythm(2), // Why does this not add specificity but changes style order?
   ...theme.mixins.contain('sm'),
-  paddingLeft: 'var(--coa-container-spacing)',
-  paddingRight: 'var(--coa-container-spacing)',
+  paddingLeft: 'var(--cia-container-spacing)',
+  paddingRight: 'var(--cia-container-spacing)',
 }))
 
 const HeroButton = styled(Button, {

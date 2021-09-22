@@ -1,11 +1,11 @@
 const overrides = {
   styleOverrides: (theme) => ({
     gutters: {
-      paddingLeft: 'var(--coa-toolbar-spacing)',
-      paddingRight: 'var(--coa-toolbar-spacing)',
+      paddingLeft: 'var(--cia-toolbar-spacing)',
+      paddingRight: 'var(--cia-toolbar-spacing)',
       [theme.breakpoints.up('sm')]: {
-        paddingLeft: 'var(--coa-toolbar-spacing)',
-        paddingRight: 'var(--coa-toolbar-spacing)',
+        paddingLeft: 'var(--cia-toolbar-spacing)',
+        paddingRight: 'var(--cia-toolbar-spacing)',
       },
     },
     regular: theme.mixins.toolbar,

@@ -28,8 +28,8 @@ const AppCookieBarContent = styled('div', {
 })(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  padding: 'var(--coa-toolbar-spacing)',
-  margin: 'var(--coa-toolbar-spacing)',
+  padding: 'var(--cia-toolbar-spacing)',
+  margin: 'var(--cia-toolbar-spacing)',
   borderRadius: theme.shape.borderRadius * 2,
   backgroundColor: theme.palette.text.primary,
   color: theme.palette.background.default,

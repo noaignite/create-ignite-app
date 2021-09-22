@@ -9,7 +9,7 @@ const AppFooterRoot = styled('footer', {
   name: 'AppFooter',
   slot: 'Root',
 })(({ theme }) => ({
-  padding: 'var(--coa-section-spacing) 0',
+  padding: 'var(--cia-section-spacing) 0',
   backgroundColor: theme.palette.text.primary,
   color: theme.palette.getContrastText(theme.palette.text.primary),
 }))

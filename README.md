@@ -1,4 +1,4 @@
-# COA
+# Create Ignite App
 
 [NoA Ignite](https://noaignite.se/) App Scaffolding built with [React](https://reactjs.org/) and [MUI](https://mui.com/).
 

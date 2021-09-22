@@ -44,10 +44,10 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
       open={isMarketMenuOpen}
       maxWidth="xs"
       fullWidth
-      aria-labelledby="coa-market-menu-title"
+      aria-labelledby="cia-market-menu-title"
       {...other}
     >
-      <DialogTitle variant="subtitle1" id="coa-market-menu-title">
+      <DialogTitle variant="subtitle1" id="cia-market-menu-title">
         {t(__translationGroup)`Choose country and shipping`}
 
         {onMarketMenuClose && (
@@ -80,7 +80,7 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
           margin="normal"
           fullWidth
           select
-          id="coa-market-menu-country" // Makes `label` and `helperText` accessible for screen readers.
+          id="cia-market-menu-country" // Makes `label` and `helperText` accessible for screen readers.
         >
           {countries.map((country) => (
             <MenuItem key={country.country} value={country.country}>

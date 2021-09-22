@@ -18,16 +18,16 @@ const ArticleSlideshowRoot = styled('section', {
   slot: 'Root',
 })({
   position: 'relative',
-  margin: 'var(--coa-section-spacing) 0',
+  margin: 'var(--cia-section-spacing) 0',
 })
 
 const ArticleSlideshowHeader = styled('header', {
   name: 'ArticleSlideshow',
   slot: 'Header',
 })({
-  paddingLeft: 'var(--coa-container-spacing)',
-  paddingRight: 'var(--coa-container-spacing)',
-  marginBottom: 'var(--coa-section-spacing)',
+  paddingLeft: 'var(--cia-container-spacing)',
+  paddingRight: 'var(--cia-container-spacing)',
+  marginBottom: 'var(--cia-section-spacing)',
   textAlign: 'center',
 })
 
@@ -35,8 +35,8 @@ const ArticleSlideshowMain = styled('div', {
   name: 'ArticleSlideshow',
   slot: 'Main',
 })({
-  paddingLeft: 'var(--coa-container-spacing)',
-  paddingRight: 'var(--coa-container-spacing)',
+  paddingLeft: 'var(--cia-container-spacing)',
+  paddingRight: 'var(--cia-container-spacing)',
   overflow: 'hidden',
 })
 

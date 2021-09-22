@@ -10,7 +10,7 @@ import { Add as AddIcon, Remove as RemoveIcon } from 'components/icons'
 import RouterLink from '../RouterLink'
 
 const classes = {
-  row: 'CoaCartItem-Row',
+  row: 'CiaCartItem-Row',
 }
 
 const CartItemRoot = styled('article', {

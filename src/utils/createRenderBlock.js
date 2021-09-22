@@ -8,7 +8,7 @@ export default function createRenderBlock(variants) {
     const children = childrenProp ? childrenProp.map(renderBlock) : undefined
 
     if (!Component) {
-      console.error(`COA: 🕵️‍♂️ Block not found: %c${name}`, 'font-weight: bold')
+      console.error(`CIA: 🕵️‍♂️ Block not found: %c${name}`, 'font-weight: bold')
 
       return null
     }

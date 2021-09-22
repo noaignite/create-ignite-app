@@ -14,15 +14,15 @@ const overrides = {
     ],
     // Define :root css variables.
     ':root': {
-      '--coa-theme-spacing': theme.spacing(1),
-      '--coa-section-spacing': theme.spacing(4),
-      '--coa-container-spacing': theme.spacing(2),
-      '--coa-toolbar-dense-min-height': '48px',
-      '--coa-toolbar-min-height': '56px',
-      '--coa-toolbar-spacing': theme.spacing(2),
+      '--cia-theme-spacing': theme.spacing(1),
+      '--cia-section-spacing': theme.spacing(4),
+      '--cia-container-spacing': theme.spacing(2),
+      '--cia-toolbar-dense-min-height': '48px',
+      '--cia-toolbar-min-height': '56px',
+      '--cia-toolbar-spacing': theme.spacing(2),
       [theme.breakpoints.up('sm')]: {
-        '--coa-section-spacing': theme.spacing(6),
-        '--coa-container-spacing': theme.spacing(4),
+        '--cia-section-spacing': theme.spacing(6),
+        '--cia-container-spacing': theme.spacing(4),
       },
     },
     // Opinionated defaults taken from sanitize.css
@@ -47,7 +47,7 @@ const overrides = {
       appearance: 'none',
     },
     '[id]': {
-      scrollMarginTop: 'var(--coa-sticky-top, 0px)',
+      scrollMarginTop: 'var(--cia-sticky-top, 0px)',
     },
   }),
 }

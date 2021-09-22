@@ -27,14 +27,14 @@ export default function createMixins(breakpoints, spacing, mixins) {
     // Components
     toolbar: {
       // Override Mui styles
-      minHeight: 'var(--coa-toolbar-min-height)',
+      minHeight: 'var(--cia-toolbar-min-height)',
       [breakpoints.up('sm')]: {
-        minHeight: 'var(--coa-toolbar-min-height)',
+        minHeight: 'var(--cia-toolbar-min-height)',
       },
     },
     toolbarDense: {
       // Override Mui styles
-      minHeight: 'var(--coa-toolbar-dense-min-height)',
+      minHeight: 'var(--cia-toolbar-dense-min-height)',
     },
     // Utils
     gutters: (amount = 2) => ({

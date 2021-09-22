@@ -123,9 +123,9 @@ const AppHeader = React.memo(function AppHeader(props) {
         dangerouslySetInnerHTML={{
           __html: `
           :root {
-            --coa-header-height: ${dimensions.height}px;
-            --coa-initial-sticky-top: ${appBarColor === 'default' ? dimensions.height : 0}px;
-            --coa-sticky-top: ${appBarColor !== 'transparent' ? dimensions.height : 0}px;
+            --cia-header-height: ${dimensions.height}px;
+            --cia-initial-sticky-top: ${appBarColor === 'default' ? dimensions.height : 0}px;
+            --cia-sticky-top: ${appBarColor !== 'transparent' ? dimensions.height : 0}px;
           }
         `,
         }}
