@@ -6,10 +6,10 @@
   "description": "App Scaffolding",
   "repository": {
     "type": "git",
-    "url": "https://github.com/oakwood/create-oakwood-app.git"
+    "url": "https://github.com/noaignite/coa.git"
   },
   "bugs": {
-    "url": "https://github.com/oakwood/create-oakwood-app/issues"
+    "url": "https://github.com/noaignite/coa/issues"
   },
   "scripts": {
     "dev": "next",
