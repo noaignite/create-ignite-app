@@ -1,36 +1,36 @@
-// @inheritedComponent AppDrawer
+// @inheritedComponent Drawer
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
-import { makeStyles } from '@material-ui/core/styles'
+import { styled } from '@mui/system'
+import { Drawer, IconButton, TextField } from '@mui/material'
 import { useI18n } from 'api'
 import { Search as SearchIcon } from 'components/icons'
-import { Container, IconButton, TextField } from 'components'
 import { useApp } from '../AppContext'
-import AppDrawer from './AppDrawer'
 
-export const useStyles = makeStyles((theme) => ({
-  root: {
-    '--drawer-top': 'var(--coa-header-height)',
-    zIndex: `${theme.zIndex.appBar - 1} !important`,
-  },
-  paper: {
+const AppNavDrawerRoot = styled(Drawer, {
+  name: 'AppCartDrawer',
+  slot: 'Root',
+})(({ theme }) => ({
+  zIndex: `${theme.zIndex.appBar - 1} !important`,
+  '& .MuiDrawer-paper': {
+    top: 'var(--coa-header-height)',
     backgroundColor: theme.palette.background.default,
   },
-  form: {
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(2),
-  },
-  textField: {},
-  inputBase: {},
-  input: {},
-  submitButton: {},
+}))
+
+const AppNavDrawerForm = styled('form', {
+  name: 'AppCartDrawer',
+  slot: 'Form',
+})(({ theme }) => ({
+  ...theme.mixins.contain('md'),
+  width: '100%',
+  padding: theme.spacing(0, 'var(--coa-container-spacing)', 2),
 }))
 
 const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
   const { isSearchMenuOpen, onSearchMenuClose, ...other } = props
-  const classes = useStyles(props)
 
   const { t } = useI18n()
 
@@ -48,8 +48,8 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
 
   const submitButton = (
     <IconButton
-      className={classes.submitButton}
       disabled={!value}
+      size="small"
       type="submit"
       aria-label={t(__translationGroup)`Submit search`}
     >
@@ -58,38 +58,24 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
   )
 
   return (
-    <AppDrawer
-      classes={{
-        root: classes.root,
-        paper: classes.paper,
-      }}
-      onClose={onSearchMenuClose}
-      open={isSearchMenuOpen}
-      anchor="top"
-      {...other}
-    >
-      <Container
-        className={classes.form}
+    <AppNavDrawerRoot onClose={onSearchMenuClose} open={isSearchMenuOpen} anchor="top" {...other}>
+      <AppNavDrawerForm
         onSubmit={handleSubmit}
-        component="form"
-        maxWidth="md"
         role="search"
         // iOS needs an "action" attribute for nice input: https://stackoverflow.com/a/39485162/406725
         // We default the action to "#" in case the preventDefault fails (just updates the URL hash)
         action="#"
       >
         <TextField
-          className={classes.textField}
           onChange={handleChange}
           value={value}
           placeholder={t(__translationGroup)`Search products`}
+          variant="standard"
           InputProps={{
-            className: classes.inputBase,
             endAdornment: submitButton,
           }}
           // eslint-disable-next-line react/jsx-no-duplicate-props
           inputProps={{
-            className: classes.input,
             autoCapitalize: 'off',
             autoComplete: 'off',
             autoCorrect: 'off',
@@ -100,8 +86,8 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
           fullWidth
           autoFocus
         />
-      </Container>
-    </AppDrawer>
+      </AppNavDrawerForm>
+    </AppNavDrawerRoot>
   )
 })
 

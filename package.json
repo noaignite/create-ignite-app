@@ -1,19 +1,15 @@
 {
-  "name": "create-oakwood-app",
-  "private": true,
-  "author": "Oakwood Creative",
-  "version": "1.0.0",
-  "description": "Oakwood App Scaffolding",
+  "name": "coa",
+  "version": "2.0.0",
+  "private": false,
+  "author": "NoA Ignite",
+  "description": "App Scaffolding",
   "repository": {
     "type": "git",
     "url": "https://github.com/oakwood/create-oakwood-app.git"
   },
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/oakwood/create-oakwood-app/issues"
-  },
-  "engines": {
-    "node": ">=12.0.0"
   },
   "scripts": {
     "dev": "next",
@@ -40,12 +36,17 @@
     ]
   },
   "dependencies": {
-    "@material-ui/core": "4.12.3",
-    "@oakwood/oui": "1.1.0",
+    "@emotion/cache": "^11.4.0",
+    "@emotion/react": "^11.4.1",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@mui/lab": "^5.0.0-alpha.47",
+    "@mui/material": "^5.0.0",
+    "@noaignite/oui": "^2.0.0",
     "clsx": "^1.1.0",
     "embla-carousel": "^4.5.3",
     "es2015-i18n-tag": "^1.6.1",
-    "next": "^11.1.0",
+    "next": "^11.1.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -55,16 +56,16 @@
     "@babel/core": "^7.14.6",
     "@babel/eslint-parser": "^7.14.7",
     "@babel/plugin-transform-react-constant-elements": "^7.10.1",
-    "@next/bundle-analyzer": "^11.1.0",
-    "@storybook/addon-a11y": "^6.3.7",
-    "@storybook/addon-essentials": "^6.3.7",
-    "@storybook/react": "^6.3.7",
+    "@next/bundle-analyzer": "^11.1.2",
+    "@storybook/addon-a11y": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/react": "^6.3.8",
     "@welldone-software/why-did-you-render": "^6.0.3",
     "babel-plugin-i18n-tag-translate": "^2.0.0",
     "babel-plugin-optimize-clsx": "^2.6.0",
     "eslint": "^7.4.0",
     "eslint-config-airbnb": "^18.1.0",
-    "eslint-config-next": "^11.0.1",
+    "eslint-config-next": "^11.1.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-webpack": "^0.13.0",
     "eslint-plugin-babel": "^5.3.1",
@@ -76,5 +77,8 @@
     "lint-staged": "^11.0.0",
     "prettier": "^2.0.1",
     "webpack-merge": "^5.2.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   }
 }

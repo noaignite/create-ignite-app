@@ -1,9 +1,9 @@
-import createTheme from 'components/styles/createTheme'
+import { createTheme } from 'components/styles'
 import generatePreload from './generatePreload'
 
 const theme = createTheme({
   palette: {
-    type: 'dark',
+    mode: 'dark',
   },
   props: {
     OuiMedia: { generatePreload },

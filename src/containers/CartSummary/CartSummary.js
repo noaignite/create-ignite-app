@@ -1,68 +1,65 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
+import { styled } from '@mui/system'
 import { useCheckoutSelection, useI18n } from 'api'
 import { cartItemType } from 'utils'
+import { Typography } from 'components'
 
-export const useStyles = makeStyles(
-  (theme) => ({
-    root: {
-      ...theme.typography.body2,
-      display: 'grid',
-      gridGap: theme.spacing(1),
-      padding: theme.spacing(2),
-      borderRadius: theme.shape.borderRadius * 2,
-      backgroundColor: theme.palette.background.default,
-    },
-    items: {},
-    itemRow: {
-      display: 'grid',
-      gridGap: theme.spacing(2),
-      gridTemplateColumns: '140px 1fr 1fr',
-    },
-    itemCol: {
-      '&:last-child': {
-        textAlign: 'right',
-      },
-    },
-    summary: {
-      textAlign: 'right',
-    },
-  }),
-  { name: 'Cart' },
-)
+const CartSummaryRoot = styled('div', {
+  name: 'CartSummary',
+  slot: 'Root',
+})(({ theme }) => ({
+  ...theme.typography.body2,
+  display: 'grid',
+  gridGap: theme.spacing(1),
+  padding: theme.spacing(2),
+  borderRadius: theme.shape.borderRadius * 2,
+  backgroundColor: theme.palette.background.default,
+}))
+
+const CartSummaryRow = styled('div', {
+  name: 'CartSummary',
+  slot: 'Row',
+})(({ theme }) => ({
+  display: 'grid',
+  gridGap: theme.spacing(2),
+  gridTemplateColumns: '140px 1fr 1fr',
+}))
+
+const CartSummaryCol = styled('div', {
+  name: 'CartSummary',
+  slot: 'Col',
+})({
+  '&:last-child': {
+    textAlign: 'right',
+  },
+})
 
 function CartSummary(props) {
-  const { className, items, totals } = props
-  const classes = useStyles(props)
+  const { items, totals } = props
 
   const { t } = useI18n()
 
   return (
-    <div className={clsx(classes.root, className)}>
-      <div className={classes.items}>
+    <CartSummaryRoot>
+      <div>
         {items?.map((item, idx) => (
-          <div key={idx} className={classes.itemRow}>
-            <span className={classes.itemCol}>{item.product?.name}</span>
-            <span className={classes.itemCol}>x{item.quantity}</span>
-            <span className={classes.itemCol}>{item.totalPrice}</span>
-          </div>
+          <CartSummaryRow key={idx}>
+            <CartSummaryCol>{item.product?.name}</CartSummaryCol>
+            <CartSummaryCol>x{item.quantity}</CartSummaryCol>
+            <CartSummaryCol>{item.totalPrice}</CartSummaryCol>
+          </CartSummaryRow>
         ))}
       </div>
 
-      <div className={classes.summary}>
-        <div>
-          + {t(__translationGroup)`Shipping`}: {totals.shippingPrice}
-        </div>
-      </div>
+      <Typography align="right" variant="inherit">
+        + {t(__translationGroup)`Shipping`}: {totals.shippingPrice}
+      </Typography>
 
-      <div className={classes.summary}>
-        <div>
-          {t(__translationGroup)`Total`}: {totals.grandTotalPrice}
-        </div>
-      </div>
-    </div>
+      <Typography align="right" variant="inherit">
+        {t(__translationGroup)`Total`}: {totals.grandTotalPrice}
+      </Typography>
+    </CartSummaryRoot>
   )
 }
 
@@ -72,7 +69,6 @@ const totalsType = PropTypes.shape({
 })
 
 CartSummary.propTypes = {
-  className: PropTypes.string,
   items: PropTypes.arrayOf(cartItemType).isRequired,
   totals: totalsType.isRequired,
 }

@@ -1,66 +1,77 @@
 import * as React from 'react'
-import PropTypes from 'prop-types'
-import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
+import { styled } from '@mui/system'
+import { Container, Link } from '@mui/material'
 import { useGlobal } from 'api'
-import { Container, Link } from 'components'
 import { useApp } from '../AppContext'
 import RouterLink from '../../RouterLink'
 
-export const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: 'var(--coa-section-spacing) 0',
-    backgroundColor: theme.palette.text.primary,
-    color: theme.palette.getContrastText(theme.palette.text.primary),
+const AppFooterRoot = styled('footer', {
+  name: 'AppFooter',
+  slot: 'Root',
+})(({ theme }) => ({
+  padding: 'var(--coa-section-spacing) 0',
+  backgroundColor: theme.palette.text.primary,
+  color: theme.palette.getContrastText(theme.palette.text.primary),
+}))
+
+const AppFooterSalesBanner = styled('div', {
+  name: 'AppFooter',
+  slot: 'SalesBanner',
+})(({ theme }) => ({
+  position: 'sticky',
+  bottom: 0,
+  padding: theme.spacing(0.5, 2),
+  backgroundColor: theme.palette.text.secondary,
+  color: theme.palette.getContrastText(theme.palette.text.primary),
+  textAlign: 'center',
+}))
+
+const AppFooterList = styled('ul', {
+  name: 'AppFooter',
+  slot: 'List',
+})({
+  display: 'flex',
+  justifyContent: 'center',
+  margin: 0,
+})
+
+const AppFooterListItem = styled('li', {
+  name: 'AppFooter',
+  slot: 'ListItem',
+})(({ theme }) => ({
+  marginLeft: theme.spacing(4),
+  '&:first-child': {
+    marginLeft: 0,
   },
-  nav: {},
-  navlist: {
-    display: 'flex',
-    justifyContent: 'center',
-    margin: 0,
-  },
-  navlistItem: {
-    marginLeft: theme.spacing(4),
-    '&:first-child': {
-      marginLeft: 0,
-    },
-  },
-  navlistItemText: {},
 }))
 
 const AppFooter = React.memo(function AppFooter(props) {
-  const { className, ...other } = props
-  const classes = useStyles(props)
-
-  const { menus } = useGlobal()
+  const { menus, settings } = useGlobal()
 
   return (
-    <footer className={clsx(classes.root, className)} {...other}>
-      <Container className={classes.mainDetails}>
-        <nav className={classes.nav}>
-          <ul className={classes.navlist}>
-            {menus.menuFooter?.map((menuItem, idx) => (
-              <li key={idx} className={classes.navlistItem}>
-                <Link
-                  className={classes.navlistItemText}
-                  component={RouterLink}
-                  href={menuItem.url}
-                  variant="button"
-                >
-                  {menuItem.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </Container>
-    </footer>
+    <>
+      {settings?.globalSalesBanner && (
+        <AppFooterSalesBanner>{settings.globalSalesBanner}</AppFooterSalesBanner>
+      )}
+
+      <AppFooterRoot {...props}>
+        <Container>
+          <nav>
+            <AppFooterList>
+              {menus.menuFooter?.map((menuItem, idx) => (
+                <AppFooterListItem key={idx}>
+                  <Link component={RouterLink} href={menuItem.url} variant="button">
+                    {menuItem.label}
+                  </Link>
+                </AppFooterListItem>
+              ))}
+            </AppFooterList>
+          </nav>
+        </Container>
+      </AppFooterRoot>
+    </>
   )
 })
-
-AppFooter.propTypes = {
-  className: PropTypes.string,
-}
 
 function AppFooterContainer(props) {
   const { hideFooter } = useApp()

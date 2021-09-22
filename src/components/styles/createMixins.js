@@ -98,13 +98,9 @@ export default function createMixins(breakpoints, spacing, mixins) {
     scrollbars: {
       '&::-webkit-scrollbar': {
         width: 5,
-        padding: 10,
         backgroundColor: grey[200],
       },
       '&::-webkit-scrollbar-thumb': {
-        padding: 10,
-        margin: 10,
-        borderRadius: 4,
         backgroundColor: grey[800],
       },
     },

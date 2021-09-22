@@ -1,25 +1,43 @@
-import { deepmerge } from '@material-ui/utils'
-import { alpha } from '@material-ui/core/styles'
+import { deepmerge } from '@mui/utils'
+import { alpha } from '@mui/material/styles'
+import { pink, purple } from '@mui/material/colors'
 import blue from '../colors/blue'
-import blueGrey from '../colors/blueGrey'
 import common from '../colors/common'
 import green from '../colors/green'
 import grey from '../colors/grey'
 import orange from '../colors/orange'
 import red from '../colors/red'
 
+export const darkText = {
+  // The most important text.
+  primary: common.black,
+  // Secondary text.
+  secondary: alpha(common.black, 0.65),
+  // Disabled text have even lower visual prominence.
+  disabled: alpha(common.black, 0.4),
+  // Text hints.
+  hint: alpha(common.black, 0.4),
+  // Complementing keys used for component color variants.
+  main: common.black,
+  dark: alpha(common.black, 0.8), // Mui uses `dark` for hover. We want a lighter color.
+  contrastText: common.white,
+}
+
+export const lightText = {
+  primary: common.white,
+  secondary: alpha(common.white, 0.65),
+  disabled: alpha(common.white, 0.4),
+  hint: alpha(common.white, 0.4),
+  main: common.white,
+  dark: alpha(common.white, 0.9),
+  contrastText: common.black,
+}
+
 export const light = {
   // The colors used to style the text.
-  text: {
-    // The most important text.
-    primary: common.black,
-    // Secondary text.
-    secondary: alpha(common.black, 0.65),
-    // Disabled text have even lower visual prominence.
-    disabled: alpha(common.black, 0.4),
-    // Text hints.
-    hint: alpha(common.black, 0.4),
-  },
+  text: darkText,
+  // The colors used to style inverted text.
+  textInverted: lightText,
   // The color used to divide different elements.
   divider: 'rgba(0, 0, 0, 0.12)',
   // The background colors used to style the surfaces.
@@ -32,10 +50,10 @@ export const light = {
   action: {
     // The color of an active action like an icon button.
     active: common.black,
-    // The color of an hovered action.
+    // The background color of an hovered action.
     hover: 'rgba(0, 0, 0, 0.04)',
     hoverOpacity: 0.04,
-    // The color of a selected action.
+    // The background color of a selected action.
     selected: 'rgba(0, 0, 0, 0.08)',
     selectedOpacity: 0.08,
     // The color of a disabled action.
@@ -50,12 +68,8 @@ export const light = {
 }
 
 export const dark = {
-  text: {
-    primary: common.white,
-    secondary: alpha(common.white, 0.65),
-    disabled: alpha(common.white, 0.4),
-    hint: alpha(common.white, 0.4),
-  },
+  text: lightText,
+  textInverted: darkText,
   divider: 'rgba(255, 255, 255, 0.12)',
   background: {
     default: common.black,
@@ -79,14 +93,14 @@ export const dark = {
 export default function createPalette(palette) {
   const {
     primary = {
-      light: blueGrey[300],
-      main: blueGrey[500],
-      dark: blueGrey[700],
+      light: pink[300],
+      main: pink[500],
+      dark: pink[700],
     },
     secondary = {
-      light: grey[300],
-      main: grey[500],
-      dark: grey[700],
+      light: purple[300],
+      main: purple[500],
+      dark: purple[700],
     },
     error = {
       light: red[300],
@@ -108,8 +122,8 @@ export default function createPalette(palette) {
       main: green[500],
       dark: green[700],
     },
-    types = { dark, light },
-    type = 'light',
+    modes = { dark, light },
+    mode = 'light',
     contrastThreshold = 3,
     tonalOffset = 0.2,
     ...other
@@ -119,8 +133,8 @@ export default function createPalette(palette) {
     {
       // A collection of common colors.
       common,
-      // The palette type, can be light or dark.
-      type,
+      // The palette mode, can be light or dark.
+      mode,
       // The colors used to represent primary interface elements for a user.
       primary,
       // The colors used to represent secondary interface elements for a user.
@@ -143,7 +157,7 @@ export default function createPalette(palette) {
       // E.g., shift from Red 500 to Red 300 or Red 700.
       tonalOffset,
       // The light and dark type object.
-      ...types[type],
+      ...modes[mode],
     },
     other,
   )

@@ -1,4 +1,4 @@
-import { deepmerge } from '@material-ui/utils'
+import { deepmerge } from '@mui/utils'
 
 const caseAllCaps = {
   textTransform: 'uppercase',
@@ -15,7 +15,7 @@ export default function createTypography(palette, typography) {
     fontWeightMedium = 500,
     fontWeightSemibold = 600,
     fontWeightBold = 700,
-    // Tell Material-UI what's the font-size on the html element.
+    // Tell MUI what's the font-size on the html element.
     // 16px is the default font-size used by browsers.
     htmlFontSize = 16,
     // Apply the CSS properties to all the variants.

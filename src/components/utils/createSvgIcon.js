@@ -1,5 +1,5 @@
 import * as React from 'react'
-import SvgIcon from '../SvgIcon'
+import { SvgIcon } from '@mui/material'
 
 export default function createSvgIcon(path, displayName, viewBox) {
   const Component = React.memo(

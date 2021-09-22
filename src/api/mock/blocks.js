@@ -1,6 +1,5 @@
 export default {
   Hero: {
-    backgroundAttachment: 'static',
     backgroundMediaProps: {
       component: 'picture',
       breakpoints: {
@@ -9,8 +8,7 @@ export default {
       },
     },
     heading: 'Lorem ipsum dolor',
-    excerpt:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie varius viverra. Quisque urna tortor, bibendum ac quam a, bibendum fringilla nulla.',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie varius viverra. Quisque urna tortor, bibendum ac quam a, bibendum fringilla nulla.', // prettier-ignore
     ctaLabel: 'Discover',
     ctaUrl: '/foo',
   },
@@ -23,8 +21,7 @@ export default {
       },
       subheading: 'Vivamus',
       heading: 'Lorem ipsum dolor',
-      excerpt:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie varius viverra. Quisque urna tortor, bibendum ac quam a, bibendum fringilla nulla.',
+      excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie varius viverra. Quisque urna tortor, bibendum ac quam a, bibendum fringilla nulla.', // prettier-ignore
       url: '/foo',
     })),
   },

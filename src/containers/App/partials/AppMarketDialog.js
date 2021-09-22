@@ -2,22 +2,20 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
-import { Dialog, DialogTitle, DialogContent, useMediaQuery, Slide } from '@material-ui/core'
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  MenuItem,
+  Slide,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from '@mui/material'
 import { useCheckout, useI18n } from 'api'
 import { Close as CloseIcon } from 'components/icons'
-import { IconButton, MenuItem, TextField, Typography } from 'components'
 import { useApp } from '../AppContext'
-
-export const useStyles = makeStyles((theme) => ({
-  root: {},
-  paper: {},
-  closeButton: {
-    position: 'absolute',
-    right: theme.spacing(1),
-    top: theme.spacing(0.5),
-  },
-}))
 
 const TransitionComponent = React.forwardRef(function TransitionComponent(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
@@ -25,7 +23,6 @@ const TransitionComponent = React.forwardRef(function TransitionComponent(props,
 
 const AppMarketDialog = React.memo(function AppMarketDialog(props) {
   const { isMarketMenuOpen, onMarketMenuClose, ...other } = props
-  const classes = useStyles(props)
 
   const { location, countries, setCountry } = useCheckout()
   const { t } = useI18n()
@@ -41,10 +38,6 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
 
   return (
     <Dialog
-      classes={{
-        root: classes.root,
-        paper: classes.paper,
-      }}
       TransitionComponent={!isBreakpointUp ? TransitionComponent : undefined}
       fullScreen={!isBreakpointUp}
       onClose={onMarketMenuClose}
@@ -54,14 +47,16 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
       aria-labelledby="coa-market-menu-title"
       {...other}
     >
-      <DialogTitle disableTypography>
-        <Typography component="h1" variant="subtitle1" id="coa-market-menu-title">
-          {t(__translationGroup)`Choose country and shipping`}
-        </Typography>
+      <DialogTitle variant="subtitle1" id="coa-market-menu-title">
+        {t(__translationGroup)`Choose country and shipping`}
 
         {onMarketMenuClose && (
           <IconButton
-            className={classes.closeButton}
+            sx={{
+              position: 'absolute',
+              right: (theme) => theme.spacing(1),
+              top: 5,
+            }}
             onClick={onMarketMenuClose}
             color="inherit"
             aria-label={t(__translationGroup)`Close market menu`}

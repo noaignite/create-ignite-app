@@ -1,111 +1,99 @@
-// @inheritedComponent AppDrawer
+// @inheritedComponent Drawer
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
+import { styled } from '@mui/system'
+import { Drawer, IconButton, Link, Toolbar, Typography } from '@mui/material'
 import { useCheckout, useGlobal, useI18n } from 'api'
-import { Link, Typography } from 'components'
+import { Close as CloseIcon } from 'components/icons'
 import { useApp } from '../AppContext'
-import AppDrawer from './AppDrawer'
 import AppNavDrawerListItem from './AppNavDrawerListItem'
 
-export const useStyles = makeStyles((theme) => ({
-  root: {
-    '--drawer-top': 'var(--coa-header-height)',
-    '--inset-width': '32px', // Medium icon size + theme.spacing(1)
-    zIndex: `${theme.zIndex.appBar - 1} !important`,
+const AppNavDrawerRoot = styled(Drawer, {
+  name: 'AppNavDrawer',
+  slot: 'Root',
+})({
+  '& .MuiDrawer-paper': {
+    maxWidth: '100%',
+    width: 414, // iPhone 6/7/8 Plus
   },
-  paper: {
-    padding: theme.spacing(5, 2),
-  },
-  list: {
-    margin: theme.spacing(2, 0, 4),
-    '&:first-of-type': {
-      marginTop: 0,
-    },
-  },
-  listItem: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(1, 0),
-    paddingLeft: 'calc(var(--inset-width) * var(--level))',
-  },
-  listItemLink: {
-    display: 'inherit',
-    alignItems: 'inherit',
-    '$list &': theme.typography.h4,
-    '$list $list &': theme.typography.body2,
-  },
-  listItemIcon: {
-    marginRight: theme.spacing(1),
+})
+
+const AppNavDrawerScrollContainer = styled('div', {
+  name: 'AppNavDrawer',
+  slot: 'ScrollContainer',
+})(({ theme }) => ({
+  ...theme.mixins.scrollable,
+  ...theme.mixins.scrollbars,
+  display: 'inherit',
+  flexDirection: 'inherit',
+  flexGrow: 1,
+  padding: theme.spacing(2),
+}))
+
+const AppNavDrawerList = styled('ul', {
+  name: 'AppNavDrawer',
+  slot: 'List',
+})(({ theme }) => ({
+  margin: theme.spacing(2, 0, 4),
+  '&:first-of-type': {
+    marginTop: 0,
   },
 }))
 
 const AppNavDrawer = React.memo(function AppNavDrawer(props) {
   const { isNavMenuOpen, onMarketMenuToggle, onNavMenuClose, ...other } = props
-  const classes = useStyles(props)
 
   const { t } = useI18n()
   const { location, selection } = useCheckout()
   const { menus } = useGlobal()
 
-  const AppNavDrawerListItemClasses = {
-    list: classes.list,
-    listItem: classes.listItem,
-    listItemLink: classes.listItemLink,
-    listItemIcon: classes.listItemIcon,
-  }
-
   return (
-    <AppDrawer
-      classes={{
-        root: classes.root,
-        paper: classes.paper,
-      }}
-      onClose={onNavMenuClose}
-      open={isNavMenuOpen}
-      anchor="left"
-      {...other}
-    >
-      <nav aria-label={t(__translationGroup)`Main navigation`}>
-        {menus.menuPrimary && (
-          <ul className={classes.list}>
-            {menus.menuPrimary.map((menuLink, idx) => (
-              <AppNavDrawerListItem
-                key={idx}
-                classes={AppNavDrawerListItemClasses}
-                menuLink={menuLink}
-              />
-            ))}
-          </ul>
-        )}
-
-        {menus.menuSecondary && (
-          <ul className={classes.list}>
-            {menus.menuSecondary.map((menuLink, idx) => (
-              <AppNavDrawerListItem
-                key={idx}
-                classes={AppNavDrawerListItemClasses}
-                menuLink={menuLink}
-              />
-            ))}
-          </ul>
-        )}
-      </nav>
-
-      <Typography variant="body2">
-        {t(__translationGroup)`Country`}:{' '}
-        <Link // eslint-disable-line jsx-a11y/anchor-is-valid
-          onClick={onMarketMenuToggle}
-          component="button"
-          type="button"
-          underline="always"
-          variant="body2"
+    <AppNavDrawerRoot onClose={onNavMenuClose} open={isNavMenuOpen} anchor="left" {...other}>
+      <Toolbar>
+        <IconButton
+          onClick={onNavMenuClose}
+          edge="start"
+          size="small"
+          aria-label={t(__translationGroup)`Close cart menu`}
         >
-          {location.country} / {selection.currency}
-        </Link>
-      </Typography>
-    </AppDrawer>
+          <CloseIcon />
+        </IconButton>
+      </Toolbar>
+
+      <AppNavDrawerScrollContainer>
+        <nav aria-label={t(__translationGroup)`Main navigation`}>
+          {menus.menuPrimary && (
+            <AppNavDrawerList>
+              {menus.menuPrimary.map((menuLink, idx) => (
+                <AppNavDrawerListItem key={idx} menuLink={menuLink} />
+              ))}
+            </AppNavDrawerList>
+          )}
+
+          {menus.menuSecondary && (
+            <AppNavDrawerList>
+              {menus.menuSecondary.map((menuLink, idx) => (
+                <AppNavDrawerListItem key={idx} menuLink={menuLink} />
+              ))}
+            </AppNavDrawerList>
+          )}
+        </nav>
+
+        <Typography variant="body2">
+          {t(__translationGroup)`Country`}:{' '}
+          <Link // eslint-disable-line jsx-a11y/anchor-is-valid
+            onClick={onMarketMenuToggle}
+            component="button"
+            type="button"
+            underline="always"
+            variant="body2"
+          >
+            {location.country} / {selection.currency}
+          </Link>
+        </Typography>
+      </AppNavDrawerScrollContainer>
+    </AppNavDrawerRoot>
   )
 })
 

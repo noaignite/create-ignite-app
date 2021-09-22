@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { debounce } from '@material-ui/core/utils'
+import { debounce } from '@mui/material/utils'
 
 function isEqual(obj1, obj2) {
   return !Object.keys(obj1).some((key) => obj1[key] !== obj2[key])

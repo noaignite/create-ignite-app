@@ -1,112 +1,97 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
-import { BackgroundMedia, Media, MediaReveal } from '@oakwood/oui'
-import { mediaType } from 'utils'
+import { styled } from '@mui/system'
+import { Button, Typography } from '@mui/material'
+import { mediaType } from '@noaignite/oui/utils'
+import { Media, MediaReveal } from '@noaignite/oui'
 import { RouterLink } from 'containers'
-import { BlockButton, Button, Container, Typography } from 'components'
 
-const BREAKPOINT_KEY_UP = 'sm'
+const HeroRoot = styled('section', {
+  name: 'Hero',
+  slot: 'Root',
+})(({ theme }) => ({
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  minHeight: 550,
+  color: theme.palette.getContrastText(theme.palette.text.primary),
+  textAlign: 'center',
+  [theme.breakpoints.up('md')]: {
+    minHeight: 650,
+  },
+}))
 
-export const styles = (theme) => ({
-  root: {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: '75vh',
-    color: theme.palette.getContrastText(theme.palette.text.primary),
-    textAlign: 'center',
-    [theme.breakpoints.up(BREAKPOINT_KEY_UP)]: {
-      minHeight: 650,
-    },
+const HeroMediaReveal = styled(MediaReveal, {
+  name: 'Hero',
+  slot: 'MediaReveal',
+})(({ theme }) => ({
+  ...theme.mixins.absolute(0),
+  zIndex: -1,
+  '& *': {
+    height: '100%',
   },
-  backgroundWrapperSticky: {
-    top: 'var(--coa-sticky-top)',
-    '$root:first-child &': {
-      top: 'var(--coa-initial-sticky-top)',
-    },
+}))
+
+const HeroMain = styled('div', {
+  name: 'Hero',
+  slot: 'Main',
+})(({ theme }) => ({
+  '&': theme.mixins.verticalRhythm(2), // Why does this not add specificity but changes style order?
+  ...theme.mixins.contain('sm'),
+  paddingLeft: 'var(--coa-container-spacing)',
+  paddingRight: 'var(--coa-container-spacing)',
+}))
+
+const HeroButton = styled(Button, {
+  name: 'Hero',
+  slot: 'Button',
+})(({ theme }) => ({
+  // Makes entire Hero block clickable.
+  position: 'static',
+  '&:before': {
+    ...theme.mixins.absolute(0),
+    content: '""',
   },
-  main: {},
-  heading: theme.mixins.fluidType('sm', 'xl', 45, 132),
-  excerpt: {
-    ...theme.mixins.contain('sm'),
-    marginTop: theme.spacing(2),
-  },
-  ctaArea: theme.mixins.absolute(0),
-  cta: {
-    marginTop: 'calc(20px + 3vh)',
-  },
-})
+}))
 
 function Hero(props) {
-  const {
-    backgroundAttachment = 'static',
-    backgroundMediaProps,
-    classes,
-    ctaLabel,
-    ctaUrl,
-    heading,
-    excerpt,
-    renderIndex,
-  } = props
+  const { backgroundMediaProps, ctaLabel, ctaUrl, heading, excerpt, renderIndex } = props
 
   return (
-    <section className={classes.root}>
+    <HeroRoot>
       {backgroundMediaProps && (
-        <BackgroundMedia
-          classes={{ wrapperSticky: classes.backgroundWrapperSticky }}
-          attachment={backgroundAttachment}
-        >
-          <MediaReveal>
-            <Media
-              {...(backgroundMediaProps?.component === 'video'
-                ? { autoPlay: true, muted: true, loop: true, playsInline: true }
-                : {})}
-              {...backgroundMediaProps}
-              priority={renderIndex === 0}
-            />
-          </MediaReveal>
-        </BackgroundMedia>
+        <HeroMediaReveal>
+          <Media
+            {...(backgroundMediaProps?.component === 'video'
+              ? { autoPlay: true, muted: true, loop: true, playsInline: true }
+              : {})}
+            {...backgroundMediaProps}
+            priority={renderIndex === 0}
+          />
+        </HeroMediaReveal>
       )}
 
-      <Container className={classes.main} maxWidth="md">
-        <Typography className={classes.heading} component="h1" variant="h2">
+      <HeroMain>
+        <Typography component="h1" variant="h2">
           {heading}
         </Typography>
 
-        <Typography className={classes.excerpt}>{excerpt}</Typography>
-
-        {ctaUrl && (
-          <BlockButton
-            className={classes.ctaArea}
-            component={RouterLink}
-            href={ctaUrl}
-            aria-label={ctaLabel}
-          />
-        )}
+        {excerpt && <Typography>{excerpt}</Typography>}
 
         {ctaLabel && ctaUrl && (
-          <Button
-            className={classes.cta}
-            component={RouterLink}
-            href={ctaUrl}
-            color="inherit"
-            variant="outlined"
-          >
+          <HeroButton component={RouterLink} href={ctaUrl} color="inherit" variant="outlined">
             {ctaLabel}
-          </Button>
+          </HeroButton>
         )}
-      </Container>
-    </section>
+      </HeroMain>
+    </HeroRoot>
   )
 }
 
 Hero.propTypes = {
-  backgroundAttachment: PropTypes.oneOf(['static', 'fixed', 'sticky']),
   backgroundMediaProps: mediaType,
-  classes: PropTypes.object.isRequired,
   ctaLabel: PropTypes.string,
   ctaUrl: PropTypes.string,
   excerpt: PropTypes.string,
@@ -114,4 +99,4 @@ Hero.propTypes = {
   renderIndex: PropTypes.number.isRequired,
 }
 
-export default withStyles(styles)(Hero)
+export default Hero

@@ -1,11 +1,9 @@
-import { createTheme as createMuiTheme } from '@material-ui/core/styles'
+import { createTheme as createMuiTheme } from '@mui/material/styles'
 import breakpoints from './breakpoints'
 import createMixins from './createMixins'
 import createOverrides from './createOverrides'
 import createPalette from './createPalette'
 import createTypography from './createTypography'
-import props from './props'
-import shadows from './shadows'
 import shape from './shape'
 import spacing from './spacing'
 import zIndex from './zIndex'
@@ -33,8 +31,6 @@ export default function createTheme(options = {}) {
     {
       breakpoints,
       palette,
-      props,
-      shadows,
       shape,
       spacing,
       typography,
@@ -45,7 +41,7 @@ export default function createTheme(options = {}) {
 
   // Patch the theme object with mixins & overrides once the theme object is defined
   theme.mixins = createMixins(theme.breakpoints, theme.spacing, mixinsInput)
-  theme.overrides = createOverrides(theme)
+  theme.components = createOverrides(theme)
 
   return theme
 }

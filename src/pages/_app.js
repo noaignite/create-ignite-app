@@ -5,27 +5,31 @@ import '../../scripts/polyfills'
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { ThemeProvider } from '@material-ui/styles'
-import { CssBaseline } from '@material-ui/core'
+import { CacheProvider } from '@emotion/react'
+import { ThemeProvider } from '@mui/material/styles'
+import { CssBaseline } from '@mui/material'
 import { global as mockedCmsProps } from 'api/mock'
 import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
+import createEmotionCache from 'utils/createEmotionCache'
 import theme from 'utils/theme.light'
 import { AppProvider } from 'containers/App/AppContext'
 import AppBase from 'containers/App'
 
-function App(props) {
-  const { cmsProps, Component, defaultLocale, locale, pageProps } = props
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache()
 
-  React.useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles)
-    }
-  }, [])
+function App(props) {
+  const {
+    cmsProps,
+    Component,
+    defaultLocale,
+    emotionCache = clientSideEmotionCache,
+    locale,
+    pageProps,
+  } = props
 
   return (
-    <ThemeProvider theme={theme}>
+    <CacheProvider value={emotionCache}>
       <Head>
         <meta
           name="viewport"
@@ -33,21 +37,23 @@ function App(props) {
         />
       </Head>
 
-      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-      <CssBaseline />
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
 
-      <I18nProvider defaultLocale={defaultLocale} locale={locale}>
-        <GlobalProvider {...cmsProps}>
-          <CheckoutProvider>
-            <AppProvider>
-              <AppBase>
-                <Component {...pageProps} />
-              </AppBase>
-            </AppProvider>
-          </CheckoutProvider>
-        </GlobalProvider>
-      </I18nProvider>
-    </ThemeProvider>
+        <I18nProvider defaultLocale={defaultLocale} locale={locale}>
+          <GlobalProvider {...cmsProps}>
+            <CheckoutProvider>
+              <AppProvider>
+                <AppBase>
+                  <Component {...pageProps} />
+                </AppBase>
+              </AppProvider>
+            </CheckoutProvider>
+          </GlobalProvider>
+        </I18nProvider>
+      </ThemeProvider>
+    </CacheProvider>
   )
 }
 
@@ -77,6 +83,7 @@ App.propTypes = {
   cmsProps: PropTypes.object.isRequired,
   Component: PropTypes.elementType.isRequired,
   defaultLocale: PropTypes.string.isRequired,
+  emotionCache: PropTypes.object,
   locale: PropTypes.string.isRequired,
   pageProps: PropTypes.object.isRequired,
 }

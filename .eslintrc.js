@@ -36,7 +36,7 @@ module.exports = {
     'react/sort-prop-types': 'off', // Too strict, no time for that
 
     /**
-     * Material-ui rules
+     * MUI rules
      */
     'consistent-this': ['error', 'self'],
     // just as bad as "max components per file"

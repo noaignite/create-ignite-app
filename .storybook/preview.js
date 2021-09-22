@@ -1,11 +1,12 @@
 // import '../scripts/wdyr'
 import '../scripts/polyfills'
-import { ThemeProvider } from '@material-ui/styles'
-import { CssBaseline } from '@material-ui/core'
+import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
+import { ThemeProvider } from '@mui/material/styles'
+import { CssBaseline } from '@mui/material'
 import { global } from 'api/mock'
 import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
 import { AppProvider } from 'containers/App/AppContext'
-import createTheme from 'components/styles/createTheme'
+import { createTheme } from 'components/styles'
 
 export const parameters = {
   layout: 'fullscreen',
@@ -31,23 +32,29 @@ export const globalTypes = {
 
 export const decorators = [
   (Story, context) => {
-    const type = context.globals.theme
-    const theme = createTheme({ palette: { type } })
+    const mode = context.globals.theme
+    const theme = createTheme({ palette: { mode } })
 
     return (
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
+      <EmotionThemeProvider
+        // Bug: Custom theme not propagated within Storybook.js
+        // https://github.com/mui-org/material-ui/issues/24282#issuecomment-859393395
+        theme={theme}
+      >
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
 
-        <I18nProvider>
-          <GlobalProvider {...global}>
-            <CheckoutProvider>
-              <AppProvider>
-                <Story />
-              </AppProvider>
-            </CheckoutProvider>
-          </GlobalProvider>
-        </I18nProvider>
-      </ThemeProvider>
+          <I18nProvider>
+            <GlobalProvider {...global}>
+              <CheckoutProvider>
+                <AppProvider>
+                  <Story />
+                </AppProvider>
+              </CheckoutProvider>
+            </GlobalProvider>
+          </I18nProvider>
+        </ThemeProvider>
+      </EmotionThemeProvider>
     )
   },
 ]

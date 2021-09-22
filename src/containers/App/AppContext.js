@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
-import { debounce } from '@material-ui/core/utils'
+import { debounce } from '@mui/material/utils'
 
 export const AppHandlersContext = React.createContext({})
 const AppContext = React.createContext({})
