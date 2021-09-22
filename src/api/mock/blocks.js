@@ -3,8 +3,8 @@ export default {
     backgroundMediaProps: {
       component: 'picture',
       breakpoints: {
-        xs: '//source.unsplash.com/-f0YLss50Bs/1280x720',
-        sm: '//source.unsplash.com/-f0YLss50Bs/1920x1080',
+        xs: '//source.unsplash.com/Sl03gvNZuss/1280x720',
+        sm: '//source.unsplash.com/Sl03gvNZuss/1920x1080',
       },
     },
     heading: 'Lorem ipsum dolor',
@@ -17,7 +17,7 @@ export default {
     items: Array.from(new Array(6), () => ({
       mediaProps: {
         component: 'img',
-        src: '//source.unsplash.com/wVjoNpcTHxM',
+        src: '//source.unsplash.com/m1m2EZOZVwA',
       },
       subheading: 'Vivamus',
       heading: 'Lorem ipsum dolor',
@@ -29,8 +29,8 @@ export default {
     mediaProps: {
       component: 'picture',
       breakpoints: {
-        xs: '//source.unsplash.com/v4e3JI7DDHI/1280x720',
-        sm: '//source.unsplash.com/v4e3JI7DDHI/1920x1080',
+        xs: '//source.unsplash.com/DmD8HVOjy4c/1280x720',
+        sm: '//source.unsplash.com/DmD8HVOjy4c/1920x1080',
       },
     },
   },
