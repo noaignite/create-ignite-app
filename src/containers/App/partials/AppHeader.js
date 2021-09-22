@@ -60,6 +60,7 @@ const AppHeaderBrandLink = styled(RouterLink, {
   transform: 'translateX(-50%)',
   color: 'inherit',
   '& > svg': {
+    display: 'block',
     width: 'auto',
   },
 })
