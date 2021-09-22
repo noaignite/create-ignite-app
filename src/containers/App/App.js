@@ -18,18 +18,6 @@ const AppCookieBar = dynamic(
   { ssr: false },
 )
 
-export const styles = {
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh',
-  },
-  main: {
-    flexGrow: 1,
-    outline: 0, // Disable focus ring as `main` is focusable via "Skip Link".
-  },
-}
-
 const AppRoot = styled('div', {
   name: 'App',
   slot: 'Root',
