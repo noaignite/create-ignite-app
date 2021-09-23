@@ -2,13 +2,9 @@ import { alpha } from '@mui/material/styles'
 
 export { default } from '@mui/material/IconButton'
 
-const MD_PADDING = 12
-const SM_PADDING = 6
-
 export const overrides = {
   styleOverrides: (theme) => ({
     root: {
-      padding: MD_PADDING,
       borderRadius: 0,
       transition: theme.transitions.create('color', {
         duration: theme.transitions.duration.shortest,
@@ -20,18 +16,6 @@ export const overrides = {
         '@media (hover: none)': {
           color: theme.palette.action.active,
         },
-      },
-    },
-    edgeStart: {
-      marginLeft: -MD_PADDING,
-      '$sizeSmall&': {
-        marginLeft: -SM_PADDING,
-      },
-    },
-    edgeEnd: {
-      marginRight: -MD_PADDING,
-      '$sizeSmall&': {
-        marginRight: -SM_PADDING,
       },
     },
     colorInherit: {
@@ -59,9 +43,6 @@ export const overrides = {
           color: theme.palette.secondary.main,
         },
       },
-    },
-    sizeSmall: {
-      padding: SM_PADDING,
     },
   }),
 }

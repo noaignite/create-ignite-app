@@ -8,7 +8,7 @@ export default {
   argTypes: {
     color: storySelectArgType(['default', 'inherit', 'primary', 'secondary']),
     edge: storySelectArgType(['start', 'end', false]),
-    size: storySelectArgType(['small', 'medium']),
+    size: storySelectArgType(['small', 'medium', 'large']),
   },
 }
 
