@@ -7,7 +7,16 @@ export default {
   title: 'Components/TextField',
   component: TextField,
   argTypes: {
-    color: storySelectArgType(['primary', 'secondary']),
+    color: storySelectArgType([
+      'text',
+      'textInverted',
+      'primary',
+      'secondary',
+      'error',
+      'info',
+      'success',
+      'warning',
+    ]),
     margin: storySelectArgType(['none', 'dense', 'normal']),
     size: storySelectArgType(['medium', 'small']),
     variant: storySelectArgType(['standard', 'outlined', 'filled']),
@@ -34,7 +43,7 @@ const Template = (args) => {
 
 export const Default = Template.bind({})
 Default.args = {
-  color: 'primary',
+  color: 'text',
   disabled: false,
   error: false,
   fullWidth: false,

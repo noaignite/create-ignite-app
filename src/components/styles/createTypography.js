@@ -51,7 +51,7 @@ export default function createTypography(palette, typography) {
     caption: buildVariant(fontFamilyPrimary, fontWeightSemibold, 14, 1.3, 0.02),
     overline: buildVariant(fontFamilySecondary, fontWeightRegular, 8, 1.7, 0.12, caseAllCaps),
     // Custom variants
-    input: buildVariant(fontFamilyPrimary, fontWeightRegular, 16, 1.7, 0), // Should at least be 16px fontSize for iOS Safari not to zoom in on focus.
+    input: buildVariant(fontFamilyPrimary, fontWeightRegular, 16, 1.5, 0), // Should at least be 16px fontSize for iOS Safari not to zoom in on focus.
   }
 
   const typographyOutput = deepmerge(

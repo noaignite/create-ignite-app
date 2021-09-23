@@ -1,11 +1,11 @@
 const overrides = {
-  styleOverrides: (theme) => ({
+  styleOverrides: {
     root: {
-      '&$focused $notchedOutline': {
-        borderColor: theme.palette.text.primary,
+      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+        borderWidth: 1,
       },
     },
-  }),
+  },
 }
 
 export default overrides

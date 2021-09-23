@@ -1,5 +1,6 @@
 import { overrides as MuiButton } from '../Button/Button'
 import { overrides as MuiIconButton } from '../IconButton/IconButton'
+import { overrides as MuiTextField } from '../TextField/TextField'
 import * as internalComponents from '../internal'
 
 export default function createOverrides(theme) {
@@ -7,6 +8,7 @@ export default function createOverrides(theme) {
     ...internalComponents,
     MuiButton,
     MuiIconButton,
+    MuiTextField,
   }
 
   const overridesOutput = Object.entries(components).reduce((acc, [muiName, overrides]) => {

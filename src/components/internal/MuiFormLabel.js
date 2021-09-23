@@ -2,9 +2,7 @@ const overrides = {
   styleOverrides: (theme) => ({
     root: {
       ...theme.typography.input,
-      '&$focused': {
-        color: theme.palette.text.primary,
-      },
+      lineHeight: '1.5em', // Adjust to center `FormLabel` to input.
     },
   }),
 }
