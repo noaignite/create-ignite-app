@@ -76,10 +76,16 @@ function ArticleSlideshow(props) {
 
   const { t } = useI18n()
 
-  const [emblaRef] = useEmblaCarousel({
+  const [emblaRef, embla] = useEmblaCarousel({
     align: 'start',
     containScroll: 'trimSnaps',
   })
+
+  React.useEffect(() => {
+    if (embla && embla.slideNodes().length !== items.length) {
+      embla.reInit()
+    }
+  }, [embla, items])
 
   return (
     <ArticleSlideshowRoot>
