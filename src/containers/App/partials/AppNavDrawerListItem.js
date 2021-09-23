@@ -22,8 +22,8 @@ const AppNavDrawerListItemLink = styled(Link, {
 })(({ theme }) => ({
   display: 'inherit',
   alignItems: 'inherit',
-  [`ul &`]: theme.typography.h4,
-  [`ul ul &`]: theme.typography.body2,
+  'ul &': theme.typography.h4,
+  'ul ul &': theme.typography.body2,
 }))
 
 const AppNavDrawerListItemList = styled('ul', {

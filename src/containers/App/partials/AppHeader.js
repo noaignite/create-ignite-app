@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
+import { generateUtilityClasses } from '@mui/core'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
 import { useCheckoutSelection, useI18n } from 'api'
@@ -18,6 +19,13 @@ import { useApp } from '../AppContext'
 
 const BREAKPOINT_KEY = 'md'
 
+export const classes = generateUtilityClasses('CiaAppHeader', [
+  'toolbarPushMobile',
+  'toolbarPushDesktop',
+  'hiddenOnMobile',
+  'hiddenOnDesktop',
+])
+
 const AppHeaderRoot = styled(AppBar, {
   name: 'AppHeader',
   slot: 'Root',
@@ -33,22 +41,19 @@ const AppHeaderRoot = styled(AppBar, {
       duration: theme.transitions.duration.shortest, // Match value of `IconButton`
     }),
   }),
-}))
-
-const AppHeaderToolbarPush = styled('div', {
-  name: 'AppHeader',
-  slot: 'ToolbarPush',
-})(({ theme, ownerState }) => ({
-  ...(ownerState.variant === 'mobile' && {
-    [theme.breakpoints.down(BREAKPOINT_KEY)]: {
-      marginLeft: 'auto',
-    },
-  }),
-  ...(ownerState.variant === 'desktop' && {
-    [theme.breakpoints.up(BREAKPOINT_KEY)]: {
-      marginLeft: 'auto',
-    },
-  }),
+  // Util classes
+  [`& .${classes.toolbarPushMobile}`]: {
+    [theme.breakpoints.down(BREAKPOINT_KEY)]: { marginLeft: 'auto' },
+  },
+  [`& .${classes.toolbarPushDesktop}`]: {
+    [theme.breakpoints.up(BREAKPOINT_KEY)]: { marginLeft: 'auto' },
+  },
+  [`& .${classes.hiddenOnMobile}`]: {
+    [theme.breakpoints.down(BREAKPOINT_KEY)]: { display: 'none' },
+  },
+  [`& .${classes.hiddenOnDesktop}`]: {
+    [theme.breakpoints.up(BREAKPOINT_KEY)]: { display: 'none' },
+  },
 }))
 
 const AppHeaderBrandLink = styled(RouterLink, {
@@ -68,7 +73,6 @@ const AppHeaderBrandLink = styled(RouterLink, {
 const AppHeader = React.memo(function AppHeader(props) {
   const {
     appBarColor,
-    className,
     isCartMenuOpen,
     isNavMenuOpen,
     isSearchMenuOpen,
@@ -79,7 +83,6 @@ const AppHeader = React.memo(function AppHeader(props) {
     productsCount,
     ...other
   } = props
-  // const classes = useStyles(props)
 
   const { t } = useI18n()
   const [rootRef, dimensions] = useDimensions()
@@ -144,8 +147,8 @@ const AppHeader = React.memo(function AppHeader(props) {
           {isNavMenuOpen ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
 
-        <AppHeaderToolbarPush ownerState={{ variant: 'mobile' }} />
-        <AppHeaderToolbarPush ownerState={{ variant: 'desktop' }} />
+        <div className={classes.toolbarPushMobile} />
+        <div className={classes.toolbarPushDesktop} />
 
         <AppHeaderBrandLink href="/" aria-label={t(__translationGroup)`Go to the homepage`}>
           <BrandIcon />
@@ -184,7 +187,6 @@ const AppHeader = React.memo(function AppHeader(props) {
 
 AppHeader.propTypes = {
   appBarColor: PropTypes.oneOf(['default', 'transparent', 'auto']),
-  className: PropTypes.string,
   isCartMenuOpen: PropTypes.bool,
   isNavMenuOpen: PropTypes.bool,
   isSearchMenuOpen: PropTypes.bool,
