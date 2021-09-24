@@ -8,6 +8,13 @@ const overrides = {
     checkedIcon: <CheckBoxIcon />,
     icon: <CheckBoxOutlineBlankIcon />,
   },
+  styleOverrides: {
+    root: {
+      '&:hover': {
+        backgroundColor: 'transparent', // Disable Mui backgroundColor
+      },
+    },
+  },
 }
 
 export default overrides

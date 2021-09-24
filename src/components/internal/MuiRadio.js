@@ -8,6 +8,13 @@ const overrides = {
     checkedIcon: <RadioButtonCheckedIcon />,
     icon: <RadioButtonUncheckedIcon />,
   },
+  styleOverrides: {
+    root: {
+      '&:hover': {
+        backgroundColor: 'transparent', // Disable Mui backgroundColor
+      },
+    },
+  },
 }
 
 export default overrides
