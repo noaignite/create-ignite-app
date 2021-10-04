@@ -45,7 +45,7 @@ const overrides = {
       appearance: none;
     }
     [id] {
-      scroll-margin-top: var(--cia-sticky-top, 0px);
+      scroll-margin-top: var(--cia-header-height, 0px);
     }
   `,
 }
