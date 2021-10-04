@@ -55,8 +55,6 @@ module.exports = {
     // Destructuring harm grep potential.
     'prefer-destructuring': 'off',
 
-    // Not sure why it doesn't work
-    'import/named': 'off',
     // Missing yarn workspace support
     'import/no-extraneous-dependencies': 'off',
     'import/order': [
