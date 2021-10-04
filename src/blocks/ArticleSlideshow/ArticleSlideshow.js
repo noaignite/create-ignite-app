@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { useEmblaCarousel } from 'embla-carousel/react'
+import useEmblaCarousel from 'embla-carousel-react'
 import { styled } from '@mui/system'
 import { Button, Typography } from '@mui/material'
 import { mediaType } from '@noaignite/oui/utils'
