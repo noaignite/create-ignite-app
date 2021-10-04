@@ -9,10 +9,6 @@ import { useI18n } from 'api'
 import { ASPECT_RATIOS } from 'utils/constants'
 import { RouterLink } from 'containers'
 
-function getSlideWidth(slidesPerView, spacing) {
-  return `calc(100% / ${slidesPerView} - ${spacing} * ${slidesPerView - 1} / ${slidesPerView})`
-}
-
 const ArticleSlideshowRoot = styled('section', {
   name: 'ArticleSlideshow',
   slot: 'Root',
@@ -45,7 +41,7 @@ const ArticleSlideshowEmblaContainer = styled('div', {
   slot: 'EmblaContainer',
 })(({ theme }) => ({
   display: 'flex',
-  gap: theme.spacing(2),
+  marginLeft: theme.spacing(-2),
 }))
 
 const ArticleSlideshowEmblaSlide = styled('div', {
@@ -55,11 +51,12 @@ const ArticleSlideshowEmblaSlide = styled('div', {
   position: 'relative',
   flexShrink: 0,
   width: '100%',
+  paddingLeft: theme.spacing(2),
   [theme.breakpoints.up('sm')]: {
-    width: getSlideWidth(2, theme.spacing(2)),
+    width: 'calc(100% / 2)',
   },
   [theme.breakpoints.up('md')]: {
-    width: getSlideWidth(3, theme.spacing(2)),
+    width: 'calc(100% / 3)',
   },
 }))
 
