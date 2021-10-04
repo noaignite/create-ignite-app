@@ -29,20 +29,11 @@ const AppFooterSalesBanner = styled('div', {
 const AppFooterList = styled('ul', {
   name: 'AppFooter',
   slot: 'List',
-})({
+})(({ theme }) => ({
   display: 'flex',
+  gap: theme.spacing(4),
   justifyContent: 'center',
   margin: 0,
-})
-
-const AppFooterListItem = styled('li', {
-  name: 'AppFooter',
-  slot: 'ListItem',
-})(({ theme }) => ({
-  marginLeft: theme.spacing(4),
-  '&:first-child': {
-    marginLeft: 0,
-  },
 }))
 
 const AppFooter = React.memo(function AppFooter(props) {
@@ -59,11 +50,9 @@ const AppFooter = React.memo(function AppFooter(props) {
           <nav>
             <AppFooterList>
               {menus.menuFooter?.map((menuItem, idx) => (
-                <AppFooterListItem key={idx}>
-                  <Link component={RouterLink} href={menuItem.url} variant="button">
-                    {menuItem.label}
-                  </Link>
-                </AppFooterListItem>
+                <Link key={idx} component={RouterLink} href={menuItem.url} variant="button">
+                  {menuItem.label}
+                </Link>
               ))}
             </AppFooterList>
           </nav>
