@@ -6,6 +6,7 @@ const PADDING_Y = 17
 
 export const overrides = {
   defaultProps: {
+    color: 'text',
     disableElevation: true,
   },
   styleOverrides: (theme) => ({

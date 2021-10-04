@@ -118,7 +118,12 @@ function ArticleSlideshow(props) {
                       {item.excerpt}
                     </Typography>
 
-                    <Button component={RouterLink} href={item.url} variant="contained">
+                    <Button
+                      component={RouterLink}
+                      href={item.url}
+                      color="primary"
+                      variant="contained"
+                    >
                       {t(__translationGroup)`Read more`}
                     </Button>
                   </ArticleSlideshowArticleContent>
