@@ -8,7 +8,7 @@ import * as blockVariants from 'blocks'
 const renderBlock = createRenderBlock(blockVariants)
 
 function Page() {
-  useHeaderColor(pages.Content.headerColor)
+  useHeaderColor('default')
 
   return (
     <>
