@@ -26,7 +26,6 @@ export const overrides = {
     },
     colorPrimary: {
       '&:hover': {
-        backgroundColor: 'transparent', // Disable Mui backgroundColor
         color: alpha(theme.palette.primary.main, 1 - theme.palette.action.activatedOpacity),
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
@@ -36,7 +35,6 @@ export const overrides = {
     },
     colorSecondary: {
       '&:hover': {
-        backgroundColor: 'transparent', // Disable Mui backgroundColor
         color: alpha(theme.palette.secondary.main, 1 - theme.palette.action.activatedOpacity),
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
@@ -45,4 +43,12 @@ export const overrides = {
       },
     },
   }),
+  // Below patches faulty negative margins set on `IconButton`.
+  // Github issue: https://github.com/mui-org/material-ui/issues/28546
+  variants: [
+    { props: { edge: 'start', size: 'medium' }, style: { marginLeft: -8 } },
+    { props: { edge: 'start', size: 'small' }, style: { marginLeft: -5 } },
+    { props: { edge: 'end', size: 'medium' }, style: { marginRight: -8 } },
+    { props: { edge: 'end', size: 'small' }, style: { marginRight: -5 } },
+  ],
 }
