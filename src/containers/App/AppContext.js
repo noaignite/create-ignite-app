@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import { debounce } from '@mui/material/utils'
 
-export const AppHandlersContext = React.createContext({})
+const AppHandlersContext = React.createContext({})
 const AppContext = React.createContext({})
 
 if (process.env.NODE_ENV !== 'production') {
@@ -19,6 +19,8 @@ export function useApp() {
   return React.useContext(AppContext)
 }
 
+export const DEFAULT_HEADER_MODE = 'opaque'
+
 const CLOSE_MENUS_ON_RESIZE = true
 const COOKIE_CONSENT_ID = 'cookie-consent'
 const COOKIE_BAR_ENTER_DELAY = 2000
@@ -26,7 +28,7 @@ const COOKIE_BAR_ENTER_DELAY = 2000
 export function AppProvider(props) {
   const { children } = props
 
-  const [appBarColor, setAppBarColor] = React.useState('default')
+  const [headerMode, setHeaderMode] = React.useState(DEFAULT_HEADER_MODE)
   const [hideFooter, setHideFooter] = React.useState(false)
   const [hideHeader, setHideHeader] = React.useState(false)
   const [isCartMenuOpen, setCartMenuOpen] = React.useState(false)
@@ -131,7 +133,7 @@ export function AppProvider(props) {
       onSearchMenuClose,
       onSearchMenuToggle,
       // Expose setters for custom hooks
-      setAppBarColor,
+      setHeaderMode,
       setHideFooter,
       setHideHeader,
     }),
@@ -149,7 +151,7 @@ export function AppProvider(props) {
   )
 
   const contextValue = {
-    appBarColor,
+    headerMode,
     hideFooter,
     hideHeader,
     isCartMenuOpen,

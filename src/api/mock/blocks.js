@@ -32,6 +32,8 @@ export default {
         xs: '//source.unsplash.com/DmD8HVOjy4c/1280x720',
         sm: '//source.unsplash.com/DmD8HVOjy4c/1920x1080',
       },
+      width: 1280,
+      height: 720,
     },
   },
   Content: {

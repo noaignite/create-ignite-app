@@ -8,7 +8,7 @@ function Media(props) {
 
   return (
     <section>
-      <MediaReveal>
+      <MediaReveal width={mediaProps.width} height={mediaProps.height}>
         <OuiMedia
           {...(mediaProps?.component === 'video'
             ? { autoPlay: true, muted: true, loop: true, playsInline: true }

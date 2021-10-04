@@ -2,14 +2,12 @@ import * as React from 'react'
 import Head from 'next/head'
 import { pages } from 'api/mock'
 import { SITE_NAME } from 'utils/constants'
-import { createRenderBlock, useHeaderColor } from 'utils'
+import { createRenderBlock } from 'utils'
 import * as blockVariants from 'blocks'
 
 const renderBlock = createRenderBlock(blockVariants)
 
 function Page() {
-  useHeaderColor('default')
-
   return (
     <>
       <Head>

@@ -2,7 +2,7 @@ import blocks from './blocks'
 
 export default {
   Home: {
-    headerColor: 'auto',
+    headerMode: 'auto',
     children: [
       {
         name: 'Hero',

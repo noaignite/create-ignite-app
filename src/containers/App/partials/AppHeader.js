@@ -30,8 +30,8 @@ const AppHeaderRoot = styled(AppBar, {
   name: 'AppHeader',
   slot: 'Root',
 })(({ theme, ownerState }) => ({
-  ...(ownerState.color === 'transparent' && {
-    '&:not(:hover):not(:focus)': {
+  ...(ownerState.appBarColor === 'transparent' && {
+    '&:not(:hover):not(:focus-within)': {
       backgroundColor: 'transparent',
       color: 'inherit',
     },
@@ -72,7 +72,7 @@ const AppHeaderBrandLink = styled(RouterLink, {
 
 const AppHeader = React.memo(function AppHeader(props) {
   const {
-    appBarColor,
+    headerMode,
     isCartMenuOpen,
     isNavMenuOpen,
     isSearchMenuOpen,
@@ -97,28 +97,28 @@ const AppHeader = React.memo(function AppHeader(props) {
       syncDisableTransparency()
     }
 
-    if (appBarColor === 'auto') {
+    if (headerMode === 'auto') {
       window.addEventListener('scroll', handleScroll, { passive: true })
       return () => {
         window.removeEventListener('scroll', handleScroll)
       }
     }
 
-    // Define `disableTransparency` value on `color` prop change, thereby
+    // Define `disableTransparency` value on `headerMode` prop change, thereby
     // enabling transitions. Doing so negates flashing of header on page load
-    // for pages that don't use `color="default"`.
+    // for pages that don't use `headerMode="opaque"`.
     return syncDisableTransparency
-  }, [appBarColor, syncDisableTransparency])
+  }, [headerMode, syncDisableTransparency])
 
-  let color = isSomeMenuOpen ? 'default' : appBarColor
-  if (color === 'auto') {
-    color = disableTransparency ? 'default' : 'transparent'
+  let appBarColor = 'default'
+  if (!isSomeMenuOpen && headerMode === 'auto' && !disableTransparency) {
+    appBarColor = 'transparent'
   }
 
   return (
     <AppHeaderRoot
-      ownerState={{ color, disableTransparency }}
-      position={appBarColor === 'default' ? 'sticky' : 'fixed'}
+      ownerState={{ appBarColor, disableTransparency }}
+      position={headerMode === 'opaque' ? 'sticky' : 'fixed'}
       ref={rootRef}
       {...other}
     >
@@ -128,8 +128,8 @@ const AppHeader = React.memo(function AppHeader(props) {
           __html: `
           :root {
             --cia-header-height: ${dimensions.height}px;
-            --cia-initial-sticky-top: ${appBarColor === 'default' ? dimensions.height : 0}px;
-            --cia-sticky-top: ${appBarColor !== 'transparent' ? dimensions.height : 0}px;
+            --cia-initial-sticky-top: ${headerMode === 'opaque' ? dimensions.height : 0}px;
+            --cia-sticky-top: ${headerMode !== 'transparent' ? dimensions.height : 0}px;
           }
         `,
         }}
@@ -186,7 +186,7 @@ const AppHeader = React.memo(function AppHeader(props) {
 })
 
 AppHeader.propTypes = {
-  appBarColor: PropTypes.oneOf(['default', 'transparent', 'auto']),
+  headerMode: PropTypes.oneOf(['opaque', 'transparent', 'auto']),
   isCartMenuOpen: PropTypes.bool,
   isNavMenuOpen: PropTypes.bool,
   isSearchMenuOpen: PropTypes.bool,
@@ -199,7 +199,7 @@ AppHeader.propTypes = {
 
 function AppHeaderContainer(props) {
   const {
-    appBarColor,
+    headerMode,
     hideHeader,
     isCartMenuOpen,
     isNavMenuOpen,
@@ -217,7 +217,7 @@ function AppHeaderContainer(props) {
 
   return (
     <AppHeader
-      appBarColor={appBarColor}
+      headerMode={headerMode}
       isCartMenuOpen={isCartMenuOpen}
       isNavMenuOpen={isNavMenuOpen}
       isSearchMenuOpen={isSearchMenuOpen}
