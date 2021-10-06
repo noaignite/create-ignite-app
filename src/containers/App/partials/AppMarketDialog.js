@@ -24,16 +24,23 @@ const TransitionComponent = React.forwardRef(function TransitionComponent(props,
 const AppMarketDialog = React.memo(function AppMarketDialog(props) {
   const { isMarketMenuOpen, onMarketMenuClose, ...other } = props
 
-  const { location, countries, setCountry } = useCheckout()
+  const { location, countries, languages, updateCountry, updateLanguage } = useCheckout()
   const { t } = useI18n()
 
   const isBreakpointUp = useMediaQuery((theme) => theme.breakpoints.up('sm'))
 
   const handleCountryChange = React.useCallback(
     (event) => {
-      setCountry(event.target.value)
+      updateCountry(event.target.value)
     },
-    [setCountry],
+    [updateCountry],
+  )
+
+  const handleLanguageChange = React.useCallback(
+    (event) => {
+      updateLanguage(event.target.value)
+    },
+    [updateLanguage],
   )
 
   return (
@@ -85,6 +92,23 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
           {countries.map((country) => (
             <MenuItem key={country.country} value={country.country}>
               {country.name}
+            </MenuItem>
+          ))}
+        </TextField>
+
+        <TextField
+          onChange={handleLanguageChange}
+          value={location?.language?.language}
+          label={t(__translationGroup)`Choose language`}
+          variant="standard"
+          margin="normal"
+          fullWidth
+          select
+          id="cia-market-menu-language" // Makes `label` and `helperText` accessible for screen readers.
+        >
+          {languages.map((language) => (
+            <MenuItem key={language} value={language.language}>
+              {language.name}
             </MenuItem>
           ))}
         </TextField>

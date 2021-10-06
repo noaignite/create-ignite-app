@@ -36,82 +36,106 @@ export function CheckoutProvider(props) {
   // Storybook specific local state otherwise coming from @oakwood/accelerator
   const [selection, setSelection] = React.useState({})
 
-  // API calls
+  // Basket
 
-  const addNewsletterSubscriber = React.useCallback(async (...args) => {
-    await actionWithPromise('addNewsletterSubscriber')(...args)
+  const addItem = React.useCallback(async (...args) => {
+    await actionWithPromise('addItem')(...args)
   }, [])
 
-  const itemAdd = React.useCallback(async (...args) => {
-    await actionWithPromise('itemAdd')(...args)
+  const decreaseItem = React.useCallback(async (...args) => {
+    await actionWithPromise('decreaseItem')(...args)
   }, [])
 
-  const itemRemove = React.useCallback(async (...args) => {
-    await actionWithPromise('itemRemove')(...args)
+  const increaseItem = React.useCallback(async (...args) => {
+    await actionWithPromise('increaseItem')(...args)
   }, [])
 
-  const itemDecrease = React.useCallback(async (...args) => {
-    await actionWithPromise('itemDecrease')(...args)
+  const removeItem = React.useCallback(async (...args) => {
+    await actionWithPromise('removeItem')(...args)
   }, [])
 
-  const itemIncrease = React.useCallback(async (...args) => {
-    await actionWithPromise('itemIncrease')(...args)
+  const updateItemQuantity = React.useCallback(async (...args) => {
+    await actionWithPromise('updateItemQuantity')(...args)
   }, [])
 
-  const voucherAdd = React.useCallback(async (...args) => {
-    await actionWithPromise('voucherAdd')(...args)
+  const updateItemSize = React.useCallback(async (...args) => {
+    await actionWithPromise('updateItemSize')(...args)
   }, [])
 
-  const voucherRemove = React.useCallback(async (...args) => {
-    await actionWithPromise('voucherRemove')(...args)
+  // Voucher
+
+  const addVoucher = React.useCallback(async (...args) => {
+    await actionWithPromise('addVoucher')(...args)
   }, [])
 
-  const setCountry = React.useCallback(async (...args) => {
-    await actionWithPromise('setCountry')(...args)
+  const removeVoucher = React.useCallback(async (...args) => {
+    await actionWithPromise('removeVoucher')(...args)
   }, [])
 
-  const setPaymentMethod = React.useCallback(async (...args) => {
-    await actionWithPromise('setPaymentMethod')(...args)
+  // Checkout
+
+  const submitPayment = React.useCallback(async (...args) => {
+    await actionWithPromise('submitPayment')(...args)
+  }, [])
+
+  const updateCountry = React.useCallback(async (...args) => {
+    await actionWithPromise('updateCountry')(...args)
+  }, [])
+
+  const updatePaymentMethod = React.useCallback(async (...args) => {
+    await actionWithPromise('updatePaymentMethod')(...args)
     setSelection((prev) => ({ ...prev, paymentMethod: args[0] }))
   }, [])
 
-  const setShippingMethod = React.useCallback(async (...args) => {
-    await actionWithPromise('setShippingMethod')(...args)
+  const updateShippingMethod = React.useCallback(async (...args) => {
+    await actionWithPromise('updateShippingMethod')(...args)
     setSelection((prev) => ({ ...prev, shippingMethod: args[0] }))
   }, [])
 
-  const paymentSubmit = React.useCallback(async (...args) => {
-    await actionWithPromise('paymentSubmit')(...args)
+  // Other
+
+  const addNewsletterSubscription = React.useCallback(async (...args) => {
+    await actionWithPromise('addNewsletterSubscription')(...args)
+  }, [])
+
+  const updateLanguage = React.useCallback(async (...args) => {
+    await actionWithPromise('updateLanguage')(...args)
   }, [])
 
   // Memoize handlers context separately so that one can subscribe
   // to them without re-rendering on state updates.
   const handlersContextValue = React.useMemo(
     () => ({
-      addNewsletterSubscriber,
-      itemAdd,
-      itemDecrease,
-      itemIncrease,
-      itemRemove,
-      paymentSubmit,
-      setCountry,
-      setPaymentMethod,
-      setShippingMethod,
-      voucherAdd,
-      voucherRemove,
+      addItem,
+      addNewsletterSubscription,
+      addVoucher,
+      decreaseItem,
+      increaseItem,
+      removeItem,
+      removeVoucher,
+      submitPayment,
+      updateCountry,
+      updateItemQuantity,
+      updateItemSize,
+      updateLanguage,
+      updatePaymentMethod,
+      updateShippingMethod,
     }),
     [
-      addNewsletterSubscriber,
-      itemAdd,
-      itemDecrease,
-      itemIncrease,
-      itemRemove,
-      paymentSubmit,
-      setCountry,
-      setPaymentMethod,
-      setShippingMethod,
-      voucherAdd,
-      voucherRemove,
+      addItem,
+      addNewsletterSubscription,
+      addVoucher,
+      decreaseItem,
+      increaseItem,
+      removeItem,
+      removeVoucher,
+      submitPayment,
+      updateCountry,
+      updateItemQuantity,
+      updateItemSize,
+      updateLanguage,
+      updatePaymentMethod,
+      updateShippingMethod,
     ],
   )
 

@@ -20,6 +20,7 @@
   "containers/App/partials/AppMarketDialog.js": {
     "Choose country and shipping": "",
     "Choose country": "",
+    "Choose language": "",
     "Close market menu": "",
     "Please select the country to which your order will be sent. This will give you accurate pricing: delivery times and shipping costs for your destination.": ""
   },

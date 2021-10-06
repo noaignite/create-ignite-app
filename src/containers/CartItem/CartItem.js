@@ -72,28 +72,28 @@ function CartItem(props) {
   const { cartItem, disableActions } = props
   const { product } = cartItem
 
-  const { itemDecrease, itemIncrease, itemRemove } = useCheckoutHandlers()
+  const { decreaseItem, increaseItem, removeItem } = useCheckoutHandlers()
   const { t } = useI18n()
 
   const onItemDecrease = React.useCallback(
     (event) => {
-      itemDecrease(event.currentTarget.value)
+      decreaseItem(event.currentTarget.value)
     },
-    [itemDecrease],
+    [decreaseItem],
   )
 
   const onItemIncrease = React.useCallback(
     (event) => {
-      itemIncrease(event.currentTarget.value)
+      increaseItem(event.currentTarget.value)
     },
-    [itemIncrease],
+    [increaseItem],
   )
 
   const onItemRemove = React.useCallback(
     (event) => {
-      itemRemove(event.currentTarget.value)
+      removeItem(event.currentTarget.value)
     },
-    [itemRemove],
+    [removeItem],
   )
 
   return (
