@@ -2,7 +2,6 @@ import * as React from 'react'
 import { styled } from '@mui/system'
 import { Container, Link } from '@mui/material'
 import { useGlobal } from 'api'
-import { useApp } from '../AppContext'
 import RouterLink from '../../RouterLink'
 
 const AppFooterRoot = styled('footer', {
@@ -62,14 +61,4 @@ const AppFooter = React.memo(function AppFooter(props) {
   )
 })
 
-function AppFooterContainer(props) {
-  const { hideFooter } = useApp()
-
-  if (hideFooter) {
-    return null
-  }
-
-  return <AppFooter {...props} />
-}
-
-export default AppFooterContainer
+export default AppFooter

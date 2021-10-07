@@ -36,18 +36,19 @@ const AppMain = styled('main', {
 })
 
 function App(props) {
-  const { children } = props
+  const { children, disableFooter, disableHeader } = props
 
   return (
     <AppRoot>
       <AppSkipLink href={`#${SITE_MAIN_ID}`} />
-      <AppHeader id={SITE_HEADER_ID} />
+
+      {!disableHeader && <AppHeader id={SITE_HEADER_ID} />}
 
       <AppMain id={SITE_MAIN_ID} role="main" tabIndex="-1">
         {children}
       </AppMain>
 
-      <AppFooter id={SITE_FOOTER_ID} />
+      {!disableFooter && <AppFooter id={SITE_FOOTER_ID} />}
 
       <AppNavDrawer />
       <AppCartDrawer />
@@ -67,6 +68,8 @@ function App(props) {
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
+  disableFooter: PropTypes.bool,
+  disableHeader: PropTypes.bool,
 }
 
 export default App

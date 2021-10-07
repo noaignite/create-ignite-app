@@ -200,7 +200,6 @@ AppHeader.propTypes = {
 function AppHeaderContainer(props) {
   const {
     headerMode,
-    hideHeader,
     isCartMenuOpen,
     isNavMenuOpen,
     isSearchMenuOpen,
@@ -210,10 +209,6 @@ function AppHeaderContainer(props) {
     onSearchMenuToggle,
   } = useApp()
   const { items } = useCheckoutSelection()
-
-  if (hideHeader) {
-    return null
-  }
 
   return (
     <AppHeader

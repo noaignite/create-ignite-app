@@ -29,8 +29,6 @@ export function AppProvider(props) {
   const { children } = props
 
   const [headerMode, setHeaderMode] = React.useState(DEFAULT_HEADER_MODE)
-  const [hideFooter, setHideFooter] = React.useState(false)
-  const [hideHeader, setHideHeader] = React.useState(false)
   const [isCartMenuOpen, setCartMenuOpen] = React.useState(false)
   const [isCookieBarOpen, setCookieBarOpen] = React.useState(false)
   const [isMarketMenuOpen, setMarketMenuOpen] = React.useState(false)
@@ -134,8 +132,6 @@ export function AppProvider(props) {
       onSearchMenuToggle,
       // Expose setters for custom hooks
       setHeaderMode,
-      setHideFooter,
-      setHideHeader,
     }),
     [
       onCartMenuClose,
@@ -152,8 +148,6 @@ export function AppProvider(props) {
 
   const contextValue = {
     headerMode,
-    hideFooter,
-    hideHeader,
     isCartMenuOpen,
     isCookieBarOpen,
     isMarketMenuOpen,

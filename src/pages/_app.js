@@ -45,7 +45,10 @@ function App(props) {
           <GlobalProvider {...cmsProps}>
             <CheckoutProvider>
               <AppProvider>
-                <AppBase>
+                <AppBase
+                  disableFooter={pageProps?.disableFooter}
+                  disableHeader={pageProps?.disableHeader}
+                >
                   <Component {...pageProps} />
                 </AppBase>
               </AppProvider>
