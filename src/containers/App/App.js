@@ -36,13 +36,13 @@ const AppMain = styled('main', {
 })
 
 function App(props) {
-  const { children, disableFooter, disableHeader } = props
+  const { children, disableFooter, disableHeader, headerMode } = props
 
   return (
     <AppRoot>
       <AppSkipLink href={`#${SITE_MAIN_ID}`} />
 
-      {!disableHeader && <AppHeader id={SITE_HEADER_ID} />}
+      {!disableHeader && <AppHeader headerMode={headerMode} id={SITE_HEADER_ID} />}
 
       <AppMain id={SITE_MAIN_ID} role="main" tabIndex="-1">
         {children}
@@ -70,6 +70,7 @@ App.propTypes = {
   children: PropTypes.node.isRequired,
   disableFooter: PropTypes.bool,
   disableHeader: PropTypes.bool,
+  headerMode: PropTypes.string,
 }
 
 export default App

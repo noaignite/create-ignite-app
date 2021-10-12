@@ -72,7 +72,7 @@ const AppHeaderBrandLink = styled(RouterLink, {
 
 const AppHeader = React.memo(function AppHeader(props) {
   const {
-    headerMode,
+    headerMode = 'opaque',
     isCartMenuOpen,
     isNavMenuOpen,
     isSearchMenuOpen,
@@ -199,7 +199,6 @@ AppHeader.propTypes = {
 
 function AppHeaderContainer(props) {
   const {
-    headerMode,
     isCartMenuOpen,
     isNavMenuOpen,
     isSearchMenuOpen,
@@ -212,7 +211,6 @@ function AppHeaderContainer(props) {
 
   return (
     <AppHeader
-      headerMode={headerMode}
       isCartMenuOpen={isCartMenuOpen}
       isNavMenuOpen={isNavMenuOpen}
       isSearchMenuOpen={isSearchMenuOpen}

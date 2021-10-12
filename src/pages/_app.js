@@ -48,6 +48,7 @@ function App(props) {
                 <AppBase
                   disableFooter={pageProps?.disableFooter}
                   disableHeader={pageProps?.disableHeader}
+                  headerMode={pageProps?.headerMode}
                 >
                   <Component {...pageProps} />
                 </AppBase>

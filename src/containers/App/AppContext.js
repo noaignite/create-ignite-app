@@ -19,8 +19,6 @@ export function useApp() {
   return React.useContext(AppContext)
 }
 
-export const DEFAULT_HEADER_MODE = 'opaque'
-
 const CLOSE_MENUS_ON_RESIZE = true
 const COOKIE_CONSENT_ID = 'cookie-consent'
 const COOKIE_BAR_ENTER_DELAY = 2000
@@ -28,7 +26,6 @@ const COOKIE_BAR_ENTER_DELAY = 2000
 export function AppProvider(props) {
   const { children } = props
 
-  const [headerMode, setHeaderMode] = React.useState(DEFAULT_HEADER_MODE)
   const [isCartMenuOpen, setCartMenuOpen] = React.useState(false)
   const [isCookieBarOpen, setCookieBarOpen] = React.useState(false)
   const [isMarketMenuOpen, setMarketMenuOpen] = React.useState(false)
@@ -130,8 +127,6 @@ export function AppProvider(props) {
       onNavMenuToggle,
       onSearchMenuClose,
       onSearchMenuToggle,
-      // Expose setters for custom hooks
-      setHeaderMode,
     }),
     [
       onCartMenuClose,
@@ -147,7 +142,6 @@ export function AppProvider(props) {
   )
 
   const contextValue = {
-    headerMode,
     isCartMenuOpen,
     isCookieBarOpen,
     isMarketMenuOpen,

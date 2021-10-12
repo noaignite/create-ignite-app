@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { pages } from 'api/mock'
-import { createRenderBlock, useHeaderMode } from 'utils'
+import { createRenderBlock } from 'utils'
 import * as blockVariants from 'blocks'
 import App from 'containers/App'
 
@@ -17,23 +17,18 @@ export default {
   },
 }
 
-// eslint-disable-next-line react/prop-types
-const Template = ({ headerMode, ...args }) => {
-  useHeaderMode(headerMode)
-
-  return <App {...args} />
-}
+const Template = (args) => <App {...args} />
 
 const renderBlock = createRenderBlock(blockVariants)
 
 export const HomePage = Template.bind({})
 HomePage.args = {
-  headerMode: pages.Home.headerMode,
+  ...pages.Home,
   children: pages.Home.children.map(renderBlock),
 }
 
 export const ContentPage = Template.bind({})
 ContentPage.args = {
-  headerMode: pages.Content.headerMode,
+  ...pages.Content,
   children: pages.Content.children.map(renderBlock),
 }
