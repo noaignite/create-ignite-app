@@ -63,17 +63,17 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
 
       <AppNavDrawerScrollContainer>
         <nav aria-label={t(__translationGroup)`Main navigation`}>
-          {menus.menuPrimary && (
+          {menus?.primary?.length > 0 && (
             <AppNavDrawerList>
-              {menus.menuPrimary.map((menuLink, idx) => (
+              {menus.primary.map((menuLink, idx) => (
                 <AppNavDrawerListItem key={idx} menuLink={menuLink} />
               ))}
             </AppNavDrawerList>
           )}
 
-          {menus.menuSecondary && (
+          {menus?.secondary?.length > 0 && (
             <AppNavDrawerList>
-              {menus.menuSecondary.map((menuLink, idx) => (
+              {menus.secondary.map((menuLink, idx) => (
                 <AppNavDrawerListItem key={idx} menuLink={menuLink} />
               ))}
             </AppNavDrawerList>

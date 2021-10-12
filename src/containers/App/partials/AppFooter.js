@@ -36,19 +36,17 @@ const AppFooterList = styled('ul', {
 }))
 
 const AppFooter = React.memo(function AppFooter(props) {
-  const { menus, settings } = useGlobal()
+  const { menus, storeMessage } = useGlobal()
 
   return (
     <>
-      {settings?.globalSalesBanner && (
-        <AppFooterSalesBanner>{settings.globalSalesBanner}</AppFooterSalesBanner>
-      )}
+      {storeMessage && <AppFooterSalesBanner>{storeMessage}</AppFooterSalesBanner>}
 
       <AppFooterRoot {...props}>
         <Container>
           <nav>
             <AppFooterList>
-              {menus.menuFooter?.map((menuItem, idx) => (
+              {menus?.footer?.map((menuItem, idx) => (
                 <Link key={idx} component={RouterLink} href={menuItem.url} variant="button">
                   {menuItem.label}
                 </Link>

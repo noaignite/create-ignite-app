@@ -12,21 +12,15 @@ export function useGlobal() {
 }
 
 export function GlobalProvider(props) {
-  const { children, menus, settings } = props
+  const { children, ...other } = props
 
-  // Change to `React.useMemo` if in need of conditionally updating context values.
-  const { current: contextValue } = React.useRef({
-    menus,
-    settings,
-  })
+  const { current: contextValue } = React.useRef(other)
 
   return <GlobalContext.Provider value={contextValue}>{children}</GlobalContext.Provider>
 }
 
 GlobalProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  menus: PropTypes.object,
-  settings: PropTypes.object,
 }
 
 export default GlobalContext

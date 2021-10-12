@@ -63,16 +63,14 @@ export const menuFooter = [
 
 export default {
   menus: {
-    menuPrimary,
-    menuSecondary,
-    menuFooter,
+    primary: menuPrimary,
+    secondary: menuSecondary,
+    footer: menuFooter,
   },
-  settings: {
-    facebookUrl: 'https://www.facebook.com/',
-    globalSalesBanner: 'lorem ipsum dolor sit amet, consectetur',
-    instagramUrl: 'https://www.instagram.com/',
-    pinterestUrl: 'https://www.pinterest.se/',
-    termsPageUrl: '/terms-and-conditions',
-    twitterUrl: 'https://twitter.com/',
-  },
+  facebookUrl: 'https://www.facebook.com/',
+  instagramUrl: 'https://www.instagram.com/',
+  pinterestUrl: 'https://www.pinterest.com/',
+  storeMessage: 'lorem ipsum dolor sit amet, consectetur',
+  termsPageUrl: '/terms-and-conditions',
+  twitterUrl: 'https://twitter.com/',
 }
