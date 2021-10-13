@@ -1,5 +1,5 @@
 import * as React from 'react'
-import storySelectArgType from '../utils/storySelectArgType'
+import storySelectArgType from 'utils/storySelectArgType'
 import LoadingButton from './LoadingButton'
 
 export default {
