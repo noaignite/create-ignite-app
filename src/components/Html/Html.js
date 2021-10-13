@@ -10,46 +10,52 @@ export const HtmlRoot = styled('div', {
   h2: theme.typography.h4,
   h3: theme.typography.h5,
   h4: theme.typography.h6,
-  h5: theme.typography.h6,
-  h6: theme.typography.h6,
-  'h1, h2, h3, h4, h5, h6, p, ol, ul, figure, img': {
-    margin: '0 auto 0.6em',
-    '& + *': {
-      marginTop: '1.2em',
+  h5: theme.typography.subtitle1,
+  h6: theme.typography.overline,
+  'h1, h2, h3, h4, h5, h6, ol, ul, p, hr': {
+    margin: 'max(16px, 1em) auto max(8px, 0.5em)',
+    '&:first-child': {
+      marginTop: 0,
+    },
+    '&:last-child': {
+      marginBottom: 0,
     },
   },
-  blockquote: {
+  'figure, img': {
     margin: '2.8em auto',
-    textAlign: 'center',
-    '& p': {
-      ...theme.typography.h3,
-      maxWidth: 'initial',
+    '&:first-child': {
+      marginTop: 0,
     },
-    '& cite': theme.typography.caption,
+    '&:last-child': {
+      marginBottom: 0,
+    },
   },
-  figure: {
-    margin: '2.8em auto',
-  },
-  figcaption: {
-    ...theme.mixins.container,
-    ...theme.typography.caption,
-    margin: theme.spacing(2, 0, 0),
-  },
-  'ol, ul': {
-    paddingLeft: '1.25em',
+  'figure img': {
+    margin: 0,
   },
   img: {
     display: 'block',
     width: '100%',
   },
+  figcaption: {
+    ...theme.typography.caption,
+    margin: theme.spacing(2, 0, 0),
+  },
+  blockquote: {
+    margin: '2.8em auto',
+    '& p': theme.typography.h4,
+    '& cite': theme.typography.caption,
+  },
+  'ol, ul': {
+    paddingLeft: '1.25em',
+  },
   hr: {
     height: 1,
     border: 'none',
-    backgroundColor: theme.palette.divider,
+    backgroundColor: 'currentColor',
   },
   a: {
-    color: theme.palette.primary.main,
-    textDecoration: 'underline',
+    color: 'inherit',
   },
 }))
 
