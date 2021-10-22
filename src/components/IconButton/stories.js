@@ -1,6 +1,6 @@
 import * as React from 'react'
+import { IconButton } from '@mui/material'
 import storySelectArgType from 'utils/storySelectArgType'
-import IconButton from './IconButton'
 
 export default {
   title: 'Components/IconButton',

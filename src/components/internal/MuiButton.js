@@ -1,10 +1,8 @@
-export { default } from '@mui/material/Button'
-
 const BORDER_WIDTH = 1
 const PADDING_X = 27
 const PADDING_Y = 17
 
-export const overrides = {
+const overrides = {
   defaultProps: {
     color: 'text',
     disableElevation: true,
@@ -45,3 +43,5 @@ export const overrides = {
     },
   }),
 }
+
+export default overrides

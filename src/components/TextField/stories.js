@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { MenuItem } from '@mui/material'
+import { MenuItem, TextField } from '@mui/material'
 import storySelectArgType from 'utils/storySelectArgType'
-import TextField from './TextField'
 
 export default {
   title: 'Components/TextField',

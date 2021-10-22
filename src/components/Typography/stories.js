@@ -1,6 +1,6 @@
 import * as React from 'react'
+import { Typography } from '@mui/material'
 import storySelectArgType from 'utils/storySelectArgType'
-import Typography from './Typography'
 
 export default {
   title: 'Common/Typography',

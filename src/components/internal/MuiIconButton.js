@@ -1,8 +1,6 @@
 import { alpha } from '@mui/material/styles'
 
-export { default } from '@mui/material/IconButton'
-
-export const overrides = {
+const overrides = {
   styleOverrides: (theme) => ({
     root: {
       borderRadius: 0,
@@ -52,3 +50,5 @@ export const overrides = {
     { props: { edge: 'end', size: 'small' }, style: { marginRight: -5 } },
   ],
 }
+
+export default overrides
