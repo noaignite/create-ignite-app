@@ -111,7 +111,10 @@ const AppHeader = React.memo(function AppHeader(props) {
   }, [headerMode, syncDisableTransparency])
 
   let appBarColor = 'default'
-  if (!isSomeMenuOpen && headerMode === 'auto' && !disableTransparency) {
+  if (
+    (headerMode === 'transparent' || (headerMode === 'auto' && !disableTransparency)) &&
+    !isSomeMenuOpen
+  ) {
     appBarColor = 'transparent'
   }
 
