@@ -3,8 +3,8 @@ import '../scripts/polyfills'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
-import { global } from 'api/mock'
-import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
+import { settings } from 'api/mock'
+import { CheckoutProvider, I18nProvider, SettingsProvider } from 'api'
 import { AppProvider } from 'containers/App/AppContext'
 import { createTheme } from 'components/styles'
 
@@ -45,13 +45,13 @@ export const decorators = [
           <CssBaseline />
 
           <I18nProvider>
-            <GlobalProvider {...global}>
+            <SettingsProvider {...settings}>
               <CheckoutProvider>
                 <AppProvider>
                   <Story />
                 </AppProvider>
               </CheckoutProvider>
-            </GlobalProvider>
+            </SettingsProvider>
           </I18nProvider>
         </ThemeProvider>
       </EmotionThemeProvider>

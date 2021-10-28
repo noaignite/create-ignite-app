@@ -4,7 +4,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Drawer, IconButton, Link, Toolbar, Typography } from '@mui/material'
-import { useCheckout, useGlobal, useI18n } from 'api'
+import { useCheckout, useI18n, useSettings } from 'api'
 import { Close as CloseIcon } from 'components/icons'
 import { useApp } from '../AppContext'
 import AppNavDrawerListItem from './AppNavDrawerListItem'
@@ -46,7 +46,7 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
 
   const { t } = useI18n()
   const { location, selection } = useCheckout()
-  const { menus } = useGlobal()
+  const { menus } = useSettings()
 
   return (
     <AppNavDrawerRoot onClose={onNavMenuClose} open={isNavMenuOpen} anchor="left" {...other}>

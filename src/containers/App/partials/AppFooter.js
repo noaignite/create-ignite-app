@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { styled } from '@mui/system'
 import { Container, Link } from '@mui/material'
-import { useGlobal } from 'api'
+import { useSettings } from 'api'
 import RouterLink from '../../RouterLink'
 
 const AppFooterRoot = styled('footer', {
@@ -36,7 +36,7 @@ const AppFooterList = styled('ul', {
 }))
 
 const AppFooter = React.memo(function AppFooter(props) {
-  const { menus, storeMessage } = useGlobal()
+  const { menus, storeMessage } = useSettings()
 
   return (
     <>

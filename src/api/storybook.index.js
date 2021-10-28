@@ -4,11 +4,11 @@ import sleep from './utils/sleep'
 export { default as CheckoutContext } from './CheckoutContext'
 export * from './CheckoutContext'
 
-export { default as GlobalContext } from './GlobalContext'
-export * from './GlobalContext'
-
 export { default as I18nContext } from './I18nContext'
 export * from './I18nContext'
+
+export { default as SettingsContext } from './SettingsContext'
+export * from './SettingsContext'
 
 export async function fetchProducts(query) {
   await sleep(500)

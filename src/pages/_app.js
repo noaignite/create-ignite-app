@@ -8,8 +8,8 @@ import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
-import { global as mockedCmsProps } from 'api/mock'
-import { CheckoutProvider, GlobalProvider, I18nProvider } from 'api'
+import { settings as mockedCmsProps } from 'api/mock'
+import { CheckoutProvider, I18nProvider, SettingsProvider } from 'api'
 import createEmotionCache from 'utils/createEmotionCache'
 import theme from 'utils/theme.light'
 import { AppProvider } from 'containers/App/AppContext'
@@ -42,7 +42,7 @@ function App(props) {
         <CssBaseline />
 
         <I18nProvider defaultLocale={defaultLocale} locale={locale}>
-          <GlobalProvider {...cmsProps}>
+          <SettingsProvider {...cmsProps}>
             <CheckoutProvider>
               <AppProvider>
                 <AppBase
@@ -54,7 +54,7 @@ function App(props) {
                 </AppBase>
               </AppProvider>
             </CheckoutProvider>
-          </GlobalProvider>
+          </SettingsProvider>
         </I18nProvider>
       </ThemeProvider>
     </CacheProvider>
