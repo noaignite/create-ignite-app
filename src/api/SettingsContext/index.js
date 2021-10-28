@@ -1,5 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
+import { useI18n } from '../I18nContext'
 
 const SettingsContext = React.createContext({})
 
@@ -14,7 +15,10 @@ export function useSettings() {
 export function SettingsProvider(props) {
   const { children, ...other } = props
 
-  const { current: contextValue } = React.useRef(other)
+  const { locale } = useI18n()
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const contextValue = React.useMemo(() => other, [locale])
 
   return <SettingsContext.Provider value={contextValue}>{children}</SettingsContext.Provider>
 }
