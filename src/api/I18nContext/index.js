@@ -35,6 +35,8 @@ export function I18nProvider(props) {
   })
 
   const contextValue = {
+    defaultLocale,
+    locale,
     t: i18n,
   }
 
