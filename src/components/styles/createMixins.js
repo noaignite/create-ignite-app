@@ -94,6 +94,7 @@ export default function createMixins(breakpoints, spacing, mixins) {
       overflow: 'hidden',
     }),
     scrollable: {
+      overscrollBehaviorY: 'contain',
       overflowX: 'hidden',
       overflowY: 'auto',
       // Add iOS momentum scrolling.
