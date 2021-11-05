@@ -1,9 +1,9 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
+import { Typography } from '@mui/material'
 import { useCheckoutSelection, useI18n } from 'api'
 import { cartItemType } from 'utils'
-import { Typography } from 'components'
 import CartItem from '../CartItem'
 import CartSummary from '../CartSummary'
 
