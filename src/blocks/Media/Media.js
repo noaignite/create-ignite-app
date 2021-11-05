@@ -1,6 +1,5 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { mediaType } from '@noaignite/oui/utils'
 import { Media as OuiMedia, MediaReveal } from '@noaignite/oui'
 
 function Media(props) {
@@ -22,7 +21,7 @@ function Media(props) {
 }
 
 Media.propTypes = {
-  mediaProps: mediaType.isRequired,
+  mediaProps: PropTypes.object.isRequired,
   renderIndex: PropTypes.number.isRequired,
 }
 

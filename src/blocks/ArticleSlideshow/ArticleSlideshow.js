@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import useEmblaCarousel from 'embla-carousel-react'
 import { styled } from '@mui/system'
 import { Button, Typography } from '@mui/material'
-import { mediaType } from '@noaignite/oui/utils'
 import { Media, MediaReveal } from '@noaignite/oui'
 import { useI18n } from 'api'
 import { ASPECT_RATIOS } from 'utils/constants'
@@ -135,7 +134,7 @@ function ArticleSlideshow(props) {
 }
 
 const itemType = PropTypes.shape({
-  mediaProps: mediaType,
+  mediaProps: PropTypes.object,
   subheading: PropTypes.string,
   heading: PropTypes.string,
   excerpt: PropTypes.string,

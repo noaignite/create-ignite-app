@@ -2,7 +2,6 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Button, Typography } from '@mui/material'
-import { mediaType } from '@noaignite/oui/utils'
 import { Media, MediaReveal } from '@noaignite/oui'
 import { RouterLink } from 'containers'
 
@@ -91,7 +90,7 @@ function Hero(props) {
 }
 
 Hero.propTypes = {
-  backgroundMediaProps: mediaType,
+  backgroundMediaProps: PropTypes.object,
   ctaLabel: PropTypes.string,
   ctaUrl: PropTypes.string,
   excerpt: PropTypes.string,
