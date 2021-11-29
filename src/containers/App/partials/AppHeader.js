@@ -30,10 +30,10 @@ const AppHeaderRoot = styled(AppBar, {
   name: 'AppHeader',
   slot: 'Root',
 })(({ theme, ownerState }) => ({
-  ...(ownerState.appBarColor === 'transparent' && {
+  ...(ownerState.headerModeState === 'transparent' && {
     '&:not(:hover):not(:focus-within)': {
       backgroundColor: 'transparent',
-      color: 'inherit',
+      color: ownerState.headerColor,
     },
   }),
   ...(ownerState.disableTransparency !== undefined && {
@@ -72,6 +72,7 @@ const AppHeaderBrandLink = styled(RouterLink, {
 
 const AppHeader = React.memo(function AppHeader(props) {
   const {
+    headerColor = 'inherit',
     headerMode = 'opaque',
     isCartMenuOpen,
     isNavMenuOpen,
@@ -110,17 +111,23 @@ const AppHeader = React.memo(function AppHeader(props) {
     return syncDisableTransparency
   }, [headerMode, syncDisableTransparency])
 
-  let appBarColor = 'default'
+  let headerModeState = 'opaque'
   if (
     (headerMode === 'transparent' || (headerMode === 'auto' && !disableTransparency)) &&
     !isSomeMenuOpen
   ) {
-    appBarColor = 'transparent'
+    headerModeState = 'transparent'
+  }
+
+  const ownerState = {
+    disableTransparency,
+    headerColor,
+    headerModeState,
   }
 
   return (
     <AppHeaderRoot
-      ownerState={{ appBarColor, disableTransparency }}
+      ownerState={ownerState}
       position={headerMode === 'opaque' ? 'sticky' : 'fixed'}
       ref={rootRef}
       {...other}
@@ -141,6 +148,7 @@ const AppHeader = React.memo(function AppHeader(props) {
       <Toolbar>
         <IconButton
           onClick={onNavMenuToggle}
+          color="inherit" // Inherit color from `headerColor`.
           edge="start"
           size="small"
           aria-haspopup="true"
@@ -159,6 +167,7 @@ const AppHeader = React.memo(function AppHeader(props) {
 
         <IconButton
           onClick={onSearchMenuToggle}
+          color="inherit" // Inherit color from `headerColor`.
           size="small"
           aria-haspopup="true"
           aria-expanded={isSearchMenuOpen}
@@ -169,6 +178,7 @@ const AppHeader = React.memo(function AppHeader(props) {
 
         <IconButton
           onClick={onCartMenuToggle}
+          color="inherit" // Inherit color from `headerColor`.
           edge="end"
           size="small"
           aria-haspopup="true"
@@ -189,6 +199,7 @@ const AppHeader = React.memo(function AppHeader(props) {
 })
 
 AppHeader.propTypes = {
+  headerColor: PropTypes.string,
   headerMode: PropTypes.oneOf(['opaque', 'transparent', 'auto']),
   isCartMenuOpen: PropTypes.bool,
   isNavMenuOpen: PropTypes.bool,
