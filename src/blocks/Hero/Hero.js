@@ -63,9 +63,12 @@ function Hero(props) {
       {backgroundMediaProps && (
         <HeroMediaReveal>
           <Media
-            {...(backgroundMediaProps?.component === 'video'
-              ? { autoPlay: true, muted: true, loop: true, playsInline: true }
-              : {})}
+            {...(backgroundMediaProps?.component === 'video' && {
+              autoPlay: true,
+              muted: true,
+              loop: true,
+              playsInline: true,
+            })}
             {...backgroundMediaProps}
             priority={renderIndex === 0}
           />

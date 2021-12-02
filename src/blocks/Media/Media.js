@@ -9,9 +9,12 @@ function Media(props) {
     <section>
       <MediaReveal width={mediaProps.width} height={mediaProps.height}>
         <OuiMedia
-          {...(mediaProps?.component === 'video'
-            ? { autoPlay: true, muted: true, loop: true, playsInline: true }
-            : {})}
+          {...(mediaProps?.component === 'video' && {
+            autoPlay: true,
+            muted: true,
+            loop: true,
+            playsInline: true,
+          })}
           {...mediaProps}
           priority={renderIndex === 0}
         />
