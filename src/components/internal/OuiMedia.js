@@ -1,8 +1,9 @@
-import generatePreload from 'utils/generatePreload'
+import Head from 'next/head'
+import { createMediaPreload } from '@noaignite/oui'
 
 const overrides = {
   defaultProps: {
-    generatePreload,
+    generatePreload: createMediaPreload(Head),
   },
 }
 

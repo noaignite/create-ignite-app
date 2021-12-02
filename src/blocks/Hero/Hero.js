@@ -28,7 +28,7 @@ const HeroMediaReveal = styled(MediaReveal, {
 })(({ theme }) => ({
   ...theme.mixins.absolute(0),
   zIndex: -1,
-  '& *': {
+  '& *:not(style)': {
     height: '100%',
   },
 }))
