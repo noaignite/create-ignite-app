@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { generateUtilityClasses } from '@mui/core'
+import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
 import { useCheckoutSelection, useI18n } from 'api'
