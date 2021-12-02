@@ -8,7 +8,7 @@ import {
   location,
   paymentMethods,
   shippingMethods,
-} from 'api/mock'
+} from 'api/__mock__'
 
 const CheckoutHandlersContext = React.createContext({})
 const CheckoutContext = React.createContext({})

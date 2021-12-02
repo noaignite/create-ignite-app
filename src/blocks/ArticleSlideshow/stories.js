@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { blocks } from 'api/mock'
+import { blocks } from 'api/__mock__'
 import ArticleSlideshow from './ArticleSlideshow'
 
 export default {

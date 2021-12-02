@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { pages } from 'api/mock'
+import { pages } from 'api/__mock__'
 import { createRenderBlock } from 'utils'
 import * as blockVariants from 'blocks'
 import App from 'containers/App'

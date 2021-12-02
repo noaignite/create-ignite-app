@@ -1,4 +1,4 @@
-import { filter, order, products } from './mock'
+import { filter, order, products } from './__mock__'
 import sleep from './utils/sleep'
 
 export { default as CheckoutContext } from './CheckoutContext'
