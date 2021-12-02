@@ -12,16 +12,6 @@ const nextConfig = {
     locales: ['en'],
   },
   poweredByHeader: false,
-  serverRuntimeConfig: {
-    NODE_ENV: process.env.NODE_ENV,
-    WORDPRESS_URL: process.env.WORDPRESS_URL,
-    GTM_ID: process.env.GTM_ID,
-  },
-  publicRuntimeConfig: {
-    NODE_ENV: process.env.NODE_ENV,
-    WORDPRESS_URL: process.env.WORDPRESS_URL,
-    GTM_ID: process.env.GTM_ID,
-  },
   webpack: (config) => merge(config, webpackBaseConfig),
 }
 
