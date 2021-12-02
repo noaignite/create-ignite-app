@@ -1072,7 +1072,7 @@
     core-js-pure "^3.15.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@7.15.3", "@babel/runtime@^7.14.8", "@babel/runtime@^7.8.7":
+"@babel/runtime@7.15.3", "@babel/runtime@^7.8.7":
   version "7.15.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.3.tgz#2e1c2880ca118e5b2f9988322bd8a7656a32502b"
   integrity sha512-OvwMLqNXkCXSz1kSm58sEsNuhqOx/fKpnUnKnFB5v8uDda5bLNEHNgKPvhDN6IU0LDcnHQ90LlJ0Q6jnyBSIBA==
@@ -1090,6 +1090,13 @@
   version "7.15.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
   integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.16.0":
+  version "7.16.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.16.3.tgz#b86f0db02a04187a3c17caa77de69840165d42d5"
+  integrity sha512-WBwekcqacdY2e9AF/Q7WLFUWmdJGJTkbjqTjoMDgXkVZ3ZRUvOPsLb5KdwISoQVsbP+DQzVZW4Zhci0DvpbNTQ==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1710,24 +1717,24 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-11.1.2.tgz#e15824405df137129918205e43cb5e9339589745"
   integrity sha512-e/pIKVdB+tGQYa1cW3sAeHm8gzEri/HYLZHT4WZojrUxgWXqx8pk7S7Xs47uBcFTqBDRvK3EcQpPLf3XdVsDdg==
 
-"@noaignite/oui-utils@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@noaignite/oui-utils/-/oui-utils-2.0.0.tgz#7255fdd3860a5308332646a5b0fa083bf60db98a"
-  integrity sha512-/0dg1VHn9/F6FGS1J0iafMkgkzhCiSmPTwgNdIRQBmZ4HQbHNe9+vRS7w99OnNyomMs7q1SDlZvHMPAjn3HBhA==
+"@noaignite/oui@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@noaignite/oui/-/oui-3.0.0.tgz#04ab3ac62b4cb926a2b2c58a66c80d6a2f1e0281"
+  integrity sha512-wRyTdhNhfQZ3oSaJ05i+n1tPJAINcsDeILMIq/YkW6w2yq80AWFJMpXMDJzdAsGGz9wTEw2ixiqRPw8r0xgptA==
   dependencies:
-    "@babel/runtime" "^7.14.8"
-    intersection-observer-admin "^0.3.2"
-
-"@noaignite/oui@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@noaignite/oui/-/oui-2.0.0.tgz#7a71cdb04c2286cd4860bb003ea143e5ca398f8c"
-  integrity sha512-DMRaPYCu5f45sTe1ApuoCQsWLNnvOZeHGf3gtuFI+9S059AbznANM4mgfgk9n67jI++Nc+O8XEet3ljA3qA50Q==
-  dependencies:
-    "@babel/runtime" "^7.14.8"
+    "@babel/runtime" "^7.16.0"
     "@maeertin/medialoaded" "^1.2.1"
-    "@noaignite/oui-utils" "2.0.0"
+    "@noaignite/utils" "^1.1.0"
     clsx "^1.1.1"
+    intersection-observer-admin "^0.3.2"
     prop-types "^15.7.2"
+
+"@noaignite/utils@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@noaignite/utils/-/utils-1.1.0.tgz#68eb83328a6c6850294838f6b644db6c8b9852e2"
+  integrity sha512-9mGZrjXDLTXiTRb6IxBigNDFlM8uFCnU5QY00mNozEo6snpI4qT4NFHjym84VZeLF9abqybkJTPiap2lDjqnSg==
+  dependencies:
+    "@babel/runtime" "^7.16.0"
 
 "@node-rs/helper@1.2.1":
   version "1.2.1"
