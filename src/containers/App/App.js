@@ -14,7 +14,7 @@ import AppSearchDrawer from './partials/AppSearchDrawer'
 import AppSkipLink from './partials/AppSkipLink'
 
 const AppCookieBar = dynamic(
-  () => import('./partials/AppCookieBar'),
+  () => import(/* webpackChunkName: "AppCookieBar" */ './partials/AppCookieBar'),
   { ssr: false },
 )
 
