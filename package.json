@@ -27,13 +27,14 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.js": [
-      "yarn lint:fix",
-      "git add --force"
-    ],
-    "*.json": [
+    "*.{js,jsx,ts,tsx}": [
       "yarn prettier:fix",
-      "git add --force"
+      "yarn lint:fix",
+      "git add"
+    ],
+    "*.{json,md,css,html}": [
+      "yarn prettier:fix",
+      "git add"
     ]
   },
   "dependencies": {
