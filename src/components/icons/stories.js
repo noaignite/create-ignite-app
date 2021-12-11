@@ -7,11 +7,11 @@ export default {
 
 // eslint-disable-next-line react/prop-types
 const Template = ({ fontSize, margin, ...args }) => (
-  <>
+  <React.Fragment>
     {Object.entries(SvgIcons).map(([name, SvgIcon]) => (
       <SvgIcon key={name} titleAccess={name} style={{ fontSize, margin }} {...args} />
     ))}
-  </>
+  </React.Fragment>
 )
 
 export const Default = Template.bind({})

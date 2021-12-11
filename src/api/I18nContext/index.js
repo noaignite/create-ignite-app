@@ -34,11 +34,14 @@ export function I18nProvider(props) {
     number: {},
   })
 
-  const contextValue = {
-    defaultLocale,
-    locale,
-    t: i18n,
-  }
+  const contextValue = React.useMemo(
+    () => ({
+      defaultLocale,
+      locale,
+      t: i18n,
+    }),
+    [defaultLocale, locale],
+  )
 
   return <I18nContext.Provider value={contextValue}>{children}</I18nContext.Provider>
 }

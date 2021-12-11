@@ -21,7 +21,7 @@ export default {
 }
 
 const Template = (args) => (
-  <>
+  <React.Fragment>
     <Typography {...args} variant="h1">
       h1. Heading
     </Typography>
@@ -77,7 +77,7 @@ const Template = (args) => (
     <Typography {...args} variant="overline">
       Overline text
     </Typography>
-  </>
+  </React.Fragment>
 )
 
 export const Default = Template.bind({})

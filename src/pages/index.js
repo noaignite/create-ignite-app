@@ -9,13 +9,13 @@ const renderBlock = createRenderBlock(blockVariants)
 
 function Home() {
   return (
-    <>
+    <React.Fragment>
       <Head>
         <title>Home | {SITE_NAME}</title>
       </Head>
 
       {pages.Home.children.map(renderBlock)}
-    </>
+    </React.Fragment>
   )
 }
 

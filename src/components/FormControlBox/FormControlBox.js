@@ -89,6 +89,7 @@ const FormControlBox = React.forwardRef(function FormControlBox(props, ref) {
 
   const [summary, ...children] = React.Children.toArray(childrenProp)
 
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const contextValue = {
     checked,
     control,

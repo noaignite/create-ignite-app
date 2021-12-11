@@ -39,7 +39,7 @@ const AppFooter = React.memo(function AppFooter(props) {
   const { menus, storeMessage } = useSettings()
 
   return (
-    <>
+    <React.Fragment>
       {storeMessage && <AppFooterSalesBanner>{storeMessage}</AppFooterSalesBanner>}
 
       <AppFooterRoot {...props}>
@@ -55,7 +55,7 @@ const AppFooter = React.memo(function AppFooter(props) {
           </nav>
         </Container>
       </AppFooterRoot>
-    </>
+    </React.Fragment>
   )
 })
 

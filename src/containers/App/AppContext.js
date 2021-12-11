@@ -141,6 +141,7 @@ export function AppProvider(props) {
     ],
   )
 
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const contextValue = {
     isCartMenuOpen,
     isCookieBarOpen,

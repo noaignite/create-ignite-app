@@ -56,7 +56,7 @@ function AppNavDrawerListItem(props) {
   }
 
   return (
-    <>
+    <React.Fragment>
       <AppNavDrawerListItemItem style={{ '--level': level }}>
         <AppNavDrawerListItemLink {...LinkProps}>
           {hasSubmenu && <Icon sx={{ mr: 1 }} />}
@@ -73,7 +73,7 @@ function AppNavDrawerListItem(props) {
           </AppNavDrawerListItemList>
         </Collapse>
       )}
-    </>
+    </React.Fragment>
   )
 }
 

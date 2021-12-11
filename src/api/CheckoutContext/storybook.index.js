@@ -139,6 +139,7 @@ export function CheckoutProvider(props) {
     ],
   )
 
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const contextValue = {
     ...handlersContextValue,
     countries,
