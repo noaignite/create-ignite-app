@@ -29,12 +29,10 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "yarn prettier:fix",
-      "yarn lint:fix",
-      "git add"
+      "yarn lint:fix"
     ],
     "*.{json,md,css,html}": [
-      "yarn prettier:fix",
-      "git add"
+      "yarn prettier:fix"
     ]
   },
   "dependencies": {
