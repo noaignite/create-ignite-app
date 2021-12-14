@@ -102,7 +102,7 @@ src/components
 
 ### src/containers
 
-Container components are "smart" components, they come in various sizes but what unifies them is that they have some understanding of the overlying structure. This could be page layout, page routing or API data structure. An example of this could be a `<ProductCard product={product} />` component that receives complicated data such as a product object as a prop fetched from an API.
+Container components are "smart" components, they come in various sizes but what unifies them is that they have some understanding of the overlaying structure. This could be page layout, page routing or API data structure. An example of this could be a `<ProductCard product={product} />` component that receives complicated data such as a product object as a prop fetched from an API.
 
 ```
 src/containers
