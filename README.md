@@ -3,7 +3,7 @@
 This is the official [NoA Ignite](https://noaignite.se/) base template. It's built with [Next.js](https://nextjs.org/), [Storybook](https://storybook.js.org/), [MUI](https://mui.com/) and [NoA Ignite packages](https://www.npmjs.com/org/noaignite).
 If something doesn’t work, please [file an issue](https://github.com/noaignite/create-ignite-app/issues).
 
-## Getting Started
+## Getting started
 
 ```sh
 npx @noaignite/create-app my-app
@@ -68,7 +68,7 @@ src/api
 ├── __mock__ (Mock data used for Storybook)
 ├── CheckoutContext (Checkout-API data & helpers)
 ├── I18nContext (Internalization data & helpers)
-├── SettingsContext (CMS data)
+├── SettingsContext (CMS data or other global settings)
 ├── storybook.index.js
 ├── index.js
 └── ...
@@ -88,7 +88,7 @@ src/blocks
 
 ### src/components
 
-Components found here are meant to be presentational in nature, meaning they are not supposed to be aware of any overlying structure such as page specific details or API data. Furthermore you will find the `theme` configuration here.
+Components found here are meant to be presentational in nature, meaning they are not supposed to be aware of any overlaying structure such as page specific details or API data. Furthermore you will find the `theme` configuration here.
 
 ```
 src/components
@@ -119,7 +119,7 @@ The `src/pages.stories.js` file is used to configure your pages for Storybook.
 
 Both Next.js & Storybook pages use the same `createRenderBlock` helper found under `src/utils/createRenderBlock.js` to iterate over Block components as described from an API. Using the same setup helps to keep a consistent codebase across both environments. Don't forget to add your newly created Block component to the common exports file!
 
-## One template, two enhancers
+## One template, two entry points
 
 ```
 Component
@@ -131,6 +131,14 @@ Component
 The `index.js` file is used as the exports file for it's module. In some cases there is a need to enhance the module with business logic without adding it to the template file directly, this is the place for that. The benefits of doing so is that a separate exports file can be created for Storybook with or without mocked business logic, this is then added to `storybook.index.js`. Now two different versions of the module can be imported based on the working environment by importing the module from it's directory path; `import Component from 'path/to/Component'`.
 
 ## Other good to knows
+
+### Component API design approach
+
+1. Using the `children` prop is the idiomatic way to do composition with React.
+2. Sometimes we only need limited child composition, for instance when we don't need to allow child order permutations. In this case, providing explicit props makes the implementation simpler and more performant; for example, a `Tab` component could take an `icon` and a `label` prop.
+3. API consistency matters.
+
+Read more about MUI's component [API design approach](https://mui.com/guides/api/).
 
 ### Favicons
 
