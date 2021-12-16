@@ -25,7 +25,7 @@ const AppFooterSalesBanner = styled('div', {
   textAlign: 'center',
 }))
 
-const AppFooterList = styled('ul', {
+const AppFooterNav = styled('nav', {
   name: 'AppFooter',
   slot: 'List',
 })(({ theme }) => ({
@@ -44,15 +44,15 @@ const AppFooter = React.memo(function AppFooter(props) {
 
       <AppFooterRoot {...props}>
         <Container>
-          <nav>
-            <AppFooterList>
-              {menus?.footer?.map((menuItem, idx) => (
-                <Link key={idx} component={RouterLink} href={menuItem.url} variant="button">
+          <AppFooterNav>
+            {menus?.footer?.map((menuItem, idx) => (
+              <div key={idx}>
+                <Link component={RouterLink} href={menuItem.url} variant="button">
                   {menuItem.label}
                 </Link>
-              ))}
-            </AppFooterList>
-          </nav>
+              </div>
+            ))}
+          </AppFooterNav>
         </Container>
       </AppFooterRoot>
     </React.Fragment>
