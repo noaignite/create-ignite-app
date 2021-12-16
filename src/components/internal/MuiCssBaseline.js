@@ -6,8 +6,7 @@ const overrides = {
       font-family: 'Family';
       font-weight: 400;
       font-display: swap;
-      src: url('/fonts/family/family-regular.woff2') format('woff2'),
-          url('/fonts/family/family-regular.woff') format('woff');
+      src: url('/fonts/family/family-regular.woff2') format('woff2');
     }
     */
     /* Define :root css variables. */
