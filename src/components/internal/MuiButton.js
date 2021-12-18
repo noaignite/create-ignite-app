@@ -6,6 +6,7 @@ const overrides = {
   defaultProps: {
     color: 'text',
     disableElevation: true,
+    disableRipple: true,
   },
   styleOverrides: (theme) => ({
     text: {
