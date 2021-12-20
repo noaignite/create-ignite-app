@@ -16,19 +16,19 @@ const overrides = {
       height: RADIUS_DOT * 2,
       minWidth: RADIUS_DOT * 2,
     },
-    anchorOriginTopRightCircle: {
+    anchorOriginTopRightCircular: {
       top: '24%',
       right: '20%',
     },
-    anchorOriginBottomRightCircle: {
+    anchorOriginBottomRightCircular: {
       bottom: '24%',
       right: '20%',
     },
-    anchorOriginTopLeftCircle: {
+    anchorOriginTopLeftCircular: {
       top: '24%',
       left: '20%',
     },
-    anchorOriginBottomLeftCircle: {
+    anchorOriginBottomLeftCircular: {
       bottom: '24%',
       left: '20%',
     },
