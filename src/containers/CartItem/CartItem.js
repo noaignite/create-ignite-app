@@ -99,8 +99,8 @@ function CartItem(props) {
   return (
     <CartItemRoot>
       <RouterLink href={`/product/${product.uri}`} aria-label={product.name}>
-        <MediaReveal className={classes.figure} {...ASPECT_RATIOS.product}>
-          <Media className={classes.image} src={product.media?.standard?.[0]} alt={product.name} />
+        <MediaReveal {...ASPECT_RATIOS.product}>
+          <Media src={product.media?.standard?.[0]} alt={product.name} />
         </MediaReveal>
       </RouterLink>
 
@@ -110,7 +110,7 @@ function CartItem(props) {
             {product.name}
           </Link>
 
-          <span className={classes.price}>{cartItem.priceEach}</span>
+          <span>{cartItem.priceEach}</span>
         </div>
 
         <div className={classes.row}>
