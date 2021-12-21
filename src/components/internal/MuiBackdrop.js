@@ -5,6 +5,9 @@ const overrides = {
     root: {
       backgroundColor: alpha(theme.palette.text.primary, 0.2),
     },
+    invisible: {
+      backgroundColor: 'transparent',
+    },
   }),
 }
 
