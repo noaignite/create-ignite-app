@@ -65,7 +65,7 @@
     "babel-plugin-optimize-clsx": "^2.6.0",
     "eslint": "^7.32.0",
     "eslint-config-next": "^12.0.4",
-    "eslint-import-resolver-webpack": "^0.13.1",
+    "eslint-import-resolver-webpack": "^0.13.2",
     "husky": "^7.0.0",
     "lint-staged": "^11.0.0",
     "prettier": "^2.0.1",
