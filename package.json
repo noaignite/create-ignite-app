@@ -36,12 +36,12 @@
     ]
   },
   "dependencies": {
-    "@emotion/cache": "^11.6.0",
-    "@emotion/react": "^11.7.0",
+    "@emotion/cache": "^11.7.1",
+    "@emotion/react": "^11.7.1",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.6.0",
-    "@mui/lab": "^5.0.0-alpha.58",
-    "@mui/material": "^5.2.2",
+    "@mui/lab": "^5.0.0-alpha.66",
+    "@mui/material": "^5.3.1",
     "@noaignite/oui": "^3.0.3",
     "clsx": "^1.1.0",
     "embla-carousel-react": "^5.0.1",
