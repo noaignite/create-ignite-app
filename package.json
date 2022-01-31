@@ -67,7 +67,7 @@
     "eslint-config-next": "^12.0.9",
     "eslint-import-resolver-webpack": "^0.13.2",
     "husky": "^7.0.0",
-    "lint-staged": "^11.0.0",
+    "lint-staged": "^12.3.2",
     "prettier": "^2.5.1",
     "webpack-merge": "^5.2.0"
   },
