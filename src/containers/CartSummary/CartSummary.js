@@ -74,7 +74,9 @@ CartSummary.propTypes = {
 }
 
 function CartSummaryContainer(props) {
-  const { items, totals } = useCheckoutSelection()
+  const {
+    selection: { items, totals },
+  } = useCheckoutSelection()
 
   return <CartSummary items={items} totals={totals} {...props} />
 }

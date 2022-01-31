@@ -6,16 +6,17 @@ import {
   countries,
   languages,
   location,
+  orders,
   paymentMethods,
   shippingMethods,
 } from 'api/__mock__'
 
-const CheckoutHandlersContext = React.createContext({})
-const CheckoutContext = React.createContext({})
+export const CheckoutHandlersContext = React.createContext({})
+export const CheckoutSelectionContext = React.createContext({})
 
 if (process.env.NODE_ENV !== 'production') {
   CheckoutHandlersContext.displayName = 'CheckoutHandlersContext'
-  CheckoutContext.displayName = 'CheckoutContext'
+  CheckoutSelectionContext.displayName = 'CheckoutSelectionContext'
 }
 
 export function useCheckoutHandlers() {
@@ -23,139 +24,81 @@ export function useCheckoutHandlers() {
 }
 
 export function useCheckoutSelection() {
-  return React.useContext(CheckoutContext).selection
+  return React.useContext(CheckoutSelectionContext)
 }
 
-export function useCheckout() {
-  return React.useContext(CheckoutContext)
+export function useCheckoutOrders() {
+  return { orders }
 }
+
+export function useCheckoutReceipt() {
+  return { order: orders[0] }
+}
+
+const handlersInterface = [
+  'addItem',
+  'addNewsletterSubscription',
+  'addVoucher',
+  'decreaseItem',
+  'increaseItem',
+  'loginCustomer',
+  'logoutCustomer',
+  'registerCustomer',
+  'removeItem',
+  'removeVoucher',
+  'resetCustomerPassword',
+  'resetCustomerPasswordEmail',
+  'submitPayment',
+  'updateCountry',
+  'updateCustomerAddress',
+  'updateCustomerEmail',
+  'updateCustomerPassword',
+  'updateItemQuantity',
+  'updateItemSize',
+  'updateLanguage',
+  'updatePaymentMethod',
+  'updateShippingMethod',
+]
+
+const handlersContextValue = handlersInterface.reduce((acc, methodName) => {
+  acc[methodName] = async (...args) => {
+    await actionWithPromise(methodName)(...args)
+  }
+  return acc
+}, {})
 
 export function CheckoutProvider(props) {
   const { children } = props
 
-  // Storybook specific local state otherwise coming from @oakwood/accelerator
-  const [selection, setSelection] = React.useState({})
+  const [selection, setSelection] = React.useState(cartSelection)
 
-  // Basket
-
-  const addItem = React.useCallback(async (...args) => {
-    await actionWithPromise('addItem')(...args)
+  // Override handler with state setter for a more complete Storybook UI flow.
+  handlersContextValue.updatePaymentMethod = React.useCallback(async (paymentMethod) => {
+    await actionWithPromise('updatePaymentMethod')(paymentMethod)
+    setSelection((prev) => ({ ...prev, paymentMethod }))
   }, [])
 
-  const decreaseItem = React.useCallback(async (...args) => {
-    await actionWithPromise('decreaseItem')(...args)
+  // Override handler with state setter for a more complete Storybook UI flow.
+  handlersContextValue.updateShippingMethod = React.useCallback(async (shippingMethod) => {
+    await actionWithPromise('updateShippingMethod')(shippingMethod)
+    setSelection((prev) => ({ ...prev, shippingMethod }))
   }, [])
-
-  const increaseItem = React.useCallback(async (...args) => {
-    await actionWithPromise('increaseItem')(...args)
-  }, [])
-
-  const removeItem = React.useCallback(async (...args) => {
-    await actionWithPromise('removeItem')(...args)
-  }, [])
-
-  const updateItemQuantity = React.useCallback(async (...args) => {
-    await actionWithPromise('updateItemQuantity')(...args)
-  }, [])
-
-  const updateItemSize = React.useCallback(async (...args) => {
-    await actionWithPromise('updateItemSize')(...args)
-  }, [])
-
-  // Voucher
-
-  const addVoucher = React.useCallback(async (...args) => {
-    await actionWithPromise('addVoucher')(...args)
-  }, [])
-
-  const removeVoucher = React.useCallback(async (...args) => {
-    await actionWithPromise('removeVoucher')(...args)
-  }, [])
-
-  // Checkout
-
-  const submitPayment = React.useCallback(async (...args) => {
-    await actionWithPromise('submitPayment')(...args)
-  }, [])
-
-  const updateCountry = React.useCallback(async (...args) => {
-    await actionWithPromise('updateCountry')(...args)
-  }, [])
-
-  const updatePaymentMethod = React.useCallback(async (...args) => {
-    await actionWithPromise('updatePaymentMethod')(...args)
-    setSelection((prev) => ({ ...prev, paymentMethod: args[0] }))
-  }, [])
-
-  const updateShippingMethod = React.useCallback(async (...args) => {
-    await actionWithPromise('updateShippingMethod')(...args)
-    setSelection((prev) => ({ ...prev, shippingMethod: args[0] }))
-  }, [])
-
-  // Other
-
-  const addNewsletterSubscription = React.useCallback(async (...args) => {
-    await actionWithPromise('addNewsletterSubscription')(...args)
-  }, [])
-
-  const updateLanguage = React.useCallback(async (...args) => {
-    await actionWithPromise('updateLanguage')(...args)
-  }, [])
-
-  // Memoize handlers context separately so that one can subscribe
-  // to them without re-rendering on state updates.
-  const handlersContextValue = React.useMemo(
-    () => ({
-      addItem,
-      addNewsletterSubscription,
-      addVoucher,
-      decreaseItem,
-      increaseItem,
-      removeItem,
-      removeVoucher,
-      submitPayment,
-      updateCountry,
-      updateItemQuantity,
-      updateItemSize,
-      updateLanguage,
-      updatePaymentMethod,
-      updateShippingMethod,
-    }),
-    [
-      addItem,
-      addNewsletterSubscription,
-      addVoucher,
-      decreaseItem,
-      increaseItem,
-      removeItem,
-      removeVoucher,
-      submitPayment,
-      updateCountry,
-      updateItemQuantity,
-      updateItemSize,
-      updateLanguage,
-      updatePaymentMethod,
-      updateShippingMethod,
-    ],
-  )
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
-  const contextValue = {
-    ...handlersContextValue,
+  const selectionContextValue = {
     countries,
     languages,
     location,
     paymentMethods,
-    selection: {
-      ...cartSelection,
-      ...selection,
-    },
+    selection,
     shippingMethods,
   }
 
   return (
     <CheckoutHandlersContext.Provider value={handlersContextValue}>
-      <CheckoutContext.Provider value={contextValue}>{children}</CheckoutContext.Provider>
+      <CheckoutSelectionContext.Provider value={selectionContextValue}>
+        {children}
+      </CheckoutSelectionContext.Provider>
     </CheckoutHandlersContext.Provider>
   )
 }
@@ -163,5 +106,3 @@ export function CheckoutProvider(props) {
 CheckoutProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }
-
-export default CheckoutContext

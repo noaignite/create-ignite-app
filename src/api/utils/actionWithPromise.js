@@ -1,4 +1,4 @@
-import sleep from './sleep'
+import { sleep } from '@noaignite/utils'
 
 export default function actionWithPromise(eventName) {
   return async (...args) => {

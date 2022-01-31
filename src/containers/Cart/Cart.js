@@ -57,7 +57,9 @@ Cart.propTypes = {
 }
 
 function CartContainer(props) {
-  const { items } = useCheckoutSelection()
+  const {
+    selection: { items },
+  } = useCheckoutSelection()
 
   return <Cart items={items} {...props} />
 }

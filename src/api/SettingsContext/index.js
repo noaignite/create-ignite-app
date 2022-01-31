@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { useI18n } from '../I18nContext'
 
-const SettingsContext = React.createContext({})
+export const SettingsContext = React.createContext({})
 
 if (process.env.NODE_ENV !== 'production') {
   SettingsContext.displayName = 'SettingsContext'
@@ -26,5 +26,3 @@ export function SettingsProvider(props) {
 SettingsProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }
-
-export default SettingsContext

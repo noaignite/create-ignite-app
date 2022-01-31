@@ -13,7 +13,7 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material'
-import { useCheckout, useI18n } from 'api'
+import { useCheckoutHandlers, useCheckoutSelection, useI18n } from 'api'
 import { Close as CloseIcon } from 'components/icons'
 import { useApp } from '../AppContext'
 
@@ -24,7 +24,8 @@ const TransitionComponent = React.forwardRef(function TransitionComponent(props,
 const AppMarketDialog = React.memo(function AppMarketDialog(props) {
   const { isMarketMenuOpen, onMarketMenuClose, ...other } = props
 
-  const { location, countries, languages, updateCountry, updateLanguage } = useCheckout()
+  const { updateCountry, updateLanguage } = useCheckoutHandlers()
+  const { location, countries, languages } = useCheckoutSelection()
   const { t } = useI18n()
 
   const isBreakpointUp = useMediaQuery((theme) => theme.breakpoints.up('sm'))

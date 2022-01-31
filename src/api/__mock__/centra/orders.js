@@ -1,6 +1,6 @@
 import cartSelection from './cartSelection'
 
-export default {
+export default Array.from(new Array(3), () => ({
   order: '38463',
   status: 'untouched',
   statusDescription: 'Pending',
@@ -9,8 +9,8 @@ export default {
   currency: 'SEK',
   paymentMethod: 'kco',
   paymentMethodName: 'Klarna',
-  shippingMethod: 'free-sek',
-  shippingMethodName: ' Gratis frakt',
+  shippingMethod: 'dhl',
+  shippingMethodName: 'DHL',
   items: cartSelection.items,
   discounts: cartSelection.discounts,
   totals: cartSelection.totals,
@@ -47,4 +47,4 @@ export default {
   giftMessage: '',
   additionalNotes: '',
   currencyFormat: cartSelection.currencyFormat,
-}
+}))

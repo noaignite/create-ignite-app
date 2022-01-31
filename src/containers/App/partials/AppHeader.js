@@ -221,7 +221,9 @@ function AppHeaderContainer(props) {
     onNavMenuToggle,
     onSearchMenuToggle,
   } = useApp()
-  const { items } = useCheckoutSelection()
+  const {
+    selection: { items },
+  } = useCheckoutSelection()
 
   return (
     <AppHeader

@@ -1,13 +1,8 @@
-import { filter, order, products } from './__mock__'
-import sleep from './utils/sleep'
+import { sleep } from '@noaignite/utils'
+import { filter, products } from './__mock__'
 
-export { default as CheckoutContext } from './CheckoutContext'
 export * from './CheckoutContext'
-
-export { default as I18nContext } from './I18nContext'
 export * from './I18nContext'
-
-export { default as SettingsContext } from './SettingsContext'
 export * from './SettingsContext'
 
 export async function fetchProducts(query) {
@@ -15,8 +10,4 @@ export async function fetchProducts(query) {
   console.log('fetchProducts', query) // eslint-disable-line no-console
 
   return { filter, products, productCount: products.length }
-}
-
-export function useReceipt() {
-  return order
 }

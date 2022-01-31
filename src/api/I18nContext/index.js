@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import i18n, { i18nConfig } from 'es2015-i18n-tag'
 
-const I18nContext = React.createContext({})
+export const I18nContext = React.createContext({})
 
 if (process.env.NODE_ENV !== 'production') {
   I18nContext.displayName = 'I18nContext'
@@ -51,5 +51,3 @@ I18nProvider.propTypes = {
   defaultLocale: PropTypes.string,
   locale: PropTypes.string,
 }
-
-export default I18nContext
