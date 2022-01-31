@@ -101,7 +101,6 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
           onChange={handleLanguageChange}
           value={location?.language?.language}
           label={t(__translationGroup)`Choose language`}
-          variant="standard"
           margin="normal"
           fullWidth
           select
