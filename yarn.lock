@@ -1888,22 +1888,22 @@
     eslint-plugin-testing-library "^5.0.1"
     typescript "^4.5.5"
 
-"@noaignite/oui@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@noaignite/oui/-/oui-3.0.1.tgz#f53c7ad9b191b32fc11c2dcf1cba90cca23969c6"
-  integrity sha512-kZ8LjjJtsOVvGKlfSbDGJfmaOz98rQvNaOfVW2uNQFhl5w6FkHD3zOVMEkNa5+OddgNu/WaObU//xaS9JstpNg==
+"@noaignite/oui@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@noaignite/oui/-/oui-3.0.3.tgz#174788f2b2975b03474c2f9cc09358030d826f2a"
+  integrity sha512-IHzfdaWQ5hw+UVv9JBG+TsV/d38Pt7VIljzwH3doct6KyOG2pO7L00hMZTyzuyDL6pAcCE6o6Fx8gMb2lxc6Bw==
   dependencies:
     "@babel/runtime" "^7.16.0"
     "@maeertin/medialoaded" "^1.2.1"
-    "@noaignite/utils" "^1.1.0"
+    "@noaignite/utils" "^1.1.1"
     clsx "^1.1.1"
     intersection-observer-admin "^0.3.2"
     prop-types "^15.7.2"
 
-"@noaignite/utils@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@noaignite/utils/-/utils-1.1.0.tgz#68eb83328a6c6850294838f6b644db6c8b9852e2"
-  integrity sha512-9mGZrjXDLTXiTRb6IxBigNDFlM8uFCnU5QY00mNozEo6snpI4qT4NFHjym84VZeLF9abqybkJTPiap2lDjqnSg==
+"@noaignite/utils@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@noaignite/utils/-/utils-1.1.1.tgz#1725639045b603625043e4abc72f3e67f3b68c6d"
+  integrity sha512-x+PekkLuoZssDOJ/r9vAzImasc3Q75s/c49dfkglx2r9NBrHdVfAsK6gmB+DzvUIdW6YQVRZWR3BYGFJkiNUMw==
   dependencies:
     "@babel/runtime" "^7.16.0"
 
