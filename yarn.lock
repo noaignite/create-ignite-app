@@ -1867,10 +1867,10 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.0.9.tgz#f7d3b59000082cf65c84fdc61930b708aa5446e5"
   integrity sha512-1c/sxp/4Qz4F6rCxiYqAnrmghCOFt5hHZ9Kd+rXFW5Mqev4C4XDOUMHdBH55HgnJZqngYhOE0r/XNkCtsIojig==
 
-"@noaignite/eslint-config@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@noaignite/eslint-config/-/eslint-config-0.1.1.tgz#33a4506ed4c1d6f5a019d859f23d34414dd97008"
-  integrity sha512-CrnGJTswmpyBMLqgdOskg4bmAhD/jTVA1eNp7BbyQdc/wiJWoqp0gwt9NefbQbPAXK5bqAvns4eEJBdyqAm41g==
+"@noaignite/eslint-config@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@noaignite/eslint-config/-/eslint-config-0.1.4.tgz#032284598134b18c30a9be929210e566d0144f60"
+  integrity sha512-HzaisGKGn71CWuo3DXlDc3gCAMCaCnRVjtt7Ov6DM/+uMDFpqcTHXcmrUNh44ebn8g37jXklAe1PURi3qCHl+Q==
   dependencies:
     "@babel/core" "^7.16.0"
     "@babel/eslint-parser" "^7.16.3"
@@ -1886,6 +1886,7 @@
     eslint-plugin-react "^7.27.1"
     eslint-plugin-react-hooks "^4.3.0"
     eslint-plugin-testing-library "^5.0.1"
+    typescript "^4.5.5"
 
 "@noaignite/oui@^3.0.1":
   version "3.0.1"
@@ -10961,6 +10962,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typescript@^4.5.5:
+  version "4.5.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
+  integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==
 
 uglify-js@^3.1.4:
   version "3.15.0"
