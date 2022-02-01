@@ -25,6 +25,7 @@
     "Please select the country to which your order will be sent. This will give you accurate pricing: delivery times and shipping costs for your destination.": ""
   },
   "containers/App/partials/AppNavDrawer.js": {
+    "Close main menu": "",
     "Country": "",
     "Main navigation": ""
   },

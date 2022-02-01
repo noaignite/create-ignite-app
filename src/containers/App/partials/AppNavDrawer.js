@@ -55,7 +55,7 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
           onClick={onNavMenuClose}
           edge="start"
           size="small"
-          aria-label={t(__translationGroup)`Close cart menu`}
+          aria-label={t(__translationGroup)`Close main menu`}
         >
           <CloseIcon />
         </IconButton>
