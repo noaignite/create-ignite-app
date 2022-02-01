@@ -1,6 +1,6 @@
 export default {
   Hero: {
-    backgroundMediaProps: {
+    mediaProps: {
       component: 'picture',
       breakpoints: {
         xs: '//source.unsplash.com/Sl03gvNZuss/1280x720',

@@ -56,20 +56,22 @@ const HeroButton = styled(Button, {
 }))
 
 function Hero(props) {
-  const { backgroundMediaProps, ctaLabel, ctaUrl, heading, excerpt, renderIndex } = props
+  const { mediaProps, ctaLabel, ctaUrl, heading, excerpt, renderIndex } = props
 
   return (
     <HeroRoot>
-      {backgroundMediaProps && (
+      {mediaProps && (
         <HeroMediaReveal>
           <Media
-            {...(backgroundMediaProps?.component === 'video' && {
-              autoPlay: true,
-              muted: true,
-              loop: true,
-              playsInline: true,
-            })}
-            {...backgroundMediaProps}
+            {...(mediaProps?.component === 'video'
+              ? {
+                  autoPlay: true,
+                  muted: true,
+                  loop: true,
+                  playsInline: true,
+                }
+              : { alt: '' })}
+            {...mediaProps}
             priority={renderIndex === 0}
           />
         </HeroMediaReveal>
@@ -93,7 +95,7 @@ function Hero(props) {
 }
 
 Hero.propTypes = {
-  backgroundMediaProps: PropTypes.object,
+  mediaProps: PropTypes.object,
   ctaLabel: PropTypes.string,
   ctaUrl: PropTypes.string,
   excerpt: PropTypes.string,
