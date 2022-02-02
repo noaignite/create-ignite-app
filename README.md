@@ -76,7 +76,7 @@ src/api
 
 ### src/blocks
 
-Block components have a 1-1 relation to reusable modules created for the admin panel of chosen CMS. Ideally these should be exported from the common exports file using `next/dynamic`. This will make sure that blocks not needed on a particular page won't be downloaded to the browser unless needed.
+Blocks are top level modules in the application, hierarchically directly below the App container and typically defined with a `section` element at it's root. These can also be configured as choosable modules for the admin panel of chosen CMS. When possible, these should be exported from their common exports file (`src/blocks/index.js`) using `next/dynamic`. This will ensure that blocks are chunked and not downloaded to the client on a particular page unless rendered.
 
 ```
 src/blocks
@@ -88,7 +88,7 @@ src/blocks
 
 ### src/components
 
-Components found here are meant to be presentational in nature, meaning they are not supposed to be aware of any overlaying structure such as page specific details or API data. Furthermore you will find the `theme` configuration here.
+Components found here are meant to be presentational in nature, meaning they are not supposed to be aware of any overlaying structure such as page specific details or API data. Furthermore you will find the `theme` configuration and MUI/OUI overrides here. A good rule of thumb is to have components not importing project files outside of `src/components`.
 
 ```
 src/components
@@ -115,7 +115,7 @@ src/containers
 ### src/pages & src/pages.stories.js
 
 The `src/pages` directory is used by Next.js to configure page routing. [Read more about Next.js pages.](https://nextjs.org/docs/basic-features/pages)
-The `src/pages.stories.js` file is used to configure your pages for Storybook.
+The `src/pages.stories.js` file is used to generate your pages for Storybook based on `src/api/__mock__/cms/pages.js`.
 
 Both Next.js & Storybook pages use the same `createRenderBlock` helper found under `src/utils/createRenderBlock.js` to iterate over Block components as described from an API. Using the same setup helps to keep a consistent codebase across both environments. Don't forget to add your newly created Block component to the common exports file!
 
@@ -132,22 +132,10 @@ The `index.js` file is used as the exports file for it's module. In some cases t
 
 ## Other good to knows
 
-### Component API design approach
-
-1. Using the `children` prop is the idiomatic way to do composition with React.
-2. Sometimes we only need limited child composition, for instance when we don't need to allow child order permutations. In this case, providing explicit props makes the implementation simpler and more performant; for example, a `Tab` component could take an `icon` and a `label` prop.
-3. API consistency matters.
-
-Read more about MUI's component [API design approach](https://mui.com/guides/api/).
-
 ### Favicons
 
 Generate favicons on [favicon.io](https://favicon.io/) and replace the files under `public`.
 
 ### Fonts
 
-Add font files to `public/fonts` and import them under `src/components/internal/MuiCssBaseline.js`. For font preloading add them to `src/pages/_document.js`. We only preload .woff2 files as it's supported by all browsers other than IE11, and adding the media-query wizardry for that doesn't feel worthy of 2020. Do note that the crossOrigin attribute may need to change if you're using a different domain for CDN, or loading the font from somewhere else.
-
-## License
-
-This project is licensed under the terms of the [MIT license](/LICENSE).
+Add font files to `public/fonts` and import them under `src/components/internal/MuiCssBaseline.js`. For font preloading add them to `src/pages/_document.js`. We only preload .woff2 files as it's supported by all browsers other than IE11, and adding the media-query wizardry for that doesn't feel worthy of today. Do note that the crossOrigin attribute may need to change if you're using a different domain for CDN, or loading the font from somewhere else.
