@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 export default function createRenderBlock(variants) {
-  function renderBlock({ name, props }, key) {
+  function renderBlock({ name, props = {} }, idx) {
     const { children: childrenProp, ...other } = props
 
     const Component = variants[name]
@@ -14,7 +14,7 @@ export default function createRenderBlock(variants) {
     }
 
     return (
-      <Component key={key} renderIndex={key} {...other}>
+      <Component key={idx} renderIndex={idx} {...other}>
         {children}
       </Component>
     )
