@@ -1,7 +1,7 @@
-const pages = require('api/__mock__').pages
-const createRenderBlock = require('utils').createRenderBlock
+const { pages } = require('api/__mock__')
+const { createRenderBlock } = require('utils')
 const blockVariants = require('blocks')
-const App = require('containers/App').default
+const { App } = require('containers')
 
 const renderBlock = createRenderBlock(blockVariants)
 
@@ -18,8 +18,11 @@ const defaultExport = {
   },
 }
 
-// Auto generate pages based on `api/__mock__/pages`.
-const commonExports = Object.entries(pages).reduce((acc, [name, props]) => {
+/**
+ * Storybook pages
+ * Configure your pages by modifying the data at `api/__mock__/cms/pages`.
+ */
+const pageExports = Object.entries(pages).reduce((acc, [name, props]) => {
   acc[name] = App.bind({})
   acc[name].args = {
     ...props,
@@ -30,5 +33,5 @@ const commonExports = Object.entries(pages).reduce((acc, [name, props]) => {
 
 module.exports = {
   default: defaultExport,
-  ...commonExports,
+  ...pageExports,
 }
