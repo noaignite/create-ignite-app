@@ -1,10 +1,11 @@
-import * as React from 'react'
-import { pages } from 'api/__mock__'
-import { createRenderBlock } from 'utils'
-import * as blockVariants from 'blocks'
-import App from 'containers/App'
+const pages = require('api/__mock__').pages
+const createRenderBlock = require('utils').createRenderBlock
+const blockVariants = require('blocks')
+const App = require('containers/App').default
 
-export default {
+const renderBlock = createRenderBlock(blockVariants)
+
+const defaultExport = {
   title: 'Pages',
   component: App,
   argTypes: {
@@ -17,18 +18,17 @@ export default {
   },
 }
 
-const Template = (args) => <App {...args} />
+// Auto generate pages based on `api/__mock__/pages`.
+const commonExports = Object.entries(pages).reduce((acc, [name, props]) => {
+  acc[name] = App.bind({})
+  acc[name].args = {
+    ...props,
+    children: pages[name].children.map(renderBlock),
+  }
+  return acc
+}, {})
 
-const renderBlock = createRenderBlock(blockVariants)
-
-export const HomePage = Template.bind({})
-HomePage.args = {
-  ...pages.Home,
-  children: pages.Home.children.map(renderBlock),
-}
-
-export const ContentPage = Template.bind({})
-ContentPage.args = {
-  ...pages.Content,
-  children: pages.Content.children.map(renderBlock),
+module.exports = {
+  default: defaultExport,
+  ...commonExports,
 }
