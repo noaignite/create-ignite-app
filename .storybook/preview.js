@@ -7,6 +7,7 @@ import { settings } from 'api/__mock__'
 import { CheckoutProvider, I18nProvider, SettingsProvider } from 'api'
 import { AppProvider } from 'containers/App/AppContext'
 import { createTheme } from 'components/styles'
+import breakpoints from 'components/styles/breakpoints'
 
 export const parameters = {
   layout: 'fullscreen',
@@ -15,6 +16,15 @@ export const parameters = {
       method: 'alphabetical',
       order: ['Common', 'Components', 'Containers', 'Blocks', 'Pages'],
     },
+  },
+  viewport: {
+    viewports: Object.keys(breakpoints.values).map((key, idx) => ({
+      name: key,
+      styles: {
+        height: '100%',
+        width: breakpoints.values[key],
+      },
+    })),
   },
 }
 
