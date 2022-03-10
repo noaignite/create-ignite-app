@@ -14,18 +14,17 @@ const breakpointValues = {
   xs: 375,
 }
 
-const viewports = {}
-Object.entries(breakpointValues).forEach((key, value) => {
+const viewports = Object.entries(breakpointValues).reduce((acc, [key, val]) => {
   viewports[key] = {
     name: key,
     styles: {
-      width: `${value}px`,
+      width: `${val}px`,
       height: '960px',
     },
   }
 
   return acc
-})
+}, {})
 
 export const parameters = {
   layout: 'fullscreen',
