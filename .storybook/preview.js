@@ -7,24 +7,25 @@ import { settings } from 'api/__mock__'
 import { CheckoutProvider, I18nProvider, SettingsProvider } from 'api'
 import { AppProvider } from 'containers/App/AppContext'
 import { createTheme } from 'components/styles'
-import MuiBreakpoints from 'components/styles/breakpoints'
+import breakpoints from 'components/styles/breakpoints'
 
-const breakpoints = {
-  ...MuiBreakpoints.values,
+const breakpointValues = {
+  ...breakpoints.values,
   xs: 375,
 }
 
-const viewports = Object.keys(breakpoints).reduce((acc, current) => {
-  acc[current] = {
-    name: current,
+const viewports = {}
+Object.entries(breakpointValues).forEach((key, value) => {
+  viewports[key] = {
+    name: key,
     styles: {
-      width: `${breakpoints[current]}px`,
+      width: `${value}px`,
       height: '960px',
     },
   }
 
   return acc
-}, {})
+})
 
 export const parameters = {
   layout: 'fullscreen',
