@@ -15,7 +15,7 @@ const breakpointValues = {
 }
 
 const viewports = Object.entries(breakpointValues).reduce((acc, [key, val]) => {
-  viewports[key] = {
+  acc[key] = {
     name: key,
     styles: {
       width: `${val}px`,
