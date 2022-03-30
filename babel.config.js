@@ -17,6 +17,8 @@ module.exports = {
     [
       '@emotion',
       {
+        // Allows an emotion component to be used as a CSS selector.
+        // https://github.com/mui/material-ui/issues/26366#issuecomment-942435579
         importMap: {
           '@mui/system': {
             styled: {
