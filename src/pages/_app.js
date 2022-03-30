@@ -63,7 +63,7 @@ function App(props) {
 }
 
 App.getInitialProps = async (props) => {
-  const { Component, ctx } = props
+  const { Component, ctx, router } = props
 
   let cmsProps = {}
   if (ctx.req) {
@@ -78,8 +78,8 @@ App.getInitialProps = async (props) => {
 
   return {
     cmsProps,
-    defaultLocale: ctx.defaultLocale,
-    locale: ctx.locale,
+    defaultLocale: router.defaultLocale,
+    locale: router.locale,
     pageProps,
   }
 }
