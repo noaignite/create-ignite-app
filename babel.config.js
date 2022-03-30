@@ -14,6 +14,27 @@ module.exports = {
     ],
   ],
   plugins: [
+    [
+      '@emotion',
+      {
+        // Allows an emotion component to be used as a CSS selector.
+        // https://github.com/mui/material-ui/issues/26366#issuecomment-942435579
+        importMap: {
+          '@mui/system': {
+            styled: {
+              canonicalImport: ['@emotion/styled', 'default'],
+              styledBaseImport: ['@mui/system', 'styled'],
+            },
+          },
+          '@mui/material/styles': {
+            styled: {
+              canonicalImport: ['@emotion/styled', 'default'],
+              styledBaseImport: ['@mui/material/styles', 'styled'],
+            },
+          },
+        },
+      },
+    ],
     'babel-plugin-optimize-clsx',
     [
       'babel-plugin-i18n-tag-translate',
