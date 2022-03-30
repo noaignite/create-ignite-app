@@ -55,6 +55,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/plugin-transform-react-constant-elements": "^7.10.1",
+    "@emotion/babel-plugin": "^11.7.2",
     "@next/bundle-analyzer": "^12.1.0",
     "@noaignite/eslint-config": "^0.2.0",
     "@storybook/addon-a11y": "^6.4.19",
