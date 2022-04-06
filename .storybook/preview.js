@@ -1,4 +1,3 @@
-// import '../scripts/wdyr'
 import '../scripts/polyfills'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import { ThemeProvider } from '@mui/material/styles'
