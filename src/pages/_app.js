@@ -8,11 +8,10 @@ import { CacheProvider } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { settings as mockedCmsProps } from '~/api/__mock__'
-import { CheckoutProvider, SettingsProvider } from '~/api'
-import { I18nProvider } from '~/context'
+import { CheckoutProvider } from '~/api'
+import { CmsProvider, GlobalProvider, I18nProvider } from '~/context'
 import createEmotionCache from '~/utils/createEmotionCache'
 import theme from '~/utils/theme.light'
-import { AppProvider } from '~/containers/App/AppContext'
 import AppBase from '~/containers/App'
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -42,9 +41,9 @@ function App(props) {
         <CssBaseline />
 
         <I18nProvider defaultLocale={defaultLocale} locale={locale}>
-          <SettingsProvider {...cmsProps}>
+          <CmsProvider {...cmsProps}>
             <CheckoutProvider>
-              <AppProvider>
+              <GlobalProvider>
                 <AppBase
                   disableFooter={pageProps?.disableFooter}
                   disableHeader={pageProps?.disableHeader}
@@ -53,9 +52,9 @@ function App(props) {
                 >
                   <Component {...pageProps} />
                 </AppBase>
-              </AppProvider>
+              </GlobalProvider>
             </CheckoutProvider>
-          </SettingsProvider>
+          </CmsProvider>
         </I18nProvider>
       </ThemeProvider>
     </CacheProvider>

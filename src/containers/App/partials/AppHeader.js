@@ -6,7 +6,7 @@ import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
 import { useCheckoutSelection } from '~/api'
-import { useI18n } from '~/context'
+import { useGlobalHandlers, useGlobalState, useI18n } from '~/context'
 import { useDimensions } from '~/utils'
 import {
   Brand as BrandIcon,
@@ -16,7 +16,6 @@ import {
   Menu as MenuIcon,
 } from '~/components/icons'
 import RouterLink from '../../RouterLink'
-import { useApp } from '../AppContext'
 
 const BREAKPOINT_KEY = 'md'
 
@@ -79,13 +78,11 @@ const AppHeader = React.memo(function AppHeader(props) {
     isNavMenuOpen,
     isSearchMenuOpen,
     isSomeMenuOpen,
-    onCartMenuToggle,
-    onNavMenuToggle,
-    onSearchMenuToggle,
     productsCount,
     ...other
   } = props
 
+  const { onCartMenuToggle, onNavMenuToggle, onSearchMenuToggle } = useGlobalHandlers()
   const { t } = useI18n()
   const [rootRef, dimensions] = useDimensions()
 
@@ -206,22 +203,11 @@ AppHeader.propTypes = {
   isNavMenuOpen: PropTypes.bool,
   isSearchMenuOpen: PropTypes.bool,
   isSomeMenuOpen: PropTypes.bool,
-  onCartMenuToggle: PropTypes.func,
-  onNavMenuToggle: PropTypes.func,
-  onSearchMenuToggle: PropTypes.func,
   productsCount: PropTypes.number,
 }
 
 function AppHeaderContainer(props) {
-  const {
-    isCartMenuOpen,
-    isNavMenuOpen,
-    isSearchMenuOpen,
-    isSomeMenuOpen,
-    onCartMenuToggle,
-    onNavMenuToggle,
-    onSearchMenuToggle,
-  } = useApp()
+  const { isCartMenuOpen, isNavMenuOpen, isSearchMenuOpen, isSomeMenuOpen } = useGlobalState()
   const {
     selection: { items },
   } = useCheckoutSelection()
@@ -232,9 +218,6 @@ function AppHeaderContainer(props) {
       isNavMenuOpen={isNavMenuOpen}
       isSearchMenuOpen={isSearchMenuOpen}
       isSomeMenuOpen={isSomeMenuOpen}
-      onCartMenuToggle={onCartMenuToggle}
-      onNavMenuToggle={onNavMenuToggle}
-      onSearchMenuToggle={onSearchMenuToggle}
       productsCount={items.length}
       {...props}
     />

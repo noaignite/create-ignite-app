@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from '~/utils/constants'
-import AppContext from './AppContext'
+import { GlobalStateContext } from '~/context'
 import {
   AppCookieBar,
   AppCartDrawer,
@@ -55,12 +55,12 @@ function App(props) {
       <AppMarketDialog />
       <AppLoader />
 
-      <AppContext.Consumer>
+      <GlobalStateContext.Consumer>
         {({ isCookieBarOpen, onCookieBarClose }) => {
           // Will only fetch `AppCookieBar` chunk if user has not consented.
           return isCookieBarOpen ? <AppCookieBar onClose={onCookieBarClose} open /> : null
         }}
-      </AppContext.Consumer>
+      </GlobalStateContext.Consumer>
     </AppRoot>
   )
 }

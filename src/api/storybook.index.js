@@ -2,7 +2,6 @@ import { sleep } from '@noaignite/utils'
 import { filter, products } from './__mock__'
 
 export * from './CheckoutContext'
-export * from './SettingsContext'
 
 export async function fetchProducts(query) {
   await sleep(500)
