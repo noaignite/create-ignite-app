@@ -6,7 +6,7 @@ import useSize from '@react-hook/size'
 import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
-import { useCheckoutSelection, useI18n } from '~/api'
+import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/context'
 import {
   Brand as BrandIcon,
   Cart as CartIcon,
@@ -15,7 +15,6 @@ import {
   Menu as MenuIcon,
 } from '~/components/icons'
 import RouterLink from '../../RouterLink'
-import { useApp } from '../AppContext'
 
 const BREAKPOINT_KEY = 'md'
 
@@ -78,13 +77,11 @@ const AppHeader = React.memo(function AppHeader(props) {
     isNavMenuOpen,
     isSearchMenuOpen,
     isSomeMenuOpen,
-    onCartMenuToggle,
-    onNavMenuToggle,
-    onSearchMenuToggle,
     productsCount,
     ...other
   } = props
 
+  const { onCartMenuToggle, onNavMenuToggle, onSearchMenuToggle } = useGlobalHandlers()
   const { t } = useI18n()
 
   const rootRef = React.useRef(null)
@@ -207,25 +204,14 @@ AppHeader.propTypes = {
   isNavMenuOpen: PropTypes.bool,
   isSearchMenuOpen: PropTypes.bool,
   isSomeMenuOpen: PropTypes.bool,
-  onCartMenuToggle: PropTypes.func,
-  onNavMenuToggle: PropTypes.func,
-  onSearchMenuToggle: PropTypes.func,
   productsCount: PropTypes.number,
 }
 
 function AppHeaderContainer(props) {
-  const {
-    isCartMenuOpen,
-    isNavMenuOpen,
-    isSearchMenuOpen,
-    isSomeMenuOpen,
-    onCartMenuToggle,
-    onNavMenuToggle,
-    onSearchMenuToggle,
-  } = useApp()
+  const { isCartMenuOpen, isNavMenuOpen, isSearchMenuOpen, isSomeMenuOpen } = useGlobalState()
   const {
     selection: { items },
-  } = useCheckoutSelection()
+  } = useCentraSelection()
 
   return (
     <AppHeader
@@ -233,9 +219,6 @@ function AppHeaderContainer(props) {
       isNavMenuOpen={isNavMenuOpen}
       isSearchMenuOpen={isSearchMenuOpen}
       isSomeMenuOpen={isSomeMenuOpen}
-      onCartMenuToggle={onCartMenuToggle}
-      onNavMenuToggle={onNavMenuToggle}
-      onSearchMenuToggle={onSearchMenuToggle}
       productsCount={items.length}
       {...props}
     />

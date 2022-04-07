@@ -2,26 +2,26 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 
-const AppHandlersContext = React.createContext({})
-const AppContext = React.createContext({})
+export const GlobalStateContext = React.createContext({})
+export const GlobalHandlersContext = React.createContext({})
 
 if (process.env.NODE_ENV !== 'production') {
-  AppHandlersContext.displayName = 'AppHandlersContext'
-  AppContext.displayName = 'AppContext'
+  GlobalStateContext.displayName = 'GlobalStateContext'
+  GlobalHandlersContext.displayName = 'GlobalHandlersContext'
 }
 
-export function useAppHandlers() {
-  return React.useContext(AppHandlersContext)
+export function useGlobalState() {
+  return React.useContext(GlobalStateContext)
 }
 
-export function useApp() {
-  return React.useContext(AppContext)
+export function useGlobalHandlers() {
+  return React.useContext(GlobalHandlersContext)
 }
 
 const COOKIE_CONSENT_ID = 'cookie-consent'
 const COOKIE_BAR_ENTER_DELAY = 2000
 
-export function AppProvider(props) {
+export function GlobalProvider(props) {
   const { children } = props
 
   const [isCartMenuOpen, setCartMenuOpen] = React.useState(false)
@@ -102,8 +102,19 @@ export function AppProvider(props) {
     setCookieBarOpen(false)
   }, [])
 
-  // Memoize handlers context separately so that one can subscribe
-  // to them without re-rendering on state updates.
+  const stateContextValue = React.useMemo(
+    () => ({
+      isCartMenuOpen,
+      isCookieBarOpen,
+      isMarketMenuOpen,
+      isNavMenuOpen,
+      isSearchMenuOpen,
+      // Computed props
+      isSomeMenuOpen: isCartMenuOpen || isNavMenuOpen || isSearchMenuOpen,
+    }),
+    [isCartMenuOpen, isCookieBarOpen, isMarketMenuOpen, isNavMenuOpen, isSearchMenuOpen],
+  )
+
   const handlersContextValue = React.useMemo(
     () => ({
       onCartMenuClose,
@@ -129,28 +140,15 @@ export function AppProvider(props) {
     ],
   )
 
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
-  const contextValue = {
-    isCartMenuOpen,
-    isCookieBarOpen,
-    isMarketMenuOpen,
-    isNavMenuOpen,
-    isSearchMenuOpen,
-    // Computed props
-    isSomeMenuOpen: isCartMenuOpen || isNavMenuOpen || isSearchMenuOpen,
-    // Merge in handlers for easy access
-    ...handlersContextValue,
-  }
-
   return (
-    <AppHandlersContext.Provider value={handlersContextValue}>
-      <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
-    </AppHandlersContext.Provider>
+    <GlobalStateContext.Provider value={stateContextValue}>
+      <GlobalHandlersContext.Provider value={handlersContextValue}>
+        {children}
+      </GlobalHandlersContext.Provider>
+    </GlobalStateContext.Provider>
   )
 }
 
-AppProvider.propTypes = {
+GlobalProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }
-
-export default AppContext

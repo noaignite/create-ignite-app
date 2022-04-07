@@ -4,9 +4,14 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Drawer, IconButton, Link, Toolbar, Typography } from '@mui/material'
-import { useCheckoutSelection, useI18n, useSettings } from '~/api'
+import {
+  useCentraSelection,
+  useGlobalHandlers,
+  useGlobalState,
+  useI18n,
+  useRemoteConfig,
+} from '~/context'
 import { Close as CloseIcon } from '~/components/icons'
-import { useApp } from '../AppContext'
 import AppNavDrawerListItem from './AppNavDrawerListItem'
 
 const AppNavDrawerRoot = styled(Drawer, {
@@ -42,11 +47,12 @@ const AppNavDrawerList = styled('ul', {
 }))
 
 const AppNavDrawer = React.memo(function AppNavDrawer(props) {
-  const { isNavMenuOpen, onMarketMenuToggle, onNavMenuClose, ...other } = props
+  const { isNavMenuOpen, ...other } = props
 
+  const { location, selection } = useCentraSelection()
+  const { menus } = useRemoteConfig()
+  const { onMarketMenuToggle, onNavMenuClose } = useGlobalHandlers()
   const { t } = useI18n()
-  const { location, selection } = useCheckoutSelection()
-  const { menus } = useSettings()
 
   return (
     <AppNavDrawerRoot onClose={onNavMenuClose} open={isNavMenuOpen} anchor="left" {...other}>
@@ -99,21 +105,12 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
 
 AppNavDrawer.propTypes = {
   isNavMenuOpen: PropTypes.bool,
-  onMarketMenuToggle: PropTypes.func,
-  onNavMenuClose: PropTypes.func,
 }
 
 function AppNavDrawerContainer(props) {
-  const { isNavMenuOpen, onMarketMenuToggle, onNavMenuClose } = useApp()
+  const { isNavMenuOpen } = useGlobalState()
 
-  return (
-    <AppNavDrawer
-      isNavMenuOpen={isNavMenuOpen}
-      onMarketMenuToggle={onMarketMenuToggle}
-      onNavMenuClose={onNavMenuClose}
-      {...props}
-    />
-  )
+  return <AppNavDrawer isNavMenuOpen={isNavMenuOpen} {...props} />
 }
 
 export default AppNavDrawerContainer

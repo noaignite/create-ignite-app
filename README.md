@@ -52,6 +52,7 @@ my-app
     ├── blocks
     ├── components
     ├── containers
+    ├── context
     ├── pages
     ├── utils
     └── pages.stories.js
@@ -61,15 +62,25 @@ The philosophy behind some of this structure can be read below.
 
 ### src/api
 
-This is a good place to add App-level providers that should be accessible from all corners of the application. Providers added here should be exported in the api directory's common export file(s). Accessing data or helpers from these providers can look like this `import { useI18n } from '~/api'`.
+Home to data fetching helpers as well as mock data.
 
 ```
 src/api
 ├── __mock__ (Mock data used for Storybook)
-├── CheckoutContext (Checkout-API data & helpers)
-├── I18nContext (Internalization data & helpers)
-├── SettingsContext (CMS data or other global settings)
 ├── storybook.index.js
+├── index.js
+```
+
+### src/context
+
+This is a good place to add App-level providers that should be accessible from all corners of the application. Providers added here should be exported in the context directory's common export file(s). Accessing data or helpers from these providers can look like this `import { useCms } from '~/context'`.
+
+```
+src/context
+├── centra (Centra data & helpers)
+├── cms (CMS data)
+├── global (Global data & helpers)
+├── i18n (Internalization data & helpers)
 ├── index.js
 └── ...
 ```

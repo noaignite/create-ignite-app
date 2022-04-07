@@ -5,10 +5,9 @@ import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
 import { styled } from '@mui/system'
 import { Button, CircularProgress, Drawer, IconButton, Toolbar, Typography } from '@mui/material'
-import { useI18n } from '~/api'
+import { useGlobalHandlers, useGlobalState, useI18n } from '~/context'
 import { Cart as CartIcon, Close as CloseIcon } from '~/components/icons'
 import RouterLink from '../../RouterLink'
-import { useApp } from '../AppContext'
 
 const Cart = dynamic(() => import(/* webpackChunkName: "containers/Cart" */ '~/containers/Cart'), {
   loading: () => <CircularProgress size={24} style={{ margin: '100px auto' }} />,
@@ -39,8 +38,9 @@ const AppCartDrawerScrollContainer = styled('div', {
 }))
 
 const AppCartDrawer = React.memo(function AppCartDrawer(props) {
-  const { isCartMenuOpen, onCartMenuClose, ...other } = props
+  const { isCartMenuOpen, ...other } = props
 
+  const { onCartMenuClose } = useGlobalHandlers()
   const { t } = useI18n()
 
   const [isVisible, setIsVisible] = React.useState(isCartMenuOpen) // Used to dynamically load the Cart.
@@ -91,15 +91,12 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
 
 AppCartDrawer.propTypes = {
   isCartMenuOpen: PropTypes.bool,
-  onCartMenuClose: PropTypes.func,
 }
 
 function AppCartDrawerContainer(props) {
-  const { isCartMenuOpen, onCartMenuClose } = useApp()
+  const { isCartMenuOpen } = useGlobalState()
 
-  return (
-    <AppCartDrawer isCartMenuOpen={isCartMenuOpen} onCartMenuClose={onCartMenuClose} {...props} />
-  )
+  return <AppCartDrawer isCartMenuOpen={isCartMenuOpen} {...props} />
 }
 
 export default AppCartDrawerContainer

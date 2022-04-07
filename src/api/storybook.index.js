@@ -1,9 +1,6 @@
+/* eslint-disable import/prefer-default-export */
 import { sleep } from '@noaignite/utils'
-import { filter, products } from './__mock__'
-
-export * from './CheckoutContext'
-export * from './I18nContext'
-export * from './SettingsContext'
+import { filter, products } from '~/api/__mock__'
 
 export async function fetchProducts(query) {
   await sleep(500)

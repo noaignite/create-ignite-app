@@ -5,9 +5,8 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import { styled } from '@mui/system'
 import { Drawer, IconButton, TextField } from '@mui/material'
-import { useI18n } from '~/api'
+import { useGlobalHandlers, useGlobalState, useI18n } from '~/context'
 import { Search as SearchIcon } from '~/components/icons'
-import { useApp } from '../AppContext'
 
 const AppCartDrawerRoot = styled(Drawer, {
   name: 'AppCartDrawer',
@@ -30,8 +29,9 @@ const AppCartDrawerForm = styled('form', {
 }))
 
 const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
-  const { isSearchMenuOpen, onSearchMenuClose, ...other } = props
+  const { isSearchMenuOpen, ...other } = props
 
+  const { onSearchMenuClose } = useGlobalHandlers()
   const { t } = useI18n()
 
   const valueRef = React.useRef('')
@@ -93,19 +93,12 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
 
 AppSearchDrawer.propTypes = {
   isSearchMenuOpen: PropTypes.bool,
-  onSearchMenuClose: PropTypes.func,
 }
 
 function AppSearchDrawerContainer(props) {
-  const { isSearchMenuOpen, onSearchMenuClose } = useApp()
+  const { isSearchMenuOpen } = useGlobalState()
 
-  return (
-    <AppSearchDrawer
-      isSearchMenuOpen={isSearchMenuOpen}
-      onSearchMenuClose={onSearchMenuClose}
-      {...props}
-    />
-  )
+  return <AppSearchDrawer isSearchMenuOpen={isSearchMenuOpen} {...props} />
 }
 
 export default AppSearchDrawerContainer

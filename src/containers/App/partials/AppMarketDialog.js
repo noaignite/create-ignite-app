@@ -13,19 +13,25 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material'
-import { useCheckoutHandlers, useCheckoutSelection, useI18n } from '~/api'
+import {
+  useCentraHandlers,
+  useCentraSelection,
+  useGlobalHandlers,
+  useGlobalState,
+  useI18n,
+} from '~/context'
 import { Close as CloseIcon } from '~/components/icons'
-import { useApp } from '../AppContext'
 
 const TransitionComponent = React.forwardRef(function TransitionComponent(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
 })
 
 const AppMarketDialog = React.memo(function AppMarketDialog(props) {
-  const { isMarketMenuOpen, onMarketMenuClose, ...other } = props
+  const { isMarketMenuOpen, ...other } = props
 
-  const { updateCountry, updateLanguage } = useCheckoutHandlers()
-  const { location, countries, languages } = useCheckoutSelection()
+  const { onMarketMenuClose } = useGlobalHandlers()
+  const { updateCountry, updateLanguage } = useCentraHandlers()
+  const { location, countries, languages } = useCentraSelection()
   const { t } = useI18n()
 
   const isBreakpointUp = useMediaQuery((theme) => theme.breakpoints.up('sm'))
@@ -119,19 +125,12 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
 
 AppMarketDialog.propTypes = {
   isMarketMenuOpen: PropTypes.bool,
-  onMarketMenuClose: PropTypes.func,
 }
 
 function AppMarketDialogContainer(props) {
-  const { isMarketMenuOpen, onMarketMenuClose } = useApp()
+  const { isMarketMenuOpen } = useGlobalState()
 
-  return (
-    <AppMarketDialog
-      isMarketMenuOpen={isMarketMenuOpen}
-      onMarketMenuClose={onMarketMenuClose}
-      {...props}
-    />
-  )
+  return <AppMarketDialog isMarketMenuOpen={isMarketMenuOpen} {...props} />
 }
 
 export default AppMarketDialogContainer
