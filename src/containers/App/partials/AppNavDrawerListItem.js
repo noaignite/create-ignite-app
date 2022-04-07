@@ -2,8 +2,8 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Collapse, Link } from '@mui/material'
-import { menuLinkType } from 'utils'
-import { Add as AddIcon, Remove as RemoveIcon } from 'components/icons'
+import { menuLinkType } from '~/utils'
+import { Add as AddIcon, Remove as RemoveIcon } from '~/components/icons'
 import RouterLink from '../../RouterLink'
 
 const AppNavDrawerListItemItem = styled('li', {

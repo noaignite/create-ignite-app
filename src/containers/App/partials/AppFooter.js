@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { styled } from '@mui/system'
 import { Container, Link } from '@mui/material'
-import { useSettings } from 'api'
+import { useSettings } from '~/api'
 import RouterLink from '../../RouterLink'
 
 const AppFooterRoot = styled('footer', {

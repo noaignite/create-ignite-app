@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { styled } from '@mui/system'
 import { Button } from '@mui/material'
-import { useI18n } from 'api'
+import { useI18n } from '~/api'
 
 export const AppSkipLinkRoot = styled(Button, {
   name: 'AppSkipLink',

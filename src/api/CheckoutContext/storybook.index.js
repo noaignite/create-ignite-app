@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import actionWithPromise from 'api/utils/actionWithPromise'
+import actionWithPromise from '../utils/actionWithPromise'
 import {
   cartSelection,
   countries,
@@ -9,7 +9,7 @@ import {
   orders,
   paymentMethods,
   shippingMethods,
-} from 'api/__mock__'
+} from '../__mock__'
 
 export const CheckoutHandlersContext = React.createContext({})
 export const CheckoutSelectionContext = React.createContext({})

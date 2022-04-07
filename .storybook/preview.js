@@ -2,11 +2,11 @@ import '../scripts/polyfills'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
-import { settings } from 'api/__mock__'
-import { CheckoutProvider, I18nProvider, SettingsProvider } from 'api'
-import { AppProvider } from 'containers/App/AppContext'
-import { createTheme } from 'components/styles'
-import breakpoints from 'components/styles/breakpoints'
+import { settings } from '~/api/__mock__'
+import { CheckoutProvider, I18nProvider, SettingsProvider } from '~/api'
+import { AppProvider } from '~/containers/App/AppContext'
+import { createTheme } from '~/components/styles'
+import breakpoints from '~/components/styles/breakpoints'
 
 const breakpointValues = {
   ...breakpoints.values,

@@ -1,7 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
-import { debounce } from '@mui/material/utils'
 
 const AppHandlersContext = React.createContext({})
 const AppContext = React.createContext({})
@@ -19,7 +18,6 @@ export function useApp() {
   return React.useContext(AppContext)
 }
 
-const CLOSE_MENUS_ON_RESIZE = true
 const COOKIE_CONSENT_ID = 'cookie-consent'
 const COOKIE_BAR_ENTER_DELAY = 2000
 
@@ -43,12 +41,6 @@ export function AppProvider(props) {
   // Mount hook
 
   React.useEffect(() => {
-    const handleResize = debounce(() => {
-      if (CLOSE_MENUS_ON_RESIZE) {
-        closeAllMenus()
-      }
-    })
-
     const handleRouteChangeStart = () => {
       closeAllMenus()
     }
@@ -59,12 +51,8 @@ export function AppProvider(props) {
       }, COOKIE_BAR_ENTER_DELAY)
     }
 
-    window.addEventListener('resize', handleResize)
     Router.events.on('routeChangeStart', handleRouteChangeStart)
-
     return () => {
-      handleResize.clear()
-      window.removeEventListener('resize', handleResize)
       Router.events.off('routeChangeStart', handleRouteChangeStart)
     }
   }, [])

@@ -4,9 +4,9 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { styled } from '@mui/system'
 import { Button, Typography } from '@mui/material'
 import { Media, MediaReveal } from '@noaignite/oui'
-import { useI18n } from 'api'
-import { ASPECT_RATIOS } from 'utils/constants'
-import { RouterLink } from 'containers'
+import { useI18n } from '~/api'
+import { ASPECT_RATIOS } from '~/utils/constants'
+import { RouterLink } from '~/containers'
 
 const ArticleSlideshowRoot = styled('section', {
   name: 'ArticleSlideshow',

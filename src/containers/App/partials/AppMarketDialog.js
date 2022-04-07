@@ -13,8 +13,8 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material'
-import { useCheckoutHandlers, useCheckoutSelection, useI18n } from 'api'
-import { Close as CloseIcon } from 'components/icons'
+import { useCheckoutHandlers, useCheckoutSelection, useI18n } from '~/api'
+import { Close as CloseIcon } from '~/components/icons'
 import { useApp } from '../AppContext'
 
 const TransitionComponent = React.forwardRef(function TransitionComponent(props, ref) {
