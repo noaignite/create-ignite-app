@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { blocks } from 'api/__mock__'
+import { blocks } from '~/api/__mock__'
 import Hero from './Hero'
 
 export default {

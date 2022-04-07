@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Container } from '@mui/material'
-import { Html } from 'components'
+import { Html } from '~/components'
 
 const ContentRoot = styled('section', {
   name: 'Content',

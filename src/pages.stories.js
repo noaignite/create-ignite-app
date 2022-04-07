@@ -1,7 +1,7 @@
-const { pages } = require('api/__mock__')
-const { createRenderBlock } = require('utils')
-const blockVariants = require('blocks')
-const { App } = require('containers')
+const { pages } = require('~/api/__mock__')
+const { createRenderBlock } = require('~/utils')
+const blockVariants = require('~/blocks')
+const { App } = require('~/containers')
 
 const renderBlock = createRenderBlock(blockVariants)
 

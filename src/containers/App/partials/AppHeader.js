@@ -5,15 +5,15 @@ import PropTypes from 'prop-types'
 import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
-import { useCheckoutSelection, useI18n } from 'api'
-import { useDimensions } from 'utils'
+import { useCheckoutSelection, useI18n } from '~/api'
+import { useDimensions } from '~/utils'
 import {
   Brand as BrandIcon,
   Cart as CartIcon,
   Search as SearchIcon,
   Close as CloseIcon,
   Menu as MenuIcon,
-} from 'components/icons'
+} from '~/components/icons'
 import RouterLink from '../../RouterLink'
 import { useApp } from '../AppContext'
 

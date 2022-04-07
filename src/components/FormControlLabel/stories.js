@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Checkbox, FormControlLabel, Radio } from '@mui/material'
-import storySelectArgType from 'utils/storySelectArgType'
+import storySelectArgType from '~/utils/storySelectArgType'
 
 export default {
   title: 'Components/FormControlLabel',

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Button, Typography } from '@mui/material'
 import { Media, MediaReveal } from '@noaignite/oui'
-import { RouterLink } from 'containers'
+import { RouterLink } from '~/containers'
 
 const HeroRoot = styled('section', {
   name: 'Hero',

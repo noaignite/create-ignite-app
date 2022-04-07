@@ -2,8 +2,8 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Typography } from '@mui/material'
-import { useCheckoutSelection, useI18n } from 'api'
-import { cartItemType } from 'utils'
+import { useCheckoutSelection, useI18n } from '~/api'
+import { cartItemType } from '~/utils'
 
 const CartSummaryRoot = styled('div', {
   name: 'CartSummary',

@@ -1,22 +1,19 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import dynamic from 'next/dynamic'
 import { styled } from '@mui/system'
-import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from 'utils/constants'
+import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from '~/utils/constants'
 import AppContext from './AppContext'
-import AppCartDrawer from './partials/AppCartDrawer'
-import AppFooter from './partials/AppFooter'
-import AppHeader from './partials/AppHeader'
-import AppLoader from './partials/AppLoader'
-import AppMarketDialog from './partials/AppMarketDialog'
-import AppNavDrawer from './partials/AppNavDrawer'
-import AppSearchDrawer from './partials/AppSearchDrawer'
-import AppSkipLink from './partials/AppSkipLink'
-
-const AppCookieBar = dynamic(
-  () => import(/* webpackChunkName: "AppCookieBar" */ './partials/AppCookieBar'),
-  { ssr: false },
-)
+import {
+  AppCookieBar,
+  AppCartDrawer,
+  AppFooter,
+  AppHeader,
+  AppLoader,
+  AppMarketDialog,
+  AppNavDrawer,
+  AppSearchDrawer,
+  AppSkipLink,
+} from './partials'
 
 const AppRoot = styled('div', {
   name: 'App',

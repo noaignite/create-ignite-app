@@ -5,12 +5,12 @@ import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
 import { styled } from '@mui/system'
 import { Button, CircularProgress, Drawer, IconButton, Toolbar, Typography } from '@mui/material'
-import { useI18n } from 'api'
-import { Cart as CartIcon, Close as CloseIcon } from 'components/icons'
+import { useI18n } from '~/api'
+import { Cart as CartIcon, Close as CloseIcon } from '~/components/icons'
 import RouterLink from '../../RouterLink'
 import { useApp } from '../AppContext'
 
-const Cart = dynamic(() => import(/* webpackChunkName: "containers/Cart" */ 'containers/Cart'), {
+const Cart = dynamic(() => import(/* webpackChunkName: "containers/Cart" */ '~/containers/Cart'), {
   loading: () => <CircularProgress size={24} style={{ margin: '100px auto' }} />,
   ssr: false,
 })
