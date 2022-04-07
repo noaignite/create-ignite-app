@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { useI18n } from '../I18nContext'
+import { useI18n } from '~/context'
 
 export const SettingsContext = React.createContext({})
 

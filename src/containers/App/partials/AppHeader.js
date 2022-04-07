@@ -5,7 +5,8 @@ import PropTypes from 'prop-types'
 import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
-import { useCheckoutSelection, useI18n } from '~/api'
+import { useCheckoutSelection } from '~/api'
+import { useI18n } from '~/context'
 import { useDimensions } from '~/utils'
 import {
   Brand as BrandIcon,

@@ -13,7 +13,8 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material'
-import { useCheckoutHandlers, useCheckoutSelection, useI18n } from '~/api'
+import { useCheckoutHandlers, useCheckoutSelection } from '~/api'
+import { useI18n } from '~/context'
 import { Close as CloseIcon } from '~/components/icons'
 import { useApp } from '../AppContext'
 
