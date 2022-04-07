@@ -2,11 +2,11 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
+import useSize from '@react-hook/size'
 import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
 import { useCheckoutSelection, useI18n } from '~/api'
-import { useDimensions } from '~/utils'
 import {
   Brand as BrandIcon,
   Cart as CartIcon,
@@ -86,7 +86,9 @@ const AppHeader = React.memo(function AppHeader(props) {
   } = props
 
   const { t } = useI18n()
-  const [rootRef, dimensions] = useDimensions()
+
+  const rootRef = React.useRef(null)
+  const [, rootHeight] = useSize(rootRef)
 
   const [disableTransparency, setDisableTransparency] = React.useState(undefined)
   const syncDisableTransparency = React.useCallback(() => {
@@ -137,9 +139,9 @@ const AppHeader = React.memo(function AppHeader(props) {
         dangerouslySetInnerHTML={{
           __html: `
           :root {
-            --cia-header-height: ${dimensions.height}px;
-            --cia-initial-sticky-top: ${headerMode === 'opaque' ? dimensions.height : 0}px;
-            --cia-sticky-top: ${headerMode !== 'transparent' ? dimensions.height : 0}px;
+            --cia-header-height: ${rootHeight}px;
+            --cia-initial-sticky-top: ${headerMode === 'opaque' ? rootHeight : 0}px;
+            --cia-sticky-top: ${headerMode !== 'transparent' ? rootHeight : 0}px;
           }
         `,
         }}
