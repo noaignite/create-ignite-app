@@ -4,7 +4,13 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Drawer, IconButton, Link, Toolbar, Typography } from '@mui/material'
-import { useCentraSelection, useCms, useGlobalHandlers, useGlobalState, useI18n } from '~/context'
+import {
+  useCentraSelection,
+  useGlobalHandlers,
+  useGlobalState,
+  useI18n,
+  useRemoteConfig,
+} from '~/context'
 import { Close as CloseIcon } from '~/components/icons'
 import AppNavDrawerListItem from './AppNavDrawerListItem'
 
@@ -44,7 +50,7 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
   const { isNavMenuOpen, ...other } = props
 
   const { location, selection } = useCentraSelection()
-  const { menus } = useCms()
+  const { menus } = useRemoteConfig()
   const { onMarketMenuToggle, onNavMenuClose } = useGlobalHandlers()
   const { t } = useI18n()
 

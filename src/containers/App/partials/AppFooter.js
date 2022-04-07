@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { styled } from '@mui/system'
 import { Container, Link } from '@mui/material'
-import { useCms } from '~/context'
+import { useRemoteConfig } from '~/context'
 import RouterLink from '../../RouterLink'
 
 const AppFooterRoot = styled('footer', {
@@ -36,7 +36,7 @@ const AppFooterNav = styled('nav', {
 }))
 
 const AppFooter = React.memo(function AppFooter(props) {
-  const { menus, storeMessage } = useCms()
+  const { menus, storeMessage } = useRemoteConfig()
 
   return (
     <React.Fragment>

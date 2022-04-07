@@ -7,8 +7,8 @@ import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
-import { settings as mockedCmsProps } from '~/api/__mock__'
-import { CentraProvider, CmsProvider, GlobalProvider, I18nProvider } from '~/context'
+import { settings as remoteConfig } from '~/api/__mock__'
+import { CentraProvider, GlobalProvider, I18nProvider, RemoteConfigProvider } from '~/context'
 import createEmotionCache from '~/utils/createEmotionCache'
 import theme from '~/utils/theme.light'
 import AppBase from '~/containers/App'
@@ -40,7 +40,7 @@ function App(props) {
         <CssBaseline />
 
         <I18nProvider defaultLocale={defaultLocale} locale={locale}>
-          <CmsProvider {...cmsProps}>
+          <RemoteConfigProvider {...cmsProps}>
             <CentraProvider>
               <GlobalProvider>
                 <AppBase
@@ -53,7 +53,7 @@ function App(props) {
                 </AppBase>
               </GlobalProvider>
             </CentraProvider>
-          </CmsProvider>
+          </RemoteConfigProvider>
         </I18nProvider>
       </ThemeProvider>
     </CacheProvider>
@@ -65,8 +65,8 @@ App.getInitialProps = async (props) => {
 
   let cmsProps = {}
   if (ctx.req) {
-    // @todo - Replace `mockedCmsProps` with cms fetch
-    cmsProps = mockedCmsProps
+    // @todo - Replace `remoteConfig` with cms fetch
+    cmsProps = remoteConfig
   }
 
   let pageProps = {}

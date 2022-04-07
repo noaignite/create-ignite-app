@@ -2,8 +2,8 @@ import '../scripts/polyfills'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
-import { settings } from '~/api/__mock__'
-import { CentraProvider, CmsProvider, GlobalProvider, I18nProvider } from '~/context'
+import { settings as remoteConfig } from '~/api/__mock__'
+import { CentraProvider, GlobalProvider, I18nProvider, RemoteConfigProvider } from '~/context'
 import { createTheme } from '~/components/styles'
 import breakpoints from '~/components/styles/breakpoints'
 
@@ -64,13 +64,13 @@ export const decorators = [
           <CssBaseline />
 
           <I18nProvider>
-            <CmsProvider {...settings}>
+            <RemoteConfigProvider {...remoteConfig}>
               <CentraProvider>
                 <GlobalProvider>
                   <Story />
                 </GlobalProvider>
               </CentraProvider>
-            </CmsProvider>
+            </RemoteConfigProvider>
           </I18nProvider>
         </ThemeProvider>
       </EmotionThemeProvider>
