@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
 
-const menuLinkShape = {
+const menuItemShape = {
   label: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 }
 
-const menuLinkType = PropTypes.shape(menuLinkShape)
+const menuItemType = PropTypes.shape(menuItemShape)
 
 // Creates recursive type checking of the property.
-menuLinkShape.links = PropTypes.arrayOf(menuLinkType)
+menuItemShape.links = PropTypes.arrayOf(menuItemType)
 
-export default menuLinkType
+export default menuItemType

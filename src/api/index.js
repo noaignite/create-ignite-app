@@ -1,2 +1,3 @@
-/* eslint-disable import/prefer-default-export */
+export * from './utils'
+
 export { fetchProducts } from './storybook.index'
