@@ -1,7 +1,10 @@
 import { sleep } from '@noaignite/utils'
-import { filter, products } from './__mock__'
+import { filter, products } from '~/api/__mock__'
 
-export * from './CheckoutContext'
+export * from './Centra'
+export * from './Cms'
+export * from './Global'
+export * from './I18n'
 
 export async function fetchProducts(query) {
   await sleep(500)

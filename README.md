@@ -61,14 +61,21 @@ The philosophy behind some of this structure can be read below.
 
 ### src/api
 
-This is a good place to add App-level providers that should be accessible from all corners of the application. Providers added here should be exported in the api directory's common export file(s). Accessing data or helpers from these providers can look like this `import { useCms } from '~/api'`.
-
 ```
 src/api
 ├── __mock__ (Mock data used for Storybook)
-├── CheckoutContext (Checkout-API data & helpers)
-├── I18nContext (Internalization data & helpers)
-├── SettingsContext (CMS data or other global settings)
+```
+
+### src/context
+
+This is a good place to add App-level providers that should be accessible from all corners of the application. Providers added here should be exported in the api directory's common export file(s). Accessing data or helpers from these providers can look like this `import { useCms } from '~/context'`.
+
+```
+src/context
+├── Centra (Centra data & helpers)
+├── Cms (CMS data)
+├── Global (Global state & helpers)
+├── I18n (Internalization data & helpers)
 ├── storybook.index.js
 ├── index.js
 └── ...

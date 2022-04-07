@@ -5,8 +5,7 @@ import PropTypes from 'prop-types'
 import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
-import { useCheckoutSelection } from '~/api'
-import { useGlobalHandlers, useGlobalState, useI18n } from '~/context'
+import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/context'
 import { useDimensions } from '~/utils'
 import {
   Brand as BrandIcon,
@@ -210,7 +209,7 @@ function AppHeaderContainer(props) {
   const { isCartMenuOpen, isNavMenuOpen, isSearchMenuOpen, isSomeMenuOpen } = useGlobalState()
   const {
     selection: { items },
-  } = useCheckoutSelection()
+  } = useCentraSelection()
 
   return (
     <AppHeader

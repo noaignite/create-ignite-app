@@ -2,8 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Typography } from '@mui/material'
-import { useCheckoutSelection } from '~/api'
-import { useI18n } from '~/context'
+import { useCentraSelection, useI18n } from '~/context'
 import { cartItemType } from '~/utils'
 
 const CartSummaryRoot = styled('div', {
@@ -77,7 +76,7 @@ CartSummary.propTypes = {
 function CartSummaryContainer(props) {
   const {
     selection: { items, totals },
-  } = useCheckoutSelection()
+  } = useCentraSelection()
 
   return <CartSummary items={items} totals={totals} {...props} />
 }

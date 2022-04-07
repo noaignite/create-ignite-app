@@ -3,8 +3,7 @@ import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { settings } from '~/api/__mock__'
-import { CheckoutProvider } from '~/api'
-import { CmsProvider, GlobalProvider, I18nProvider } from '~/context'
+import { CentraProvider, CmsProvider, GlobalProvider, I18nProvider } from '~/context'
 import { createTheme } from '~/components/styles'
 import breakpoints from '~/components/styles/breakpoints'
 
@@ -66,11 +65,11 @@ export const decorators = [
 
           <I18nProvider>
             <CmsProvider {...settings}>
-              <CheckoutProvider>
+              <CentraProvider>
                 <GlobalProvider>
                   <Story />
                 </GlobalProvider>
-              </CheckoutProvider>
+              </CentraProvider>
             </CmsProvider>
           </I18nProvider>
         </ThemeProvider>

@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { ButtonBase, Link } from '@mui/material'
 import { Media, MediaReveal } from '@noaignite/oui'
-import { useCheckoutHandlers } from '~/api'
-import { useI18n } from '~/context'
+import { useCentraHandlers, useI18n } from '~/context'
 import { ASPECT_RATIOS, CENTRA_CART_ITEM_UNIQUE_KEY } from '~/utils/constants'
 import { cartItemType } from '~/utils'
 import { Add as AddIcon, Remove as RemoveIcon } from '~/components/icons'
@@ -73,7 +72,7 @@ function CartItem(props) {
   const { cartItem, disableActions } = props
   const { product } = cartItem
 
-  const { decreaseItem, increaseItem, removeItem } = useCheckoutHandlers()
+  const { decreaseItem, increaseItem, removeItem } = useCentraHandlers()
   const { t } = useI18n()
 
   const onItemDecrease = React.useCallback(

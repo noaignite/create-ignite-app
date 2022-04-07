@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import actionWithPromise from '../utils/actionWithPromise'
+import actionWithPromise from '~/utils/actionWithPromise'
 import {
   cartSelection,
   countries,
@@ -9,29 +9,29 @@ import {
   orders,
   paymentMethods,
   shippingMethods,
-} from '../__mock__'
+} from '~/api/__mock__'
 
-export const CheckoutHandlersContext = React.createContext({})
-export const CheckoutSelectionContext = React.createContext({})
+export const CentraSelectionContext = React.createContext({})
+export const CentraHandlersContext = React.createContext({})
 
 if (process.env.NODE_ENV !== 'production') {
-  CheckoutHandlersContext.displayName = 'CheckoutHandlersContext'
-  CheckoutSelectionContext.displayName = 'CheckoutSelectionContext'
+  CentraHandlersContext.displayName = 'CentraHandlersContext'
+  CentraSelectionContext.displayName = 'CentraSelectionContext'
 }
 
-export function useCheckoutHandlers() {
-  return React.useContext(CheckoutHandlersContext)
+export function useCentraHandlers() {
+  return React.useContext(CentraHandlersContext)
 }
 
-export function useCheckoutSelection() {
-  return React.useContext(CheckoutSelectionContext)
+export function useCentraSelection() {
+  return React.useContext(CentraSelectionContext)
 }
 
-export function useCheckoutOrders() {
+export function useCentraOrders() {
   return { orders }
 }
 
-export function useCheckoutReceipt() {
+export function useCentraReceipt() {
   return { order: orders[0] }
 }
 
@@ -67,7 +67,7 @@ const handlersContextValue = handlersInterface.reduce((acc, methodName) => {
   return acc
 }, {})
 
-export function CheckoutProvider(props) {
+export function CentraProvider(props) {
   const { children } = props
 
   const [selection, setSelection] = React.useState(cartSelection)
@@ -95,14 +95,14 @@ export function CheckoutProvider(props) {
   }
 
   return (
-    <CheckoutHandlersContext.Provider value={handlersContextValue}>
-      <CheckoutSelectionContext.Provider value={selectionContextValue}>
+    <CentraSelectionContext.Provider value={selectionContextValue}>
+      <CentraHandlersContext.Provider value={handlersContextValue}>
         {children}
-      </CheckoutSelectionContext.Provider>
-    </CheckoutHandlersContext.Provider>
+      </CentraHandlersContext.Provider>
+    </CentraSelectionContext.Provider>
   )
 }
 
-CheckoutProvider.propTypes = {
+CentraProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }

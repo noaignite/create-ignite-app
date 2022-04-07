@@ -8,8 +8,7 @@ import { CacheProvider } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
 import { settings as mockedCmsProps } from '~/api/__mock__'
-import { CheckoutProvider } from '~/api'
-import { CmsProvider, GlobalProvider, I18nProvider } from '~/context'
+import { CentraProvider, CmsProvider, GlobalProvider, I18nProvider } from '~/context'
 import createEmotionCache from '~/utils/createEmotionCache'
 import theme from '~/utils/theme.light'
 import AppBase from '~/containers/App'
@@ -42,7 +41,7 @@ function App(props) {
 
         <I18nProvider defaultLocale={defaultLocale} locale={locale}>
           <CmsProvider {...cmsProps}>
-            <CheckoutProvider>
+            <CentraProvider>
               <GlobalProvider>
                 <AppBase
                   disableFooter={pageProps?.disableFooter}
@@ -53,7 +52,7 @@ function App(props) {
                   <Component {...pageProps} />
                 </AppBase>
               </GlobalProvider>
-            </CheckoutProvider>
+            </CentraProvider>
           </CmsProvider>
         </I18nProvider>
       </ThemeProvider>
