@@ -43,6 +43,7 @@
     "@mui/lab": "^5.0.0-alpha.72",
     "@mui/material": "^5.6.0",
     "@noaignite/oui": "^3.3.0",
+    "@react-hook/size": "^2.1.2",
     "clsx": "^1.1.0",
     "embla-carousel-react": "^5.0.1",
     "es2015-i18n-tag": "^1.6.1",
