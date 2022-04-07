@@ -2,8 +2,8 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 
-export const AppHandlersContext = React.createContext({})
-export const AppContext = React.createContext({})
+const AppHandlersContext = React.createContext({})
+const AppContext = React.createContext({})
 
 if (process.env.NODE_ENV !== 'production') {
   AppHandlersContext.displayName = 'AppHandlersContext'
