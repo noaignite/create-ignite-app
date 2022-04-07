@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { useI18n } from '../_i18n'
+import { useI18n } from '../i18n'
 
 export const CmsContext = React.createContext({})
 
