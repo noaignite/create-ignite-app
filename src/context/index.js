@@ -1,7 +1,7 @@
-export * from './Centra'
-export * from './Cms'
-export * from './Global'
-export * from './I18n'
+export * from './_centra'
+export * from './_cms'
+export * from './_global'
+export * from './_i18n'
 
 /** @todo Replace mocked api calls with real implementation. */
 export { fetchProducts } from './storybook.index'
