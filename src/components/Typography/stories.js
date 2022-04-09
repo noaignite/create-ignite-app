@@ -84,7 +84,7 @@ export const Default = Template.bind({})
 Default.args = {
   align: 'inherit',
   color: 'initial',
-  display: 'initial',
+  display: 'block',
   gutterBottom: false,
   paragraph: false,
   noWrap: false,
