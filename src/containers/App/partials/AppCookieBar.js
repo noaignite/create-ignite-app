@@ -4,7 +4,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { IconButton, Snackbar, Typography } from '@mui/material'
-import { useI18n } from '~/context'
+import { useGlobalHandlers, useI18n } from '~/context'
 import { Close as CloseIcon } from '~/components/icons'
 
 const AppCookieBarRoot = styled(Snackbar, {
@@ -36,8 +36,10 @@ const AppCookieBarContent = styled('div', {
 }))
 
 const AppCookieBar = React.memo(function AppCookieBar(props) {
-  const { onClose, open, ...other } = props
+  const { open, ...other } = props
+
   const { t } = useI18n()
+  const { onCookieBarClose } = useGlobalHandlers()
 
   return (
     <AppCookieBarRoot
@@ -56,7 +58,7 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
         </Typography>
 
         <IconButton
-          onClick={onClose}
+          onClick={onCookieBarClose}
           color="inherit"
           edge="end"
           size="small"
@@ -70,8 +72,6 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
 })
 
 AppCookieBar.propTypes = {
-  className: PropTypes.string,
-  onClose: PropTypes.func,
   open: PropTypes.bool,
 }
 
