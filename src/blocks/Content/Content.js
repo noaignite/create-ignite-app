@@ -33,11 +33,11 @@ const ContentRoot = styled('section', {
 })
 
 function Content(props) {
-  const { children, content } = props
+  const { children, text } = props
 
   const componentProps = {}
-  if (content) {
-    componentProps.dangerouslySetInnerHTML = { __html: content }
+  if (text) {
+    componentProps.dangerouslySetInnerHTML = { __html: text }
   } else {
     componentProps.children = children
   }
@@ -53,7 +53,7 @@ function Content(props) {
 
 Content.propTypes = {
   children: PropTypes.node,
-  content: PropTypes.string,
+  text: PropTypes.string,
 }
 
 export default Content

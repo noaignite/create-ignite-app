@@ -68,7 +68,7 @@ const ArticleSlideshowArticleContent = styled('div', {
 }))
 
 function ArticleSlideshow(props) {
-  const { heading, items } = props
+  const { entries, heading } = props
 
   const { t } = useI18n()
 
@@ -90,7 +90,7 @@ function ArticleSlideshow(props) {
       <ArticleSlideshowMain>
         <div ref={emblaRef}>
           <ArticleSlideshowEmblaContainer>
-            {items?.map((item, idx) => (
+            {entries?.map((item, idx) => (
               <ArticleSlideshowEmblaSlide key={idx}>
                 <article>
                   {item.mediaProps && (
@@ -133,17 +133,17 @@ function ArticleSlideshow(props) {
   )
 }
 
-const itemType = PropTypes.shape({
+const entryType = PropTypes.shape({
+  excerpt: PropTypes.string,
+  heading: PropTypes.string,
   mediaProps: PropTypes.object,
   subheading: PropTypes.string,
-  heading: PropTypes.string,
-  excerpt: PropTypes.string,
   url: PropTypes.string,
 })
 
 ArticleSlideshow.propTypes = {
+  entries: PropTypes.arrayOf(entryType),
   heading: PropTypes.string,
-  items: PropTypes.arrayOf(itemType),
 }
 
 export default ArticleSlideshow

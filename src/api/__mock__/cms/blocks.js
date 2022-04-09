@@ -14,7 +14,7 @@ export default {
   },
   ArticleSlideshow: {
     heading: 'Generic Heading',
-    items: Array.from(new Array(6), () => ({
+    entries: Array.from(new Array(6), () => ({
       mediaProps: {
         component: 'img',
         src: '//source.unsplash.com/m1m2EZOZVwA',
@@ -35,7 +35,7 @@ export default {
     },
   },
   Content: {
-    content: `
+    text: `
       <h1>HTML Ipsum Presents</h1>
       <p>
         <strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames
