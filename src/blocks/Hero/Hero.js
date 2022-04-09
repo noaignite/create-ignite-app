@@ -15,7 +15,7 @@ const HeroRoot = styled('section', {
   alignItems: 'center',
   justifyContent: 'center',
   minHeight: 550,
-  color: theme.palette.getContrastText(theme.palette.text.primary),
+  color: theme.palette.common.white, // Use `common.white` as color is based on image not theme mode.
   textAlign: 'center',
   [theme.breakpoints.up('md')]: {
     minHeight: 650,
@@ -41,6 +41,15 @@ const HeroMain = styled('div', {
   ...theme.mixins.contain('sm'),
   paddingLeft: 'var(--cia-container-spacing)',
   paddingRight: 'var(--cia-container-spacing)',
+}))
+
+const HeroHeading = styled('h1', {
+  name: 'Hero',
+  slot: 'Heading',
+})(({ theme }) => ({
+  ...theme.typography.h3,
+  margin: 0,
+  fontSize: `max(${theme.typography.h3.fontSize}, 3.2vw)`,
 }))
 
 const HeroButton = styled(Button, {
@@ -78,9 +87,7 @@ function Hero(props) {
       )}
 
       <HeroMain>
-        <Typography component="h1" variant="h2">
-          {heading}
-        </Typography>
+        <HeroHeading>{heading}</HeroHeading>
 
         {excerpt && <Typography>{excerpt}</Typography>}
 
@@ -99,7 +106,7 @@ Hero.propTypes = {
   ctaLabel: PropTypes.string,
   ctaUrl: PropTypes.string,
   excerpt: PropTypes.string,
-  heading: PropTypes.string,
+  heading: PropTypes.string.isRequired,
   renderIndex: PropTypes.number.isRequired,
 }
 
