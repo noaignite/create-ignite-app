@@ -56,6 +56,9 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/plugin-transform-react-constant-elements": "^7.10.1",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@commitlint/cz-commitlint": "^16.2.3",
     "@emotion/babel-plugin": "^11.7.2",
     "@next/bundle-analyzer": "^12.1.4",
     "@noaignite/eslint-config": "^0.2.2",
@@ -64,12 +67,14 @@
     "@storybook/react": "^6.4.20",
     "babel-plugin-i18n-tag-translate": "^2.0.0",
     "babel-plugin-optimize-clsx": "^2.6.0",
+    "commitizen": "^4.2.4",
     "eslint": "^8.12.0",
     "eslint-config-next": "^12.1.4",
     "eslint-import-resolver-webpack": "^0.13.2",
     "husky": "^7.0.0",
     "lint-staged": "^12.3.2",
     "prettier": "^2.5.1",
+    "standard-version": "^9.3.2",
     "webpack-merge": "^5.2.0"
   },
   "engines": {
