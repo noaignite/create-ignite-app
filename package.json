@@ -13,6 +13,7 @@
     "url": "https://github.com/noaignite/create-ignite-app/issues"
   },
   "scripts": {
+    "release": "standard-version",
     "dev": "next",
     "build": "next build",
     "start": "next start",
