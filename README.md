@@ -28,6 +28,24 @@ yarn dev
 Then open http://localhost:3000/ to see your app in Next.js.
 When you’re ready to deploy your Next.js app to production, create a minified bundle with `yarn build`.
 
+## Creating a release
+
+When you're ready to release, simply run `yarn release`.
+
+This will do the following:
+
+1. Retrieve the current version of your repository by looking at `package.json`, falling back to the last git tag.
+2. Bump the version in `package.json` based on your commits.
+3. Generates a changelog based on your commits.
+4. Creates a new commit including your `package.json` and updated `CHANGELOG.md`.
+5. Creates a new git tag with the new version number.
+
+### First release
+
+To generate your changelog for your first release, simply do `yarn release --first-release`. This will tag a release without bumping the version.
+
+For more information check out the [standard-version documentation](https://github.com/conventional-changelog/standard-version/blob/master/README.md).
+
 ## Developing the App
 
 Inside the newly created directory, the initial project structure will look something like:
