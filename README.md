@@ -42,7 +42,7 @@ This will do the following:
 
 ### First release
 
-To generate your changelog for your first release, simply do `yarn release --first-release`. This will tag a release without bumping the version.
+To generate your changelog for your first release, simply do `yarn release --first-release --skip.changelog`. This will tag a release without bumping the version and without generating a changelog for all initial development commits.
 
 For more information check out the [standard-version documentation](https://github.com/conventional-changelog/standard-version/blob/master/README.md).
 
