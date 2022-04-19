@@ -41,7 +41,7 @@ function AppNavDrawerListItem(props) {
     setExpanded((prev) => !prev)
   }, [])
 
-  const submenu = menuLink.links
+  const submenu = menuLink.items
   const hasSubmenu = submenu?.length > 0
   const Icon = expanded ? RemoveIcon : AddIcon
 
