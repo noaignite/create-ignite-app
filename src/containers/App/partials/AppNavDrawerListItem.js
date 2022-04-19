@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Collapse, Link } from '@mui/material'
-import { menuLinkType } from '~/utils'
+import { menuItemType } from '~/api'
 import { Add as AddIcon, Remove as RemoveIcon } from '~/components/icons'
 import RouterLink from '../../RouterLink'
 
@@ -79,7 +79,7 @@ function AppNavDrawerListItem(props) {
 
 AppNavDrawerListItem.propTypes = {
   level: PropTypes.number,
-  menuLink: menuLinkType.isRequired,
+  menuLink: menuItemType.isRequired,
 }
 
 export default AppNavDrawerListItem
