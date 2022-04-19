@@ -16,28 +16,28 @@ export const menuPrimary = [
 
 export const menuSecondary = [
   {
+    items: subLinks,
     label: 'Clothing',
-    links: subLinks,
     url: '/clothing',
   },
   {
+    items: subLinks,
     label: 'Accessories',
-    links: subLinks,
     url: '/accessories',
   },
   {
+    items: subLinks,
     label: 'Shoes',
-    links: subLinks,
     url: '/shoes',
   },
   {
+    items: subLinks,
     label: 'Homewear',
-    links: subLinks,
     url: '/homewear',
   },
   {
+    items: subLinks,
     label: 'Skincare',
-    links: subLinks,
     url: '/skincare',
   },
 ]

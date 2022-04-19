@@ -62,7 +62,7 @@
     "@commitlint/cz-commitlint": "^16.2.3",
     "@emotion/babel-plugin": "^11.7.2",
     "@next/bundle-analyzer": "^12.1.4",
-    "@noaignite/eslint-config": "^0.2.2",
+    "@noaignite/eslint-config": "^0.4.0",
     "@storybook/addon-a11y": "^6.4.20",
     "@storybook/addon-essentials": "^6.4.20",
     "@storybook/react": "^6.4.20",

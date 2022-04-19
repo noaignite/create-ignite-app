@@ -12,26 +12,31 @@ const sizeType = PropTypes.shape({
   stock: PropTypes.string.isRequired,
 })
 
-const swatchType = PropTypes.shape({
-  color: PropTypes.string.isRequired,
-  href: PropTypes.string,
-  item: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  uri: PropTypes.string.isRequired,
-})
-
-const productType = PropTypes.shape({
+const productShape = {
+  description: PropTypes.string,
+  descriptionHtml: PropTypes.string,
+  discountPercent: PropTypes.number,
   excerpt: PropTypes.string,
-  href: PropTypes.string,
-  inStock: PropTypes.bool,
-  items: PropTypes.arrayOf(sizeType).isRequired,
-  media: mediaType.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  excerptHtml: PropTypes.string,
+  items: PropTypes.arrayOf(sizeType),
+  media: mediaType,
+  name: PropTypes.string,
+  price: PropTypes.string,
+  priceAsNumber: PropTypes.number,
   priceBeforeDiscount: PropTypes.string,
-  swatches: PropTypes.arrayOf(swatchType).isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string),
-  uri: PropTypes.string.isRequired,
-})
+  priceBeforeDiscountAsNumber: PropTypes.number,
+  sku: PropTypes.string,
+  swatchColor: PropTypes.string,
+  swatchImage: PropTypes.string,
+  swatchName: PropTypes.string,
+  uri: PropTypes.string,
+  variantName: PropTypes.string,
+}
+
+const productType = PropTypes.shape(productShape)
+
+// Creates recursive type checking of the properties.
+productType.relatedProducts = PropTypes.arrayOf(productShape)
+productType.relatedVariantProducts = PropTypes.arrayOf(productShape)
 
 export default productType
