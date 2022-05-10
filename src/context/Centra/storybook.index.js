@@ -5,14 +5,14 @@ import {
   cartSelection,
   countries,
   languages,
-  location,
+  location as cartLocation,
   orders,
   paymentMethods,
   shippingMethods,
 } from '~/api/__mock__'
 
-export const CentraSelectionContext = React.createContext({})
 export const CentraHandlersContext = React.createContext({})
+export const CentraSelectionContext = React.createContext({})
 
 if (process.env.NODE_ENV !== 'production') {
   CentraHandlersContext.displayName = 'CentraHandlersContext'
@@ -50,12 +50,14 @@ const handlersInterface = [
   'resetCustomerPasswordEmail',
   'submitPayment',
   'updateCountry',
+  'updateCountryState',
   'updateCustomerAddress',
   'updateCustomerEmail',
   'updateCustomerPassword',
   'updateItemQuantity',
   'updateItemSize',
   'updateLanguage',
+  'updatePaymentFields',
   'updatePaymentMethod',
   'updateShippingMethod',
 ]
@@ -70,7 +72,26 @@ const handlersContextValue = handlersInterface.reduce((acc, methodName) => {
 export function CentraProvider(props) {
   const { children } = props
 
+  const [location, setLocation] = React.useState(cartLocation)
   const [selection, setSelection] = React.useState(cartSelection)
+
+  // Override handler with state setter for a more complete Storybook UI flow.
+  handlersContextValue.updateCountry = React.useCallback(async (country) => {
+    await actionWithPromise('updateCountry')(country)
+    setLocation((prev) => ({ ...prev, country }))
+  }, [])
+
+  // Override handler with state setter for a more complete Storybook UI flow.
+  handlersContextValue.updateCountryState = React.useCallback(async (country, state) => {
+    await actionWithPromise('updateCountryState')(country, state)
+    setLocation((prev) => ({ ...prev, country, state }))
+  }, [])
+
+  // Override handler with state setter for a more complete Storybook UI flow.
+  handlersContextValue.updatePaymentFields = React.useCallback(async (values) => {
+    await actionWithPromise('updatePaymentFields')(values)
+    setSelection((prev) => ({ ...prev, ...values }))
+  }, [])
 
   // Override handler with state setter for a more complete Storybook UI flow.
   handlersContextValue.updatePaymentMethod = React.useCallback(async (paymentMethod) => {
@@ -95,11 +116,11 @@ export function CentraProvider(props) {
   }
 
   return (
-    <CentraSelectionContext.Provider value={selectionContextValue}>
-      <CentraHandlersContext.Provider value={handlersContextValue}>
+    <CentraHandlersContext.Provider value={handlersContextValue}>
+      <CentraSelectionContext.Provider value={selectionContextValue}>
         {children}
-      </CentraHandlersContext.Provider>
-    </CentraSelectionContext.Provider>
+      </CentraSelectionContext.Provider>
+    </CentraHandlersContext.Provider>
   )
 }
 

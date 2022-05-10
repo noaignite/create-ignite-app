@@ -12,7 +12,7 @@ export function useI18n() {
   return React.useContext(I18nContext)
 }
 
-export function I18nProvider(props) {
+function I18nProvider(props) {
   const { children, defaultLocale = 'en', locale } = props
 
   let translations
@@ -49,3 +49,5 @@ I18nProvider.propTypes = {
   defaultLocale: PropTypes.string,
   locale: PropTypes.string,
 }
+
+export default I18nProvider

@@ -21,7 +21,7 @@ export function useGlobalHandlers() {
 const COOKIE_CONSENT_ID = 'cookie-consent'
 const COOKIE_BAR_ENTER_DELAY = 2000
 
-export function GlobalProvider(props) {
+function GlobalProvider(props) {
   const { children } = props
 
   const [isCartMenuOpen, setCartMenuOpen] = React.useState(false)
@@ -152,3 +152,5 @@ export function GlobalProvider(props) {
 GlobalProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }
+
+export default GlobalProvider

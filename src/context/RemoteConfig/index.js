@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { useI18n } from '../i18n'
+import { useI18n } from '../I18n'
 
 export const RemoteConfigContext = React.createContext({})
 
@@ -12,7 +12,7 @@ export function useRemoteConfig() {
   return React.useContext(RemoteConfigContext)
 }
 
-export function RemoteConfigProvider(props) {
+function RemoteConfigProvider(props) {
   const { children, ...other } = props
 
   const { locale } = useI18n()
@@ -28,3 +28,5 @@ export function RemoteConfigProvider(props) {
 RemoteConfigProvider.propTypes = {
   children: PropTypes.node.isRequired,
 }
+
+export default RemoteConfigProvider
