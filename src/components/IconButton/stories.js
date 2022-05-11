@@ -1,14 +1,22 @@
 import * as React from 'react'
 import { IconButton } from '@mui/material'
-import storySelectArgType from '~/utils/storySelectArgType'
 
 export default {
   title: 'Components/IconButton',
   component: IconButton,
   argTypes: {
-    color: storySelectArgType(['default', 'inherit', 'primary', 'secondary']),
-    edge: storySelectArgType(['start', 'end', false]),
-    size: storySelectArgType(['small', 'medium', 'large']),
+    color: {
+      control: 'select',
+      options: ['default', 'inherit', 'primary', 'secondary'],
+    },
+    edge: {
+      control: 'select',
+      options: ['start', 'end', false],
+    },
+    size: {
+      control: 'select',
+      options: ['small', 'medium', 'large'],
+    },
   },
 }
 

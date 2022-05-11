@@ -1,24 +1,32 @@
 import * as React from 'react'
 import { Button } from '@mui/material'
-import storySelectArgType from '~/utils/storySelectArgType'
 
 export default {
   title: 'Components/Button',
   component: Button,
   argTypes: {
-    color: storySelectArgType([
-      'inherit',
-      'text',
-      'textInverted',
-      'primary',
-      'secondary',
-      'success',
-      'error',
-      'info',
-      'warning',
-    ]),
-    size: storySelectArgType(['small', 'medium', 'large']),
-    variant: storySelectArgType(['text', 'outlined', 'contained']),
+    color: {
+      control: 'select',
+      options: [
+        'inherit',
+        'text',
+        'textInverted',
+        'primary',
+        'secondary',
+        'success',
+        'error',
+        'info',
+        'warning',
+      ],
+    },
+    size: {
+      control: 'select',
+      options: ['small', 'medium', 'large'],
+    },
+    variant: {
+      control: 'select',
+      options: ['text', 'outlined', 'contained'],
+    },
   },
 }
 

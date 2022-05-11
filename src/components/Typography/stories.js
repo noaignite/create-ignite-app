@@ -1,22 +1,30 @@
 import * as React from 'react'
 import { Typography } from '@mui/material'
-import storySelectArgType from '~/utils/storySelectArgType'
 
 export default {
   title: 'Common/Typography',
   component: Typography,
   argTypes: {
-    align: storySelectArgType(['inherit', 'left', 'center', 'right', 'justify']),
-    color: storySelectArgType([
-      'initial',
-      'error',
-      'inherit',
-      'primary',
-      'secondary',
-      'textPrimary',
-      'textSecondary',
-    ]),
-    display: storySelectArgType(['initial', 'block', 'inline']),
+    align: {
+      control: 'select',
+      options: ['inherit', 'left', 'center', 'right', 'justify'],
+    },
+    color: {
+      control: 'select',
+      options: [
+        'initial',
+        'error',
+        'inherit',
+        'primary',
+        'secondary',
+        'textPrimary',
+        'textSecondary',
+      ],
+    },
+    display: {
+      control: 'select',
+      options: ['initial', 'block', 'inline'],
+    },
   },
 }
 
@@ -68,6 +76,10 @@ const Template = (args) => (
 
     <Typography {...args} variant="button">
       Button text
+    </Typography>
+
+    <Typography {...args} variant="inputText">
+      InputText text
     </Typography>
 
     <Typography {...args} variant="caption">

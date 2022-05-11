@@ -1,23 +1,26 @@
 import * as React from 'react'
 import { LoadingButton } from '@mui/lab'
-import storySelectArgType from '~/utils/storySelectArgType'
 
 export default {
   title: 'Components/LoadingButton',
   component: LoadingButton,
   argTypes: {
-    color: storySelectArgType([
-      'inherit',
-      'primary',
-      'secondary',
-      'success',
-      'error',
-      'info',
-      'warning',
-    ]),
-    loadingPosition: storySelectArgType(['start', 'end', 'center']),
-    size: storySelectArgType(['small', 'medium', 'large']),
-    variant: storySelectArgType(['text', 'outlined', 'contained']),
+    color: {
+      control: 'select',
+      options: ['inherit', 'primary', 'secondary', 'success', 'error', 'info', 'warning'],
+    },
+    loadingPosition: {
+      control: 'select',
+      options: ['start', 'end', 'center'],
+    },
+    size: {
+      control: 'select',
+      options: ['small', 'medium', 'large'],
+    },
+    variant: {
+      control: 'select',
+      options: ['text', 'outlined', 'contained'],
+    },
   },
 }
 

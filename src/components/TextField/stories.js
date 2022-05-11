@@ -1,24 +1,35 @@
 import * as React from 'react'
 import { MenuItem, TextField } from '@mui/material'
-import storySelectArgType from '~/utils/storySelectArgType'
 
 export default {
   title: 'Components/TextField',
   component: TextField,
   argTypes: {
-    color: storySelectArgType([
-      'text',
-      'textInverted',
-      'primary',
-      'secondary',
-      'error',
-      'info',
-      'success',
-      'warning',
-    ]),
-    margin: storySelectArgType(['none', 'dense', 'normal']),
-    size: storySelectArgType(['medium', 'small']),
-    variant: storySelectArgType(['standard', 'outlined', 'filled']),
+    color: {
+      control: 'select',
+      options: [
+        'text',
+        'textInverted',
+        'primary',
+        'secondary',
+        'error',
+        'info',
+        'success',
+        'warning',
+      ],
+    },
+    margin: {
+      control: 'select',
+      options: ['none', 'dense', 'normal'],
+    },
+    size: {
+      control: 'select',
+      options: ['medium', 'small'],
+    },
+    variant: {
+      control: 'select',
+      options: ['standard', 'outlined', 'filled'],
+    },
   },
 }
 

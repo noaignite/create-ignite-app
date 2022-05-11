@@ -1,12 +1,14 @@
 import * as React from 'react'
 import { Checkbox, FormControlLabel, Radio } from '@mui/material'
-import storySelectArgType from '~/utils/storySelectArgType'
 
 export default {
   title: 'Components/FormControlLabel',
   component: FormControlLabel,
   argTypes: {
-    labelPlacement: storySelectArgType(['bottom', 'end', 'start', 'top']),
+    labelPlacement: {
+      control: 'select',
+      options: ['bottom', 'end', 'start', 'top'],
+    },
   },
 }
 
