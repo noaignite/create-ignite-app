@@ -1,16 +1,17 @@
 const overrides = {
-  styleOverrides: (theme) => ({
-    gutters: {
+  styleOverrides: {
+    gutters: ({ theme }) => ({
       paddingLeft: 'var(--cia-toolbar-spacing)',
       paddingRight: 'var(--cia-toolbar-spacing)',
       [theme.breakpoints.up('sm')]: {
         paddingLeft: 'var(--cia-toolbar-spacing)',
         paddingRight: 'var(--cia-toolbar-spacing)',
       },
+    }),
+    dense: {
+      minHeight: 'var(--cia-toolbar-dense-min-height)',
     },
-    regular: theme.mixins.toolbar,
-    dense: theme.mixins.toolbarDense,
-  }),
+  },
 }
 
 export default overrides

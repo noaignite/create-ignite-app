@@ -1,7 +1,7 @@
 const overrides = {
-  styleOverrides: (theme) => ({
-    root: theme.typography.input,
-  }),
+  styleOverrides: {
+    root: ({ theme }) => theme.typography.inpuText,
+  },
 }
 
 export default overrides

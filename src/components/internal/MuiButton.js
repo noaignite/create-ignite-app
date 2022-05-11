@@ -1,6 +1,6 @@
 const BORDER_WIDTH = 1
-const PADDING_X = 27
-const PADDING_Y = 17
+const PADDING_X = 24
+const PADDING_Y = 16
 
 const overrides = {
   defaultProps: {
@@ -8,41 +8,27 @@ const overrides = {
     disableElevation: true,
     disableRipple: true,
   },
-  styleOverrides: (theme) => ({
-    text: {
+  styleOverrides: {
+    sizeSmall: ({ theme }) => ({
+      padding: `${PADDING_Y - 3}px ${PADDING_X - 6}px`,
+      fontSize: theme.typography.pxToRem(11),
+    }),
+    sizeMedium: {
       padding: `${PADDING_Y}px ${PADDING_X}px`,
     },
-    outlined: {
-      padding: `${PADDING_Y - BORDER_WIDTH}px ${PADDING_X - BORDER_WIDTH}px`,
-    },
-    contained: {
-      padding: `${PADDING_Y}px ${PADDING_X}px`,
-    },
-    textSizeSmall: {
-      padding: `${PADDING_Y - 5}px ${PADDING_X - 10}px`,
-      fontSize: theme.typography.pxToRem(12),
-    },
-    textSizeLarge: {
-      padding: `${PADDING_Y + 5}px ${PADDING_X + 10}px`,
-      fontSize: theme.typography.button.fontSize,
+    sizeLarge: {
+      padding: `${PADDING_Y + 3}px ${PADDING_X + 6}px`,
     },
     outlinedSizeSmall: {
-      padding: `${PADDING_Y - 5 - BORDER_WIDTH}px ${PADDING_X - 10 - BORDER_WIDTH}px`,
-      fontSize: theme.typography.pxToRem(12),
+      padding: `${PADDING_Y - 3 - BORDER_WIDTH}px ${PADDING_X - 6 - BORDER_WIDTH}px`,
+    },
+    outlinedSizeMedium: {
+      padding: `${PADDING_Y - BORDER_WIDTH}px ${PADDING_X - BORDER_WIDTH}px`,
     },
     outlinedSizeLarge: {
-      padding: `${PADDING_Y + 5 - BORDER_WIDTH}px ${PADDING_X + 10 - BORDER_WIDTH}px`,
-      fontSize: theme.typography.button.fontSize,
+      padding: `${PADDING_Y + 3 - BORDER_WIDTH}px ${PADDING_X + 6 - BORDER_WIDTH}px`,
     },
-    containedSizeSmall: {
-      padding: `${PADDING_Y - 5}px ${PADDING_X - 10}px`,
-      fontSize: theme.typography.pxToRem(12),
-    },
-    containedSizeLarge: {
-      padding: `${PADDING_Y + 5}px ${PADDING_X + 10}px`,
-      fontSize: theme.typography.button.fontSize,
-    },
-  }),
+  },
 }
 
 export default overrides

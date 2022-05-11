@@ -1,9 +1,9 @@
 const overrides = {
-  styleOverrides: (theme) => ({
-    root: {
+  styleOverrides: {
+    root: ({ theme }) => ({
       borderRadius: theme.shape.borderRadius,
-    },
-  }),
+    }),
+  },
 }
 
 export default overrides

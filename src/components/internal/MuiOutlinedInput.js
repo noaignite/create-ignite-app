@@ -1,7 +1,9 @@
+import { outlinedInputClasses } from '@mui/material'
+
 const overrides = {
   styleOverrides: {
     root: {
-      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      [`&.${outlinedInputClasses.focused} .${outlinedInputClasses.notchedOutline}`]: {
         borderWidth: 1,
       },
     },

@@ -12,15 +12,11 @@ const overrides = {
     /* Define :root css variables. */
     :root {
       --cia-theme-spacing: ${theme.spacing(1)};
-      --cia-section-spacing: ${theme.spacing(4)};
-      --cia-container-spacing: ${theme.spacing(2)};
+      --cia-section-spacing: max(${theme.spacing(3)}, 3.7vw);
+      --cia-container-spacing: calc(100vw / 24);
       --cia-toolbar-dense-min-height: 48px;
       --cia-toolbar-min-height: 56px;
       --cia-toolbar-spacing: ${theme.spacing(2)};
-      ${theme.breakpoints.up('sm')} {
-        --cia-section-spacing: ${theme.spacing(6)};
-        --cia-container-spacing: ${theme.spacing(4)};
-      }
     }
     /* Opinionated defaults taken from sanitize.css */
     /* https://github.com/csstools/sanitize.css */
@@ -45,6 +41,9 @@ const overrides = {
     }
     [id] {
       scroll-margin-top: var(--cia-header-height, 0px);
+    }
+    a {
+      color: inherit;
     }
   `,
 }

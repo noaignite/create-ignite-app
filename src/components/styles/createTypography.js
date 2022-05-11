@@ -4,7 +4,7 @@ const caseAllCaps = {
   textTransform: 'uppercase',
 }
 
-export default function createTypography(palette, typography) {
+export default function createTypography(typography) {
   const {
     fontFamilyPrimary = '"Helvetica", "Arial", sans-serif',
     fontFamilySecondary = fontFamilyPrimary,
@@ -21,7 +21,7 @@ export default function createTypography(palette, typography) {
     // Apply the CSS properties to all the variants.
     allVariants,
     ...other
-  } = typeof typography === 'function' ? typography(palette) : typography
+  } = typography
 
   const coef = fontSize / 14
   const pxToRem = (size) => `${(size / htmlFontSize) * coef}rem`
@@ -51,7 +51,7 @@ export default function createTypography(palette, typography) {
     caption: buildVariant(fontFamilyPrimary, fontWeightSemibold, 14, 1.3, 0.02),
     overline: buildVariant(fontFamilySecondary, fontWeightRegular, 8, 1.7, 0.12, caseAllCaps),
     // Custom variants
-    input: buildVariant(fontFamilyPrimary, fontWeightRegular, 16, 1.5, 0), // Should at least be 16px fontSize for iOS Safari not to zoom in on focus.
+    inputText: buildVariant(fontFamilyPrimary, fontWeightRegular, 16, 1.5, 0), // Should at least be 16px fontSize for iOS Safari not to zoom in on focus.
   }
 
   const typographyOutput = deepmerge(
@@ -71,9 +71,6 @@ export default function createTypography(palette, typography) {
       ...variants,
     },
     other,
-    {
-      clone: false, // No need to clone deep
-    },
   )
 
   return typographyOutput

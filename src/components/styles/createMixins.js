@@ -24,19 +24,14 @@ export default function createMixins(breakpoints, spacing, mixins) {
   }
 
   return {
-    // Components
+    // Override Mui mixins
     toolbar: {
-      // Override Mui styles
       minHeight: 'var(--cia-toolbar-min-height)',
       [breakpoints.up('sm')]: {
         minHeight: 'var(--cia-toolbar-min-height)',
       },
     },
-    toolbarDense: {
-      // Override Mui styles
-      minHeight: 'var(--cia-toolbar-dense-min-height)',
-    },
-    // Utils
+    // Custom mixins
     gutters: (amount = 2) => ({
       paddingLeft: spacing(amount),
       paddingRight: spacing(amount),
@@ -68,24 +63,6 @@ export default function createMixins(breakpoints, spacing, mixins) {
     },
     sticky: (...args) => {
       return position('sticky', ...args)
-    },
-    fluidType: (minBreakpoint, maxBreakpoint, minFontSize, maxFontSize) => {
-      const minVw = breakpoints.values[minBreakpoint] || minBreakpoint
-      const maxVw = breakpoints.values[maxBreakpoint] || maxBreakpoint
-      const minFs = minFontSize.fontSize || minFontSize
-      const maxFs = maxFontSize.fontSize || maxFontSize
-
-      return {
-        fontSize: minFs,
-        [`@media (min-width: ${minVw}px)`]: {
-          fontSize: `calc(${minFs}px + ${maxFs - minFs} * ((100vw - ${minVw}px) / ${
-            maxVw - minVw
-          }))`,
-        },
-        [`@media (min-width: ${maxVw}px)`]: {
-          fontSize: maxFs,
-        },
-      }
     },
     lineClamp: (lines) => ({
       display: '-webkit-box',
