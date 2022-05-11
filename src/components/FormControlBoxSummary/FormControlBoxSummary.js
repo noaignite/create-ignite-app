@@ -98,7 +98,6 @@ FormControlBoxSummary.propTypes = {
   checked: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  control: PropTypes.element.isRequired,
   disabled: PropTypes.bool,
   divider: PropTypes.bool,
   expanded: PropTypes.bool,
