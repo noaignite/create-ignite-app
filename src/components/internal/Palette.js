@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
-import { useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material'
 
 const PaletteRoot = styled('div', {
   name: 'Palette',

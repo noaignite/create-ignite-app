@@ -1,4 +1,4 @@
-import { createTheme as createMuiTheme } from '@mui/material/styles'
+import { createTheme as createMuiTheme } from '@mui/material'
 import breakpoints from './breakpoints'
 import createMixins from './createMixins'
 import createOverrides from './createOverrides'

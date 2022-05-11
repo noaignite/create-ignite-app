@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useTheme } from '@mui/material/styles'
+import { useTheme } from '@mui/material'
 import Palette from '../internal/Palette'
 import Swatch from '../internal/Swatch'
 import * as colors from '.'

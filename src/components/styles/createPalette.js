@@ -1,6 +1,5 @@
 import { deepmerge } from '@mui/utils'
-import { alpha } from '@mui/material/styles'
-import { pink, purple } from '@mui/material/colors'
+import { alpha, colors } from '@mui/material'
 import blue from '../colors/blue'
 import common from '../colors/common'
 import green from '../colors/green'
@@ -93,14 +92,14 @@ export const dark = {
 export default function createPalette(palette) {
   const {
     primary = {
-      light: pink[300],
-      main: pink[500],
-      dark: pink[700],
+      light: colors.pink[300],
+      main: colors.pink[500],
+      dark: colors.pink[700],
     },
     secondary = {
-      light: purple[300],
-      main: purple[500],
-      dark: purple[700],
+      light: colors.purple[300],
+      main: colors.purple[500],
+      dark: colors.purple[700],
     },
     error = {
       light: red[300],

@@ -1,4 +1,4 @@
-import { createTheme } from '~/components/styles'
+import { createTheme } from '~/components'
 
 const theme = createTheme({
   palette: {

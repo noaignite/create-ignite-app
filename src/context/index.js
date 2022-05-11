@@ -1,4 +1,3 @@
-/* eslint-disable import/export */
 export * from './Centra'
 
 export { default as GlobalProvider } from './Global'
