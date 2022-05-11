@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
-import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from '~/utils/constants'
+import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID, SITE_ROOT_ID } from '~/utils/constants'
 import { GlobalStateContext } from '~/context'
 import {
   AppCookieBar,
@@ -36,7 +36,7 @@ function App(props) {
   const { children, disableFooter, disableHeader, headerColor, headerMode } = props
 
   return (
-    <AppRoot>
+    <AppRoot id={SITE_ROOT_ID}>
       <AppSkipLink href={`#${SITE_MAIN_ID}`} />
 
       {!disableHeader && (

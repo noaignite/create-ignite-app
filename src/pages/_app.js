@@ -7,10 +7,10 @@ import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { settings as remoteConfig } from '~/api/__mock__'
+import { createEmotionCache } from '~/utils'
 import { CentraProvider, GlobalProvider, I18nProvider, RemoteConfigProvider } from '~/context'
-import createEmotionCache from '~/utils/createEmotionCache'
-import theme from '~/utils/theme.light'
 import AppBase from '~/containers/App'
+import theme from '~/components/styles/theme.light'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
