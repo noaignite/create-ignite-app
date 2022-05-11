@@ -8,10 +8,7 @@ import { Drawer, IconButton, TextField } from '@mui/material'
 import { useGlobalHandlers, useGlobalState, useI18n } from '~/context'
 import { SearchIcon } from '~/components'
 
-const AppCartDrawerRoot = styled(Drawer, {
-  name: 'AppCartDrawer',
-  slot: 'Root',
-})(({ theme }) => ({
+const AppCartDrawerRoot = styled(Drawer)(({ theme }) => ({
   zIndex: `${theme.zIndex.appBar - 1} !important`,
   '& .MuiDrawer-paper': {
     top: 'var(--cia-header-height)',
@@ -19,10 +16,7 @@ const AppCartDrawerRoot = styled(Drawer, {
   },
 }))
 
-const AppCartDrawerForm = styled('form', {
-  name: 'AppCartDrawer',
-  slot: 'Form',
-})(({ theme }) => ({
+const AppCartDrawerForm = styled('form')(({ theme }) => ({
   ...theme.mixins.contain('md'),
   width: '100%',
   padding: theme.spacing(0, 'var(--cia-container-spacing)', 2),

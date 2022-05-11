@@ -7,8 +7,8 @@ import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
 import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/context'
+import { RouterLink } from '~/containers'
 import { BrandIcon, CartIcon, SearchIcon, CloseIcon, MenuIcon } from '~/components'
-import RouterLink from '../../RouterLink'
 
 const BREAKPOINT_KEY = 'md'
 
@@ -19,10 +19,7 @@ export const classes = generateUtilityClasses('CiaAppHeader', [
   'hiddenOnDesktop',
 ])
 
-const AppHeaderRoot = styled(AppBar, {
-  name: 'AppHeader',
-  slot: 'Root',
-})(({ theme, ownerState }) => ({
+const AppHeaderRoot = styled(AppBar)(({ theme, ownerState }) => ({
   ...(ownerState.headerModeState === 'transparent' && {
     '&:not(:hover):not(:focus-within)': {
       backgroundColor: 'transparent',
@@ -49,10 +46,7 @@ const AppHeaderRoot = styled(AppBar, {
   },
 }))
 
-const AppHeaderBrandLink = styled(RouterLink, {
-  name: 'AppHeader',
-  slot: 'BrandLink',
-})({
+const AppHeaderBrandLink = styled(RouterLink)({
   position: 'absolute',
   left: '50%',
   transform: 'translateX(-50%)',

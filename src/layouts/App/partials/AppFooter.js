@@ -2,21 +2,15 @@ import * as React from 'react'
 import { styled } from '@mui/system'
 import { Container, Link } from '@mui/material'
 import { useRemoteConfig } from '~/context'
-import RouterLink from '../../RouterLink'
+import { RouterLink } from '~/containers'
 
-const AppFooterRoot = styled('footer', {
-  name: 'AppFooter',
-  slot: 'Root',
-})(({ theme }) => ({
+const AppFooterRoot = styled('footer')(({ theme }) => ({
   padding: 'var(--cia-section-spacing) 0',
   backgroundColor: theme.palette.text.primary,
   color: theme.palette.getContrastText(theme.palette.text.primary),
 }))
 
-const AppFooterSalesBanner = styled('div', {
-  name: 'AppFooter',
-  slot: 'SalesBanner',
-})(({ theme }) => ({
+const AppFooterSalesBanner = styled('div')(({ theme }) => ({
   position: 'sticky',
   bottom: 0,
   padding: theme.spacing(0.5, 2),
@@ -25,17 +19,14 @@ const AppFooterSalesBanner = styled('div', {
   textAlign: 'center',
 }))
 
-const AppFooterNav = styled('nav', {
-  name: 'AppFooter',
-  slot: 'List',
-})(({ theme }) => ({
+const AppFooterNav = styled('nav')(({ theme }) => ({
   display: 'flex',
   gap: theme.spacing(4),
   justifyContent: 'center',
   margin: 0,
 }))
 
-const AppFooter = React.memo(function AppFooter(props) {
+function AppFooter(props) {
   const { menus, storeMessage } = useRemoteConfig()
 
   return (
@@ -57,6 +48,6 @@ const AppFooter = React.memo(function AppFooter(props) {
       </AppFooterRoot>
     </React.Fragment>
   )
-})
+}
 
 export default AppFooter

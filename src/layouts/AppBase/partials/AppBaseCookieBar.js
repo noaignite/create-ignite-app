@@ -7,10 +7,7 @@ import { IconButton, Snackbar, Typography } from '@mui/material'
 import { useGlobalHandlers, useI18n } from '~/context'
 import { CloseIcon } from '~/components'
 
-const AppCookieBarRoot = styled(Snackbar, {
-  name: 'AppCookieBar',
-  slot: 'Root',
-})(({ theme }) => ({
+const AppBaseCookieBarRoot = styled(Snackbar)(({ theme }) => ({
   left: 'auto',
   right: 0,
   bottom: 0,
@@ -22,10 +19,7 @@ const AppCookieBarRoot = styled(Snackbar, {
   },
 }))
 
-const AppCookieBarContent = styled('div', {
-  name: 'AppCookieBar',
-  slot: 'Content',
-})(({ theme }) => ({
+const AppBaseCookieBarContent = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: 'var(--cia-toolbar-spacing)',
@@ -35,14 +29,14 @@ const AppCookieBarContent = styled('div', {
   color: theme.palette.background.default,
 }))
 
-const AppCookieBar = React.memo(function AppCookieBar(props) {
+function AppBaseCookieBar(props) {
   const { open, ...other } = props
 
   const { t } = useI18n()
   const { onCookieBarClose } = useGlobalHandlers()
 
   return (
-    <AppCookieBarRoot
+    <AppBaseCookieBarRoot
       anchorOrigin={{
         horizontal: 'right',
         vertical: 'bottom',
@@ -50,7 +44,7 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
       open={open}
       {...other}
     >
-      <AppCookieBarContent>
+      <AppBaseCookieBarContent>
         <Typography variant="body2">
           {t(
             __translationGroup,
@@ -66,13 +60,13 @@ const AppCookieBar = React.memo(function AppCookieBar(props) {
         >
           <CloseIcon />
         </IconButton>
-      </AppCookieBarContent>
-    </AppCookieBarRoot>
+      </AppBaseCookieBarContent>
+    </AppBaseCookieBarRoot>
   )
-})
+}
 
-AppCookieBar.propTypes = {
+AppBaseCookieBar.propTypes = {
   open: PropTypes.bool,
 }
 
-export default AppCookieBar
+export default AppBaseCookieBar

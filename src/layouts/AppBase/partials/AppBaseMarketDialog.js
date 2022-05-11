@@ -26,7 +26,7 @@ const TransitionComponent = React.forwardRef(function TransitionComponent(props,
   return <Slide direction="up" ref={ref} {...props} />
 })
 
-const AppMarketDialog = React.memo(function AppMarketDialog(props) {
+const AppBaseMarketDialog = React.memo(function AppBaseMarketDialog(props) {
   const { isMarketMenuOpen, ...other } = props
 
   const { onMarketMenuClose } = useGlobalHandlers()
@@ -123,14 +123,14 @@ const AppMarketDialog = React.memo(function AppMarketDialog(props) {
   )
 })
 
-AppMarketDialog.propTypes = {
+AppBaseMarketDialog.propTypes = {
   isMarketMenuOpen: PropTypes.bool,
 }
 
-function AppMarketDialogContainer(props) {
+function AppBaseMarketDialogContainer(props) {
   const { isMarketMenuOpen } = useGlobalState()
 
-  return <AppMarketDialog isMarketMenuOpen={isMarketMenuOpen} {...props} />
+  return <AppBaseMarketDialog isMarketMenuOpen={isMarketMenuOpen} {...props} />
 }
 
-export default AppMarketDialogContainer
+export default AppBaseMarketDialogContainer

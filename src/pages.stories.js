@@ -1,19 +1,16 @@
 const { pages } = require('~/api/__mock__')
 const { createRenderBlock } = require('~/utils')
+const layoutVariants = require('~/layouts')
 const blockVariants = require('~/blocks')
-const { App } = require('~/containers')
 
 const renderBlock = createRenderBlock(blockVariants)
 
 const defaultExport = {
   title: 'Pages',
-  component: App,
   argTypes: {
     headerMode: {
+      control: 'select',
       options: ['opaque', 'transparent', 'auto'],
-      control: {
-        type: 'select',
-      },
     },
   },
 }
@@ -22,10 +19,14 @@ const defaultExport = {
  * Storybook pages
  * Configure your pages by modifying the data at `api/__mock__/cms/pages`.
  */
-const pageExports = Object.entries(pages).reduce((acc, [name, props]) => {
-  acc[name] = App.bind({})
+const pageExports = Object.entries(pages).reduce((acc, [name, props = {}]) => {
+  const { layout, ...other } = props
+
+  const LayoutComponent = layoutVariants[layout] || layoutVariants.App
+
+  acc[name] = LayoutComponent.bind({})
   acc[name].args = {
-    ...props,
+    ...other,
     children: pages[name].children.map(renderBlock),
   }
   return acc

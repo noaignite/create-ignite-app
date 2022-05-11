@@ -1,12 +1,12 @@
 import * as React from 'react'
-import App from './App'
+import AppBase from './AppBase'
 
 export default {
-  title: 'Containers/App',
-  component: App,
+  title: 'Layouts/AppBase',
+  component: AppBase,
 }
 
-const Template = (args) => <App {...args} />
+const Template = (args) => <AppBase {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

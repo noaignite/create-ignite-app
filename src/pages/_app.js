@@ -8,7 +8,7 @@ import { CacheProvider } from '@emotion/react'
 import { settings } from '~/api/__mock__'
 import { createEmotionCache } from '~/utils'
 import { RootProvider } from '~/context'
-import AppBase from '~/containers/App'
+import * as layoutVariants from '~/layouts'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
@@ -19,8 +19,11 @@ function App(props) {
     defaultLocale,
     emotionCache = clientSideEmotionCache,
     locale,
-    pageProps,
+    pageProps: pagePropsProp,
   } = props
+
+  const { headerColor, headerMode, layout, page, ...pageProps } = pagePropsProp
+  const LayoutComponent = layout ? layoutVariants[layout] : layoutVariants.App
 
   return (
     <CacheProvider value={emotionCache}>
@@ -32,14 +35,9 @@ function App(props) {
       </Head>
 
       <RootProvider defaultLocale={defaultLocale} locale={locale} {...pageProps}>
-        <AppBase
-          disableFooter={pageProps?.disableFooter}
-          disableHeader={pageProps?.disableHeader}
-          headerColor={pageProps?.headerColor}
-          headerMode={pageProps?.headerMode}
-        >
+        <LayoutComponent headerColor={headerColor} headerMode={headerMode}>
           <Component {...pageProps} />
-        </AppBase>
+        </LayoutComponent>
       </RootProvider>
     </CacheProvider>
   )

@@ -3,33 +3,24 @@ import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Collapse, Link } from '@mui/material'
 import { menuItemType } from '~/api'
+import { RouterLink } from '~/containers'
 import { AddIcon, RemoveIcon } from '~/components'
-import RouterLink from '../../RouterLink'
 
-const AppNavDrawerListItemItem = styled('li', {
-  name: 'AppNavDrawerListItem',
-  slot: 'Item',
-})(({ theme }) => ({
+const AppNavDrawerListItemItem = styled('li')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(1, 0),
   paddingLeft: 'calc(32px * var(--level))', // Medium icon size + theme.spacing(1)
 }))
 
-const AppNavDrawerListItemLink = styled(Link, {
-  name: 'AppNavDrawerListItem',
-  slot: 'Link',
-})(({ theme }) => ({
+const AppNavDrawerListItemLink = styled(Link)(({ theme }) => ({
   display: 'inherit',
   alignItems: 'inherit',
   'ul &': theme.typography.h4,
   'ul ul &': theme.typography.body2,
 }))
 
-const AppNavDrawerListItemList = styled('ul', {
-  name: 'AppNavDrawerListItem',
-  slot: 'List',
-})(({ theme }) => ({
+const AppNavDrawerListItemList = styled('ul')(({ theme }) => ({
   margin: theme.spacing(1, 0, 2),
 }))
 

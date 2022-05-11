@@ -3,10 +3,7 @@ import { styled } from '@mui/system'
 import { Button } from '@mui/material'
 import { useI18n } from '~/context'
 
-export const AppSkipLinkRoot = styled(Button, {
-  name: 'AppSkipLink',
-  slot: 'Root',
-})(({ theme }) => ({
+export const AppBaseSkipLinkRoot = styled(Button)(({ theme }) => ({
   position: 'absolute',
   zIndex: theme.zIndex.appBar + 1,
   top: -100,
@@ -18,10 +15,12 @@ export const AppSkipLinkRoot = styled(Button, {
   },
 }))
 
-const AppSkipLink = React.memo(function AppSkipLink(props) {
+function AppBaseSkipLink(props) {
   const { t } = useI18n()
 
-  return <AppSkipLinkRoot {...props}>{t(__translationGroup)`Skip to content`}</AppSkipLinkRoot>
-})
+  return (
+    <AppBaseSkipLinkRoot {...props}>{t(__translationGroup)`Skip to content`}</AppBaseSkipLinkRoot>
+  )
+}
 
-export default AppSkipLink
+export default AppBaseSkipLink

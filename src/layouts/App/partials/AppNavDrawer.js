@@ -14,20 +14,14 @@ import {
 import { CloseIcon } from '~/components'
 import AppNavDrawerListItem from './AppNavDrawerListItem'
 
-const AppNavDrawerRoot = styled(Drawer, {
-  name: 'AppNavDrawer',
-  slot: 'Root',
-})({
+const AppNavDrawerRoot = styled(Drawer)({
   '& .MuiDrawer-paper': {
     maxWidth: '100%',
     width: 414, // iPhone 6/7/8 Plus
   },
 })
 
-const AppNavDrawerScrollContainer = styled('div', {
-  name: 'AppNavDrawer',
-  slot: 'ScrollContainer',
-})(({ theme }) => ({
+const AppNavDrawerScrollContainer = styled('div')(({ theme }) => ({
   ...theme.mixins.scrollable,
   ...theme.mixins.scrollbars,
   display: 'inherit',
@@ -36,10 +30,7 @@ const AppNavDrawerScrollContainer = styled('div', {
   padding: theme.spacing(2),
 }))
 
-const AppNavDrawerList = styled('ul', {
-  name: 'AppNavDrawer',
-  slot: 'List',
-})(({ theme }) => ({
+const AppNavDrawerList = styled('ul')(({ theme }) => ({
   margin: theme.spacing(2, 0, 4),
   '&:first-of-type': {
     marginTop: 0,

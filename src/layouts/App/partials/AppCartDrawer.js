@@ -6,28 +6,22 @@ import dynamic from 'next/dynamic'
 import { styled } from '@mui/system'
 import { Button, CircularProgress, Drawer, IconButton, Toolbar, Typography } from '@mui/material'
 import { useGlobalHandlers, useGlobalState, useI18n } from '~/context'
+import { RouterLink } from '~/containers'
 import { CartIcon, CloseIcon } from '~/components'
-import RouterLink from '../../RouterLink'
 
 const Cart = dynamic(() => import(/* webpackChunkName: "containers/Cart" */ '~/containers/Cart'), {
   loading: () => <CircularProgress size={24} style={{ margin: '100px auto' }} />,
   ssr: false,
 })
 
-const AppCartDrawerRoot = styled(Drawer, {
-  name: 'AppCartDrawer',
-  slot: 'Root',
-})({
+const AppCartDrawerRoot = styled(Drawer)({
   '& .MuiDrawer-paper': {
     maxWidth: '100%',
     width: 414, // iPhone 6/7/8 Plus
   },
 })
 
-const AppCartDrawerScrollContainer = styled('div', {
-  name: 'AppCartDrawer',
-  slot: 'ScrollContainer',
-})(({ theme }) => ({
+const AppCartDrawerScrollContainer = styled('div')(({ theme }) => ({
   ...theme.mixins.scrollable,
   ...theme.mixins.scrollbars,
   display: 'inherit',

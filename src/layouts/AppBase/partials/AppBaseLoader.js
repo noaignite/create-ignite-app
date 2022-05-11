@@ -5,14 +5,11 @@ import Router from 'next/router'
 import { styled } from '@mui/system'
 import { Backdrop, CircularProgress } from '@mui/material'
 
-const AppLoaderRoot = styled(Backdrop, {
-  name: 'AppLoader',
-  slot: 'Root',
-})(({ theme }) => ({
+const AppBaseLoaderRoot = styled(Backdrop)(({ theme }) => ({
   zIndex: theme.zIndex.appBar - 1,
 }))
 
-const AppLoader = React.memo(function AppLoader(props) {
+function AppBaseLoader(props) {
   const [loading, setLoading] = React.useState(false)
 
   const handleRouteChangeStart = React.useCallback(() => {
@@ -34,10 +31,10 @@ const AppLoader = React.memo(function AppLoader(props) {
   }, [handleRouteChangeStart, handleRouteChangeComplete])
 
   return (
-    <AppLoaderRoot open={loading} unmountOnExit {...props}>
+    <AppBaseLoaderRoot open={loading} unmountOnExit {...props}>
       <CircularProgress />
-    </AppLoaderRoot>
+    </AppBaseLoaderRoot>
   )
-})
+}
 
-export default AppLoader
+export default AppBaseLoader
