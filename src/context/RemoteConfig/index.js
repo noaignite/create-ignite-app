@@ -13,12 +13,12 @@ export function useRemoteConfig() {
 }
 
 function RemoteConfigProvider(props) {
-  const { children, ...other } = props
+  const { children, value = {} } = props
 
   const { locale } = useI18n()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const contextValue = React.useMemo(() => other, [locale])
+  const contextValue = React.useMemo(() => value, [locale])
 
   return (
     <RemoteConfigContext.Provider value={contextValue}>{children}</RemoteConfigContext.Provider>
@@ -27,6 +27,7 @@ function RemoteConfigProvider(props) {
 
 RemoteConfigProvider.propTypes = {
   children: PropTypes.node.isRequired,
+  value: PropTypes.object.isRequired,
 }
 
 export default RemoteConfigProvider

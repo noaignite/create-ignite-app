@@ -1,8 +1,7 @@
 import '../scripts/polyfills'
-import { CssBaseline } from '@mui/material'
-import { settings as remoteConfig } from '~/api/__mock__'
-import { CentraProvider, GlobalProvider, I18nProvider, RemoteConfigProvider } from '~/context'
-import { breakpoints, defaultTheme, ThemeProvider } from '~/components'
+import { settings } from '~/api/__mock__'
+import { RootProvider } from '~/context'
+import { breakpoints } from '~/components'
 
 const breakpointValues = {
   ...breakpoints.values,
@@ -47,23 +46,9 @@ export const globalTypes = {
 }
 
 export const decorators = [
-  (Story, context) => {
-    const mode = context.globals.theme
-
-    return (
-      <ThemeProvider theme={defaultTheme} mode={mode}>
-        <CssBaseline />
-
-        <I18nProvider>
-          <RemoteConfigProvider {...remoteConfig}>
-            <CentraProvider>
-              <GlobalProvider>
-                <Story />
-              </GlobalProvider>
-            </CentraProvider>
-          </RemoteConfigProvider>
-        </I18nProvider>
-      </ThemeProvider>
-    )
-  },
+  (Story, context) => (
+    <RootProvider settings={settings} theme={context.globals.theme}>
+      <Story />
+    </RootProvider>
+  ),
 ]

@@ -1,3 +1,4 @@
+/* eslint-disable import/export */
 export * from './Centra'
 
 export { default as GlobalProvider } from './Global'
@@ -8,3 +9,6 @@ export * from './I18n'
 
 export { default as RemoteConfigProvider } from './RemoteConfig'
 export * from './RemoteConfig'
+
+export { default as RootProvider } from './Root'
+export * from './Root'

@@ -5,19 +5,16 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
-import { CssBaseline } from '@mui/material'
-import { settings as remoteConfig } from '~/api/__mock__'
+import { settings } from '~/api/__mock__'
 import { createEmotionCache } from '~/utils'
-import { CentraProvider, GlobalProvider, I18nProvider, RemoteConfigProvider } from '~/context'
+import { RootProvider } from '~/context'
 import AppBase from '~/containers/App'
-import { defaultTheme, ThemeProvider } from '~/components'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
 
 function App(props) {
   const {
-    cmsProps,
     Component,
     defaultLocale,
     emotionCache = clientSideEmotionCache,
@@ -34,55 +31,33 @@ function App(props) {
         />
       </Head>
 
-      <ThemeProvider theme={defaultTheme} mode={pageProps?.theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-
-        <I18nProvider defaultLocale={defaultLocale} locale={locale}>
-          <RemoteConfigProvider {...cmsProps}>
-            <CentraProvider>
-              <GlobalProvider>
-                <AppBase
-                  disableFooter={pageProps?.disableFooter}
-                  disableHeader={pageProps?.disableHeader}
-                  headerColor={pageProps?.headerColor}
-                  headerMode={pageProps?.headerMode}
-                >
-                  <Component {...pageProps} />
-                </AppBase>
-              </GlobalProvider>
-            </CentraProvider>
-          </RemoteConfigProvider>
-        </I18nProvider>
-      </ThemeProvider>
+      <RootProvider defaultLocale={defaultLocale} locale={locale} {...pageProps}>
+        <AppBase
+          disableFooter={pageProps?.disableFooter}
+          disableHeader={pageProps?.disableHeader}
+          headerColor={pageProps?.headerColor}
+          headerMode={pageProps?.headerMode}
+        >
+          <Component {...pageProps} />
+        </AppBase>
+      </RootProvider>
     </CacheProvider>
   )
 }
 
 App.getInitialProps = async (props) => {
-  const { Component, ctx } = props
-
-  let cmsProps = {}
-  if (ctx.req) {
-    // @todo - Replace `remoteConfig` with cms fetch
-    cmsProps = remoteConfig
-  }
-
-  let pageProps = {}
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx)
-  }
+  const { ctx } = props
 
   return {
-    cmsProps,
     defaultLocale: ctx.defaultLocale,
     locale: ctx.locale,
-    pageProps,
+    pageProps: {
+      settings,
+    },
   }
 }
 
 App.propTypes = {
-  cmsProps: PropTypes.object.isRequired,
   Component: PropTypes.elementType.isRequired,
   defaultLocale: PropTypes.string.isRequired,
   emotionCache: PropTypes.object,
