@@ -1,6 +1,8 @@
 /* eslint-disable import/export */
 export * as colors from './colors'
 
+export * from './icons'
+export * from './styles'
 export * from './utils'
 
 export { default as FormControlBox } from './FormControlBox'

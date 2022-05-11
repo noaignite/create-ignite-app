@@ -6,7 +6,7 @@ import Router from 'next/router'
 import { styled } from '@mui/system'
 import { Drawer, IconButton, TextField } from '@mui/material'
 import { useGlobalHandlers, useGlobalState, useI18n } from '~/context'
-import { Search as SearchIcon } from '~/components/icons'
+import { SearchIcon } from '~/components'
 
 const AppCartDrawerRoot = styled(Drawer, {
   name: 'AppCartDrawer',

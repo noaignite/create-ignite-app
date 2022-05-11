@@ -20,7 +20,7 @@ import {
   useGlobalState,
   useI18n,
 } from '~/context'
-import { Close as CloseIcon } from '~/components/icons'
+import { CloseIcon } from '~/components'
 
 const TransitionComponent = React.forwardRef(function TransitionComponent(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />

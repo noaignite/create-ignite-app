@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { IconButton, Snackbar, Typography } from '@mui/material'
 import { useGlobalHandlers, useI18n } from '~/context'
-import { Close as CloseIcon } from '~/components/icons'
+import { CloseIcon } from '~/components'
 
 const AppCookieBarRoot = styled(Snackbar, {
   name: 'AppCookieBar',

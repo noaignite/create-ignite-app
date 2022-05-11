@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 import { styled } from '@mui/system'
 import { Button, CircularProgress, Drawer, IconButton, Toolbar, Typography } from '@mui/material'
 import { useGlobalHandlers, useGlobalState, useI18n } from '~/context'
-import { Cart as CartIcon, Close as CloseIcon } from '~/components/icons'
+import { CartIcon, CloseIcon } from '~/components'
 import RouterLink from '../../RouterLink'
 
 const Cart = dynamic(() => import(/* webpackChunkName: "containers/Cart" */ '~/containers/Cart'), {

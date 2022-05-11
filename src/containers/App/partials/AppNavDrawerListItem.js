@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Collapse, Link } from '@mui/material'
 import { menuItemType } from '~/api'
-import { Add as AddIcon, Remove as RemoveIcon } from '~/components/icons'
+import { AddIcon, RemoveIcon } from '~/components'
 import RouterLink from '../../RouterLink'
 
 const AppNavDrawerListItemItem = styled('li', {

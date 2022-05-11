@@ -1,6 +1,6 @@
 import * as React from 'react'
-import CheckBoxIcon from '../icons/CheckBox'
-import CheckBoxOutlineBlankIcon from '../icons/CheckBoxOutlineBlank'
+import CheckBoxIcon from '../icons/CheckBoxIcon'
+import CheckBoxOutlineBlankIcon from '../icons/CheckBoxOutlineBlankIcon'
 
 const overrides = {
   defaultProps: {

@@ -1,6 +1,6 @@
 import * as React from 'react'
-import RadioButtonCheckedIcon from '../icons/RadioButtonChecked'
-import RadioButtonUncheckedIcon from '../icons/RadioButtonUnchecked'
+import RadioButtonCheckedIcon from '../icons/RadioButtonCheckedIcon'
+import RadioButtonUncheckedIcon from '../icons/RadioButtonUncheckedIcon'
 
 const overrides = {
   defaultProps: {

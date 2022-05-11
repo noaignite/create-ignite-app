@@ -1,4 +1,4 @@
-import ArrowDropDownIcon from '../icons/ArrowDropDown'
+import ArrowDropDownIcon from '../icons/ArrowDropDownIcon'
 
 const overrides = {
   defaultProps: {

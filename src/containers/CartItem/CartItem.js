@@ -6,7 +6,7 @@ import { Media, MediaReveal } from '@noaignite/oui'
 import { cartItemType } from '~/api'
 import { useCentraHandlers, useI18n } from '~/context'
 import { ASPECT_RATIOS, CENTRA_CART_ITEM_UNIQUE_KEY } from '~/utils/constants'
-import { Add as AddIcon, Remove as RemoveIcon } from '~/components/icons'
+import { AddIcon, RemoveIcon } from '~/components'
 import RouterLink from '../RouterLink'
 
 const classes = {

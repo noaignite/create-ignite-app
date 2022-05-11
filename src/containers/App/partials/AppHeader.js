@@ -7,13 +7,7 @@ import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
 import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/context'
-import {
-  Brand as BrandIcon,
-  Cart as CartIcon,
-  Search as SearchIcon,
-  Close as CloseIcon,
-  Menu as MenuIcon,
-} from '~/components/icons'
+import { BrandIcon, CartIcon, SearchIcon, CloseIcon, MenuIcon } from '~/components'
 import RouterLink from '../../RouterLink'
 
 const BREAKPOINT_KEY = 'md'

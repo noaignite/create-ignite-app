@@ -11,7 +11,7 @@ import {
   useI18n,
   useRemoteConfig,
 } from '~/context'
-import { Close as CloseIcon } from '~/components/icons'
+import { CloseIcon } from '~/components'
 import AppNavDrawerListItem from './AppNavDrawerListItem'
 
 const AppNavDrawerRoot = styled(Drawer, {
