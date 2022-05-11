@@ -1,9 +1,8 @@
 import '../scripts/polyfills'
-import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import { CssBaseline } from '@mui/material'
 import { settings as remoteConfig } from '~/api/__mock__'
 import { CentraProvider, GlobalProvider, I18nProvider, RemoteConfigProvider } from '~/context'
-import { breakpoints, createTheme } from '~/components'
+import { breakpoints, defaultTheme, ThemeProvider } from '~/components'
 
 const breakpointValues = {
   ...breakpoints.values,
@@ -50,28 +49,21 @@ export const globalTypes = {
 export const decorators = [
   (Story, context) => {
     const mode = context.globals.theme
-    const theme = createTheme({ palette: { mode } })
 
     return (
-      <EmotionThemeProvider
-        // Bug: Custom theme not propagated within Storybook.js
-        // https://github.com/mui-org/material-ui/issues/24282#issuecomment-859393395
-        theme={theme}
-      >
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
+      <ThemeProvider theme={defaultTheme} mode={mode}>
+        <CssBaseline />
 
-          <I18nProvider>
-            <RemoteConfigProvider {...remoteConfig}>
-              <CentraProvider>
-                <GlobalProvider>
-                  <Story />
-                </GlobalProvider>
-              </CentraProvider>
-            </RemoteConfigProvider>
-          </I18nProvider>
-        </ThemeProvider>
-      </EmotionThemeProvider>
+        <I18nProvider>
+          <RemoteConfigProvider {...remoteConfig}>
+            <CentraProvider>
+              <GlobalProvider>
+                <Story />
+              </GlobalProvider>
+            </CentraProvider>
+          </RemoteConfigProvider>
+        </I18nProvider>
+      </ThemeProvider>
     )
   },
 ]

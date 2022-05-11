@@ -5,12 +5,12 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import { CssBaseline } from '@mui/material'
 import { settings as remoteConfig } from '~/api/__mock__'
 import { createEmotionCache } from '~/utils'
 import { CentraProvider, GlobalProvider, I18nProvider, RemoteConfigProvider } from '~/context'
 import AppBase from '~/containers/App'
-import theme from '~/components/styles/theme.light'
+import { defaultTheme, ThemeProvider } from '~/components'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
@@ -34,7 +34,7 @@ function App(props) {
         />
       </Head>
 
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={defaultTheme} mode={pageProps?.theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
 
