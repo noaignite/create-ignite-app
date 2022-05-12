@@ -8,45 +8,30 @@ import { useI18n } from '~/context'
 import { ASPECT_RATIOS } from '~/utils/constants'
 import { RouterLink } from '~/containers'
 
-const ArticleSlideshowRoot = styled('section', {
-  name: 'ArticleSlideshow',
-  slot: 'Root',
-})({
+const ArticleSlideshowRoot = styled('section')({
   position: 'relative',
   margin: 'var(--cia-section-spacing) 0',
 })
 
-const ArticleSlideshowHeader = styled('header', {
-  name: 'ArticleSlideshow',
-  slot: 'Header',
-})({
+const ArticleSlideshowHeader = styled('header')({
   paddingLeft: 'var(--cia-container-spacing)',
   paddingRight: 'var(--cia-container-spacing)',
   marginBottom: 'var(--cia-section-spacing)',
   textAlign: 'center',
 })
 
-const ArticleSlideshowMain = styled('div', {
-  name: 'ArticleSlideshow',
-  slot: 'Main',
-})({
+const ArticleSlideshowMain = styled('div')({
   paddingLeft: 'var(--cia-container-spacing)',
   paddingRight: 'var(--cia-container-spacing)',
   overflow: 'hidden',
 })
 
-const ArticleSlideshowEmblaContainer = styled('div', {
-  name: 'ArticleSlideshow',
-  slot: 'EmblaContainer',
-})(({ theme }) => ({
+const ArticleSlideshowEmblaContainer = styled('div')(({ theme }) => ({
   display: 'flex',
   marginLeft: theme.spacing(-2),
 }))
 
-const ArticleSlideshowEmblaSlide = styled('div', {
-  name: 'ArticleSlideshow',
-  slot: 'EmblaSlide',
-})(({ theme }) => ({
+const ArticleSlideshowEmblaSlide = styled('div')(({ theme }) => ({
   position: 'relative',
   flexShrink: 0,
   width: '100%',
@@ -59,10 +44,7 @@ const ArticleSlideshowEmblaSlide = styled('div', {
   },
 }))
 
-const ArticleSlideshowArticleContent = styled('div', {
-  name: 'ArticleSlideshow',
-  slot: 'EmblaSlide',
-})(({ theme }) => ({
+const ArticleSlideshowArticleContent = styled('div')(({ theme }) => ({
   ...theme.mixins.verticalRhythm(1),
   padding: theme.spacing(2, 0),
 }))

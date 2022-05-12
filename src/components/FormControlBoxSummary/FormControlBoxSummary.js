@@ -7,16 +7,12 @@ import FormControlBoxContext from '../FormControlBox/FormControlBoxContext'
 import classes from './formControlBoxSummaryClasses'
 
 const FormControlBoxSummaryRoot = styled('div', {
-  name: 'FormControlBoxSummary',
-  slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
 })({
   display: 'flex',
 })
 
 const FormControlBoxSummaryLabel = styled('label', {
-  name: 'FormControlBoxSummary',
-  slot: 'Label',
   overridesResolver: (props, styles) => styles.label,
 })({
   display: 'flex',
@@ -26,8 +22,6 @@ const FormControlBoxSummaryLabel = styled('label', {
 })
 
 const FormControlBoxSummaryInputWrapper = styled('div', {
-  name: 'FormControlBoxSummary',
-  slot: 'InputWrapper',
   overridesResolver: (props, styles) => styles.inputWrapper,
 })({
   minWidth: 'var(--_inset)',
@@ -35,8 +29,6 @@ const FormControlBoxSummaryInputWrapper = styled('div', {
 })
 
 const FormControlBoxSummaryContent = styled('div', {
-  name: 'FormControlBoxSummary',
-  slot: 'Content',
   overridesResolver: (props, styles) => styles.content,
 })({
   display: 'flex',
@@ -45,8 +37,6 @@ const FormControlBoxSummaryContent = styled('div', {
 })
 
 const FormControlBoxSummaryEndAdornment = styled('div', {
-  name: 'FormControlBoxSummary',
-  slot: 'EndAdornment',
   overridesResolver: (props, styles) => styles.endAdornment,
 })(({ theme }) => ({
   display: 'flex',

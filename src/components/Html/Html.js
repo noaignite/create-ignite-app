@@ -1,10 +1,7 @@
 import * as React from 'react'
 import { styled } from '@mui/system'
 
-export const HtmlRoot = styled('div', {
-  name: 'Html',
-  slot: 'Root',
-})(({ theme }) => ({
+export const HtmlRoot = styled('div')(({ theme }) => ({
   ...theme.typography.body1,
   h1: theme.typography.h3,
   h2: theme.typography.h4,

@@ -8,8 +8,6 @@ import FormControlBoxContext from './FormControlBoxContext'
 import classes from './formControlBoxClasses'
 
 const FormControlBoxRoot = styled('div', {
-  name: 'FormControlBox',
-  slot: 'Root',
   overridesResolver: (props, styles) => {
     const { ownerState } = props
 

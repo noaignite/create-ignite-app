@@ -4,32 +4,8 @@ import { styled } from '@mui/system'
 import { Container } from '@mui/material'
 import { Html } from '~/components'
 
-const ContentRoot = styled('section', {
-  name: 'Content',
-  slot: 'Root',
-})({
+const ContentRoot = styled('section')({
   margin: 'var(--cia-section-spacing) 0',
-  '.wp-block-video, .wp-block-embed__wrapper': {
-    display: 'block',
-    position: 'relative',
-    width: '100%',
-    '&::before': {
-      content: '""',
-      display: 'block',
-      paddingBottom: 'calc(9/16 * 100%)', // 16:9 aspect ratio
-    },
-    '& > *': {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-    },
-    '& > video, & > picture, & > img': {
-      // ⚠️ object-fit is not supported by IE 11.
-      objectFit: 'cover',
-    },
-  },
 })
 
 function Content(props) {

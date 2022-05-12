@@ -3,28 +3,19 @@ import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { useTheme } from '@mui/material'
 
-const SwatchRoot = styled('div', {
-  name: 'Swatch',
-  slot: 'Root',
-})({
+const SwatchRoot = styled('div')({
   position: 'relative',
   border: '1px solid currentColor',
 })
 
-const SwatchMainShade = styled('div', {
-  name: 'Swatch',
-  slot: 'MainShade',
-})({
+const SwatchMainShade = styled('div')({
   display: 'grid',
   gridTemplateColumns: '1fr auto',
   gridTemplateRows: '50px auto',
   padding: 16,
 })
 
-const SwatchShade = styled('div', {
-  name: 'Swatch',
-  slot: 'Shade',
-})({
+const SwatchShade = styled('div')({
   padding: '0 16px',
   display: 'flex',
   alignItems: 'center',

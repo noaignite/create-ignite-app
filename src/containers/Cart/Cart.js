@@ -7,19 +7,13 @@ import { useCentraSelection, useI18n } from '~/context'
 import CartItem from '../CartItem'
 import CartSummary from '../CartSummary'
 
-const CartRoot = styled('div', {
-  name: 'Cart',
-  slot: 'Root',
-})({
+const CartRoot = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   flexGrow: 1,
 })
 
-const CartItems = styled('div', {
-  name: 'Cart',
-  slot: 'Items',
-})(({ theme }) => ({
+const CartItems = styled('div')(({ theme }) => ({
   ...theme.mixins.verticalRhythm(2),
   flexGrow: 1,
   marginBottom: theme.spacing(2),

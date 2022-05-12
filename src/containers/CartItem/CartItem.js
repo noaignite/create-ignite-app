@@ -13,10 +13,7 @@ const classes = {
   row: 'CiaCartItem-Row',
 }
 
-const CartItemRoot = styled('article', {
-  name: 'CartItem',
-  slot: 'Root',
-})(({ theme }) => ({
+const CartItemRoot = styled('article')(({ theme }) => ({
   ...theme.typography.body2,
   display: 'grid',
   gridTemplateColumns: '100px auto',
@@ -32,36 +29,24 @@ const CartItemRoot = styled('article', {
   },
 }))
 
-const CartItemContent = styled('div', {
-  name: 'CartItem',
-  slot: 'Content',
-})(({ theme }) => ({
+const CartItemContent = styled('div')(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   padding: theme.spacing(2),
 }))
 
-const CartItemActionbar = styled('div', {
-  name: 'CartItem',
-  slot: 'Actionbar',
-})(({ theme }) => ({
+const CartItemActionbar = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   margin: theme.spacing('auto', 0, -1),
 }))
 
-const CartItemQuantity = styled('div', {
-  name: 'CartItem',
-  slot: 'Quantity',
-})({
+const CartItemQuantity = styled('div')({
   display: 'flex',
   alignItems: 'center',
 })
 
-const CartItemQuantityButton = styled(ButtonBase, {
-  name: 'CartItem',
-  slot: 'QuantityButton',
-})(({ theme }) => ({
+const CartItemQuantityButton = styled(ButtonBase)(({ theme }) => ({
   minWidth: 35,
   padding: theme.spacing(1),
   color: theme.palette.primary.main,

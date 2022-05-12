@@ -3,28 +3,19 @@ import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { useTheme } from '@mui/material'
 
-const PaletteRoot = styled('div', {
-  name: 'Palette',
-  slot: 'Root',
-})({
+const PaletteRoot = styled('div')({
   position: 'relative',
   border: '1px solid currentColor',
 })
 
-const PaletteMainShade = styled('div', {
-  name: 'Palette',
-  slot: 'MainShade',
-})({
+const PaletteMainShade = styled('div')({
   display: 'grid',
   gridTemplateColumns: '1fr auto',
   gridTemplateRows: '50px auto',
   padding: 16,
 })
 
-const PaletteShade = styled('div', {
-  name: 'Palette',
-  slot: 'Shade',
-})({
+const PaletteShade = styled('div')({
   padding: '0 16px',
   display: 'flex',
   alignItems: 'center',

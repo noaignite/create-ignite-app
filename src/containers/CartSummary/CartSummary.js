@@ -5,10 +5,7 @@ import { Typography } from '@mui/material'
 import { cartItemType } from '~/api'
 import { useCentraSelection, useI18n } from '~/context'
 
-const CartSummaryRoot = styled('div', {
-  name: 'CartSummary',
-  slot: 'Root',
-})(({ theme }) => ({
+const CartSummaryRoot = styled('div')(({ theme }) => ({
   ...theme.typography.body2,
   display: 'grid',
   gridGap: theme.spacing(1),
@@ -17,19 +14,13 @@ const CartSummaryRoot = styled('div', {
   backgroundColor: theme.palette.background.default,
 }))
 
-const CartSummaryRow = styled('div', {
-  name: 'CartSummary',
-  slot: 'Row',
-})(({ theme }) => ({
+const CartSummaryRow = styled('div')(({ theme }) => ({
   display: 'grid',
   gridGap: theme.spacing(2),
   gridTemplateColumns: '140px 1fr 1fr',
 }))
 
-const CartSummaryCol = styled('div', {
-  name: 'CartSummary',
-  slot: 'Col',
-})({
+const CartSummaryCol = styled('div')({
   '&:last-child': {
     textAlign: 'right',
   },

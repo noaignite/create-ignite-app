@@ -5,10 +5,7 @@ import { Button, Typography } from '@mui/material'
 import { Media, MediaReveal } from '@noaignite/oui'
 import { RouterLink } from '~/containers'
 
-const HeroRoot = styled('section', {
-  name: 'Hero',
-  slot: 'Root',
-})(({ theme }) => ({
+const HeroRoot = styled('section')(({ theme }) => ({
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
@@ -22,10 +19,7 @@ const HeroRoot = styled('section', {
   },
 }))
 
-const HeroMediaReveal = styled(MediaReveal, {
-  name: 'Hero',
-  slot: 'MediaReveal',
-})(({ theme }) => ({
+const HeroMediaReveal = styled(MediaReveal)(({ theme }) => ({
   ...theme.mixins.absolute(0),
   zIndex: -1,
   '& *:not(style)': {
@@ -33,29 +27,20 @@ const HeroMediaReveal = styled(MediaReveal, {
   },
 }))
 
-const HeroMain = styled('div', {
-  name: 'Hero',
-  slot: 'Main',
-})(({ theme }) => ({
+const HeroMain = styled('div')(({ theme }) => ({
   ...theme.mixins.verticalRhythm(2),
   ...theme.mixins.contain('sm'),
   paddingLeft: 'var(--cia-container-spacing)',
   paddingRight: 'var(--cia-container-spacing)',
 }))
 
-const HeroHeading = styled('h1', {
-  name: 'Hero',
-  slot: 'Heading',
-})(({ theme }) => ({
+const HeroHeading = styled('h1')(({ theme }) => ({
   ...theme.typography.h3,
   margin: 0,
   fontSize: `max(${theme.typography.h3.fontSize}, 3.2vw)`,
 }))
 
-const HeroButton = styled(Button, {
-  name: 'Hero',
-  slot: 'Button',
-})(({ theme }) => ({
+const HeroButton = styled(Button)(({ theme }) => ({
   // Makes entire Hero block clickable.
   position: 'static',
   '&:before': {

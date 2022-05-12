@@ -5,8 +5,6 @@ import { styled } from '@mui/system'
 import classes from './formControlBoxDetailsClasses'
 
 const FormControlBoxDetailsRoot = styled('div', {
-  name: 'FormControlBoxDetails',
-  slot: 'Root',
   overridesResolver: (props, styles) => styles.root,
 })({
   padding: 'var(--_spacing)',
