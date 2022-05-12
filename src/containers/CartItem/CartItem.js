@@ -9,24 +9,12 @@ import { ASPECT_RATIOS, CENTRA_CART_ITEM_UNIQUE_KEY } from '~/utils/constants'
 import { AddIcon, RemoveIcon } from '~/components'
 import RouterLink from '../RouterLink'
 
-const classes = {
-  row: 'CiaCartItem-Row',
-}
-
 const CartItemRoot = styled('article')(({ theme }) => ({
   ...theme.typography.body2,
   display: 'grid',
-  gridTemplateColumns: '100px auto',
-  borderRadius: theme.shape.borderRadius * 2,
+  gridTemplateColumns: '100px 1fr',
+  borderRadius: theme.shape.borderRadius,
   backgroundColor: theme.palette.background.default,
-  [`& .${classes.row}`]: {
-    display: 'grid',
-    gridGap: theme.spacing(2),
-    gridTemplateColumns: '1fr auto',
-    '& + &': {
-      marginTop: theme.spacing(0.5),
-    },
-  },
 }))
 
 const CartItemContent = styled('div')(({ theme }) => ({
@@ -34,6 +22,11 @@ const CartItemContent = styled('div')(({ theme }) => ({
   flexDirection: 'column',
   padding: theme.spacing(2),
 }))
+
+const CartItemRow = styled('div')({
+  display: 'flex',
+  justifyContent: 'space-between',
+})
 
 const CartItemActionbar = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -90,19 +83,19 @@ function CartItem(props) {
       </RouterLink>
 
       <CartItemContent>
-        <div className={classes.row}>
+        <CartItemRow>
           <Link component={RouterLink} href={`/product/${product.uri}`}>
             {product.name}
           </Link>
 
           <span>{cartItem.priceEach}</span>
-        </div>
+        </CartItemRow>
 
-        <div className={classes.row}>
+        <CartItemRow>
           <span>
             {t(__translationGroup)`Size`}: {cartItem.size}
           </span>
-        </div>
+        </CartItemRow>
 
         {!disableActions && (
           <CartItemActionbar>
