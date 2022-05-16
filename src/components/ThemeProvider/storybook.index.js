@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
-import { ThemeProvider as MuiThemeProvider } from '@mui/material'
+import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material'
 import { getTheme } from './index'
 
 function ThemeProvider(props) {
@@ -15,7 +15,7 @@ function ThemeProvider(props) {
       // https://github.com/mui-org/material-ui/issues/24282#issuecomment-859393395
       theme={theme}
     >
-      <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>
+      <CssVarsProvider theme={theme}>{children}</CssVarsProvider>
     </EmotionThemeProvider>
   )
 }

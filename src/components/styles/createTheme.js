@@ -1,4 +1,5 @@
-import { createTheme as createMuiTheme } from '@mui/material'
+// eslint-disable-next-line camelcase
+import { experimental_extendTheme } from '@mui/material'
 import * as components from '../internal'
 import breakpoints from './breakpoints'
 import createMixins from './createMixins'
@@ -17,16 +18,24 @@ import spacing from './spacing'
 export default function createTheme(options = {}) {
   const {
     mixins: mixinsInput = {},
-    palette: paletteInput = {},
+    // palette: paletteInput = {},
     typography: typographyInput = {},
     ...other
   } = options
 
-  const theme = createMuiTheme(
+  const theme = experimental_extendTheme(
     {
+      colorSchemes: {
+        light: {
+          palette: createPalette({ mode: 'light' }),
+        },
+        dark: {
+          palette: createPalette({ mode: 'dark' }),
+        },
+      },
       breakpoints,
       components,
-      palette: createPalette(paletteInput),
+      // palette: createPalette(paletteInput),
       shape,
       spacing,
       typography: createTypography(typographyInput),
