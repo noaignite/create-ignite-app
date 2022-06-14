@@ -74,7 +74,7 @@
     "eslint-import-resolver-webpack": "^0.13.2",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.1",
-    "prettier": "^2.5.1",
+    "prettier": "^2.7.0",
     "standard-version": "^9.3.2",
     "webpack-merge": "^5.2.0"
   },
