@@ -4,7 +4,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { IconButton, Snackbar, Typography } from '@mui/material'
-import { useGlobalHandlers, useI18n } from '~/context'
+import { useGlobalHandlers, useI18n } from '~/contexts'
 import { CloseIcon } from '~/components'
 
 const AppBaseCookieBarRoot = styled(Snackbar)(({ theme }) => ({

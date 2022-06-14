@@ -1,6 +1,6 @@
 import '../scripts/polyfills'
 import { settings } from '~/api/__mock__'
-import { RootProvider } from '~/context'
+import { RootProvider } from '~/contexts'
 import { breakpoints } from '~/components'
 
 const breakpointValues = {

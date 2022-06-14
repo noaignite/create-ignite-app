@@ -19,7 +19,7 @@ import {
   useGlobalHandlers,
   useGlobalState,
   useI18n,
-} from '~/context'
+} from '~/contexts'
 import { CloseIcon } from '~/components'
 
 const TransitionComponent = React.forwardRef(function TransitionComponent(props, ref) {

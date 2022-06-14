@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { styled } from '@mui/system'
 import { Button } from '@mui/material'
-import { useI18n } from '~/context'
+import { useI18n } from '~/contexts'
 
 export const AppBaseSkipLinkRoot = styled(Button)(({ theme }) => ({
   position: 'absolute',

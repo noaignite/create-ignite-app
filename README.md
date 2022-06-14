@@ -66,7 +66,7 @@ my-app
     ├── blocks
     ├── components
     ├── containers
-    ├── context
+    ├── contexts
     ├── layouts
     ├── pages
     ├── utils
@@ -142,7 +142,7 @@ src/contexts
 
 ### src/layouts
 
-this is a good place to add app-level providers that should be accessible from all corners of the application. providers added here should be exported in the api directory's common export file(s). accessing data or helpers from these providers can look like this `import { usei18n } from '~/context'`.
+this is a good place to add app-level providers that should be accessible from all corners of the application. providers added here should be exported in the api directory's common export file(s). accessing data or helpers from these providers can look like this `import { usei18n } from '~/contexts'`.
 
 ```
 src/contexts

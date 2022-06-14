@@ -10,7 +10,7 @@ import {
   useGlobalState,
   useI18n,
   useRemoteConfig,
-} from '~/context'
+} from '~/contexts'
 import { CloseIcon } from '~/components'
 import AppNavDrawerListItem from './AppNavDrawerListItem'
 

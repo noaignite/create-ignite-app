@@ -6,7 +6,7 @@ import { Media, MediaReveal } from '@noaignite/oui'
 import { cartItemType } from '~/api'
 import { getProductUrl } from '~/api/centra/utils'
 import { ASPECT_RATIOS } from '~/utils/constants'
-import { useCentraHandlers, useI18n } from '~/context'
+import { useCentraHandlers, useI18n } from '~/contexts'
 import { AddIcon, RemoveIcon } from '~/components'
 import RouterLink from '../RouterLink'
 
