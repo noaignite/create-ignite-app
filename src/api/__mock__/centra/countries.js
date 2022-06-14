@@ -201,5 +201,15 @@ export default [
     eu: false,
     language: 'en',
     currency: 'USD',
+    states: [
+      {
+        state: 'AL',
+        name: 'Alabama',
+      },
+      {
+        state: 'AK',
+        name: 'Alaska',
+      },
+    ],
   },
 ]

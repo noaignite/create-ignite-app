@@ -1,18 +1,32 @@
 import PropTypes from 'prop-types'
+import categoryType from './categoryType'
 
-const mediaType = PropTypes.shape({
-  full: PropTypes.arrayOf(PropTypes.string).isRequired,
-  standard: PropTypes.arrayOf(PropTypes.string).isRequired,
-  thumb: PropTypes.arrayOf(PropTypes.string),
-})
+const mediaType = PropTypes.oneOfType([
+  PropTypes.array,
+  PropTypes.shape({
+    full: PropTypes.arrayOf(PropTypes.string),
+    standard: PropTypes.arrayOf(PropTypes.string),
+    thumb: PropTypes.arrayOf(PropTypes.string),
+  }),
+])
 
 const sizeType = PropTypes.shape({
-  item: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  stock: PropTypes.string.isRequired,
+  item: PropTypes.string,
+  name: PropTypes.string,
+  stock: PropTypes.string,
+})
+
+const swatchType = PropTypes.shape({
+  color: PropTypes.string,
+  image: PropTypes.string,
+  name: PropTypes.string,
 })
 
 const productShape = {
+  categories: PropTypes.arrayOf(categoryType),
+  category: PropTypes.string,
+  categoryName: PropTypes.arrayOf(PropTypes.string),
+  categoryUri: PropTypes.string,
   description: PropTypes.string,
   descriptionHtml: PropTypes.string,
   discountPercent: PropTypes.number,
@@ -25,11 +39,11 @@ const productShape = {
   priceAsNumber: PropTypes.number,
   priceBeforeDiscount: PropTypes.string,
   priceBeforeDiscountAsNumber: PropTypes.number,
-  sku: PropTypes.string,
-  swatchColor: PropTypes.string,
-  swatchImage: PropTypes.string,
-  swatchName: PropTypes.string,
+  relation: PropTypes.string,
+  showAsNew: PropTypes.bool,
+  showAsOnSale: PropTypes.bool,
   uri: PropTypes.string,
+  variant_swatch: swatchType,
   variantName: PropTypes.string,
 }
 

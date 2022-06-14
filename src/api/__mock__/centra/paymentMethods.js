@@ -1,6 +1,5 @@
 export default [
   {
-    description: 'Credit Card / Invoice (pay in 14 days) / Part Payment / Bank Transfer',
     handlingCost: '0.00 SEK',
     handlingCostAsNumber: 0,
     name: 'Klarna Checkout',
@@ -10,7 +9,6 @@ export default [
     supportsInitiateOnly: false,
   },
   {
-    description: 'You will be redirected to a secure payment page provided by Adyen.',
     handlingCost: '0.00 SEK',
     handlingCostAsNumber: 0,
     name: 'Swish',

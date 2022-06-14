@@ -14,21 +14,6 @@ export const ASPECT_RATIOS = {
   },
 }
 
-export const CENTRA_CART_ITEM_UNIQUE_KEY = 'line'
-export const CENTRA_PRODUCT_UNIQUE_KEY = 'item'
-export const CENTRA_INITIAL_ADDRESS_FIELDS = {
-  address1: '',
-  city: '',
-  company: '',
-  country: '',
-  email: '',
-  firstName: '',
-  lastName: '',
-  phoneNumber: '',
-  state: '',
-  zipCode: '',
-}
-
 export const SITE_NAME = 'Create Ignite App'
 export const SITE_ROOT_ID = 'site-root'
 export const SITE_HEADER_ID = 'site-header'
