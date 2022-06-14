@@ -28,23 +28,19 @@ yarn dev
 Then open http://localhost:3000/ to see your app in Next.js.
 When you’re ready to deploy your Next.js app to production, create a minified bundle with `yarn build`.
 
-## Creating a release
+### Creating a release
 
-When you're ready to release, simply run `yarn release`.
+When going live, an initial release can be created. To do this, run:
 
-This will do the following:
+```sh
+yarn release --first-release --skip.changelog
+```
 
-1. Retrieve the current version of your repository by looking at `package.json`, falling back to the last git tag.
-2. Bump the version in `package.json` based on your commits.
-3. Generates a changelog based on your commits.
-4. Creates a new commit including your `package.json` and updated `CHANGELOG.md`.
-5. Creates a new git tag with the new version number.
+For subsequent releases, run:
 
-### First release
-
-To generate your changelog for your first release, simply do `yarn release --first-release --skip.changelog`. This will tag a release without bumping the version and without generating a changelog for all initial development commits.
-
-For more information check out the [standard-version documentation](https://github.com/conventional-changelog/standard-version/blob/master/README.md).
+```sh
+yarn release
+```
 
 ## Developing the App
 
@@ -71,6 +67,7 @@ my-app
     ├── components
     ├── containers
     ├── context
+    ├── layouts
     ├── pages
     ├── utils
     └── pages.stories.js
@@ -80,25 +77,13 @@ The philosophy behind some of this structure can be read below.
 
 ### src/api
 
-Home to data fetching helpers as well as mock data.
+The place for your api related utilities.
 
 ```
 src/api
 ├── __mock__ (Mock data used for Storybook)
-├── storybook.index.js
-├── index.js
-```
-
-### src/context
-
-This is a good place to add App-level providers that should be accessible from all corners of the application. Providers added here should be exported in the context directory's common export file(s). Accessing data or helpers from these providers can look like this `import { useCms } from '~/context'`.
-
-```
-src/context
-├── centra (Centra data & helpers)
-├── cms (CMS data)
-├── global (Global data & helpers)
-├── i18n (Internalization data & helpers)
+├── centra
+├── utils
 ├── index.js
 └── ...
 ```
@@ -137,6 +122,32 @@ Container components are "smart" components, they come in various sizes but what
 src/containers
 ├── App (The topmost component in the application)
 ├── RouterLink (A Next.js wrapped routing component)
+├── index.js
+└── ...
+```
+
+### src/contexts
+
+This is a good place to add app-level providers that should be accessible from all corners of the application. Providers added here should be exported in the api directory's common export file(s). accessing data or helpers from these providers can look like this `import { usei18n } from '~/contexts'`.
+
+```
+src/contexts
+├── Centra (Centra utilities)
+├── Global (App state such as menus, cookie bars and such)
+├── I18n (Internalization utilities)
+├── RemoteConfig (CMS data or other remote settings)
+├── index.js
+└── ...
+```
+
+### src/layouts
+
+this is a good place to add app-level providers that should be accessible from all corners of the application. providers added here should be exported in the api directory's common export file(s). accessing data or helpers from these providers can look like this `import { usei18n } from '~/context'`.
+
+```
+src/contexts
+├── AppBase (Contains the necessary modules which should exist on all pages)
+├── App (The default layout to be used)
 ├── index.js
 └── ...
 ```
