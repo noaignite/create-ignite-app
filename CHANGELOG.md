@@ -2,6 +2,76 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/noaignite/create-ignite-app/compare/v1.0.0...v1.1.0) (2022-06-14)
+
+
+### Features
+
+* **api:** add formatProduct util, update product mock and add filterGroupType util ([0f84210](https://github.com/noaignite/create-ignite-app/commit/0f8421096f06b4ee40cdebed1f966a3875f20a8b))
+* **api:** move centra related constants & utils into api/centra and update mock data ([a4bb2ef](https://github.com/noaignite/create-ignite-app/commit/a4bb2ef9dc45d98dbcda92c0d19997a70864b5f5))
+* **App:** introduce new layouts architecture and move App to layouts ([2bb4ec9](https://github.com/noaignite/create-ignite-app/commit/2bb4ec9deeab9409d252b257cd414982e85e0963))
+* **icons:** export all icons & styles exports directly from components dir" ([f9b25c7](https://github.com/noaignite/create-ignite-app/commit/f9b25c703cf1060f3b038202c0c394980a423d19))
+* **RootProvider:** add new root provider to provide providers for Storybook & NextJS ([c55fc07](https://github.com/noaignite/create-ignite-app/commit/c55fc07c77e2c3008959bb02c94a1793a6384b43))
+* **theme:** add new custom ThemeProvider, withInvertedTheme HOC and defaultTheme ([29b163b](https://github.com/noaignite/create-ignite-app/commit/29b163bd1b2c19d5460f967eaf3098e876da7f04))
+* **theme:** simplify theme setup ([b8bcf32](https://github.com/noaignite/create-ignite-app/commit/b8bcf326789f7b28f0bd9cec0573389a9d8e10e4))
+
+
+### Bug Fixes
+
+* **FormControlBoxSummary:** remove incorrect control prop validation ([9d3c72e](https://github.com/noaignite/create-ignite-app/commit/9d3c72e0599aa8e6f64d11afab2b55045bd9a064))
+* **MuiInputBase:** correct typo ([7b545fd](https://github.com/noaignite/create-ignite-app/commit/7b545fd6b0017ff32690e3c640ac0c7b854b1403))
+* **Storybook:** emotion-theming ThemeProvider no longer needed as of @storybook/* 6.5.0 ([5a32b64](https://github.com/noaignite/create-ignite-app/commit/5a32b64a20e3882fbbed6d883d89094efc07b023))
+
+
+### Styling
+
+* tidy up gitignore ([f7d1f2a](https://github.com/noaignite/create-ignite-app/commit/f7d1f2ad97d3c606ab4470e3f8067b4363b444b0))
+
+
+### Code Refactoring
+
+* **CartItem:** remove global row className in favor of styled component ([8d670f1](https://github.com/noaignite/create-ignite-app/commit/8d670f1b5ad7b6cad3b5458c51b5ebdc8b2855b9))
+* **colors:** locally define colors ([bfec2de](https://github.com/noaignite/create-ignite-app/commit/bfec2deae993a32c2c2f3205539ffecf8d2667a3))
+* **contexts:** uppercase context dirs and make each provider the default export ([6139e03](https://github.com/noaignite/create-ignite-app/commit/6139e0348c0bf14df121a56ac6ce0522f76d79c4))
+* **menuItemtype:** rename nested menu entries from links to items as url is not required ([3dacfec](https://github.com/noaignite/create-ignite-app/commit/3dacfec0b366e348f96692a8b714e90e60230862))
+* move api related utils into api/utils ([0ff7aa2](https://github.com/noaignite/create-ignite-app/commit/0ff7aa2b9cc305584243fd5dfa7e059a91ec43ce))
+* mui styled no longer needs name & slot thanks to @emotion/babel-plugin ([fc1d514](https://github.com/noaignite/create-ignite-app/commit/fc1d514fb05b33a36a05828f8e6b91036c40d591))
+* remove all third levels imports and export all utils from styles ([9bd00f9](https://github.com/noaignite/create-ignite-app/commit/9bd00f91252d59d85cc2ff565e97da7bcabf3e5a))
+* **Storybook:** remove storySelectArgType util as not necessary ([a3e53e6](https://github.com/noaignite/create-ignite-app/commit/a3e53e6839e9cbc86d3597bb3b486ae6ea492d6e))
+* **utils:** move theme objects into components, add new constants & minor tweaks ([4f67b70](https://github.com/noaignite/create-ignite-app/commit/4f67b700c1f49492a54a8df1e4b4b1e75c0306a4))
+
+
+### Others
+
+* **_document:** update based on mui next example ([8d37b6f](https://github.com/noaignite/create-ignite-app/commit/8d37b6fb673160aa4a2cf598c6bc9e3ec7ce3e49))
+* **husky/prepare-commit-msg:** do not open commitizen when doing a git merge ([b18e4dd](https://github.com/noaignite/create-ignite-app/commit/b18e4dd2378da29998bb3181b69bb702b081afe0))
+
+
+### Docs
+
+* **README:** add section detailing contexts & layouts ([cec0233](https://github.com/noaignite/create-ignite-app/commit/cec0233e891dec88ec071fc3b39f642485eb8cf9))
+* **readme:** add skip changelog ([bf4e93a](https://github.com/noaignite/create-ignite-app/commit/bf4e93ad4eaf5663478ac96beb4913e5a24660b6))
+
+
+### Build System
+
+* **deps:** bump @commitlint/* from 16.2.3 to 17.0.0 ([26adebc](https://github.com/noaignite/create-ignite-app/commit/26adebc4f510804c959c19377bf0ab5f197bb38a))
+* **deps:** bump @commitlint/* from 17.0.0 to 17.0.2 ([0c72083](https://github.com/noaignite/create-ignite-app/commit/0c72083dbfa4f6bff7370dcd718190568cbaf478))
+* **deps:** bump @emotion/* from 11.* to 11.9.3 ([766d164](https://github.com/noaignite/create-ignite-app/commit/766d164c13475657316b6afa9475b5bedc3f7583))
+* **deps:** bump @emotion/* from 11.7.2 to 11.9.2 ([3825fb2](https://github.com/noaignite/create-ignite-app/commit/3825fb26c79a4832041667d32d9b8f7575fc9b0f))
+* **deps:** bump @mui/material from 5.6.0 to 5.8.4 and @mui/lab to latest ([c18cd68](https://github.com/noaignite/create-ignite-app/commit/c18cd68cb4cd0c30ba3361a62e300694ee8b0e24))
+* **deps:** bump @noaignite/eslint-config from 0.2.2 to 0.4.0 ([9974878](https://github.com/noaignite/create-ignite-app/commit/99748788e7042956017cfd9a14719b63712c69fb))
+* **deps:** bump @noaignite/eslint-config from 0.4.0 to 0.5.1 ([f69996e](https://github.com/noaignite/create-ignite-app/commit/f69996e5817717a1e592a396e2104807882a1d21))
+* **deps:** bump @noaignite/oui from 3.3.0 to 3.3.2 ([64db583](https://github.com/noaignite/create-ignite-app/commit/64db583f7a9f46588ad2f1eb564b244d1e4d20e6))
+* **deps:** bump @storybook/* from 6.4.20 to 6.5.0 ([b93299e](https://github.com/noaignite/create-ignite-app/commit/b93299eb82aa6e96f7f72ce599747f8e7beffd7b))
+* **deps:** bump @storybook/* from 6.5.0 to 6.5.6 ([8caa070](https://github.com/noaignite/create-ignite-app/commit/8caa07052252445c9925c03842f988426de7eab0))
+* **deps:** bump @storybook/* from 6.5.6 to 6.5.9 ([de576ff](https://github.com/noaignite/create-ignite-app/commit/de576ff97a3fb93ecc9f66c7ff3e04cf64134068))
+* **deps:** bump husky from 7.0.0 to 8.0.1 ([fde54e7](https://github.com/noaignite/create-ignite-app/commit/fde54e7e6ce74ecdb7ebae12186aa8fe1723e0a1))
+* **deps:** bump lint-staged from 12.3.2 to 13.0.1 ([2b4c9b8](https://github.com/noaignite/create-ignite-app/commit/2b4c9b8baf749516cb1a6fa1a416ea0ca0a59fb5))
+* **deps:** bump next packages from 12.1.4 to 12.1.6 ([ccf4230](https://github.com/noaignite/create-ignite-app/commit/ccf4230b0e2910eef96112455dca60796fa6065f))
+* **deps:** bump prettier from 2.5.1 to 2.7.0 ([096d1d4](https://github.com/noaignite/create-ignite-app/commit/096d1d4dafcb072bb88629b4d61c511bcf0a4263))
+* **Storybook:** remove --static-dir CLI flag as deprecated and add host flag for node 18 ([888e96c](https://github.com/noaignite/create-ignite-app/commit/888e96cb4041b466b724d35e039c877ec9fe3115))
+
 ## 1.0.0 (2022-04-12)
 
 
