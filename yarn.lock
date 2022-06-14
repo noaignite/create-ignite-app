@@ -2287,10 +2287,10 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.1.6.tgz#a350caf42975e7197b24b495b8d764eec7e6a36e"
   integrity sha512-4ZEwiRuZEicXhXqmhw3+de8Z4EpOLQj/gp+D9fFWo6ii6W1kBkNNvvEx4A90ugppu+74pT1lIJnOuz3A9oQeJA==
 
-"@noaignite/eslint-config@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@noaignite/eslint-config/-/eslint-config-0.4.0.tgz#4db6369684ec9528b4945ed69d68f5ade377ac86"
-  integrity sha512-yBM7UrnWU2OGloFpgDMP2mX181G5gWUdW5SbnpwJM+KMkxuru/eczk1zHTEYur5+JBhytD9taF5u4eMqMiBGxQ==
+"@noaignite/eslint-config@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@noaignite/eslint-config/-/eslint-config-0.5.1.tgz#6ccb48e438ef8d109491768c16886603b7ea0064"
+  integrity sha512-Jh9loPRe6MlxtTBgT2wbknCks8oEuu8EtWnm58WhkYtH1z63BgSIHi01vrFnrM6rOYFMMZIYD7O8MNRpokptcw==
   dependencies:
     "@babel/core" "^7.16.0"
     "@babel/eslint-parser" "^7.17.0"
