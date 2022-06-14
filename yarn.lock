@@ -2304,10 +2304,10 @@
     eslint-plugin-react-hooks "^4.3.0"
     eslint-plugin-testing-library "^5.0.6"
 
-"@noaignite/oui@^3.3.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@noaignite/oui/-/oui-3.3.0.tgz#0faa6d7e1eb08c7885af085b576be1fb2a7de9d8"
-  integrity sha512-TTe4ylEnt7q4yeq32M/Y1BQ/PDSDqf1TaWGx5NKKKx06J0g/kKEcJzD+003PHE1GsxCpktNPiLntPEoXDy2GiQ==
+"@noaignite/oui@^3.3.2":
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/@noaignite/oui/-/oui-3.3.2.tgz#f7e50aeca9d362a82b9f7413e01e865ec2585318"
+  integrity sha512-dJTFLK2kHwGw8rkl5SAhppE5qZ9nTzh+Dg/f6hXt0B9KZyJxFxnw4ceqKx67mFu8yP6ghu4UFPkqtit9mums+A==
   dependencies:
     "@babel/runtime" "^7.16.0"
     "@maeertin/medialoaded" "^1.2.1"
