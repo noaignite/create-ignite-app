@@ -1,23 +1,71 @@
-// @inheritedComponent Backdrop
-
 import * as React from 'react'
 import Router from 'next/router'
 import { styled } from '@mui/system'
-import { Backdrop, CircularProgress } from '@mui/material'
 
-const AppBaseLoaderRoot = styled(Backdrop)(({ theme }) => ({
-  zIndex: theme.zIndex.appBar - 1,
+const AppBaseLoaderRoot = styled('div')(({ theme }) => ({
+  ...theme.mixins.fixed(0, 0, undefined),
+  zIndex: theme.zIndex.tooltip,
+  height: 2,
+  backgroundColor: theme.palette.primary.main,
+  transformOrigin: 'left center',
+  transform: 'scaleX(0)',
+  pointerEvents: 'none',
 }))
 
-function AppBaseLoader(props) {
-  const [loading, setLoading] = React.useState(false)
+const AppBaseLoader = React.memo(function AppBaseLoader(props) {
+  const rootRef = React.useRef(null)
+  const animationsRef = React.useRef({
+    scale: null,
+    fade: null,
+  })
 
   const handleRouteChangeStart = React.useCallback(() => {
-    setLoading(true)
+    animationsRef.current.scale.updatePlaybackRate(1)
+    animationsRef.current.scale.cancel()
+    animationsRef.current.fade.cancel()
+
+    animationsRef.current.scale.play()
   }, [])
 
   const handleRouteChangeComplete = React.useCallback(() => {
-    setLoading(false)
+    animationsRef.current.scale.updatePlaybackRate(30)
+  }, [])
+
+  React.useEffect(() => {
+    animationsRef.current.scale = rootRef.current.animate(
+      [
+        { transform: 'scaleX(0)' },
+        { transform: 'scaleX(0.3)' },
+        { transform: 'scaleX(0.4)' },
+        { transform: 'scaleX(0.5)' },
+        { transform: 'scaleX(0.6)' },
+        { transform: 'scaleX(0.7)' },
+        { transform: 'scaleX(0.8)' },
+        { transform: 'scaleX(0.9)' },
+        { transform: 'scaleX(1)' },
+      ],
+      {
+        duration: 5000,
+        easing: 'ease-out',
+      },
+    )
+    animationsRef.current.scale.cancel()
+
+    animationsRef.current.fade = rootRef.current.animate(
+      [
+        { transform: 'scaleX(1)', opacity: 1 },
+        { transform: 'scaleX(1)', opacity: 0 },
+      ],
+      {
+        duration: 300,
+        easing: 'ease-out',
+      },
+    )
+    animationsRef.current.fade.cancel()
+
+    animationsRef.current.scale.onfinish = () => {
+      animationsRef.current.fade.play()
+    }
   }, [])
 
   React.useEffect(() => {
@@ -30,11 +78,7 @@ function AppBaseLoader(props) {
     }
   }, [handleRouteChangeStart, handleRouteChangeComplete])
 
-  return (
-    <AppBaseLoaderRoot open={loading} unmountOnExit {...props}>
-      <CircularProgress />
-    </AppBaseLoaderRoot>
-  )
-}
+  return <AppBaseLoaderRoot ref={rootRef} {...props} />
+})
 
 export default AppBaseLoader
