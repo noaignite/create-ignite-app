@@ -2,13 +2,13 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import useSize from '@react-hook/size'
 import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
 import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
 import { RouterLink } from '~/containers'
 import { BrandIcon, CartIcon, SearchIcon, CloseIcon, MenuIcon } from '~/components'
+import AppStoreMessage from './AppStoreMessage'
 
 const BREAKPOINT_KEY = 'md'
 
@@ -65,15 +65,13 @@ const AppHeader = React.memo(function AppHeader(props) {
     isNavMenuOpen,
     isSearchMenuOpen,
     isSomeMenuOpen,
+    isStoreMessageOpen,
     productsCount,
     ...other
   } = props
 
   const { onCartMenuToggle, onNavMenuToggle, onSearchMenuToggle } = useGlobalHandlers()
   const { t } = useI18n()
-
-  const rootRef = React.useRef(null)
-  const [, rootHeight] = useSize(rootRef)
 
   const [disableTransparency, setDisableTransparency] = React.useState(undefined)
   const syncDisableTransparency = React.useCallback(() => {
@@ -106,6 +104,11 @@ const AppHeader = React.memo(function AppHeader(props) {
     headerModeState = 'transparent'
   }
 
+  let headerHeight = 'var(--cia-header-toolbar-primary-height)'
+  if (isStoreMessageOpen) {
+    headerHeight = `calc(${headerHeight} + var(--cia-header-toolbar-secondary-height))`
+  }
+
   const ownerState = {
     disableTransparency,
     headerColor,
@@ -116,19 +119,19 @@ const AppHeader = React.memo(function AppHeader(props) {
     <AppHeaderRoot
       ownerState={ownerState}
       position={headerMode === 'opaque' ? 'sticky' : 'fixed'}
-      ref={rootRef}
       {...other}
     >
+      {isStoreMessageOpen && <AppStoreMessage />}
+
       <style
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: `
-          :root {
-            --cia-header-height: ${rootHeight}px;
-            --cia-initial-sticky-top: ${headerMode === 'opaque' ? rootHeight : 0}px;
-            --cia-sticky-top: ${headerMode !== 'transparent' ? rootHeight : 0}px;
-          }
-        `,
+            :root {
+              --cia-header-height: ${headerHeight};
+              --cia-sticky-top: var(--cia-header-height);
+            }
+          `,
         }}
       />
 
@@ -192,11 +195,13 @@ AppHeader.propTypes = {
   isNavMenuOpen: PropTypes.bool,
   isSearchMenuOpen: PropTypes.bool,
   isSomeMenuOpen: PropTypes.bool,
+  isStoreMessageOpen: PropTypes.bool,
   productsCount: PropTypes.number,
 }
 
 function AppHeaderContainer(props) {
-  const { isCartMenuOpen, isNavMenuOpen, isSearchMenuOpen, isSomeMenuOpen } = useGlobalState()
+  const { isCartMenuOpen, isNavMenuOpen, isSearchMenuOpen, isSomeMenuOpen, isStoreMessageOpen } =
+    useGlobalState()
   const {
     selection: { items },
   } = useCentraSelection()
@@ -207,6 +212,7 @@ function AppHeaderContainer(props) {
       isNavMenuOpen={isNavMenuOpen}
       isSearchMenuOpen={isSearchMenuOpen}
       isSomeMenuOpen={isSomeMenuOpen}
+      isStoreMessageOpen={isStoreMessageOpen}
       productsCount={items.length}
       {...props}
     />

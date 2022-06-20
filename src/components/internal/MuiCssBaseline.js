@@ -12,6 +12,8 @@ const overrides = {
     /* Define :root css variables. */
     :root {
       --cia-theme-spacing: ${theme.spacing(1)};
+      --cia-header-toolbar-primary-height: 56px;
+      --cia-header-toolbar-secondary-height: 22px;
       --cia-section-spacing: max(${theme.spacing(3)}, 3.7vw);
       --cia-container-spacing: calc(100vw / 24);
       --cia-toolbar-dense-min-height: 48px;
@@ -30,6 +32,7 @@ const overrides = {
     nav ol, nav ul {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
     svg:not([fill]) {
       fill: currentColor;
