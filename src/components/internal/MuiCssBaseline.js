@@ -1,7 +1,7 @@
 const overrides = {
   styleOverrides: (theme) => `
     /* Include font files here. */
-    /*
+    /* Out-commented @font-face example:
     @font-face {
       font-family: 'Family';
       font-weight: 400;
