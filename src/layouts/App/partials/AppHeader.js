@@ -20,16 +20,16 @@ export const classes = generateUtilityClasses('CiaAppHeader', [
 ])
 
 const AppHeaderRoot = styled(AppBar)(({ theme, ownerState }) => ({
-  ...(ownerState.headerModeState === 'transparent' && {
+  ...(ownerState.mounted && {
+    transition: theme.transitions.create(['background-color'], {
+      duration: theme.transitions.duration.shortest, // Match value of `IconButton`
+    }),
+  }),
+  ...(ownerState.headerMode === 'transparent' && {
     '&:not(:hover):not(:focus-within)': {
       backgroundColor: 'transparent',
       color: ownerState.headerColor,
     },
-  }),
-  ...(ownerState.disableTransparency !== undefined && {
-    transition: theme.transitions.create(['background-color'], {
-      duration: theme.transitions.duration.shortest, // Match value of `IconButton`
-    }),
   }),
   // Util classes
   [`& .${classes.toolbarPushMobile}`]: {
@@ -60,7 +60,7 @@ const AppHeaderBrandLink = styled(RouterLink)({
 const AppHeader = React.memo(function AppHeader(props) {
   const {
     headerColor = 'inherit',
-    headerMode = 'opaque',
+    headerMode: headerModeProp = 'opaque',
     isCartMenuOpen,
     isNavMenuOpen,
     isSearchMenuOpen,
@@ -73,35 +73,37 @@ const AppHeader = React.memo(function AppHeader(props) {
   const { onCartMenuToggle, onNavMenuToggle, onSearchMenuToggle } = useGlobalHandlers()
   const { t } = useI18n()
 
-  const [disableTransparency, setDisableTransparency] = React.useState(undefined)
+  const [disableTransparency, setDisableTransparency] = React.useState(false)
+  const [mounted, setMounted] = React.useState(false)
+
   const syncDisableTransparency = React.useCallback(() => {
     setDisableTransparency(window.pageYOffset > 100)
   }, [])
 
   React.useEffect(() => {
+    setMounted(true)
+    syncDisableTransparency()
+
     const handleScroll = () => {
       syncDisableTransparency()
     }
 
-    if (headerMode === 'auto') {
+    if (headerModeProp === 'auto') {
       window.addEventListener('scroll', handleScroll, { passive: true })
       return () => {
         window.removeEventListener('scroll', handleScroll)
       }
     }
 
-    // Define `disableTransparency` value on `headerMode` prop change, thereby
-    // enabling transitions. Doing so negates flashing of header on page load
-    // for pages that don't use `headerMode="opaque"`.
-    return syncDisableTransparency
-  }, [headerMode, syncDisableTransparency])
+    return undefined
+  }, [headerModeProp, syncDisableTransparency])
 
-  let headerModeState = 'opaque'
+  let computedHeaderMode = 'opaque'
   if (
-    (headerMode === 'transparent' || (headerMode === 'auto' && !disableTransparency)) &&
+    (headerModeProp === 'transparent' || (headerModeProp === 'auto' && !disableTransparency)) &&
     !isSomeMenuOpen
   ) {
-    headerModeState = 'transparent'
+    computedHeaderMode = 'transparent'
   }
 
   let headerHeight = 'var(--cia-header-toolbar-primary-height)'
@@ -110,15 +112,15 @@ const AppHeader = React.memo(function AppHeader(props) {
   }
 
   const ownerState = {
-    disableTransparency,
     headerColor,
-    headerModeState,
+    headerMode: computedHeaderMode,
+    mounted,
   }
 
   return (
     <AppHeaderRoot
       ownerState={ownerState}
-      position={headerMode === 'opaque' ? 'sticky' : 'fixed'}
+      position={headerModeProp === 'opaque' ? 'sticky' : 'fixed'}
       {...other}
     >
       {isStoreMessageOpen && <AppStoreMessage />}
