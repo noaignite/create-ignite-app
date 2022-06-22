@@ -1,14 +1,15 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
+import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles'
 import { CssBaseline } from '@mui/material'
-import { defaultTheme, ThemeProvider } from '~/components'
+import { defaultTheme } from '~/components'
 import { CentraProvider } from '../Centra'
 import GlobalProvider from '../Global'
 import I18nProvider from '../I18n'
 import RemoteConfigProvider from '../RemoteConfig'
 
 function RootProvider(props) {
-  const { children, defaultLocale, locale, settings, theme } = props
+  const { children, defaultLocale, locale, settings } = props
 
   return (
     <I18nProvider defaultLocale={defaultLocale} locale={locale}>
@@ -19,12 +20,12 @@ function RootProvider(props) {
           paymentReturnPage=""
         >
           <GlobalProvider>
-            <ThemeProvider theme={defaultTheme} mode={theme}>
+            <CssVarsProvider theme={defaultTheme}>
               {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
               <CssBaseline />
 
               {children}
-            </ThemeProvider>
+            </CssVarsProvider>
           </GlobalProvider>
         </CentraProvider>
       </RemoteConfigProvider>
@@ -37,7 +38,6 @@ RootProvider.propTypes = {
   defaultLocale: PropTypes.string,
   locale: PropTypes.string,
   settings: PropTypes.object,
-  theme: PropTypes.string,
 }
 
 export default RootProvider
