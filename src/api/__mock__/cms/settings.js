@@ -1,7 +1,9 @@
-const subLinks = Array.from(new Array(12), (_, idx) => ({
-  label: `Link ${idx + 1}`,
-  url: `/link-${idx + 1}`,
-}))
+function composeLinks(length) {
+  return Array.from(new Array(length), (_, idx) => ({
+    label: `Link ${idx + 1}`,
+    url: `/link-${idx + 1}`,
+  }))
+}
 
 export const menuPrimary = [
   {
@@ -16,27 +18,27 @@ export const menuPrimary = [
 
 export const menuSecondary = [
   {
-    items: subLinks,
+    items: composeLinks(8),
     label: 'Clothing',
     url: '/clothing',
   },
   {
-    items: subLinks,
+    items: composeLinks(4),
     label: 'Accessories',
     url: '/accessories',
   },
   {
-    items: subLinks,
+    items: composeLinks(6),
     label: 'Shoes',
     url: '/shoes',
   },
   {
-    items: subLinks,
+    items: composeLinks(7),
     label: 'Homewear',
     url: '/homewear',
   },
   {
-    items: subLinks,
+    items: composeLinks(5),
     label: 'Skincare',
     url: '/skincare',
   },

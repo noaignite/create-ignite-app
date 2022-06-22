@@ -1,4 +1,6 @@
-import { formatProduct } from '~/api'
+import { capitalize } from '@mui/material'
+import formatProduct from '~/api/centra/utils/formatProduct'
+import categories from './categories'
 import measurementChart from './measurementChart'
 
 const unsplashImageIds = [
@@ -20,31 +22,20 @@ const unsplashImageIds = [
 
 const colors = ['black', 'white', 'tomato', 'hotpink', 'gold', 'rebeccapurple', 'coral']
 
-const baseSizes = Array.from(new Array(6), (_, idx) => ({
-  item: `0000000${idx}`,
-  name: String(32 + idx),
-  stock: idx % 3 !== 2 ? 'yes' : 'no',
-}))
+const priceAsNumber = 3_200
+const priceBeforeDiscountAsNumber = 4_200
+const discountPercent = Math.round((1 - priceAsNumber / priceBeforeDiscountAsNumber) * 100)
 
-const baseProduct = {
-  description: '* Regular collar, Short sleeves, Snap-button closure through front, Breast pockets in front\n* Quality: Lamb DD Papery\n* Composition: 100% Lamb Leather\n* Lining Composition: Unlined\n* Filling: Unlined\n* Back Length: 70 cm\n* Professional leather clean only', // prettier-ignore
-  descriptionHtml: '<ul>\n\t<li>Regular collar, Short sleeves, Snap-button closure through front, Breast pockets in front</li>\n\t<li>Quality: Lamb DD Papery</li>\n\t<li>Composition: 100% Lamb Leather</li>\n\t<li>Lining Composition: Unlined</li>\n\t<li>Filling: Unlined</li>\n\t<li>Back Length: 70 cm</li>\n\t<li>Professional leather clean only</li>\n</ul>', // prettier-ignore
-  discountPercent: 0,
-  excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis varius id est vel consectetur. Pellentesque quam massa, facilisis nec eleifend ut, aliquet vitae velit.', // prettier-ignore
-  excerptHtml: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis varius id est vel consectetur. Pellentesque quam massa, facilisis nec eleifend ut, aliquet vitae velit.</p>", // prettier-ignore
-  items: baseSizes,
-  measurementChart,
-  name: 'Generic Product',
-  price: '999 SEK',
-  priceAsNumber: 999,
-  priceBeforeDiscount: '',
-  priceBeforeDiscountAsNumber: 0,
-  relation: 'variant',
-  swatchColor: colors[0],
-  swatchImage: '',
-  swatchName: colors[0],
-  uri: 'generic-product',
-  variantName: 'Black Ritzy Cotton',
+function formatPrice(price) {
+  return `${price.toLocaleString('sv-SE')} SEK`
+}
+
+function composeItems(idx) {
+  return Array.from(new Array(6), (_, idx2) => ({
+    item: `0000000${idx + idx2}`,
+    name: String(32 + idx),
+    stock: idx % 3 !== 2 ? 'yes' : 'no',
+  }))
 }
 
 function composeImages(idx, size) {
@@ -53,30 +44,68 @@ function composeImages(idx, size) {
     const firstImage = images.shift()
     images.push(firstImage)
   }
-  return images.slice(0, 3)
+  return images.slice(0, 5 - (idx % 3))
 }
 
-function composeProduct(idx) {
+function composeMedia(idx) {
   return {
-    ...baseProduct,
-    ...(idx % 2 === 0 && {
-      discountPercent: 20,
-      priceBeforeDiscount: '1 199 SEK',
-      priceBeforeDiscountAsNumber: 1199,
-    }),
-    media: { full: composeImages(idx, '1000x1000'), standard: composeImages(idx, '500x500') },
-    name: `Generic Product ${idx + 1}`,
-    swatchColor: colors[idx % colors.length],
-    swatchName: colors[idx % colors.length],
-    uri: `generic-product-${idx}`,
+    standard: composeImages(idx, '500x500'),
+    full: composeImages(idx, '2000x2000'),
+    // Project specific below...
   }
 }
 
-const products = Array.from(new Array(16), (_, idx) =>
-  formatProduct({
-    ...composeProduct(idx),
-    relatedProducts: Array.from(new Array(6), (__, idx2) => composeProduct(1 + idx + idx2)),
-  }),
-)
+function composeSwatch(idx) {
+  return {
+    color: colors[idx % colors.length],
+    image: `//source.unsplash.com/${unsplashImageIds[idx % unsplashImageIds.length]}`,
+    name: capitalize(colors[idx % colors.length]),
+  }
+}
 
-export default products
+function composeProduct(idx, other) {
+  return {
+    categories: categories.slice(0, 2),
+    category: categories[0].category,
+    categoryName: categories[0].name,
+    categoryUri: categories[0].uri,
+    description: '* Regular collar, Short sleeves, Snap-button closure through front, Breast pockets in front\n* Quality: Lamb DD Papery\n* Composition: 100% Lamb Leather\n* Lining Composition: Unlined\n* Filling: Unlined\n* Back Length: 70 cm\n* Professional leather clean only', // prettier-ignore
+    descriptionHtml: '<ul>\n\t<li>Regular collar, Short sleeves, Snap-button closure through front, Breast pockets in front</li>\n\t<li>Quality: Lamb DD Papery</li>\n\t<li>Composition: 100% Lamb Leather</li>\n\t<li>Lining Composition: Unlined</li>\n\t<li>Filling: Unlined</li>\n\t<li>Back Length: 70 cm</li>\n\t<li>Professional leather clean only</li>\n</ul>', // prettier-ignore
+    discountPercent: idx % 2 === 0 ? discountPercent : 0,
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis varius id est vel consectetur. Pellentesque quam massa, facilisis nec eleifend ut, aliquet vitae velit.', // prettier-ignore
+    excerptHtml: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis varius id est vel consectetur. Pellentesque quam massa, facilisis nec eleifend ut, aliquet vitae velit.</p>", // prettier-ignore
+    items: composeItems(idx),
+    measurementChart,
+    media: composeMedia(idx),
+    name: `Generic Product ${idx + 1}`,
+    price: idx % 2 === 0 ? formatPrice(priceAsNumber) : formatPrice(priceBeforeDiscountAsNumber), // prettier-ignore
+    priceAsNumber: idx % 2 === 0 ? priceAsNumber : priceBeforeDiscountAsNumber,
+    priceBeforeDiscount: formatPrice(priceBeforeDiscountAsNumber),
+    priceBeforeDiscountAsNumber,
+    product: String(idx),
+    showAsNew: false,
+    showAsOnSale: false,
+    sku: String(idx),
+    uri: `generic-product-${idx}`,
+    variant_swatch: composeSwatch(idx),
+    variantName: 'Black Ritzy Cotton',
+    // Project specific below...
+    ...other,
+  }
+}
+
+const products = Array.from(new Array(20), (_, idx) => composeProduct(idx))
+
+const enhancedProducts = products.map((product, idx) => {
+  const relatedProducts = [...products].filter((p, idx2) => idx2 !== idx)
+
+  return formatProduct({
+    ...product,
+    relatedProducts: [
+      ...relatedProducts.slice(0, colors.length - 1).map((p) => ({ ...p, relation: 'variant' })),
+      ...relatedProducts.slice(0, 12).map((p) => ({ ...p, relation: 'standard' })),
+    ],
+  })
+})
+
+export default enhancedProducts

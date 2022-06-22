@@ -6,7 +6,7 @@ import useSize from '@react-hook/size'
 import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
-import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/context'
+import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
 import { RouterLink } from '~/containers'
 import { BrandIcon, CartIcon, SearchIcon, CloseIcon, MenuIcon } from '~/components'
 

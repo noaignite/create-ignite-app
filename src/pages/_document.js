@@ -18,6 +18,9 @@ export default class MyDocument extends Document {
 
           {/* Preload font files here: */}
           {/* <link rel="preload" href="/fonts/family/family-regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" /> */}
+
+          {/* Inject MUI styles first to match with the prepend: true configuration. */}
+          {this.props.emotionStyleTags}
         </Head>
         <body>
           <Main />
@@ -80,7 +83,6 @@ MyDocument.getInitialProps = async (ctx) => {
 
   return {
     ...initialProps,
-    // Styles fragment is rendered after the app and page rendering finish.
-    styles: [...React.Children.toArray(initialProps.styles), ...emotionStyleTags],
+    emotionStyleTags,
   }
 }

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import dynamic from 'next/dynamic'
 import { styled } from '@mui/system'
 import { Button, CircularProgress, Drawer, IconButton, Toolbar, Typography } from '@mui/material'
-import { useGlobalHandlers, useGlobalState, useI18n } from '~/context'
+import { useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
 import { RouterLink } from '~/containers'
 import { CartIcon, CloseIcon } from '~/components'
 

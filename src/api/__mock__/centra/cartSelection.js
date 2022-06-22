@@ -2,6 +2,12 @@ import cartItems from './cartItems'
 import paymentMethods from './paymentMethods'
 import shippingMethods from './shippingMethods'
 
+const itemsTotalPriceAsNumber = cartItems.reduce((sum, i) => sum + i.priceEachWithoutTaxAsNumber * i.quantity, 0) // prettier-ignore
+const grandTotalPriceAsNumber = cartItems.reduce((sum, i) => sum + i.totalPriceAsNumber, 0)
+const grandTotalPriceTaxAsNumber = grandTotalPriceAsNumber - itemsTotalPriceAsNumber
+const totalDiscountPriceAsNumber = cartItems.reduce((sum, i) => sum + (i.totalPriceBeforeDiscountAsNumber - i.totalPriceAsNumber), 0) // prettier-ignore
+const totalQuantity = cartItems.reduce((sum, i) => sum + i.quantity, 0)
+
 export default {
   language: null,
   currency: 'SEK',
@@ -12,12 +18,12 @@ export default {
   items: cartItems,
   discounts: {
     anyDiscount: true,
-    discount: '100.00 SEK',
+    discount: '100 SEK',
     discountAsNumber: 100,
     vouchers: [
       {
         description: 'test 10%',
-        priceOff: '-1 810.00 SEK',
+        priceOff: '-1 810 SEK',
         priceOffAsNumber: -1810,
         type: 'code',
         voucher: 'familyandfriends',
@@ -26,24 +32,24 @@ export default {
     automaticDiscounts: [],
   },
   totals: {
-    itemsTotalPrice: '7 800.00 SEK',
-    itemsTotalPriceAsNumber: 7800,
-    totalDiscountPrice: false,
-    totalDiscountPriceAsNumber: false,
-    shippingPrice: '0.00 SEK',
+    itemsTotalPrice: `${itemsTotalPriceAsNumber.toLocaleString('sv-SE')} SEK`,
+    itemsTotalPriceAsNumber,
+    totalDiscountPrice: `${totalDiscountPriceAsNumber.toLocaleString('sv-SE')} SEK`,
+    totalDiscountPriceAsNumber,
+    shippingPrice: '0 SEK',
     shippingPriceAsNumber: 0,
-    handlingCostPrice: '0.00 SEK',
+    handlingCostPrice: '0 SEK',
     handlingCostPriceAsNumber: 0,
-    totalQuantity: cartItems.length,
+    totalQuantity,
     taxDeducted: false,
     taxDeductedAsNumber: false,
     taxAdded: false,
     taxAddedAsNumber: false,
     taxPercent: 25,
-    grandTotalPrice: '7 800.00 SEK',
-    grandTotalPriceAsNumber: 7800,
-    grandTotalPriceTax: '780.00 SEK',
-    grandTotalPriceTaxAsNumber: 780,
+    grandTotalPrice: `${grandTotalPriceAsNumber.toLocaleString('sv-SE')} SEK`,
+    grandTotalPriceAsNumber,
+    grandTotalPriceTax: `${grandTotalPriceTaxAsNumber.toLocaleString('sv-SE')} SEK`,
+    grandTotalPriceTaxAsNumber,
   },
   vatExempt: false,
   address: {

@@ -4,8 +4,9 @@ import { styled } from '@mui/system'
 import { ButtonBase, Link } from '@mui/material'
 import { Media, MediaReveal } from '@noaignite/oui'
 import { cartItemType } from '~/api'
-import { useCentraHandlers, useI18n } from '~/context'
-import { ASPECT_RATIOS, CENTRA_CART_ITEM_UNIQUE_KEY } from '~/utils/constants'
+import { getProductUrl } from '~/api/centra/utils'
+import { ASPECT_RATIOS } from '~/utils/constants'
+import { useCentraHandlers, useI18n } from '~/contexts'
 import { AddIcon, RemoveIcon } from '~/components'
 import RouterLink from '../RouterLink'
 
@@ -76,7 +77,7 @@ function CartItem(props) {
 
   return (
     <CartItemRoot>
-      <RouterLink href={`/product/${product.uri}`} aria-label={product.name}>
+      <RouterLink href={getProductUrl(product)} aria-label={product.name}>
         <MediaReveal {...ASPECT_RATIOS.product}>
           <Media src={product.media?.standard?.[0]} alt={product.name} />
         </MediaReveal>
@@ -84,7 +85,7 @@ function CartItem(props) {
 
       <CartItemContent>
         <CartItemRow>
-          <Link component={RouterLink} href={`/product/${product.uri}`}>
+          <Link component={RouterLink} href={getProductUrl(product)}>
             {product.name}
           </Link>
 
@@ -104,7 +105,7 @@ function CartItem(props) {
             <CartItemQuantity>
               <CartItemQuantityButton
                 onClick={onItemDecrease}
-                value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
+                value={cartItem.line}
                 aria-label={t(__translationGroup)`Decrease quantity to ${cartItem.quantity - 1}`}
               >
                 <RemoveIcon color="inherit" fontSize="small" />
@@ -114,7 +115,7 @@ function CartItem(props) {
 
               <CartItemQuantityButton
                 onClick={onItemIncrease}
-                value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
+                value={cartItem.line}
                 aria-label={t(__translationGroup)`Increase quantity to ${cartItem.quantity + 1}`}
               >
                 <AddIcon color="inherit" fontSize="small" />
@@ -125,7 +126,7 @@ function CartItem(props) {
               sx={{ ml: 'auto' }}
               component={ButtonBase}
               onClick={onItemRemove}
-              value={cartItem[CENTRA_CART_ITEM_UNIQUE_KEY]}
+              value={cartItem.line}
               color="primary"
             >
               {t(__translationGroup)`Remove`}

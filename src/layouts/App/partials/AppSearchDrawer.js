@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import { styled } from '@mui/system'
 import { Drawer, IconButton, TextField } from '@mui/material'
-import { useGlobalHandlers, useGlobalState, useI18n } from '~/context'
+import { useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
 import { SearchIcon } from '~/components'
 
 const AppCartDrawerRoot = styled(Drawer)(({ theme }) => ({

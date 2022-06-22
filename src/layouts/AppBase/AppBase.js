@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { SITE_MAIN_ID, SITE_ROOT_ID } from '~/utils/constants'
-import { GlobalStateContext } from '~/context'
+import { GlobalStateContext } from '~/contexts'
 import { AppBaseCookieBar, AppBaseLoader, AppBaseMarketDialog, AppBaseSkipLink } from './partials'
 
 const AppBaseRoot = styled('div')({

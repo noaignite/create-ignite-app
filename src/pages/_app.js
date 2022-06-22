@@ -7,7 +7,7 @@ import Head from 'next/head'
 import { CacheProvider } from '@emotion/react'
 import { settings } from '~/api/__mock__'
 import { createEmotionCache } from '~/utils'
-import { RootProvider } from '~/context'
+import { RootProvider } from '~/contexts'
 import * as layoutVariants from '~/layouts'
 
 // Client-side cache, shared for the whole session of the user in the browser.

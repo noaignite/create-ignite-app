@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { styled } from '@mui/system'
 import { Typography } from '@mui/material'
 import { cartItemType } from '~/api'
-import { useCentraSelection, useI18n } from '~/context'
+import { useCentraSelection, useI18n } from '~/contexts'
 import CartItem from '../CartItem'
 import CartSummary from '../CartSummary'
 
