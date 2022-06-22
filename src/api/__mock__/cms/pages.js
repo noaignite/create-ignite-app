@@ -14,7 +14,7 @@ export default {
       },
     ],
   },
-  Content: {
+  Article: {
     children: [
       {
         name: 'Media',
@@ -23,6 +23,14 @@ export default {
       {
         name: 'Content',
         props: blocks.Content,
+      },
+    ],
+  },
+  NotFound: {
+    children: [
+      {
+        name: 'ErrorBlock',
+        props: blocks.ErrorBlock,
       },
     ],
   },

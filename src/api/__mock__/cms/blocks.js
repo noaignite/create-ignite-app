@@ -62,4 +62,11 @@ export default {
       },
     },
   },
+  ErrorBlock: {
+    subheading: '404',
+    heading: 'Page not found',
+    text: 'The page you are looking for might have been renamed, removed or might never have existed.',
+    ctaLabel: 'Back to homepage',
+    ctaUrl: '/',
+  },
 }
