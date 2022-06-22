@@ -9,23 +9,21 @@ export const HtmlRoot = styled('div')(({ theme }) => ({
   h4: theme.typography.h6,
   h5: theme.typography.subtitle1,
   h6: theme.typography.overline,
-  'h1, h2, h3, h4, h5, h6, ol, ul, p, hr': {
+  '& :is(h1, h2, h3, h4, h5, h6, figcaption, p, ol, ul, hr)': {
     margin: 'max(16px, 1em) auto max(8px, 0.5em)',
-    '&:first-child': {
-      marginTop: 0,
-    },
-    '&:last-child': {
-      marginBottom: 0,
-    },
   },
-  'figure, img': {
+  '& :is(blockquote, figure, img)': {
     margin: '2.8em auto',
-    '&:first-child': {
-      marginTop: 0,
-    },
-    '&:last-child': {
-      marginBottom: 0,
-    },
+  },
+  '& *:not(style):first-child': {
+    marginTop: 0,
+  },
+  '& *:not(style):last-child': {
+    marginBottom: 0,
+  },
+  blockquote: {
+    '& p': theme.typography.h4,
+    '& cite': theme.typography.caption,
   },
   'figure img': {
     margin: 0,
@@ -34,16 +32,8 @@ export const HtmlRoot = styled('div')(({ theme }) => ({
     display: 'block',
     width: '100%',
   },
-  figcaption: {
-    ...theme.typography.caption,
-    margin: theme.spacing(2, 0, 0),
-  },
-  blockquote: {
-    margin: '2.8em auto',
-    '& p': theme.typography.h4,
-    '& cite': theme.typography.caption,
-  },
-  'ol, ul': {
+  figcaption: theme.typography.caption,
+  '& :is(ol, ul)': {
     paddingLeft: '1.25em',
   },
   hr: {
