@@ -10,15 +10,6 @@ const AppFooterRoot = styled('footer')(({ theme }) => ({
   color: theme.palette.getContrastText(theme.palette.text.primary),
 }))
 
-const AppFooterSalesBanner = styled('div')(({ theme }) => ({
-  position: 'sticky',
-  bottom: 0,
-  padding: theme.spacing(0.5, 2),
-  backgroundColor: theme.palette.text.secondary,
-  color: theme.palette.getContrastText(theme.palette.text.primary),
-  textAlign: 'center',
-}))
-
 const AppFooterNav = styled('nav')(({ theme }) => ({
   display: 'flex',
   gap: theme.spacing(4),
@@ -27,26 +18,22 @@ const AppFooterNav = styled('nav')(({ theme }) => ({
 }))
 
 function AppFooter(props) {
-  const { menus, storeMessage } = useRemoteConfig()
+  const { menus } = useRemoteConfig()
 
   return (
-    <React.Fragment>
-      {storeMessage && <AppFooterSalesBanner>{storeMessage}</AppFooterSalesBanner>}
-
-      <AppFooterRoot {...props}>
-        <Container>
-          <AppFooterNav>
-            {menus?.footer?.map((menuItem, idx) => (
-              <div key={idx}>
-                <Link component={RouterLink} href={menuItem.url} variant="button">
-                  {menuItem.label}
-                </Link>
-              </div>
-            ))}
-          </AppFooterNav>
-        </Container>
-      </AppFooterRoot>
-    </React.Fragment>
+    <AppFooterRoot {...props}>
+      <Container>
+        <AppFooterNav>
+          {menus?.footer?.map((menuItem, idx) => (
+            <div key={idx}>
+              <Link component={RouterLink} href={menuItem.url} variant="button">
+                {menuItem.label}
+              </Link>
+            </div>
+          ))}
+        </AppFooterNav>
+      </Container>
+    </AppFooterRoot>
   )
 }
 

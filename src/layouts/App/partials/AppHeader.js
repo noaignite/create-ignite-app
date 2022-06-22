@@ -2,13 +2,13 @@
 
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import useSize from '@react-hook/size'
 import { generateUtilityClasses } from '@mui/base'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
 import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
 import { RouterLink } from '~/containers'
 import { BrandIcon, CartIcon, SearchIcon, CloseIcon, MenuIcon } from '~/components'
+import AppStoreMessage from './AppStoreMessage'
 
 const BREAKPOINT_KEY = 'md'
 
@@ -20,16 +20,16 @@ export const classes = generateUtilityClasses('CiaAppHeader', [
 ])
 
 const AppHeaderRoot = styled(AppBar)(({ theme, ownerState }) => ({
-  ...(ownerState.headerModeState === 'transparent' && {
+  ...(ownerState.mounted && {
+    transition: theme.transitions.create(['background-color'], {
+      duration: theme.transitions.duration.shortest, // Match value of `IconButton`
+    }),
+  }),
+  ...(ownerState.headerMode === 'transparent' && {
     '&:not(:hover):not(:focus-within)': {
       backgroundColor: 'transparent',
       color: ownerState.headerColor,
     },
-  }),
-  ...(ownerState.disableTransparency !== undefined && {
-    transition: theme.transitions.create(['background-color'], {
-      duration: theme.transitions.duration.shortest, // Match value of `IconButton`
-    }),
   }),
   // Util classes
   [`& .${classes.toolbarPushMobile}`]: {
@@ -60,11 +60,12 @@ const AppHeaderBrandLink = styled(RouterLink)({
 const AppHeader = React.memo(function AppHeader(props) {
   const {
     headerColor = 'inherit',
-    headerMode = 'opaque',
+    headerMode: headerModeProp = 'opaque',
     isCartMenuOpen,
     isNavMenuOpen,
     isSearchMenuOpen,
     isSomeMenuOpen,
+    isStoreMessageOpen,
     productsCount,
     ...other
   } = props
@@ -72,63 +73,67 @@ const AppHeader = React.memo(function AppHeader(props) {
   const { onCartMenuToggle, onNavMenuToggle, onSearchMenuToggle } = useGlobalHandlers()
   const { t } = useI18n()
 
-  const rootRef = React.useRef(null)
-  const [, rootHeight] = useSize(rootRef)
+  const [disableTransparency, setDisableTransparency] = React.useState(false)
+  const [mounted, setMounted] = React.useState(false)
 
-  const [disableTransparency, setDisableTransparency] = React.useState(undefined)
   const syncDisableTransparency = React.useCallback(() => {
     setDisableTransparency(window.pageYOffset > 100)
   }, [])
 
   React.useEffect(() => {
+    setMounted(true)
+    syncDisableTransparency()
+
     const handleScroll = () => {
       syncDisableTransparency()
     }
 
-    if (headerMode === 'auto') {
+    if (headerModeProp === 'auto') {
       window.addEventListener('scroll', handleScroll, { passive: true })
       return () => {
         window.removeEventListener('scroll', handleScroll)
       }
     }
 
-    // Define `disableTransparency` value on `headerMode` prop change, thereby
-    // enabling transitions. Doing so negates flashing of header on page load
-    // for pages that don't use `headerMode="opaque"`.
-    return syncDisableTransparency
-  }, [headerMode, syncDisableTransparency])
+    return undefined
+  }, [headerModeProp, syncDisableTransparency])
 
-  let headerModeState = 'opaque'
+  let computedHeaderMode = 'opaque'
   if (
-    (headerMode === 'transparent' || (headerMode === 'auto' && !disableTransparency)) &&
+    (headerModeProp === 'transparent' || (headerModeProp === 'auto' && !disableTransparency)) &&
     !isSomeMenuOpen
   ) {
-    headerModeState = 'transparent'
+    computedHeaderMode = 'transparent'
+  }
+
+  let headerHeight = 'var(--cia-header-toolbar-primary-height)'
+  if (isStoreMessageOpen) {
+    headerHeight = `calc(${headerHeight} + var(--cia-header-toolbar-secondary-height))`
   }
 
   const ownerState = {
-    disableTransparency,
     headerColor,
-    headerModeState,
+    headerMode: computedHeaderMode,
+    mounted,
   }
 
   return (
     <AppHeaderRoot
       ownerState={ownerState}
-      position={headerMode === 'opaque' ? 'sticky' : 'fixed'}
-      ref={rootRef}
+      position={headerModeProp === 'opaque' ? 'sticky' : 'fixed'}
       {...other}
     >
+      {isStoreMessageOpen && <AppStoreMessage />}
+
       <style
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: `
-          :root {
-            --cia-header-height: ${rootHeight}px;
-            --cia-initial-sticky-top: ${headerMode === 'opaque' ? rootHeight : 0}px;
-            --cia-sticky-top: ${headerMode !== 'transparent' ? rootHeight : 0}px;
-          }
-        `,
+            :root {
+              --cia-header-height: ${headerHeight};
+              --cia-sticky-top: var(--cia-header-height);
+            }
+          `,
         }}
       />
 
@@ -192,11 +197,13 @@ AppHeader.propTypes = {
   isNavMenuOpen: PropTypes.bool,
   isSearchMenuOpen: PropTypes.bool,
   isSomeMenuOpen: PropTypes.bool,
+  isStoreMessageOpen: PropTypes.bool,
   productsCount: PropTypes.number,
 }
 
 function AppHeaderContainer(props) {
-  const { isCartMenuOpen, isNavMenuOpen, isSearchMenuOpen, isSomeMenuOpen } = useGlobalState()
+  const { isCartMenuOpen, isNavMenuOpen, isSearchMenuOpen, isSomeMenuOpen, isStoreMessageOpen } =
+    useGlobalState()
   const {
     selection: { items },
   } = useCentraSelection()
@@ -207,6 +214,7 @@ function AppHeaderContainer(props) {
       isNavMenuOpen={isNavMenuOpen}
       isSearchMenuOpen={isSearchMenuOpen}
       isSomeMenuOpen={isSomeMenuOpen}
+      isStoreMessageOpen={isStoreMessageOpen}
       productsCount={items.length}
       {...props}
     />

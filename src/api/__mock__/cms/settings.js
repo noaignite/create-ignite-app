@@ -72,7 +72,7 @@ export default {
   facebookUrl: 'https://www.facebook.com/',
   instagramUrl: 'https://www.instagram.com/',
   pinterestUrl: 'https://www.pinterest.com/',
-  storeMessage: 'lorem ipsum dolor sit amet, consectetur',
+  storeMessage: 'lorem ipsum dolor sit amet',
   termsPageUrl: '/terms-and-conditions',
   twitterUrl: 'https://twitter.com/',
 }

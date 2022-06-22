@@ -1,6 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
+import { useRemoteConfig } from '../RemoteConfig'
 
 export const GlobalStateContext = React.createContext({})
 export const GlobalHandlersContext = React.createContext({})
@@ -24,11 +25,14 @@ const COOKIE_BAR_ENTER_DELAY = 2000
 function GlobalProvider(props) {
   const { children } = props
 
+  const { storeMessage } = useRemoteConfig()
+
   const [isCartMenuOpen, setCartMenuOpen] = React.useState(false)
   const [isCookieBarOpen, setCookieBarOpen] = React.useState(false)
   const [isMarketMenuOpen, setMarketMenuOpen] = React.useState(false)
   const [isNavMenuOpen, setNavMenuOpen] = React.useState(false)
   const [isSearchMenuOpen, setSearchMenuOpen] = React.useState(false)
+  const [isStoreMessageOpen, setStoreMessageOpen] = React.useState(!!storeMessage)
 
   // Helpers
 
@@ -102,6 +106,10 @@ function GlobalProvider(props) {
     setCookieBarOpen(false)
   }, [])
 
+  const onStoreMessageClose = React.useCallback(() => {
+    setStoreMessageOpen(false)
+  }, [])
+
   const stateContextValue = React.useMemo(
     () => ({
       isCartMenuOpen,
@@ -109,10 +117,18 @@ function GlobalProvider(props) {
       isMarketMenuOpen,
       isNavMenuOpen,
       isSearchMenuOpen,
+      isStoreMessageOpen,
       // Computed props
       isSomeMenuOpen: isCartMenuOpen || isNavMenuOpen || isSearchMenuOpen,
     }),
-    [isCartMenuOpen, isCookieBarOpen, isMarketMenuOpen, isNavMenuOpen, isSearchMenuOpen],
+    [
+      isCartMenuOpen,
+      isCookieBarOpen,
+      isMarketMenuOpen,
+      isNavMenuOpen,
+      isSearchMenuOpen,
+      isStoreMessageOpen,
+    ],
   )
 
   const handlersContextValue = React.useMemo(
@@ -126,6 +142,7 @@ function GlobalProvider(props) {
       onNavMenuToggle,
       onSearchMenuClose,
       onSearchMenuToggle,
+      onStoreMessageClose,
     }),
     [
       onCartMenuClose,
@@ -137,6 +154,7 @@ function GlobalProvider(props) {
       onNavMenuToggle,
       onSearchMenuClose,
       onSearchMenuToggle,
+      onStoreMessageClose,
     ],
   )
 
