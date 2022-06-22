@@ -1,39 +1,4 @@
 export default {
-  Hero: {
-    mediaProps: {
-      component: 'picture',
-      breakpoints: {
-        xs: '//source.unsplash.com/Sl03gvNZuss/1280x720',
-        sm: '//source.unsplash.com/Sl03gvNZuss/1920x1080',
-      },
-    },
-    heading: 'Lorem ipsum dolor',
-    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie varius viverra. Quisque urna tortor, bibendum ac quam a, bibendum fringilla nulla.', // prettier-ignore
-    ctaLabel: 'Discover',
-    ctaUrl: '/foo',
-  },
-  ArticleSlideshow: {
-    heading: 'Generic Heading',
-    entries: Array.from(new Array(6), () => ({
-      mediaProps: {
-        component: 'img',
-        src: '//source.unsplash.com/m1m2EZOZVwA',
-      },
-      subheading: 'Vivamus',
-      heading: 'Lorem ipsum dolor',
-      excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie varius viverra. Quisque urna tortor, bibendum ac quam a, bibendum fringilla nulla.', // prettier-ignore
-      url: '/foo',
-    })),
-  },
-  Media: {
-    mediaProps: {
-      component: 'picture',
-      breakpoints: {
-        xs: { src: '//source.unsplash.com/DmD8HVOjy4c/1280x720', width: 1280, height: 720 },
-        sm: { src: '//source.unsplash.com/DmD8HVOjy4c/1920x1080', width: 1920, height: 1080 },
-      },
-    },
-  },
   Content: {
     text: `
       <h1>HTML Ipsum Presents</h1>
@@ -74,5 +39,27 @@ export default {
       <h5>Header Level 5</h5>
       <h6>Header Level 6</h6>
     `,
+  },
+  Hero: {
+    mediaProps: {
+      component: 'picture',
+      breakpoints: {
+        xs: '//source.unsplash.com/Sl03gvNZuss/1280x720',
+        sm: '//source.unsplash.com/Sl03gvNZuss/1920x1080',
+      },
+    },
+    heading: 'Lorem ipsum dolor',
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie varius viverra. Quisque urna tortor, bibendum ac quam a, bibendum fringilla nulla.', // prettier-ignore
+    ctaLabel: 'Discover',
+    ctaUrl: '/foo',
+  },
+  Media: {
+    mediaProps: {
+      component: 'picture',
+      breakpoints: {
+        xs: { src: '//source.unsplash.com/DmD8HVOjy4c/1280x720', width: 1280, height: 720 },
+        sm: { src: '//source.unsplash.com/DmD8HVOjy4c/1920x1080', width: 1920, height: 1080 },
+      },
+    },
   },
 }

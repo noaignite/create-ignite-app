@@ -9,8 +9,8 @@ export default {
         props: blocks.Hero,
       },
       {
-        name: 'ArticleSlideshow',
-        props: blocks.ArticleSlideshow,
+        name: 'Content',
+        props: blocks.Content,
       },
     ],
   },
