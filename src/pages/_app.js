@@ -1,32 +1,20 @@
 // Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_app.js
-
 import '../../scripts/polyfills'
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { CacheProvider } from '@emotion/react'
 import { settings } from '~/api/__mock__'
-import { createEmotionCache } from '~/utils'
 import { RootProvider } from '~/contexts'
 import * as layoutVariants from '~/layouts'
 
-// Client-side cache, shared for the whole session of the user in the browser.
-const clientSideEmotionCache = createEmotionCache()
-
 function App(props) {
-  const {
-    Component,
-    defaultLocale,
-    emotionCache = clientSideEmotionCache,
-    locale,
-    pageProps: pagePropsProp,
-  } = props
+  const { Component, defaultLocale, emotionCache, locale, pageProps: pagePropsProp } = props
 
   const { headerColor, headerMode, layout, page, ...pageProps } = pagePropsProp
   const LayoutComponent = layout ? layoutVariants[layout] : layoutVariants.App
 
   return (
-    <CacheProvider value={emotionCache}>
+    <React.Fragment>
       <Head>
         <meta
           name="viewport"
@@ -34,12 +22,17 @@ function App(props) {
         />
       </Head>
 
-      <RootProvider defaultLocale={defaultLocale} locale={locale} {...pageProps}>
+      <RootProvider
+        emotionCache={emotionCache}
+        defaultLocale={defaultLocale}
+        locale={locale}
+        {...pageProps}
+      >
         <LayoutComponent headerColor={headerColor} headerMode={headerMode}>
           <Component {...pageProps} />
         </LayoutComponent>
       </RootProvider>
-    </CacheProvider>
+    </React.Fragment>
   )
 }
 

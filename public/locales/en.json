@@ -49,5 +49,10 @@
   },
   "layouts/AppBase/partials/AppBaseSkipLink.js": {
     "Skip to content": ""
+  },
+  "pages/404.js": {
+    "Back to homepage": "",
+    "The page you are looking for might have been renamed, removed or might never have existed.": "",
+    "Page not found": ""
   }
 }

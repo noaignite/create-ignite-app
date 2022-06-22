@@ -1,5 +1,4 @@
 // Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
-
 import * as React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import createEmotionServer from '@emotion/server/create-instance'

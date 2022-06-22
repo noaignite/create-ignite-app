@@ -9,12 +9,12 @@ export default {
         props: blocks.Hero,
       },
       {
-        name: 'ArticleSlideshow',
-        props: blocks.ArticleSlideshow,
+        name: 'Content',
+        props: blocks.Content,
       },
     ],
   },
-  Content: {
+  Article: {
     children: [
       {
         name: 'Media',
@@ -23,6 +23,14 @@ export default {
       {
         name: 'Content',
         props: blocks.Content,
+      },
+    ],
+  },
+  NotFound: {
+    children: [
+      {
+        name: 'ErrorBlock',
+        props: blocks.ErrorBlock,
       },
     ],
   },
