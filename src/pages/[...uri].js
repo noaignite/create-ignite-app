@@ -14,7 +14,7 @@ function Page() {
         <title>Page | {SITE_NAME}</title>
       </Head>
 
-      {pages.Content.children.map(renderBlock)}
+      {pages.Article.children.map(renderBlock)}
     </React.Fragment>
   )
 }
