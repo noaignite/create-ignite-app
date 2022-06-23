@@ -1,7 +1,7 @@
-import '../scripts/polyfills'
+import '../scripts/globals'
 import { settings } from '~/api/__mock__'
 import { RootProvider } from '~/contexts'
-import { breakpoints } from '~/components'
+import { breakpoints, defaultTheme } from '~/components'
 
 const breakpointValues = {
   ...breakpoints.values,
