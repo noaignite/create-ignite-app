@@ -1,9 +1,9 @@
+import '../scripts/globals'
 import * as React from 'react'
 import { useColorScheme } from '@mui/material'
-import '../scripts/polyfills'
 import { settings } from '~/api/__mock__'
 import { RootProvider } from '~/contexts'
-import { breakpoints } from '~/components'
+import { breakpoints, defaultTheme } from '~/components'
 
 const breakpointValues = {
   ...breakpoints.values,
