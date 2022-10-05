@@ -7,36 +7,22 @@ import grey from '../colors/grey'
 import orange from '../colors/orange'
 import red from '../colors/red'
 
-export const darkText = {
-  // The most important text.
-  primary: common.black,
-  // Secondary text.
-  secondary: alpha(common.black, 0.65),
-  // Disabled text have even lower visual prominence.
-  disabled: alpha(common.black, 0.4),
-  // Text hints.
-  hint: alpha(common.black, 0.4),
-  // Complementing keys used for component color variants.
-  main: common.black,
-  dark: alpha(common.black, 0.8), // Mui uses `dark` for hover. We want a lighter color.
-  contrastText: common.white,
-}
-
-export const lightText = {
-  primary: common.white,
-  secondary: alpha(common.white, 0.65),
-  disabled: alpha(common.white, 0.4),
-  hint: alpha(common.white, 0.4),
-  main: common.white,
-  dark: alpha(common.white, 0.9),
-  contrastText: common.black,
-}
-
 export const light = {
   // The colors used to style the text.
-  text: darkText,
-  // The colors used to style inverted text.
-  textInverted: lightText,
+  text: {
+    // The most important text.
+    primary: common.black,
+    // Secondary text.
+    secondary: alpha(common.black, 0.65),
+    // Disabled text have even lower visual prominence.
+    disabled: alpha(common.black, 0.4),
+    // Text hints.
+    hint: alpha(common.black, 0.4),
+    // Complementing keys used for component color variants.
+    main: common.black,
+    dark: alpha(common.black, 0.8), // Mui uses `dark` for hover. We want a lighter color.
+    contrastText: common.white,
+  },
   // The color used to divide different elements.
   divider: 'rgba(0, 0, 0, 0.12)',
   // The background colors used to style the surfaces.
@@ -67,8 +53,15 @@ export const light = {
 }
 
 export const dark = {
-  text: lightText,
-  textInverted: darkText,
+  text: {
+    primary: common.white,
+    secondary: alpha(common.white, 0.65),
+    disabled: alpha(common.white, 0.4),
+    hint: alpha(common.white, 0.4),
+    main: common.white,
+    dark: alpha(common.white, 0.9),
+    contrastText: common.black,
+  },
   divider: 'rgba(255, 255, 255, 0.12)',
   background: {
     default: common.black,

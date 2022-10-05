@@ -7,16 +7,7 @@ export default {
   argTypes: {
     color: {
       control: 'select',
-      options: [
-        'text',
-        'textInverted',
-        'primary',
-        'secondary',
-        'error',
-        'info',
-        'success',
-        'warning',
-      ],
+      options: ['text', 'primary', 'secondary', 'error', 'info', 'success', 'warning'],
     },
     margin: {
       control: 'select',
