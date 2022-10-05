@@ -16,6 +16,3 @@ export * from './FormControlBoxSummary'
 
 export { default as Html } from './Html'
 export * from './Html'
-
-export { default as ThemeProvider } from './ThemeProvider'
-export * from './ThemeProvider'

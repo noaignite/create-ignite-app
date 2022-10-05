@@ -10,8 +10,7 @@ const CartSummaryRoot = styled('div')(({ theme }) => ({
   display: 'grid',
   gridGap: theme.spacing(1),
   padding: theme.spacing(2),
-  borderRadius: theme.shape.borderRadius * 2,
-  backgroundColor: theme.palette.background.default,
+  backgroundColor: theme.vars.palette.background.default,
 }))
 
 const CartSummaryRow = styled('div')(({ theme }) => ({

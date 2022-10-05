@@ -14,8 +14,8 @@ const CartItemRoot = styled('article')(({ theme }) => ({
   ...theme.typography.body2,
   display: 'grid',
   gridTemplateColumns: '100px 1fr',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: theme.palette.background.default,
+  borderRadius: theme.vars.shape.borderRadius,
+  backgroundColor: theme.vars.palette.background.default,
 }))
 
 const CartItemContent = styled('div')(({ theme }) => ({
@@ -43,7 +43,7 @@ const CartItemQuantity = styled('div')({
 const CartItemQuantityButton = styled(ButtonBase)(({ theme }) => ({
   minWidth: 35,
   padding: theme.spacing(1),
-  color: theme.palette.primary.main,
+  color: theme.vars.palette.primary.main,
   textAlign: 'center',
 }))
 

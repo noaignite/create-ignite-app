@@ -5,9 +5,9 @@ import { useRemoteConfig } from '~/contexts'
 import { RouterLink } from '~/containers'
 
 const AppFooterRoot = styled('footer')(({ theme }) => ({
-  padding: 'var(--cia-section-spacing) 0',
-  backgroundColor: theme.palette.text.primary,
-  color: theme.palette.getContrastText(theme.palette.text.primary),
+  paddingBlock: 'var(--cia-section-spacing)',
+  backgroundColor: theme.vars.palette.text.primary,
+  color: theme.vars.palette.text.contrastText,
 }))
 
 const AppFooterNav = styled('nav')(({ theme }) => ({

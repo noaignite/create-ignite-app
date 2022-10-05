@@ -12,7 +12,7 @@ const AppCartDrawerRoot = styled(Drawer)(({ theme }) => ({
   zIndex: `${theme.zIndex.appBar - 1} !important`,
   '& .MuiDrawer-paper': {
     top: 'var(--cia-header-height)',
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.vars.palette.background.default,
   },
 }))
 

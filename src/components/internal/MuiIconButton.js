@@ -1,5 +1,3 @@
-import { alpha } from '@mui/material'
-
 const overrides = {
   styleOverrides: {
     root: ({ theme }) => ({
@@ -9,11 +7,6 @@ const overrides = {
       }),
       '&:hover': {
         backgroundColor: 'transparent', // Disable Mui backgroundColor
-        color: alpha(theme.palette.action.active, 1 - theme.palette.action.activatedOpacity),
-        // Reset on touch devices, it doesn't add specificity
-        '@media (hover: none)': {
-          color: theme.palette.action.active,
-        },
       },
     }),
     colorInherit: {

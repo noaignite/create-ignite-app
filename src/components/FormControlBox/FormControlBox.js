@@ -19,8 +19,8 @@ const FormControlBoxRoot = styled('div', {
   '--_spacing': `var(--cia-form-control-box-spacing, ${theme.spacing(2)})`,
   position: 'relative',
   ...(ownerState.divider && {
-    borderTop: `1px solid ${theme.palette.divider}`,
-    borderBottom: `1px solid ${theme.palette.divider}`,
+    borderTop: `1px solid ${theme.vars.palette.divider}`,
+    borderBottom: `1px solid ${theme.vars.palette.divider}`,
     '& + &': {
       borderTop: 0,
     },

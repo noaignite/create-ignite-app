@@ -17,7 +17,9 @@ function AppBaseSkipLink(props) {
   const { t } = useI18n()
 
   return (
-    <AppBaseSkipLinkRoot {...props}>{t(__translationGroup)`Skip to content`}</AppBaseSkipLinkRoot>
+    <AppBaseSkipLinkRoot color="text" variant="contained" {...props}>
+      {t(__translationGroup)`Skip to content`}
+    </AppBaseSkipLinkRoot>
   )
 }
 
