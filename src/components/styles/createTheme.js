@@ -17,8 +17,8 @@ import spacing from './spacing'
  */
 export default function createTheme(options = {}) {
   const {
+    colorSchemes: colorSchemesInput = {},
     mixins: mixinsInput = {},
-    // palette: paletteInput = {},
     typography: typographyInput = {},
     ...other
   } = options
@@ -26,16 +26,18 @@ export default function createTheme(options = {}) {
   const theme = experimental_extendTheme(
     {
       colorSchemes: {
+        ...colorSchemesInput,
         light: {
-          palette: createPalette({ mode: 'light' }),
+          ...colorSchemesInput.light,
+          palette: createPalette({ mode: 'light', ...colorSchemesInput.light?.palette }),
         },
         dark: {
-          palette: createPalette({ mode: 'dark' }),
+          ...colorSchemesInput.dark,
+          palette: createPalette({ mode: 'dark', ...colorSchemesInput.dark?.palette }),
         },
       },
       breakpoints,
       components,
-      // palette: createPalette(paletteInput),
       shape,
       spacing,
       typography: createTypography(typographyInput),
