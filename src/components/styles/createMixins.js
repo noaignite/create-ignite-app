@@ -1,7 +1,7 @@
 import grey from '../colors/grey'
 
 export default function createMixins(breakpoints, spacing, mixins) {
-  // eslint-disable-next-line no-shadow
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   function position(position, ...args) {
     const keys = ['top', 'right', 'bottom', 'left']
     const map = [

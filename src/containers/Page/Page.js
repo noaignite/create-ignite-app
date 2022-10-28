@@ -1,22 +1,30 @@
 import * as React from 'react'
+import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { pages } from '~/api/__mock__'
 import { SITE_NAME } from '~/utils/constants'
-import { createRenderBlock } from '~/utils'
 import * as blockVariants from '~/blocks'
+import { createRenderBlock } from '~/utils'
 
 const renderBlock = createRenderBlock(blockVariants)
 
-function Page() {
+function Page(props) {
+  const { blocks, children } = props
+
   return (
     <React.Fragment>
       <Head>
         <title>Page | {SITE_NAME}</title>
       </Head>
 
-      {pages.Article.children.map(renderBlock)}
+      {children}
+      {blocks.map(renderBlock)}
     </React.Fragment>
   )
+}
+
+Page.propTypes = {
+  children: PropTypes.node,
+  blocks: PropTypes.array,
 }
 
 export default Page

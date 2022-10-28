@@ -4,7 +4,7 @@ module.exports = {
   globals: {
     __translationGroup: 'readonly',
   },
-  extends: ['plugin:@next/next/recommended', '@noaignite/eslint-config'],
+  extends: ['plugin:@next/next/recommended', '@noaignite/eslint-config-typescript'],
   settings: {
     'import/resolver': {
       webpack: {
