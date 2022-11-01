@@ -1,12 +1,29 @@
 // Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_app.js
 import '../../scripts/globals'
 import * as React from 'react'
-import PropTypes from 'prop-types'
 import Head from 'next/head'
+import type { AppProps as NextAppProps } from 'next/app'
+import type { NextPage } from 'next'
+import type { EmotionCache } from '@emotion/cache'
 import { RootProvider } from '~/contexts'
 import * as layoutVariants from '~/layouts'
 
-function App(props) {
+export interface AppProps extends NextAppProps {
+  Component: NextPage<Page>
+  emotionCache?: EmotionCache
+  pageProps: {
+    defaultLocale: string
+    locale: string
+    headerColor?: string
+    headerMode?: string
+    layout?: keyof typeof layoutVariants
+    page: Page
+    settings: Record<string, unknown>
+    theme?: string
+  }
+}
+
+function App(props: AppProps) {
   const { Component, emotionCache, pageProps: pagePropsProp } = props
 
   const { defaultLocale, headerColor, headerMode, layout, locale, page, ...pageProps } =
@@ -34,12 +51,6 @@ function App(props) {
       </RootProvider>
     </React.Fragment>
   )
-}
-
-App.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  emotionCache: PropTypes.object,
-  pageProps: PropTypes.object.isRequired,
 }
 
 export default App
