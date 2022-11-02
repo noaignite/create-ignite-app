@@ -23,6 +23,8 @@
     "prepare": "husky install",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
+    "provision:production": "op inject -i .env.provision.production -o .env.local",
+    "provision:stage": "op inject -i .env.provision.stage -o .env.local",
     "release": "standard-version",
     "start": "next start",
     "storybook": "start-storybook -p 3001 --ci",
