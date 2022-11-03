@@ -1,16 +1,32 @@
 // Based on https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_app.js
 import '../../scripts/globals'
 import * as React from 'react'
-import PropTypes from 'prop-types'
 import Head from 'next/head'
-import { settings } from '~/api/__mock__'
+import type { AppProps as NextAppProps } from 'next/app'
+import type { NextPage } from 'next'
+import type { EmotionCache } from '@emotion/cache'
 import { RootProvider } from '~/contexts'
 import * as layoutVariants from '~/layouts'
 
-function App(props) {
-  const { Component, defaultLocale, emotionCache, locale, pageProps: pagePropsProp } = props
+export interface AppProps extends NextAppProps {
+  Component: NextPage<Page>
+  emotionCache?: EmotionCache
+  pageProps: {
+    defaultLocale: string
+    locale: string
+    headerColor?: string
+    headerMode?: string
+    layout?: keyof typeof layoutVariants
+    page: Page
+    settings: Record<string, unknown>
+    theme?: string
+  }
+}
 
-  const { headerColor, headerMode, layout, page, ...pageProps } = pagePropsProp
+function App(props: AppProps) {
+  const { Component, emotionCache, pageProps: nextPageProps } = props
+
+  const { defaultLocale, headerColor, headerMode, layout, locale, page, ...other } = nextPageProps
   const LayoutComponent = layout ? layoutVariants[layout] : layoutVariants.App
 
   return (
@@ -26,34 +42,14 @@ function App(props) {
         emotionCache={emotionCache}
         defaultLocale={defaultLocale}
         locale={locale}
-        {...pageProps}
+        {...other}
       >
         <LayoutComponent headerColor={headerColor} headerMode={headerMode}>
-          <Component {...pageProps} />
+          <Component {...page} />
         </LayoutComponent>
       </RootProvider>
     </React.Fragment>
   )
-}
-
-App.getInitialProps = async (props) => {
-  const { ctx } = props
-
-  return {
-    defaultLocale: ctx.defaultLocale,
-    locale: ctx.locale,
-    pageProps: {
-      settings,
-    },
-  }
-}
-
-App.propTypes = {
-  Component: PropTypes.elementType.isRequired,
-  defaultLocale: PropTypes.string.isRequired,
-  emotionCache: PropTypes.object,
-  locale: PropTypes.string.isRequired,
-  pageProps: PropTypes.object.isRequired,
 }
 
 export default App
