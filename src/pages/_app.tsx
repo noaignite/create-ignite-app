@@ -24,10 +24,9 @@ export interface AppProps extends NextAppProps {
 }
 
 function App(props: AppProps) {
-  const { Component, emotionCache, pageProps: pagePropsProp } = props
+  const { Component, emotionCache, pageProps: nextPageProps } = props
 
-  const { defaultLocale, headerColor, headerMode, layout, locale, page, ...pageProps } =
-    pagePropsProp
+  const { defaultLocale, headerColor, headerMode, layout, locale, page, ...other } = nextPageProps
   const LayoutComponent = layout ? layoutVariants[layout] : layoutVariants.App
 
   return (
@@ -43,7 +42,7 @@ function App(props: AppProps) {
         emotionCache={emotionCache}
         defaultLocale={defaultLocale}
         locale={locale}
-        {...pageProps}
+        {...other}
       >
         <LayoutComponent headerColor={headerColor} headerMode={headerMode}>
           <Component {...page} />
