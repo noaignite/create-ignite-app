@@ -13,7 +13,7 @@ function Page(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>Page | {SITE_NAME}</title>
+        <title>{`Page | ${SITE_NAME}`}</title>
       </Head>
 
       {children}
