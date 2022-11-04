@@ -1,9 +1,8 @@
+const React = require('react')
+const PropTypes = require('prop-types')
 const { pages } = require('~/api/__mock__')
-const { createRenderBlock } = require('~/utils')
 const layoutVariants = require('~/layouts')
-const blockVariants = require('~/blocks')
-
-const renderBlock = createRenderBlock(blockVariants)
+const Page = require('~/containers/Page').default
 
 const defaultExport = {
   title: 'Pages',
@@ -15,19 +14,31 @@ const defaultExport = {
   },
 }
 
+function StorybookPage(props) {
+  const { layout, ...other } = props
+
+  const LayoutComponent = layoutVariants[layout] || layoutVariants.App
+
+  return (
+    <LayoutComponent>
+      <Page {...other} />
+    </LayoutComponent>
+  )
+}
+
+StorybookPage.propTypes = {
+  layout: PropTypes.string,
+}
+
 /**
  * Storybook pages
  * Configure your pages by modifying the data at `api/__mock__/cms/pages`.
  */
 const pageExports = Object.entries(pages).reduce((acc, [name, props = {}]) => {
-  const { layout, ...other } = props
-
-  const LayoutComponent = layoutVariants[layout] || layoutVariants.App
-
-  acc[name] = LayoutComponent.bind({})
+  acc[name] = StorybookPage.bind({})
   acc[name].args = {
-    ...other,
-    children: pages[name].children.map(renderBlock),
+    ...props,
+    blocks: pages[name].blocks,
   }
   return acc
 }, {})

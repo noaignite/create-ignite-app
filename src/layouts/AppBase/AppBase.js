@@ -35,6 +35,10 @@ function AppBase(props) {
 
 AppBase.propTypes = {
   children: PropTypes.node.isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
+  headerColor: PropTypes.string,
+  // eslint-disable-next-line react/no-unused-prop-types
+  headerMode: PropTypes.string,
 }
 
 export default AppBase

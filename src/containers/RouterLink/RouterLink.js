@@ -15,10 +15,16 @@ const RouterLink = React.forwardRef(function RouterLink(props, ref) {
   }
 
   return (
-    <Link as={as} href={href} replace={replace} scroll={scroll} shallow={shallow} passHref>
-      <a ref={ref} {...other}>
-        {children}
-      </a>
+    <Link
+      as={as}
+      href={href}
+      ref={ref}
+      replace={replace}
+      scroll={scroll}
+      shallow={shallow}
+      passHref
+    >
+      {children}
     </Link>
   )
 })

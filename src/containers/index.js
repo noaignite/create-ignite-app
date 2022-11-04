@@ -1,12 +1,9 @@
 /* eslint-disable import/export */
-export { default as Cart } from './Cart'
-export * from './Cart'
-
 export { default as CartItem } from './CartItem'
 export * from './CartItem'
 
-export { default as CartSummary } from './CartSummary'
-export * from './CartSummary'
+export { default as Page } from './Page'
+export * from './Page'
 
 export { default as RouterLink } from './RouterLink'
 export * from './RouterLink'
