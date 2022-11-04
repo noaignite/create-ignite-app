@@ -22,9 +22,8 @@ const AppBaseCookieBarContent = styled('div')(({ theme }) => ({
   alignItems: 'center',
   padding: 'var(--cia-toolbar-spacing)',
   margin: 'var(--cia-toolbar-spacing)',
-  borderRadius: theme.shape.borderRadius * 2,
-  backgroundColor: theme.palette.text.primary,
-  color: theme.palette.background.default,
+  backgroundColor: theme.vars.palette.text.primary,
+  color: theme.vars.palette.text.contrastText,
 }))
 
 function AppBaseCookieBar(props) {

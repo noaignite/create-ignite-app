@@ -8,8 +8,6 @@ export const AppBaseSkipLinkRoot = styled(Button)(({ theme }) => ({
   zIndex: theme.zIndex.appBar + 1,
   top: -100,
   left: 0,
-  backgroundColor: theme.palette.text.primary,
-  color: theme.palette.getContrastText(theme.palette.text.primary),
   '&:focus': {
     top: 0,
   },
@@ -19,7 +17,9 @@ function AppBaseSkipLink(props) {
   const { t } = useI18n()
 
   return (
-    <AppBaseSkipLinkRoot {...props}>{t(__translationGroup)`Skip to content`}</AppBaseSkipLinkRoot>
+    <AppBaseSkipLinkRoot color="text" variant="contained" {...props}>
+      {t(__translationGroup)`Skip to content`}
+    </AppBaseSkipLinkRoot>
   )
 }
 

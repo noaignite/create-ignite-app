@@ -7,17 +7,7 @@ export default {
   argTypes: {
     color: {
       control: 'select',
-      options: [
-        'inherit',
-        'text',
-        'textInverted',
-        'primary',
-        'secondary',
-        'success',
-        'error',
-        'info',
-        'warning',
-      ],
+      options: ['inherit', 'text', 'primary', 'secondary', 'success', 'error', 'info', 'warning'],
     },
     size: {
       control: 'select',
@@ -35,7 +25,7 @@ const Template = (args) => <Button {...args} />
 export const Default = Template.bind({})
 Default.args = {
   children: 'Just a button',
-  color: 'inherit',
+  color: 'text',
   disabled: false,
   fullWidth: false,
   size: 'medium',

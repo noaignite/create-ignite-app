@@ -12,26 +12,29 @@ const HeroRoot = styled('section')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   minHeight: 550,
-  color: theme.palette.common.white, // Use `common.white` as color is based on image not theme mode.
+  color: theme.vars.palette.common.white, // Use `common.white` as color is based on image not theme mode.
   textAlign: 'center',
   [theme.breakpoints.up('md')]: {
     minHeight: 650,
   },
 }))
 
-const HeroMediaReveal = styled(MediaReveal)(({ theme }) => ({
-  ...theme.mixins.absolute(0),
+const HeroMediaReveal = styled(MediaReveal)({
+  position: 'absolute',
   zIndex: -1,
+  inset: 0,
   '& *:not(style)': {
     height: '100%',
   },
-}))
+})
 
 const HeroMain = styled('div')(({ theme }) => ({
-  ...theme.mixins.verticalRhythm(2),
   ...theme.mixins.contain('sm'),
-  paddingLeft: 'var(--cia-container-spacing)',
-  paddingRight: 'var(--cia-container-spacing)',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: theme.spacing(2),
+  paddingInline: 'var(--cia-container-spacing)',
 }))
 
 const HeroHeading = styled('h1')(({ theme }) => ({
@@ -77,7 +80,12 @@ function Hero(props) {
         {excerpt && <Typography>{excerpt}</Typography>}
 
         {ctaLabel && ctaUrl && (
-          <HeroButton component={RouterLink} href={ctaUrl} color="inherit" variant="outlined">
+          <HeroButton
+            data-mui-color-scheme="dark"
+            component={RouterLink}
+            href={ctaUrl}
+            variant="outlined"
+          >
             {ctaLabel}
           </HeroButton>
         )}

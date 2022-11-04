@@ -14,7 +14,8 @@ const CartItemRoot = styled('article')(({ theme }) => ({
   ...theme.typography.body2,
   display: 'grid',
   gridTemplateColumns: '100px 1fr',
-  backgroundColor: theme.palette.background.default,
+  borderRadius: theme.vars.shape.borderRadius,
+  backgroundColor: theme.vars.palette.background.default,
 }))
 
 const CartItemContent = styled('div')(({ theme }) => ({
@@ -42,7 +43,7 @@ const CartItemQuantity = styled('div')({
 const CartItemQuantityButton = styled(ButtonBase)(({ theme }) => ({
   minWidth: 35,
   padding: theme.spacing(1),
-  color: theme.palette.primary.main,
+  color: theme.vars.palette.primary.main,
   textAlign: 'center',
 }))
 
@@ -53,21 +54,21 @@ function CartItem(props) {
   const { decreaseItem, increaseItem, removeItem } = useCentraHandlers()
   const { t } = useI18n()
 
-  const handleItemDecrease = React.useCallback(
+  const onItemDecrease = React.useCallback(
     (event) => {
       decreaseItem(event.currentTarget.value)
     },
     [decreaseItem],
   )
 
-  const handleItemIncrease = React.useCallback(
+  const onItemIncrease = React.useCallback(
     (event) => {
       increaseItem(event.currentTarget.value)
     },
     [increaseItem],
   )
 
-  const handleItemRemove = React.useCallback(
+  const onItemRemove = React.useCallback(
     (event) => {
       removeItem(event.currentTarget.value)
     },
@@ -103,7 +104,7 @@ function CartItem(props) {
 
             <CartItemQuantity>
               <CartItemQuantityButton
-                onClick={handleItemDecrease}
+                onClick={onItemDecrease}
                 value={cartItem.line}
                 aria-label={t(__translationGroup)`Decrease quantity to ${cartItem.quantity - 1}`}
               >
@@ -113,7 +114,7 @@ function CartItem(props) {
               <span>{cartItem.quantity}</span>
 
               <CartItemQuantityButton
-                onClick={handleItemIncrease}
+                onClick={onItemIncrease}
                 value={cartItem.line}
                 aria-label={t(__translationGroup)`Increase quantity to ${cartItem.quantity + 1}`}
               >
@@ -124,7 +125,7 @@ function CartItem(props) {
             <Link // eslint-disable-line jsx-a11y/anchor-is-valid
               sx={{ ml: 'auto' }}
               component={ButtonBase}
-              onClick={handleItemRemove}
+              onClick={onItemRemove}
               value={cartItem.line}
               color="primary"
             >

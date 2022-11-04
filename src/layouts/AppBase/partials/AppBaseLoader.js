@@ -6,7 +6,7 @@ const AppBaseLoaderRoot = styled('div')(({ theme }) => ({
   ...theme.mixins.fixed(0, 0, undefined),
   zIndex: theme.zIndex.tooltip,
   height: 2,
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.vars.palette.primary.main,
   transformOrigin: 'left center',
   transform: 'scaleX(0)',
   pointerEvents: 'none',

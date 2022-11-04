@@ -1,9 +1,9 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { CacheProvider } from '@emotion/react'
-import { CssBaseline } from '@mui/material'
+import { CssBaseline, Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material'
 import createEmotionCache from '~/utils/createEmotionCache'
-import { defaultTheme, ThemeProvider } from '~/components'
+import { defaultTheme } from '~/components'
 import { CentraProvider } from '../Centra'
 import GlobalProvider from '../Global'
 import I18nProvider from '../I18n'
@@ -22,7 +22,6 @@ function RootProvider(props) {
     locale,
     initialSelection,
     settings,
-    theme,
   } = props
 
   return (
@@ -37,12 +36,12 @@ function RootProvider(props) {
             receiptPage={`${process.env.APP_URL}/checkout/success`}
           >
             <GlobalProvider>
-              <ThemeProvider theme={defaultTheme} mode={theme}>
+              <CssVarsProvider theme={defaultTheme}>
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
                 <CssBaseline />
 
                 {children}
-              </ThemeProvider>
+              </CssVarsProvider>
             </GlobalProvider>
           </CentraProvider>
         </RemoteConfigProvider>
@@ -58,7 +57,6 @@ RootProvider.propTypes = {
   initialSelection: PropTypes.object,
   locale: PropTypes.string,
   settings: PropTypes.object,
-  theme: PropTypes.string,
 }
 
 export default RootProvider
