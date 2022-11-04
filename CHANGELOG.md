@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.2](https://github.com/noaignite/create-ignite-app/compare/v1.2.1...v1.2.2) (2022-11-04)
+
+
+### Bug Fixes
+
+* **.env.provision:** fix env provision keys typo ([912fa53](https://github.com/noaignite/create-ignite-app/commit/912fa53623edc0ceee48a71c7e3d2fd65a5d5e5e))
+
 ### [1.2.1](https://github.com/noaignite/create-ignite-app/compare/v1.2.0...v1.2.1) (2022-11-04)
 
 
