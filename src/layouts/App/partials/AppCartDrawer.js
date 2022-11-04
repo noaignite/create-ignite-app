@@ -1,18 +1,10 @@
-// @inheritedComponent Drawer
-
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import dynamic from 'next/dynamic'
 import { styled } from '@mui/system'
-import { Button, CircularProgress, Drawer, IconButton, Toolbar, Typography } from '@mui/material'
-import { useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
-import { RouterLink } from '~/containers'
+import { Button, Drawer, IconButton, Toolbar, Typography } from '@mui/material'
+import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
+import { CartItem, RouterLink } from '~/containers'
 import { CartIcon, CloseIcon } from '~/components'
-
-const Cart = dynamic(() => import(/* webpackChunkName: "containers/Cart" */ '~/containers/Cart'), {
-  loading: () => <CircularProgress size={24} style={{ margin: '100px auto' }} />,
-  ssr: false,
-})
 
 const AppCartDrawerRoot = styled(Drawer)({
   '& .MuiDrawer-paper': {
@@ -24,39 +16,27 @@ const AppCartDrawerRoot = styled(Drawer)({
 const AppCartDrawerScrollContainer = styled('div')(({ theme }) => ({
   ...theme.mixins.scrollable,
   ...theme.mixins.scrollbars,
-  display: 'inherit',
-  flexDirection: 'inherit',
+  display: 'flex',
+  flexDirection: 'column',
   flexGrow: 1,
   padding: theme.spacing(2),
   paddingTop: 0,
 }))
 
+const AppCartDrawerItems = styled('div')(({ theme }) => ({
+  display: 'grid',
+  gridGap: theme.spacing(1),
+}))
+
 const AppCartDrawer = React.memo(function AppCartDrawer(props) {
   const { isCartMenuOpen, ...other } = props
 
+  const { selection } = useCentraSelection()
   const { onCartMenuClose } = useGlobalHandlers()
   const { t } = useI18n()
 
-  const [isVisible, setIsVisible] = React.useState(isCartMenuOpen) // Used to dynamically load the Cart.
-
-  const handleExited = React.useCallback(() => {
-    setIsVisible(false)
-  }, [])
-
-  React.useEffect(() => {
-    if (isCartMenuOpen) {
-      setIsVisible(true)
-    }
-  }, [isCartMenuOpen])
-
   return (
-    <AppCartDrawerRoot
-      SlideProps={{ onExited: handleExited }}
-      onClose={onCartMenuClose}
-      open={isCartMenuOpen}
-      anchor="right"
-      {...other}
-    >
+    <AppCartDrawerRoot onClose={onCartMenuClose} open={isCartMenuOpen} anchor="right" {...other}>
       <Toolbar>
         <CartIcon sx={{ mr: 1, transform: 'translateY(-2px)' }} />
         <Typography variant="body1">{t(__translationGroup)`Bag`}</Typography>
@@ -72,7 +52,13 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
         </IconButton>
       </Toolbar>
 
-      <AppCartDrawerScrollContainer>{isVisible && <Cart />}</AppCartDrawerScrollContainer>
+      <AppCartDrawerScrollContainer>
+        <AppCartDrawerItems>
+          {selection?.items.map((cartItem, idx) => (
+            <CartItem key={idx} cartItem={cartItem} />
+          ))}
+        </AppCartDrawerItems>
+      </AppCartDrawerScrollContainer>
 
       <div>
         <Button component={RouterLink} href="/checkout" variant="contained" fullWidth>
