@@ -2,6 +2,68 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/noaignite/create-ignite-app/compare/v1.1.0...v1.2.0) (2022-11-04)
+
+
+### Features
+
+* **.env:** add 1password environment variable provisioning ([877bc3b](https://github.com/noaignite/create-ignite-app/commit/877bc3b546d4520272c288cc4d5e6a36d1539ead))
+* add a 404 page for next and storybook ([5f62f8b](https://github.com/noaignite/create-ignite-app/commit/5f62f8bb4fcfba0d4bac993b8d4401eaa3f97bfc))
+* **AppBaseLoader:** add new site loader ([d2b4e1b](https://github.com/noaignite/create-ignite-app/commit/d2b4e1b5526570c931207e4fcab4c99190153fdd))
+* **cart:** remove Cart & CartSummary containers and loop selection directly in AppCartDrawer ([9156992](https://github.com/noaignite/create-ignite-app/commit/915699213677d1106277cb728356295ae3406a4e))
+* **CssVarsProvider:** test out new experimental CssVarsProvider (WIP) ([62222e8](https://github.com/noaignite/create-ignite-app/commit/62222e852aa44e47036067a6dde7197f3f503f40))
+* **ErrorBlock:** add generic block meant for error pages ([145ef98](https://github.com/noaignite/create-ignite-app/commit/145ef988681536a161fba0c820637fc81364b94c))
+* **globals:** rename scripts/polyfills to scripts/globals & log project theme to console ([f118e91](https://github.com/noaignite/create-ignite-app/commit/f118e91a67dd994cb9a2256f0090c6b19f0d50ac))
+* **Html:** optimize styles with new :is css selector ([7ae0a87](https://github.com/noaignite/create-ignite-app/commit/7ae0a8707c7bfbf5d6339c9df7c8909c3f8eaa09))
+* move store message from AppFooter to AppHeader and calculate headerHeight with css vars only ([97fec89](https://github.com/noaignite/create-ignite-app/commit/97fec8912026bcdd938c9292d8fae10c042d1ced))
+* **theme:** createTheme now takes colorSchemes as an overridable argument ([d1731f8](https://github.com/noaignite/create-ignite-app/commit/d1731f835a142edba263dd65820aca18efd817c8))
+* **theme:** remove redundant 'textInverted' palette group as now accessed via css vars ([bffe907](https://github.com/noaignite/create-ignite-app/commit/bffe9071a5e90ff031f6f4d7da17d6e6cca43b1c))
+* **theme:** update styles to use theme css variables ([86765f9](https://github.com/noaignite/create-ignite-app/commit/86765f97730a9a2fa21f9a5ab60e92bda6e9bc95))
+* update next, add ts support, add getBlockProps ([4e08ff6](https://github.com/noaignite/create-ignite-app/commit/4e08ff6265def66dbabe60af590d3735dc80f124))
+* use new CssVarsProvider and update AppBar to use theme vars ([4a524b8](https://github.com/noaignite/create-ignite-app/commit/4a524b8f46e57f388b232855b9bcb58050021769))
+
+
+### Bug Fixes
+
+* **.storybook/preview.js:** use the new useColorScheme hook to switch between theme modes ([3a4fb5e](https://github.com/noaignite/create-ignite-app/commit/3a4fb5e431621501424c0ab52ffb4719bead33e0))
+* **createEmotionCache:** update util based on mui examples ([c814eb4](https://github.com/noaignite/create-ignite-app/commit/c814eb402ca45258874b9b66a2875fb8e037ad0a))
+* omit SSR :first-child error by using emotion cache with compat true if running Storybook ([7928d31](https://github.com/noaignite/create-ignite-app/commit/7928d3152ac29341b8100c6f0dfc4748c9381732))
+* **RouterLink:** pass ref to Link ([9f0fdde](https://github.com/noaignite/create-ignite-app/commit/9f0fdde57722f77a77a28594160c2747fc641358))
+* **storybook:** fix broken storybook pages ([c4c367b](https://github.com/noaignite/create-ignite-app/commit/c4c367baaa98d2ce6a2b07666d44f42bbc5d00ae))
+* use renamed storybook demo page, Article ([ea69aa3](https://github.com/noaignite/create-ignite-app/commit/ea69aa3bbfacb1754141431cf063f4b2fe6a94c5))
+
+
+### Docs
+
+* **CssBaseline:** add comment explaining the included [@font-face](https://github.com/font-face) block is an out-commented example ([fc51eab](https://github.com/noaignite/create-ignite-app/commit/fc51eabc20fa3f1655b67cd2f242570e741e6b8c))
+
+
+### Code Refactoring
+
+* **_app:** rename props to be more understandable ([49eecba](https://github.com/noaignite/create-ignite-app/commit/49eecba4645ffc6e3af90eba596ad21dc888ae52))
+* **AppHeader:** add header transitions based on the new mounted state prop ([17b7e03](https://github.com/noaignite/create-ignite-app/commit/17b7e036e4d9f5d0baedb76e4e13758643cdb0c5))
+
+
+### Others
+
+* **_app, AppBase:** update to ts ([159bf59](https://github.com/noaignite/create-ignite-app/commit/159bf59ca4b8868a4fdab3f31811fdf2a8aefc43))
+* **ArticleSlideshow:** remove example block and embla-carousel-react package ([2c86324](https://github.com/noaignite/create-ignite-app/commit/2c863241dc6e3bd336bfe83ff5e0e33ffdffac3c))
+* for sake of simplicity, remove 'theme colors' storybook page as now accessible from console ([ae53aea](https://github.com/noaignite/create-ignite-app/commit/ae53aea994b694aa11de3c84156b540aef8fca2e))
+* remove and ignore generated next TS file ([7aecf68](https://github.com/noaignite/create-ignite-app/commit/7aecf68b08fdd764c40677ae8dac6b8786bb8b03))
+* remove stylistic comment ([b376218](https://github.com/noaignite/create-ignite-app/commit/b376218efc8f91a51e8a70d2cfaecee978b79c17))
+
+
+### Build System
+
+* **deps:** bump @mui/material from 5.10.8 to 5.10.12 & @mui/lab and @noaignite/oui to latest ([0251146](https://github.com/noaignite/create-ignite-app/commit/02511464cde23d81349d27a844cb24a9f34eeda9))
+* **deps:** bump @mui/material from 5.6.0 to 5.7.0 ([e7a340b](https://github.com/noaignite/create-ignite-app/commit/e7a340b8b9c8c61dcee40ad0ac6749c116d88cae))
+* **deps:** bump @mui/material from 5.8.4 to 5.8.5 and @mui/lab to latest ([0a9af71](https://github.com/noaignite/create-ignite-app/commit/0a9af71db0f2ca0d7274f90e1bc638c2352110e3))
+* **deps:** bump @mui/material from 5.8.5 to 5.10.8 and @mui/lab to latest ([c888509](https://github.com/noaignite/create-ignite-app/commit/c888509be0a6128b68bf45e6e64c7224a02cb6a9))
+* **deps:** bump @storybook/* from 6.5.9 to 6.5.13 ([c7c02cb](https://github.com/noaignite/create-ignite-app/commit/c7c02cb066454a24f7d397a86ff1064d35767f41))
+* **deps:** bump next packages from 12.1.6 to 12.2.3 ([c3d0311](https://github.com/noaignite/create-ignite-app/commit/c3d03116d7081360956e2ef58baee3fa7a396edc))
+* **deps:** bump terser from 4.8.0 to 4.8.1 ([f83f543](https://github.com/noaignite/create-ignite-app/commit/f83f543a18285eb0a6aa664a5991a7d266d9ec45))
+* **deps:** remove unused @react-hook/size package ([b41b03b](https://github.com/noaignite/create-ignite-app/commit/b41b03b9ea96be5f159c900d1029e0c19e80ec90))
+
 ## [1.1.0](https://github.com/noaignite/create-ignite-app/compare/v1.0.0...v1.1.0) (2022-06-14)
 
 
