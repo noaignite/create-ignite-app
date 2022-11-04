@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { generateUtilityClasses } from '@mui/base'
+import { unstable_generateUtilityClasses as generateUtilityClasses } from '@mui/utils'
 import { styled } from '@mui/system'
 import { AppBar, Badge, IconButton, Toolbar } from '@mui/material'
 import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
