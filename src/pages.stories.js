@@ -15,18 +15,20 @@ const defaultExport = {
 }
 
 function StorybookPage(props) {
-  const { layout, ...other } = props
+  const { headerColor, headerMode, layout, ...other } = props
 
   const LayoutComponent = layoutVariants[layout] || layoutVariants.App
 
   return (
-    <LayoutComponent>
+    <LayoutComponent headerColor={headerColor} headerMode={headerMode}>
       <Page {...other} />
     </LayoutComponent>
   )
 }
 
 StorybookPage.propTypes = {
+  headerColor: PropTypes.string,
+  headerMode: PropTypes.string,
   layout: PropTypes.string,
 }
 

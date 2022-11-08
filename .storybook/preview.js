@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useColorScheme } from '@mui/material'
 import { settings } from '~/api/__mock__'
 import { RootProvider } from '~/contexts'
-import { breakpoints, defaultTheme } from '~/components'
+import { breakpoints } from '~/components'
 
 const breakpointValues = {
   ...breakpoints.values,
