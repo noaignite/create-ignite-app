@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { styled } from '@mui/system'
+import { styled } from '@mui/material'
 import { SITE_MAIN_ID, SITE_ROOT_ID } from '~/utils/constants'
 import { GlobalStateContext } from '~/contexts'
 import { AppBaseCookieBar, AppBaseLoader, AppBaseMarketDialog, AppBaseSkipLink } from './partials'

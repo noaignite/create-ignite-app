@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { styled } from '@mui/system'
-import { Container, Link } from '@mui/material'
+import { Container, Link, styled } from '@mui/material'
 import { useRemoteConfig } from '~/contexts'
 import { RouterLink } from '~/containers'
 

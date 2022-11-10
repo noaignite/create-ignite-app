@@ -1,7 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { styled } from '@mui/system'
-import { Collapse, Link } from '@mui/material'
+import { Collapse, Link, styled } from '@mui/material'
 import { menuItemType } from '~/api'
 import { RouterLink } from '~/containers'
 import { AddIcon, RemoveIcon } from '~/components'

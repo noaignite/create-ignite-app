@@ -1,7 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { styled } from '@mui/system'
-import { Drawer, IconButton, Link, Toolbar, Typography } from '@mui/material'
+import { Drawer, IconButton, Link, styled, Toolbar, Typography } from '@mui/material'
 import {
   useCentraSelection,
   useGlobalHandlers,

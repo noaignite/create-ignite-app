@@ -1,7 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { styled } from '@mui/system'
-import { Button, GlobalStyles, Typography } from '@mui/material'
+import { Button, GlobalStyles, styled, Typography } from '@mui/material'
 import { SITE_MAIN_ID } from '~/utils/constants'
 import { RouterLink } from '~/containers'
 

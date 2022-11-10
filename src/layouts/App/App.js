@@ -1,6 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { styled } from '@mui/system'
+import { styled } from '@mui/material'
 import { SITE_FOOTER_ID, SITE_HEADER_ID, SITE_MAIN_ID } from '~/utils/constants'
 import AppBase from '../AppBase'
 import { AppCartDrawer, AppFooter, AppHeader, AppNavDrawer, AppSearchDrawer } from './partials'

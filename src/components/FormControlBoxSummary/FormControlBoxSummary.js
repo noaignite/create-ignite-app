@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import { refType } from '@mui/utils'
-import { styled } from '@mui/system'
+import { styled } from '@mui/material'
 import FormControlBoxContext from '../FormControlBox/FormControlBoxContext'
 import classes from './formControlBoxSummaryClasses'
 

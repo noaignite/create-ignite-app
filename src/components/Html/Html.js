@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { styled } from '@mui/system'
+import { styled } from '@mui/material'
 
 export const HtmlRoot = styled('div')(({ theme }) => ({
   ...theme.typography.body1,

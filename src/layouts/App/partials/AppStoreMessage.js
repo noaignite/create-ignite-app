@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { styled } from '@mui/system'
+import { styled } from '@mui/material'
 import { useRemoteConfig } from '~/contexts'
 
 export const AppStoreMessageRoot = styled('div')(({ theme }) => ({
