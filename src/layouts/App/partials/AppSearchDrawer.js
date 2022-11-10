@@ -1,8 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
-import { styled } from '@mui/system'
-import { Drawer, IconButton, TextField } from '@mui/material'
+import { Drawer, IconButton, styled, TextField } from '@mui/material'
 import { useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
 import { SearchIcon } from '~/components'
 

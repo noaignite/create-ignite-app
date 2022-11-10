@@ -1,7 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { styled } from '@mui/system'
-import { Button, Drawer, IconButton, Toolbar, Typography } from '@mui/material'
+import { Button, Drawer, IconButton, styled, Toolbar, Typography } from '@mui/material'
 import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
 import { CartItem, RouterLink } from '~/containers'
 import { CartIcon, CloseIcon } from '~/components'

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import clsx from 'clsx'
-import { styled } from '@mui/system'
+import { styled } from '@mui/material'
 import classes from './formControlBoxDetailsClasses'
 
 const FormControlBoxDetailsRoot = styled('div', {

@@ -1,7 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import { styled } from '@mui/system'
-import { ButtonBase, Link } from '@mui/material'
+import { ButtonBase, Link, styled } from '@mui/material'
 import { Media, MediaReveal } from '@noaignite/oui'
 import { cartItemType } from '~/api'
 import { getProductUrl } from '~/api/centra/utils'

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Router from 'next/router'
-import { styled } from '@mui/system'
+import { styled } from '@mui/material'
 
 const AppBaseLoaderRoot = styled('div')(({ theme }) => ({
   ...theme.mixins.fixed(0, 0, undefined),
