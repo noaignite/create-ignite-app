@@ -1,11 +1,10 @@
 const overrides = {
   styleOverrides: {
     root: ({ theme }) => ({
-      paddingLeft: 'var(--cia-container-spacing)',
-      paddingRight: 'var(--cia-container-spacing)',
+      paddingInline: 'var(--cia-container-spacing)',
+      // Breakpoint is needed to override internal MUI styles.
       [theme.breakpoints.up('sm')]: {
-        paddingLeft: 'var(--cia-container-spacing)',
-        paddingRight: 'var(--cia-container-spacing)',
+        paddingInline: 'var(--cia-container-spacing)',
       },
     }),
   },
