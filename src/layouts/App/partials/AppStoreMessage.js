@@ -8,7 +8,7 @@ export const AppStoreMessageRoot = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   height: 'var(--cia-header-toolbar-secondary-height)',
-  padding: '0 var(--cia-toolbar-spacing)',
+  paddingInline: '0 var(--cia-container-spacing)',
   backgroundColor: theme.vars.palette.primary.main,
   color: theme.vars.palette.primary.contrastText,
   textAlign: 'center',
