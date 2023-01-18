@@ -90,7 +90,7 @@ src/api
 
 ### src/blocks
 
-Blocks are top level modules in the application, hierarchically directly below the App container and typically defined with a `section` element at it's root. These can also be configured as choosable modules for the admin panel of chosen CMS. When possible, these should be exported from their common exports file (`src/blocks/index.js`) using `next/dynamic`. This will ensure that blocks are chunked and not downloaded to the client on a particular page unless rendered.
+Blocks are top level modules in the application, hierarchically directly below the App layout and typically defined with a `section` element at it's root. These can also be configured as choosable modules for the admin panel of chosen CMS. When possible, these should be exported from their common exports file (`src/blocks/index.js`) using `next/dynamic`. This will ensure that blocks are chunked and not downloaded to the client on a particular page unless rendered.
 
 ```
 src/blocks
@@ -120,7 +120,6 @@ Container components are "smart" components, they come in various sizes but what
 
 ```
 src/containers
-├── App (The topmost component in the application)
 ├── RouterLink (A Next.js wrapped routing component)
 ├── index.js
 └── ...
@@ -145,7 +144,7 @@ src/contexts
 this is a good place to add app-level providers that should be accessible from all corners of the application. providers added here should be exported in the api directory's common export file(s). accessing data or helpers from these providers can look like this `import { usei18n } from '~/contexts'`.
 
 ```
-src/contexts
+src/layouts
 ├── AppBase (Contains the necessary modules which should exist on all pages)
 ├── App (The default layout to be used)
 ├── index.js
