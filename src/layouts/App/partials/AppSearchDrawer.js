@@ -5,7 +5,7 @@ import { Drawer, IconButton, styled, TextField } from '@mui/material'
 import { useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
 import { SearchIcon } from '~/components'
 
-const AppCartDrawerRoot = styled(Drawer)(({ theme }) => ({
+const AppSearchDrawerRoot = styled(Drawer)(({ theme }) => ({
   zIndex: `${theme.zIndex.appBar - 1} !important`,
   '& .MuiDrawer-paper': {
     top: 'var(--cia-header-height)',
@@ -13,7 +13,7 @@ const AppCartDrawerRoot = styled(Drawer)(({ theme }) => ({
   },
 }))
 
-const AppCartDrawerForm = styled('form')(({ theme }) => ({
+const AppSearchDrawerForm = styled('form')(({ theme }) => ({
   ...theme.mixins.contain('md'),
   width: '100%',
   padding: theme.spacing(0, 'var(--cia-container-spacing)', 2),
@@ -49,8 +49,13 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
   )
 
   return (
-    <AppCartDrawerRoot onClose={onSearchMenuClose} open={isSearchMenuOpen} anchor="top" {...other}>
-      <AppCartDrawerForm
+    <AppSearchDrawerRoot
+      onClose={onSearchMenuClose}
+      open={isSearchMenuOpen}
+      anchor="top"
+      {...other}
+    >
+      <AppSearchDrawerForm
         onSubmit={handleSubmit}
         role="search"
         // iOS needs an "action" attribute for nice input: https://stackoverflow.com/a/39485162/406725
@@ -77,8 +82,8 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
           fullWidth
           autoFocus
         />
-      </AppCartDrawerForm>
-    </AppCartDrawerRoot>
+      </AppSearchDrawerForm>
+    </AppSearchDrawerRoot>
   )
 })
 
