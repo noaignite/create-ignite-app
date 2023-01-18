@@ -1,15 +1,21 @@
 const overrides = {
   styleOverrides: {
-    gutters: ({ theme }) => ({
-      paddingLeft: 'var(--cia-toolbar-spacing)',
-      paddingRight: 'var(--cia-toolbar-spacing)',
+    root: ({ theme }) => ({
+      minHeight: 'var(--cia-toolbar-height)',
+      // Breakpoint is needed to override internal MUI styles.
       [theme.breakpoints.up('sm')]: {
-        paddingLeft: 'var(--cia-toolbar-spacing)',
-        paddingRight: 'var(--cia-toolbar-spacing)',
+        minHeight: 'var(--cia-toolbar-height)',
+      },
+    }),
+    gutters: ({ theme }) => ({
+      paddingInline: 'var(--cia-toolbar-spacing)',
+      // Breakpoint is needed to override internal MUI styles.
+      [theme.breakpoints.up('sm')]: {
+        paddingInline: 'var(--cia-toolbar-spacing)',
       },
     }),
     dense: {
-      minHeight: 'var(--cia-toolbar-dense-min-height)',
+      minHeight: 'var(--cia-toolbar-dense-height)',
     },
   },
 }
