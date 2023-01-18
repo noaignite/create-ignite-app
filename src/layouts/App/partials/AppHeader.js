@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { unstable_generateUtilityClasses as generateUtilityClasses } from '@mui/utils'
-import { AppBar, Badge, IconButton, styled, Toolbar } from '@mui/material'
+import { AppBar, Badge, IconButton, styled } from '@mui/material'
 import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
 import { RouterLink } from '~/containers'
 import { BrandIcon, CartIcon, SearchIcon, CloseIcon, MenuIcon } from '~/components'
@@ -42,6 +42,13 @@ const AppHeaderRoot = styled(AppBar)(({ theme, ownerState }) => ({
     [theme.breakpoints.up(BREAKPOINT_KEY)]: { display: 'none' },
   },
 }))
+
+const AppHeaderToolbar = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  height: 'var(--cia-header-toolbar-primary-height)',
+  paddingInline: 'var(--cia-container-spacing)',
+})
 
 const AppHeaderBrandLink = styled(RouterLink)({
   position: 'absolute',
@@ -134,7 +141,7 @@ const AppHeader = React.memo(function AppHeader(props) {
         }}
       />
 
-      <Toolbar>
+      <AppHeaderToolbar>
         <IconButton
           onClick={onNavMenuToggle}
           color="inherit" // Inherit color from `headerColor`.
@@ -182,7 +189,7 @@ const AppHeader = React.memo(function AppHeader(props) {
             </Badge>
           )}
         </IconButton>
-      </Toolbar>
+      </AppHeaderToolbar>
     </AppHeaderRoot>
   )
 })
