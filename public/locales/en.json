@@ -1,20 +1,10 @@
 {
-  "blocks/ArticleSlideshow/ArticleSlideshow.js": {
-    "Read more": ""
-  },
-  "containers/Cart/Cart.js": {
-    "Empty cart": ""
-  },
   "containers/CartItem/CartItem.js": {
     "Decrease quantity to ${0}": "",
     "Increase quantity to ${0}": "",
     "Quantity": "",
     "Remove": "",
     "Size": ""
-  },
-  "containers/CartSummary/CartSummary.js": {
-    "Shipping": "",
-    "Total": ""
   },
   "layouts/App/partials/AppCartDrawer.js": {
     "Bag": "",
