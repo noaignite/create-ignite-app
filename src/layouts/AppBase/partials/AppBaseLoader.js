@@ -3,7 +3,8 @@ import Router from 'next/router'
 import { styled } from '@mui/material'
 
 const AppBaseLoaderRoot = styled('div')(({ theme }) => ({
-  ...theme.mixins.fixed(0, 0, undefined),
+  position: 'fixed',
+  inset: '0 0 auto',
   zIndex: theme.zIndex.tooltip,
   height: 2,
   backgroundColor: theme.vars.palette.primary.main,
