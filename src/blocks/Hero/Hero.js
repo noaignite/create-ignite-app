@@ -42,14 +42,15 @@ const HeroHeading = styled('h1')(({ theme }) => ({
   fontSize: `max(${theme.typography.h3.fontSize}, 3.2vw)`,
 }))
 
-const HeroButton = styled(Button)(({ theme }) => ({
+const HeroButton = styled(Button)({
   // Makes entire Hero block clickable.
   position: 'static',
   '&:before': {
-    ...theme.mixins.absolute(0),
+    position: 'absolute',
+    inset: 0,
     content: '""',
   },
-}))
+})
 
 function Hero(props) {
   const { mediaProps, ctaLabel, ctaUrl, heading, excerpt, renderIndex } = props
