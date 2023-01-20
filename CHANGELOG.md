@@ -2,9 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-<<<<<<< HEAD
-### [1.2.2](https://github.com/noaignite/create-ignite-app/compare/v1.2.1...v1.2.2) (2022-11-04)
-=======
 ## [1.3.0](https://github.com/noaignite/create-ignite-app/compare/v1.2.1...v1.3.0) (2023-01-20)
 
 
@@ -15,21 +12,20 @@ All notable changes to this project will be documented in this file. See [standa
 * **Dialog, Drawer:** add overrides disabling boxShadow ([75dd583](https://github.com/noaignite/create-ignite-app/commit/75dd5839ad687099cb263508317c701c9b0bcdaa))
 * **layouts/App:** use cia-container-spacing as gutters ([e1f9b09](https://github.com/noaignite/create-ignite-app/commit/e1f9b09fdcfc3d8b91856484d4dcb532a82f1f35))
 * **theme/mixins:** remove position mixins in favor of using new css inset ([7b71d18](https://github.com/noaignite/create-ignite-app/commit/7b71d18b7752a18899977e6559196bf88c0fe6e7))
->>>>>>> ba74ec2 (chore(release): 1.3.0)
-
-
-### Bug Fixes
-
-* **.env.provision:** fix env provision keys typo ([912fa53](https://github.com/noaignite/create-ignite-app/commit/912fa53623edc0ceee48a71c7e3d2fd65a5d5e5e))
-<<<<<<< HEAD
-=======
-* import styled from @mui/material and update @emotion/babel-plugin ([1ad058d](https://github.com/noaignite/create-ignite-app/commit/1ad058d736b1d141c9026cd922d67b5529e39248))
-* **Storybook:** forward headerColor & headerMode to LayoutComponent ([20a802e](https://github.com/noaignite/create-ignite-app/commit/20a802ea9a96a1435e3a54812cdb3e4f06604461))
 
 
 ### Build System
 
 * **package.json:** update node engine to lowest supported version ([df2f232](https://github.com/noaignite/create-ignite-app/commit/df2f2321de9bac049d5174c9c020bf4b8618b3c5))
+
+### [1.2.2](https://github.com/noaignite/create-ignite-app/compare/v1.2.1...v1.2.2) (2022-11-04)
+
+
+### Bug Fixes
+
+* **.env.provision:** fix env provision keys typo ([912fa53](https://github.com/noaignite/create-ignite-app/commit/912fa53623edc0ceee48a71c7e3d2fd65a5d5e5e))
+* import styled from @mui/material and update @emotion/babel-plugin ([1ad058d](https://github.com/noaignite/create-ignite-app/commit/1ad058d736b1d141c9026cd922d67b5529e39248))
+* **Storybook:** forward headerColor & headerMode to LayoutComponent ([20a802e](https://github.com/noaignite/create-ignite-app/commit/20a802ea9a96a1435e3a54812cdb3e4f06604461))
 
 
 ### Others
@@ -40,7 +36,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **locales:** remove non existent translation strings ([17e80bc](https://github.com/noaignite/create-ignite-app/commit/17e80bcaac5684eb94d5bb33fdb2145cab2faab4))
 * **README:** correct mistakes in the readme ([49b4121](https://github.com/noaignite/create-ignite-app/commit/49b4121f95e5189f58d8b35b393ccb47a290a45a))
 * **utils:** remove legacy getConfig compat util ([1983cd1](https://github.com/noaignite/create-ignite-app/commit/1983cd147dcf47ced72ff26458a39716229afe87))
->>>>>>> ba74ec2 (chore(release): 1.3.0)
 
 ### [1.2.1](https://github.com/noaignite/create-ignite-app/compare/v1.2.0...v1.2.1) (2022-11-04)
 
