@@ -27,7 +27,7 @@ function Media(props) {
 
 Media.propTypes = {
   mediaProps: PropTypes.object.isRequired,
-  renderIndex: PropTypes.number.isRequired,
+  renderIndex: PropTypes.number,
 }
 
 export default Media

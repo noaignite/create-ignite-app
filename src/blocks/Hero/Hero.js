@@ -100,7 +100,7 @@ Hero.propTypes = {
   ctaUrl: PropTypes.string,
   excerpt: PropTypes.string,
   heading: PropTypes.string.isRequired,
-  renderIndex: PropTypes.number.isRequired,
+  renderIndex: PropTypes.number,
 }
 
 export default Hero
