@@ -1,6 +1,10 @@
 {
   "name": "create-ignite-app",
+<<<<<<< HEAD
   "version": "1.2.2",
+=======
+  "version": "1.3.0",
+>>>>>>> ba74ec2 (chore(release): 1.3.0)
   "private": false,
   "author": "NoA Ignite",
   "description": "NoA Ignite App Scaffolding",
