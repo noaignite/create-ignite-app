@@ -11,12 +11,18 @@ const overrides = {
     */
     /* Define :root css variables. */
     :root {
+      /* Base */
       --cia-spacing-base: ${theme.spacing(1)};
+
+      /* Components */
       --cia-toolbar-dense-height: 48px;
       --cia-toolbar-height: 56px;
       --cia-toolbar-spacing: ${theme.spacing(2)};
+
       --cia-header-toolbar-primary-height: 56px;
       --cia-header-toolbar-secondary-height: 22px;
+      --cia-header-height: 0px; /* Calculated in AppHeader. */
+
       --cia-section-spacing: max(${theme.spacing(3)}, 3.7vw);
       --cia-container-spacing: calc(100vw / 24);
     }
@@ -43,7 +49,7 @@ const overrides = {
       appearance: none;
     }
     [id] {
-      scroll-margin-top: var(--cia-header-height, 0px);
+      scroll-margin-top: var(--cia-header-height);
     }
     a {
       color: inherit;
