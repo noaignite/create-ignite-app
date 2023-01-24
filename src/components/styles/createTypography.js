@@ -51,7 +51,7 @@ export default function createTypography(typography) {
     caption: buildVariant(fontFamilyPrimary, fontWeightSemibold, 14, 1.3, 0.02),
     overline: buildVariant(fontFamilySecondary, fontWeightRegular, 8, 1.7, 0.12, caseAllCaps),
     // Custom variants
-    inputText: buildVariant(fontFamilyPrimary, fontWeightRegular, 12, 1.5, 0),
+    inputText: buildVariant(fontFamilyPrimary, fontWeightRegular, 16, 1.5, 0),
   }
 
   const typographyOutput = deepmerge(
