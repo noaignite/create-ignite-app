@@ -2271,21 +2271,21 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.1.6.tgz#17ed919c723426b7d0ce1cd73d40ce3dcd342089"
   integrity sha512-Ls2OL9hi3YlJKGNdKv8k3X/lLgc3VmLG3a/DeTkAd+lAituJp8ZHmRmm9f9SL84fT3CotlzcgbdaCDfFwFA6bA==
 
-"@noaignite/eslint-config-typescript@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@noaignite/eslint-config-typescript/-/eslint-config-typescript-0.3.0.tgz#3f55069c66e06244716705cfaa774dbefec59ff4"
-  integrity sha512-puNn2FupBEaAZYiyt8X3obdLEFqkpIw1GV92cd9jh+joOjXy4/9z8kL4H+c8CEY5dhMEkB/iACu8suB3EgNXZw==
+"@noaignite/eslint-config-typescript@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@noaignite/eslint-config-typescript/-/eslint-config-typescript-0.4.0.tgz#d571544dd916deb268a644f2602304c52022824f"
+  integrity sha512-yHOEBCe9vlDQUclQtFP7sca38WISCS9tcHbktK1Vs3kzkcCvuMIDC4mmRjAXjGwf5Xvtmngu/9vYG3hek07HpQ==
   dependencies:
-    "@noaignite/eslint-config" "^0.5.1"
+    "@noaignite/eslint-config" "^0.6.0"
     "@rushstack/eslint-patch" "^1.1.0"
     "@typescript-eslint/eslint-plugin" "^5.14.0"
     "@typescript-eslint/parser" "^5.14.0"
     eslint-config-airbnb-typescript "^17.0.0"
 
-"@noaignite/eslint-config@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@noaignite/eslint-config/-/eslint-config-0.5.1.tgz#6ccb48e438ef8d109491768c16886603b7ea0064"
-  integrity sha512-Jh9loPRe6MlxtTBgT2wbknCks8oEuu8EtWnm58WhkYtH1z63BgSIHi01vrFnrM6rOYFMMZIYD7O8MNRpokptcw==
+"@noaignite/eslint-config@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@noaignite/eslint-config/-/eslint-config-0.6.0.tgz#e40a4066cb5782012d07bfc906b2b6132edd7a2a"
+  integrity sha512-nHg+Mj1TltL29HAmRJ0J3HX+5NfAcnaAmFT0gLjJ4xsEHJfIBSeXOHFGObbHwH9AxpHgJ4TCHXmUqLiOYdCD8w==
   dependencies:
     "@babel/core" "^7.16.0"
     "@babel/eslint-parser" "^7.17.0"
