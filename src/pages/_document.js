@@ -19,6 +19,7 @@ export default class MyDocument extends Document {
           {/* <link rel="preload" href="/fonts/family/family-regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" /> */}
 
           {/* Inject MUI styles first to match with the prepend: true configuration. */}
+          <meta name="emotion-insertion-point" content="" />
           {this.props.emotionStyleTags}
         </Head>
         <body>
