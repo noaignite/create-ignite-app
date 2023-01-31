@@ -2277,22 +2277,22 @@
     eslint-plugin-react-hooks "^4.3.0"
     eslint-plugin-testing-library "^5.0.6"
 
-"@noaignite/oui@^3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@noaignite/oui/-/oui-3.3.4.tgz#ba2d64220b4382f6dab7bd9ee2130a682df41668"
-  integrity sha512-kB51TH2EHq38GccAFRz5XIexUpetf1J+lb3dCgLS/yFgKOj1yPG3Ih/cnVprpwTVkL4WwHjZxhWAd4+6ARxeuA==
+"@noaignite/oui@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@noaignite/oui/-/oui-4.0.0.tgz#df42dcb6efe1ec3f4e3184477641d8cb3f9d13f8"
+  integrity sha512-Mw7qis0Bd40RBleiLVTq6lNB8bQHZD27S1JmTdXPP2JykwJ219k0kjEAcZnU+sGXHz2OM4UlIEdSCXkspoUvvQ==
   dependencies:
     "@babel/runtime" "^7.16.0"
     "@maeertin/medialoaded" "^1.2.1"
-    "@noaignite/utils" "^1.1.1"
+    "@noaignite/utils" "^2.0.0"
     clsx "^1.1.1"
     intersection-observer-admin "^0.3.2"
     prop-types "^15.7.2"
 
-"@noaignite/utils@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@noaignite/utils/-/utils-1.1.1.tgz#1725639045b603625043e4abc72f3e67f3b68c6d"
-  integrity sha512-x+PekkLuoZssDOJ/r9vAzImasc3Q75s/c49dfkglx2r9NBrHdVfAsK6gmB+DzvUIdW6YQVRZWR3BYGFJkiNUMw==
+"@noaignite/utils@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@noaignite/utils/-/utils-2.0.0.tgz#eca1c3ea91ff5a747fd12ed89f536399b0c6ebbd"
+  integrity sha512-L/wpgQ5KLP5rhggTbjoV2fon5HGoDxXGf61nBp7REzvRWS+t/a6jzXZMEpU3ZUEFvj5JbBPSQlxTKwjDLb0RLw==
   dependencies:
     "@babel/runtime" "^7.16.0"
 
