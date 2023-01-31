@@ -22,9 +22,7 @@ const HeroMediaReveal = styled(MediaReveal)({
   position: 'absolute',
   zIndex: -1,
   inset: 0,
-  '& *:not(style)': {
-    height: '100%',
-  },
+  display: 'flex',
 })
 
 const HeroMain = styled('div')(({ theme }) => ({
