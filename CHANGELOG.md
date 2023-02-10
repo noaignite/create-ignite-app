@@ -2,6 +2,61 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/noaignite/create-ignite-app/compare/v1.2.2...v1.4.0) (2023-02-07)
+
+
+### Features
+
+* add new Storybook and NextJS viewport meta tag which allows input fontSize smaller than 16px ([e3059e6](https://github.com/noaignite/create-ignite-app/commit/e3059e64e70db3da2ccc7ce91806d3433d6283c4))
+* **CssBaseline:** define --cia-header-height for usage without default value ([52de15e](https://github.com/noaignite/create-ignite-app/commit/52de15e1bade0cc70dcb7412bc9005e62a4eaf98))
+* **Dialog, Drawer:** add overrides disabling boxShadow ([c82b61d](https://github.com/noaignite/create-ignite-app/commit/c82b61d71f01b2096ec706fd793214e09ba6e692))
+* **layouts/App:** use cia-container-spacing as gutters ([ca31503](https://github.com/noaignite/create-ignite-app/commit/ca31503f4f8011e869bc39c304108256f908ae97))
+* **theme/mixins:** remove position mixins in favor of using new css inset ([d52b929](https://github.com/noaignite/create-ignite-app/commit/d52b92982c6f33641adb56947477af2fc39814b9))
+
+
+### Bug Fixes
+
+* import styled from @mui/material and update @emotion/babel-plugin ([19a75ed](https://github.com/noaignite/create-ignite-app/commit/19a75ed57f00a4b6f5f8b67ee8a369fdf6802547))
+* **Storybook:** forward headerColor & headerMode to LayoutComponent ([bade0e4](https://github.com/noaignite/create-ignite-app/commit/bade0e43940fe35a2fe4489abb992ee7a15061c8))
+
+
+### Reverts
+
+* **theme/typography:** change back inputText fontSize to 16px ([46209fb](https://github.com/noaignite/create-ignite-app/commit/46209fb3d2584e0fb7193fbc93f3fd085de4309b))
+
+
+### Styling
+
+* **Hero:** simplify MediaReveal local style override ([3817f87](https://github.com/noaignite/create-ignite-app/commit/3817f87e2d4269376520f81ce7a2c2eab08edc76))
+
+
+### Others
+
+* **_document.js:** add emotion-insertion-point meta tag as per mui examples ([4414060](https://github.com/noaignite/create-ignite-app/commit/4414060ae52650b5ff241264f1e0993afb1b646c))
+* **AppSearchDrawer:** correct emotion component names ([da68a1b](https://github.com/noaignite/create-ignite-app/commit/da68a1b113c5d1e731d8b958c88fecf195993ff8))
+* **blocks:** renderIndex prop is no longer required ([946daa6](https://github.com/noaignite/create-ignite-app/commit/946daa615472670d8d9ef4d849d5793c1304fd64))
+* **components:** simplify overrides with plain css and remove unused mixins ([d6868c0](https://github.com/noaignite/create-ignite-app/commit/d6868c00799fcc3d4512145f8a714cbbbd895a46))
+* fix incorrect merge ([037703f](https://github.com/noaignite/create-ignite-app/commit/037703ff53cfa9ef40c834b6b0111c31112cccb2))
+* **locales:** remove non existent translation strings ([2762c15](https://github.com/noaignite/create-ignite-app/commit/2762c155105f10fec05c1d0bfd2d326128b6bd06))
+* **README:** correct mistakes in the readme ([39574b8](https://github.com/noaignite/create-ignite-app/commit/39574b89622111c8941b06b7b00bbde36c412f25))
+* **release:** 1.3.0 ([a87735c](https://github.com/noaignite/create-ignite-app/commit/a87735cd1c3e2d94804d37dc96c771c870bee058))
+* **utils:** remove legacy getConfig compat util ([766bc99](https://github.com/noaignite/create-ignite-app/commit/766bc99799b804cf168fef7c3c189928f97db098))
+
+
+### Build System
+
+* **deps:** bump @emotion/* and @mui/* to latest ([cc3c077](https://github.com/noaignite/create-ignite-app/commit/cc3c0777965ef5f3d835d9c69903ec530fdd5fbf))
+* **deps:** bump @noaignite/eslint-config-typescript from 0.3.0 to 0.4.0 ([78b1aad](https://github.com/noaignite/create-ignite-app/commit/78b1aad1f3f60be40737d2b2d480d3f0dd8b6775))
+* **deps:** bump @noaignite/oui from 3.3.4 to 4.0.0 ([7df7450](https://github.com/noaignite/create-ignite-app/commit/7df7450f9893d46d4fbb14acb347b8f237e744b0))
+* **deps:** bump clsx from 1.1.1 to 1.2.1 ([6780460](https://github.com/noaignite/create-ignite-app/commit/678046056d2b5fc67fbde32418a52b0ec5194af5))
+* **deps:** bump decode-uri-component from 0.2.0 to 0.2.2 ([271bbc2](https://github.com/noaignite/create-ignite-app/commit/271bbc2d7ec266d99e79a99d234765a3a6d0fa2f))
+* **deps:** bump express from 4.17.1 to 4.18.2 ([d05eab2](https://github.com/noaignite/create-ignite-app/commit/d05eab225dab808b76ae2d7852887772242c2eef))
+* **deps:** bump json5 from 1.0.1 to 1.0.2 ([8990ef0](https://github.com/noaignite/create-ignite-app/commit/8990ef0b835965d1079de4257465b818fc493dd5))
+* **deps:** bump loader-utils from 1.4.0 to 1.4.2 ([a9a2cc8](https://github.com/noaignite/create-ignite-app/commit/a9a2cc8510ceaf07db3afd95569c749cc1848fe5))
+* **deps:** bump minimatch from 3.0.4 to 3.1.2 ([5256d10](https://github.com/noaignite/create-ignite-app/commit/5256d1072f3af8ecfdc8528ec93a5d7443f44c49))
+* **deps:** bump next packages from 13.0.1 to 13.1.6 ([6f4937f](https://github.com/noaignite/create-ignite-app/commit/6f4937f4269f570f8464343bc76eb5aba5395335))
+* **package.json:** update node engine to lowest supported version ([00c1d29](https://github.com/noaignite/create-ignite-app/commit/00c1d29028747107e0026dc0f89243ab16297a4c))
+
 ## [1.3.0](https://github.com/noaignite/create-ignite-app/compare/v1.2.1...v1.3.0) (2023-01-20)
 
 
