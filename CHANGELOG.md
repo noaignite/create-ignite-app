@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/noaignite/create-ignite-app/compare/v1.4.0...v1.5.0) (2023-02-11)
+
+
+### Features
+
+* **Storybook:** add knob controls for headerColor ([70693dc](https://github.com/noaignite/create-ignite-app/commit/70693dcc6ead3c0f3cd899ab472ff88f1d7d3329))
+
+
+### Bug Fixes
+
+* **storybook:** add NextRouter addon ([79be643](https://github.com/noaignite/create-ignite-app/commit/79be643481593ffa5ce86731a2b50004f881a8e5))
+
 ## [1.4.0](https://github.com/noaignite/create-ignite-app/compare/v1.2.2...v1.4.0) (2023-02-07)
 
 
