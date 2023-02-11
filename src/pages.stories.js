@@ -7,6 +7,9 @@ const Page = require('~/containers/Page').default
 const defaultExport = {
   title: 'Pages',
   argTypes: {
+    headerColor: {
+      control: 'color',
+    },
     headerMode: {
       control: 'select',
       options: ['opaque', 'transparent', 'auto'],
