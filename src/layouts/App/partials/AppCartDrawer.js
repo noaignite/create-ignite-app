@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Drawer, IconButton, styled, Toolbar, Typography } from '@mui/material'
-import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
+import { useCentraSelection, useGlobalHandlers, useGlobalState } from '~/contexts'
 import { CartItem, RouterLink } from '~/containers'
 import { CartIcon, CloseIcon } from '~/components'
 
@@ -32,20 +32,19 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
 
   const { selection } = useCentraSelection()
   const { onCartMenuClose } = useGlobalHandlers()
-  const { t } = useI18n()
 
   return (
     <AppCartDrawerRoot onClose={onCartMenuClose} open={isCartMenuOpen} anchor="right" {...other}>
       <Toolbar>
         <CartIcon sx={{ mr: 1, transform: 'translateY(-2px)' }} />
-        <Typography variant="body1">{t(__translationGroup)`Bag`}</Typography>
+        <Typography variant="body1">Bag</Typography>
 
         <IconButton
           sx={{ ml: 'auto' }}
           onClick={onCartMenuClose}
           edge="end"
           size="small"
-          aria-label={t(__translationGroup)`Close cart menu`}
+          aria-label="Close cart menu"
         >
           <CloseIcon />
         </IconButton>
@@ -61,7 +60,7 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
 
       <div>
         <Button component={RouterLink} href="/checkout" variant="contained" fullWidth>
-          {t(__translationGroup)`To checkout`}
+          To checkout
         </Button>
       </div>
     </AppCartDrawerRoot>

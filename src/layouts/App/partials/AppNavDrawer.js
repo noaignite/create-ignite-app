@@ -1,13 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { Drawer, IconButton, Link, styled, Toolbar, Typography } from '@mui/material'
-import {
-  useCentraSelection,
-  useGlobalHandlers,
-  useGlobalState,
-  useI18n,
-  useRemoteConfig,
-} from '~/contexts'
+import { useCentraSelection, useGlobalHandlers, useGlobalState, useRemoteConfig } from '~/contexts'
 import { CloseIcon } from '~/components'
 import AppNavDrawerListItem from './AppNavDrawerListItem'
 
@@ -40,23 +34,17 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
   const { location, selection } = useCentraSelection()
   const { menus } = useRemoteConfig()
   const { onMarketMenuToggle, onNavMenuClose } = useGlobalHandlers()
-  const { t } = useI18n()
 
   return (
     <AppNavDrawerRoot onClose={onNavMenuClose} open={isNavMenuOpen} anchor="left" {...other}>
       <Toolbar>
-        <IconButton
-          onClick={onNavMenuClose}
-          edge="start"
-          size="small"
-          aria-label={t(__translationGroup)`Close main menu`}
-        >
+        <IconButton onClick={onNavMenuClose} edge="start" size="small" aria-label="Close main menu">
           <CloseIcon />
         </IconButton>
       </Toolbar>
 
       <AppNavDrawerScrollContainer>
-        <nav aria-label={t(__translationGroup)`Main navigation`}>
+        <nav aria-label="Main navigation">
           {menus?.primary?.length > 0 && (
             <AppNavDrawerList>
               {menus.primary.map((menuLink, idx) => (
@@ -75,7 +63,7 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
         </nav>
 
         <Typography variant="body2">
-          {t(__translationGroup)`Country`}:{' '}
+          Country:{' '}
           <Link // eslint-disable-line jsx-a11y/anchor-is-valid
             onClick={onMarketMenuToggle}
             component="button"

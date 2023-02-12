@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { unstable_generateUtilityClasses as generateUtilityClasses } from '@mui/utils'
 import { AppBar, Badge, IconButton, styled } from '@mui/material'
-import { useCentraSelection, useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
+import { useCentraSelection, useGlobalHandlers, useGlobalState } from '~/contexts'
 import { RouterLink } from '~/containers'
 import { BrandIcon, CartIcon, SearchIcon, CloseIcon, MenuIcon } from '~/components'
 import AppStoreMessage from './AppStoreMessage'
@@ -75,7 +75,6 @@ const AppHeader = React.memo(function AppHeader(props) {
   } = props
 
   const { onCartMenuToggle, onNavMenuToggle, onSearchMenuToggle } = useGlobalHandlers()
-  const { t } = useI18n()
 
   const [disableTransparency, setDisableTransparency] = React.useState(false)
   const [mounted, setMounted] = React.useState(false)
@@ -152,7 +151,7 @@ const AppHeader = React.memo(function AppHeader(props) {
           size="small"
           aria-haspopup="true"
           aria-expanded={isNavMenuOpen}
-          aria-label={t(__translationGroup)`Toggle main menu`}
+          aria-label="Toggle main menu"
         >
           {isNavMenuOpen ? <CloseIcon /> : <MenuIcon />}
         </IconButton>
@@ -160,7 +159,7 @@ const AppHeader = React.memo(function AppHeader(props) {
         <div className={classes.toolbarPushMobile} />
         <div className={classes.toolbarPushDesktop} />
 
-        <AppHeaderBrandLink href="/" aria-label={t(__translationGroup)`Go to the homepage`}>
+        <AppHeaderBrandLink href="/" aria-label="Go to the homepage">
           <BrandIcon />
         </AppHeaderBrandLink>
 
@@ -170,7 +169,7 @@ const AppHeader = React.memo(function AppHeader(props) {
           size="small"
           aria-haspopup="true"
           aria-expanded={isSearchMenuOpen}
-          aria-label={t(__translationGroup)`Toggle search`}
+          aria-label="Toggle search"
         >
           {isSearchMenuOpen ? <CloseIcon /> : <SearchIcon />}
         </IconButton>
@@ -182,7 +181,7 @@ const AppHeader = React.memo(function AppHeader(props) {
           size="small"
           aria-haspopup="true"
           aria-expanded={isCartMenuOpen}
-          aria-label={t(__translationGroup)`Toggle cart menu`}
+          aria-label=""
         >
           {isCartMenuOpen ? (
             <CloseIcon />
@@ -209,8 +208,13 @@ AppHeader.propTypes = {
 }
 
 function AppHeaderContainer(props) {
-  const { isCartMenuOpen, isNavMenuOpen, isSearchMenuOpen, isSomeMenuOpen, isStoreMessageOpen } =
-    useGlobalState()
+  const {
+    isCartMenuOpen,
+    isNavMenuOpen,
+    isSearchMenuOpen,
+    isSomeMenuOpen,
+    isStoreMessageOpen,
+  } = useGlobalState()
   const {
     selection: { items },
   } = useCentraSelection()

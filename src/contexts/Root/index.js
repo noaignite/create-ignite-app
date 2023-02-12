@@ -17,8 +17,8 @@ clientSideEmotionCache.compat = process.env.STORYBOOK === 'true'
 function RootProvider(props) {
   const {
     children,
-    defaultLocale,
     emotionCache = clientSideEmotionCache,
+    i18n,
     locale,
     initialSelection,
     settings,
@@ -26,7 +26,7 @@ function RootProvider(props) {
 
   return (
     <CacheProvider value={emotionCache}>
-      <I18nProvider defaultLocale={defaultLocale} locale={locale}>
+      <I18nProvider i18n={i18n} locale={locale}>
         <RemoteConfigProvider value={settings}>
           <CentraProvider
             apiUrl={process.env.CENTRA_CHECKOUT_API}
@@ -52,9 +52,9 @@ function RootProvider(props) {
 
 RootProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  defaultLocale: PropTypes.string,
   emotionCache: PropTypes.object,
   initialSelection: PropTypes.object,
+  i18n: PropTypes.object,
   locale: PropTypes.string,
   settings: PropTypes.object,
 }

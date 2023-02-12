@@ -2,7 +2,7 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 import { Drawer, IconButton, styled, TextField } from '@mui/material'
-import { useGlobalHandlers, useGlobalState, useI18n } from '~/contexts'
+import { useGlobalHandlers, useGlobalState } from '~/contexts'
 import { SearchIcon } from '~/components'
 
 const AppSearchDrawerRoot = styled(Drawer)(({ theme }) => ({
@@ -23,7 +23,6 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
   const { isSearchMenuOpen, ...other } = props
 
   const { onSearchMenuClose } = useGlobalHandlers()
-  const { t } = useI18n()
 
   const valueRef = React.useRef('')
   const [value, setValue] = React.useState('')
@@ -38,12 +37,7 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
   }, [])
 
   const submitButton = (
-    <IconButton
-      disabled={!value}
-      size="small"
-      type="submit"
-      aria-label={t(__translationGroup)`Submit search`}
-    >
+    <IconButton disabled={!value} size="small" type="submit" aria-label="Submit search">
       <SearchIcon />
     </IconButton>
   )
@@ -65,7 +59,7 @@ const AppSearchDrawer = React.memo(function AppSearchDrawer(props) {
         <TextField
           onChange={handleChange}
           value={value}
-          placeholder={t(__translationGroup)`Search products`}
+          placeholder="Search products"
           variant="standard"
           InputProps={{
             endAdornment: submitButton,

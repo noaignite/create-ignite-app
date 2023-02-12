@@ -2,10 +2,11 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 import { ButtonBase, Link, styled } from '@mui/material'
 import { Media, MediaReveal } from '@noaignite/oui'
+import { t } from '@lingui/macro'
 import { cartItemType } from '~/api'
 import { getProductUrl } from '~/api/centra/utils'
 import { ASPECT_RATIOS } from '~/utils/constants'
-import { useCentraHandlers, useI18n } from '~/contexts'
+import { useCentraHandlers } from '~/contexts'
 import { AddIcon, RemoveIcon } from '~/components'
 import RouterLink from '../RouterLink'
 
@@ -51,7 +52,6 @@ function CartItem(props) {
   const { product } = cartItem
 
   const { decreaseItem, increaseItem, removeItem } = useCentraHandlers()
-  const { t } = useI18n()
 
   const onItemDecrease = React.useCallback(
     (event) => {
@@ -93,19 +93,19 @@ function CartItem(props) {
 
         <CartItemRow>
           <span>
-            {t(__translationGroup)`Size`}: {cartItem.size}
+            {t`Size`}: {cartItem.size}
           </span>
         </CartItemRow>
 
         {!disableActions && (
           <CartItemActionbar>
-            <span>{t(__translationGroup)`Quantity`}:</span>
+            <span>{t`Quantity`}:</span>
 
             <CartItemQuantity>
               <CartItemQuantityButton
                 onClick={onItemDecrease}
                 value={cartItem.line}
-                aria-label={t(__translationGroup)`Decrease quantity to ${cartItem.quantity - 1}`}
+                aria-label={t`Decrease quantity to ${cartItem.quantity - 1}`}
               >
                 <RemoveIcon color="inherit" fontSize="small" />
               </CartItemQuantityButton>
@@ -115,7 +115,7 @@ function CartItem(props) {
               <CartItemQuantityButton
                 onClick={onItemIncrease}
                 value={cartItem.line}
-                aria-label={t(__translationGroup)`Increase quantity to ${cartItem.quantity + 1}`}
+                aria-label={t`Increase quantity to ${cartItem.quantity + 1}`}
               >
                 <AddIcon color="inherit" fontSize="small" />
               </CartItemQuantityButton>
@@ -128,7 +128,7 @@ function CartItem(props) {
               value={cartItem.line}
               color="primary"
             >
-              {t(__translationGroup)`Remove`}
+              {t`Remove`}
             </Link>
           </CartItemActionbar>
         )}

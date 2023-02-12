@@ -16,7 +16,6 @@ import {
   useCentraSelection,
   useGlobalHandlers,
   useGlobalState,
-  useI18n,
 } from '~/contexts'
 import { CloseIcon } from '~/components'
 
@@ -30,7 +29,6 @@ const AppBaseMarketDialog = React.memo(function AppBaseMarketDialog(props) {
   const { onMarketMenuClose } = useGlobalHandlers()
   const { updateCountry, updateLanguage } = useCentraHandlers()
   const { location, countries, languages } = useCentraSelection()
-  const { t } = useI18n()
 
   const isBreakpointUp = useMediaQuery((theme) => theme.breakpoints.up('sm'))
 
@@ -60,8 +58,7 @@ const AppBaseMarketDialog = React.memo(function AppBaseMarketDialog(props) {
       {...other}
     >
       <DialogTitle variant="subtitle1" id="cia-market-menu-title">
-        {t(__translationGroup)`Choose country and shipping`}
-
+        Choose country and shipping
         {onMarketMenuClose && (
           <IconButton
             sx={{
@@ -71,7 +68,7 @@ const AppBaseMarketDialog = React.memo(function AppBaseMarketDialog(props) {
             }}
             onClick={onMarketMenuClose}
             color="inherit"
-            aria-label={t(__translationGroup)`Close market menu`}
+            aria-label="Close market menu"
           >
             <CloseIcon />
           </IconButton>
@@ -80,15 +77,14 @@ const AppBaseMarketDialog = React.memo(function AppBaseMarketDialog(props) {
 
       <DialogContent>
         <Typography variant="body2" paragraph>
-          {t(
-            __translationGroup,
-          )`Please select the country to which your order will be sent. This will give you accurate pricing, delivery times and shipping costs for your destination.`}
+          Please select the country to which your order will be sent. This will give you accurate
+          pricing, delivery times and shipping costs for your destination.
         </Typography>
 
         <TextField
           onChange={handleCountryChange}
           value={location.country}
-          label={t(__translationGroup)`Choose country`}
+          label="Choose country"
           margin="normal"
           fullWidth
           select
@@ -104,7 +100,7 @@ const AppBaseMarketDialog = React.memo(function AppBaseMarketDialog(props) {
         <TextField
           onChange={handleLanguageChange}
           value={location?.language?.language}
-          label={t(__translationGroup)`Choose language`}
+          label="Choose language"
           margin="normal"
           fullWidth
           select

@@ -12,7 +12,6 @@ export interface AppProps extends NextAppProps {
   Component: NextPage<Page>
   emotionCache?: EmotionCache
   pageProps: {
-    defaultLocale: string
     locale: string
     headerColor?: string
     headerMode?: string
@@ -26,7 +25,7 @@ export interface AppProps extends NextAppProps {
 function App(props: AppProps) {
   const { Component, emotionCache, pageProps: nextPageProps } = props
 
-  const { defaultLocale, headerColor, headerMode, layout, locale, page, ...other } = nextPageProps
+  const { headerColor, headerMode, layout, locale, page, ...other } = nextPageProps
   const LayoutComponent = layout ? layoutVariants[layout] : layoutVariants.App
 
   return (
@@ -38,12 +37,7 @@ function App(props: AppProps) {
         />
       </Head>
 
-      <RootProvider
-        emotionCache={emotionCache}
-        defaultLocale={defaultLocale}
-        locale={locale}
-        {...other}
-      >
+      <RootProvider emotionCache={emotionCache} locale={locale} {...other}>
         <LayoutComponent headerColor={headerColor} headerMode={headerMode}>
           <Component {...page} />
         </LayoutComponent>

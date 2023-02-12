@@ -12,6 +12,7 @@
 /.eslintcache
 /.cache
 /coverage
+/public/locales/*/*.js
 /tmp
 .next
 .yalc
