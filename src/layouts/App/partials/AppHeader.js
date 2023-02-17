@@ -133,11 +133,14 @@ const AppHeader = React.memo(function AppHeader(props) {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: `
-            :root {
-              --cia-header-height: ${headerHeight};
-              --cia-sticky-top: var(--cia-header-height);
-            }
-          `,
+          :root {
+            --cia-header-height: ${headerHeight};
+            --cia-initial-sticky-top: ${
+              headerModeProp === 'opaque' ? 'var(--cia-header-height)' : 0
+            };
+            --cia-sticky-top: ${headerModeProp !== 'transparent' ? 'var(--cia-header-height)' : 0};
+          }
+        `,
         }}
       />
 
