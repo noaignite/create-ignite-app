@@ -2,6 +2,15 @@ import grey from '../colors/grey'
 
 export default function createMixins(breakpoints, spacing, mixins) {
   return {
+    // Mui overrides
+    toolbar: {
+      minHeight: 'var(--cia-toolbar-height)',
+      // Breakpoint is needed to override internal MUI styles.
+      [breakpoints.up('sm')]: {
+        minHeight: 'var(--cia-toolbar-height)',
+      },
+    },
+    // Custom mixins
     contain: (breakpoint = 'lg') => ({
       maxWidth: breakpoints.values[breakpoint] || breakpoint,
       marginInline: 'auto',
