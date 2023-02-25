@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { blocks } from '~/api/__mock__'
 import ErrorBlock from './ErrorBlock'
 
@@ -7,7 +6,6 @@ export default {
   component: ErrorBlock,
 }
 
-const Template = (args) => <ErrorBlock {...args} />
-
-export const Default = Template.bind({})
-Default.args = blocks.ErrorBlock
+export const Default = {
+  args: blocks.ErrorBlock,
+}

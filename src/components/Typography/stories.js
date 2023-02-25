@@ -92,12 +92,14 @@ const Template = (args) => (
   </React.Fragment>
 )
 
-export const Default = Template.bind({})
-Default.args = {
-  align: 'inherit',
-  color: 'initial',
-  display: 'block',
-  gutterBottom: false,
-  paragraph: false,
-  noWrap: false,
+export const Default = {
+  args: {
+    align: 'inherit',
+    color: 'initial',
+    display: 'block',
+    gutterBottom: false,
+    paragraph: false,
+    noWrap: false,
+  },
+  render: Template,
 }

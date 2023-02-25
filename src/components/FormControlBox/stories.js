@@ -44,8 +44,10 @@ const Template = (args) => {
   )
 }
 
-export const Default = Template.bind({})
-Default.args = {
-  disabled: false,
-  divider: false,
+export const Default = {
+  args: {
+    disabled: false,
+    divider: false,
+  },
+  render: Template,
 }

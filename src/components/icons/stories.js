@@ -14,8 +14,10 @@ const Template = ({ fontSize, margin, ...args }) => (
   </React.Fragment>
 )
 
-export const Default = Template.bind({})
-Default.args = {
-  fontSize: 24,
-  margin: 0,
+export const Default = {
+  args: {
+    fontSize: 24,
+    margin: 0,
+  },
+  render: Template,
 }

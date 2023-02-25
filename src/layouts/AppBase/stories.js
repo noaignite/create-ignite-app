@@ -6,9 +6,8 @@ export default {
   component: AppBase,
 }
 
-const Template = (args) => <AppBase {...args} />
-
-export const Default = Template.bind({})
-Default.args = {
-  children: <div>[this.props.children]</div>,
+export const Default = {
+  args: {
+    children: <div>[this.props.children]</div>,
+  },
 }

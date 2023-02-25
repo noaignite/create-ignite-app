@@ -42,20 +42,22 @@ const Template = (args) => {
   )
 }
 
-export const Default = Template.bind({})
-Default.args = {
-  color: 'text',
-  disabled: false,
-  error: false,
-  fullWidth: false,
-  helperText: 'Field description',
-  hiddenLabel: false,
-  label: 'Field label',
-  margin: 'none',
-  multiline: false,
-  placeholder: 'Field placeholder',
-  required: false,
-  select: false,
-  size: 'medium',
-  variant: 'outlined',
+export const Default = {
+  args: {
+    color: 'text',
+    disabled: false,
+    error: false,
+    fullWidth: false,
+    helperText: 'Field description',
+    hiddenLabel: false,
+    label: 'Field label',
+    margin: 'none',
+    multiline: false,
+    placeholder: 'Field placeholder',
+    required: false,
+    select: false,
+    size: 'medium',
+    variant: 'outlined',
+  },
+  render: Template,
 }
