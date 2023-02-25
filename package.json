@@ -15,7 +15,7 @@
   "scripts": {
     "analyze": "ANALYZE=true next build",
     "build": "next build",
-    "build-storybook": "build-storybook -o .storybook-static",
+    "build-storybook": "storybook build -o .storybook-static",
     "dev": "next",
     "lint": "eslint . --cache --report-unused-disable-directives",
     "lint:ci": "eslint . --report-unused-disable-directives",
@@ -27,7 +27,7 @@
     "provision:stage": "op inject -i .env.provision.stage -o .env.local",
     "release": "standard-version",
     "start": "next start",
-    "storybook": "start-storybook -p 3001 --ci",
+    "storybook": "storybook dev -p 3001 --ci",
     "typecheck": "tsc --noEmit"
   },
   "lint-staged": {
@@ -53,8 +53,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "smoothscroll-polyfill": "^0.4.4",
-    "storybook-addon-next-router": "^4.0.2"
+    "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
@@ -65,19 +64,22 @@
     "@emotion/babel-plugin": "^11.9.2",
     "@next/bundle-analyzer": "^13.1.6",
     "@noaignite/eslint-config-typescript": "^0.4.0",
-    "@storybook/addon-a11y": "^6.5.13",
-    "@storybook/addon-essentials": "^6.5.13",
-    "@storybook/react": "^6.5.13",
+    "@storybook/addon-a11y": "^7.0.0-beta.53",
+    "@storybook/addon-essentials": "^7.0.0-beta.53",
+    "@storybook/nextjs": "^7.0.0-beta.53",
+    "@storybook/react": "^7.0.0-beta.53",
     "babel-plugin-i18n-tag-translate": "^2.0.0",
     "babel-plugin-optimize-clsx": "^2.6.0",
     "commitizen": "^4.2.4",
     "eslint": "^8.12.0",
     "eslint-config-next": "^13.1.6",
     "eslint-import-resolver-webpack": "^0.13.2",
+    "eslint-plugin-storybook": "^0.6.11",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.1",
     "prettier": "^2.7.0",
     "standard-version": "^9.3.2",
+    "storybook": "^7.0.0-beta.53",
     "webpack-merge": "^5.2.0"
   },
   "engines": {
