@@ -3,7 +3,7 @@ import * as blockPropGetters from '~/blocks/getBlockProps'
 import { createGetBlocksProps } from '~/utils'
 import { pages, settings } from '~/api/__mock__'
 
-export { default } from '~/containers/Page'
+export { default } from '~/layouts/Page'
 
 const getBlocksProps = createGetBlocksProps<Block, Page>(blockPropGetters)
 

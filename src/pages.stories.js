@@ -2,7 +2,7 @@ const React = require('react')
 const PropTypes = require('prop-types')
 const { pages } = require('~/api/__mock__')
 const layoutVariants = require('~/layouts')
-const Page = require('~/containers/Page').default
+const Page = require('~/layouts/Page').default
 
 const defaultExport = {
   title: 'Pages',
