@@ -29,8 +29,6 @@
     "storybook": "storybook dev -p 3001 --ci",
     "storybook:build": "storybook build -o .storybook-static",
     "storybook:test": "test-storybook --url http://127.0.0.1:3001",
-    "storybook:test:watch": "test-storybook --url http://127.0.0.1:3001 --watch",
-    "storybook:test:coverage": "test-storybook --url http://127.0.0.1:3001 --coverage",
     "typecheck": "tsc --noEmit"
   },
   "lint-staged": {
@@ -61,16 +59,17 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/plugin-transform-react-constant-elements": "^7.10.1",
+    "@babel/preset-typescript": "^7.18.6",
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
     "@commitlint/cz-commitlint": "^17.0.0",
     "@emotion/babel-plugin": "^11.9.2",
     "@next/bundle-analyzer": "^13.1.6",
     "@noaignite/eslint-config-typescript": "^0.4.0",
-    "@storybook/addon-a11y": "^7.0.0-beta.53",
-    "@storybook/addon-essentials": "^7.0.0-beta.53",
-    "@storybook/nextjs": "^7.0.0-beta.53",
-    "@storybook/react": "^7.0.0-beta.53",
+    "@storybook/addon-a11y": "^7.0.0-beta.54",
+    "@storybook/addon-essentials": "^7.0.0-beta.54",
+    "@storybook/nextjs": "^7.0.0-beta.54",
+    "@storybook/react": "^7.0.0-beta.54",
     "@storybook/test-runner": "^0.9.4",
     "babel-plugin-i18n-tag-translate": "^2.0.0",
     "babel-plugin-optimize-clsx": "^2.6.0",
@@ -83,7 +82,7 @@
     "lint-staged": "^13.0.1",
     "prettier": "^2.7.0",
     "standard-version": "^9.3.2",
-    "storybook": "^7.0.0-beta.53",
+    "storybook": "^7.0.0-beta.54",
     "webpack-merge": "^5.2.0"
   },
   "engines": {
