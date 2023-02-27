@@ -1,7 +1,6 @@
 import { LoadingButton } from '@mui/lab'
 
 export default {
-  title: 'Components/LoadingButton',
   component: LoadingButton,
   argTypes: {
     color: {

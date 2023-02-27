@@ -2,7 +2,6 @@ import * as React from 'react'
 import { Typography } from '@mui/material'
 
 export default {
-  title: 'Common/Typography',
   component: Typography,
   argTypes: {
     align: {

@@ -5,7 +5,6 @@ import FormControlBoxSummary from '../FormControlBoxSummary'
 import FormControlBox from './FormControlBox'
 
 export default {
-  title: 'Components/FormControlBox',
   component: FormControlBox,
 }
 

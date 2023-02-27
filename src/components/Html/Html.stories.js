@@ -1,7 +1,6 @@
 import Html from './Html'
 
 export default {
-  title: 'Components/Html',
   component: Html,
 }
 

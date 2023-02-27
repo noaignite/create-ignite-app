@@ -2,7 +2,6 @@ import * as React from 'react'
 import { IconButton } from '@mui/material'
 
 export default {
-  title: 'Components/IconButton',
   component: IconButton,
   argTypes: {
     color: {

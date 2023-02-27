@@ -1,7 +1,6 @@
 import { Button } from '@mui/material'
 
 export default {
-  title: 'Components/Button',
   component: Button,
   argTypes: {
     color: {

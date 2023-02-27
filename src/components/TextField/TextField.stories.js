@@ -2,7 +2,6 @@ import * as React from 'react'
 import { MenuItem, TextField } from '@mui/material'
 
 export default {
-  title: 'Components/TextField',
   component: TextField,
   argTypes: {
     color: {
