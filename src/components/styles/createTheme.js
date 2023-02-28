@@ -1,4 +1,3 @@
-// eslint-disable-next-line camelcase
 import { experimental_extendTheme } from '@mui/material'
 import * as components from '../internal'
 import breakpoints from './breakpoints'
