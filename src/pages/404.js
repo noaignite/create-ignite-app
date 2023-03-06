@@ -10,7 +10,7 @@ function NotFoundPage() {
   return (
     <React.Fragment>
       <Head>
-        <title>404 | {SITE_NAME}</title>
+        <title>{`404 | ${SITE_NAME}`}</title>
       </Head>
 
       <ErrorBlock
