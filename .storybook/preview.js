@@ -48,13 +48,14 @@ export const globalTypes = {
 }
 
 function ModeSwitcher(props) {
+  // eslint-disable-next-line react/prop-types
   const { mode } = props
 
   const { setMode } = useColorScheme()
 
   React.useEffect(() => {
     setMode(mode)
-  }, [mode])
+  }, [mode, setMode])
 
   return null
 }
