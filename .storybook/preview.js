@@ -1,6 +1,5 @@
 import '../scripts/globals'
 import * as React from 'react'
-import { RouterContext } from 'next/dist/shared/lib/router-context' // next 13 (using next/router) / next 12
 import { useColorScheme } from '@mui/material'
 import { settings } from '~/api/__mock__'
 import { RootProvider } from '~/contexts'
@@ -25,9 +24,6 @@ const viewports = Object.entries(breakpointValues).reduce((acc, [key, val]) => {
 
 export const parameters = {
   layout: 'fullscreen',
-  nextRouter: {
-    Provider: RouterContext.Provider, // next 13 (using next/router) / next < 12
-  },
   options: {
     storySort: {
       method: 'alphabetical',
