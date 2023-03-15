@@ -33,7 +33,6 @@ const RouterLink = React.forwardRef(function RouterLink(props, ref) {
 RouterLink.propTypes = {
   as: PropTypes.string,
   children: PropTypes.node,
-  external: PropTypes.bool,
   href: PropTypes.string.isRequired,
   replace: PropTypes.bool,
   scroll: PropTypes.bool,
