@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/noaignite/create-ignite-app/compare/v1.5.0...v1.6.0) (2023-03-15)
+
+
+### Features
+
+* **.storybook/main.ts:** convert to esm and ts ([6b75ffb](https://github.com/noaignite/create-ignite-app/commit/6b75ffb25bd08f87d38da370d49c04c20849db26))
+* **.storybook/preview.js:** enable eslint for .storybook dir ([779cff2](https://github.com/noaignite/create-ignite-app/commit/779cff2979b7763419b695ffcab7f024cdb9eb54))
+* ***.stories.js:** remove title from default export as now statically analyzed from dir structure ([190a05c](https://github.com/noaignite/create-ignite-app/commit/190a05c1cb901f59dfb84e7b15f51e2f45d40f64))
+* **AppHeader:** set sticky css vars to be used depending on headerMode used ([66e455c](https://github.com/noaignite/create-ignite-app/commit/66e455cf871f391543bc6d6178a62a63ba1a936e))
+* **package.json:** add storybook test scripts ([c64c0da](https://github.com/noaignite/create-ignite-app/commit/c64c0da32f77de78b73e6b751b64683355948929))
+* **RouterLink:** remove unused custom 'external' prop ([7602426](https://github.com/noaignite/create-ignite-app/commit/760242653cf1abefa6c292d11bad0aaf0f3f770c))
+* **stories.js:** prefix all stories with context name for test runner to work ([c2f05bb](https://github.com/noaignite/create-ignite-app/commit/c2f05bbcdcdfd817ad88f354dfd323fa339a2b85))
+* **Storybook/RouterLink:** remove SB mocked RouterLink as no longer needed ([5266726](https://github.com/noaignite/create-ignite-app/commit/52667260ace5cea81c497105ccccea898f7f6250))
+* **Storybook:** migrate setup to Storybook v7 ([93db6ef](https://github.com/noaignite/create-ignite-app/commit/93db6ef871473eae4a0fe7f2be87ce93f15a62b7))
+* **Storybook:** refactor all stories to CSF 3 ([0ca037d](https://github.com/noaignite/create-ignite-app/commit/0ca037d767a2542a9ee287a49818239135786502))
+* **test-runner-jest-config.js:** add ~ module alias to test runner ([cb015f6](https://github.com/noaignite/create-ignite-app/commit/cb015f6beae21329441edb98d9a0cf8eab117d78))
+
+
+### Bug Fixes
+
+* **Container, Toolbar:** add correct way of setting Container gutters and Toolbar heights ([6a2f853](https://github.com/noaignite/create-ignite-app/commit/6a2f85354ee1d00e2c76b0946ec2dfcc5fd462be))
+* **eslint-storybook:** resolve dependency cycle of entity 'Page' ([2184490](https://github.com/noaignite/create-ignite-app/commit/2184490a6c8867574fdfbb72d4aad9c985bdec19))
+* **pages/404:** title must be of type string ([145292c](https://github.com/noaignite/create-ignite-app/commit/145292cf5f3849b4530e99b9cfcc650feb4f45aa))
+
+
+### Build System
+
+* **deps:** clean up deps for a slim and working test runner setup ([bd07eef](https://github.com/noaignite/create-ignite-app/commit/bd07eef2768ef24ccdb74ed7c9f5a0d3b4fb9438))
+
+
+### Others
+
+* **.storybook/preview:** remove no longer needed NextJS RouterContext ([98cfa32](https://github.com/noaignite/create-ignite-app/commit/98cfa32dc56bb547cdae99240a47bb928beea381))
+* **createTheme:** remove unecessary eslint-disable directive ([fcbe3c7](https://github.com/noaignite/create-ignite-app/commit/fcbe3c74cfeeb86b9c72be196e8523fed3bc1af4))
+* **RouterLink:** remove propType validation for unused external prop ([fd52729](https://github.com/noaignite/create-ignite-app/commit/fd52729d891e86b1f08c10e51a5cdc9c9e5cc71b))
+
 ## [1.5.0](https://github.com/noaignite/create-ignite-app/compare/v1.4.0...v1.5.0) (2023-02-11)
 
 
