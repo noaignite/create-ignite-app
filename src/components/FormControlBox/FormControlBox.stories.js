@@ -5,7 +5,6 @@ import FormControlBoxSummary from '../FormControlBoxSummary'
 import FormControlBox from './FormControlBox'
 
 export default {
-  title: 'Components/FormControlBox',
   component: FormControlBox,
 }
 
@@ -44,8 +43,10 @@ const Template = (args) => {
   )
 }
 
-export const Default = Template.bind({})
-Default.args = {
-  disabled: false,
-  divider: false,
+export const Default = {
+  args: {
+    disabled: false,
+    divider: false,
+  },
+  render: Template,
 }

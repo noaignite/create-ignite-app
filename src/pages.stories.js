@@ -1,11 +1,12 @@
-const React = require('react')
-const PropTypes = require('prop-types')
-const { pages } = require('~/api/__mock__')
-const layoutVariants = require('~/layouts')
-const Page = require('~/containers/Page').default
+import * as React from 'react'
+import PropTypes from 'prop-types'
+import { pages } from '~/api/__mock__'
+import * as layoutVariants from '~/layouts'
+import Page from '~/containers/Page'
 
-const defaultExport = {
+export default {
   title: 'Pages',
+  component: StorybookPage,
   argTypes: {
     headerColor: {
       control: 'color',
@@ -35,20 +36,14 @@ StorybookPage.propTypes = {
   layout: PropTypes.string,
 }
 
-/**
- * Storybook pages
- * Configure your pages by modifying the data at `api/__mock__/cms/pages`.
- */
-const pageExports = Object.entries(pages).reduce((acc, [name, props = {}]) => {
-  acc[name] = StorybookPage.bind({})
-  acc[name].args = {
-    ...props,
-    blocks: pages[name].blocks,
-  }
-  return acc
-}, {})
+export const Home = {
+  args: pages.Home,
+}
 
-module.exports = {
-  default: defaultExport,
-  ...pageExports,
+export const Article = {
+  args: pages.Article,
+}
+
+export const NotFound = {
+  args: pages.NotFound,
 }

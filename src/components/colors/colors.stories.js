@@ -28,7 +28,7 @@ export default {
   title: 'Common/Colors',
 }
 
-const Template1 = () => {
+const Template = () => {
   const colorEntries = Object.entries(colors)
   const sortedColors = sortEntriesByKeyMap(colorEntries, SYSTEM_SORT_ORDER)
 
@@ -49,5 +49,6 @@ const Template1 = () => {
   )
 }
 
-export const Default = Template1.bind({})
-Default.args = {}
+export const Default = {
+  render: Template,
+}

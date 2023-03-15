@@ -1,8 +1,6 @@
-import * as React from 'react'
 import { Button } from '@mui/material'
 
 export default {
-  title: 'Components/Button',
   component: Button,
   argTypes: {
     color: {
@@ -20,14 +18,13 @@ export default {
   },
 }
 
-const Template = (args) => <Button {...args} />
-
-export const Default = Template.bind({})
-Default.args = {
-  children: 'Just a button',
-  color: 'text',
-  disabled: false,
-  fullWidth: false,
-  size: 'medium',
-  variant: 'outlined',
+export const Default = {
+  args: {
+    children: 'Just a button',
+    color: 'text',
+    disabled: false,
+    fullWidth: false,
+    size: 'medium',
+    variant: 'outlined',
+  },
 }

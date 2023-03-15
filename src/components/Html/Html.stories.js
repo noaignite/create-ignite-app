@@ -1,17 +1,13 @@
-import * as React from 'react'
 import Html from './Html'
 
 export default {
-  title: 'Components/Html',
   component: Html,
 }
 
-const Template = (args) => <Html {...args} />
-
-export const Default = Template.bind({})
-Default.args = {
-  dangerouslySetInnerHTML: {
-    __html: `
+export const Default = {
+  args: {
+    dangerouslySetInnerHTML: {
+      __html: `
       <h1>HTML Ipsum Presents</h1>
 
       <p>
@@ -63,5 +59,6 @@ Default.args = {
 
       <h6>Header Level 6</h6>
     `,
+    },
   },
 }

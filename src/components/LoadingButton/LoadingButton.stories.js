@@ -1,8 +1,6 @@
-import * as React from 'react'
 import { LoadingButton } from '@mui/lab'
 
 export default {
-  title: 'Components/LoadingButton',
   component: LoadingButton,
   argTypes: {
     color: {
@@ -24,15 +22,14 @@ export default {
   },
 }
 
-const Template = (args) => <LoadingButton {...args} />
-
-export const Default = Template.bind({})
-Default.args = {
-  children: 'Just a button',
-  color: 'inherit',
-  disabled: false,
-  loading: false,
-  loadingPosition: 'center',
-  size: 'medium',
-  variant: 'contained',
+export const Default = {
+  args: {
+    children: 'Just a button',
+    color: 'inherit',
+    disabled: false,
+    loading: false,
+    loadingPosition: 'center',
+    size: 'medium',
+    variant: 'contained',
+  },
 }
