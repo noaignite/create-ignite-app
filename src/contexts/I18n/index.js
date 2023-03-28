@@ -14,9 +14,22 @@ export function useI18n() {
 }
 
 function I18nProvider(props) {
-  const { children, locale, i18n: pagePropsI18n } = props
+  const { children, defaultLocale = 'en', locale } = props
 
-  i18n.load(locale, pagePropsI18n)
+  let translations
+  try {
+    // eslint-disable-next-line global-require, import/no-dynamic-require
+    const { messages } = require(`@lingui/loader!../../../public/locales/${locale}/messages.po`)
+    translations = messages
+  } catch (err) {
+    const {
+      messages,
+      // eslint-disable-next-line global-require, import/no-dynamic-require
+    } = require(`@lingui/loader!../../../public/locales/${defaultLocale}/messages.po`)
+    translations = messages
+  }
+
+  i18n.load(locale, translations)
   i18n.activate(locale)
 
   return <LinguiI18nProvider i18n={i18n}>{children}</LinguiI18nProvider>
@@ -24,7 +37,7 @@ function I18nProvider(props) {
 
 I18nProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  i18n: PropTypes.object,
+  defaultLocale: PropTypes.string,
   locale: PropTypes.string,
 }
 
