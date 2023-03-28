@@ -10,9 +10,6 @@ const nextConfig = {
     locales: ['en'],
   },
   poweredByHeader: false,
-  experimental: {
-    swcPlugins: [['@lingui/swc-plugin', {}]],
-  },
 }
 
 module.exports = withBundleAnalyzer(nextConfig)
