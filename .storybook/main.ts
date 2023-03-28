@@ -2,8 +2,6 @@ import { merge } from 'webpack-merge'
 import type { StorybookConfig } from '@storybook/nextjs'
 import webpackBaseConfig from '../webpackBaseConfig'
 
-const productionPlugins = ['@babel/plugin-transform-react-constant-elements']
-
 const config: StorybookConfig = {
   addons: ['@storybook/addon-essentials', '@storybook/addon-a11y'],
   babel: () => ({
@@ -45,9 +43,6 @@ const config: StorybookConfig = {
     ],
     env: {
       development: {},
-      production: {
-        plugins: productionPlugins,
-      },
     },
   }),
   framework: {
