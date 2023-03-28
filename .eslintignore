@@ -1,6 +1,6 @@
 /.git
 /coverage
-/public/locales/*/*.js
+/public/*
 /tmp
 /docker
 .next
