@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { t } from '@lingui/macro'
 import { Button, styled } from '@mui/material'
 
 export const AppBaseSkipLinkRoot = styled(Button)(({ theme }) => ({
@@ -14,7 +15,7 @@ export const AppBaseSkipLinkRoot = styled(Button)(({ theme }) => ({
 function AppBaseSkipLink(props) {
   return (
     <AppBaseSkipLinkRoot color="text" variant="contained" {...props}>
-      Skip to content
+      {t`Skip to content`}
     </AppBaseSkipLinkRoot>
   )
 }

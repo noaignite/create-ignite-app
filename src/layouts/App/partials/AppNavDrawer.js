@@ -1,6 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { Drawer, IconButton, Link, styled, Toolbar, Typography } from '@mui/material'
+import { t } from '@lingui/macro'
 import { useCentraSelection, useGlobalHandlers, useGlobalState, useRemoteConfig } from '~/contexts'
 import { CloseIcon } from '~/components'
 import AppNavDrawerListItem from './AppNavDrawerListItem'
@@ -38,13 +39,18 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
   return (
     <AppNavDrawerRoot onClose={onNavMenuClose} open={isNavMenuOpen} anchor="left" {...other}>
       <Toolbar>
-        <IconButton onClick={onNavMenuClose} edge="start" size="small" aria-label="Close main menu">
+        <IconButton
+          onClick={onNavMenuClose}
+          edge="start"
+          size="small"
+          aria-label={t`Close main menu`}
+        >
           <CloseIcon />
         </IconButton>
       </Toolbar>
 
       <AppNavDrawerScrollContainer>
-        <nav aria-label="Main navigation">
+        <nav aria-label={t`Main navigation`}>
           {menus?.primary?.length > 0 && (
             <AppNavDrawerList>
               {menus.primary.map((menuLink, idx) => (
@@ -63,7 +69,7 @@ const AppNavDrawer = React.memo(function AppNavDrawer(props) {
         </nav>
 
         <Typography variant="body2">
-          Country:{' '}
+          {t`Country`}:{' '}
           <Link // eslint-disable-line jsx-a11y/anchor-is-valid
             onClick={onMarketMenuToggle}
             component="button"

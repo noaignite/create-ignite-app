@@ -1,6 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Drawer, IconButton, styled, Toolbar, Typography } from '@mui/material'
+import { t } from '@lingui/macro'
 import { useCentraSelection, useGlobalHandlers, useGlobalState } from '~/contexts'
 import { CartItem, RouterLink } from '~/containers'
 import { CartIcon, CloseIcon } from '~/components'
@@ -37,14 +38,14 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
     <AppCartDrawerRoot onClose={onCartMenuClose} open={isCartMenuOpen} anchor="right" {...other}>
       <Toolbar>
         <CartIcon sx={{ mr: 1, transform: 'translateY(-2px)' }} />
-        <Typography variant="body1">Bag</Typography>
+        <Typography variant="body1">{t`Bag`}</Typography>
 
         <IconButton
           sx={{ ml: 'auto' }}
           onClick={onCartMenuClose}
           edge="end"
           size="small"
-          aria-label="Close cart menu"
+          aria-label={t`Close cart menu`}
         >
           <CloseIcon />
         </IconButton>
@@ -60,7 +61,7 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
 
       <div>
         <Button component={RouterLink} href="/checkout" variant="contained" fullWidth>
-          To checkout
+          {t` To checkout`}
         </Button>
       </div>
     </AppCartDrawerRoot>

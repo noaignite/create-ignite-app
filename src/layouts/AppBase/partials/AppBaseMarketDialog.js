@@ -11,6 +11,7 @@ import {
   Typography,
   useMediaQuery,
 } from '@mui/material'
+import { t } from '@lingui/macro'
 import {
   useCentraHandlers,
   useCentraSelection,
@@ -77,14 +78,14 @@ const AppBaseMarketDialog = React.memo(function AppBaseMarketDialog(props) {
 
       <DialogContent>
         <Typography variant="body2" paragraph>
-          Please select the country to which your order will be sent. This will give you accurate
-          pricing, delivery times and shipping costs for your destination.
+          {t`Please select the country to which your order will be sent. This will give you accurate
+          pricing, delivery times and shipping costs for your destination.`}
         </Typography>
 
         <TextField
           onChange={handleCountryChange}
           value={location.country}
-          label="Choose country"
+          label={t`Choose country`}
           margin="normal"
           fullWidth
           select
@@ -100,7 +101,7 @@ const AppBaseMarketDialog = React.memo(function AppBaseMarketDialog(props) {
         <TextField
           onChange={handleLanguageChange}
           value={location?.language?.language}
-          label="Choose language"
+          label={t`Choose language`}
           margin="normal"
           fullWidth
           select

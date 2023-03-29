@@ -1,34 +1,96 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2023-02-07 12:02+0100\n"
+"POT-Creation-Date: 2023-03-29 13:46+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: en\n"
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Plural-Forms: \n"
+
+#: src/layouts/App/partials/AppCartDrawer.js:41
+msgid "Bag"
+msgstr "Bag"
+
+#: src/layouts/AppBase/partials/AppBaseMarketDialog.js:88
+msgid "Choose country"
+msgstr "Choose country"
+
+#: src/layouts/AppBase/partials/AppBaseMarketDialog.js:104
+msgid "Choose language"
+msgstr "Choose language"
+
+#: src/layouts/App/partials/AppCartDrawer.js:48
+msgid "Close cart menu"
+msgstr "Close cart menu"
+
+#: src/layouts/App/partials/AppNavDrawer.js:46
+msgid "Close main menu"
+msgstr "Close main menu"
+
+#: src/layouts/App/partials/AppNavDrawer.js:72
+msgid "Country"
+msgstr "Country"
 
 #: src/containers/CartItem/CartItem.js:108
 msgid "Decrease quantity to {0}"
-msgstr ""
+msgstr "Decrease quantity to {0}"
+
+#: src/layouts/App/partials/AppHeader.js:163
+msgid "Go to the homepage"
+msgstr "Go to the homepage"
 
 #: src/containers/CartItem/CartItem.js:118
 msgid "Increase quantity to {0}"
+msgstr "Increase quantity to {0}"
+
+#: src/layouts/App/partials/AppNavDrawer.js:53
+msgid "Main navigation"
+msgstr "Main navigation"
+
+#: src/layouts/AppBase/partials/AppBaseMarketDialog.js:81
+msgid ""
+"Please select the country to which your order will be sent. This will give you accurate\n"
+"pricing, delivery times and shipping costs for your destination."
 msgstr ""
+"Please select the country to which your order will be sent. This will give you accurate\n"
+"pricing, delivery times and shipping costs for your destination."
 
 #: src/containers/CartItem/CartItem.js:102
 msgid "Quantity"
-msgstr ""
+msgstr "Quantity"
 
 #: src/containers/CartItem/CartItem.js:131
 msgid "Remove"
-msgstr ""
+msgstr "Remove"
+
+#: src/layouts/App/partials/AppSearchDrawer.js:63
+msgid "Search products"
+msgstr "Search products"
 
 #: src/containers/CartItem/CartItem.js:96
 msgid "Size"
-msgstr ""
+msgstr "Size"
+
+#: src/layouts/AppBase/partials/AppBaseSkipLink.js:18
+msgid "Skip to content"
+msgstr "Skip to content"
+
+#: src/layouts/App/partials/AppSearchDrawer.js:41
+msgid "Submit search"
+msgstr "Submit search"
+
+#: src/layouts/App/partials/AppCartDrawer.js:64
+msgid "To checkout"
+msgstr "To checkout"
+
+#: src/layouts/App/partials/AppHeader.js:185
+msgid "Toggle cart menu"
+msgstr "Toggle cart menu"
+
+#: src/layouts/App/partials/AppHeader.js:155
+msgid "Toggle main menu"
+msgstr "Toggle main menu"
+
+#: src/layouts/App/partials/AppHeader.js:173
+msgid "Toggle search"
+msgstr "Toggle search"
