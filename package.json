@@ -30,8 +30,8 @@
     "storybook:build": "storybook build -o .storybook-static",
     "storybook:test": "test-storybook --url http://127.0.0.1:3001",
     "typecheck": "tsc --noEmit",
-    "extract": "lingui extract",
-    "compile": "lingui compile"
+    "lingui:extract": "lingui extract",
+    "lingui:compile": "lingui compile"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
