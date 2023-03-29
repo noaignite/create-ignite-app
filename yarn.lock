@@ -2384,11 +2384,6 @@
     "@babel/runtime" "^7.11.2"
     "@lingui/core" "3.17.0"
 
-"@lingui/swc-plugin@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@lingui/swc-plugin/-/swc-plugin-0.2.3.tgz#41b36e8f83321c41bcc3868219f7b7ba959d7cb6"
-  integrity sha512-GCO4PXTb5f9NyXwtU5a2bYwemPzF3ajVABfAbtgmN58JlpRkusjN1zLOAja2WWhNJCfMVqRH3m5dHpH0NxEHnA==
-
 "@maeertin/medialoaded@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@maeertin/medialoaded/-/medialoaded-1.2.1.tgz#5ed77bec84039d5dcd4e5b2e831d47dbfddd71c8"
