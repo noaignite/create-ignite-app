@@ -6,16 +6,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: en\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
 
 #: src/layouts/App/partials/AppCartDrawer.js:41
 msgid "Bag"
 msgstr "Bag"
 
-#: src/layouts/AppBase/partials/AppBaseMarketDialog.js:88
+#: src/layouts/AppBase/partials/AppBaseMarketDialog.js:89
 msgid "Choose country"
 msgstr "Choose country"
 
-#: src/layouts/AppBase/partials/AppBaseMarketDialog.js:104
+#: src/layouts/AppBase/partials/AppBaseMarketDialog.js:62
+msgid "Choose country and shipping"
+msgstr "Choose country and shipping"
+
+#: src/layouts/AppBase/partials/AppBaseMarketDialog.js:105
 msgid "Choose language"
 msgstr "Choose language"
 
@@ -23,9 +33,17 @@ msgstr "Choose language"
 msgid "Close cart menu"
 msgstr "Close cart menu"
 
+#: src/layouts/AppBase/partials/AppBaseCookieBar.js:53
+msgid "Close cookie bar"
+msgstr "Close cookie bar"
+
 #: src/layouts/App/partials/AppNavDrawer.js:46
 msgid "Close main menu"
 msgstr "Close main menu"
+
+#: src/layouts/AppBase/partials/AppBaseMarketDialog.js:73
+msgid "Close market menu"
+msgstr "Close market menu"
 
 #: src/layouts/App/partials/AppNavDrawer.js:72
 msgid "Country"
@@ -47,7 +65,7 @@ msgstr "Increase quantity to {0}"
 msgid "Main navigation"
 msgstr "Main navigation"
 
-#: src/layouts/AppBase/partials/AppBaseMarketDialog.js:81
+#: src/layouts/AppBase/partials/AppBaseMarketDialog.js:82
 msgid ""
 "Please select the country to which your order will be sent. This will give you accurate\n"
 "pricing, delivery times and shipping costs for your destination."
@@ -94,3 +112,7 @@ msgstr "Toggle main menu"
 #: src/layouts/App/partials/AppHeader.js:173
 msgid "Toggle search"
 msgstr "Toggle search"
+
+#: src/layouts/AppBase/partials/AppBaseCookieBar.js:45
+msgid "We use cookies to give you the best user experience. By using our website you agree to our privacy policy."
+msgstr "We use cookies to give you the best user experience. By using our website you agree to our privacy policy."
