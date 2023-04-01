@@ -14,7 +14,7 @@ export function useI18n() {
 }
 
 function I18nProvider(props) {
-  const { children, defaultLocale = 'en', locale } = props
+  const { children, defaultLocale = 'en', locale = defaultLocale } = props
 
   let translations
   try {

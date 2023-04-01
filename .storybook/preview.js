@@ -62,7 +62,7 @@ function ModeSwitcher(props) {
 
 export const decorators = [
   (Story, context) => (
-    <RootProvider settings={settings} locale="en">
+    <RootProvider settings={settings}>
       <ModeSwitcher mode={context.globals.themeMode} />
       <Story />
     </RootProvider>
