@@ -59,7 +59,8 @@ const AppBaseMarketDialog = React.memo(function AppBaseMarketDialog(props) {
       {...other}
     >
       <DialogTitle variant="subtitle1" id="cia-market-menu-title">
-        Choose country and shipping
+        {t`Choose country and shipping`}
+
         {onMarketMenuClose && (
           <IconButton
             sx={{
@@ -69,7 +70,7 @@ const AppBaseMarketDialog = React.memo(function AppBaseMarketDialog(props) {
             }}
             onClick={onMarketMenuClose}
             color="inherit"
-            aria-label="Close market menu"
+            aria-label={t`Close market menu`}
           >
             <CloseIcon />
           </IconButton>

@@ -26,7 +26,7 @@ function RootProvider(props) {
 
   return (
     <CacheProvider value={emotionCache}>
-      <I18nProvider locale={locale} defaultLocale={defaultLocale}>
+      <I18nProvider defaultLocale={defaultLocale} locale={locale}>
         <RemoteConfigProvider value={settings}>
           <CentraProvider
             apiUrl={process.env.CENTRA_CHECKOUT_API}

@@ -61,7 +61,7 @@ const AppCartDrawer = React.memo(function AppCartDrawer(props) {
 
       <div>
         <Button component={RouterLink} href="/checkout" variant="contained" fullWidth>
-          {t` To checkout`}
+          {t`To checkout`}
         </Button>
       </div>
     </AppCartDrawerRoot>
