@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/pages/404.js:18
+msgid "Back to homepage"
+msgstr "Back to homepage"
+
 #: src/layouts/App/partials/AppCartDrawer.js:41
 msgid "Bag"
 msgstr "Bag"
@@ -65,6 +69,10 @@ msgstr "Increase quantity to {0}"
 msgid "Main navigation"
 msgstr "Main navigation"
 
+#: src/pages/404.js:16
+msgid "Page not found"
+msgstr "Page not found"
+
 #: src/layouts/AppBase/partials/AppBaseMarketDialog.js:82
 msgid ""
 "Please select the country to which your order will be sent. This will give you accurate\n"
@@ -96,6 +104,10 @@ msgstr "Skip to content"
 #: src/layouts/App/partials/AppSearchDrawer.js:41
 msgid "Submit search"
 msgstr "Submit search"
+
+#: src/pages/404.js:17
+msgid "The page you are looking for might have been renamed, removed or might never have existed."
+msgstr "The page you are looking for might have been renamed, removed or might never have existed."
 
 #: src/layouts/App/partials/AppCartDrawer.js:64
 msgid "To checkout"
