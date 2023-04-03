@@ -35,7 +35,6 @@ interface RemoteConfigProviderProps {
 }
 
 function RemoteConfigProvider(props: RemoteConfigProviderProps) {
-  // console.log(props)
   const { children, value = {} } = props
 
   const { locale } = useI18n()
