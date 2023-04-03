@@ -25,7 +25,7 @@ export default function formatProduct(inProduct, inFormatters, filterProperties)
   })
 
   // filter out properties using filterProperties
-  return filterProperties ? filterProduct(product, filterProperties) : { ...inProduct }
+  return filterProperties ? filterProduct(product, filterProperties) : product
 }
 
 function filterProduct(product, filterEntries) {
