@@ -12,8 +12,7 @@ export default function formatProduct(inProduct, inFormatters, filterProperties)
     ...inFormatters,
   }
 
-  // filter out properties using allowedProperties
-  const product = filterProperties ? filterProduct(inProduct, filterProperties) : { ...inProduct }
+  const product = { ...inProduct }
 
   if (product.relatedProducts) {
     // Recursively format nested product objects.
@@ -25,7 +24,8 @@ export default function formatProduct(inProduct, inFormatters, filterProperties)
     product[optionKey] = typeof optionValue === 'function' ? optionValue(product) : optionValue
   })
 
-  return product
+  // filter out properties using filterProperties
+  return filterProperties ? filterProduct(product, filterProperties) : { ...inProduct }
 }
 
 function filterProduct(product, filterEntries) {
