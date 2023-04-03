@@ -7,7 +7,11 @@ import { createRenderBlock } from '~/utils'
 
 const renderBlock = createRenderBlock(blockVariants)
 
-function Page(props) {
+interface PageProps extends Page {
+  children?: React.ReactNode
+}
+
+function Page(props: PageProps) {
   const { blocks, children } = props
 
   return (
@@ -17,7 +21,7 @@ function Page(props) {
       </Head>
 
       {children}
-      {blocks.map(renderBlock)}
+      {blocks?.map(renderBlock)}
     </React.Fragment>
   )
 }
