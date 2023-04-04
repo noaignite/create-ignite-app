@@ -1,19 +1,19 @@
 import * as React from 'react'
 
-type RenderedBlock = Block & { renderIndex?: number }
-type Blocks = Record<string, React.ComponentType<RenderedBlock>>
+type BlockType = Block & { renderIndex?: number; children?: React.ReactNode }
+type Blocks = Record<string, React.ComponentType<BlockType>>
+
+type RenderableBlock = (block: BlockType, index: number) => React.ReactNode
 
 /**
  * Accepts a record of blocks and returns a function that can be used to render
- * one block at a time by a block's `name` property.
+ * individual blocks or one at a time by a block's `name` property.
  *
  * @example
  * import * as blocks from '~/blocks'
  * const renderBlock = createRenderBlock(blocks)
  */
 export default function createRenderBlock(blocks: Blocks) {
-  type BlockRenderer = (block: RenderedBlock, index: number) => React.ReactNode
-
   /**
    * Returns a single render-ready block component from the `createRenderBlock`
    * generated blocks object.
@@ -27,7 +27,7 @@ export default function createRenderBlock(blocks: Blocks) {
    *
    * return <>{renderBlock(block, index)}</>
    */
-  const renderBlock: BlockRenderer = ({ name, props = {} }, index) => {
+  const renderBlock: RenderableBlock = ({ name, props = {} }, index) => {
     const { children: childrenProp, ...other } = props
 
     if (!name) {
@@ -43,7 +43,11 @@ export default function createRenderBlock(blocks: Blocks) {
       return null
     }
 
-    return React.createElement(Component, { key: index, renderIndex: index, ...other }, children)
+    return (
+      <Component key={index} renderIndex={index} {...other}>
+        {children}
+      </Component>
+    )
   }
 
   return renderBlock
