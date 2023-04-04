@@ -1,9 +1,9 @@
 import * as React from 'react'
 
-type BlockType = Block & { renderIndex?: number; children?: React.ReactNode }
-type Blocks = Record<string, React.ComponentType<BlockType>>
+type BlockExtendedProps = Block & { renderIndex?: number; children?: React.ReactNode }
+type Blocks = Record<string, React.ComponentType<BlockExtendedProps>>
 
-type RenderableBlock = (block: BlockType, index: number) => React.ReactNode
+type RenderBlock = (block: BlockExtendedProps, index: number) => React.ReactNode
 
 /**
  * Accepts a record of blocks and returns a function that can be used to render
@@ -27,7 +27,7 @@ export default function createRenderBlock(blocks: Blocks) {
    *
    * return <>{renderBlock(block, index)}</>
    */
-  const renderBlock: RenderableBlock = ({ name, props = {} }, index) => {
+  const renderBlock: RenderBlock = ({ name, props = {} }, index) => {
     const { children: childrenProp, ...other } = props
 
     if (!name) {
