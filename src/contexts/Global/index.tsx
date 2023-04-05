@@ -6,17 +6,11 @@ import { useRemoteConfig } from '../RemoteConfig'
 interface GlobalState {
   /**
    * A `boolean` which indicates whether the cart menu is open or not.
-   * The cart menu is the menu that appears when the user clicks on the cart icon.
    * @default false
    */
   isCartMenuOpen: boolean
   /**
    * A `boolean` which indicates whether the cookie bar is open or not.
-   * The cookie bar is the bar that appears when the user enters the website
-   * for the first time.
-   *
-   * @note This value is set to `true` after a delay of `COOKIE_BAR_ENTER_DELAY`,
-   * provided the user has not previously dismissed the cookie bar.
    * @default false
    */
   isCookieBarOpen: boolean
@@ -28,22 +22,17 @@ interface GlobalState {
   isMarketMenuOpen: boolean
   /**
    * A `boolean` which indicates whether the navigation menu is open or not.
-   * The navigation menu is the menu that appears when the user clicks on the
-   * three stacked lines icon, or otherwise known as the _hamburger_ icon.
    * @default false
    */
   isNavMenuOpen: boolean
   /**
-   * A `boolean` which indicates whether the search menu is open or not.
-   * The search menu is the menu that appears when the user clicks on the search
-   * icon.
+   * A `boolean` which indicates whether the site search is open or not.
    * @default false
    */
   isSearchMenuOpen: boolean
   /**
-   * A `boolean` which indicates whether the store message is open or not.
-   * The store message is usually located above the site header and is used to
-   * display important messages to the user.
+   * A `boolean` which indicates whether the store message rendered in the layout.
+   * The store message is a static message that is displayed to users visiting the site.
    * @default false
    */
   isStoreMessageOpen: boolean
@@ -67,6 +56,7 @@ interface GlobalHandlers {
   onCartMenuClose: () => void
   /**
    * A setter function which toggles the `isCartMenuOpen` state.
+   *
    * @note This function also sets the `isNavMenuOpen` and `isSearchMenuOpen`
    * states to `false`.
    */
