@@ -37,12 +37,6 @@ module.exports = {
       },
     ],
     'babel-plugin-optimize-clsx',
-    [
-      'babel-plugin-i18n-tag-translate',
-      {
-        groupDir: './src',
-      },
-    ],
   ],
   env: {
     development: {},
