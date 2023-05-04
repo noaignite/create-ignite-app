@@ -1,13 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { i18n } from '@lingui/core'
-import { en, sv } from 'make-plural/plurals'
 import { I18nProvider as LinguiI18nProvider } from '@lingui/react'
-
-i18n.loadLocaleData({
-  en: { plurals: en },
-  sv: { plurals: sv },
-})
 
 export const I18nContext = React.createContext({})
 
