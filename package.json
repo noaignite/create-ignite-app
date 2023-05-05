@@ -1,6 +1,6 @@
 {
   "name": "create-ignite-app",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "private": false,
   "author": "NoA Ignite",
   "description": "NoA Ignite App Scaffolding",
@@ -66,26 +66,26 @@
     "@emotion/babel-plugin": "^11.9.2",
     "@next/bundle-analyzer": "^13.1.6",
     "@noaignite/eslint-config-typescript": "^0.4.0",
-    "@storybook/addon-a11y": "^7.0.0-beta.54",
-    "@storybook/addon-essentials": "^7.0.0-beta.54",
-    "@storybook/nextjs": "^7.0.0-beta.54",
-    "@storybook/react": "^7.0.0-beta.54",
-    "@storybook/test-runner": "^0.9.4",
+    "@storybook/addon-a11y": "^7.0.8",
+    "@storybook/addon-essentials": "^7.0.8",
+    "@storybook/nextjs": "^7.0.8",
+    "@storybook/react": "^7.0.8",
+    "@storybook/test-runner": "^0.10.0",
     "babel-plugin-i18n-tag-translate": "^2.0.0",
     "babel-plugin-optimize-clsx": "^2.6.0",
     "commitizen": "^4.2.4",
     "eslint": "^8.12.0",
     "eslint-config-next": "^13.1.6",
     "eslint-import-resolver-webpack": "^0.13.2",
-    "eslint-plugin-storybook": "^0.6.11",
+    "eslint-plugin-storybook": "^0.6.12",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.1",
     "prettier": "^2.7.0",
     "standard-version": "^9.3.2",
-    "storybook": "^7.0.0-beta.54",
+    "storybook": "^7.0.8",
     "webpack-merge": "^5.2.0"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   }
 }

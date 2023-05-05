@@ -53,21 +53,21 @@ function CartItem(props) {
   const { decreaseItem, increaseItem, removeItem } = useCentraHandlers()
   const { t } = useI18n()
 
-  const onItemDecrease = React.useCallback(
+  const handleItemDecrease = React.useCallback(
     (event) => {
       decreaseItem(event.currentTarget.value)
     },
     [decreaseItem],
   )
 
-  const onItemIncrease = React.useCallback(
+  const handleItemIncrease = React.useCallback(
     (event) => {
       increaseItem(event.currentTarget.value)
     },
     [increaseItem],
   )
 
-  const onItemRemove = React.useCallback(
+  const handleItemRemove = React.useCallback(
     (event) => {
       removeItem(event.currentTarget.value)
     },
@@ -103,7 +103,7 @@ function CartItem(props) {
 
             <CartItemQuantity>
               <CartItemQuantityButton
-                onClick={onItemDecrease}
+                onClick={handleItemDecrease}
                 value={cartItem.line}
                 aria-label={t(__translationGroup)`Decrease quantity to ${cartItem.quantity - 1}`}
               >
@@ -113,7 +113,7 @@ function CartItem(props) {
               <span>{cartItem.quantity}</span>
 
               <CartItemQuantityButton
-                onClick={onItemIncrease}
+                onClick={handleItemIncrease}
                 value={cartItem.line}
                 aria-label={t(__translationGroup)`Increase quantity to ${cartItem.quantity + 1}`}
               >
@@ -124,7 +124,7 @@ function CartItem(props) {
             <Link // eslint-disable-line jsx-a11y/anchor-is-valid
               sx={{ ml: 'auto' }}
               component={ButtonBase}
-              onClick={onItemRemove}
+              onClick={handleItemRemove}
               value={cartItem.line}
               color="primary"
             >

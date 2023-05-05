@@ -1,6 +1,9 @@
 import * as React from 'react'
+import { colors as muiColors } from '@mui/material'
 import Swatch from '../internal/Swatch'
-import * as colors from '.'
+import * as localColors from '.'
+
+const colors = { ...muiColors, ...localColors }
 
 function sortEntriesByKeyMap(entries, orderArr) {
   return entries.slice(0).sort(([a], [b]) => {

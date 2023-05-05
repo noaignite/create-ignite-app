@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/noaignite/create-ignite-app/compare/v1.6.0...v1.7.0) (2023-05-05)
+
+
+### Features
+
+* **api/mock:** only use default export and update social data ([b8b1113](https://github.com/noaignite/create-ignite-app/commit/b8b1113d4c26720a59efae113ad6b404b536c60d))
+* **build:** bump @storybook/* from 7.0.0-beta.54 to 7.0.3 ([a5d01e6](https://github.com/noaignite/create-ignite-app/commit/a5d01e6698236c4f804cde52aae9ffa74bf9a77a))
+* **theme/palette:** sync up the palette to the new Create Ignite Design figma template ([9f9edc8](https://github.com/noaignite/create-ignite-app/commit/9f9edc8d8ac8e4f46d9cd9b666be6d28385cd999))
+
+
+### Build System
+
+* **deps:** bump @storybook/nextjs from 7.0.3 to 7.0.8 ([8899bf3](https://github.com/noaignite/create-ignite-app/commit/8899bf3c03932f3d57a0abcad3e6aba2aba04869))
+* **package.json:** bump engine to 16 min as Storybook v7 has dropped support for node 15 and below ([3354b00](https://github.com/noaignite/create-ignite-app/commit/3354b00e2a58b62558ed041375c03d9db04a32f7))
+
+
+### Others
+
+* **CartItem:** local handlers are prefixed with handle ([c8f213d](https://github.com/noaignite/create-ignite-app/commit/c8f213d9b1c1fbd32540b22295fe74b0fd460708))
+* **FormControlBox:** remove unecessary title key ([14e5337](https://github.com/noaignite/create-ignite-app/commit/14e53379d9e40782adbd04b89fcac195d129d941))
+
 ## [1.6.0](https://github.com/noaignite/create-ignite-app/compare/v1.5.0...v1.6.0) (2023-03-15)
 
 

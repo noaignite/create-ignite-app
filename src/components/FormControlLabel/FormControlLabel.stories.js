@@ -2,7 +2,6 @@ import * as React from 'react'
 import { Checkbox, FormControlLabel, Radio } from '@mui/material'
 
 export default {
-  title: 'Components/FormControlLabel',
   component: FormControlLabel,
   argTypes: {
     labelPlacement: {

@@ -5,7 +5,7 @@ function composeLinks(length) {
   }))
 }
 
-export const menuPrimary = [
+const menuPrimary = [
   {
     label: 'Brands',
     url: '/brands',
@@ -16,7 +16,7 @@ export const menuPrimary = [
   },
 ]
 
-export const menuSecondary = [
+const menuSecondary = [
   {
     items: composeLinks(8),
     label: 'Clothing',
@@ -44,7 +44,7 @@ export const menuSecondary = [
   },
 ]
 
-export const menuFooter = [
+const menuFooter = [
   {
     label: 'Work',
     url: '/work',
@@ -69,10 +69,11 @@ export default {
     secondary: menuSecondary,
     footer: menuFooter,
   },
-  facebookUrl: 'https://www.facebook.com/',
-  instagramUrl: 'https://www.instagram.com/',
-  pinterestUrl: 'https://www.pinterest.com/',
+  socials: ['instagram', 'youtube', 'facebook', 'pinterest', 'tiktok'].map((id) => ({
+    id,
+    url: `https://www.${id}.com/iciw`,
+  })),
   storeMessage: 'lorem ipsum dolor sit amet',
+  privacyPolicyPageUrl: '/privacy-policy',
   termsPageUrl: '/terms-and-conditions',
-  twitterUrl: 'https://twitter.com/',
 }
