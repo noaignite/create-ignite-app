@@ -1,4 +1,4 @@
-import grey from '../colors/grey'
+import { colors } from '@mui/material'
 
 export default function createMixins(breakpoints, spacing, mixins) {
   return {
@@ -45,10 +45,10 @@ export default function createMixins(breakpoints, spacing, mixins) {
     scrollbars: {
       '&::-webkit-scrollbar': {
         width: 5,
-        backgroundColor: grey[200],
+        backgroundColor: colors.grey[200],
       },
       '&::-webkit-scrollbar-thumb': {
-        backgroundColor: grey[800],
+        backgroundColor: colors.grey[800],
       },
     },
     ...mixins,

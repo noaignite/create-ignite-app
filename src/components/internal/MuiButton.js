@@ -1,32 +1,28 @@
-const BORDER_WIDTH = 1
-const PADDING_X = 24
-const PADDING_Y = 16
-
 const overrides = {
   defaultProps: {
-    color: 'text',
+    color: 'default',
     disableElevation: true,
     disableRipple: true,
   },
   styleOverrides: {
     sizeSmall: ({ theme }) => ({
-      padding: `${PADDING_Y - 3}px ${PADDING_X - 6}px`,
+      padding: '13px 18px',
       fontSize: theme.typography.pxToRem(11),
     }),
     sizeMedium: {
-      padding: `${PADDING_Y}px ${PADDING_X}px`,
+      padding: '16px 24px',
     },
     sizeLarge: {
-      padding: `${PADDING_Y + 3}px ${PADDING_X + 6}px`,
+      padding: '19px 30px',
     },
     outlinedSizeSmall: {
-      padding: `${PADDING_Y - 3 - BORDER_WIDTH}px ${PADDING_X - 6 - BORDER_WIDTH}px`,
+      padding: '12px 17px', // Remove 1px in padding due to borders.
     },
     outlinedSizeMedium: {
-      padding: `${PADDING_Y - BORDER_WIDTH}px ${PADDING_X - BORDER_WIDTH}px`,
+      padding: '15px 23px', // Remove 1px in padding due to borders.
     },
     outlinedSizeLarge: {
-      padding: `${PADDING_Y + 3 - BORDER_WIDTH}px ${PADDING_X + 6 - BORDER_WIDTH}px`,
+      padding: '18px 29px', // Remove 1px in padding due to borders.
     },
   },
 }
