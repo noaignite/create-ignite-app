@@ -1,13 +1,16 @@
 import { deepmerge } from '@mui/utils'
 import { alpha, colors } from '@mui/material'
-import blue from '../colors/blue'
 import common from '../colors/common'
-import green from '../colors/green'
-import grey from '../colors/grey'
-import orange from '../colors/orange'
-import red from '../colors/red'
 
+// Dynamic colors meant to alternate between light/dark theme modes are added here.
 export const light = {
+  // The colors used to represent default interface elements for a user.
+  default: {
+    light: common.black,
+    main: common.black,
+    dark: common.black,
+    contrastText: common.white,
+  },
   // The colors used to style the text.
   text: {
     // The most important text.
@@ -16,104 +19,92 @@ export const light = {
     secondary: alpha(common.black, 0.65),
     // Disabled text have even lower visual prominence.
     disabled: alpha(common.black, 0.4),
-    // Text hints.
-    hint: alpha(common.black, 0.4),
-    // Complementing keys used for component color variants.
-    main: common.black,
-    dark: alpha(common.black, 0.8), // Mui uses `dark` for hover. We want a lighter color.
-    contrastText: common.white,
   },
   // The color used to divide different elements.
-  divider: 'rgba(0, 0, 0, 0.12)',
+  divider: alpha(common.black, 0.12),
   // The background colors used to style the surfaces.
   // Consistency between these values is important.
   background: {
     default: common.white,
-    paper: grey[50],
+    paper: colors.grey[50],
   },
   // The colors used to style the action elements.
   action: {
     // The color of an active action like an icon button.
     active: common.black,
     // The background color of an hovered action.
-    hover: 'rgba(0, 0, 0, 0.04)',
+    hover: alpha(common.black, 0.04),
     hoverOpacity: 0.04,
     // The background color of a selected action.
-    selected: 'rgba(0, 0, 0, 0.08)',
+    selected: alpha(common.black, 0.08),
     selectedOpacity: 0.08,
     // The color of a disabled action.
-    disabled: 'rgba(0, 0, 0, 0.26)',
+    disabled: alpha(common.black, 0.26),
     // The background color of a disabled action.
-    disabledBackground: 'rgba(0, 0, 0, 0.12)',
+    disabledBackground: alpha(common.black, 0.12),
     disabledOpacity: 0.38,
-    focus: 'rgba(0, 0, 0, 0.12)',
+    focus: alpha(common.black, 0.12),
     focusOpacity: 0.12,
     activatedOpacity: 0.12,
   },
 }
 
 export const dark = {
+  default: {
+    light: common.white,
+    main: common.white,
+    dark: common.white,
+    contrastText: common.black,
+  },
   text: {
     primary: common.white,
     secondary: alpha(common.white, 0.65),
     disabled: alpha(common.white, 0.4),
-    hint: alpha(common.white, 0.4),
-    main: common.white,
-    dark: alpha(common.white, 0.9),
-    contrastText: common.black,
   },
-  divider: 'rgba(255, 255, 255, 0.12)',
+  divider: alpha(common.white, 0.12),
   background: {
     default: common.black,
-    paper: grey[800],
+    paper: colors.grey[900],
   },
   action: {
     active: common.white,
-    hover: 'rgba(255, 255, 255, 0.08)',
-    hoverOpacity: 0.08,
-    selected: 'rgba(255, 255, 255, 0.16)',
-    selectedOpacity: 0.16,
-    disabled: 'rgba(255, 255, 255, 0.3)',
-    disabledBackground: 'rgba(255, 255, 255, 0.12)',
+    hover: alpha(common.white, 0.04),
+    hoverOpacity: 0.04,
+    selected: alpha(common.white, 0.08),
+    selectedOpacity: 0.08,
+    disabled: alpha(common.white, 0.26),
+    disabledBackground: alpha(common.white, 0.12),
     disabledOpacity: 0.38,
-    focus: 'rgba(255, 255, 255, 0.12)',
+    focus: alpha(common.white, 0.12),
     focusOpacity: 0.12,
-    activatedOpacity: 0.24,
+    activatedOpacity: 0.12,
   },
 }
 
 export default function createPalette(palette) {
+  // Static colors that do not alternate between light/dark theme modes are added here.
   const {
     primary = {
-      light: colors.pink[300],
-      main: colors.pink[500],
-      dark: colors.pink[700],
-    },
-    secondary = {
-      light: colors.purple[300],
-      main: colors.purple[500],
-      dark: colors.purple[700],
+      // `light`, `dark` & `contrastText` are automatically calculated if not defined.
+      main: colors.blue[500],
     },
     error = {
-      light: red[300],
-      main: red[500],
-      dark: red[700],
+      // `light`, `dark` & `contrastText` are automatically calculated if not defined.
+      main: colors.red[500],
     },
     warning = {
-      light: orange[300],
-      main: orange[500],
-      dark: orange[700],
+      // `light`, `dark` & `contrastText` are automatically calculated if not defined.
+      main: colors.orange[500],
     },
     info = {
-      light: blue[300],
-      main: blue[500],
-      dark: blue[700],
+      // `light`, `dark` & `contrastText` are automatically calculated if not defined.
+      main: colors.cyan[500],
     },
     success = {
-      light: green[300],
-      main: green[500],
-      dark: green[700],
+      // `light`, `dark` & `contrastText` are automatically calculated if not defined.
+      main: colors.green[500],
     },
+    grey = colors.grey,
     modes = { dark, light },
     mode = 'light',
     contrastThreshold = 3,
@@ -129,8 +120,6 @@ export default function createPalette(palette) {
       mode,
       // The colors used to represent primary interface elements for a user.
       primary,
-      // The colors used to represent secondary interface elements for a user.
-      secondary,
       // The colors used to represent interface elements that the user should be made aware of.
       error,
       // The colors used to represent potentially dangerous actions or important messages.

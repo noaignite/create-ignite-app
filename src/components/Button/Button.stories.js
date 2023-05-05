@@ -5,7 +5,16 @@ export default {
   argTypes: {
     color: {
       control: 'select',
-      options: ['inherit', 'text', 'primary', 'secondary', 'success', 'error', 'info', 'warning'],
+      options: [
+        'inherit',
+        'default',
+        'primary',
+        'secondary',
+        'success',
+        'error',
+        'info',
+        'warning',
+      ],
     },
     size: {
       control: 'select',
@@ -21,7 +30,7 @@ export default {
 export const Default = {
   args: {
     children: 'Just a button',
-    color: 'text',
+    color: 'default',
     disabled: false,
     fullWidth: false,
     size: 'medium',
