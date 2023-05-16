@@ -1,4 +1,5 @@
 const nextConfig = require('./next.config.js')
+const extractor = require('./lingui-custom-extractor')
 
 /** @type {import('@lingui/conf').LinguiConfig} */
 module.exports = {
@@ -10,5 +11,6 @@ module.exports = {
       include: ['src'],
     },
   ],
+  extractors: [extractor],
   format: 'po',
 }
