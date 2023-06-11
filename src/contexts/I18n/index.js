@@ -1,6 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
-import i18n, { i18nConfig } from 'es2015-i18n-tag'
+import { i18n } from '@lingui/core'
+import { I18nProvider as LinguiI18nProvider } from '@lingui/react'
 
 export const I18nContext = React.createContext({})
 
@@ -13,35 +14,25 @@ export function useI18n() {
 }
 
 function I18nProvider(props) {
-  const { children, defaultLocale = 'en', locale } = props
+  const { children, defaultLocale = 'en', locale = defaultLocale } = props
 
   let translations
   try {
     // eslint-disable-next-line global-require, import/no-dynamic-require
-    translations = require(`../../../public/locales/${locale}.json`)
+    const { messages } = require(`@lingui/loader!../../../public/locales/${locale}/messages.po`)
+    translations = messages
   } catch (err) {
-    // eslint-disable-next-line global-require, import/no-dynamic-require
-    translations = require(`../../../public/locales/${defaultLocale}.json`)
+    const {
+      messages,
+      // eslint-disable-next-line global-require, import/no-dynamic-require
+    } = require(`@lingui/loader!../../../public/locales/${defaultLocale}/messages.po`)
+    translations = messages
   }
 
-  i18nConfig({
-    translations,
-    // Intl DateTimeFormat options as described here: https://goo.gl/lslekB
-    date: {},
-    // Intl NumberFormat options as described here: https://goo.gl/pDwbG2
-    number: {},
-  })
+  i18n.load(locale, translations)
+  i18n.activate(locale)
 
-  const contextValue = React.useMemo(
-    () => ({
-      defaultLocale,
-      locale,
-      t: i18n,
-    }),
-    [defaultLocale, locale],
-  )
-
-  return <I18nContext.Provider value={contextValue}>{children}</I18nContext.Provider>
+  return <LinguiI18nProvider i18n={i18n}>{children}</LinguiI18nProvider>
 }
 
 I18nProvider.propTypes = {

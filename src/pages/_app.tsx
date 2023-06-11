@@ -13,10 +13,10 @@ export interface AppProps extends NextAppProps {
   emotionCache?: EmotionCache
   pageProps: {
     defaultLocale: string
-    locale: string
     headerColor?: string
     headerMode?: string
     layout?: keyof typeof layoutVariants
+    locale: string
     page: Page
     settings: Record<string, unknown>
     theme?: string

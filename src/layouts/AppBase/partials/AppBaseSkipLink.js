@@ -1,6 +1,6 @@
 import * as React from 'react'
+import { t } from '@lingui/macro'
 import { Button, styled } from '@mui/material'
-import { useI18n } from '~/contexts'
 
 export const AppBaseSkipLinkRoot = styled(Button)(({ theme }) => ({
   position: 'absolute',
@@ -13,11 +13,9 @@ export const AppBaseSkipLinkRoot = styled(Button)(({ theme }) => ({
 }))
 
 function AppBaseSkipLink(props) {
-  const { t } = useI18n()
-
   return (
     <AppBaseSkipLinkRoot color="text" variant="contained" {...props}>
-      {t(__translationGroup)`Skip to content`}
+      {t`Skip to content`}
     </AppBaseSkipLinkRoot>
   )
 }

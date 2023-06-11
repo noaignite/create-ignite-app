@@ -1,5 +1,6 @@
 /.git
 /coverage
+/public/*
 /tmp
 /docker
 .next

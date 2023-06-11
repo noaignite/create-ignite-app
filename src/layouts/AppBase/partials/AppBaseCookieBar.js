@@ -1,7 +1,8 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import { IconButton, Snackbar, styled, Typography } from '@mui/material'
-import { useGlobalHandlers, useI18n } from '~/contexts'
+import { t } from '@lingui/macro'
+import { useGlobalHandlers } from '~/contexts'
 import { CloseIcon } from '~/components'
 
 const AppBaseCookieBarRoot = styled(Snackbar)(({ theme }) => ({
@@ -28,7 +29,6 @@ const AppBaseCookieBarContent = styled('div')(({ theme }) => ({
 function AppBaseCookieBar(props) {
   const { open, ...other } = props
 
-  const { t } = useI18n()
   const { onCookieBarClose } = useGlobalHandlers()
 
   return (
@@ -42,9 +42,7 @@ function AppBaseCookieBar(props) {
     >
       <AppBaseCookieBarContent>
         <Typography variant="body2">
-          {t(
-            __translationGroup,
-          )`We use cookies to give you the best user experience. By using our website you agree to our privacy policy.`}
+          {t`We use cookies to give you the best user experience. By using our website you agree to our privacy policy.`}
         </Typography>
 
         <IconButton
@@ -52,7 +50,7 @@ function AppBaseCookieBar(props) {
           color="inherit"
           edge="end"
           size="small"
-          aria-label={t(__translationGroup)`Close cookie bar`}
+          aria-label={t`Close cookie bar`}
         >
           <CloseIcon />
         </IconButton>

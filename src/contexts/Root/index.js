@@ -19,8 +19,8 @@ function RootProvider(props) {
     children,
     defaultLocale,
     emotionCache = clientSideEmotionCache,
-    locale,
     initialSelection,
+    locale,
     settings,
   } = props
 
