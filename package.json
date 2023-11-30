@@ -1,91 +1,47 @@
 {
-  "name": "create-ignite-app",
-  "version": "1.7.0",
-  "private": false,
-  "author": "NoA Ignite",
-  "description": "NoA Ignite App Scaffolding",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/noaignite/create-ignite-app.git"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/noaignite/create-ignite-app/issues"
-  },
+  "name": "docs",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "prepare": "husky install",
-    "analyze": "ANALYZE=true next build",
-    "build": "next build",
-    "start": "next start",
-    "dev": "next",
-    "release": "standard-version",
-    "lint": "eslint . --cache --report-unused-disable-directives",
-    "lint:ci": "eslint . --report-unused-disable-directives",
-    "lint:fix": "eslint . --cache --fix",
-    "prettier": "prettier . --check",
-    "prettier:fix": "prettier . --write",
-    "provision:production": "op inject -i .env.provision.production -o .env.local",
-    "provision:stage": "op inject -i .env.provision.stage -o .env.local",
-    "storybook": "storybook dev -p 3001 --ci",
-    "storybook:build": "storybook build -o .storybook-static",
-    "storybook:test": "test-storybook --url http://127.0.0.1:3001",
-    "typecheck": "tsc --noEmit"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "yarn prettier:fix",
-      "yarn lint:fix"
-    ],
-    "*.{json,md,css,html}": [
-      "yarn prettier:fix"
-    ]
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
+    "lint": "eslint src/"
   },
   "dependencies": {
-    "@emotion/cache": "^11.10.5",
-    "@emotion/react": "^11.10.5",
-    "@emotion/server": "^11.10.0",
-    "@emotion/styled": "^11.10.5",
-    "@mui/lab": "^5.0.0-alpha.118",
-    "@mui/material": "^5.11.7",
-    "@noaignite/oui": "^4.0.0",
-    "clsx": "^1.2.1",
-    "es2015-i18n-tag": "^1.6.1",
-    "next": "^13.1.6",
-    "prop-types": "^15.8.1",
+    "clsx": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "smoothscroll-polyfill": "^0.4.4"
+    "tailwind-merge": "^2.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
-    "@babel/plugin-transform-react-constant-elements": "^7.10.1",
-    "@babel/preset-typescript": "^7.18.6",
-    "@commitlint/cli": "^17.0.2",
-    "@commitlint/config-conventional": "^17.0.2",
-    "@commitlint/cz-commitlint": "^17.0.0",
-    "@emotion/babel-plugin": "^11.9.2",
-    "@next/bundle-analyzer": "^13.1.6",
-    "@noaignite/eslint-config-typescript": "^0.4.0",
-    "@storybook/addon-a11y": "^7.0.8",
-    "@storybook/addon-essentials": "^7.0.8",
-    "@storybook/nextjs": "^7.0.8",
-    "@storybook/react": "^7.0.8",
-    "@storybook/test-runner": "^0.10.0",
-    "babel-plugin-i18n-tag-translate": "^2.0.0",
-    "babel-plugin-optimize-clsx": "^2.6.0",
-    "commitizen": "^4.2.4",
-    "eslint": "^8.12.0",
-    "eslint-config-next": "^13.1.6",
-    "eslint-import-resolver-webpack": "^0.13.2",
-    "eslint-plugin-storybook": "^0.6.12",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.1",
-    "prettier": "^2.7.0",
-    "standard-version": "^9.3.2",
-    "storybook": "^7.0.8",
-    "webpack-merge": "^5.2.0"
-  },
-  "engines": {
-    "node": ">=16.0.0"
+    "@repo/eslint-config": "workspace:*",
+    "@repo/tailwind-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@storybook/addon-essentials": "^7.6.1",
+    "@storybook/addon-interactions": "^7.6.1",
+    "@storybook/addon-links": "^7.6.1",
+    "@storybook/addon-onboarding": "^1.0.8",
+    "@storybook/addon-styling": "^1.3.7",
+    "@storybook/blocks": "^7.6.1",
+    "@storybook/manager-api": "^7.6.6",
+    "@storybook/react": "^7.6.1",
+    "@storybook/react-vite": "^7.6.1",
+    "@storybook/test": "^7.6.1",
+    "@storybook/theming": "^7.6.6",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.53.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "eslint-plugin-storybook": "^0.6.15",
+    "postcss": "^8.4.32",
+    "storybook": "^7.6.1",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.5"
   }
 }

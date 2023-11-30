@@ -1,0 +1,348 @@
+# Configure Tailwind Config
+
+## Installing the TailwindCss Typography package
+
+```bash
+yarn add -DW @noaignite/tailwind-typography
+```
+
+## Adding the brand colors
+
+Create a directory called `colors` within the `tailwind-config` package and add the colors as defined in your design system. The recommended file structure is illustrated below:
+
+```
+packages/tailwind-config
+├── colors
+│   ├── common.ts
+│   ├── gray.ts
+│   └── index.ts
+├── package.json
+├── styles.css
+└── tailwind-config.ts
+```
+
+`colors/common.ts`
+
+```tsx
+export const common = {
+  black: '#000000',
+  blackChannel: '0 0 0',
+  white: '#ffffff',
+  whiteChannel: '255 255 255',
+}
+```
+
+`colors/gray.ts`
+
+```tsx
+export const gray = {
+  50: '#fafafa',
+  100: '#f5f5f5',
+  200: '#eeeeee',
+  300: '#e0e0e0',
+  400: '#bdbdbd',
+  500: '#9e9e9e',
+  600: '#757575',
+  700: '#616161',
+  800: '#424242',
+  900: '#212121',
+  A100: '#f5f5f5',
+  A200: '#eeeeee',
+  A400: '#bdbdbd',
+  A700: '#616161',
+}
+```
+
+`colors/index.ts`
+
+```tsx
+export * from './common'
+export * from './gray'
+```
+
+## Updating the tailwind.config.js
+
+Now that we've added our colors we can go ahead and set up the Tailwind config.
+
+```tsx
+import { buildTypographyVariant, typography } from '@noaignite/tailwind-typography'
+import type { Config } from 'tailwindcss'
+import * as colors from './colors'
+
+const breakpoints = {
+  keys: ['xs', 'sm', 'md', 'lg', 'xl'] as const,
+  values: {
+    xs: 0,
+    sm: 700,
+    md: 1000,
+    lg: 1300,
+    xl: 1600,
+  },
+}
+
+const fontPrimary = 'Helvetica, sans-serif'
+const fontSecondary = 'Helvetica, sans-serif'
+
+const allCaps = {
+  textTransform: 'uppercase',
+}
+
+const config: Config = {
+  content: [
+    // app content
+    'src/**/*.{js,ts,jsx,tsx}',
+    // include packages if not transpiling
+    '../../packages/**/*.{js,ts,jsx,tsx}',
+  ],
+  darkMode: ['class', '[data-color-scheme="dark"]'],
+  theme: {
+    fontFamily: {
+      primary: fontPrimary,
+      secondary: fontSecondary,
+    },
+    screens: {
+      ...Object.entries(breakpoints.values).reduce(
+        (acc, [key, value]) => ({ ...acc, [key]: `${value}px` }),
+        {},
+      ),
+    },
+    extend: {
+      colors: {
+        /** COLORS */
+
+        ...colors,
+
+        /** PALETTE */
+
+        /* The colors used to represent primary interface elements for a user. */
+        primary: {
+          DEFAULT: '#2196f3',
+          contrast: colors.common.white,
+        },
+        /* The colors used to represent secondary interface elements for a user. */
+        secondary: {
+          DEFAULT: '#2196f3',
+          contrast: colors.common.black,
+        },
+        /* The colors used to indicate the successful completion of an action that user triggered. */
+        success: {
+          DEFAULT: '#4caf50',
+          contrast: colors.common.black,
+        },
+        /* The colors used to represent potentially dangerous actions or important messages. */
+        warning: {
+          DEFAULT: '#ff9800',
+          contrast: colors.common.black,
+        },
+        /* The colors used to represent interface elements that the user should be made aware of. */
+        error: {
+          DEFAULT: '#f44336',
+          contrast: colors.common.black,
+        },
+        /* The colors used to present information to the user that is neutral and not necessarily important. */
+        info: {
+          DEFAULT: '#00bcd4',
+          contrast: colors.common.white,
+        },
+
+        /** LIGHT/DARK REACTIVE PALETTE */
+
+        /* The colors used to represent plain interface elements for a user. */
+        default: {
+          DEFAULT: 'var(--palette-default)',
+          light: 'var(--palette-default-light)',
+          dark: 'var(--palette-default-dark)',
+          contrast: 'var(--palette-default-contrast)',
+        },
+        /* The colors used to style the text. */
+        text: {
+          primary: 'var(--palette-text-primary)',
+          secondary: 'var(--palette-text-secondary)',
+          disabled: 'var(--palette-text-disabled)',
+          contrast: 'var(--palette-text-contrast)',
+        },
+        /* The colors used to style the surfaces. */
+        surface: {
+          DEFAULT: 'var(--palette-surface)',
+          paper: 'var(--palette-surface-paper)',
+        },
+        /* The color used to divide different elements. */
+        divider: {
+          DEFAULT: 'var(--palette-divider)',
+        },
+        /* The colors used to style the action elements. */
+        action: {
+          disabled: 'var(--palette-action-disabled)',
+          disabledBg: 'var(--palette-action-disabledBg)',
+        },
+      },
+      minHeight: {
+        'banner-height': 'var(--spacing-banner-height)',
+        'header-height': 'var(--spacing-header-height)',
+        'block-height': 'calc(100vh - var(--spacing-header-height))',
+        'block-margin': 'var(--spacing-block-margin)',
+      },
+      spacing: {
+        'grid-margin': 'var(--spacing-grid-margin)',
+        'grid-gap': 'var(--spacing-grid-gutter)',
+        'banner-height': 'var(--spacing-banner-height)',
+        'header-height': 'var(--spacing-header-height)',
+        'block-height': 'calc(100vh - var(--spacing-header-height))',
+        'block-margin': 'var(--spacing-block-margin)',
+      },
+    },
+  },
+  plugins: [
+    typography({
+      prefix: 'type-',
+      fluid: true,
+      clamp: true,
+      variants: {
+        h1: {
+          xs: buildTypographyVariant(fontPrimary, 800, 48, 0.9, 0, allCaps),
+          sm: { fontSize: 56 },
+          md: { fontSize: 72 },
+          lg: { fontSize: 88 },
+          xl: { fontSize: 104 },
+        },
+        body1: buildTypographyVariant(fontSecondary, 400, 16, 1.2, 0),
+        button: buildTypographyVariant(fontPrimary, 400, 13, 1.5, 0),
+      },
+    }),
+  ],
+}
+
+export default config
+```
+
+## Adding `styles.css` for a reactive color scheme
+
+The last puzzle piece to our Tailwind config is to include the `styles.css` file. This file is used to define the reactive color scheme for the application. The light/dark color scheme can be activated with a className or the `data-color-scheme` attribute on a html element. The `styles.css` file is also used to define global styles and variables. For this we will need to add this new export to the `package.json` as illustrated below:
+
+```bash
+"exports": {
+  ".": "./tailwind.config.ts",
+  "./styles.css": "./styles.css"
+},
+```
+
+Then go ahead and create the `styles.css` file and add the following:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --spacing-grid-margin: 16px;
+    --spacing-grid-gutter: 4px;
+    --spacing-banner-height: 34px;
+    --spacing-header-height: 48px;
+    --spacing-block-margin: 48px;
+
+    @screen lg {
+      --spacing-grid-margin: 24px;
+      --spacing-grid-gutter: 8px;
+      --spacing-block-margin: 64px;
+    }
+  }
+
+  /**
+   * LIGHT PALETTE
+   */
+  :root,
+  .light,
+  [data-color-scheme='light'] {
+    /* The colors used to represent default interface elements for a user. */
+    --palette-default: theme('colors.common.black');
+    --palette-default-light: rgba(theme('colors.common.blackChannel') / 0.9);
+    --palette-default-dark: theme('colors.common.black');
+    --palette-default-contrast: theme('colors.common.white');
+
+    /* The colors used to style the text. */
+    --palette-text-primary: theme('colors.common.black');
+    --palette-text-secondary: rgba(theme('colors.common.blackChannel') / 0.64);
+    --palette-text-disabled: rgba(theme('colors.common.blackChannel') / 0.32);
+    --palette-text-contrast: theme('colors.common.white');
+
+    /* The colors used to style the surfaces. */
+    --palette-surface: theme('colors.common.white');
+    --palette-surface-paper: theme('colors.gray.50');
+
+    /* The color used to divide different elements. */
+    --palette-divider: rgba(theme('colors.common.blackChannel') / 0.12);
+
+    /* The colors used to style the action elements. */
+    --palette-action-disabled: rgba(theme('colors.common.blackChannel') / 0.32);
+    --palette-action-disabledBg: rgba(theme('colors.common.blackChannel') / 0.12);
+  }
+
+  /**
+   * DARK PALETTE
+   */
+  .dark,
+  [data-color-scheme='dark'] {
+    /* The colors used to represent default interface elements for a user. */
+    --palette-default: theme('colors.common.white');
+    --palette-default-light: rgba(theme('colors.common.whiteChannel') / 0.9);
+    --palette-default-dark: theme('colors.common.white');
+    --palette-default-contrast: theme('colors.common.black');
+
+    /* The colors used to style the text. */
+    --palette-text-primary: theme('colors.common.white');
+    --palette-text-secondary: rgba(theme('colors.common.whiteChannel') / 0.64);
+    --palette-text-disabled: rgba(theme('colors.common.whiteChannel') / 0.32);
+    --palette-text-contrast: theme('colors.common.black');
+
+    /* The colors used to style the surfaces. */
+    --palette-surface: theme('colors.common.black');
+    --palette-surface-paper: theme('colors.gray.900');
+
+    /* The color used to divide different elements. */
+    --palette-divider: rgba(theme('colors.common.whiteChannel') / 0.2);
+
+    /* The colors used to style the action elements. */
+    --palette-action-disabled: rgba(theme('colors.common.whiteChannel') / 0.32);
+    --palette-action-disabledBg: rgba(theme('colors.common.whiteChannel') / 0.12);
+  }
+
+  html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  body {
+    @apply type-body1;
+    color: var(--palette-text-primary);
+    background-color: var(--palette-surface);
+  }
+
+  svg:not([fill]) {
+    fill: currentColor;
+  }
+
+  :focus {
+    outline: none;
+  }
+
+  [data-headlessui-focus-visible] :focus-visible {
+    outline: 2px solid Highlight;
+
+    /* https://ghinda.net/article/mimic-native-focus-css/ */
+    @media (-webkit-min-device-pixel-ratio: 0) {
+      outline-style: auto;
+      outline-color: -webkit-focus-ring-color;
+    }
+  }
+}
+```
+
+The final step is to import the `styles.css` in your apps. In the case of our Storybook docs, add the `import '@repo/tailwind-config/styles.css'` import to `.storybook/preview.ts`

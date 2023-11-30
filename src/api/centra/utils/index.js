@@ -1,5 +1,0 @@
-export { default as fetchProduct } from './fetchProduct'
-export { default as fetchProducts } from './fetchProducts'
-export { default as formatProduct } from './formatProduct'
-export { default as getProductUrl } from './getProductUrl'
-export { default as getProductVariants } from './getProductVariants'

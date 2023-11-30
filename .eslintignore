@@ -1,8 +1,0 @@
-/.git
-/coverage
-/tmp
-/docker
-.next
-build
-node_modules
-!.storybook

@@ -1,8 +1,0 @@
-export { default as breakpoints } from './breakpoints'
-export { default as createMixins } from './createMixins'
-export { default as createPalette } from './createPalette'
-export { default as createTheme } from './createTheme'
-export { default as createTypography } from './createTypography'
-export { default as defaultTheme } from './defaultTheme'
-export { default as shape } from './shape'
-export { default as spacing } from './spacing'

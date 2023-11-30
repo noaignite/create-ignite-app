@@ -1,0 +1,31 @@
+# Formatting & IntelliSense
+
+## Formatting with Prettier plugins
+
+For an improved authoring experience you can look into installing these prettier pluggins. These dependencies should be installed at the webroot of your repo as dev dependencies.
+
+```bash
+yarn add -DW prettier-plugin-style-order prettier-plugin-organize-imports prettier-plugin-tailwindcss
+```
+
+Now we need to configure the installed pluggins. Create a `prettier.config.js` in the webroot and add the configuration as described below.
+
+```js
+module.exports = {
+  // Include Prettier plugins. Include order matters.
+  plugins: [
+    'prettier-plugin-style-order',
+    'prettier-plugin-organize-imports',
+    'prettier-plugin-tailwindcss', // MUST come last.
+  ],
+  // Include the Tailwind configuration file.
+  tailwindConfig: './packages/tailwind-config/tailwind.config.ts',
+  // Allow `prettier-plugin-tailwindcss` to run for these functions.
+  tailwindFunctions: ['clsx', 'cva'],
+  // Prettier formatting rules can be added below.
+}
+```
+
+## Tailwind CSS IntelliSense
+
+Tailwind CSS IntelliSense enhances the Tailwind development experience by providing features such as autocomplete, syntax highlighting, and linting. Install the "Tailwind CSS IntelliSense" [Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) or the [Neovim extension](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#tailwindcss).
