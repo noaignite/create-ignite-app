@@ -1,23 +1,58 @@
-# Creating a new NoA Ignite project
+# Turborepo Tailwind CSS starter
 
-(Explain why monorepo... Playground for packages... etc.)
+This is an starter Turborepo.
 
-## Creating a new monorepo
+## Using this example
 
-Start by creating a monorepo project with Turborepo from Vercel. A guide for this can be found at https://turbo.build/repo/docs/getting-started/create-new. If you plan on working with `TailwindCSS` in your project then make sure to initialize your project with the tailwind template.
+Run the following command:
 
-```bash
-npx create-turbo@latest -e with-tailwind
+```sh
+pnpm dlx create-turbo@latest -e with-tailwind
 ```
 
-## Installing the NoA Ignite docs
+## What's inside?
 
-[Storybook](https://storybook.js.org/) is a popular way to build UI components in an isolated environment. By putting Storybook into your Turborepo, you can easily develop your design system right alongside your applications. A guide for this can be found at https://turbo.build/repo/docs/handbook/tools/storybook.
+This Turborepo includes the following packages/apps:
 
-```bash
-cd apps/
-rm docs
-npx @noaignite/create-app docs --branch 2.0
+### Apps and Packages
+
+- `docs`: a [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
+- `web`: another [Next.js](https://nextjs.org/) app with [Tailwind CSS](https://tailwindcss.com/)
+- `ui`: a stub React component library with [Tailwind CSS](https://tailwindcss.com/) shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+### Building packages/ui
+
+This example is set up to produce compiled styles for `ui` components into the `dist` directory. The component `.tsx` files are consumed by the Next.js apps directly using `transpilePackages` in `next.config.js`. This was chosen for several reasons:
+
+- Make sharing one `tailwind.config.js` to apps and packages as easy as possible.
+- Make package compilation simple by only depending on the Next.js Compiler and `tailwindcss`.
+- Ensure Tailwind classes do not overwrite each other. The `ui` package uses a `ui-` prefix for it's classes.
+- Maintain clear package export boundaries.
+
+Another option is to consume `packages/ui` directly from source without building. If using this option, you will need to update the `tailwind.config.js` in your apps to be aware of your package locations, so it can find all usages of the `tailwindcss` class names for CSS compilation.
+
+For example, in [tailwind.config.js](packages/tailwind-config/tailwind.config.js):
+
+```js
+  content: [
+    // app content
+    `src/**/*.{js,ts,jsx,tsx}`,
+    // include packages if not transpiling
+    "../../packages/ui/*.{js,ts,jsx,tsx}",
+  ],
 ```
 
-Running `yarn dev` will now start both apps; web & docs.
+If you choose this strategy, you can remove the `tailwindcss` and `autoprefixer` dependencies from the `ui` package.
+
+### Utilities
+
+This Turborepo has some additional tools already setup for you:
+
+- [Tailwind CSS](https://tailwindcss.com/) for styles
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
