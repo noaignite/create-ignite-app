@@ -7,7 +7,7 @@ This is an starter Turborepo.
 Run the following command:
 
 ```sh
-pnpm dlx create-turbo@latest -e with-tailwind
+pnpm dlx create-turbo@latest -e https://github.com/noaignite/create-ignite-app/tree/feature/create-turbo-template
 ```
 
 ## What's inside?
