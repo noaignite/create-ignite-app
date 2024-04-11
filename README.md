@@ -7,7 +7,7 @@
 Start by creating a monorepo project with Turborepo from Vercel. A guide for this can be found at https://turbo.build/repo/docs/getting-started/create-new. If you plan on working with `TailwindCSS` in your project then make sure to initialize your project with the tailwind template.
 
 ```bash
-npx create-turbo@latest -e with-tailwind
+pnpm dlx create-turbo@latest -e with-tailwind -m pnpm
 ```
 
 ## Installing the NoA Ignite docs
@@ -16,8 +16,11 @@ npx create-turbo@latest -e with-tailwind
 
 ```bash
 cd apps/
-rm docs
-npx @noaignite/create-app docs --branch 2.0
+rm -r docs
+pnpm dlx @noaignite/create-app docs --branch 2.0
+rm -rf docs/.git
+cd ..
+pnpm install
 ```
 
-Running `yarn dev` will now start both apps; web & docs.
+Running `pnpm run dev` will now start both apps; web & docs.
