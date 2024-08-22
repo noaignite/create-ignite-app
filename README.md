@@ -17,7 +17,7 @@ npx create-turbo@latest -e with-tailwind -m pnpm
 ```bash
 cd my-project/apps
 rm -rf docs
-npx @noaignite/create-app docs --branch docs
+npx @noaignite/create-app docs
 ```
 
 ## Read the NoA Ignite docs
