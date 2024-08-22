@@ -2,18 +2,23 @@
 
 ## Formatting with Prettier plugins
 
-For an improved authoring experience you can look into installing these prettier pluggins. These dependencies should be installed at the webroot of your repo as dev dependencies.
+For an improved authoring experience you can look into installing these prettier pluggins. These dependencies can be installed at the webroot of your repo as dev dependencies. Perhaps a cleaner approach would be to create a dedicated `prettier-config` package to house these dependencies and config.
 
 ```bash
-yarn add -DW prettier-plugin-style-order prettier-plugin-organize-imports prettier-plugin-tailwindcss
+pnpm -D add @vercel/style-guide prettier prettier-plugin-style-order prettier-plugin-organize-imports prettier-plugin-tailwindcss
 ```
 
-Now we need to configure the installed pluggins. Create a `prettier.config.js` in the webroot and add the configuration as described below.
+Now we need to configure the installed pluggins. Add following to the `prettier.config.js` file.
 
 ```js
+const vercelPrettierConfig = require('@vercel/style-guide/prettier');
+
+/** @type {import("prettier").Config} */
 module.exports = {
+  ...vercelPrettierConfig,
   // Include Prettier plugins. Include order matters.
   plugins: [
+    ...vercelPrettierConfig.plugins,
     'prettier-plugin-style-order',
     'prettier-plugin-organize-imports',
     'prettier-plugin-tailwindcss', // MUST come last.
@@ -21,9 +26,8 @@ module.exports = {
   // Include the Tailwind configuration file.
   tailwindConfig: './packages/tailwind-config/tailwind.config.ts',
   // Allow `prettier-plugin-tailwindcss` to run for these functions.
-  tailwindFunctions: ['clsx', 'cva'],
-  // Prettier formatting rules can be added below.
-}
+  tailwindFunctions: ['clsx', 'cn'],
+};
 ```
 
 ## Tailwind CSS IntelliSense

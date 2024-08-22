@@ -1,232 +1,93 @@
 # Configure Tailwind Config
 
-## Installing the TailwindCss Typography package
+A recommended approach is to have as much as possible defined in the `tailwind.config.ts` file as pointers to CSS variables. This way, the design system can easily be themed depending on your needs.
 
-```bash
-yarn add -DW @noaignite/tailwind-typography
-```
+## Configure the breakpoints
 
-## Adding the brand colors
+To add the breakpoints to the Tailwind config, we need to define the breakpoints in the `tailwind.config.ts` file. The breakpoints can be defined in the `theme` object under the `screens` key. The recommended approach is to define the breakpoints in a separate file and import them into the `tailwind.config.ts` file. This way, we are able to export/import the breakpoints and create a page in the docs showcasing all available breakpoints in the theme.
 
-Create a directory called `colors` within the `tailwind-config` package and add the colors as defined in your design system. The recommended file structure is illustrated below:
+An additional note here is that we are using a `pxToRem` function to convert the pixel values to `rem`. This will come in handy later on when configuring our typographic variants.
 
-```
-packages/tailwind-config
-├── colors
-│   ├── common.ts
-│   ├── gray.ts
-│   └── index.ts
-├── package.json
-├── styles.css
-└── tailwind-config.ts
-```
+1. Create a `breakpoints.ts` file in the `tailwind-config` package.
 
-`colors/common.ts`
+```ts
+export const pxToRem = (px: number, baseFontSize = 16) => px / baseFontSize;
 
-```tsx
-export const common = {
-  black: '#000000',
-  blackChannel: '0 0 0',
-  white: '#ffffff',
-  whiteChannel: '255 255 255',
-}
-```
-
-`colors/gray.ts`
-
-```tsx
-export const gray = {
-  50: '#fafafa',
-  100: '#f5f5f5',
-  200: '#eeeeee',
-  300: '#e0e0e0',
-  400: '#bdbdbd',
-  500: '#9e9e9e',
-  600: '#757575',
-  700: '#616161',
-  800: '#424242',
-  900: '#212121',
-  A100: '#f5f5f5',
-  A200: '#eeeeee',
-  A400: '#bdbdbd',
-  A700: '#616161',
-}
-```
-
-`colors/index.ts`
-
-```tsx
-export * from './common'
-export * from './gray'
-```
-
-## Updating the tailwind.config.js
-
-Now that we've added our colors we can go ahead and set up the Tailwind config.
-
-```tsx
-import { buildTypographyVariant, typography } from '@noaignite/tailwind-typography'
-import type { Config } from 'tailwindcss'
-import * as colors from './colors'
-
-const breakpoints = {
-  keys: ['xs', 'sm', 'md', 'lg', 'xl'] as const,
+export const breakpoints = {
+  keys: ['xs', 'sm', 'md', 'lg', 'xl'],
   values: {
-    xs: 0,
-    sm: 700,
-    md: 1000,
-    lg: 1300,
-    xl: 1600,
+    xs: pxToRem(640),
+    sm: pxToRem(768),
+    md: pxToRem(1024),
+    lg: pxToRem(1280),
+    xl: pxToRem(1536),
   },
-}
+} as const;
+```
 
-const fontPrimary = 'Helvetica, sans-serif'
-const fontSecondary = 'Helvetica, sans-serif'
+2. Import the `breakpoints` object into the `tailwind.config.ts` file and add it to the `screens` object.
 
-const allCaps = {
-  textTransform: 'uppercase',
-}
+```ts
+import type { Config } from 'tailwindcss';
+import { breakpoints } from './breakpoints'
 
 const config: Config = {
-  content: [
-    // app content
-    'src/**/*.{js,ts,jsx,tsx}',
-    // include packages if not transpiling
-    '../../packages/**/*.{js,ts,jsx,tsx}',
-  ],
-  darkMode: ['class', '[data-color-scheme="dark"]'],
   theme: {
-    fontFamily: {
-      primary: fontPrimary,
-      secondary: fontSecondary,
-    },
     screens: {
+      // Generate the system breakpoints.
       ...Object.entries(breakpoints.values).reduce(
-        (acc, [key, value]) => ({ ...acc, [key]: `${value}px` }),
+        (acc, [key, value]) => ({ ...acc, [key]: `${value}rem` }),
         {},
       ),
     },
-    extend: {
-      colors: {
-        /** COLORS */
+  },
+}
+```
 
-        ...colors,
+## Configure the brand colors
 
-        /** PALETTE */
+To add the brand colors to the Tailwind config, we need to define the colors in the `tailwind.config.ts` file. The colors can be defined in the `theme` object under the `colors` key. The recommended approach is to define the colors in a separate file and import them into the `tailwind.config.ts` file. This way are able to export/import the palette and create a page in the docs showcasing all available colors in the theme.
 
-        /* The colors used to represent primary interface elements for a user. */
-        primary: {
-          DEFAULT: '#2196f3',
-          contrast: colors.common.white,
-        },
-        /* The colors used to represent secondary interface elements for a user. */
-        secondary: {
-          DEFAULT: '#2196f3',
-          contrast: colors.common.black,
-        },
-        /* The colors used to indicate the successful completion of an action that user triggered. */
-        success: {
-          DEFAULT: '#4caf50',
-          contrast: colors.common.black,
-        },
-        /* The colors used to represent potentially dangerous actions or important messages. */
-        warning: {
-          DEFAULT: '#ff9800',
-          contrast: colors.common.black,
-        },
-        /* The colors used to represent interface elements that the user should be made aware of. */
-        error: {
-          DEFAULT: '#f44336',
-          contrast: colors.common.black,
-        },
-        /* The colors used to present information to the user that is neutral and not necessarily important. */
-        info: {
-          DEFAULT: '#00bcd4',
-          contrast: colors.common.white,
-        },
+1. Create a `palette.ts` file in the `tailwind-config` package.
 
-        /** LIGHT/DARK REACTIVE PALETTE */
+```ts
+/**
+ * The `palette` is the registry containing all colors used by the design
+ * system. Each color value in the registry should reference a CSS variable.
+ * This allows for each respective app to define each individual CSS variable
+ * allowing for a themable and dynamic color system.
+ */
+export const palette = {
+  // The colors used to represent primary interface elements for a user.
+  brand1: {
+    DEFAULT: 'var(--palette-brand1-primary)',
+    secondary: 'var(--palette-brand1-secondary)',
+    contrast: 'var(--palette-brand1-contrast)',
+  },
+  // ...
+}
+```
 
-        /* The colors used to represent plain interface elements for a user. */
-        default: {
-          DEFAULT: 'var(--palette-default)',
-          light: 'var(--palette-default-light)',
-          dark: 'var(--palette-default-dark)',
-          contrast: 'var(--palette-default-contrast)',
-        },
-        /* The colors used to style the text. */
-        text: {
-          primary: 'var(--palette-text-primary)',
-          secondary: 'var(--palette-text-secondary)',
-          disabled: 'var(--palette-text-disabled)',
-          contrast: 'var(--palette-text-contrast)',
-        },
-        /* The colors used to style the surfaces. */
-        surface: {
-          DEFAULT: 'var(--palette-surface)',
-          paper: 'var(--palette-surface-paper)',
-        },
-        /* The color used to divide different elements. */
-        divider: {
-          DEFAULT: 'var(--palette-divider)',
-        },
-        /* The colors used to style the action elements. */
-        action: {
-          disabled: 'var(--palette-action-disabled)',
-          disabledBg: 'var(--palette-action-disabledBg)',
-        },
-      },
-      minHeight: {
-        'banner-height': 'var(--spacing-banner-height)',
-        'header-height': 'var(--spacing-header-height)',
-        'block-height': 'calc(100vh - var(--spacing-header-height))',
-        'block-margin': 'var(--spacing-block-margin)',
-      },
-      spacing: {
-        'grid-margin': 'var(--spacing-grid-margin)',
-        'grid-gap': 'var(--spacing-grid-gutter)',
-        'banner-height': 'var(--spacing-banner-height)',
-        'header-height': 'var(--spacing-header-height)',
-        'block-height': 'calc(100vh - var(--spacing-header-height))',
-        'block-margin': 'var(--spacing-block-margin)',
-      },
+2. Import the `palette` object into the `tailwind.config.ts` file and add it to the `colors` object.
+
+```ts
+import type { Config } from 'tailwindcss';
+import { palette } from './palette'
+
+const config: Config = {
+  theme: {
+    colors: {
+      ...palette,
+      // As we're overriding and not extending the colors object, we need to
+      // add back in the native CSS colors.
+      transparent: 'transparent',
+      current: 'currentColor',
     },
   },
-  plugins: [
-    typography({
-      prefix: 'type-',
-      fluid: true,
-      clamp: true,
-      variants: {
-        h1: {
-          xs: buildTypographyVariant(fontPrimary, 800, 48, 0.9, 0, allCaps),
-          sm: { fontSize: 56 },
-          md: { fontSize: 72 },
-          lg: { fontSize: 88 },
-          xl: { fontSize: 104 },
-        },
-        body1: buildTypographyVariant(fontSecondary, 400, 16, 1.2, 0),
-        button: buildTypographyVariant(fontPrimary, 400, 13, 1.5, 0),
-      },
-    }),
-  ],
 }
-
-export default config
 ```
 
-## Adding `styles.css` for a reactive color scheme
-
-The last puzzle piece to our Tailwind config is to include the `styles.css` file. This file is used to define the reactive color scheme for the application. The light/dark color scheme can be activated with a className or the `data-color-scheme` attribute on a html element. The `styles.css` file is also used to define global styles and variables. For this we will need to add this new export to the `package.json` as illustrated below:
-
-```bash
-"exports": {
-  ".": "./tailwind.config.ts",
-  "./styles.css": "./styles.css"
-},
-```
-
-Then go ahead and create the `styles.css` file and add the following:
+3. Create a `styles.css` file in the `tailwind-config` package and define base styles and the CSS variables for the colors.
 
 ```css
 @tailwind base;
@@ -234,115 +95,117 @@ Then go ahead and create the `styles.css` file and add the following:
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --spacing-grid-margin: 16px;
-    --spacing-grid-gutter: 4px;
-    --spacing-banner-height: 34px;
-    --spacing-header-height: 48px;
-    --spacing-block-margin: 48px;
-
-    @screen lg {
-      --spacing-grid-margin: 24px;
-      --spacing-grid-gutter: 8px;
-      --spacing-block-margin: 64px;
-    }
-  }
-
-  /**
-   * LIGHT PALETTE
-   */
-  :root,
-  .light,
-  [data-color-scheme='light'] {
-    /* The colors used to represent default interface elements for a user. */
-    --palette-default: theme('colors.common.black');
-    --palette-default-light: rgba(theme('colors.common.blackChannel') / 0.9);
-    --palette-default-dark: theme('colors.common.black');
-    --palette-default-contrast: theme('colors.common.white');
-
-    /* The colors used to style the text. */
-    --palette-text-primary: theme('colors.common.black');
-    --palette-text-secondary: rgba(theme('colors.common.blackChannel') / 0.64);
-    --palette-text-disabled: rgba(theme('colors.common.blackChannel') / 0.32);
-    --palette-text-contrast: theme('colors.common.white');
-
-    /* The colors used to style the surfaces. */
-    --palette-surface: theme('colors.common.white');
-    --palette-surface-paper: theme('colors.gray.50');
-
-    /* The color used to divide different elements. */
-    --palette-divider: rgba(theme('colors.common.blackChannel') / 0.12);
-
-    /* The colors used to style the action elements. */
-    --palette-action-disabled: rgba(theme('colors.common.blackChannel') / 0.32);
-    --palette-action-disabledBg: rgba(theme('colors.common.blackChannel') / 0.12);
-  }
-
-  /**
-   * DARK PALETTE
-   */
-  .dark,
-  [data-color-scheme='dark'] {
-    /* The colors used to represent default interface elements for a user. */
-    --palette-default: theme('colors.common.white');
-    --palette-default-light: rgba(theme('colors.common.whiteChannel') / 0.9);
-    --palette-default-dark: theme('colors.common.white');
-    --palette-default-contrast: theme('colors.common.black');
-
-    /* The colors used to style the text. */
-    --palette-text-primary: theme('colors.common.white');
-    --palette-text-secondary: rgba(theme('colors.common.whiteChannel') / 0.64);
-    --palette-text-disabled: rgba(theme('colors.common.whiteChannel') / 0.32);
-    --palette-text-contrast: theme('colors.common.black');
-
-    /* The colors used to style the surfaces. */
-    --palette-surface: theme('colors.common.black');
-    --palette-surface-paper: theme('colors.gray.900');
-
-    /* The color used to divide different elements. */
-    --palette-divider: rgba(theme('colors.common.whiteChannel') / 0.2);
-
-    /* The colors used to style the action elements. */
-    --palette-action-disabled: rgba(theme('colors.common.whiteChannel') / 0.32);
-    --palette-action-disabledBg: rgba(theme('colors.common.whiteChannel') / 0.12);
-  }
-
   html {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
   }
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-
-  body {
-    @apply type-body1;
-    color: var(--palette-text-primary);
-    background-color: var(--palette-surface);
-  }
-
-  svg:not([fill]) {
-    fill: currentColor;
-  }
-
-  :focus {
-    outline: none;
-  }
-
-  [data-headlessui-focus-visible] :focus-visible {
-    outline: 2px solid Highlight;
-
-    /* https://ghinda.net/article/mimic-native-focus-css/ */
-    @media (-webkit-min-device-pixel-ratio: 0) {
-      outline-style: auto;
-      outline-color: -webkit-focus-ring-color;
-    }
-  }
+    
+  /* ... */
+  
+  --font-primary: 'Aften Screen', sans-serif;
+  --font-secondary: 'Aften Screen 2', sans-serif;
+    
+  --palette-brand1-primary: white;
+  --palette-brand1-secondary: black;
+  --palette-brand1-contrast: white;
 }
 ```
 
-The final step is to import the `styles.css` in your apps. In the case of our Storybook docs, add the `import '@repo/tailwind-config/styles.css'` import to `.storybook/preview.ts`
+## Configure the typography variants
+
+The recommended approach to configure the typography variants is to use the `@noaignite/tailwind-typography` package. This package provides a Tailwind plugin that allows one to define your typographic variants in the `tailwind.config.ts` file.
+
+Note that in the example below we are setting the `unit` to `rem` as well as the variant font sizes. This gives us better accessibility as users will be able to adjust the font size in their browser settings. Additionally, if we want to set `fluid` to `true` we need to have matching unit values between the our breakpoints and variant font sizes for this to work.
+
+1. Install the package as a dependency in your `tailwind-config` package.
+
+```bash
+pnpm add -D @noaignite/tailwind-typography
+```
+
+2. Configure your typographic variants in your `tailwind.config.ts`.
+
+```ts
+import type { Config } from 'tailwindcss';
+import { typography } from '@noaignite/tailwind-typography'
+import { breakpoints, pxToRem } from './breakpoints'
+  
+const config: Config = {
+  theme: {
+    fontFamily: {
+      primary: 'var(--font-primary)',
+      secondary: 'var(--font-secondary)',
+    },
+  },
+  plugins: [
+    typography({
+      breakpointKeys: breakpoints.keys,
+      prefix: 'type-',
+      unit: 'rem',
+      fluid: true,
+      clamp: true,
+      variants: {
+        h1: {
+          xs: {
+            fontFamily: 'var(--font-primary)',
+            fontSize: pxToRem(48),
+            fontWeight: 700,
+            letterSpacing: 0,
+            lineHeight: 1.2,
+            textTransform: 'uppercase',
+          },
+          md: { fontSize: pxToRem(72) },
+        },
+        button: {
+          fontFamily: 'var(--font-secondary)',
+          fontSize: pxToRem(14),
+          fontWeight: 400,
+          lineHeight: 1.2,
+        },
+      },
+    }),
+  ],
+}
+```
+
+# It's the final config
+
+The final `tailwind.config.ts` file should look something like this:
+
+```ts
+import type { Config } from 'tailwindcss';
+import { breakpoints, pxToRem } from './breakpoints'
+import { palette } from './palette'}
+import { typography } from '@noaignite/tailwind-typography'
+  
+const config: Config = {
+  content: [
+    // App content
+    'src/**/*.{js,ts,jsx,tsx}',
+    // Include packages if not transpiling
+    '../../packages/*/src/**/*.{js,ts,jsx,tsx}',
+  ],
+  // Enable dark mode selectors
+  darkMode: ['class', '[data-color-scheme="dark"]'],
+  theme: {
+    fontFamily: {
+      // ...
+    },
+    screens: {
+      // ...
+    },
+    colors: {
+      // ...
+    },
+    extend: {
+      // ...
+    }
+  },
+  plugins: [
+    typography({
+      // ...
+    }),
+  ],
+}
+````
