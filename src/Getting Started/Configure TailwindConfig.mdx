@@ -1,0 +1,211 @@
+# Configure Tailwind Config
+
+A recommended approach is to have as much as possible defined in the `tailwind.config.ts` file as pointers to CSS variables. This way, the design system can easily be themed depending on your needs.
+
+## Configure the breakpoints
+
+To add the breakpoints to the Tailwind config, we need to define the breakpoints in the `tailwind.config.ts` file. The breakpoints can be defined in the `theme` object under the `screens` key. The recommended approach is to define the breakpoints in a separate file and import them into the `tailwind.config.ts` file. This way, we are able to export/import the breakpoints and create a page in the docs showcasing all available breakpoints in the theme.
+
+An additional note here is that we are using a `pxToRem` function to convert the pixel values to `rem`. This will come in handy later on when configuring our typographic variants.
+
+1. Create a `breakpoints.ts` file in the `tailwind-config` package.
+
+```ts
+export const pxToRem = (px: number, baseFontSize = 16) => px / baseFontSize;
+
+export const breakpoints = {
+  keys: ['xs', 'sm', 'md', 'lg', 'xl'],
+  values: {
+    xs: pxToRem(640),
+    sm: pxToRem(768),
+    md: pxToRem(1024),
+    lg: pxToRem(1280),
+    xl: pxToRem(1536),
+  },
+} as const;
+```
+
+2. Import the `breakpoints` object into the `tailwind.config.ts` file and add it to the `screens` object.
+
+```ts
+import type { Config } from 'tailwindcss';
+import { breakpoints } from './breakpoints'
+
+const config: Config = {
+  theme: {
+    screens: {
+      // Generate the system breakpoints.
+      ...Object.entries(breakpoints.values).reduce(
+        (acc, [key, value]) => ({ ...acc, [key]: `${value}rem` }),
+        {},
+      ),
+    },
+  },
+}
+```
+
+## Configure the brand colors
+
+To add the brand colors to the Tailwind config, we need to define the colors in the `tailwind.config.ts` file. The colors can be defined in the `theme` object under the `colors` key. The recommended approach is to define the colors in a separate file and import them into the `tailwind.config.ts` file. This way are able to export/import the palette and create a page in the docs showcasing all available colors in the theme.
+
+1. Create a `palette.ts` file in the `tailwind-config` package.
+
+```ts
+/**
+ * The `palette` is the registry containing all colors used by the design
+ * system. Each color value in the registry should reference a CSS variable.
+ * This allows for each respective app to define each individual CSS variable
+ * allowing for a themable and dynamic color system.
+ */
+export const palette = {
+  // The colors used to represent primary interface elements for a user.
+  brand1: {
+    DEFAULT: 'var(--palette-brand1-primary)',
+    secondary: 'var(--palette-brand1-secondary)',
+    contrast: 'var(--palette-brand1-contrast)',
+  },
+  // ...
+}
+```
+
+2. Import the `palette` object into the `tailwind.config.ts` file and add it to the `colors` object.
+
+```ts
+import type { Config } from 'tailwindcss';
+import { palette } from './palette'
+
+const config: Config = {
+  theme: {
+    colors: {
+      ...palette,
+      // As we're overriding and not extending the colors object, we need to
+      // add back in the native CSS colors.
+      transparent: 'transparent',
+      current: 'currentColor',
+    },
+  },
+}
+```
+
+3. Create a `styles.css` file in the `tailwind-config` package and define base styles and the CSS variables for the colors.
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+  }
+    
+  /* ... */
+  
+  --font-primary: 'Aften Screen', sans-serif;
+  --font-secondary: 'Aften Screen 2', sans-serif;
+    
+  --palette-brand1-primary: white;
+  --palette-brand1-secondary: black;
+  --palette-brand1-contrast: white;
+}
+```
+
+## Configure the typography variants
+
+The recommended approach to configure the typography variants is to use the `@noaignite/tailwind-typography` package. This package provides a Tailwind plugin that allows one to define your typographic variants in the `tailwind.config.ts` file.
+
+Note that in the example below we are setting the `unit` to `rem` as well as the variant font sizes. This gives us better accessibility as users will be able to adjust the font size in their browser settings. Additionally, if we want to set `fluid` to `true` we need to have matching unit values between the our breakpoints and variant font sizes for this to work.
+
+1. Install the package as a dependency in your `tailwind-config` package.
+
+```bash
+pnpm add -D @noaignite/tailwind-typography
+```
+
+2. Configure your typographic variants in your `tailwind.config.ts`.
+
+```ts
+import type { Config } from 'tailwindcss';
+import { typography } from '@noaignite/tailwind-typography'
+import { breakpoints, pxToRem } from './breakpoints'
+  
+const config: Config = {
+  theme: {
+    fontFamily: {
+      primary: 'var(--font-primary)',
+      secondary: 'var(--font-secondary)',
+    },
+  },
+  plugins: [
+    typography({
+      breakpointKeys: breakpoints.keys,
+      prefix: 'type-',
+      unit: 'rem',
+      fluid: true,
+      clamp: true,
+      variants: {
+        h1: {
+          xs: {
+            fontFamily: 'var(--font-primary)',
+            fontSize: pxToRem(48),
+            fontWeight: 700,
+            letterSpacing: 0,
+            lineHeight: 1.2,
+            textTransform: 'uppercase',
+          },
+          md: { fontSize: pxToRem(72) },
+        },
+        button: {
+          fontFamily: 'var(--font-secondary)',
+          fontSize: pxToRem(14),
+          fontWeight: 400,
+          lineHeight: 1.2,
+        },
+      },
+    }),
+  ],
+}
+```
+
+# It's the final config
+
+The final `tailwind.config.ts` file should look something like this:
+
+```ts
+import type { Config } from 'tailwindcss';
+import { breakpoints, pxToRem } from './breakpoints'
+import { palette } from './palette'}
+import { typography } from '@noaignite/tailwind-typography'
+  
+const config: Config = {
+  content: [
+    // App content
+    'src/**/*.{js,ts,jsx,tsx}',
+    // Include packages if not transpiling
+    '../../packages/*/src/**/*.{js,ts,jsx,tsx}',
+  ],
+  // Enable dark mode selectors
+  darkMode: ['class', '[data-color-scheme="dark"]'],
+  theme: {
+    fontFamily: {
+      // ...
+    },
+    screens: {
+      // ...
+    },
+    colors: {
+      // ...
+    },
+    extend: {
+      // ...
+    }
+  },
+  plugins: [
+    typography({
+      // ...
+    }),
+  ],
+}
+````

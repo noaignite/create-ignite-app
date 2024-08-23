@@ -1,0 +1,74 @@
+# Styling With CVA
+
+CVA stands for `class-variance-authority`, it's a library that allows us to use Tailwind CSS classes in our React components elegantly and efficiently. It makes it easy to add styles to components by allowing us to directly use Tailwind classes in JSX. This means we don't have to manually create CSS classes or use inline styles to add styles to components. For handling style conflicts we will be using `tailwind-merge` as recommended by CVA.
+
+For example, let's install the necessary packages to the `ui` workspace by running the following command.
+
+```bash
+pnpm --filter ui add class-variance-authority tailwind-merge
+```
+
+## Tailwind CSS IntelliSense with CVA
+
+To get the most out of CVA, such as autocomplete, syntax highlighting, and linting, follow the instructions found at [CVA IntelliSense](https://cva.style/docs/getting-started/installation#tailwind-css).
+
+## Creating your first UI component
+
+In this example we showcase how to create a `Button` component. We use `cva` to set up our variants and the `VariantProps` type from `cva` to generate typescript types based on our variants. We scaffold out a basic template for the `Button` component and merge passed `className` with our variants using `twMerge` from `tailwind-merge`. This setup exposes both a `Button` component which can be imported and used, but also a `buttonVariants` function which can be used by itself to apply our button styles to any DOM element.
+
+Implementation:
+
+```tsx
+import { cva, type VariantProps } from 'class-variance-authority'
+import { twMerge } from 'tailwind-merge'
+import { forwardRef, type ButtonHTMLAttributes } from 'react'
+
+export const buttonVariants = cva('your base classes', {
+  variants: {
+    color: {
+      primary: 'your primary classes',
+      secondary: 'your secondary classes',
+    },
+  },
+  defaultVariants: {
+    color: 'primary',
+  },
+})
+
+export type ButtonVariants = VariantProps<typeof buttonVariants>
+
+export type ButtonProps = ButtonVariants &
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonVariants>
+
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(props, ref) {
+  const { children, className, color, ...other } = props
+
+  return (
+    <button
+      className={twMerge(buttonVariants({ className, color }))}
+      ref={ref}
+      type="button"
+      {...other}
+    >
+      {children}
+    </button>
+  )
+})
+```
+
+Usage:
+
+```tsx
+import { Button, buttonVariants } from 'ui'
+
+function Example() {
+  return (
+    <>
+      <Button color="secondary">I'm a button that looks like a secondary button</Button>
+      <a className={buttonVariants({ color: 'secondary' })}>
+        I'm a link that looks like a secondary button
+      </a>
+    </>
+  )
+}
+```

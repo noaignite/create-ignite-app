@@ -1,0 +1,25 @@
+# Automate With Git Hooks
+
+## Husky
+
+Working with git hooks can automate a lot of tasks for you. For example, you can run your tests before you commit or pushing your code. This way you can be sure that you don't commit code that breaks your tests. For this we use a package called `husky`. To get started head over to their [documentation site](https://typicode.github.io/husky/get-started.html).
+
+## Linting staged files with lint-staged
+
+Linting makes more sense when run before committing your code. By doing so you can ensure no errors go into the repository and enforce code style. But running a lint process on a whole project is slow, and linting results can be irrelevant. Ultimately you only want to lint files that will be committed. For this we use another tool called `lint-staged`. For further reading head over to their [README](https://github.com/lint-staged/lint-staged).
+
+## Enforcing commit message conventions
+
+The Conventional Commits specification is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top of. This convention dovetails with [SemVer](https://semver.org/), by describing the features, fixes, and breaking changes made in commit messages.
+
+The commit message should be structured as follows:
+
+```bash
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+For further reading on conventional commits head on over to [conventionalcommits.org](https://www.conventionalcommits.org/en/v1.0.0/). For a conventional commits CLI tool check out [commitizen](https://commitizen-tools.github.io/commitizen/).
